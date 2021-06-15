@@ -84,12 +84,13 @@
 
 
 
-/* 로구인 화면 */
+/* 로그인 화면 */
 	#roginbox{
 		max-width:500px;
 		margin:0px auto;
 		margin-top:100px;
 		margin-button:200px;
+		font-style: gray;
 	}
 	
 	#inputwidth{
@@ -109,12 +110,18 @@
 	.input-group{
 		margin:5px;	
 	}
-	#underline{
+	#underline1, #underline2{
 		border-bottom: 1px solid lightgray;
 		margin-bottom: 30px;
 	}
+	#underline1{
+		margin-bottom:50px;	
+	}
 	tr{
 		height:50px;
+	}
+	#EVENTMAN{
+		text-align:center;
 	}
 	
 </style>
@@ -166,99 +173,99 @@
 		
 		
 <!-- 로그인화면 -->		
-
-	
-
+	<div class="container">
 		
-		
-<div class="container">
-	<div id="roginbox">
-		<div id="underline">
-			<p class="fs-4">rogin</p>
-		</div>
-		<form>
-			<table>
-				<tr>
-					<td id="inputwidth">
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="inputGroup-sizing-default">ID</span>
-							<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</td>
-					<td rowspan='2'>
-						<div class="d-grid gap-2">
-							<button class="btn btn-outline-secondary btn-sm" type="button" id="roginbtn"   data-bs-toggle="modal" data-bs-target="#exampleModal">로그인</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="inputGroup-sizing-default">PW</span>
-							<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-						</div>
-					</td>
-				</tr>
-			</table>
-		
-		
-			
-			
-			<div class="d-grid gap-2">
-				<button type="button" class="btn btn-outline-secondary btn-sm">회원가입</button>
-				<button type="button" class="btn btn-outline-secondary btn-sm">ID찾기</button>
-				<button type="button" class="btn btn-outline-secondary btn-sm">PW찾기</button>
+		<div id="roginbox">
+			<div id="underline1">
+				<p class="fs-5 text-black-50">login</p>
 			</div>
-		</form>
+			<div id="underline2">
+				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
+			</div>
+			<form>
+				<table>
+					<tr>
+						<td id="inputwidth">
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+							</div>
+						</td>
+						<td rowspan='2'>
+							<div class="d-grid gap-2">
+								<button class="btn btn-outline-secondary btn-sm" type="button" id="roginbtn"   data-bs-toggle="modal" data-bs-target="#exampleModal" tabindex=3>로그인</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2>
+							</div>
+						</td>
+					</tr>
+				</table>
+			
+			
+				
+				
+				<div class="d-grid gap-2">
+					<button type="button" class="btn btn-outline-secondary btn-sm">회원가입</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm">ID찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm">PW찾기</button>
+				</div>
+			</form>
+		</div>
 	</div>
-</div>
 		
+
 
 
 <!-- 모달 -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">로그인 실패!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        로그인 확인문 결과 실패시 나옴
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">로그인 실패!</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        로그인 확인문 결과 실패시 나옴
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 
 <!-- 메인 푸터 -->
-<footer class="footer">
-	<div class="d-flex justify-content-between align-items-center">
-		<div class="btn-group">
-			<img src="rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
-		</div>
-		<div>
-			<div class="container">
-				<span class="text-muted">
-					<small>전화번호 063-222-2222</small>
-				</span>
+	<footer class="footer">
+		<div class="d-flex justify-content-between align-items-center">
+			<div class="btn-group">
+				<img src="rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
 			</div>
-			<div class="container">
-				<span class="text-muted">
-					<small>EVENTMAN | 전주시 덕진구 효자동 | 대표. 000</small>
-				</span>
+			<div>
+				<div class="container">
+					<span class="text-muted">
+						<small>전화번호 063-222-2222</small>
+					</span>
+				</div>
+				<div class="container">
+					<span class="text-muted">
+						<small>EVENTMAN | 전주시 덕진구 효자동 | 대표. 000</small>
+					</span>
+				</div>
+				<div class="container">
+					<span class="text-muted">
+						<small>ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000 </small>
+					</span>
+				</div>
 			</div>
-			<div class="container">
-				<span class="text-muted">
-					<small>ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000 </small>
-				</span>
-			</div>
-		</div>
-    </div>
-</footer>
+	    </div>
+	</footer>
 
 
 
