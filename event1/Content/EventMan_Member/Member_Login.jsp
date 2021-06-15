@@ -81,7 +81,7 @@
 		padding-top:40px;
 		margin:0px auto;	
 	}
-
+	
 
 
 /* 로그인 화면 */
@@ -89,7 +89,7 @@
 		max-width:500px;
 		margin:0px auto;
 		margin-top:100px;
-		margin-button:200px;
+		margin-bottom:200px;
 		font-style: gray;
 	}
 	
@@ -123,7 +123,8 @@
 	#EVENTMAN{
 		text-align:center;
 	}
-	
+
+
 </style>
 
 
@@ -132,10 +133,11 @@
 <body>
 
 <!-- 상단 네비 부분 -->
+	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light" id="topnav">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/event1/event.jsp">
-		     		<img src="rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
+		     		<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
@@ -166,6 +168,7 @@
 		    	</div>
 		  	</div>
 		</nav>
+	</div>
 		
 		
 		
@@ -211,9 +214,9 @@
 				
 				
 				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm">회원가입</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm">ID찾기</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm">PW찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Join.jsp'">회원가입</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Find_Id.jsp'">아이디찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Find_Pw.jsp'">비밀번호찾기</button>
 				</div>
 			</form>
 		</div>
@@ -245,7 +248,7 @@
 	<footer class="footer">
 		<div class="d-flex justify-content-between align-items-center">
 			<div class="btn-group">
-				<img src="rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
+				<img src="../rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
 			</div>
 			<div>
 				<div class="container">

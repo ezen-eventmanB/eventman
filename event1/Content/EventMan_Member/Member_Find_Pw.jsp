@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -174,12 +174,12 @@
 		
 		
 		
-<!-- 아이디 찾기 화면 -->		
+<!-- 비밀번호 찾기 화면 -->		
 	<div class="container">
 		
 		<div id="roginbox">
 			<div id="underline1">
-				<p class="fs-5 text-black-50">아이디 찾기</p>
+				<p class="fs-5 text-black-50">비밀번호 찾기</p>
 			</div>
 			<div id="underline2">
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
@@ -219,8 +219,8 @@
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">비밀번호찾기</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">뒤로</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">로그인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='../EventMan_Main/EventMan_Main.jsp'">홈 화면</button>
 				</div>
 			</form>
 		</div>
