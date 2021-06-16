@@ -16,7 +16,7 @@
 
 <style>
 
-
+fdfdfdf
 
 /*중앙 행사리뷰 앨범 CSS*/
 	.album{
