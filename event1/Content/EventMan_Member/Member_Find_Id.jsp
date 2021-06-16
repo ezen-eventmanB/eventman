@@ -199,7 +199,7 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
 								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-								<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호</button>
+								<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="location.href='phonecheck.jsp'">인증번호</button>
 							</div>
 						</td>
 					</tr>
