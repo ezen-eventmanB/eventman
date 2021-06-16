@@ -130,6 +130,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topnav">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/event1/event.jsp">
+		     		<img src="rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
 		     		<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -161,6 +162,7 @@
 		    	</div>
 		  	</div>
 		</nav>
+		
 	</div>
 
 <!-- 중앙배너부분 -->
@@ -178,14 +180,14 @@
 		</div>
 	</nav>
 	
-
 <!-- 중앙 네비 카테고리 검색창 -->
 <nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
 <div class="container-fluid">
 	  <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
-	
+	  	
+
 	  <div class="navbar-collapse collapse" id="navbarsExample09" >
 	    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
 	    
@@ -205,7 +207,7 @@
 	      <li class="nav-item" >
 	        <a class="nav-link" href="#">기타</a>
 	      </li>
-	    </ul>
+	      </ul>
 	    
 	    <form>
 	    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
@@ -219,11 +221,12 @@
 		       	<button type="button" class="btn btn-outline-secondary">게시물 등록하기</button>
 			</div>
 			
-	    </form>
-	  </div>
-</div>
-</nav>
-<table class="table">
+		    </form>
+		  </div>
+	</div>
+	</nav>
+	<table class="table">
+  
   	<thead>
 	    <th>카테고리</th>
 	    <th colspan="2">제목</th>
