@@ -147,7 +147,7 @@
 		    	<div class="collapse navbar-collapse" id="navbarNav">
 		      		<ul class="navbar-nav" id="navbar-nav">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">견적신청</a>
+		          			<a class="nav-link" href="./Content/EventMan_Cost">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
 		          			<a class="nav-link" href="#">행사리뷰</a>

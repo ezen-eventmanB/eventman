@@ -126,10 +126,11 @@
 <body>
 
 <!-- 상단 네비 부분 -->
+	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topnav">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/event1/event.jsp">
-		     		<img src="rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
+		     		<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
@@ -160,7 +161,7 @@
 		    	</div>
 		  	</div>
 		</nav>
-		
+	</div>
 
 <!-- 중앙배너부분 -->
 		<div>
@@ -347,7 +348,7 @@
 <footer class="footer">
 	<div class="d-flex justify-content-between align-items-center">
 		<div class="btn-group">
-			<img src="rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
+			<img src="../rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
 		</div>
 		<div>
 			<div class="container">
