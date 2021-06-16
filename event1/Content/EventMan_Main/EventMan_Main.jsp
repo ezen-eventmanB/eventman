@@ -46,6 +46,7 @@
 		margin:10px auto;
 		text-align:center;
 	}
+	
 
 </style>
 </head>

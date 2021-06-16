@@ -1,4 +1,4 @@
-package service;
+package vo;
 
 public class EvEventAskVo {
 	private int sidx;

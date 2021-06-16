@@ -1,4 +1,4 @@
-package service;
+package vo;
 
 public class EvBoardReplyVo {
 	private int bridx;

@@ -1,4 +1,4 @@
-package service;
+package vo;
 
 public class EvCostAnswerVo {
 	private int cridx;
