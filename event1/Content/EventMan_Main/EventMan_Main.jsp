@@ -11,48 +11,11 @@
 
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+	
+	
 	
 <style>
-
-	
-
-	
-	
-		/*위에서 살짝 떨어지는 밑줄 CSS*/
-		#topnav .nav-link{
-			  position: relative;
-			  padding-bottom: 10px;
-		}
-		#topnav .nav-link:before{
-			  content: '';
-			  position: absolute;
-			  bottom: 2px;
-			  left: 0; right: 0;
-			  height: 2px;
-			  background-color: #3f8ad4;
-		}
-		#topnav .nav-link:before{
-			  opacity: 0;
-			  -webkit-transform: translateY(-8px);
-			  transform: translateY(-8px);
-			  -webkit-transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-			    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		}
-		#topnav .nav-link:hover:before{
-			  opacity: 1;
-			    -webkit-transform: translateY(0);
-			    transform: translateY(0);
-			  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-			    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		}
-	/*위에서 살짝 떨어지는 밑줄 CSS 끝*/
-
-
-
 
 /*중앙 행사리뷰 앨범 CSS*/
 	.album{
@@ -62,10 +25,6 @@
 	.pagination {
    		justify-content: center;
 	}
-	/*행사리뷰 앨범 페이징처리 끝*/
-/*중앙 행사리뷰 앨범 CSS 끝*/	
-
-
 
 
 /* 중앙 nav form CSS */
@@ -73,8 +32,7 @@
 		font-weight: bold;
 		font-weight: 900;
 	}
-/* 중앙 nav form CSS 끝*/
-}
+
 
 /* 메인 하단 게시판 노출*/
 	.table{
@@ -87,16 +45,7 @@
 		margin:10px auto;
 		text-align:center;
 	}
-/* 메인 하단 게시판 노출 끝*/
 
-/* 메인 푸터*/
-	.footer{
-		width:500px;
-		padding-top:40px;
-		margin:0px auto;	
-	}
-
-/* 메인 푸터 끝*/
 </style>
 </head>
 <body>
