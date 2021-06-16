@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+	#navbar-nav{
+		width:800px;
+		margin:1px auto;
+		text-align: center;
+	}
+	#navbar-nav li{
+		margin:1px auto;
+		text-align: center;
+	}
+	#liright1{
+		width:80px;
+		text-align: right;
+		margin-right:1px;
+	}
+	#liright2{
+		text-align: right;
+		margin-right:1px;
+	}
+	.nav-li:hover {
+		color:black;	
+	}
+	#Memberbox a{
+		height:44px;
+	}
+	#toprogoimg{
+		width:300px;
+	}

@@ -9,36 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <title>EVENT MAN!</title>
 
+	<!-- top nav CSS -->
+	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	
 <style>
-/*top nav CSS*/
-	#navbar-nav{
-		width:800px;
-		margin:1px auto;
-		text-align: center;
-		font-weight:bold;
-		font-weight:900;
-	}
-	#navbar-nav li{
-		margin:1px auto;
-		text-align: center;
-	}
-	#liright1, #liright2{
-		width:80px;
-		text-align: right;
-		margin-right:1px;
-	}
-	.navbar{
-		background-color:white !important;
-	}
-	.nav li a{
-		background-color:white;
-	} 
-	.nav .active a{
-		background-color:white!important;
-	}
-	.nav-li:hover {
-		color:black;	
-	}
+
+	
+
+	
 	
 		/*위에서 살짝 떨어지는 밑줄 CSS*/
 		#topnav .nav-link{
@@ -72,13 +50,12 @@
 			    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		}
 	/*위에서 살짝 떨어지는 밑줄 CSS 끝*/
-/*top nav CSS 끝*/
+
 
 
 
 /*중앙 행사리뷰 앨범 CSS*/
 	.album{
-		background-color:white !important;
 		margin-bottom: 40px;
 	}
 	/*행사리뷰 앨범 페이징처리*/
@@ -123,12 +100,13 @@
 </style>
 </head>
 <body>
-<div class="container">
+
 <!-- 상단 네비 부분 -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topnav">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/event1/event.jsp">
-		     		<img src="rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
+		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
@@ -136,33 +114,36 @@
 		    	<div class="collapse navbar-collapse" id="navbarNav">
 		      		<ul class="navbar-nav" id="navbar-nav">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link" href="#">회사소개</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
 		       			</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link" href="Board.jsp">게시판</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Board/EventMan_Board.jsp">게시판</a>
 		       			</li>
 		       		</ul>
-		       		<ul class="navbar-nav">	
+		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link" href="Join.jsp">회원가입</a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link" href="Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>
 		  	</div>
 		</nav>
+	</div>
 		
 
+
+
 <!-- 중앙배너부분 -->
-<div>
+	<div>
         <div class="bd-example">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
@@ -209,8 +190,10 @@
       </div>
 
 
+
+
 <!-- 중앙 네비 카테고리 검색창 -->
-<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
+<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
 <div class="container-fluid">
 	  <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -466,7 +449,7 @@
 <footer class="footer">
 	<div class="d-flex justify-content-between align-items-center">
 		<div class="btn-group">
-			<img src="rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
+			<img src="../rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
 		</div>
 		<div>
 			<div class="container">
