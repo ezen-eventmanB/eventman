@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//Content/EventMan_Main/EventMan_Main.jsp=UTF-8
+=======
+encoding//src/service/Dao.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
