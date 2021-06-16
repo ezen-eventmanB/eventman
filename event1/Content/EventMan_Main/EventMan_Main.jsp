@@ -11,6 +11,7 @@
 
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	<!-- footer CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
 	
 	

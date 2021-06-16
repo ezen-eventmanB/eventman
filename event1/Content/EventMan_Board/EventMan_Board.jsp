@@ -10,70 +10,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <title>EVENT MAN!</title>
 
-<style>
-/*top nav CSS*/
-	#navbar-nav{
-		width:800px;
-		margin:1px auto;
-		text-align: center;
-		font-weight:bold;
-		font-weight:900;
-	}
-	#navbar-nav li{
-		margin:1px auto;
-		text-align: center;
-	}
-	#liright1, #liright2{
-		width:80px;
-		text-align: right;
-		margin-right:1px;
-	}
-	.navbar{
-		background-color:white !important;
-	}
-	.nav li a{
-		background-color:white;
-	} 
-	.nav .active a{
-		background-color:white!important;
-	}
-	.nav-li:hover {
-		color:black;	
-	}
+	<!-- top nav CSS -->
+	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	<!-- footer CSS -->
+	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
 	
-		/*위에서 살짝 떨어지는 밑줄 CSS*/
-		#topnav .nav-link{
-			  position: relative;
-			  padding-bottom: 10px;
-		}
-		#topnav .nav-link:before{
-			  content: '';
-			  position: absolute;
-			  bottom: 2px;
-			  left: 0; right: 0;
-			  height: 2px;
-			  background-color: #3f8ad4;
-		}
-		#topnav .nav-link:before{
-			  opacity: 0;
-			  -webkit-transform: translateY(-8px);
-			  transform: translateY(-8px);
-			  -webkit-transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-			    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		}
-		#topnav .nav-link:hover:before{
-			  opacity: 1;
-			    -webkit-transform: translateY(0);
-			    transform: translateY(0);
-			  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-			    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-			    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		}
-	/*위에서 살짝 떨어지는 밑줄 CSS 끝*/
-/*top nav CSS 끝*/
+<style>
+
 
 
 
@@ -113,24 +56,16 @@
 	}
 /* 메인 하단 게시판 노출 끝*/
 
-/* 메인 푸터*/
-	.footer{
-		width:500px;
-		padding-top:40px;
-		margin:0px auto;	
-	}
-
-/* 메인 푸터 끝*/
 </style>
 </head>
 <body>
 
 <!-- 상단 네비 부분 -->
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="topnav">
+		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/event1/event.jsp">
-		     		<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-top">
+		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		      		<span class="navbar-toggler-icon"></span>
@@ -138,24 +73,24 @@
 		    	<div class="collapse navbar-collapse" id="navbarNav">
 		      		<ul class="navbar-nav" id="navbar-nav">
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">견적신청</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link" href="#">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link" href="#">회사소개</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
 		       			</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link" href="#">게시판</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Board/EventMan_Board.jsp">게시판</a>
 		       			</li>
 		       		</ul>
-		       		<ul class="navbar-nav">	
+		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link" href="#">회원가입</a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
 		       			</li>
-		       			<li class="nav-item" id="liright2">
-		          			<a class="nav-link" href="#">로그인</a>
+		       			<li class="nav-item" id="liright2"> 
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>
