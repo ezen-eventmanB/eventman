@@ -18,42 +18,6 @@
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		background-color:white !important;
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-	/*행사리뷰 앨범 페이징처리 끝*/
-/*중앙 행사리뷰 앨범 CSS 끝*/	
-
-
-
-
-/* 중앙 nav form CSS */
-	#midnav .nav-item{
-		font-weight: bold;
-		font-weight: 900;
-	}
-/* 중앙 nav form CSS 끝*/
-}
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-/* 메인 하단 게시판 노출 끝*/
-
 
 </style>
 </head>

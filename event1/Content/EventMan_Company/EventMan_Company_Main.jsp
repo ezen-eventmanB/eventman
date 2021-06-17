@@ -9,10 +9,9 @@
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+   <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+   <link rel="stylesheet" type="text/css" href="../css/footer.css">
+   <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
 
 <style>
 
@@ -77,26 +76,25 @@
 		</nav>
 	</div>
 		
+<!-- 페이지 위치 안내 -->
+<div class="container"  id="containermargin">	
+	<!-- 집 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+	</svg>
+	
+	<!-- 화살표 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	
+	<!-- 현제 페이지 이름 -->
+	회사소개
+</div>
 
 <!-- 회사소개 페이지 -->
 <article>
-	
-	<!-- 페이지 위치 안내 -->
-	<div class="container"  id="containermargin">	
-		<!-- 집 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-		</svg>
-		
-		<!-- 화살표 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-		</svg>
-		
-		<!-- 현제 페이지 이름 -->
-		회사소개
-	</div>
 	
 	<!-- 회사 소개 이미지 -->
 	<div class="container">	
@@ -117,17 +115,6 @@
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
 	<script src="../js/kakaoView.js"></script>
 </article>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- 메인 푸터 -->

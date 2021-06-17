@@ -6,10 +6,9 @@
 <meta charset="UTF-8">
 <title>EVENT MAN 행사리뷰</title>
 
-	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
+   <link rel="stylesheet" type="text/css" href="../css/footer.css">
+   <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <style>
@@ -35,10 +34,6 @@
 	}
 
 
-/* 현재 페이지 위치*/	
-	#containermargin{
-	 	margin-bottom:30px;
-	}
 
 </style>
 
@@ -335,7 +330,7 @@
 
 
 <!-- 메인 푸터 -->
-<div class="footer">
+<div class="footer" >
 </div>
 	<div class="container">
 		 <div class="row justify-content-md-center">
