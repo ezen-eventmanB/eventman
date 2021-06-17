@@ -16,31 +16,29 @@ public class FrontController extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 																
-																//http://localhost:8080/event1/event.jsp
-		String uri = request.getRequestURI();					//프로젝트 + 파일경로  ex)/event1/event.jsp
-		int pathlength = request.getContextPath().length();		//프로젝트path 	  ex)/event1   6
-		String str = uri.substring(pathlength);					// ex) / event1   /event.jsp
-		
+		String uri = request.getRequestURI();					
+		int pathlength = request.getContextPath().length();		
+		String str = uri.substring(pathlength);					
 		String[] gubun = str.split("/");
 		String str2 = gubun[1];
-
 		
+		System.out.println("uri : "+uri);
+		System.out.println("getContextPath() : "+request.getContextPath());
+		System.out.println("pathlength : "+pathlength);
+		System.out.println("str : "+str);
+		System.out.println("gubun[0] : "+gubun[0]);
+		System.out.println("gubun[1] : "+gubun[1]);
+		System.out.println("gubun[2] : "+gubun[2]);
 		System.out.println("str2 = "+str2);
 		
-		
 
-		if(str2.equals("EventMan_Member")) {
-																						
+		if(str2.equals("EventMan_Member")) {														
 			MemberController mc = new MemberController();
 			mc.doGet(request, response);
 		}
 		
-		
-		
-		
-		
+	
 	}
 
 

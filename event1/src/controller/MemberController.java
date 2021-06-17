@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.MemberServiceImpl;
+
 
 
 @WebServlet("/MemberController")
@@ -40,6 +42,9 @@ public class MemberController extends HttpServlet {
 		if(str2.equals("EventMan_Member_Find_Id.do")) {											
 			
 			System.out.println("EventMan_Member_Find_Id.do 메소드 실행");
+			
+			//Dao 생성 메소드 호출하자
+			MemberServiceImpl msdao = new MemberServiceImpl();
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);
