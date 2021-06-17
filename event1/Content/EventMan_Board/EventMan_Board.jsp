@@ -99,13 +99,7 @@
            </div>
       </nav>
    </div>
-
-<!-- 중앙배너부분 -->
-      <div>
-            <img src="rogo1.png" alt="" width="100%" class="d-inline-block align-text-top">
-        </div>
-        
-
+   
 <!-- 페이지 위치 안내 -->
 	<div class="container"  id="containermargin">	
 		<!-- 집 아이콘 -->
@@ -122,6 +116,14 @@
 		<!-- 현제 페이지 이름 -->
 		게시판
 	</div>
+
+<!-- 중앙배너부분 -->
+      <div>
+            <img src="rogo1.png" alt="" width="100%" class="d-inline-block align-text-top">
+        </div>
+        
+
+
 	
 	   <nav style="max-width:1300px; margin:0px auto; margin-top: 30px;">
       <div class="input-group input-group-sm mb-3">

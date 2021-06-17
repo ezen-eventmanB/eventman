@@ -95,10 +95,10 @@
 		       		</ul>
 		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/EventMan_Member_Join.jsp">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/EventMan_Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>

@@ -115,6 +115,29 @@
 	    color: rgb(47, 51, 56);
 	}
 	
+		.box {
+		  float: left;
+		  width: 200px;
+		  height: 100px;
+		  margin: 1em;
+		}
+				
+		#catagoryimg{
+			width:100px;
+		}
+		.CostCata{
+			width:550px;
+			margin-left:65px;
+			display: inline-block;
+		}
+		#catatitle{
+			width:100px;
+			text-align:center;
+		}
+		#cataSelect{
+			display: inline-block;
+		}
+		
 </style>
 </head>
 <body>
@@ -146,15 +169,33 @@
 		       		</ul>
 		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/EventMan_Member_Join.jsp">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/EventMan_Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>
 		  	</div>
 		</nav>
+	</div>
+	
+		
+	<!-- 페이지 위치 안내 -->
+	<div class="container"  id="containermargin">	
+		<!-- 집 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+		</svg>
+		
+		<!-- 화살표 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+		</svg>
+		
+		<!-- 현제 페이지 이름 -->
+		견적 신청
 	</div>
 		
 		
@@ -185,120 +226,75 @@
       </span>
       <hr/>
    </div>
-   
-		
-	<div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-		  <label class="form-check-label" for="flexCheckDefault">
-		    Default checkbox
-		  </label>
-		</div>
-		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-		  <label class="form-check-label" for="flexCheckChecked">
-		    Checked checkbox
-		  </label>
-		</div>
-
-
 
 
 <!-- 행사 카테고리 선택 -->
-   <div class="sc-fzqBkg fCkJVF">
-      <div class="container">
-          <div class="sc-qPIWj eXGQeW">행사 카테고리</div>   
-         <div class= "sc-pcxhi hZRQrC">기업</div>
-            <img src="g1.png">
-         <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
-         </div>
-         
-         <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
-         </div>
-         <br>
-         &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<div class="form-check form-check-inline">
-                 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                 <label class="form-check-label" for="inlineCheckbox3">레크리에이션</label>
-            </div>
-            <div class="form-check form-check-inline">
-                 <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                 <label class="form-check-label" for="inlineCheckbox4">체육대회</label>
-            </div>
-      </div>
-   
-   
-   
-   
-      <div>공연</div>
-      <img src="g2.png">
-         <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-        <label class="form-check-label" for="inlineCheckbox5">댄스</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
-        <label class="form-check-label" for="inlineCheckbox6">지역 공연</label>
-      </div>
-      <br>
-      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
-        <label class="form-check-label" for="inlineCheckbox7">클래식</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8">
-        <label class="form-check-label" for="inlineCheckbox8">마술</label>
-      </div>
-      
-      <div>대학</div>
-      <img src="g3.png" alt="">
-         <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9">
-        <label class="form-check-label" for="inlineCheckbox9">대학축제</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10">
-        <label class="form-check-label" for="inlineCheckbox10">체육대회</label>
-      </div>
-      <br>
-      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11">
-        <label class="form-check-label" for="inlineCheckbox11">섭외</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12">
-        <label class="form-check-label" for="inlineCheckbox12">콘서트</label>
-      </div>
-      
-      <div>기타</div>
-      <img src="g4.png" alt="">
-         <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13">
-        <label class="form-check-label" for="inlineCheckbox13">결혼식</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox14" value="option14">
-        <label class="form-check-label" for="inlineCheckbox14">칠순잔치</label>
-      </div>
-      <br>
-      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox15" value="option15">
-        <label class="form-check-label" for="inlineCheckbox15">돌잔치</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox16" value="option16">
-        <label class="form-check-label" for="inlineCheckbox16">프로포즈</label>
-      </div>
+	
+		<div class="sc-qPIWj eXGQeW">행사 카테고리</div>
+			<!-- 기업 행사 -->
+			
+			<div class="CostCata">
+				<img src="../enterprise.png" id="catagoryimg">
+				<div id="cataSelect">
+					<table>
+						<tr>
+							<th>              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
+							</th>
+							<th>  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">판촉행사</label></th>
+							<th><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">오픈행사</label></th>
+						</tr>
+						<tr>
+							<th><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">체육대회</label></th>
+							<th><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">레크레이션</label></th>
+							<th><input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+             								 <label class="form-check-label" for="inlineCheckbox1">기타</label></th>
+						</tr>
+
+					</table>
+				</div>
+				<br>
+				<div id="catatitle">기업 </div>
+			</div>
+			
+			
+			
+			
+			
+			
+		
+			<!-- 기업 행사 -->
+			<div class="CostCata">
+				<img src="../stage-lights.png" id="catagoryimg">
+				<div id="theme-colors">공연</div>
+			</div>
+			
+			<br/>
+			
+			<div class="CostCata">
+				<img src="../school.png" id="catagoryimg">
+				<div id="theme-colors">대학 </div>
+			</div>
+			
+			<div class="CostCata">
+				<img src="../confetti.png" id="catagoryimg">
+				<div id="theme-colors">기타</div>
+			</div>
       <hr/>
+
+      
    <!--  행사 설명 -->   
-      <header class="" style="">행사 설명
-      <div class="form-floating">
-       <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-        <label for="floatingTextarea2"></label>
-        </header>
-   </div>
+         <div class="sc-qPIWj eXGQeW">행사 설명</div>
+    				<div class="form-floating">
+				  <textarea class="form-control" id="floatingTextarea2" style="height: 400px"></textarea>
+				  <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
+				</div>
+        
+  		 </div>
    
    
 <!--  참고자료  -->

@@ -77,9 +77,6 @@
 		</nav>
 	</div>
 		
-
-<!-- 회사소개 페이지 -->
-<article>
 	
 	<!-- 페이지 위치 안내 -->
 	<div class="container"  id="containermargin">	
@@ -97,6 +94,10 @@
 		<!-- 현제 페이지 이름 -->
 		회사소개
 	</div>
+
+<!-- 회사소개 페이지 -->
+<article>
+
 	
 	<!-- 회사 소개 이미지 -->
 	<div class="container">	
