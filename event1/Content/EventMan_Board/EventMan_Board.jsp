@@ -64,7 +64,9 @@
    <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light " id="topnav">
          <div class="container-fluid">
+
           <a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+
                  <img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
              </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

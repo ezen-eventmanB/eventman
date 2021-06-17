@@ -185,6 +185,22 @@
       </span>
       <hr/>
    </div>
+   
+		
+	<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+		  <label class="form-check-label" for="flexCheckDefault">
+		    Default checkbox
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+		  <label class="form-check-label" for="flexCheckChecked">
+		    Checked checkbox
+		  </label>
+		</div>
+
+
 
 
 <!-- 행사 카테고리 선택 -->
@@ -212,6 +228,9 @@
                  <label class="form-check-label" for="inlineCheckbox4">체육대회</label>
             </div>
       </div>
+   
+   
+   
    
       <div>공연</div>
       <img src="g2.png">
