@@ -1,2 +1,4 @@
-/vo/
+/controller/
+/domain/
 /service/
+/vo/

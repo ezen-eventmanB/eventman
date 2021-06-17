@@ -67,7 +67,7 @@
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
@@ -78,10 +78,10 @@
 		       		</ul>
 		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/EventMan_Member_Join.jsp">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/EventMan_Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>

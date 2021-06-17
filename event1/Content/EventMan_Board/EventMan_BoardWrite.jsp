@@ -7,8 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    
+    
 <title>EVENT MAN!</title>
-
 
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
@@ -16,23 +17,17 @@
 	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
 	
 	
+	
 <style>
 
-<<<<<<< HEAD
-=======
 /*중앙 행사리뷰 앨범 CSS*/
 	.album{
-		background-color:white !important;
 		margin-bottom: 40px;
 	}
 	/*행사리뷰 앨범 페이징처리*/
 	.pagination {
    		justify-content: center;
 	}
-	/*행사리뷰 앨범 페이징처리 끝*/
-/*중앙 행사리뷰 앨범 CSS 끝*/	
-
-
 
 
 /* 중앙 nav form CSS */
@@ -40,8 +35,7 @@
 		font-weight: bold;
 		font-weight: 900;
 	}
-/* 중앙 nav form CSS 끝*/
-}
+
 
 /* 메인 하단 게시판 노출*/
 	.table{
@@ -54,16 +48,36 @@
 		margin:10px auto;
 		text-align:center;
 	}
-/* 메인 하단 게시판 노출 끝*/
-
-	.joinroom{
-		max-width:500px;
+	.boardwritearea{
+		max-width:65%;
 		margin:0px auto;
 		margin-top:100px;
 		margin-bottom:200px;
 		font-style: gray;
 	}
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+	.writeheader{
+		text-align:center;
+		font-size:30px;
+		margin-bottom: 40px;
+
+	}
+	.writetitle{
+		width:100%;
+		margin-bottom: 20px;
+		height:40px;
+		
+	}
+	.sectionheader{
+		text-align:left;
+		font-size:25px;
+		margin-bottom: 20px;
+	}
+	.form-select{
+		margin-bottom: 20px;
+	}
+	.form-label{
+		
+	}
 
 </style>
 </head>
@@ -73,7 +87,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+				<a class="navbar-brand" href="/event1/event.jsp">
 		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +99,7 @@
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
@@ -107,7 +121,8 @@
 		</nav>
 	</div>
 		
-	<!-- 페이지 위치 안내 -->
+		
+		<!-- 페이지 위치 안내 -->
 	<div class="container"  id="containermargin">	
 		<!-- 집 아이콘 -->
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -121,82 +136,107 @@
 		</svg>
 		
 		<!-- 현제 페이지 이름 -->
-		회원가입
+		게시판 글 쓰기
 	</div>
 	
 	
-		<div class="joinroom">
-		
-			<span class="jointitle">회원가입</span>
-			<hr>
-				<!-- 회원 유행 -->
-					<div class="join-member-menu">
-						<button type="button" class="btn btn-secondary">회원 유형</button>
-						<button type="button" class="btn btn-outline-success">기업</button>
-						<button type="button" class="btn btn-outline-warning">단체</button>
-						<button type="button" class="btn btn-outline-info">개인</button>
+		<!-- 게시판 글 작성 부분 -->
+	<div class="boardwritearea">
+	
+		<header>
+			<div class="writeheader">게시물 등록하기</div>
+		</header>	
+			<section>
+				<!-- 센션 헤더 부분 -->
+				
+				<div class="sectionheader">기본정보</div>
+				
+				<!-- 카테고리 -->
+				<select class="form-select" aria-label="Default select example">
+				  <option selected>카테고리를 선택하세요</option>
+				  <option value="1">행사홍보</option>
+				  <option value="2">행사 콘텐츠</option>
+				  <option value="3">기타</option>
+				</select>
+				<!-- 제목 부분 -->
+					<div class="writetitle">
+						<input  class="writetitle" type="text" placeholder="제목을 입력해주세요">
 					</div>
-					<br>
-				<!--아이디 & 중복확인  -->
-					<div class="input-group mb-3">
-					  <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">중복확인</button>
-					</div>
-				<!--비밀번호  -->
-					<div class="memberpwd">	
-						<input type="text" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
-					</div>
-				<!--비밀번호 확인  -->
-					<br>
-					<div class="membercheckpwd">	
-						<input type="text" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
-					</div>
-					<br>
-				<!--이름  -->
-					<div class="membername">	
-						<input type="text" class="form-control" placeholder="Name" aria-label="Recipient's username" aria-describedby="button-addon2">
-					</div>
-				<!--연락처  -->
-					<br>
-					<div class="input-group mb-3">
-					  <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="button-addon2">
-					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호 보내기</button>
-					</div>
-				<!--인증번호  -->
-					<div class="phonecheck">	
-						<input type="text" class="form-control" placeholder="인증번호" aria-label="Recipient's username" aria-describedby="button-addon2">
-					</div>
-				<!--이메일  -->
-					<br>
-					<div class="memberemail">	
-						<input type="text" class="form-control" placeholder="E-mail" aria-label="Recipient's username" aria-describedby="button-addon2">
-					</div>
-					<br>
-				<!--회원가입  -->
-				<div class="d-grid gap-2">
-				  <button class="btn btn-primary" type="button">회원가입</button>
-				  
+					
+				<!-- 내용 작성 부분 -->
+				<div class="form-floating">
+				  <textarea class="form-control" id="floatingTextarea2" style="height: 400px"></textarea>
+				  <label for="floatingTextarea2">게시판 글 작성 부분</label>
 				</div>
-		</div>
-
+				
+				<!-- 첨부파일 -->
+				<div class="mb-3">
+					<label for="formFile" class="form-label">첨부파일</label>
+					<input class="form-control" type="file" id="formFile" onchange="setImageFn(this)">
+				</div>
+				
+				
+				<div class="d-grid gap-2">
+				  <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">제출하기</button>
+				</div>
+				
+			</section>
+			
+	</div>
+		<!-- 모달 부분 -->
+			<div class="modal"  id="exampleModal" tabindex="-1">
+			  <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title">게시물 작성</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="취소"></button>
+			      </div>
+			      <div class="modal-body">
+			        <p>게시물을 작성하시겠습니까?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary">제출 하기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	
+	
+	
+	
+	
+	
+	
+		
+		
 
 <!-- 메인 푸터 -->
-<div class="footer">
-</div>
-	<div class="container">
-		 <div class="row justify-content-md-center">
-			<div class="col-md-auto">
-				<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-center">
+<footer class="footer">
+	<div class="d-flex justify-content-between align-items-center">
+		<div class="btn-group">
+			<img src="../rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
+		</div>
+		<div>
+			<div class="container">
+				<span class="text-muted">
+					<small>전화번호 063-222-2222</small>
+				</span>
 			</div>
-			<div class="col-md-auto">
-				<small class="text-muted">
-					전화번호 063-222-2222<br>
-					EVENTMAN | 전주시 덕진구 효자동 | 대표. 000<br>
-					ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000<br>
-				</small>
+			<div class="container">
+				<span class="text-muted">
+					<small>EVENTMAN | 전주시 덕진구 효자동 | 대표. 000</small>
+				</span>
+			</div>
+			<div class="container">
+				<span class="text-muted">
+					<small>ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000 </small>
+				</span>
 			</div>
 		</div>
-	</div>
+    </div>
+</footer>
+
 
 
 

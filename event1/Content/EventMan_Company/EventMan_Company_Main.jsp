@@ -54,7 +54,7 @@
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
@@ -65,10 +65,10 @@
 		       		</ul>
 		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
+		          			<a class="nav-link fw-bold"href="../EventMan_Member/EventMan_Member_Join.jsp">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="../EventMan_Member/EventMan_Member_Login.jsp">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>
@@ -76,6 +76,7 @@
 		</nav>
 	</div>
 		
+<<<<<<< HEAD
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">	
 	<!-- 집 아이콘 -->
@@ -95,7 +96,33 @@
 
 <!-- 회사소개 페이지 -->
 <article>
+=======
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 	
+<<<<<<< HEAD
+=======
+	<!-- 페이지 위치 안내 -->
+	<div class="container"  id="containermargin">	
+		<!-- 집 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+		</svg>
+		
+		<!-- 화살표 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+		</svg>
+		
+		<!-- 현제 페이지 이름 -->
+		회사소개
+	</div>
+
+<!-- 회사소개 페이지 -->
+<article>
+
+	
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 	<!-- 회사 소개 이미지 -->
 	<div class="container">	
 		<div class="bd-example">
