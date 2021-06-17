@@ -131,13 +131,13 @@
 		<table>
 			<tr>
 				<td style="width:286px">
-					<div class="d-grid gap-2"">
+					<div class="d-grid gap-2">
 						<button type="button" class="btn btn-outline-secondary">견적신청</button>
 					</div>	
 				</td>
 				<td style="width:286px">
-					<div class="d-grid gap-2"">
-						<button type="button" class="btn btn-outline-secondary">상담하기</button>
+					<div class="d-grid gap-2">
+						<button type="button" class="btn btn-outline-secondary" onclick="">상담하기</button>
 					</div>
 				</td>
 			</tr>

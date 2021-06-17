@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script>
 
 </script>
-	
+
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
 	<!-- footer CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
-
+	
 <style>
 
 
@@ -84,7 +84,7 @@
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
@@ -106,32 +106,17 @@
 		</nav>
 	</div>
 		
-		<!-- 페이지 위치 안내 -->
-	<div class="container"  id="containermargin">	
-		<!-- 집 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-		</svg>
-		
-		<!-- 화살표 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-		</svg>
-		
-		<!-- 현제 페이지 이름 -->
-		아이디 찾기
-	</div>
 		
 		
 		
 		
-<!-- 아이디 찾기 화면 -->		
+		
+<!-- 비밀번호 찾기 화면 -->		
 	<div class="container">
 		
 		<div id="roginbox">
 			<div id="underline1">
-				<p class="fs-5 text-black-50">아이디 찾기</p>
+				<p class="fs-5 text-black-50">비밀번호 찾기</p>
 			</div>
 			<div id="underline2">
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
@@ -151,7 +136,7 @@
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
 								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-								<button class="btn btn-outline-secondary" type="button" id="button-addon2"  onclick="location.href='phonecheck.jsp'">인증번호</button>
+								<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호</button>
 							</div>
 						</td>
 					</tr>
@@ -171,8 +156,8 @@
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">비밀번호찾기</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">뒤로</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">로그인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='../EventMan_Main/EventMan_Main.jsp'">홈 화면</button>
 				</div>
 			</form>
 		</div>
