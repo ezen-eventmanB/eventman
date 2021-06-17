@@ -132,30 +132,22 @@
 
 
 <!-- 메인 푸터 -->
-<footer class="footer">
-	<div class="d-flex justify-content-between align-items-center">
-		<div class="btn-group">
-			<img src="../rogo1.png" alt="" width="150" class="d-inline-block align-text-top">
-		</div>
-		<div>
-			<div class="container">
-				<span class="text-muted">
-					<small>전화번호 063-222-2222</small>
-				</span>
+<div class="footer">
+</div>
+	<div class="container">
+		 <div class="row justify-content-md-center">
+			<div class="col-md-auto">
+				<img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-center">
 			</div>
-			<div class="container">
-				<span class="text-muted">
-					<small>EVENTMAN | 전주시 덕진구 효자동 | 대표. 000</small>
-				</span>
-			</div>
-			<div class="container">
-				<span class="text-muted">
-					<small>ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000 </small>
-				</span>
+			<div class="col-md-auto">
+				<small class="text-muted">
+					전화번호 063-222-2222<br>
+					EVENTMAN | 전주시 덕진구 효자동 | 대표. 000<br>
+					ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000<br>
+				</small>
 			</div>
 		</div>
-    </div>
-</footer>
+	</div>
 
 
 
