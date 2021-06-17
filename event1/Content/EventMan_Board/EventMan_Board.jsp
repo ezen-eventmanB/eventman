@@ -59,23 +59,10 @@
            </div>
       </nav>
    </div>
-<<<<<<< HEAD
 
-        
 
-=======
-   
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 <!-- 페이지 위치 안내 -->
-<<<<<<< HEAD
 <div class="container"  id="containermargin">	
-	<!-- 집 아이콘 -->
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-	</svg>
-=======
-	<div class="container"  id="containermargin">	
 		<!-- 집 아이콘 -->
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -89,24 +76,6 @@
 		
 		<!-- 현제 페이지 이름 -->
 		게시판
-	</div>
-
-<!-- 중앙배너부분 -->
-      <div>
-            <img src="rogo1.png" alt="" width="100%" class="d-inline-block align-text-top">
-        </div>
-        
-
-
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-	
-	<!-- 화살표 아이콘 -->
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-	</svg>
-	
-	<!-- 현제 페이지 이름 -->
-	게시판
 </div>
 
 
@@ -123,73 +92,47 @@
 
 <!-- 중앙 네비 카테고리 검색창 -->
 <nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
-<<<<<<< HEAD
 	<div class="container-fluid">
-		<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<div class="navbar-collapse collapse" id="navbarsExample09" >
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav"> 
-				<!-- 클릭시 검은색 배경으로 변경 수정  -->
-				<li class="nav-item" ><a class="nav-link" href="#">전체</a></li>
-				<li class="nav-item" ><a class="nav-link" href="#">행사홍보</a></li>
-				<li class="nav-item" ><a class="nav-link" href="#">행사콘텐츠</a></li>
-				<li class="nav-item" ><a class="nav-link" href="#">공지사항</a></li>
-				<li class="nav-item" ><a class="nav-link" href="#">기타</a></li>
-			</ul>
-		
-		<form>
-			<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-			<div style="display:inline-block;"><span>등록일</span></div>
-			<div style="display:inline-block;"><span>과거</span><span>최신</span></div>   
-			<div style="display:inline-block;"><button type="button" class="btn btn-outline-secondary">게시물 등록하기</button></div>
-		</form>
-		</div>
+	     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+	       <span class="navbar-toggler-icon"></span>
+	     </button>
+	   
+	     <div class="navbar-collapse collapse" id="navbarsExample09" >
+	       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
+	       
+	                      <!-- 클릭시 검은색 배경으로 변경 수정  -->
+	         <li class="nav-item" >
+	           <a class="nav-link" href="#">전체</a>
+	         </li>
+	         <li class="nav-item" >
+	           <a class="nav-link" href="#">행사홍보</a>
+	         </li>
+	         <li class="nav-item" >
+	           <a class="nav-link" href="#">행사콘텐츠</a>
+	         </li>
+	         <li class="nav-item" >
+	           <a class="nav-link" href="#">공지사항</a>
+	         </li>
+	         <li class="nav-item" >
+	           <a class="nav-link" href="#">기타</a>
+	         </li>
+	       </ul>
+	       
+	       <form>
+	          <!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
+	          <div style="display:inline-block;">
+	            <span>등록일</span>
+	         </div>
+	         <div style="display:inline-block;">
+	            <span>과거</span><span>최신</span>
+	         </div>   
+	         <div style="display:inline-block;">   
+	                <a href="EventMan_BoardWrite.jsp">게시물 등록하기</a>
+	         </div>
+	         
+	       </form>
+	     </div>
 	</div>
-=======
-<div class="container-fluid">
-     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-   
-     <div class="navbar-collapse collapse" id="navbarsExample09" >
-       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
-       
-                      <!-- 클릭시 검은색 배경으로 변경 수정  -->
-         <li class="nav-item" >
-           <a class="nav-link" href="#">전체</a>
-         </li>
-         <li class="nav-item" >
-           <a class="nav-link" href="#">행사홍보</a>
-         </li>
-         <li class="nav-item" >
-           <a class="nav-link" href="#">행사콘텐츠</a>
-         </li>
-         <li class="nav-item" >
-           <a class="nav-link" href="#">공지사항</a>
-         </li>
-         <li class="nav-item" >
-           <a class="nav-link" href="#">기타</a>
-         </li>
-       </ul>
-       
-       <form>
-          <!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-          <div style="display:inline-block;">
-            <span>등록일</span>
-         </div>
-         <div style="display:inline-block;">
-            <span>과거</span><span>최신</span>
-         </div>   
-         <div style="display:inline-block;">   
-                <a href="EventMan_BoardWrite.jsp">게시물 등록하기</a>
-         </div>
-         
-       </form>
-     </div>
-</div>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 </nav>
 
 

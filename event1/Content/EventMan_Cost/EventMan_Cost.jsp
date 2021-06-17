@@ -11,20 +11,11 @@
     
 <title>EVENT MAN!</title>
 
-<<<<<<< HEAD
    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
    <link rel="stylesheet" type="text/css" href="../css/footer.css">
    <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
 
-=======
-	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
-	
-	
-	
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
 <style>
 
 /*중앙 행사리뷰 앨범 CSS*/
