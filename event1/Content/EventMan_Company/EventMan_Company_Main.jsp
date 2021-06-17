@@ -43,7 +43,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/event1/event.jsp">
+				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
 		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    	</a>
 		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
