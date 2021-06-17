@@ -32,7 +32,7 @@
 	.pagination {
    		justify-content: center;
 	}
-
+   
 
 
 </style>
