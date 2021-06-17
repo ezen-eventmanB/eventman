@@ -25,14 +25,19 @@ public class FrontController extends HttpServlet {
 		
 		String[] gubun = str.split("/");
 		String str2 = gubun[1];
+
 		
-		
-		String str3 = request.getContextPath();
-		String[] gubun2 = str3.split("/");
-		String str4 = gubun2[1];
-		
-		System.out.println("str4 = "+str4);
 		System.out.println("str2 = "+str2);
+		
+		
+
+		if(str2.equals("EventMan_Member")) {
+																						
+			MemberController mc = new MemberController();
+			mc.doGet(request, response);
+		}
+		
+		
 		
 		
 		
