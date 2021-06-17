@@ -156,8 +156,8 @@
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">비밀번호찾기</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">뒤로</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Find_Pw.jsp'">비밀번호찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Login.jsp'">뒤로</button>
 				</div>
 			</form>
 		</div>
