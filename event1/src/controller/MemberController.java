@@ -109,7 +109,6 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp"); 	
 			rd.forward(request, response);
-<<<<<<< HEAD
 
 			//로그인 시 컨트롤러
 		}else if (str.equals("/EventMan_Member/EventMan_Member_LoginAction.do")) {
@@ -122,17 +121,10 @@ public class MemberController extends HttpServlet {
 			
 		}	
 
-=======
-			
-		}
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-		
-		
-		
-		
-		
-			
 	}
+		
+		
+	
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
