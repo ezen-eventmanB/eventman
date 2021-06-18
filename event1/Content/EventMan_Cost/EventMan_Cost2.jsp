@@ -390,9 +390,28 @@
 		   
 		 <!-- 이전 , 제출 버튼 -->  
 		 <div class="container" align="right">
-			<button class="btn btn-primary" type="button">이전</button>
-			<input class="btn btn-primary" type="submit" value="제출">
+			<button class="btn btn-primary" onclick="location.href='EventMan_Cost1.jsp'" type="button">이전</button>
+			<input class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" value="제출">
 		</div>
+		
+		<!--  모달 부분 -->
+			<div class="modal"  id="exampleModal" tabindex="-1">
+			  <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title">견적 신청</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="취소"></button>
+			      </div>
+			      <div class="modal-body">
+			        <p>작성하시겠습니까?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary">제출 하기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
 
 

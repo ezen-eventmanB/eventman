@@ -443,10 +443,9 @@
 
 
 <!-- 다음단계  -->
-	<div align="right">
-	<li class="nav-item">
-		<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost2.jsp"><input class="btn btn-primary" type="submit" value="다음단계"></a>
-		</li>
+	<div>
+	<div class="d-grid gap-2">
+		<input class="btn btn-primary" onclick="location.href='EventMan_Cost2.jsp'" type="submit" value="다음단계"></a>
 	</div>
 
 
