@@ -8,6 +8,7 @@
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 	function findId(){
 		var frm = document.frm;
@@ -19,14 +20,17 @@
 			alert('전화번호를 입력해주세요.')
 			document.getlementById('phone').focus();
 		}else{
-			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do"; 
+			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do"; 
 			frm.method = "POST";
 			frm.submit();
 			return;	
 			
 		}
+		
 	}
+	
 </script>
+
 		<%-- <script>
 		   function findId(){
 		      
@@ -43,7 +47,12 @@
 		   }
 		   
 		</script> --%>
-	
+
+<!-- <script>
+	$('#truemodal').modal('toggle')
+</script>
+ -->
+
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
 	<!-- footer CSS -->
@@ -188,8 +197,7 @@
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm"  onclick="findId()">확인</button>
-					<!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Find_Pw.jsp'">비밀번호찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/EventMan_Member/EventMan_Member_Find_pw.jsp'">비밀번호찾기</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Login.jsp'">뒤로</button>
 				</div>
 			</form>
@@ -200,40 +208,40 @@
 
 
 <!-- 성공 모달 -->
-	<div class="modal fade" id="truemember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel"></h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        고객님의 아이디는 <%  %> 입니다. 로그인 페이지로 이동합니다.
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+<div class="modal fade" id="truemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        고객님의 아이디는 <%  %> 입니다. 로그인 페이지로 이동합니다.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- 실패 모달 -->
-	<div class="modal fade" id="flasemember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel"></h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        일치하는 회원정보가 없습니다.
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+<div class="modal fade" id="flasemember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        일치하는 회원정보가 없습니다.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- 메인 푸터 -->

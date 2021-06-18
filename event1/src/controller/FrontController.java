@@ -32,7 +32,11 @@ public class FrontController extends HttpServlet {
 		//System.out.println("gubun[2] : "+gubun[2]);
 		System.out.println("str2 = "+str2);
 		
-			//멤버페이지 이동
+
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+
 		if(str2.equals("EventMan_Member")) {														
 			MemberController mc = new MemberController();
 			mc.doGet(request, response);
