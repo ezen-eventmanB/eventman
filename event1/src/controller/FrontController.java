@@ -29,13 +29,21 @@ public class FrontController extends HttpServlet {
 		System.out.println("str : "+str);
 		System.out.println("gubun[0] : "+gubun[0]);
 		System.out.println("gubun[1] : "+gubun[1]);
-		System.out.println("gubun[2] : "+gubun[2]);
+		//System.out.println("gubun[2] : "+gubun[2]);
 		System.out.println("str2 = "+str2);
 		
 
 		if(str2.equals("EventMan_Member")) {														
 			MemberController mc = new MemberController();
 			mc.doGet(request, response);
+			
+		}else if(str2.equals("EventMan_Cost")) {
+			CostController cc = new CostController();
+			cc.doGet(request, response);
+			
+		}else if(str2.equals("EventMan_Review")) {
+			ReviewController rc = new ReviewController();
+			rc.doGet(request, response);
 		}
 		
 	

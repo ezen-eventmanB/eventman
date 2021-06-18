@@ -17,7 +17,7 @@ import service.MemberServiceImpl;
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
     public MemberController() {
         super();
     
@@ -27,7 +27,7 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
@@ -39,7 +39,7 @@ public class MemberController extends HttpServlet {
 
 		String uri = request.getRequestURI();														
 		System.out.println("uri"+uri);																			
-		int pnamelength = request.getContextPath().length();		
+		int pnamelength = request.getContextPath().length();	
 		System.out.println(pnamelength);
 		String str = uri.substring(pnamelength);															
 		System.out.println("str = "+str);												
@@ -71,6 +71,16 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);
+			
+			
+			//로그인 시 컨트롤러
+		}else if (str.equals("/EventMan_Member/EventMan_Member_LoginAction.do")) {
+			
+			String memberId  = request.getParameter("memberId");
+			String memberPwd  = request.getParameter("memberPwd");
+			System.out.println("memberId"+memberId);
+			System.out.println("memberPwd"+memberPwd);
+		
 		}
 
 	}
