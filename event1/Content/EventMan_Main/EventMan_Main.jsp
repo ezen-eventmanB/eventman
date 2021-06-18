@@ -76,7 +76,8 @@
 		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
 		       			</li>
 		       		</ul>
-		       		<ul class="navbar-nav" id="Memberbox">	
+		       		
+		       		<ul class="navbar-nav" id="Memberbox" >	
 		       			<li class="nav-item" id="liright1">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</p></a>
 		       			</li>
