@@ -64,10 +64,10 @@
 		    	<div class="collapse navbar-collapse" id="navbarNav">
 		      		<ul class="navbar-nav" id="navbar-nav">
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>

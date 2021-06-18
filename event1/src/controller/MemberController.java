@@ -18,7 +18,7 @@ import service.MemberServiceImpl;
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
     public MemberController() {
         super();
     
@@ -26,7 +26,6 @@ public class MemberController extends HttpServlet {
 
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
@@ -38,7 +37,7 @@ public class MemberController extends HttpServlet {
 
 		String uri = request.getRequestURI();														
 		System.out.println("uri"+uri);																			
-		int pnamelength = request.getContextPath().length();		
+		int pnamelength = request.getContextPath().length();	
 		System.out.println(pnamelength);
 		String str = uri.substring(pnamelength);															
 		System.out.println("str = "+str);												
@@ -46,6 +45,7 @@ public class MemberController extends HttpServlet {
 		String str2 = str1[2];
 		
 		System.out.println("str2="+str2);
+		
 		
 		
 		
@@ -57,10 +57,11 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 			
 		}else if(str2.equals("EventMan_Member_Find_Id_Action.do")) {	
-
+			
+			
 			System.out.println("EventMan_Member_Find_Id_Action.do if문 실행");	
 			
-			//Dao 생성 메소드 호출하자
+			//Dao 생성 후 메소드 호출하자
 			MemberServiceImpl msdao = new MemberServiceImpl();
 			
 			//메소드에 매개변수로 전달 될 값을 가져오자
@@ -79,9 +80,9 @@ public class MemberController extends HttpServlet {
 			PrintWriter out = response.getWriter();	
 			
 			if(id == "") {
-				out.println("<script>alert('일치하는 회원정보가 없습니다.'); </script>");
+				out.println("<script>alert('일치하는 회원정보가 없습니다.'); document.location.href='./EventMan_Member/EventMan_Member_Find_Id.do';</script>");
 			}else{
-				out.println("<script>alert('아이디는  ****입니다.'); </script>");
+				out.println("<script>alert('아이디는  ****입니다.'); document.location.href='./EventMan_Member/EventMan_Member_Find_Id.do';</script>");
 			}
 			
 			
@@ -90,6 +91,20 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);
+			
+			
+			
+			
+			
+			
+			//로그인 시 컨트롤러
+		}else if (str.equals("/EventMan_Member/EventMan_Member_LoginAction.do")) {
+			
+			String memberId  = request.getParameter("memberId");
+			String memberPwd  = request.getParameter("memberPwd");
+			System.out.println("memberId"+memberId);
+			System.out.println("memberPwd"+memberPwd);
+		
 		}
 			
 	}

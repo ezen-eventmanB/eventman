@@ -17,22 +17,23 @@
 </script>
 <script language = "javascript">
 	function check(){
-
-	if (document.frm.memberId.value =="")	{
+		var frm = document.frm;
 		
-		
-		return;
-	}else if (document.frm.memberPwd.value==""){
-
-		
+		if (document.frm.memberId.value =="")	{
+			
+			document.getlementById('memberId').focus();
+			return;
+		}else if (document.frm.memberPwd.value==""){
+			
+			document.getlementById('memberPwd').focus();
+			return;
+		}
+			document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
+			document.frm.method = "post";
+			document.frm.submit();	
+	
 		return;
 	}
-		document.frm.action ="<%=request.getContextPath()%>/memberLoginAction.do";
-		document.frm.method = "post";
-		document.frm.submit();	
-
-	return;
-}
 </script>
 
 <style>
@@ -209,7 +210,7 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        아이디 및 패스워드를 입력해주세요.
+	       	 아이디 및 패스워드를 입력해주세요.
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
