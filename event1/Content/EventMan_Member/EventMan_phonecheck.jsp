@@ -8,12 +8,12 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" ></script>
-
+ 
 </head>
 <body>
 
 <!-- 아임포트 자바스크립트는 jQuery 기반으로 개발되었습니다 -->
- 
+
 <script type="text/javascript">
 var IMP = window.IMP; // 생략가능
 IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용

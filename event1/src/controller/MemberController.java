@@ -95,24 +95,21 @@ public class MemberController extends HttpServlet {
 			
 			//전달온 값을 매개변수로 던져주자
 			String id = msdao.findId(name, phone);
-			System.out.println("MemberServiceImpl.findId()실행");
-			System.out.println("회원의 ID는 "+id+" 입니다.");
-			 
-			PrintWriter out = response.getWriter();	
-		
 			
-			//페이지 이동이 아닌 id를 알려주는 modal을 띄우고 dodal에서 확인시 로그인페이지로 다시 보내줄것이다.
 			
-			/*
-			 * if(id == "") { out.
-			 * println("<script>alert('일치하는 회원정보가 없습니다.'); document.location.href='./EventMan_Member/EventMan_Member_Find_Id.do';</script>"
-			 * ); }else{ out.
-			 * println("<script>alert('아이디는  ****입니다.'); document.location.href='./EventMan_Member/EventMan_Member_Find_Id.do';</script>"
-			 * ); }
-			 */
 			
-			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
+			if(id=="") {
+				response.getWriter().write("회원정보가 일치하지 않습니다.");
+			}else {
+				response.getWriter().write("회원님의 아이디는 "+id+" 입니다.");
+			}
+
+/* 휴대폰 본인 확인 */
+		}else if(str2.equals("EventMan_phonecheck.do")) {
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp"); 	
 			rd.forward(request, response);
+<<<<<<< HEAD
 
 			//로그인 시 컨트롤러
 		}else if (str.equals("/EventMan_Member/EventMan_Member_LoginAction.do")) {
@@ -125,6 +122,10 @@ public class MemberController extends HttpServlet {
 			
 		}	
 
+=======
+			
+		}
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 		
 		
 		
