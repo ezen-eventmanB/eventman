@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class MemberServiceImpl {
 	
 	private PreparedStatement pstmt;
@@ -38,5 +39,7 @@ public class MemberServiceImpl {
 		return midx;
 	}
 	
-	
+	public int idFind() {
+		return 0;
+	}
 }

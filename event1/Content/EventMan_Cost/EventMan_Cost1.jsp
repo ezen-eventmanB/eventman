@@ -1,36 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<title>EVENT MAN 행사리뷰</title>
-
-	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
-   <link rel="stylesheet" type="text/css" href="../css/footer.css">
-   <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
- <!-- Bootstrap CSS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-=======
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <title>EVENT MAN! 견적신청-2</title>
 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 <style>
-<<<<<<< HEAD
-
-
-
-/*서브카테고리 CSS*/
-	.nav-link{
-		font-weight:900;
-		margin-bottom:20px;
-	}
-=======
 /*top nav CSS*/
    #navbar-nav{
       width:800px;
@@ -95,50 +74,9 @@
    /*위에서 살짝 떨어지는 밑줄 CSS 끝*/
 /*top nav CSS 끝*/
 
+
+
 /*중앙 행사리뷰 앨범 CSS*/
-
-	.album{
-		background-color:white !important;
-		margin-bottom: 40px;
-	}
-	
-/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-      .box {
-        float: left;
-        width: 200px;
-        height: 100px;
-        margin: 1em;
-      }
-            
-     #catagoryimg{
-         width:100px;
-      }
-     .CostCata{
-         width:550px;
-         margin-left:65px;
-         display: inline-block;
-      }
-      catatitle{
-         width:100px;
-         text-align:center;
-      }
-     #cataSelect{
-         display: inline-block;
-      }
-   		.cataimg{
-		width:100%;
-		}
-		td{
-			width:50px;
-		}
-        .cataselect{
-         display: inline-block;
-         margin-left:180px;
-      }
-
    .album{
       background-color:white !important;
       margin-bottom: 40px;
@@ -204,7 +142,6 @@
     color: rgb(34, 140, 182);
    float: right;
 }
-
 
    .hQBClp {
     display: flex;
@@ -293,52 +230,11 @@
    
    
 </style>
-
-
-
 </head>
 <body>
 
 <div class="container">
 <!-- 상단 네비 부분 -->
-
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-		    	</a>
-		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      		<span class="navbar-toggler-icon"></span>
-		   		</button>
-		    	<div class="collapse navbar-collapse" id="navbarNav">
-		      		<ul class="navbar-nav" id="navbar-nav">
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
-		        		</li>
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
-		        		</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
-		       			</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Board/EventMan_Board.jsp">게시판</a>
-		       			</li>
-		       		</ul>
-		       		<ul class="navbar-nav" id="Memberbox">	
-		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
-		       			</li>
-		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
-		       			</li>
-		      		</ul>
-		    	</div>
-		  	</div>
-		</nav>
-	</div>
-
       <nav class="navbar navbar-expand-lg navbar-light bg-light" id="topnav">
          <div class="container-fluid">
             <a class="navbar-brand" href="/event1/event.jsp">
@@ -375,7 +271,6 @@
       </nav>
 </div>
 
-
 <!-- 페이지 위치 안내 -->
   <div class="container"  id="containermargin">   
 <!-- 집 아이콘 -->
@@ -390,7 +285,7 @@
       </svg>
       
 <!-- 현제 페이지 이름 -->
-
+      견적 신청
    </div>
 
 
@@ -434,161 +329,6 @@
    <div class="sc-qPIWj eXGQeW">행사 카테고리</div>
    
    
-
-			<!-- 기업 행사 -->
-	<div class="cataselect">			 
-
-		<table  style="text-align:left;width:400px;height:150px">
-			<tr>
-			<td rowspan="4"  style="text-align:center"><img src="../enterprise.png" class="cataimg">기업</td>
-			<tr>	
-				<td>
-			             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                         <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
-                </td>
-                <td>
-                    	 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                         <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option4">
-                         <label class="form-check-label" for="inlineCheckbox3">오픈행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option5">
-                         <label class="form-check-label" for="inlineCheckbox3">레크레이션</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option6">
-                         <label class="form-check-label" for="inlineCheckbox3">오픈행사</label>
-                </td>
-            </tr>
-		</table>
-		</div>
-			<div class="cataselect">		
-				<!-- 공연 -->
-				<table  style="text-align:left;width:400px;height:150px">
-			<tr>
-			<td rowspan="4" style="text-align:center"><img src="../music.png" class="cataimg">공연</td>
-			<tr>	
-				<td>
-			             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option7">
-                         <label class="form-check-label" for="inlineCheckbox1">지역 페스티벌</label>
-                </td>
-                <td>
-                    	 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option8">
-                         <label class="form-check-label" for="inlineCheckbox2">댄스</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option9">
-                         <label class="form-check-label" for="inlineCheckbox3">마술</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option10">
-                         <label class="form-check-label" for="inlineCheckbox3">클래식</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option11">
-                         <label class="form-check-label" for="inlineCheckbox3">장기자랑</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option12">
-                         <label class="form-check-label" for="inlineCheckbox3">기타</label>
-                </td>
-            </tr>
-			</table>
-			</div>
-		<div class="cataselect">
-					<!-- 대학 -->
-		<table  style="text-align:left;width:400px;height:150px">
-			<tr>
-			<td rowspan="4"  style="text-align:center"><img src="../school.png" class="cataimg">대학</td>
-			<tr>	
-				<td>
-			             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option13">
-                         <label class="form-check-label" for="inlineCheckbox1">축제</label>
-                </td>
-                <td>
-                    	 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option14">
-                         <label class="form-check-label" for="inlineCheckbox2">단과대학 행사</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option15">
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option16">
-                         <label class="form-check-label" for="inlineCheckbox3">개강 행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option17">
-                         <label class="form-check-label" for="inlineCheckbox3">종강 이벤트</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option18">
-                         <label class="form-check-label" for="inlineCheckbox3">기타</label>
-                </td>
-            </tr>
-		</table>
-		</div>
-		<div class="cataselect">
-			<!-- 기타-->
-		<table  style="text-align:left;width:400px;height:150px">
-			<tr>
-			<td rowspan="4"  style="text-align:center"><img src="../confetti.png" class="cataimg">기타</td>
-			<tr>	
-				<td>
-			             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option19">
-                         <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
-                </td>
-                <td>
-                    	 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option20">
-                         <label class="form-check-label" for="inlineCheckbox2">약혼식</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option21">
-                         <label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option22">
-                         <label class="form-check-label" for="inlineCheckbox3">칠순잔치</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   		 <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option23">
-                         <label class="form-check-label" for="inlineCheckbox3">프로포즈</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option24">
-                         <label class="form-check-label" for="inlineCheckbox3">기타</label>
-                </td>
-            </tr>
-            
-		</table>
-		</div>
-	</form>
-			
-	
-
          <!-- 기업 행사 -->
    <div class="cataselect">          
 
@@ -742,7 +482,8 @@
    </form>
          
    
-
+     
+         
 
       
 <!-- 행사 설명 -->   
