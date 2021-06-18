@@ -18,8 +18,7 @@
 	
 <style>
 
-<<<<<<< HEAD
-=======
+
 /*중앙 행사리뷰 앨범 CSS*/
 	.album{
 		background-color:white !important;
@@ -63,7 +62,6 @@
 		margin-bottom:200px;
 		font-style: gray;
 	}
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
 </style>
 </head>

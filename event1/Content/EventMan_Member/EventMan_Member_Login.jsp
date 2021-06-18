@@ -15,10 +15,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
 
 </script>
+<script language = "javascript">
+	function check(){
+
+	if (document.frm.memberId.value =="")	{
+		
+		
+		return;
+	}else if (document.frm.memberPwd.value==""){
+
+		
+		return;
+	}
+		document.frm.action ="<%=request.getContextPath()%>/memberLoginAction.do";
+		document.frm.method = "post";
+		document.frm.submit();	
+
+	return;
+}
+</script>
 
 <style>
-
-
 
 /* 로그인 화면 */
 	#roginbox{
@@ -33,7 +50,7 @@
 		width:400px;
 	}
 	
-	#roginbtn{
+	#loginbtn{
 		height:100px;
 		margin-left:20px;
 		position: relative;
@@ -142,18 +159,18 @@
 			<div id="underline2">
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
 			</div>
-			<form>
+			<form name="frm">
 				<table>
 					<tr>
 						<td id="inputwidth">
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-default">ID</span>
-								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
 							</div>
 						</td>
 						<td rowspan='2'>
 							<div class="d-grid gap-2">
-								<button class="btn btn-outline-secondary btn-sm" type="button" id="roginbtn"   data-bs-toggle="modal" data-bs-target="#exampleModal" tabindex=3>로그인</button>
+								<button class="btn btn-outline-secondary btn-sm" type="button" id="loginbtn"   data-bs-toggle="modal" data-bs-target="#exampleModal" tabindex=3 onclick="check()">로그인</button>
 							</div>
 						</td>
 					</tr>
@@ -161,7 +178,7 @@
 						<td id="inputwidth">
 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-default">PW</span>
-								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
 							</div>
 						</td>
 					</tr>
@@ -183,15 +200,16 @@
 
 
 <!-- 모달 -->
+
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">로그인 실패!</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">로그인 실패</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        로그인 확인문 결과 실패시 나옴
+	        아이디 및 패스워드를 입력해주세요.
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
