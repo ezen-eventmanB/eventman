@@ -32,18 +32,30 @@ public class FrontController extends HttpServlet {
 		//System.out.println("gubun[2] : "+gubun[2]);
 		System.out.println("str2 = "+str2);
 		
-
+			//멤버페이지 이동
 		if(str2.equals("EventMan_Member")) {														
 			MemberController mc = new MemberController();
 			mc.doGet(request, response);
 			
+			//견적 신청 화면 이동
 		}else if(str2.equals("EventMan_Cost")) {
 			CostController cc = new CostController();
 			cc.doGet(request, response);
 			
+			//리뷰 페이지 이동 
 		}else if(str2.equals("EventMan_Review")) {
 			ReviewController rc = new ReviewController();
 			rc.doGet(request, response);
+			
+			//회사소개 페이지 이동
+		}else if(str2.equals("EventMan_Company")) {
+			MasterController ccc = new MasterController();
+			ccc.doGet(request, response);
+			
+			//게시판 페이지 이동
+		}else if(str2.equals("EventMan_Board")) {
+			BoardController bc = new BoardController();
+			bc.doGet(request, response);
 		}
 		
 	
