@@ -13,6 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+		
 		<table border=1 style="text-align:left;width:500px;height:80px">
 			<tr>
 			<td>번호</td>

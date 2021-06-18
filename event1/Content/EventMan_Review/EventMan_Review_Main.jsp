@@ -4,36 +4,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EVENT MAN 행사리뷰</title>
+<title>회사소개</title>
 
-	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
-   <link rel="stylesheet" type="text/css" href="../css/footer.css">
-   <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+   <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+   <link rel="stylesheet" type="text/css" href="../css/footer.css">
+   <link rel="stylesheet" type="text/css" href="../css/pagepath.css"> 
+
 <style>
 
+	
 
 
-/*서브카테고리 CSS*/
-	.nav-link{
-		font-weight:900;
-		margin-bottom:20px;
+/* 회사소개페이지 CSS*/
+	article{
+		margin-top:20px;
 	}
-
-
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		background-color:white !important;
-		margin-bottom: 40px;
+	img {
+		max-width: 100%; height: auto; 
 	}
 	
-/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
+/* 현재 페이지 위치*/	
+	#containermargin{
+	 	margin-bottom:30px;
 	}
-   
-
 
 </style>
 
@@ -55,24 +51,24 @@
 		    	<div class="collapse navbar-collapse" id="navbarNav">
 		      		<ul class="navbar-nav" id="navbar-nav">
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
 		        		</li>
 		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Review/EventMan_Review_Main.jsp">행사리뷰</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
 		        		</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
 		       			</li>
 		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="../EventMan_Board/EventMan_Board.jsp">게시판</a>
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
 		       			</li>
 		       		</ul>
 		       		<ul class="navbar-nav" id="Memberbox">	
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</p></a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
 		       			</li>
 		      		</ul>
 		    	</div>
@@ -95,7 +91,7 @@
 		</svg>
 		
 		<!-- 현제 페이지 이름 -->
-		회사소개
+		행사리뷰
 	</div>
 		
 

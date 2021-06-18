@@ -40,43 +40,42 @@
 </head>
 <body>
 <!-- 상단 네비 부분 -->
- <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light " id="topnav">
-         <div class="container-fluid">
-            <a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-                 <img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-             </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-               </button>
-             <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav" id="navbar-nav">
-                    <li class="nav-item">
-                         <a class="nav-link fw-bolder text-reset" href="../EventMan_Cost/EventMan_Cost.jsp">견적신청</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link fw-bolder text-reset" href="../EventMan_review/EventMan_Review_Main.jsp">행사리뷰</a>
-                    </li>
-                      <li class="nav-item">
-                         <a class="nav-link fw-bolder text-reset" href="../EventMan_Company/EventMan_Company_Main.jsp">회사소개</a>
-                      </li>
-                      <li class="nav-item">
-                         <a class="nav-link fw-bolder text-reset" href="../EventMan_Board/EventMan_Board.jsp">게시판</a>
-                      </li>
-                   </ul>
-                   <ul class="navbar-nav" id="Memberbox">   
-                      <li class="nav-item" id="liright1">
-                         <a class="nav-link fw-bold"href="../EventMan_Member/Member_Join.jsp">회원가입</p></a>
-                      </li>
-                      <li class="nav-item" id="liright2"> 
-                         <a class="nav-link fw-bold" href="../EventMan_Member/Member_Login.jsp">로그인</a>
-                      </li>
-                  </ul>
-             </div>
-           </div>
-      </nav>
-   </div>
-
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+		    	</a>
+		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      		<span class="navbar-toggler-icon"></span>
+		   		</button>
+		    	<div class="collapse navbar-collapse" id="navbarNav">
+		      		<ul class="navbar-nav" id="navbar-nav">
+		        		<li class="nav-item">
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+		        		</li>
+		        		<li class="nav-item">
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+		        		</li>
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+		       			</li>
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+		       			</li>
+		       		</ul>
+		       		<ul class="navbar-nav" id="Memberbox">	
+		       			<li class="nav-item" id="liright1">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</p></a>
+		       			</li>
+		       			<li class="nav-item" id="liright2"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+		       			</li>
+		      		</ul>
+		    	</div>
+		  	</div>
+		</nav>
+	</div>
 
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">	
