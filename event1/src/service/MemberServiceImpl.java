@@ -11,25 +11,27 @@ import vo.EvMemberVo;
 
 public class MemberServiceImpl {
 	
-	private PreparedStatement pstmt;
-	private Connection conn;
+	private PreparedStatement pstmt; //쿼리문 대기 및  설정
+	private Connection conn; //자바와 데이터 베이스 연결
+	private ResultSet rs; //결과값 받아오기
 	
 	/*
-	 * 		로그인 체크 Dao
+	 * 		로그인 클릭시 체크 Dao 매소드
+	 * 	
 	 * */
 	public int memberLoginCheck(String memberId, String memberPwd){
 		int midx=0;
 		MemberServiceImpl msi = new MemberServiceImpl();
 		
-		
 		String sql ="select midx"
 				+ " from EVE_MEMBER where memberId=? and memberPwd=?";
 		
 		try {
-			pstmt =conn.prepareStatement(sql);
-			pstmt.setString(1, memberId);
-			pstmt.setString(2, memberPwd);
-			ResultSet rs = pstmt.executeQuery();
+			pstmt =conn.prepareStatement(sql); //sql 쿼리문 대기
+			pstmt.setString(1, memberId); //첫번째 '?' 매개변수로 받아온 'membeId'를 대입
+			pstmt.setString(2, memberPwd); // 두번째 '?' 매개변수로 받아온 'memberPwd'를 대입
+			ResultSet rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
+			rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
 			
 			if (rs.next()) {
 				midx = rs.getInt("midx");
@@ -77,5 +79,6 @@ public class MemberServiceImpl {
 		
 		return id;
 	}
+
 
 }

@@ -82,6 +82,8 @@ public class MemberController extends HttpServlet {
 			String memberPwd  = request.getParameter("memberPwd");
 			System.out.println("memberId"+memberId);
 			System.out.println("memberPwd"+memberPwd);
+			
+			
 		
 		}
 

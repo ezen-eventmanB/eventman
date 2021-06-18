@@ -22,10 +22,27 @@
 			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do"; 
 			frm.method = "POST";
 			frm.submit();
-			return;
+			return;	
+			
 		}
 	}
 </script>
+		<%-- <script>
+		   function findId(){
+		      
+		      $.ajax({
+		         url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",
+		         type:"post",
+		         data:"",
+		         success:function(data){
+		            $("#truemodal").modal("show");
+		         }   
+		
+		      });
+		            
+		   }
+		   
+		</script> --%>
 	
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
