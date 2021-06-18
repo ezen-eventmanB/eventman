@@ -39,16 +39,40 @@ public class MemberController extends HttpServlet {
 		
 		System.out.println("str2="+str2);
 		
+		
+		
+		
+		
+		
 		if(str2.equals("EventMan_Member_Find_Id.do")) {											
-			
-			System.out.println("EventMan_Member_Find_Id.do 메소드 실행");
+			System.out.println("EventMan_Member_Find_Id.do if문 실행");		
 			
 			//Dao 생성 메소드 호출하자
 			MemberServiceImpl msdao = new MemberServiceImpl();
 			
+			//메소드에 매개변수로 전달 될 값을 가져오자
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			
+			System.out.println("-------넘어온 값--------");
+			System.out.println("name = "+name);
+			System.out.println("phone="+phone);
+			
+			//전달온 값을 매개변수로 던져주자
+			msdao.findId(name, phone);
+			
+			System.out.println("MemberServiceImpl.findId()실행");
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);
 		}
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
