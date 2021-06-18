@@ -315,33 +315,32 @@
 		
 		
 	<!-- 구성 카테고리 선택 -->
-		<table>
 			<div class="sc-fzqAui eoGDzK" style="margin: 0.3rem;">
 			<div class="container">
-		      <select placeholder="참여대상" class="sc-fzokvW jKoelK">
-		         <option>참여대상</option>
-		         <option value="all">전체</option>
-		         <option value="children">어린이</option>
-		         <option value="student">학생</option>
-		         <option value="youth">청년</option>
-		         <option value="female">여성</option>
-		         <option value="worker">직장인</option>
-		         <option value="disabled">장애인</option>
-		         <option value="aged">노인</option>
-		         <option value="corporation">기업·단체</option>
-		         <option value="etc">기타</option>
-		      </select>
-		  </table>
+			<table>
+		      	<select placeholder="참여대상" class="sc-fzokvW jKoelK">
+			         <option>참여대상</option>
+			         <option value="all">전체</option>
+			         <option value="children">어린이</option>
+			         <option value="student">학생</option>
+			         <option value="youth">청년</option>
+			         <option value="female">여성</option>
+			         <option value="worker">직장인</option>
+			         <option value="disabled">장애인</option>
+			         <option value="aged">노인</option>
+			         <option value="corporation">기업·단체</option>
+			         <option value="etc">기타</option>
+		      	</select>
+		      	</table>
 		  <br>
 		  </div>
 		  </div>
 		  </div>
 		  
-		  
-		  <table> 
+		  <table>
 		  	<div class="sc-fzqAui eoGDzK" style="margin: 0.3rem;">
 		    <div class="container">
-		      <select placeholder="방식" class="sc-fzokvW jKoelK">
+		    <select placeholder="방식" class="sc-fzokvW jKoelK">
 		         <option>방식</option>
 		         <option value="offline">오프라인</option>
 		         <option value="online">온라인</option>
@@ -353,10 +352,9 @@
 		  </div>
 		  </div>
 		   
-		   
-		   
-		   <table>
+		 
 		   <div class="container">
+		  <table>
 		      <select placeholder="예산" class="sc-fzokvW jKoelK">
 		         <option>예산</option>
 		         <option value="x">1,000만원 미만</option>
@@ -372,8 +370,8 @@
 		   
 		   
 		   
-		   <table>
 		   <div class="container">
+		  <table>
 		      <select placeholder="참여인원" class="sc-fzokvW jKoelK">
 		         <option>참여인원</option>
 		         <option value="less50">50명 미만</option>
