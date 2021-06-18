@@ -52,7 +52,7 @@ function takeResponseAndHandle(rsp) {
         // 인증성공
         console.log(rsp.imp_uid);
         console.log(rsp.merchant_uid);
-        location.href="EventMan_Member_Login.jsp";
+        location.href="./EventMan_Member/EventMan_Member_Login.jsp";
     } else {
          // 인증취소 또는 인증실패
         var msg = '인증에 실패하였습니다.';
