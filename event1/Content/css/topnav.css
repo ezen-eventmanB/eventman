@@ -2,18 +2,13 @@
 
 	#navbar-nav{
 		margin:1px auto;
-		text-align: center;
 		font-size: 20px;
 	}
 	#navbar-nav li{
 		margin:1px auto;
-		text-align: center;
 	}
-	#liright1{
-		width:80px;
-	}
-	#liright2{
-		width:80px;
+	#memberbox li{
+		margin:1px auto;
 	}
 	.nav-li:hover {
 		color:black;	
