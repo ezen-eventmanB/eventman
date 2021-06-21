@@ -17,8 +17,9 @@
 </script>
 <script language = "javascript">
 	function check(){
-		var frm = document.frm;
 		
+		var frm = document.frm;
+				
 		if (document.frm.memberId.value =="")	{
 			
 			document.getlementById('memberId').focus();
@@ -27,13 +28,16 @@
 			
 			document.getlementById('memberPwd').focus();
 			return;
-		}
+		}														
 			document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
 			document.frm.method = "post";
 			document.frm.submit();	
 	
 		return;
 	}
+	
+	   	
+	   	
 </script>
 
 <style>
@@ -189,8 +193,8 @@
 			
 				
 				
-				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Join.jsp'">회원가입</button>
+				<div class="d-grid gap-2">													
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do'">회원가입</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do'">아이디찾기</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Find_Pw.jsp'">비밀번호찾기</button>
 				</div>
@@ -201,7 +205,7 @@
 
 
 
-<!-- 모달 -->
+<!-- 아이디 비밀번호 입력 안 했을시 띄우는 모달 -->
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered">
@@ -219,6 +223,30 @@
 	    </div>
 	  </div>
 	</div>
+
+
+<!-- 아이디 및 비밀번호 틀렸을때  -->
+	<div class="modal fade" id="failModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">로그인  실패</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	       	 아이디 및 패스워드를 확인 해주세요.
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	
+	
+	
 
 
 <!-- 메인 푸터 -->
