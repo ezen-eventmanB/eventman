@@ -9,16 +9,18 @@
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
 <script>
 
 function findId(){
-		
+	
     var username = $("#name").val();
     var userphone = $("#phone").val();
     var alldata = { "name": username, "phone": userphone };
     
     if(username.trim() =='' || userphone.trim()==''){
 		$("#modal1").modal("show");	
+		
 	}else{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",
@@ -30,45 +32,48 @@ function findId(){
 				$("#modal").modal("show");
 			}	
 		})
-	}
+	};
 };
 
 
 
 function phonecheckFn(){
+		
+	    var username = $("#name").val();
+	    var userphone = $("#phone").val();
+	    var alldata = { "name": username, "phone": userphone };
+	    
+	    if(username.trim() =='' || userphone.trim()==''){
+	    	
+			$("#modal1").modal("show");	
+			
+  }else{
 
-	 $.ajax({
-           url:"EventMan_phonecheck.jsp",
-
-           type:'GET',
-
-           dataType: 'text',
-
-           success: function(data){
-
-           	$('#phonecheck').html(data);
-       		$("#modal3").modal("show");
-           }// end
-
-       });// end ajax
-
-       return false;
-
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_phonecheck.do",
+			type:'post',
+			data:alldata,
+			success: function(data){
+				$('#phonecheck').html(data);
+				$("#modal3").modal("show");
+			}// end
+		});// end ajax
+			
+			return false;
+			
+		
+	};
 };
-
-
-</script>
-
-<!-- <script>
-	$('#truemodal').modal('toggle')
-</script>
- -->
-
 	
-	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+
+
+</script>
+
+
+<!-- top nav CSS -->
+<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+<!-- footer CSS -->
+<link rel="stylesheet" type="text/css"   href="../css/footer.css">
 
 <style>
 
@@ -213,7 +218,7 @@ function phonecheckFn(){
 				
 				
 				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm"  onclick="findId()">확인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findId()">확인</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/EventMan_Member/EventMan_Member_Find_pw.jsp'">비밀번호찾기</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Login.jsp'">뒤로</button>
 				</div>
@@ -260,7 +265,7 @@ function phonecheckFn(){
   </div>
 </div>
 
-<!-- 휴대폰인 증모달 -->
+<!-- 휴대폰 인증모달 -->
 <div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -269,7 +274,8 @@ function phonecheckFn(){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
       </div>
       <div class="modal-body">
-         <div id="phonecheck"> </div>
+         <div id="phonecheck">      
+         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>

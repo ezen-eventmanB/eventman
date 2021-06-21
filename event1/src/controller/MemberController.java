@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.MemberServiceImpl;
 
-
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +41,7 @@ public class MemberController extends HttpServlet {
 		String[]str1 = str.split("/"); 
 		String str2 = str1[2];
 
-		System.out.println("str1 = "+str1[0]);
+		System.out.println("str0 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
 		
@@ -67,7 +66,10 @@ public class MemberController extends HttpServlet {
 			String memberPwd  = request.getParameter("memberPwd");
 			System.out.println("memberId"+memberId);
 			System.out.println("memberPwd"+memberPwd);
-		
+			
+			MemberServiceImpl ms = new MemberServiceImpl();
+			ms.memberLoginCheck(memberId, memberPwd);
+			
 			
 /* ID찾기 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {		
@@ -97,7 +99,6 @@ public class MemberController extends HttpServlet {
 			String id = msdao.findId(name, phone);
 			
 			
-			
 			if(id=="") {
 				response.getWriter().write("회원정보가 일치하지 않습니다.");
 			}else {
@@ -106,9 +107,29 @@ public class MemberController extends HttpServlet {
 
 /* 휴대폰 본인 확인 */
 		}else if(str2.equals("EventMan_phonecheck.do")) {
+				
+			System.out.println("EventMan_phonecheck.do if문 실행");	
+			
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp"); 	
 			rd.forward(request, response);
+			
+/* 본인확인 데이터 가져오기*/			
+			
+		}else if(str2.equals("EventMan_phonecheck_Action.do")){
+			
+			
+	
+			
+			
+			System.out.println("EventMan_phonecheck_Action.do if문");
+			
+			
+			 
+			 
+			
+			
+			
 			
 		}
 		

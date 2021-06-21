@@ -77,6 +77,7 @@
 		       			</li>
 		       		</ul>
 		       		
+		       		<div class="collapse navbar-collapse" id="navbarNav">
 		       		<ul class="navbar-nav" id="Memberbox" >	
 		       			<li class="nav-item" id="liright1">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</p></a>
