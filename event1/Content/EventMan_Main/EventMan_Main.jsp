@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+out.println("세션에 담긴 아이디는?");
+String member_id = (String)session.getAttribute("S_memberId");
+out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
+
+%>       
+    
+    
 <!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <title>EVENT MAN!</title>
 
@@ -77,15 +87,45 @@
 		       			</li>
 		       		</ul>
 		       		
+
 		       		<div class="collapse navbar-collapse" id="navbarNav">
+
+		       		<!--로그인 전 상단 화면  -->
+		       		
+
 		       		<ul class="navbar-nav" id="Memberbox" >	
+		       				<%
+		       				if(member_id == null){
+		       				%>
 		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</p></a>
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
 		       			</li>
 		       			<li class="nav-item" id="liright2"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
 		       			</li>
 		      		</ul>
+		      		
+		      		<!--로그인 후 상단 화면  -->
+					
+							<%
+				       		}else{
+							%>
+		       		<ul class="navbar-nav" id="Memberbox" >	
+		       			<li class="nav-item" id="liright1">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
+		       			</li>
+		       			<li class="nav-item" id="liright2"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
+		       			</li>
+		       			<li class="nav-item" id="liright2"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+		       			</li>																			
+		      		</ul>
+				      		<%
+				      		}
+				       		 %>
+			  	
+		      	
 		    	</div>
 		  	</div>
 		</nav>

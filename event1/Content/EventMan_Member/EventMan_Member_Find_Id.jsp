@@ -13,7 +13,22 @@
 <script>
 
 function findId(){
-	
+
+		if(frm.name == ""){
+			alert('아이디를 입력해주세요.');
+			document.getlementById('name').focus();
+		}else if(frm.phone == ""){
+			alert('전화번호를 입력해주세요.')
+			document.getlementById('phone').focus();
+		}else{
+			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do"; 
+			frm.method = "POST";
+			frm.submit();
+			return;	
+			
+		}
+		
+
     var username = $("#name").val();
     var userphone = $("#phone").val();
     var alldata = { "name": username, "phone": userphone };
@@ -32,7 +47,9 @@ function findId(){
 				$("#modal").modal("show");
 			}	
 		})
+
 	};
+
 };
 
 
@@ -64,6 +81,7 @@ function phonecheckFn(){
 		
 	};
 };
+
 	
 
 
@@ -74,6 +92,34 @@ function phonecheckFn(){
 <link rel="stylesheet" type="text/css"   href="../css/topnav.css">
 <!-- footer CSS -->
 <link rel="stylesheet" type="text/css"   href="../css/footer.css">
+
+
+
+</script>
+
+		<%-- <script>
+		   function findId(){
+		      
+		      $.ajax({
+		         url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",
+		         type:"post",
+		         data:"",
+		         success:function(data){
+		            $("#truemodal").modal("show");
+		         }   
+		
+		      });
+		            
+		   }
+		   
+		</script> --%>
+
+
+<!-- <script>
+	$('#truemodal').modal('toggle')
+</script>
+ -->
+
 
 <style>
 

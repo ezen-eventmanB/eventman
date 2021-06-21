@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import service.MemberServiceImpl;
 
@@ -59,16 +59,39 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 		
 			
-/* 로그인 Action 페이지로 이동*/
-		}else if (str.equals("/EventMan_Member/EventMan_Member_LoginAction.do")) {
-			
+/* 로그인 Action 페이지로 이동*/    
+		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
 			String memberId  = request.getParameter("memberId");
 			String memberPwd  = request.getParameter("memberPwd");
 			System.out.println("memberId"+memberId);
 			System.out.println("memberPwd"+memberPwd);
 			
-			MemberServiceImpl ms = new MemberServiceImpl();
-			ms.memberLoginCheck(memberId, memberPwd);
+			//sql 받아오기
+			MemberServiceImpl md = new MemberServiceImpl();
+			System.out.println("md"+md);
+			int midx = md.memberLoginCheck(memberId, memberPwd);			
+			System.out.println(midx);
+			
+			
+				PrintWriter out = response.getWriter();
+			if (midx > 0) { 
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("S_memberId", memberId);
+				session.setAttribute("midx", midx);
+				
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
+					
+			}else{
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
+				}
+				
+/* 로그아웃 action */			
+		}else if (str.equals("EventMan_Member_LogoutAction.do")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그아웃 하셨습니다.'); document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
 			
 			
 /* ID찾기 페이지로 이동*/
@@ -95,7 +118,7 @@ public class MemberController extends HttpServlet {
 			System.out.println("name = "+name);
 			System.out.println("phone="+phone);
 			
-			//전달온 값을 매개변수로 던져주자
+			//전달온 값을 매개변수로 던져주자  
 			String id = msdao.findId(name, phone);
 			
 			
@@ -113,9 +136,12 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp"); 	
 			rd.forward(request, response);
+
+//로그인 시 컨트롤러 
+		}else if (str.equals("/EventMan_Member/EventMan_MemberH_LoginAction.do")) {
 			
-/* 본인확인 데이터 가져오기*/			
-			
+
+/* 본인확인 데이터 가져오기*/						
 		}else if(str2.equals("EventMan_phonecheck_Action.do")){
 			
 			
@@ -135,10 +161,13 @@ public class MemberController extends HttpServlet {
 		
 		
 		
+
 		
-		
-			
+
 	}
+		
+		
+	
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
