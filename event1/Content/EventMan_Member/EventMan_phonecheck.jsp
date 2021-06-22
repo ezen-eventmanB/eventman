@@ -1,4 +1,4 @@
-<%@page import="jdk.internal.logger.SimpleConsoleLogger"%>
+
 <%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

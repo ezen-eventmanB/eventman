@@ -10,7 +10,7 @@ import dbconn.DBconn;
 import vo.EvMemberVo;
 
 public class MemberServiceImpl {
-	
+
 	private PreparedStatement pstmt; //쿼리문 대기 및  설정
 	private Connection conn; //자바와 데이터 베이스 연결
 	private ResultSet rs; //결과값 받아오기
@@ -62,30 +62,29 @@ public class MemberServiceImpl {
 	/*
 	 * 로그인 확인 화면
 	 * */
-	public int memberLoginCheck(String memberId, String memberPwd){
-		int midx=0;
-	//	MemberServiceImpl msi = new MemberServiceImpl();
-		
-		String sql ="select midx from EVE_MEMBER where mId=? and mPwd=?";
-		System.out.println("conn "+conn);
-		try {
-			pstmt =conn.prepareStatement(sql); //sql 쿼리문 대기
-			pstmt.setString(1, memberId); //첫번째 '?' 매개변수로 받아온 'membeId'를 대입
-			pstmt.setString(2, memberPwd); // 두번째 '?' 매개변수로 받아온 'memberPwd'를 대입
-			ResultSet rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
-			rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
-			
-			if (rs.next()) {
-				midx = rs.getInt("midx");
-			}			
-				
-			} catch (SQLException e) {			
-				e.printStackTrace();
-			}		
-			
-		return midx;
-	}
-
+   public int memberLoginCheck(String memberId, String memberPwd){
+      int midx=0;
+   //   MemberServiceImpl msi = new MemberServiceImpl();
+      
+      String sql ="select midx from EVE_MEMBER where mId=? and mPwd=?";
+      System.out.println("conn "+conn);
+      try {
+         pstmt =conn.prepareStatement(sql); //sql 쿼리문 대기
+         pstmt.setString(1, memberId); //첫번째 '?' 매개변수로 받아온 'membeId'를 대입
+         pstmt.setString(2, memberPwd); // 두번째 '?' 매개변수로 받아온 'memberPwd'를 대입
+         ResultSet rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
+         rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
+         
+         if (rs.next()) {
+            midx = rs.getInt("midx");
+         }         
+            
+         } catch (SQLException e) {         
+            e.printStackTrace();
+         }      
+         
+      return midx;
+   }
 	/*
 	 * 
 	 *  아이디 찾기 버튼 클릭시 메소드 (황현호) */
@@ -135,5 +134,6 @@ public class MemberServiceImpl {
 	 * 
 	 * */
 
+   
 
 }

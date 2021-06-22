@@ -51,6 +51,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 		max-width:700px;	
 		margin:10px auto;
 	}
+<<<<<<< HEAD
 	.membertype{
 		border:1px solid black;
 	}
@@ -192,7 +193,6 @@ String member_id = (String)session.getAttribute("S_memberId");
 		<!-- 현제 페이지 이름 -->
 		회원가입
 	</div>
-		
 					
 				<form name="frm"> 
 						<div class="joinroom">
@@ -243,10 +243,8 @@ String member_id = (String)session.getAttribute("S_memberId");
 								</td>
 								</tr>
 							</table>
-				</div>
-			 </form>
-				 
-				 
+						</div>
+					</form>
 <!-- 메인 푸터 -->
 <div class="footer">
 </div>
