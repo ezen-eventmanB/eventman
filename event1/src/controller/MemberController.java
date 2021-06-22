@@ -86,14 +86,6 @@ public class MemberController extends HttpServlet {
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
 				}
 				
-/* 로그아웃 action */			
-		}else if (str.equals("EventMan_Member_LogoutAction.do")) {
-			HttpSession session = request.getSession();
-			session.invalidate();
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그아웃 하셨습니다.'); document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
-			
-			
 /* ID찾기 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {		
 			
