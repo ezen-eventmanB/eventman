@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+ .inline{
+ 	display: inline-block;
+ 	margin-top: 7px;
+ }
+ .form-select{
+ 	display: inline-block;
+ }

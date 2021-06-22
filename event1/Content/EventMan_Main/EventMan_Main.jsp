@@ -20,10 +20,11 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 <title>EVENT MAN!</title>
 
 	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
 	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
-	
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<!-- subnav CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	
 	
 <style>
@@ -35,13 +36,6 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 	/*행사리뷰 앨범 페이징처리*/
 	.pagination {
    		justify-content: center;
-	}
-
-
-/* 중앙 nav form CSS */
-	#midnav .nav-item{
-		font-weight: bold;
-		font-weight: 900;
 	}
 
 
@@ -62,106 +56,86 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 <body>
 
 <!-- 상단 네비 부분 -->
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-		    	</a>
-		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      		<span class="navbar-toggler-icon"></span>
-		   		</button>
-		    	<div class="collapse navbar-collapse" id="navbarNav">
-		      		<ul class="navbar-nav" id="navbar-nav">
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-		        		</li>
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-		        		</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-		       			</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-		       			</li>
-		       		</ul>
-		       		
-		       		<!--로그인 전 상단 화면  -->
-		       		
+<div class="container">
+	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
+	
+		<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+	     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+	    </a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      	<span class="navbar-toggler-icon"></span>
+	   	</button>
+	    <div class="collapse navbar-collapse w-50" id="navbarNav">
+	    
+      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+        		<li class="nav-item px-5">
+          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+        		</li>
+        		<li class="nav-item px-5">
+          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+        		</li>
+       			<li class="nav-item px-5">
+          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+       			</li>
+       			<li class="nav-item px-5">
+          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+       			</li>
+       		</ul>
+       	
+
+			<!--로그인 전 상단 화면  -->	
+			<%
+			if(member_id == null){
+			%>
+		       	
+	       		<ul class="navbar-nav" id="Memberbox" >	
+	       			<li class="nav-item">
+	          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+	       			</li>
+	       			<li class="nav-item"> 
+	          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+	       			</li>
+	      		</ul>
+		      	
+		   <!--로그인 후 상단 화면  -->
+			<%
+	      		}else{
+			%>	
 		       		<ul class="navbar-nav" id="Memberbox" >	
-		       				<%
-		       				if(member_id == null){
-		       				%>
-		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-		       			</li>
-		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-		       			</li>
-		      		</ul>
-		      		
-		      		<!--로그인 후 상단 화면  -->
-					
-							<%
-				       		}else{
-							%>
-		       		<ul class="navbar-nav" id="Memberbox" >	
-		       			<li class="nav-item" id="liright1">
+		       			<li class="nav-item">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
 		       			</li>
-		       			<li class="nav-item" id="liright2"> 
+		       			<li class="nav-item"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
 		       			</li>
-		       			<li class="nav-item" id="liright2"> 
+		       			<li class="nav-item"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
 		       			</li>																			
 		      		</ul>
-				      		<%
-				      		}
-				       		 %>
-			  	
-		      	
-		    	</div>
-		  	</div>
-		</nav>
-	</div>
+	   		<%
+	   		}
+	    	%>
+    	</div>	
+	</nav>
+</div>
 		
 
 
 
 <!-- 중앙배너부분 -->
-<div class="bd-example">
-	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="" aria-label="슬라이드 1"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="슬라이드 2" class="active" aria-current="true"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="슬라이드 3" class=""></button>
-		</div>
+<div class="bd-example ">
+	<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item">
 				<!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 두 번째 슬라이드" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">상담 신청</text></svg> -->
-				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" src="../banner1.jpg" >
-				<div class="carousel-caption d-none d-md-block">
-					<!-- <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 번째 슬라이드 레이블</font></font></h5>
-					<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 번째 슬라이드의 대표적인 자리 표시 자 콘텐츠입니다.</font></font></p> -->
-				</div>
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner1.jpg" >
 			</div>
 			<div class="carousel-item active">
-				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" src="../banner2.jpg" >
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner2.jpg" >
 
-				<div class="carousel-caption d-none d-md-block">
-					<!-- <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">두 번째 슬라이드 레이블</font></font></h5>
-					<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">두 번째 슬라이드의 대표적인 자리 표시 자 콘텐츠입니다.</font></font></p> -->
-				</div>
 			</div>
 			<div class="carousel-item">
-				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" src="../banner3.jpg" >
-				
-				<div class="carousel-caption d-none d-md-block">
-					<!-- <h5><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세 번째 슬라이드 레이블</font></font></h5>
-					<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세 번째 슬라이드의 대표적인 자리 표시 자 콘텐츠입니다.</font></font></p> -->
-				</div>
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner3.jpg" >
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -179,55 +153,55 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 
 
 <!-- 중앙 네비 카테고리 검색창 -->
-<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
-<div class="container-fluid">
-	  <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	
-	  <div class="navbar-collapse collapse" id="navbarsExample09" >
-	    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">카테고리1</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">카테고리2</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">카테고리3</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">카테고리4</a>
-	      </li>
-	      
-	    </ul>
-	    
-	    <form>
-	    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-	    	<div style="display:inline-block;">
-				<select class="form-control" style="display:inline-block;">
-					<option selected>검색타입1</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>
-			<div style="display:inline-block;">
-				<select class="form-control" style="display:inline-block;">
-					<option selected>검색타입2</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>	
-			<div style="display:inline-block;">	
-		        <input class="form-control" type="text" placeholder="Search" aria-label="Search" >
+<div class="container">
+	<nav class="navbar navbar-expand-lg navbar-light rounded">
+		<div class="container-fluid">
+			<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="navbar-collapse collapse" id="navbarsExample09" >
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
+					<li class="nav-item" >
+						<a class="nav-link fw-bolder " href="#">카테고리1</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link fw-bolder" href="#">카테고리2</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link fw-bolder" href="#">카테고리3</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link fw-bolder" href="#">카테고리4</a>
+					</li>
+				</ul>
 			</div>
 			
-	    </form>
-	  </div>
+		    <form>
+		    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
+		    	<div class="inline">
+					<select class="form-select form-select-sm">
+						<option selected>검색타입1</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+				</div>
+				<div class="inline">
+					<select class="form-select form-select-sm">
+						<option selected>검색타입2</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+				</div>	
+				<div class="inline">	
+			        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" >
+				</div>
+		    </form>
+		</div>
+	</nav>
 </div>
-</nav>
 
 
 <!-- 메인 행사리뷰 부분 3x3출력 -->
