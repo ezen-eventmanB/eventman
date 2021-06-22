@@ -91,6 +91,12 @@ public class MemberServiceImpl {
 		
 		return id;
 	}
+	
+	/*
+	 * 
+	 * 윤진(아이디 중복확인 )
+	 * 
+	 * */
 
 
 }

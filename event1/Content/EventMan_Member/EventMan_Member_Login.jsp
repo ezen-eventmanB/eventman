@@ -28,7 +28,7 @@
 			
 			document.getlementById('memberPwd').focus();
 			return;
-		}														
+		}else if ()														
 			document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
 			document.frm.method = "post";
 			document.frm.submit();	

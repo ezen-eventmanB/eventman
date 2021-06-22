@@ -142,12 +142,12 @@
 					</div>
 				<!--비밀번호  -->
 					<div class="memberpwd">	
-						<input type="text" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
 				<!--비밀번호 확인  -->
 					<br>
 					<div class="membercheckpwd">	
-						<input type="text" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
 					<br>
 				<!--이름  -->
