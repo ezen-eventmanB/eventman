@@ -54,6 +54,23 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);
 			
+/*회원가입 Action 페이지 이동*/			
+		}else if(str.equals("/memberWriteAction.do")) {
+				
+				String mId = request.getParameter("mId");
+				String mPwd = request.getParameter("mPwd");
+				String mName = request.getParameter("mName");
+				String mEmail = request.getParameter("mEmail");
+				String mPhone = request.getParameter("mPhone");
+				String mType = request.getParameter("mType");
+				
+				String ip = InetAddress.getLocalHost().getHostAddress();
+
+				MemberServiceImpl md = new MemberServiceImpl();
+				md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+						
+				response.sendRedirect(request.getContextPath()+"/memberInsert.do");
+			
 /* 로그인 Action 페이지로 이동*/    
 		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
 			String memberId  = request.getParameter("memberId");
