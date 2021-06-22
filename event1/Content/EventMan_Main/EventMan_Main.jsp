@@ -52,7 +52,6 @@ String member_id = (String)session.getAttribute("S_memberId");
 </head>
 <body>
 
-<div class="container ajax">
 
 	<!-- 상단 네비 부분 -->
 	<div class="container">

@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "vo.*" %>
+<%@ page import = "domain.*" %>
 
- <%
-String member_id = (String)session.getAttribute("S_memberId");
-%>     
-    
-    
+<%String member_id = (String)session.getAttribute("S_memberId");%>     
+<%ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); %>  
+<%-- <%PageMaker pm = (PageMaker)request.getAttribute("pm"); %> --%>
+
 <!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap에 필요한 CSS파일 -->
 
+	<title>EVENT MAN!</title>
+
+    <!-- Bootstrap에 필요한 CSS파일 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<title>EVENT MAN!</title>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    
+
 
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
@@ -22,7 +28,6 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-<style>
 	
 <style>
 
@@ -49,12 +54,52 @@ String member_id = (String)session.getAttribute("S_memberId");
 	}
 	
 </style>
+
+<script>
+	function selectAll(){
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectAll.do",
+			type:"post",
+			datatype:"html",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
+	};
+	
+	function selectCompany(){
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectCompany.do",
+			type:"post",
+			data:"",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
+	}
+	
+	function selectUniversity(){
+		
+		alert("selectUniversity")
+	}
+	
+	function selectStage(){
+		
+		alert("selectStage")
+	}
+	
+	function selectxEeption(){
+		
+		alert("selectxEeption")
+	}
+</script>
+
 </head>
 <body>
 
 <div class="container ajax">
 
-	<!-- 상단 네비 부분 -->
+<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -143,222 +188,112 @@ String member_id = (String)session.getAttribute("S_memberId");
 
 
 <!-- 중앙 네비 카테고리 검색창 -->
-<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
-<div class="container-fluid">
-	  <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	
-	  <div class="navbar-collapse collapse" id="navbarsExample09" >
-	    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">전체</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">기업</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">대학</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">공연/예술</a>
-	      </li>
-	      <li class="nav-item" >
-	        <a class="nav-link" href="#">기타</a>
-	      </li>
-	      
-	    </ul>
-	    
-	    <form>
-	    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-	    	<div style="display:inline-block;">
-				<select class="form-control" style="display:inline-block;">
-					<option selected>예산</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
+<div class="container">
+	<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
+		<div class="container-fluid">
+			<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="navbarsExample09" >
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
+					<li class="nav-item" >
+						<a class="nav-link" type="button" onclick="selectAll()">전체</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" type="button" onclick="selectCompany()">기업</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" type="button" onclick="selectUniversity()">대학</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" type="button" onclick="selectStage()">공연/예술</a>
+					</li>
+					<li class="nav-item" >
+						<a class="nav-link" type="button" onclick="selectxEeption()">기타</a>
+					</li>
+				</ul>
+				<form>
+			    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
+			    	<div style="display:inline-block;">
+						<select class="form-control" style="display:inline-block;">
+							<option selected>예산</option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						</select>
+					</div>
+					<div style="display:inline-block;">
+						<select class="form-control" style="display:inline-block;">
+							<option selected>인원</option>
+							<option value="1">One</option>
+							<option value="2">Two</option>
+							<option value="3">Three</option>
+						</select>
+					</div>	
+					<div style="display:inline-block;">	
+				        <input class="form-control" type="text" placeholder="Search" aria-label="Search" >
+					</div>
+				</form>
 			</div>
-			<div style="display:inline-block;">
-				<select class="form-control" style="display:inline-block;">
-					<option selected>인원</option>
-					<option value="1">One</option>
-					<option value="2">Two</option>
-					<option value="3">Three</option>
-				</select>
-			</div>	
-			<div style="display:inline-block;">	
-		        <input class="form-control" type="text" placeholder="Search" aria-label="Search" >
-			</div>
-			
-	    </form>
-	  </div>
+		</div>
+	</nav>
 </div>
-</nav>
 
 
 <!-- 메인 행사리뷰 부분 3x3출력 -->
-<section>
-	<div class="album">
-		<div class="container">
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-			
-				<div class="col">
-					<div class="card shadow-sm">
-						<a href="#"><img class="bd-placeholder-img card-img-top" width="100%" height="225" src="리뷰이미지.png"></a>
-							<title>전주대학교 신입생 OT</title>
-						</img>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
+<section id="load">
+		<%-- <div class="album">
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					
+	 				<% for(EvReviewVo erv : reviewList){ %>
+						<div class="col">
+							<div class="card shadow-sm">
+								<a href="#"><img class="bd-placeholder-img card-img-top" width="100%" height="225" src="리뷰이미지.png"></img></a>
+									<title><%=erv.gethName() %></title>
+								
+								<div class="card-body">
+									<div class="justify-content-between align-items-center">
+										<p class="card-text"><%=erv.gethName() %></p>
+										<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
+									</div>	
+								</div>
+							</div>
 						</div>
-					</div>
+					
+					<%}; %>
+					
 				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-				<div class="col">
-					<div class="card shadow-sm">
-						<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 축소판" preserveAspectRatio="xMidYMid slice" focusable="false">
-							<title>Placeholder</title>
-							<rect width="100%" height="100%" fill="#55595c"></rect>
-							<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-						</svg>
-						<div class="card-body">
-							<div class="justify-content-between align-items-center">
-								<p class="card-text">전주대학교 신입생 OT 섭외 무대</p>
-								<small class="text-muted">행사시작일~행사종료일</small>
-							</div>	
-						</div>
-					</div>
-				</div>
-			</div>    
-		</div>
-	</div> 
+			</div> 
+		</div> --%>
 </section>
 
-<!-- 행사리뷰 페이징 처리 -->
+
+
+<%-- <!-- 행사리뷰 페이징 처리 -->
 <nav aria-label="Page navigation example">
 	<ul class="pagination">
-		<li class="page-item">
-			<a class="page-link" href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
-		<li class="page-item"><a class="page-link" href="#">1</a></li>
-		<li class="page-item"><a class="page-link" href="#">2</a></li>
-		<li class="page-item"><a class="page-link" href="#">3</a></li>
-		<li class="page-item">
-			<a class="page-link" href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
+	
+		<%if(pm.isPrev() == true) {%>
+			<li class="page-item">
+				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+		<%} %>
+		<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) { %>
+		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword()) %>"><%=i %></a></li>
+		<% } %>
+
+		<% if(pm.isNext() == true){ %>
+			<li class="page-item">
+				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		<%} %>
 	</ul>
-</nav>
+</nav> --%>
 	
 
 

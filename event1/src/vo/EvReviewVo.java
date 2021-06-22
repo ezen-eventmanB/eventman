@@ -3,75 +3,99 @@ package vo;
 public class EvReviewVo {
 	
 	private int hidx;
-	private String reviewName;
-	private String reviewDate;
-	private String reviewCatagory;
-	private String reviewPrice;
-	private String reviewTarget;
-	private String reviewLoaction;
-	private String reviewPeople;
-	private String reviewContents;
-	private int reviewDelYn;
-	private int gidx;
+	private String hName;
+	private String hdate;
+	private String henddate;
+	private String hcata;
+	private String hprice;
+	private String htarget;
+	private String hloca;
+	private String hpeople;
+	private String htext;
+	private String himg;
+	private int hdelYn;
+	
 	public int getHidx() {
 		return hidx;
 	}
 	public void setHidx(int hidx) {
 		this.hidx = hidx;
 	}
-	public String getReviewName() {
-		return reviewName;
+	public String gethName() {
+		return hName;
 	}
-	public void setReviewName(String reviewName) {
-		this.reviewName = reviewName;
+	public void sethName(String hName) {
+		this.hName = hName;
 	}
-	public String getReviewDate() {
-		return reviewDate;
+	public String getHdate() {
+		return hdate;
 	}
-	public void setReviewDate(String reviewDate) {
-		this.reviewDate = reviewDate;
+	public String getstartdate() {
+		String date =  getHdate();
+		String startdate = date.substring(0,10);
+		return startdate;
 	}
-	public String getReviewCatagory() {
-		return reviewCatagory;
+	public void setHdate(String hdate) {
+		this.hdate = hdate;
 	}
-	public void setReviewCatagory(String reviewCatagory) {
-		this.reviewCatagory = reviewCatagory;
+	public String getHenddate() {
+		return henddate;
 	}
-	public String getReviewPrice() {
-		return reviewPrice;
+	public String getendenddate() {
+		String date =  getHenddate();
+		String enddate = date.substring(0,10);
+		return enddate;
 	}
-	public void setReviewPrice(String reviewPrice) {
-		this.reviewPrice = reviewPrice;
+	public void setHenddate(String henddate) {
+		this.henddate = henddate;
 	}
-	public String getReviewTarget() {
-		return reviewTarget;
+	public String getHcata() {
+		return hcata;
 	}
-	public void setReviewTarget(String reviewTarget) {
-		this.reviewTarget = reviewTarget;
+	public void setHcata(String hcata) {
+		this.hcata = hcata;
 	}
-	public String getReviewLoaction() {
-		return reviewLoaction;
+	public String getHprice() {
+		return hprice;
 	}
-	public void setReviewLoaction(String reviewLoaction) {
-		this.reviewLoaction = reviewLoaction;
+	public void setHprice(String hprice) {
+		this.hprice = hprice;
 	}
-	public String getReviewPeople() {
-		return reviewPeople;
+	public String getHtarget() {
+		return htarget;
 	}
-	public void setReviewPeople(String reviewPeople) {
-		this.reviewPeople = reviewPeople;
+	public void setHtarget(String htarget) {
+		this.htarget = htarget;
 	}
-	public String getReviewContents() {
-		return reviewContents;
+	public String getHloca() {
+		return hloca;
 	}
-	public void setReviewContents(String reviewContents) {
-		this.reviewContents = reviewContents;
+	public void setHloca(String hloca) {
+		this.hloca = hloca;
 	}
-	public int getReviewDelYn() {
-		return reviewDelYn;
+	public String getHpeople() {
+		return hpeople;
 	}
-	public void setReviewDelYn(int reviewDelYn) {
-		this.reviewDelYn = reviewDelYn;
+	public void setHpeople(String hpeople) {
+		this.hpeople = hpeople;
+	}
+	public String getHtext() {
+		return htext;
+	}
+	public void setHtext(String htext) {
+		this.htext = htext;
+	}
+	public String getHimg() {
+		return himg;
+	}
+	public void setHimg(String himg) {
+		this.himg = himg;
+	}
+	public int getHdelYn() {
+		return hdelYn;
+	}
+	public void setHdelYn(int hdelYn) {
+		this.hdelYn = hdelYn;
 	}
 	public int getGidx() {
 		return gidx;
@@ -79,6 +103,6 @@ public class EvReviewVo {
 	public void setGidx(int gidx) {
 		this.gidx = gidx;
 	}
-	
+	private int gidx;
 	
 }
