@@ -1,4 +1,4 @@
-package service;
+ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,5 +77,40 @@ public class MemberServiceImpl {
 		
 		return id;
 	}
+	
+	
+	
+	/*  (À±Áø)*/
 
+	public int memberInsert(String memberName,String memberId,String memberPwd,String memberEmail,String memberPhone,String writerday,String delYn) {
+		int value = 0;
+		
+		try {
+		String sql = "insert into Api_member(MIDX,MID,MPWD,MPHN,MNAME,MEMAIL,MTYPE,MDATE,MDELYN,WRITEDAY,DELYN,IP) values(midx_seq.nextval,?,?,?,?,?,?,?,?,sysdate,?,?)";
+	    pstmt = conn.prepareStatement(sql);
+	  //  pstmt.setInt(1, 11);
+		pstmt.setString(1,memberName);
+		pstmt.setString(2,memberId);
+		pstmt.setString(3,memberPwd);
+		pstmt.setString(4,memberEmail);
+		pstmt.setString(5,memberPhone);
+		pstmt.setString(6,writerday);
+		pstmt.setString(7,delYn);
+		pstmt.execute();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+						
+		}	
+		
+		return value;
+	}
+	
+	
 }
