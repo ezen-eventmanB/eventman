@@ -49,9 +49,16 @@ public class MemberController extends HttpServlet {
 		if(str2.equals("EventMan_Member_Join.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
 			rd.forward(request, response);
+			
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
+			rd.forward(request, response);
+			
+/* 마이 페이지로 이동*/	
+			
+		}else if(str2.equals("EventMan_Mypage_Main.do")) {
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
 			
 /*회원가입 Action 페이지 이동*/			
