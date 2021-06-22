@@ -78,7 +78,8 @@ public class ReviewServiceImpl {
 		
 	}
 
-/*	중간네비 기업행사만 보기	*/
+	
+/*	중간 네비 기업행사만 보기	*/
 	public ArrayList<EvReviewVo> reviewSelectCompany() {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
@@ -119,9 +120,148 @@ public class ReviewServiceImpl {
 			
 		}
 		
+		return reviewList;
+	}
+
+	
+/*	중간 네비 대학 클릭시 ajax	*/	
+	public ArrayList<EvReviewVo> reviewSelectUniversity() {
+		
+		ArrayList<EvReviewVo> reviewList = new ArrayList();
+		
+		String sql = "select * from EVE_REVIEW where hdelYn='N' and hcata like '대학' ORDER BY hidx DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				EvReviewVo erv = new EvReviewVo();
+				
+				erv.setHimg(rs.getString("Himg"));
+				erv.sethName(rs.getString("hname"));
+				erv.setHdate(rs.getString("hdate"));
+				erv.setHenddate(rs.getString("henddate"));
+				erv.setHcata(rs.getString("hcata"));
+				erv.setHprice(rs.getNString("hprice"));
+				erv.setHpeople(rs.getString("hpeople"));
+
+				reviewList.add(erv);
+			}
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
 		return reviewList;
 	}
+	
+	
+/*	중간 네비 공연 클릭시 ajax	*/	
+	public ArrayList<EvReviewVo> reviewSelectStage() {
+		
+		ArrayList<EvReviewVo> reviewList = new ArrayList();
+		
+		String sql = "select * from EVE_REVIEW where hdelYn='N' and hcata like '공연' ORDER BY hidx DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				EvReviewVo erv = new EvReviewVo();
+				
+				erv.setHimg(rs.getString("Himg"));
+				erv.sethName(rs.getString("hname"));
+				erv.setHdate(rs.getString("hdate"));
+				erv.setHenddate(rs.getString("henddate"));
+				erv.setHcata(rs.getString("hcata"));
+				erv.setHprice(rs.getNString("hprice"));
+				erv.setHpeople(rs.getString("hpeople"));
+
+				reviewList.add(erv);
+			}
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return reviewList;
+	}
+	
+	
+/*	중간 네비 기타 클릭시 ajax	*/	
+	public ArrayList<EvReviewVo> reviewSelectxEeption() {
+		
+		ArrayList<EvReviewVo> reviewList = new ArrayList();
+		
+		String sql = "select * from EVE_REVIEW where hdelYn='N' and hcata like '기타' ORDER BY hidx DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				EvReviewVo erv = new EvReviewVo();
+				
+				erv.setHimg(rs.getString("Himg"));
+				erv.sethName(rs.getString("hname"));
+				erv.setHdate(rs.getString("hdate"));
+				erv.setHenddate(rs.getString("henddate"));
+				erv.setHcata(rs.getString("hcata"));
+				erv.setHprice(rs.getNString("hprice"));
+				erv.setHpeople(rs.getString("hpeople"));
+
+				reviewList.add(erv);
+			}
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return reviewList;
+	}
+	
+
+	
+	
+	
 	
 /*	페이징 처리를 위한 카운트	*/
 /*

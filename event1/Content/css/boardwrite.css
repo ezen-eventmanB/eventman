@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+	.boardwritearea{
+		max-width:65%;
+		margin:0px auto;
+		margin-top:100px;
+		margin-bottom:200px;
+		font-style: gray;
+	}
+	.writeheader{
+		text-align:center;
+		font-size:30px;
+		margin-bottom: 40px;
+
+	}
+	.writetitle{
+		width:100%;
+		margin-bottom: 20px;
+		height:40px;
+		
+	}
+	.sectionheader{
+		text-align:left;
+		font-size:25px;
+		margin-bottom: 20px;
+	}
+	.form-select{
+		margin-bottom: 20px;
+	}
+	.form-label{
+		
+	}

@@ -111,6 +111,7 @@ public class ReviewController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp"); 	
 			rd.forward(request, response);
 			
+			
 /*	중간 네비 기업 클릭시 ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectCompany.do")) {
 			
@@ -119,6 +120,51 @@ public class ReviewController extends HttpServlet {
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 			
 			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectCompany();
+			
+			request.setAttribute("reviewList", reviewList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp"); 	
+			rd.forward(request, response);
+			
+			
+/*	중간 네비 대학 클릭시 ajax	*/			
+		}else if(str2.equals("EventMan_Review_selectUniversity.do")) {
+			
+			System.out.println("--if문 => ajax EventMan_Review_selectUniversity.do 실행");
+			
+			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+			
+			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectUniversity();
+			
+			request.setAttribute("reviewList", reviewList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp"); 	
+			rd.forward(request, response);
+			
+			
+/*	중간 네비 공연 클릭시 ajax	*/			
+		}else if(str2.equals("EventMan_Review_selectStage.do")) {
+			
+			System.out.println("--if문 => ajax EventMan_Review_selectStage.do 실행");
+			
+			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+			
+			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectStage();
+			
+			request.setAttribute("reviewList", reviewList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp"); 	
+			rd.forward(request, response);
+			
+			
+/*	중간 네비 기타 클릭시 ajax	*/			
+		}else if(str2.equals("EventMan_Review_selectxEeption.do")) {
+			
+			System.out.println("--if문 => ajax EventMan_Review_selectxEeption.do 실행");
+			
+			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+			
+			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectxEeption();
 			
 			request.setAttribute("reviewList", reviewList);
 			

@@ -31,28 +31,6 @@
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	
 </style>
 
 <script>
@@ -79,18 +57,36 @@
 	}
 	
 	function selectUniversity(){
-		
-		alert("selectUniversity")
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectUniversity.do",
+			type:"post",
+			data:"",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
 	}
 	
 	function selectStage(){
-		
-		alert("selectStage")
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectStage.do",
+			type:"post",
+			data:"",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
 	}
 	
 	function selectxEeption(){
-		
-		alert("selectxEeption")
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectxEeption.do",
+			type:"post",
+			data:"",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
 	}
 </script>
 
@@ -100,91 +96,75 @@
 <div class="container ajax">
 
 <!-- 상단 네비 부분 -->
-	<div class="container">
-		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
-		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-		    </a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      	<span class="navbar-toggler-icon"></span>
-		   	</button>
-		    <div class="collapse navbar-collapse w-50" id="navbarNav">
-		    
-	      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
-	        		<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-	        		</li>
-	        		<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-	        		</li>
-	       			<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-	       			</li>
-	       			<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-	       			</li>
-	       		</ul>
-	       	
-	
-				<!--로그인 전 상단 화면  -->	
-						<%
-						if(member_id == null){
-						%>
-						
-		       		<ul class="navbar-nav" id="Memberbox" >	
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-		       			</li>
-		       			<li class="nav-item"> 
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-		       			</li>																	
-		      		</ul>
-		      		
-		      	<!--로그인 후 상단 화면  -->
-						<%
-				      	}else{
-						%>	
-			       	<ul class="navbar-nav" id="Memberbox" >	
-			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-			       		</li>
-			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-			       		</li>
-			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-			       		</li>																			
-			      	</ul>
-				   		<%
-				   		}
-				    	%>
-	    	</div>	
-		</nav>
+<div class="container">
+	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
+		<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse w-50" id="navbarNav">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+				<li class="nav-item px-5">
+					<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+				</li>
+				<li class="nav-item px-5">
+					<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+				</li>
+				<li class="nav-item px-5">
+					<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+				</li>
+				<li class="nav-item px-5">
+					<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+				</li>
+			</ul>	
+<!--로그인 전 상단 화면  -->	
+			<%if(member_id == null){%>
+				<ul class="navbar-nav" id="Memberbox" >	
+					<li class="nav-item">
+						<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+					</li>
+					<li class="nav-item"> 
+						<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+					</li>																	
+				</ul>
+<!--로그인 후 상단 화면  -->
+			<%}else{%>	
+				<ul class="navbar-nav" id="Memberbox" >	
+					<li class="nav-item">
+						<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
+					</li>
+					<li class="nav-item"> 
+						<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
+					</li>
+					<li class="nav-item"> 
+						<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+					</li>																			
+				</ul>
+			<%}%>
+		</div>	
+	</nav>
 </div>
 		
 
 <!-- 페이지 위치 안내 -->
-	<div class="container"  id="containermargin">	
-		<!-- 집 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-		</svg>
+<div class="container"  id="containermargin">	
+	<!-- 집 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+	</svg>
+	
+	<!-- 화살표 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	
+	<!-- 현제 페이지 이름 -->
+	행사리뷰
+</div>
 		
-		<!-- 화살표 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-		</svg>
-		
-		<!-- 현제 페이지 이름 -->
-		행사리뷰
-	</div>
-		
-
-
-
-
 
 
 <!-- 중앙 네비 카테고리 검색창 -->
@@ -242,10 +222,9 @@
 
 <!-- 메인 행사리뷰 부분 3x3출력 -->
 <section id="load">
-		<%-- <div class="album">
+		<div class="album">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					
 	 				<% for(EvReviewVo erv : reviewList){ %>
 						<div class="col">
 							<div class="card shadow-sm">
@@ -260,12 +239,10 @@
 								</div>
 							</div>
 						</div>
-					
 					<%}; %>
-					
 				</div>
 			</div> 
-		</div> --%>
+		</div>
 </section>
 
 

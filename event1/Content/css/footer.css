@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /* 메인 푸터*/
- 	#footer{
+ 	.footer{
 		padding-top: 100px;
+		margin-top:100px;
 	}

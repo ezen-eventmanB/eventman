@@ -15,69 +15,11 @@
 	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
 	<!-- footer CSS -->
 	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
-	
+	<!-- BoardWrite CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/boardwrite.css">
 	
 	
 <style>
-
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 중앙 nav form CSS */
-	#midnav .nav-item{
-		font-weight: bold;
-		font-weight: 900;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	.boardwritearea{
-		max-width:65%;
-		margin:0px auto;
-		margin-top:100px;
-		margin-bottom:200px;
-		font-style: gray;
-	}
-	.writeheader{
-		text-align:center;
-		font-size:30px;
-		margin-bottom: 40px;
-
-	}
-	.writetitle{
-		width:100%;
-		margin-bottom: 20px;
-		height:40px;
-		
-	}
-	.sectionheader{
-		text-align:left;
-		font-size:25px;
-		margin-bottom: 20px;
-	}
-	.form-select{
-		margin-bottom: 20px;
-	}
-	.form-label{
-		
-	}
 
 </style>
 </head>

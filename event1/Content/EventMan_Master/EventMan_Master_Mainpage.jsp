@@ -101,7 +101,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-4 mx-auto">0
+		<div class="col-sm-4 mx-auto">
 			<img class="iconimg" src="../review.png">
 			<div class="d-grid gap-2">
 				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">행사리뷰</button>
