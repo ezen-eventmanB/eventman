@@ -42,6 +42,7 @@ public class CostController extends HttpServlet {
 		System.out.println("str1 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
+		
 		if(str2.equals("EventMan_Cost.do")) {
 			
 			

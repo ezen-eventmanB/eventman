@@ -64,6 +64,57 @@
 	}
 
 </style>
+<script>
+	function check(){
+		var fm = document.frm;		
+
+		if (fm.memberId.value =="")	{
+			alert("아이디를 입력하세요.");
+			fm.memberId.focus();
+			return;
+		}else if (fm.memberPwd.value==""){
+			alert("비밀번호를 입력하세요.");
+			fm.memberPwd.focus();
+			return;
+		}else if (fm.memberPwd2.value==""){
+			alert("비밀번호 입력2");
+			fm.memberPwd2.focus();
+			return;
+		}else if (fm.memberPwd.value !=	fm.memberPwd2.value){
+		    alert("비밀번호 비교");
+			fm.memberPwd2.value = "";
+			fm.memberPwd2.focus();
+			return;
+		}else if (fm.memberName.value ==""){
+		    alert("이름을 입력하세요.");
+			fm.memberName.focus();
+			return;
+		}else if (fm.memberEmail.value ==""){
+		    alert("이메일을 입력하세요.");
+			fm.memberEmail.focus();
+			return;
+		}else if (fm.memberJumin.value ==""){
+		    alert("주민번호를 입력하세요.");
+			fm.memberJumin.focus();
+			return;
+		}else if (fm.memberPhone.value ==""){
+		    alert("핸드폰 번호를 입력하세요.");
+			fm.memberPhone.focus();
+			return;
+		}
+			fm.action ="<%=request.getContextPath()%>/EventMan_Main.do";
+			fm.method = "post";
+			fm.submit();	
+
+		return;
+	}
+		
+
+	
+	
+	
+
+</script>
 </head>
 <body>
 
@@ -121,13 +172,11 @@
 		<!-- 현제 페이지 이름 -->
 		회원가입
 	</div>
-	
-	
 		<div class="joinroom">
-		
 			<span class="jointitle">회원가입</span>
 			<hr>
-				<!-- 회원 유행 -->
+				<!-- 회원 유형 -->
+				<form name="frm">
 					<div class="join-member-menu">
 						<button type="button" class="btn btn-secondary">회원 유형</button>
 						<button type="button" class="btn btn-outline-success">기업</button>
@@ -135,48 +184,52 @@
 						<button type="button" class="btn btn-outline-info">개인</button>
 					</div>
 					<br>
-				<!--아이디 & 중복확인  -->
+				<!-- 아이디 & 중복확인  -->
 					<div class="input-group mb-3">
-					  <input type="text" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
+					  <input type="text" name="memberId" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
 					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">중복확인</button>
 					</div>
+
 				<!--비밀번호  -->
 					<div class="memberpwd">	
 						<input type="text" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+
 					</div>
-				<!--비밀번호 확인  -->
+				<!-- 비밀번호 확인  -->
 					<br>
 					<div class="membercheckpwd">	
+
+						<input type="password" name="memberPwd2" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
 						<input type="text" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
 					<br>
-				<!--이름  -->
-					<div class="membername">	
-						<input type="text" class="form-control" placeholder="Name" aria-label="Recipient's username" aria-describedby="button-addon2">
+				<!-- 이름  -->
+					<div class="memberName">	
+						<input type="text" name="memberName" class="form-control" placeholder="이름" aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
-				<!--연락처  -->
+				<!-- 연락처  -->
 					<br>
 					<div class="input-group mb-3">
-					  <input type="text" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="button-addon2">
+					  <input type="text" name="memberPhone" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="button-addon2">
 					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호 보내기</button>
 					</div>
-				<!--인증번호  -->
+				<!-- 인증번호  -->
 					<div class="phonecheck">	
 						<input type="text" class="form-control" placeholder="인증번호" aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
-				<!--이메일  -->
+				<!-- 이메일  -->
 					<br>
-					<div class="memberemail">	
-						<input type="text" class="form-control" placeholder="E-mail" aria-label="Recipient's username" aria-describedby="button-addon2">
+					<div class="memberEmail">	
+						<input type="email" name="memberEmail" class="form-control" placeholder="E-mail" aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
 					<br>
-				<!--회원가입  -->
+				<!-- 회원가입  -->
 				<div class="d-grid gap-2">
-				  <button class="btn btn-primary" type="button">회원가입</button>
-				  
+				  <button class="btn btn-primary" type="button" onclick="check()">회원가입</button>  
 				</div>
+				</form>
 		</div>
-
+		
 
 <!-- 메인 푸터 -->
 <div class="footer">
