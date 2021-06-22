@@ -72,23 +72,26 @@ public class MemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("S_memberId", memberId);
 				session.setAttribute("midx", midx);
+				
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
 			}else{
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
 				}
-			}else if(str2.equals("EventMan_Member_LogoutAction.do")) {		
-
+			
+			/*로그아웃 실행*/
+			
+			}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
+				
 				HttpSession session = request.getSession();
 				session.invalidate(); // 모든세션정보 삭제
-				PrintWriter out =response.getWriter();
-				out.println("<script>document.location.href='"+request.getContextPath()+"';</script>");
-		        response.sendRedirect("../EventMan_Main/EventMan_Main.jsp"); // 메인 화면으로 이동.
+				PrintWriter out =response.getWriter();    
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp';</script>");
       
+				
 /* ID찾기 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {		
 			
 			System.out.println("EventMan_Member_Find_Id.do if문 실행");		
-
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
 			rd.forward(request, response);
 			
