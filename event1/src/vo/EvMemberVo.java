@@ -3,13 +3,14 @@ package vo;
 public class EvMemberVo {
 	
 	private int midx;
-	private String memberName;
-	private String memberId;
-	private String memberPwd;
-	private String memberEmail;
-	private String memberPhone;
-	private String writeday;
-	private String delYn;
+	private String mId;
+	private String mPwd;
+	private String mPhn;
+	private String mName;
+	private String mEmail;
+	private int mType;
+	private String wdate;
+	private String mDelYn;
 	
 	public int getMidx() {
 		return midx;
@@ -17,47 +18,59 @@ public class EvMemberVo {
 	public void setMidx(int midx) {
 		this.midx = midx;
 	}
-	public String getMemberName() {
-		return memberName;
+	public String getmId() {
+		return mId;
 	}
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
+	public String getmPwd() {
+		return mPwd;
+	}
+	public void setmPwd(String mPwd) {
+		this.mPwd = mPwd;
+	}
+	public String getmPhn() {
+		return mPhn;
+	}
+	public void setmPhn(String mPhn) {
+		this.mPhn = mPhn;
+	}
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+	public int getmType() {
+		return mType;
+	}
+	public void setmType(int mType) {
+		this.mType = mType;
+	}
+	public String getWdate() {
+		return wdate;
+	}
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+	public String getmDelYn() {
+		return mDelYn;
+	}
+	public void setmDelYn(String nDelYn) {
+		this.mDelYn = nDelYn;
 	}
 	public String getMemberId() {
-		return memberId;
+		// TODO Auto-generated method stub
+		return null;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
-	}
-	public String getMemberPwd() {
-		return memberPwd;
-	}
-	public void setMemberPwd(String memberPwd) {
-		this.memberPwd = memberPwd;
-	}
-	public String getMemberEmail() {
-		return memberEmail;
-	}
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
-	}
-	public String getMemberPhone() {
-		return memberPhone;
-	}
-	public void setMemberPhone(String memberPhone) {
-		this.memberPhone = memberPhone;
-	}
-	public String getWriteday() {
-		return writeday;
-	}
-	public void setWriteday(String writeday) {
-		this.writeday = writeday;
-	}
-	public String getDelYn() {
-		return delYn;
-	}
-	public void setDelYn(String delYn) {
-		this.delYn = delYn;
-	}
+	
+
 	
 }

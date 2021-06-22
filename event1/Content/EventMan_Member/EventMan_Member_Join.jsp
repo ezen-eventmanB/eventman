@@ -189,14 +189,18 @@
 					  <input type="text" name="memberId" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
 					  <button class="btn btn-outline-secondary" type="button" id="button-addon2">중복확인</button>
 					</div>
-				<!-- 비밀번호 -->
-					<div class="memberPwd">	
-						<input type="password" name="memberPwd" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+
+				<!--비밀번호  -->
+					<div class="memberpwd">	
+						<input type="text" class="form-control" placeholder="비밀번호를 입력해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
+
 					</div>
 				<!-- 비밀번호 확인  -->
 					<br>
 					<div class="membercheckpwd">	
+
 						<input type="password" name="memberPwd2" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+						<input type="text" class="form-control" placeholder="비밀번호를 확인해주세요." aria-label="Recipient's username" aria-describedby="button-addon2">
 					</div>
 					<br>
 				<!-- 이름  -->

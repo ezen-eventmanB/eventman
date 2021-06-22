@@ -8,10 +8,12 @@
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
 <script>
-	function findId(){
-		var frm = document.frm;
-		
+
+function findId(){
+
 		if(frm.name == ""){
 			alert('아이디를 입력해주세요.');
 			document.getlementById('name').focus();
@@ -19,18 +21,105 @@
 			alert('전화번호를 입력해주세요.')
 			document.getlementById('phone').focus();
 		}else{
-			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do"; 
+			frm.action="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do"; 
 			frm.method = "POST";
 			frm.submit();
-			return;
+			return;	
+			
 		}
-	}
-</script>
+		
+
+    var username = $("#name").val();
+    var userphone = $("#phone").val();
+    var alldata = { "name": username, "phone": userphone };
+    
+    if(username.trim() =='' || userphone.trim()==''){
+		$("#modal1").modal("show");	
+		
+	}else{
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",
+			type:"post",
+			data:alldata,
+			success:function(data){
+				var str = data.trim();
+				$("#findidspan").html(str);
+				$("#modal").modal("show");
+			}	
+		})
+
+	};
+
+};
+
+
+
+function phonecheckFn(){
+		
+	    var username = $("#name").val();
+	    var userphone = $("#phone").val();
+	    var alldata = { "name": username, "phone": userphone };
+	    
+	    if(username.trim() =='' || userphone.trim()==''){
+	    	
+			$("#modal1").modal("show");	
+			
+  }else{
+
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_phonecheck.do",
+			type:'post',
+			data:alldata,
+			success: function(data){
+				$('#phonecheck').html(data);
+				$("#modal3").modal("show");
+			}// end
+		});// end ajax
+			
+			return false;
+			
+		
+	};
+};
+
 	
-	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+
+
+</script>
+
+
+<!-- top nav CSS -->
+<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+<!-- footer CSS -->
+<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+
+
+
+</script>
+
+		<%-- <script>
+		   function findId(){
+		      
+		      $.ajax({
+		         url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",
+		         type:"post",
+		         data:"",
+		         success:function(data){
+		            $("#truemodal").modal("show");
+		         }   
+		
+		      });
+		            
+		   }
+		   
+		</script> --%>
+
+
+<!-- <script>
+	$('#truemodal').modal('toggle')
+</script>
+ -->
+
 
 <style>
 
@@ -148,10 +237,15 @@
 					</tr>
 					<tr>
 						<td>
-							<div class="input-group mb-3">
+<!-- 							<div class="input-group mb-3">
 								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
 								<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
 								<button class="btn btn-outline-secondary" type="button" id="button-addon2"  onclick="location.href='EventMan_phonecheck.jsp'">인증번호</button>
+							</div> -->
+							<div class="input-group mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
+								<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+								<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="phonecheckFn()">인증번호</button>
 							</div>
 						</td>
 					</tr>
@@ -170,9 +264,8 @@
 				
 				
 				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm"  onclick="findId()">확인</button>
-					<!-- data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Find_Pw.jsp'">비밀번호찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findId()">확인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='/EventMan_Member/EventMan_Member_Find_pw.jsp'">비밀번호찾기</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='EventMan_Member_Login.jsp'">뒤로</button>
 				</div>
 			</form>
@@ -181,42 +274,65 @@
 		
 
 
-
 <!-- 성공 모달 -->
-	<div class="modal fade" id="truemember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel"></h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        고객님의 아이디는 <%  %> 입니다. 로그인 페이지로 이동합니다.
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="findidspan"> </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- 실패 모달 -->
-	<div class="modal fade" id="flasemember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel"></h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        일치하는 회원정보가 없습니다.
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
+<!-- 이름 or 전화번호 입력 요구 모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         이름과 전화번호를 정확히 입력해주세요.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 휴대폰 인증모달 -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <div id="phonecheck">      
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 <!-- 메인 푸터 -->

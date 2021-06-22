@@ -1,0 +1,30 @@
+@charset "UTF-8";
+	
+	.iconimg{
+		max-width:100px;
+		margin:1px auto;
+		margin-top: 20px;
+	}
+	.col-sm-4{
+		text-align:center;
+	}
+	.col{
+		text-align:center;
+	}
+	.box{
+		border:1px solid black;
+	}
+	.heightsize{
+		height:100px;
+		width:100%;
+		max-width:400px;
+		margin:10px auto;
+	}
+	.heightsize1{
+		margin:1px auto;
+		height:100px;
+		width:100%;
+		max-width:1050px;
+	}
+	
+

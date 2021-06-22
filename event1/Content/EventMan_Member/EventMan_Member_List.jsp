@@ -24,7 +24,7 @@
 			<%for(EvMemberVo ev : alist) { %>
 			<tr>
 			<td><%=ev.getMidx()%></td>
-			<td><%=ev.getMemberName() %></td>
+			<td><%=ev.getmName()%></td>
 			<td><%=ev.getMemberId() %></td>
 			</tr>
 			<% } %>

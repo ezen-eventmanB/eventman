@@ -1,23 +1,14 @@
 @charset "UTF-8";
 
 	#navbar-nav{
-		width:800px;
 		margin:1px auto;
-		text-align: center;
 		font-size: 20px;
 	}
 	#navbar-nav li{
 		margin:1px auto;
-		text-align: center;
 	}
-	#liright1{
-		width:80px;
-		text-align: right;
-		margin-right:1px;
-	}
-	#liright2{
-		text-align: right;
-		margin-right:1px;
+	#memberbox li{
+		margin:1px auto;
 	}
 	.nav-li:hover {
 		color:black;	
@@ -26,7 +17,7 @@
 		height:44px;
 	}
 	#toprogoimg{
-		width:300px;
+		width:250px;
 	}
 	
 	/*위에서 살짝 떨어지는 밑줄 CSS*/
