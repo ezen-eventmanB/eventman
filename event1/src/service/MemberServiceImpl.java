@@ -46,11 +46,10 @@ public class MemberServiceImpl {
 			} catch (SQLException e) {			
 				e.printStackTrace();
 			}		
-		
+			
 		return midx;
 	}
 
-	
 	/* 아이디 찾기 버튼 클릭시 메소드 (황현호) */
 	public String findId(String name, String phone) {
 		

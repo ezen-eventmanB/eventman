@@ -15,31 +15,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
 
 </script>
-<script language = "javascript">
-	function check(){
-		
-		var frm = document.frm;
-				
-		if (document.frm.memberId.value =="")	{
-			
-			document.getlementById('memberId').focus();
-			return;
-		}else if (document.frm.memberPwd.value==""){
-			
-			document.getlementById('memberPwd').focus();
-			return;
-		}else if ()														
-			document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
-			document.frm.method = "post";
-			document.frm.submit();	
-	
-		return;
-	}
-	
-	   	
-	   	
-</script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+  
+var frm = document.frm;
 
+function check(){         
+ 
+	   if(document.frm.memberId.value =="")   {
+		   
+	      $("#modaltext").html("아이디를 입력해주세요");
+	      $("#exampleModal").modal("show");   
+	      document.getlementById('memberId').focus();
+	      
+	   }else if(document.frm.memberPwd.value==""){
+		   
+		   $("#modaltext").html("비밀번호를 입력해주세요");
+		   $("#exampleModal").modal("show");   
+	      document.getlementById('memberPwd').focus();
+	      
+	   }else{                                 
+	      document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
+	      document.frm.method = "post";
+	      document.frm.submit();    
+	      return;
+	    }
+	 }
+	
+	</script>
 <style>
 
 /* 로그인 화면 */
@@ -176,7 +179,7 @@
 						</td>
 						<td rowspan='2'>
 							<div class="d-grid gap-2">
-								<button class="btn btn-outline-secondary btn-sm" type="button" id="loginbtn"   data-bs-toggle="modal" data-bs-target="#exampleModal" tabindex=3 onclick="check()">로그인</button>
+								<button class="btn btn-outline-secondary btn-sm" type="button" id="loginbtn" tabindex=3 onclick="check()">로그인</button>
 							</div>
 						</td>
 					</tr>
@@ -215,7 +218,7 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	       	 아이디 및 패스워드를 입력해주세요.
+	       	 <span id="modaltext""></span>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
