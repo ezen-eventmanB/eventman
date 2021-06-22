@@ -21,25 +21,25 @@ var frm = document.frm;
 
 function check(){         
  
-	   if(document.frm.memberId.value =="")   {
-		   
-	      $("#modaltext").html("아이디를 입력해주세요");
-	      $("#exampleModal").modal("show");   
-	      document.getlementById('memberId').focus();
-	      
-	   }else if(document.frm.memberPwd.value==""){
-		   
-		   $("#modaltext").html("비밀번호를 입력해주세요");
-		   $("#exampleModal").modal("show");   
-	      document.getlementById('memberPwd').focus();
-	      
-	   }else{                                 
-	      document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
-	      document.frm.method = "post";
-	      document.frm.submit();    
-	      return;
-	    }
-	 }
+
+	if(document.frm.memberId.value =="")   {
+		
+		$("#modaltext").html("아이디를 입력해주세요");
+		$("#exampleModal").modal("show");	
+		document.getlementById('memberId').focus();
+	}else if(document.frm.memberPwd.value==""){
+		
+		$("#modaltext").html("비밀번호를 입력해주세요");
+		$("#exampleModal").modal("show");	
+		document.getlementById('memberPwd').focus();
+	}else{                                 
+		document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
+		document.frm.method = "post";
+		document.frm.submit();    
+		return;
+    }
+ }
+
 	
 	</script>
 <style>

@@ -47,17 +47,12 @@ public class MemberController extends HttpServlet {
 		
 /* 회원가입 페이지로 이동*/
 		if(str2.equals("EventMan_Member_Join.do")) {
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
 			rd.forward(request, response);
-		
-			
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);
-		
 			
 /* 로그인 Action 페이지로 이동*/    
 		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
@@ -72,25 +67,33 @@ public class MemberController extends HttpServlet {
 			int midx = md.memberLoginCheck(memberId, memberPwd);			
 			System.out.println(midx);
 			
+
 			PrintWriter out = response.getWriter();
 			
 			if (midx > 0) { 
-				
 				HttpSession session = request.getSession();
 				session.setAttribute("S_memberId", memberId);
 				session.setAttribute("midx", midx);
 				
-				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
-					
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
 			}else{
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
 				}
+			
+			/*로그아웃 실행*/
+			
+			}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
+				
+				HttpSession session = request.getSession();
+				session.invalidate(); // 모든세션정보 삭제
+				PrintWriter out =response.getWriter();    
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp';</script>");
+      
 				
 /* ID찾기 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {		
 			
 			System.out.println("EventMan_Member_Find_Id.do if문 실행");		
-
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
 			rd.forward(request, response);
 			
@@ -135,25 +138,12 @@ public class MemberController extends HttpServlet {
 
 /* 본인확인 데이터 가져오기*/						
 		}else if(str2.equals("EventMan_phonecheck_Action.do")){
-			
-			
-	
-			
+		
 			
 			System.out.println("EventMan_phonecheck_Action.do if문");
 			
 			
-			 
-			 
-			
-			
-			
-			
 		}
-		
-		
-		
-
 		
 
 	}

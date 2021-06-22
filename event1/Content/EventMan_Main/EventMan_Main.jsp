@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-out.println("세션에 담긴 아이디는?");
+ <%
 String member_id = (String)session.getAttribute("S_memberId");
-out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
-
-%>       
+%>     
     
     
 <!doctype html>
@@ -25,7 +22,7 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-	
+<style>
 	
 <style>
 
@@ -86,72 +83,74 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 	       	
 	
 				<!--로그인 전 상단 화면  -->	
-				<%
-				if(member_id == null){
-				%>
-			       	
+						<%
+						if(member_id == null){
+						%>
+						
 		       		<ul class="navbar-nav" id="Memberbox" >	
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
 		       			</li>
 		       			<li class="nav-item"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-		       			</li>
+		       			</li>																	
 		      		</ul>
-			      	
-			   <!--로그인 후 상단 화면  -->
-				<%
-		      		}else{
-				%>	
-			       		<ul class="navbar-nav" id="Memberbox" >	
-			       			<li class="nav-item">
-			          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-			       			</li>
-			       			<li class="nav-item"> 
-			          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-			       			</li>
-			       			<li class="nav-item"> 
-			          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-			       			</li>																			
-			      		</ul>
-		   		<%
-		   		}
-		    	%>
+		      		
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else{
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				    	%>
 	    	</div>	
 		</nav>
+</div>
+		
+
+
+
+<!-- 중앙배너부분 -->
+<div class="bd-example ">
+	<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item">
+				<!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 두 번째 슬라이드" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">상담 신청</text></svg> -->
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner1.jpg" >
+			</div>
+			<div class="carousel-item active">
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner2.jpg" >
+
+			</div>
+			<div class="carousel-item">
+				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner3.jpg" >
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이전</font></font></span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음</font></font></span>
+		</button>
+  	
+
+
 	</div>
 			
-	
-	
-	
-	<!-- 중앙배너부분 -->
-	<div class="bd-example ">
-		<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item">
-					<!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 두 번째 슬라이드" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">상담 신청</text></svg> -->
-					<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner1.jpg" >
-				</div>
-				<div class="carousel-item active">
-					<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner2.jpg" >
-	
-				</div>
-				<div class="carousel-item">
-					<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner3.jpg" >
-				</div>
-			</div>
-			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이전</font></font></span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음</font></font></span>
-			</button>
-		</div>
-	</div>
-	
-	
+
 	
 	
 	<!-- 중앙 네비 카테고리 검색창 -->
