@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-out.println("세션에 담긴 아이디는?");
+ <%
 String member_id = (String)session.getAttribute("S_memberId");
-out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
-
-%>       
+%>     
     
     
 <!doctype html>
@@ -25,7 +22,7 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-	
+<style>
 	
 <style>
 
@@ -110,12 +107,12 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 		       			</li>
 		       			<li class="nav-item"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-		       			</li>																			
+		       			</li>																				
 		      		</ul>
 	   		<%
 	   		}
-	    	%>
-    	</div>	
+	    	%>						
+   		</div>	
 	</nav>
 </div>
 		
