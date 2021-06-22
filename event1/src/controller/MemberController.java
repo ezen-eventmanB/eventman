@@ -72,8 +72,8 @@ public class MemberController extends HttpServlet {
 			int midx = md.memberLoginCheck(memberId, memberPwd);			
 			System.out.println(midx);
 			
+			PrintWriter out = response.getWriter();
 			
-				PrintWriter out = response.getWriter();
 			if (midx > 0) { 
 				
 				HttpSession session = request.getSession();
