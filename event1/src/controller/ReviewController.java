@@ -48,7 +48,7 @@ public class ReviewController extends HttpServlet {
 		System.out.println("str1 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
-		
+
 		
 /*	행사리뷰 메인 페이지 뿌려주는 부분	*/
 		

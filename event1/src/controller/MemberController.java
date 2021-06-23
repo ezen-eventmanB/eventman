@@ -45,14 +45,46 @@ public class MemberController extends HttpServlet {
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
 		
+		
 /* 회원가입 페이지로 이동*/
 		if(str2.equals("EventMan_Member_Join.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
 			rd.forward(request, response);
+			
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);
+		
+			
+			
+/* 마이 페이지로 이동*/		
+		}else if(str2.equals("EventMan_Mypage_Main.do")) {
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
+			rd.forward(request, response);
+/* 회원정보 수정 화면 이동*/			
+		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Modify.jsp"); 	
+			rd.forward(request, response);	
+			
+			
+			
+/*회원가입 Action 페이지 이동*/			
+		}else if(str.equals("/memberWriteAction.do")) {
+				
+				String mId = request.getParameter("mId");
+				String mPwd = request.getParameter("mPwd");
+				String mName = request.getParameter("mName");
+				String mEmail = request.getParameter("mEmail");
+				String mPhone = request.getParameter("mPhone");
+				String mType = request.getParameter("mType");
+				
+				String ip = InetAddress.getLocalHost().getHostAddress();
+
+				MemberServiceImpl md = new MemberServiceImpl();
+				md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+						
+				response.sendRedirect(request.getContextPath()+"/memberInsert.do");
 			
 /* 로그인 Action 페이지로 이동*/    
 		}else if (str2.equals("EventMan_Member_LoginAction.do")) {

@@ -60,9 +60,12 @@ public class FrontController extends HttpServlet {
 		}else if(str2.equals("EventMan_Board")) {
 			BoardController bc = new BoardController();
 			bc.doGet(request, response);
+			
+			//마이페이지
+		}else if(str2.equals("EventMan_Mypage")) {
+			MemberController mmc = new MemberController();
+			mmc.doGet(request, response);
 		}
-		
-	
 	}
 
 

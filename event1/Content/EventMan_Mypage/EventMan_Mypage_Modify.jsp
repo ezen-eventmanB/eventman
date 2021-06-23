@@ -47,23 +47,51 @@ String member_id = (String)session.getAttribute("S_memberId");
 		margin:10px auto;
 		text-align:center;
 	}
-	.mypageimg{
-	margin-left:180px; 	
-	width:80%;
-	height:400px;
+	#roginbox{
+		max-width:500px;
+		margin:0px auto;
+		margin-top:100px;
+		margin-bottom:200px;
+		font-style: gray;
 	}
-	#Mapgeimg{
-		width:200px;
-		height:200px;
-		margin:10px auto;
+	
+	#inputwidth{
+		width:400px;
 	}
-	th{
-		width:200px;
-		height:200px;
+	
+	#loginbtn{
+		height:100px;
+		margin-left:20px;
+		position: relative;
+		bottom: 5px;
 	}
-	.writearea{
+	
+	table{
+		width:500px;
+	}
+	.input-group{
+		margin:5px;	
+	}
+	#underline1, #underline2{
+		border-bottom: 1px solid lightgray;
+		margin-bottom: 30px;
+	}
+	#underline1{
+		margin-bottom:50px;	
+	}
+	tr{
+		height:50px;
+	}
+	#EVENTMAN{
 		text-align:center;
 	}
+	.input-group-text{
+		width:180px;
+	}
+	#b1{
+		width:247px;
+	}
+	
 </style>
 </head>
 <body>
@@ -133,52 +161,98 @@ String member_id = (String)session.getAttribute("S_memberId");
 	    	</div>	
 		</nav>
 </div>
-		
-
-<!-- 페이지 위치 안내 -->
-	<div class="container"  id="containermargin">	
-		<!-- 집 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-		</svg>
-		
-		<!-- 화살표 아이콘 -->
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-		</svg>
-		
-		<!-- 현제 페이지 이름 -->
-		My page
-	</div>
-		
-
-
-		
-	<!-- 회사소개 페이지 -->
-	<article>
-		<!-- 회사 소개 이미지 -->
-		<div class="container">	
-			<div class="bd-example">
-				<img src="../mypagemain.png" alt="메인 페이지 사진" class="mypageimg">
-				<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
+			<!-- 페이지 위치 안내 -->
+			<div class="container"  id="containermargin">	
+				<!-- 집 아이콘 -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+					<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+				</svg>
+				
+				<!-- 화살표 아이콘 -->
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+				</svg>
+				
+				<!-- 현제 페이지 이름 -->
+				계정 수정하기
 			</div>
-		</div>
-	</article>
-	<hr/>
-	<table class="writearea">
-		<tr>
-			<th><img src="../budget.png" alt="견적신청 사진" class="mypageimg" id="Mapgeimg"></th>
-			<th></th>
-			<th><img src="../presentation.png" alt="게시판 글 작성 사진" class="mypageimg" id="Mapgeimg"></th>
-		</tr>
+					
+					
+			<!-- 회원정보 수정 테이블 -->		
+			<div class="container">
+				<div id="roginbox">
+					<div id="underline1">
+						<p class="fs-5 text-black-50">Modify</p>
+					</div>
+		
+				<div id="underline2">
+					<p class="fs-1 text-muted" id="EVENTMAN">회 원 정 보</p>
+				</div>
+				<form name="frm">
+					<table>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
+								</div>
+							</td>	
+						</tr>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">비밀번호 변경</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">비밀번호 변경 확인</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td id="inputwidth">
+								<div class="input-group mb-3">
+									<span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+								</div>
+							</td>
+						</tr>
+					</table>
+						<div>													
+							<button type="button" class="btn btn-outline-secondary" id="b1">돌아가기</button>
+							<button type="button" class="btn btn-outline-success" id="b1">수정하기</button>
+						</div>
+						<div class="d-grid gap-2">		
+							<button type="button" class="btn btn-outline-danger">탈퇴하기</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		
 
-		<tr>
-			<td>견적신청 0건</td>
-			<td></td>
-			<td>게시 글 0건</td>
-		</tr>
-	</table>
+
 
 
 <!-- 메인 푸터 -->
@@ -198,11 +272,6 @@ String member_id = (String)session.getAttribute("S_memberId");
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 
 
 
