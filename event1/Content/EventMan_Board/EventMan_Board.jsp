@@ -102,10 +102,10 @@ String member_id = (String)session.getAttribute("S_memberId");
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do">My page</a>
 			       		</li>
 			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
 			       		</li>
 			       		<li class="nav-item"> 
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>

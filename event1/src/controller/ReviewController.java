@@ -42,9 +42,10 @@ public class ReviewController extends HttpServlet {
 		System.out.println("str1 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
-		if(str2.equals("EventMan_Review_Main.do")) {
-			
-			
+		
+		
+		
+		if(str2.equals("EventMan_Review_Main.do")) {	
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.jsp"); 	
 			rd.forward(request, response);
 	

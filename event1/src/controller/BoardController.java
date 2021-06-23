@@ -42,9 +42,10 @@ public class BoardController extends HttpServlet {
 		System.out.println("str1 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
-		if(str2.equals("EventMan_Board.do")) {
-			
-			
+		
+		
+		
+		if(str2.equals("EventMan_Board.do")) {	
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp"); 	
 			rd.forward(request, response);
 		

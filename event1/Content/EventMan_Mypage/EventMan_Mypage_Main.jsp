@@ -47,7 +47,23 @@ String member_id = (String)session.getAttribute("S_memberId");
 		margin:10px auto;
 		text-align:center;
 	}
-	
+	.mypageimg{
+	margin-left:180px; 	
+	width:80%;
+	height:400px;
+	}
+	#Mapgeimg{
+		width:200px;
+		height:200px;
+		margin:10px auto;
+	}
+	th{
+		width:200px;
+		height:200px;
+	}
+	.writearea{
+		text-align:center;
+	}
 </style>
 </head>
 <body>
@@ -105,7 +121,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do">My page</a>
 			       		</li>
 			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
 			       		</li>
 			       		<li class="nav-item"> 
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
@@ -117,24 +133,52 @@ String member_id = (String)session.getAttribute("S_memberId");
 	    	</div>	
 		</nav>
 </div>
-			
+		
+
+<!-- 페이지 위치 안내 -->
+	<div class="container"  id="containermargin">	
+		<!-- 집 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+		</svg>
+		
+		<!-- 화살표 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+		</svg>
+		
+		<!-- 현제 페이지 이름 -->
+		My page
+	</div>
+		
+
+
+		
 	<!-- 회사소개 페이지 -->
 	<article>
 		<!-- 회사 소개 이미지 -->
 		<div class="container">	
 			<div class="bd-example">
-				<img src="../회사소개이미지.jpg" alt="">
+				<img src="../mypagemain.png" alt="메인 페이지 사진" class="mypageimg">
 				<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
 			</div>
 		</div>
-
 	</article>
+	<hr/>
+	<table class="writearea">
+		<tr>
+			<th><img src="../budget.png" alt="견적신청 사진" class="mypageimg" id="Mapgeimg"></th>
+			<th></th>
+			<th><img src="../presentation.png" alt="게시판 글 작성 사진" class="mypageimg" id="Mapgeimg"></th>
+		</tr>
 
-
-
-
-
-
+		<tr>
+			<td>견적신청 0건</td>
+			<td></td>
+			<td>게시 글 0건</td>
+		</tr>
+	</table>
 
 
 <!-- 메인 푸터 -->

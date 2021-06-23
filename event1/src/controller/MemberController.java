@@ -45,6 +45,7 @@ public class MemberController extends HttpServlet {
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
 		
+		
 /* 회원가입 페이지로 이동*/
 		if(str2.equals("EventMan_Member_Join.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
@@ -54,12 +55,19 @@ public class MemberController extends HttpServlet {
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);
+		
 			
-/* 마이 페이지로 이동*/	
 			
+/* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
+/* 회원정보 수정 화면 이동*/			
+		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Modify.jsp"); 	
+			rd.forward(request, response);	
+			
+			
 			
 /*회원가입 Action 페이지 이동*/			
 		}else if(str.equals("/memberWriteAction.do")) {
