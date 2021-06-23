@@ -22,37 +22,17 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-<style>
+	<!-- 메인페이지 행사리뷰 CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/mainpagereview.css">
+	<!-- 메인페이지 하단 게시판 CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/mainpageboard.css">
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	
 </style>
 </head>
 <body>
 
-<div class="container ajax">
 
 	<!-- 상단 네비 부분 -->
 	<div class="container">
@@ -153,7 +133,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 
 	
 	
-	<!-- 중앙 네비 카테고리 검색창 -->
+<!-- 중앙 네비 카테고리 검색창 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light rounded">
 			<div class="container-fluid">
@@ -164,16 +144,19 @@ String member_id = (String)session.getAttribute("S_memberId");
 				<div class="navbar-collapse collapse" id="navbarsExample09" >
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
 						<li class="nav-item" >
-							<a class="nav-link fw-bolder " href="#">카테고리1</a>
+							<a class="nav-link fw-bolder " href="#">전체</a>
 						</li>
 						<li class="nav-item" >
-							<a class="nav-link fw-bolder" href="#">카테고리2</a>
+							<a class="nav-link fw-bolder" href="#">기업</a>
 						</li>
 						<li class="nav-item" >
-							<a class="nav-link fw-bolder" href="#">카테고리3</a>
+							<a class="nav-link fw-bolder" href="#">대학</a>
 						</li>
 						<li class="nav-item" >
-							<a class="nav-link fw-bolder" href="#">카테고리4</a>
+							<a class="nav-link fw-bolder" href="#">공연</a>
+						</li>
+						<li class="nav-item" >
+							<a class="nav-link fw-bolder" href="#">기타</a>
 						</li>
 					</ul>
 				</div>
@@ -205,7 +188,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 	</div>
 	
 	
-	<!-- 메인 행사리뷰 부분 3x3출력 -->
+<!-- 메인 행사리뷰 부분 3x3출력 -->
 	<section>
 		<div class="album">
 			<div class="container">

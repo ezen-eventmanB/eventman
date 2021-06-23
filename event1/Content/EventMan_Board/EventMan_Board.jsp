@@ -22,32 +22,9 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-<style>
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	
 </style>
 </head>
 <body>
