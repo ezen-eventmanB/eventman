@@ -47,7 +47,7 @@
 				<% for(EvReviewVo erv : reviewList){ %>
 				<div class="col">
 					<div class="card shadow-sm">
-						<a href="#"><img class="bd-placeholder-img card-img-top" width="100%" height="225" src="리뷰이미지.png"></img></a>
+						<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')"><img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="리뷰이미지.png"></img></a>
 							<title><%=erv.gethName() %></title>
 						
 						<div class="card-body">

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import dbconn.DBconn;
 import vo.EvReviewVo;
 
@@ -22,7 +23,7 @@ public class ReviewServiceImpl {
 	}
 	
 
-/*	리뷰 메인 페이지 엘범 뿌리기	*/
+/*	리뷰 메인 페이지 전체 엘범 뿌리기	*/
 	public ArrayList<EvReviewVo> reviewSelectAll(){
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
@@ -31,15 +32,12 @@ public class ReviewServiceImpl {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			//pstmt.setString(1, searchType);
-			//pstmt.setString(2, "%"+keyword+"%");
-			//pstmt.setInt(3, page*15);
-			//pstmt.setInt(4, 1+(page-1)*15);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				EvReviewVo erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.setHimg(rs.getString("Himg"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHdate(rs.getString("hdate"));
@@ -49,15 +47,6 @@ public class ReviewServiceImpl {
 				erv.setHpeople(rs.getString("hpeople"));
 
 				reviewList.add(erv);
-				
-
-				System.out.println("DAO erv = "+erv.getHimg());
-				System.out.println("DAO erv = "+erv.gethName());
-				System.out.println("DAO erv = "+erv.getHdate());
-				System.out.println("DAO erv = "+erv.getHenddate());
-				System.out.println("DAO erv = "+erv.getHcata());
-				System.out.println("DAO erv = "+erv.getHprice());
-				System.out.println("DAO erv = "+erv.getHpeople());
 				
 			}
 			
@@ -94,6 +83,7 @@ public class ReviewServiceImpl {
 				
 				EvReviewVo erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.setHimg(rs.getString("Himg"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHdate(rs.getString("hdate"));
@@ -139,6 +129,7 @@ public class ReviewServiceImpl {
 				
 				EvReviewVo erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.setHimg(rs.getString("Himg"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHdate(rs.getString("hdate"));
@@ -184,6 +175,7 @@ public class ReviewServiceImpl {
 				
 				EvReviewVo erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.setHimg(rs.getString("Himg"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHdate(rs.getString("hdate"));
@@ -229,6 +221,7 @@ public class ReviewServiceImpl {
 				
 				EvReviewVo erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.setHimg(rs.getString("Himg"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHdate(rs.getString("hdate"));
@@ -259,34 +252,50 @@ public class ReviewServiceImpl {
 	}
 	
 
-	
-	
-	
-	
-/*	페이징 처리를 위한 카운트	*/
-/*
- * public int reviewTotalCount(String keyword , String cataPriceType , String
- * cataPeopleType) { int cnt=0;
- * 
- * ResultSet rs = null;
- * 
- * String
- * sql="select count(*) as cnt from EVE_REVIEW where hdelYN='N' and hprice like ? and hpeople like ?  and htext like ?"
- * ;
- * 
- * try { pstmt = conn.prepareStatement(sql); pstmt.setString(1, cataPriceType);
- * pstmt.setString(2, cataPeopleType); pstmt.setString(3, keyword); rs =
- * pstmt.executeQuery();
- * 
- * if(rs.next()) { cnt = rs.getInt(cnt); } } catch (SQLException e) { // TODO
- * Auto-generated catch block e.printStackTrace();
- * 
- * }
- * 
- * 
- * return cnt; }
- */
-	
+/*	리뷰 상세보기 메소드  */
+	public EvReviewVo reviewSelectOne(int hidx){
+		
+		System.out.println("reviewSelectOne 메소드 호출 성공");
+		
+		String sql = "select * from EVE_REVIEW where hdelYn='N' and hidx=?";
+
+		EvReviewVo erv = null;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, hidx);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				erv = new EvReviewVo();
+				
+				erv.sethName(rs.getString("hname"));
+				erv.setHloca(rs.getString("hloca"));
+				erv.setHdate(rs.getString("hdate"));
+				erv.setHenddate(rs.getString("henddate"));
+				erv.setHprice(rs.getString("hprice"));
+				erv.setHpeople(rs.getString("hpeople"));
+				erv.setHtarget(rs.getString("htarget"));
+				erv.setHstaff(rs.getString("hstaff"));
+				erv.setHcompany(rs.getString("hcompany"));
+				erv.setHtext(rs.getString("htext"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return erv;
+	}
 	
 	
 	

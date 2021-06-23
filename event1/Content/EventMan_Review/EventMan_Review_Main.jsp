@@ -30,10 +30,14 @@
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	
 <style>
-
+	#imgbax{
+		object-fit: cover;
+	}
 </style>
 
 <script>
+
+/*	카테고리 별로 보는 ajax	*/
 	function selectAll(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectAll.do",
@@ -49,7 +53,7 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectCompany.do",
 			type:"post",
-			data:"",
+			datatype:"html",
 			success:function(data){
 				$("#load").html(data);
 			}	
@@ -60,7 +64,7 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectUniversity.do",
 			type:"post",
-			data:"",
+			datatype:"html",
 			success:function(data){
 				$("#load").html(data);
 			}	
@@ -71,7 +75,7 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectStage.do",
 			type:"post",
-			data:"",
+			datatype:"html",
 			success:function(data){
 				$("#load").html(data);
 			}	
@@ -82,12 +86,34 @@
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectxEeption.do",
 			type:"post",
-			data:"",
+			datatype:"html",
 			success:function(data){
 				$("#load").html(data);
 			}	
 		});
 	}
+	
+	
+
+	
+/*	 상세보기  ajax	*/
+ 	function detailFn(param1){
+		
+		var params ="?hidx="+param1;
+
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_detail.do"+params,
+			type:"get",			
+			datatype:"html",
+			success:function(data){
+				$("#detailload").html(data);
+			}
+					
+		});
+	
+	}
+ 
+ 
 </script>
 
 </head>
@@ -166,6 +192,7 @@
 </div>
 		
 
+<div id="detailload">
 
 <!-- 중앙 네비 카테고리 검색창 -->
 <div class="container">
@@ -177,19 +204,19 @@
 			<div class="navbar-collapse collapse" id="navbarsExample09" >
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
 					<li class="nav-item" >
-						<a class="nav-link" type="button" onclick="selectAll()">전체</a>
+						<a class="nav-link fw-bolder" type="button" onclick="selectAll()">전체</a>
 					</li>
 					<li class="nav-item" >
-						<a class="nav-link" type="button" onclick="selectCompany()">기업</a>
+						<a class="nav-link fw-bolder" type="button" onclick="selectCompany()">기업</a>
 					</li>
 					<li class="nav-item" >
-						<a class="nav-link" type="button" onclick="selectUniversity()">대학</a>
+						<a class="nav-link fw-bolder" type="button" onclick="selectUniversity()">대학</a>
 					</li>
 					<li class="nav-item" >
-						<a class="nav-link" type="button" onclick="selectStage()">공연/예술</a>
+						<a class="nav-link fw-bolder" type="button" onclick="selectStage()">공연/예술</a>
 					</li>
 					<li class="nav-item" >
-						<a class="nav-link" type="button" onclick="selectxEeption()">기타</a>
+						<a class="nav-link fw-bolder" type="button" onclick="selectxEeption()">기타</a>
 					</li>
 				</ul>
 				<form>
@@ -228,13 +255,14 @@
 	 				<% for(EvReviewVo erv : reviewList){ %>
 						<div class="col">
 							<div class="card shadow-sm">
-								<a href="#"><img class="bd-placeholder-img card-img-top" width="100%" height="225" src="리뷰이미지.png"></img></a>
-									<title><%=erv.gethName() %></title>
-								
+								<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
+									<img class="bd-placeholder-img card-img-top stretched-link" id="imgbax" width="100%" height="225" src="../filefolder/detailimg.jpg" title="<%=erv.gethName()%>"></img>
+								</a>	
 								<div class="card-body">
 									<div class="justify-content-between align-items-center">
 										<p class="card-text"><%=erv.gethName() %></p>
 										<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
+
 									</div>	
 								</div>
 							</div>
@@ -245,7 +273,7 @@
 		</div>
 </section>
 
-
+</div>
 
 <%-- <!-- 행사리뷰 페이징 처리 -->
 <nav aria-label="Page navigation example">

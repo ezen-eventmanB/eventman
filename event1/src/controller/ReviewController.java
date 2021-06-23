@@ -56,42 +56,11 @@ public class ReviewController extends HttpServlet {
 			
 			System.out.println("--if문 =>EventMan_Review_Main.do 실행");
 			
-			/*
-			 * String page = request.getParameter("page");
-			 * 
-			 * int page2=0;
-			 * 
-			 * if(page == null) { page = "1"; }
-			 * 
-			 * page2 = Integer.parseInt(page);
-			 * 
-			 * 
-			 * String keyword = request.getParameter("keyword"); if(keyword == null) {
-			 * keyword =""; }
-			 * 
-			 * String cataPriceType = request.getParameter("price"); if(cataPriceType ==
-			 * null) { cataPriceType = ""; }else { cataPriceType=cataPriceType; }
-			 * 
-			 * String cataPeopleType = request.getParameter("people"); if(cataPeopleType ==
-			 * null) { cataPeopleType = ""; }else { cataPeopleType=cataPeopleType; }
-			 * 
-			 * SearchCriteria scri = new SearchCriteria(); scri.setKeyword(keyword);
-			 * scri.setPage(page2); scri.setSearchType(cataPriceType);
-			 * scri.setSearchType(cataPeopleType);
-			 * 
-			 * ReviewServiceImpl reviewDao = new ReviewServiceImpl();
-			 * 
-			 * int cnt = reviewDao.reviewTotalCount(keyword , cataPriceType,
-			 * cataPeopleType);
-			 * 
-			 * PageMaker pm = new PageMaker(); pm.setScri(scri); pm.setTotalCount(cnt);
-			 */
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 			
 			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
 
 			request.setAttribute("reviewList", reviewList);
-			//request.setAttribute("pm", pm);
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.jsp"); 	
 			rd.forward(request, response);
@@ -170,7 +139,27 @@ public class ReviewController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp"); 	
 			rd.forward(request, response);
+			
+			
+/*	리뷰 상세보기 ajax*/			
+		}else if(str2.equals("EventMan_Review_detail.do")) {
+			
+			System.out.println("--if문 => ajax EventMan_Review_detail.do 실행");
+			
+			int hidx = Integer.parseInt(request.getParameter("hidx"));
+			
+			System.out.println("파마미터 hidx = "+hidx);
+			
+			ReviewServiceImpl rsimpl = new ReviewServiceImpl();
+			EvReviewVo erv = rsimpl.reviewSelectOne(hidx);
+			
+			request.setAttribute("erv", erv);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.jsp"); 	
+			rd.forward(request, response);
+			
 		}
+		
 	}
 
 	

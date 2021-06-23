@@ -14,7 +14,28 @@ public class EvReviewVo {
 	private String htext;
 	private String himg;
 	private int hdelYn;
+	private String hcompany;
+	private String hstaff;
 	
+	
+	public String getHcompany() {
+		if(hcompany==null) {
+			hcompany = "미작성";
+		}
+		return hcompany;
+	}
+	public void setHcompany(String hcompany) {
+		this.hcompany = hcompany;
+	}
+	public String getHstaff() {
+		if(hstaff==null) {
+			hstaff = "미작성";
+		}
+		return hstaff;
+	}
+	public void setHstaff(String hstaff) {
+		this.hstaff = hstaff;
+	}
 	public int getHidx() {
 		return hidx;
 	}
