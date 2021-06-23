@@ -269,6 +269,7 @@ public class ReviewServiceImpl {
 			while(rs.next()) {
 				erv = new EvReviewVo();
 				
+				erv.setHidx(rs.getInt("hidx"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHloca(rs.getString("hloca"));
 				erv.setHdate(rs.getString("hdate"));
