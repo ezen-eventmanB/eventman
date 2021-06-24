@@ -1,12 +1,14 @@
 <%@page import="service.MemberServiceImpl"%>
+<%@page import="vo.EvMemberVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
  <%
 String member_id = (String)session.getAttribute("S_memberId");
+ int member_midx = (int)session.getAttribute("midx");
+ 
+ 	EvMemberVo mbvo = (EvMemberVo)request.getAttribute("mbvo");
 %>     
-
-
 
 
     
@@ -27,7 +29,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 <style>
-	
+
 <style>
 
 /*중앙 행사리뷰 앨범 CSS*/
@@ -97,6 +99,29 @@ String member_id = (String)session.getAttribute("S_memberId");
 	}
 	
 </style>
+	 <script type="text/javascript">
+	  function check(){
+		  if (document.frm.mPwd.value == ""){
+			  alert("비밀번호를 입력해주세요.");
+			  document.frm.mPwd.focus();
+			  return;
+		  }else if (document.frm.mPhn.value ==""){
+			  alert("연락처를 입력해주세요");
+			  document.frm.mPhn.focus();
+			  return;
+		  }else if (document.frm.mEmail.value ==""){
+			  alert("이메일을 입력해주세요");
+			  document.frm.mEmail.focus();
+			  return;
+		  }
+		  
+		  alert("전송합니다");
+		  document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Modify_Action.do";
+		  document.frm.method = "post";
+		  document.frm.submit(); 
+		  return;
+	  } 
+	 </script>
 </head>
 <body>
 
@@ -194,64 +219,42 @@ String member_id = (String)session.getAttribute("S_memberId");
 					<p class="fs-1 text-muted" id="EVENTMAN">회 원 정 보</p>
 				</div>
 				<form name="frm">
-					<table>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId" readonly>
-									<%-- <input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20" value="<%=user.getUserID()%>" readonly> --%>
-								</div>
-							</td>	
-						</tr>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">비밀번호 변경</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">비밀번호 변경 확인</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberName" readonly>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPhone">
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td id="inputwidth">
-								<div class="input-group mb-3">
-									<span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberEmail">
-								</div>
-							</td>
-						</tr>
-					</table>
+							<table>
+								<tr>
+									<td>계정 종류</td>
+									<td><%=mbvo.getmType() %></td>
+								</tr>
+								<tr>
+									<td>아이디</td>
+									<td><%=mbvo.getmId() %></td>
+								</tr>
+								<tr>
+									<td>비밀번호</td>
+									<td><input type="text" name="mPwd" size="30" value="<%=mbvo.getmPwd()%>"></td>
+								</tr>
+								<tr>
+									<td>이름</td>
+									<td><%=mbvo.getmName() %></td>
+								</tr>
+								<tr>
+									<td>연락처</td>
+									<td><input type="text" name="mPhn" size="30" value="<%=mbvo.getmPhn()%>"></td>
+								</tr>
+								<tr>
+									<td>이메일</td>
+									<td><input type="text" name="mEmail" size="30" value="<%=mbvo.getmEmail()%>"></td>
+									<!-- 세션값을 받으려면 컨트롤러에서 받는게 아닌 받으려는 페이지에서 히든값으로 적어 놓을것 -->
+									<td><input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>"></td>
+								</tr>
+							</table>
 						<div>													
-							<button type="button" class="btn btn-outline-secondary" id="b1">돌아가기</button>
-							<button type="button" class="btn btn-outline-success" id="b1">수정하기</button>
+							<button type="button" class="btn btn-outline-secondary" id="b1" onclick="location.href='EventMan_Mypage_Main.do'">돌아가기</button>
+							<button type="button" class="btn btn-outline-success" id="b1" onclick ="check()">수정완료</button>
 						</div>
 						<div class="d-grid gap-2">		
 							<button type="button" class="btn btn-outline-danger">탈퇴하기</button>
 						</div>
+					
 					</form>
 				</div>
 			</div>
