@@ -14,7 +14,7 @@
 
 function findId(){
 
-		if(frm.name == ""){
+<%-- 		if(frm.name == ""){
 			alert('아이디를 입력해주세요.');
 			document.getlementById('name').focus();
 		}else if(frm.phone == ""){
@@ -25,15 +25,25 @@ function findId(){
 			frm.method = "POST";
 			frm.submit();
 			return;	
-			
-		}
+			textbox
+		} --%>
 		
 
     var username = $("#name").val();
     var userphone = $("#phone").val();
     var alldata = { "name": username, "phone": userphone };
     
-    if(username.trim() =='' || userphone.trim()==''){
+    if(username.trim() =='' && userphone.trim()==''){
+    	$("#textbox").html("이름과 전화번호를")
+		$("#modal1").modal("show");	
+		
+	}else if(username.trim() ==''){
+    	$("#textbox").html("이름을")
+		$("#modal1").modal("show");	
+		
+		
+	}else if(userphone.trim()==''){
+    	$("#textbox").html("전화번호를")
 		$("#modal1").modal("show");	
 		
 	}else{
@@ -302,7 +312,7 @@ function phonecheckFn(){
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
       </div>
       <div class="modal-body">
-         이름과 전화번호를 정확히 입력해주세요.
+         <span id="textbox"></span> 정확히 입력해주세요.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
