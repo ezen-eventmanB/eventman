@@ -63,8 +63,8 @@ public class MemberServiceImpl {
 	 * 로그인 확인 화면
 	 * */
    public int memberLoginCheck(String memberId, String memberPwd){
+	   
       int midx=0;
-   //   MemberServiceImpl msi = new MemberServiceImpl();
       
       String sql ="select midx from EVE_MEMBER where mId=? and mPwd=?";
       System.out.println("conn "+conn);
@@ -73,15 +73,21 @@ public class MemberServiceImpl {
          pstmt.setString(1, memberId); //첫번째 '?' 매개변수로 받아온 'membeId'를 대입
          pstmt.setString(2, memberPwd); // 두번째 '?' 매개변수로 받아온 'memberPwd'를 대입
          ResultSet rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
-         rs = pstmt.executeQuery(); //쿼리를 실행한 결과를 rs에 저장
          
-         if (rs.next()) {
-            midx = rs.getInt("midx");
-         }         
-            
+	         if (rs.next()) {
+	            midx = rs.getInt("midx");
+	         }                    
          } catch (SQLException e) {         
             e.printStackTrace();
-         }      
+         }
+			finally {
+			try {
+				pstmt.close();										
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}				
+		}      
          
       return midx;
    }
@@ -130,10 +136,25 @@ public class MemberServiceImpl {
 	
 	/*
 	 * 
-	 * 윤진(아이디 중복확인 )
+	 * 박종빈(회원정보 수정)
 	 * 
 	 * */
-
+	//회원 정보 수정
+	/*
+	 * public int updateMember() {
+	 * 
+	 * String sql = "UPDATE boardMember SET member_pw = ?, member_name = ?,"; sql +=
+	 * " member_age = ?, member_gender = ?, member_email = ? WHERE member_id = ?";
+	 * int succ = 0; try {
+	 * 
+	 * pstmt = conn.prepareStatement(sql); ps.setString(1, dto.getMember_pw());
+	 * ps.setString(2, dto.getMember_name()); ps.setInt(3, dto.getMember_age());
+	 * ps.setString(4, dto.getMember_gender()); ps.setString(5,
+	 * dto.getMember_email()); ps.setString(6, dto.getMember_id()); succ =
+	 * ps.executeUpdate(); } catch (Exception e) { e.printStackTrace();
+	 * System.out.println("updateMember() Exception!!!"); } finally { dbClose(); }
+	 * return succ; } //updateMember()
+	 */		
    
 
 }

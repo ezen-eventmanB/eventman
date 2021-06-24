@@ -155,7 +155,7 @@
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='Member_Login.jsp'">로그인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='../EventMan_Main/EventMan_Main.jsp'">홈 화면</button>
 				</div>
 			</form>
