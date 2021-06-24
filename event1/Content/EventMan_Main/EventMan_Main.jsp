@@ -9,21 +9,12 @@
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }
-	 
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
 	out.println(midx);
+
 	%>    
-
-
-
-
-     
-
-
-
-
-
+	
 
     
 <!doctype html>
@@ -82,7 +73,7 @@
 	       		</ul>
 	       	
 	
-				<!--로그인 전 상단 화면  -->	
+					<!--로그인 전 상단 화면  -->	
 						<%
 						if(member_id == null){
 						%>
