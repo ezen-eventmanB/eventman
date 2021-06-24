@@ -3,6 +3,7 @@
 <%@ page import = "vo.*" %>
       
 <% EvReviewVo erv = (EvReviewVo)request.getAttribute("erv"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,7 +155,7 @@
 					</td>
 					<td style="width:286px">
 						<div class="d-grid gap-2">
-							<button type="button" class="btn btn-outline-secondary" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_BoardWrite.do'">상담하기</button>
+							<button type="button" class="btn btn-outline-secondary" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do?hidx=<%=erv.getHidx()%>'">상담하기</button>
 						</div>
 					</td>
 				</tr>

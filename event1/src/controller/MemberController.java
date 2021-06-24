@@ -166,10 +166,7 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp"); 	
 			rd.forward(request, response);
-
-//로그인 시 컨트롤러 
-		}else if (str.equals("/EventMan_Member/EventMan_MemberH_LoginAction.do")) {
-			
+	
 
 /* 본인확인 데이터 가져오기*/						
 		}else if(str2.equals("EventMan_phonecheck_Action.do")){

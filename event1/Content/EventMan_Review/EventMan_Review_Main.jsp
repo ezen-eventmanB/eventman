@@ -5,7 +5,9 @@
 <%@ page import = "domain.*" %>
 
 <%String member_id = (String)session.getAttribute("S_memberId");%>     
-<%ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); %>  
+	<%
+		ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
+	%>  
 <%-- <%PageMaker pm = (PageMaker)request.getAttribute("pm"); %> --%>
 
 <!doctype html>
@@ -122,6 +124,7 @@
 <div class="container ajax">
 
 
+<<<<<<< HEAD
 	<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
@@ -184,8 +187,6 @@
 				    	%>
 	    	</div>	
 		</nav>
-
-		
 
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">	
