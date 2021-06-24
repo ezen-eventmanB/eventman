@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-out.println("세션에 담긴 아이디는?");
+ <%
 String member_id = (String)session.getAttribute("S_memberId");
-out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
-
-%>       
+%>     
     
     
 <!doctype html>
@@ -16,132 +13,163 @@ out.println("<a href='EventMan_Member_LogoutAction.do'>"+member_id+"</a>");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+ function myBoardListFn(){
+	 $.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_myboardlist.do", 
+		typy:"post",
+		data:'',
+		datatype:"html",
+		success:function(data){
+			$("#mypageajax").html(data);
+		}
+	 });
+ };
+ 
+
+</script>
+
 <title>EVENT MAN!</title>
 
 	<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/topnav.css">
+	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
 	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
+	<!-- subnav CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
+	<!-- mypage CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/mypage.css">
+	
+	
 	
 	
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 중앙 nav form CSS */
-	#midnav .nav-item{
-		font-weight: bold;
-		font-weight: 900;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	
 </style>
+
+
 </head>
 <body>
 
-<!-- 상단 네비 부분 -->
+<div class="container ajax">
+
+	<!-- 상단 네비 부분 -->
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light " id="topnav">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-		     		<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-		    	</a>
-		        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      		<span class="navbar-toggler-icon"></span>
-		   		</button>
-		    	<div class="collapse navbar-collapse" id="navbarNav">
-		      		<ul class="navbar-nav" id="navbar-nav">
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-		        		</li>
-		        		<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-		        		</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-		       			</li>
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-		       			</li>
-		       		</ul>
-		       		
-		       		<!--로그인 전 상단 화면  -->
-		       		
+		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
+		
+			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+		    </a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      	<span class="navbar-toggler-icon"></span>
+		   	</button>
+		    <div class="collapse navbar-collapse w-50" id="navbarNav">
+		    
+	      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+	        		<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+	        		</li>
+	        		<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+	        		</li>
+	       			<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+	       			</li>
+	       			<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+	       			</li>
+	       		</ul>
+	       	
+	
+				<!--로그인 전 상단 화면  -->	
+						<%
+						if(member_id == null){
+						%>
+						
 		       		<ul class="navbar-nav" id="Memberbox" >	
-		       				<%
-		       				if(member_id == null){
-		       				%>
-		       			<li class="nav-item" id="liright1">
+		       			<li class="nav-item">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
 		       			</li>
-		       			<li class="nav-item" id="liright2"> 
+		       			<li class="nav-item"> 
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-		       			</li>
+		       			</li>																	
 		      		</ul>
 		      		
-		      		<!--로그인 후 상단 화면  -->
-					
-							<%
-				       		}else{
-							%>
-		       		<ul class="navbar-nav" id="Memberbox" >	
-		       			<li class="nav-item" id="liright1">
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-		       			</li>
-		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-		       			</li>
-		       			<li class="nav-item" id="liright2"> 
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-		       			</li>																			
-		      		</ul>
-				      		<%
-				      		}
-				       		 %>
-			  	
-		      	
-		    	</div>
-		  	</div>
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else{
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				    	%>
+	    	</div>	
 		</nav>
+</div>
+		
+
+<!-- 페이지 위치 안내 -->
+	<div class="container"  id="containermargin">	
+		<!-- 집 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+		</svg>
+		
+		<!-- 화살표 아이콘 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+			<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+		</svg>
+		
+		<!-- 현제 페이지 이름 -->
+		My page
 	</div>
-			
-	<!-- 회사소개 페이지 -->
-	<article>
-		<!-- 회사 소개 이미지 -->
-		<div class="container">	
-			<div class="bd-example">
-				<img src="../회사소개이미지.jpg" alt="">
-				<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
+		
+
+
+		
+<!-- 마이페이지 부분 -->
+
+<div class="container">
+	<dvi class="row justify-content-md-center">
+		<div class="col-md-auto">
+			<img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+		</div>
+	</dvi>
+	<div class="container" id="mypageajax">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto text-center px-3">
+				<a class="nav-link fw-bold" href="javascript:void(0);" onclick="">
+					<img src="../budget.png" alt="견적신청이미지" class="images w-100">
+					<div class="text-center fw-bold texts">
+						<span class="text-reset">견적신청<br><span>0</span>건</span>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-auto text-center px-3">
+				<a class="nav-link fw-bold" href="javascript:void(0);" onclick="myBoardListFn()">
+					<img src="../presentation.png" alt="게시판이미지" class="images w-100">
+					<div class="text-center fw-bold texts">
+						<span>게시판<br><span>0</span>건</span>
+					</div>
+				</a>
 			</div>
 		</div>
-
-	</article>
-
-
-
-
+	</div>
+</div>
 
 
 

@@ -51,6 +51,7 @@ String member_id = (String)session.getAttribute("S_memberId");
       max-width:700px;   
       margin:10px auto;
    }
+<<<<<<< HEAD
    .membertype{
       border:1px solid black;
    }
@@ -192,7 +193,6 @@ String member_id = (String)session.getAttribute("S_memberId");
       <!-- 현제 페이지 이름 -->
       회원가입
    </div>
-      
                
             <form name="frm"> 
                   <div class="joinroom">
@@ -229,9 +229,9 @@ String member_id = (String)session.getAttribute("S_memberId");
                         <tr>
                            <td>계정 종류</td>
                            <td><select name="mType" style="width:100px;height:25px">
-                              <option value="1">기업</option>
+                              <option value="1">개인</option>
                               <option value="2">단체</option>
-                              <option value="3">개인</option>
+                              <option value="3">기업</option>
                               </select>
                            </td>
                            </tr>
@@ -243,10 +243,8 @@ String member_id = (String)session.getAttribute("S_memberId");
                         </td>
                         </tr>
                      </table>
-            </div>
-          </form>
-             
-             
+                  </div>
+               </form>
 <!-- 메인 푸터 -->
 <div class="footer">
 </div>

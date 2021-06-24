@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+	/* 메인 하단 게시판 노출*/
+	.table{
+		max-width: 1300px;	
+		margin:10px auto;
+		text-align:center;
+	}
+	table{
+		max-width: 1300px;	
+		margin:10px auto;
+		text-align:center;
+	}

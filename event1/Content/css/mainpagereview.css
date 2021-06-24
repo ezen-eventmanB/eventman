@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+	/*중앙 행사리뷰 앨범 CSS*/
+	.album{
+		margin-bottom: 40px;
+	}
+	
+	/*행사리뷰 앨범 페이징처리*/
+	.pagination {
+   		justify-content: center;
+	}
