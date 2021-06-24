@@ -13,7 +13,24 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
+ function myBoardListFn(){
+	 $.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_myboardlist.do", 
+		typy:"post",
+		data:'',
+		datatype:"html",
+		success:function(data){
+			$("#mypageajax").html(data);
+		}
+	 });
+ };
+ 
+
+</script>
+
 <title>EVENT MAN!</title>
 
 	<!-- top nav CSS -->
@@ -22,49 +39,18 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-<style>
+	<!-- mypage CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/mypage.css">
+	
+	
+	
+	
 	
 <style>
 
-/*중앙 행사리뷰 앨범 CSS*/
-	.album{
-		margin-bottom: 40px;
-	}
-	/*행사리뷰 앨범 페이징처리*/
-	.pagination {
-   		justify-content: center;
-	}
-
-
-/* 메인 하단 게시판 노출*/
-	.table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	table{
-		max-width: 1300px;	
-		margin:10px auto;
-		text-align:center;
-	}
-	.mypageimg{
-	margin-left:180px; 	
-	width:80%;
-	height:400px;
-	}
-	#Mapgeimg{
-		width:200px;
-		height:200px;
-		margin:10px auto;
-	}
-	th{
-		width:200px;
-		height:200px;
-	}
-	.writearea{
-		text-align:center;
-	}
 </style>
+
+
 </head>
 <body>
 
@@ -155,30 +141,37 @@ String member_id = (String)session.getAttribute("S_memberId");
 
 
 		
-	<!-- 회사소개 페이지 -->
-	<article>
-		<!-- 회사 소개 이미지 -->
-		<div class="container">	
-			<div class="bd-example">
-				<img src="../mypagemain.png" alt="메인 페이지 사진" class="mypageimg">
-				<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
+<!-- 마이페이지 부분 -->
+
+<div class="container">
+	<dvi class="row justify-content-md-center">
+		<div class="col-md-auto">
+			<img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+		</div>
+	</dvi>
+	<div class="container" id="mypageajax">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto text-center px-3">
+				<a class="nav-link fw-bold" href="javascript:void(0);" onclick="">
+					<img src="../budget.png" alt="견적신청이미지" class="images w-100">
+					<div class="text-center fw-bold texts">
+						<span class="text-reset">견적신청<br><span>0</span>건</span>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-auto text-center px-3">
+				<a class="nav-link fw-bold" href="javascript:void(0);" onclick="myBoardListFn()">
+					<img src="../presentation.png" alt="게시판이미지" class="images w-100">
+					<div class="text-center fw-bold texts">
+						<span>게시판<br><span>0</span>건</span>
+					</div>
+				</a>
 			</div>
 		</div>
-	</article>
-	<hr/>
-	<table class="writearea">
-		<tr>
-			<th><img src="../budget.png" alt="견적신청 사진" class="mypageimg" id="Mapgeimg"></th>
-			<th></th>
-			<th><img src="../presentation.png" alt="게시판 글 작성 사진" class="mypageimg" id="Mapgeimg"></th>
-		</tr>
+	</div>
+</div>
 
-		<tr>
-			<td>견적신청 0건</td>
-			<td></td>
-			<td>게시 글 0건</td>
-		</tr>
-	</table>
+
 
 
 <!-- 메인 푸터 -->

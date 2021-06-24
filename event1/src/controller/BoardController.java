@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
@@ -154,9 +155,22 @@ public class BoardController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp");	
 			}
 			
-//			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_AdvicewriteDetail.jsp"); 	
-//			rd.forward(request, response);
-		}
+/*	마이페이지 리스트 화면	*/			
+		}else if(str2.equals("EventMan_Mypage_myboardlist.do")) {
+			
+		System.out.println("EventMan_Mypage_myboardlist.do if문");
+		
+		BoardServiceImpl boarddao = new BoardServiceImpl();
+		ArrayList alistboard = boarddao.selectmyboardlist();
+		
+		request.setAttribute("alistboard", alistboard);
+		
+		RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_myboardlist.jsp");
+		rd.forward(request, response);
+	}
+		
+		
+		
 	}
 	
 

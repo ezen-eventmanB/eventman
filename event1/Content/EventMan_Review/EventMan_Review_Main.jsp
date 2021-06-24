@@ -274,28 +274,29 @@
 
 <!-- 메인 행사리뷰 부분 3x3출력 -->
 <section id="load">
-		<div class="album">
-			<div class="container">
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-	 				<% for(EvReviewVo erv : reviewList){ %>
-						<div class="col">
-							<div class="card shadow-sm">
-								<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
-									<img class="bd-placeholder-img card-img-top stretched-link" id="imgbax" width="100%" height="225" src="../filefolder/detailimg.jpg" title="<%=erv.gethName()%>"></img>
-								</a>	
-								<div class="card-body">
-									<div class="justify-content-between align-items-center">
-										<p class="card-text"><%=erv.gethName() %></p>
-										<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
-
-									</div>	
-								</div>
+	<div class="album">
+		<div class="container">
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				
+					<% for(EvReviewVo erv : reviewList){ %>
+					<div class="col">
+						<div class="card shadow-sm">
+							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')"><img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../리뷰이미지.png"></img></a>
+								<title><%=erv.gethName() %></title>
+							
+							<div class="card-body">
+								<div class="justify-content-between align-items-center">
+									<p class="card-text"><%=erv.gethName() %></p>
+									<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
+								</div>	
 							</div>
 						</div>
-					<%}; %>
-				</div>
-			</div> 
-		</div>
+					</div>
+				
+				<%}; %>
+			</div>
+		</div> 
+	</div>
 </section>
 
 </div>

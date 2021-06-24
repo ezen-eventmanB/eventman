@@ -194,7 +194,7 @@ public class MemberController extends HttpServlet {
 			
 			System.out.println("EventMan_phonecheck_Action.do if¹®");
 			
-			
+				
 		}
 		
 

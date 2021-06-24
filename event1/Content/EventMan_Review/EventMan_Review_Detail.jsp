@@ -153,7 +153,7 @@
 						<td class="td"><img class="icon" src="../icon/free-icon-people-711168.png"></td>
 					</tr>
 					<tr class="tr2">
-						<td class="td"><%=erv.getstartdate()%>~<%=erv.getendenddate() %></td>
+						<td class="td"><%=erv.getstartdate()%><br>~<br><%=erv.getendenddate() %></td>
 						<td class="td"><%=erv.getHprice() %></td>
 						<td class="td"><%=erv.getHpeople() %></td>
 					</tr>

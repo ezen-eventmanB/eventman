@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+	.images{
+		max-width: 200px;
+		margin-top: 20px;
+
+	}
+	.texts{
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}

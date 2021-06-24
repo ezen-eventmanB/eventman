@@ -3,6 +3,7 @@ package service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dbconn.DBconn;
 
@@ -18,6 +19,7 @@ public class BoardServiceImpl {
 		
 	}
 	
+/*	상담글 작성하기	*/	
 	public int insertAdvice(String cata, String title, String content, String file , String midx ,String hidx) {
 		
 		int value=0;
@@ -52,6 +54,26 @@ public class BoardServiceImpl {
 		
 		
 		return value; 
+	}
+	
+
+/* 마이페이지에서 본인이 작성한 글 불러오기	*/
+	public ArrayList selectmyboardlist() {
+		
+		ArrayList alistboard = new ArrayList();
+		
+		//작성해야함
+		String sql = "";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return alistboard;
 	}
 
 }
