@@ -24,7 +24,43 @@ public class MemberServiceImpl {
    /*
     *       로그인 클릭시 체크 Dao 매소드
     *       아이디 비밀번호 sql에서 확인 하는 dao
-    * 
+    * */
+   
+   
+   /*
+    * 회원가입 정보 넘겨주기 Dao
+    * */
+   public int memberInsert(String mId,String mPwd,String mName,String mEmail,String mPhone,String mType) {
+      int value = 0;
+      
+      try {
+      String sql = "insert into Api_member(MIDX,MID,MPWD,MNAME,MEMAIL,MPHONE,MTYPE,MDATE,MDELYN) values(midx_seq.nextval,?,?,?,?,?,?,sysdate,'N')";
+       pstmt = conn.prepareStatement(sql);
+     //  pstmt.setInt(1, 11);
+       
+      pstmt.setString(1,mId);
+      pstmt.setString(2,mPwd);
+      pstmt.setString(3,mName);
+      pstmt.setString(4,mEmail);
+      pstmt.setString(5,mPhone);
+      pstmt.setString(6,mType);
+         /* pstmt.setString(7,mDate); */
+      pstmt.execute();
+      }catch(Exception e) {
+         e.printStackTrace();
+      }finally {
+         try {
+            pstmt.close();
+            conn.close();
+         } catch (SQLException e) {            
+            e.printStackTrace();
+         }      
+      }            
+      return value;
+   }
+   
+   /*
+    * 로그인 확인 화면
     * */
    public int memberLoginCheck(String memberId, String memberPwd){
       int midx=0;
@@ -50,7 +86,9 @@ public class MemberServiceImpl {
       return midx;
    }
 
-   /* 아이디 찾기 버튼 클릭시 메소드 (황현호) */
+   /*
+    * 
+    *  아이디 찾기 버튼 클릭시 메소드 (황현호) */
    public String findId(String name, String phone) {
       
       System.out.println("MemberServiceImpl findId() 실행");
