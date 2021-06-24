@@ -1,10 +1,14 @@
+<%@page import="service.MemberServiceImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
  <%
 String member_id = (String)session.getAttribute("S_memberId");
 %>     
-    
+
+
+
+
     
 <!doctype html>
 <html>
@@ -195,7 +199,8 @@ String member_id = (String)session.getAttribute("S_memberId");
 							<td id="inputwidth">
 								<div class="input-group mb-3">
 									<span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId" readonly>
+									<%-- <input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20" value="<%=user.getUserID()%>" readonly> --%>
 								</div>
 							</td>	
 						</tr>
@@ -219,7 +224,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 							<td id="inputwidth">
 								<div class="input-group mb-3">
 									<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberName" readonly>
 								</div>
 							</td>
 						</tr>
@@ -227,7 +232,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 							<td id="inputwidth">
 								<div class="input-group mb-3">
 									<span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPhone">
 								</div>
 							</td>
 						</tr>
@@ -235,7 +240,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 							<td id="inputwidth">
 								<div class="input-group mb-3">
 									<span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberEmail">
 								</div>
 							</td>
 						</tr>

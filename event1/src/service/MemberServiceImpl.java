@@ -130,10 +130,25 @@ public class MemberServiceImpl {
 	
 	/*
 	 * 
-	 * 윤진(아이디 중복확인 )
+	 * 박종빈(회원정보 수정)
 	 * 
 	 * */
-
+	//회원 정보 수정
+	/*
+	 * public int updateMember() {
+	 * 
+	 * String sql = "UPDATE boardMember SET member_pw = ?, member_name = ?,"; sql +=
+	 * " member_age = ?, member_gender = ?, member_email = ? WHERE member_id = ?";
+	 * int succ = 0; try {
+	 * 
+	 * pstmt = conn.prepareStatement(sql); ps.setString(1, dto.getMember_pw());
+	 * ps.setString(2, dto.getMember_name()); ps.setInt(3, dto.getMember_age());
+	 * ps.setString(4, dto.getMember_gender()); ps.setString(5,
+	 * dto.getMember_email()); ps.setString(6, dto.getMember_id()); succ =
+	 * ps.executeUpdate(); } catch (Exception e) { e.printStackTrace();
+	 * System.out.println("updateMember() Exception!!!"); } finally { dbClose(); }
+	 * return succ; } //updateMember()
+	 */		
    
 
 }

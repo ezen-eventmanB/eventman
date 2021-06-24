@@ -65,10 +65,13 @@ public class MemberController extends HttpServlet {
 /* 회원정보 수정 화면 이동*/			
 		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Modify.jsp"); 	
-			rd.forward(request, response);	
+			rd.forward(request, response);
 			
+/*회원정보 수정 Action 이동*/			
+		}else if(str2.equals("EventMan_Mapge_ModifyAction.do")) {
+					
 			
-			
+		
 /*회원가입 Action 페이지 이동*/			
 		}else if(str.equals("/memberWriteAction.do")) {
 				
