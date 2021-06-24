@@ -1,9 +1,20 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "vo.*" %>
       
 <% EvReviewVo erv = (EvReviewVo)request.getAttribute("erv"); %>
-
+ <%
+	String member_id = (String)session.getAttribute("S_memberId");
+	 int midx = 0;
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }
+	 
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
+	out.println(midx);
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +23,18 @@
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
 
+ function AdviceFn(){
+	 if(<%=session.getAttribute("midx")%> == null){
+		 $("#findidspan").html("로그인후 이용해주세요.");
+		 $("#modal").modal("show")
+	 }else{
+		 document.location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do?hidx=<%=erv.getHidx()%>";
+	 }
+ };
+</script>
 <style>
 	
 	/**/
@@ -75,9 +97,10 @@
 	}
 
 	
-	
-
 </style>
+
+
+
 </head>
 <body>
 
@@ -155,7 +178,7 @@
 					</td>
 					<td style="width:286px">
 						<div class="d-grid gap-2">
-							<button type="button" class="btn btn-outline-secondary" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do?hidx=<%=erv.getHidx()%>'">상담하기</button>
+							<button type="button" class="btn btn-outline-secondary" onclick="AdviceFn()">상담하기</button>
 						</div>
 					</td>
 				</tr>
@@ -178,7 +201,24 @@
 </div>
 						
 	
-				
+<!-- 로그인 확인 모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="findidspan"> </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인페이지로 이동</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>			
 				
 				
 

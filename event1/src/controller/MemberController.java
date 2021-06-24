@@ -20,10 +20,6 @@ import vo.EvMemberVo;
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    public MemberController() {
-        super();
-    }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,24 +50,33 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
 			rd.forward(request, response);
 			
+			
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
+
 			rd.forward(request, response);	
+
+			
 /* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
+
+			
 /*아이디 찾기로 이동*/			
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {
-				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
-				rd.forward(request, response);
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
+			rd.forward(request, response);
+			
+			
 /*비밀번호 찾기로 이동*/				
 		}else if(str2.equals("EventMan_Member_Find_Pw.do")) {
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);	
-			
-			
+
 /* 회원정보 수정 화면 이동*/			
 		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
 			
@@ -163,6 +168,11 @@ public class MemberController extends HttpServlet {
 //				}
 		
 				/*회원가입 Action 페이지 이동*/			
+
+		}else if(str2.equals("EventMan_Mapge_ModifyAction.do")) {
+					
+
+/*회원가입 Action 페이지 이동*/			
 		}else if(str.equals("/memberWriteAction.do")) {
 				
 				String mId = request.getParameter("mId");
@@ -179,6 +189,7 @@ public class MemberController extends HttpServlet {
 						
 				response.sendRedirect(request.getContextPath()+"/memberInsert.do");
 			
+				
 /* 로그인 Action 페이지로 이동*/    
 		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
 			String memberId  = request.getParameter("memberId");
@@ -205,11 +216,12 @@ public class MemberController extends HttpServlet {
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
 			}else{
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
-				}
+			}
 			
-			/*로그아웃 실행*/
 			
-			}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
+/*	로그아웃 실행	*/
+			
+		}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
 				
 				HttpSession session = request.getSession();
 				
@@ -222,7 +234,8 @@ public class MemberController extends HttpServlet {
 /* ID찾기 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {		
 			
-			System.out.println("EventMan_Member_Find_Id.do if문 실행");		
+			System.out.println("EventMan_Member_Find_Id.do if문 실행");	
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
 			rd.forward(request, response);
 			

@@ -3,6 +3,7 @@ package controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.imgscalr.Scalr;
 
@@ -80,6 +82,7 @@ public class BoardController extends HttpServlet {
 		System.out.println("--if문 EventMan_AdvicewriteAction 실행");
 			
 			//업로드 파일 경로		
+			//나중에 웹서버로 공통된 경로로 올리게 된다.
 			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
 			
 			//저장 폴더
@@ -129,6 +132,7 @@ public class BoardController extends HttpServlet {
 			String midx = multi.getParameter("midx");
 			String hidx = multi.getParameter("hidx");
 
+			
 			System.out.println("cata = "+cata);
 			System.out.println("title = "+title);
 			System.out.println("content = "+content);
@@ -139,9 +143,14 @@ public class BoardController extends HttpServlet {
 			BoardServiceImpl boarddao = new BoardServiceImpl();
 			int value = boarddao.insertAdvice(cata, title, content, file, midx, hidx);
 			
+			
+
+					
 			if(value > 0) {
+				System.out.println("성공 상담신청글 전송 성공");
 				response.sendRedirect(request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp");	
 			}else {
+				System.out.println("실패 상담신청글 전송 실패");
 				response.sendRedirect(request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp");	
 			}
 			
