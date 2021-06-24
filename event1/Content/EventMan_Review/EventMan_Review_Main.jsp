@@ -4,7 +4,10 @@
 <%@ page import = "vo.*" %>
 <%@ page import = "domain.*" %>
 
-<%String member_id = (String)session.getAttribute("S_memberId");%>     
+	<%
+		String member_id = (String)session.getAttribute("S_memberId");
+	%>     
+
 	<%
 		ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
 	%>  
@@ -124,7 +127,7 @@
 <div class="container ajax">
 
 
-<<<<<<< HEAD
+
 	<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
