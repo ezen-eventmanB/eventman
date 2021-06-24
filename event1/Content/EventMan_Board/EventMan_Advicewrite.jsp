@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
-<%
+ <%
 	String member_id = (String)session.getAttribute("S_memberId");
-%>     
+	 int midx = 0;
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }
+	 
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
+	out.println(midx);
+%>    
 
     
 <!doctype html>
@@ -170,8 +178,8 @@ function ajaxsubimtFn(){
 		<!-- 폼 -->
 		<form name=frm>
 			<!-- 로그인 정보 / 리뷰번호 담는 부분 -->
-<%-- 			<input type="hidden" name="midx" value="<%=midx%>">
-			<input type="hidden" name="hidx" value="<%=hidx%>"> --%>
+			<input type="hidden" name="midx" value="<%=midx%>">
+			<input type="hidden" name="hidx" value="<%=request.getParameter("hidx")%>">
 			<!-- 카테고리 -->
 			<select class="form-select" aria-label="Default select example" name="cata">
 				<option selected>카테고리</option>

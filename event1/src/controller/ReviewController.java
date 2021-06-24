@@ -155,7 +155,7 @@ public class ReviewController extends HttpServlet {
 			
 			request.setAttribute("erv", erv);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.jsp"); 	
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.jsp?hidx=hidx"); 	
 			rd.forward(request, response);
 			
 		}

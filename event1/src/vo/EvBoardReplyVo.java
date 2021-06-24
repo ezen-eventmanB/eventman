@@ -9,6 +9,8 @@ public class EvBoardReplyVo {
 	private int BoardReplyDelYn;
 	private int bidx;
 	private int gidx;
+	
+	
 	public int getBridx() {
 		return bridx;
 	}

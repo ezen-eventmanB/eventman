@@ -129,11 +129,12 @@ public class MemberController extends HttpServlet {
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
 			}else{
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
-				}
+			}
 			
-			/*로그아웃 실행*/
 			
-			}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
+/*	로그아웃 실행	*/
+			
+		}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
 				
 				HttpSession session = request.getSession();
 				

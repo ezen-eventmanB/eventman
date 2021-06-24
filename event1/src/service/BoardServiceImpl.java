@@ -22,18 +22,17 @@ public class BoardServiceImpl {
 		
 		int value=0;
 		
-		String sql = "insert into EVE_EVENTASK(sidx , scata , stitle ,stext, sfile , midx , hidx)"
-				    + "values(? , ? , ? , ? , ? , ? , ?)";
+		String sql = "insert into EVE_EVENTASK(sidx , scata , stitle ,stext, sfile , midx , hidx , writeday)"
+				    + "values(EVENTASK_SEQ.NEXTVAL , ? , ? , ? , ? , ? , ? ,  TO_CHAR(SYSDATE,'YYYY-MM-DD'))";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 4);
-			pstmt.setString(2, cata);
-			pstmt.setString(3, title);
-			pstmt.setString(4, content);
-			pstmt.setString(5, file);
-			pstmt.setString(6, midx);
-			pstmt.setString(7, hidx);
+			pstmt.setString(1, cata);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setString(4, file);
+			pstmt.setString(5, midx);
+			pstmt.setString(6, hidx);
 			
 			value=pstmt.executeUpdate();
 			

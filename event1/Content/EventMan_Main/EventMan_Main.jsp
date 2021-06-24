@@ -3,14 +3,26 @@
 
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
-     int midx = 0;
+ 
+	 int midx = 0;
+	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
-	 }	
+	 }
+	 
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
 	out.println(midx);
 	%>    
+
+
+
+
+     
+
+
+
+
 
 
     
