@@ -39,7 +39,7 @@ public class BoardServiceImpl {
 			pstmt.setString(1, midx);
 			ResultSet rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				
 				EvBoardAskVo bv = new EvBoardAskVo();
 				
