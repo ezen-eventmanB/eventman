@@ -62,8 +62,8 @@
 		<th>작성자</th>
 		<th>조회수</th>  
 	</thead>
-	<% for(EvBoardAskVo bavo: alistboardask){ %>
 	<tbody>
+	<% for(EvBoardAskVo bavo: alistboardask){ %>
 		<tr onclick="myboarddetailFn()">
 			<td><%=bavo.getBcata()%></td>
 			<td colspan="2"><%=bavo.getBtitle()%></td>
@@ -72,8 +72,8 @@
 			<td><%=bavo.getBname()%></td>
 			<td><%=bavo.getBcount() %></td>
 		</tr>
-	</tbody>
 	<%} %>
+	</tbody>
 </table>
 
 

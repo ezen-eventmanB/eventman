@@ -258,9 +258,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 						</div>
 						<div class="d-grid gap-2">		
 							<button type="button" class="btn btn-outline-danger" onclick="location.href='EventMan_Mypage_Dropout.do'">탈퇴하기</button>
-						</div>
-						
-					
+						</div>					
 					</form>
 				</div>
 			</div>
