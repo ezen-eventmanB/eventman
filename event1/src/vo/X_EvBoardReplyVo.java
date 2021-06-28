@@ -1,6 +1,6 @@
 package vo;
 
-public class EvBoardReplyVo {
+public class X_EvBoardReplyVo {
 	private int bridx;
 	private String BoardReplyName;
 	private String BoardReplyContents;

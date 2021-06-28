@@ -22,6 +22,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import service.BoardServiceImpl;
+import service.EventAskServiceImpl;
 
 
 @WebServlet("/BoardController")
@@ -141,18 +142,21 @@ public class BoardController extends HttpServlet {
 			System.out.println("midx = "+midx);
 			System.out.println("hidx = "+hidx);			
 			
-			BoardServiceImpl boarddao = new BoardServiceImpl();
-			int value = boarddao.insertAdvice(cata, title, content, file, midx, hidx);
+			EventAskServiceImpl askdao = new EventAskServiceImpl();
+			int value = askdao.insertAdvice(cata, title, content, file, midx, hidx);
 			
 			
 
 					
 			if(value > 0) {
 				System.out.println("성공 상담신청글 전송 성공");
-				response.sendRedirect(request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp");	
+				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do");	
 			}else {
 				System.out.println("실패 상담신청글 전송 실패");
-				response.sendRedirect(request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp");	
+				
+				PrintWriter out = response.getWriter();   
+				
+				out.println("<script>alert('상듬글 작성 실패');</script>");
 			}
 			
 /*	마이페이지 리스트 화면	*/			
@@ -160,8 +164,14 @@ public class BoardController extends HttpServlet {
 			
 		System.out.println("EventMan_Mypage_myboardlist.do if문");
 		
+		// midx 넘겨줘야하는데....
+		
+		String midx = request.getParameter("midx");
+		
+		System.out.println("midx= "+midx);
+		
 		BoardServiceImpl boarddao = new BoardServiceImpl();
-		ArrayList alistboard = boarddao.selectmyboardlist();
+		ArrayList alistboard = boarddao.selectmyboardlist(midx);
 		
 		request.setAttribute("alistboard", alistboard);
 		

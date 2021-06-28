@@ -1,6 +1,6 @@
 package vo;
 
-public class EvEventAskVo {
+public class X_EvEventAskVo {
 	
 	private int sidx;
 	private String scata;

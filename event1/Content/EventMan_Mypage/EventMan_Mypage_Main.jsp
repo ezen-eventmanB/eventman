@@ -1,9 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
 
  <%
-String member_id = (String)session.getAttribute("S_memberId");
-%>     
+	String member_id = (String)session.getAttribute("S_memberId");
+ 
+	 int midx = 0;
+	 
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
+	out.println(midx);
+	
+	%>    
     
     
 <!doctype html>
@@ -16,11 +27,16 @@ String member_id = (String)session.getAttribute("S_memberId");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
+
  function myBoardListFn(){
+	 
+	 var midx = <%=midx%>;
+	 
 	 $.ajax({
 		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_myboardlist.do", 
 		typy:"post",
-		data:'',
+		data:"",
+		data:{midx:midx},
 		datatype:"html",
 		success:function(data){
 			$("#mypageajax").html(data);
