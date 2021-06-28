@@ -63,7 +63,7 @@ public class MemberServiceImpl {
 
 		int midx = 0;
 
-		String sql = "select midx from EVE_MEMBER where mId=? and mPwd=?";
+		String sql = "select midx from EVE_MEMBER where mdelyn='N' and mId=? and mPwd=?";
 		System.out.println("conn " + conn);
 		try {
 			pstmt = conn.prepareStatement(sql); // sql Äõ¸®¹® ´ë±â
@@ -188,6 +188,22 @@ public class MemberServiceImpl {
 		
 		return value;
 	}		
-
+	//Á¾ºó ¸â¹ö È¸¿ø Å»ÅðÇÏ±â
+	public int memberDelete(int midx, String mPwd) {
+		int value=0;
+		String sql="update Eve_member set mdelYn='Y' where midx= ? and mPwd= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, midx);
+			pstmt.setString(2, mPwd);
+			value = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
 
 }
