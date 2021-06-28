@@ -76,7 +76,46 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
 			rd.forward(request, response);	
-
+/*회원 탈퇴로 이동*/			
+		}else if(str2.equals("EventMan_Mypage_Dropout.do")) {
+				//session과 연결
+				HttpSession session=request.getSession();
+				//midx 값을 get으로 받아옴
+				 int member_midx = (int)session.getAttribute("midx");
+				
+				 //dao와 연결
+				MemberServiceImpl mdao = new MemberServiceImpl();
+				
+				//vo에 담겨져 있는 midx 를 가져옴
+			 	EvMemberVo mbvo = mdao.selectMember(member_midx);
+								
+			 	request.setAttribute("mbvo", mbvo);
+			
+			
+				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Dropout.jsp"); 	
+				rd.forward(request, response);
+		
+		}else if (str2.equals("EventMan_Mypage_Dropout_Action.do")) {
+					
+				//1. 넘겨받는다
+				String midx = request.getParameter("midx");
+				
+				int midx2 = Integer.parseInt(midx);
+				String mPwd2 = request.getParameter("mPwd");
+					
+				//2.처리한다
+				MemberServiceImpl mdao = new MemberServiceImpl();
+				int value = mdao.memberDelete(midx2, mPwd2);		
+				System.out.println("value"+value);
+				
+				//3.이동한다
+			
+			  if (value > 0) {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_LogoutAction.do");
+			  }else {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Dropout.do"); }
+			  	
+					
 /* 회원정보 수정 화면 이동*/			
 		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
 			
@@ -127,50 +166,6 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  
 			}
 			
-			
-		//회원 정보 삭제
-//			}else if (str.equals("/board/boardDelete.do")) {
-//				
-//				String midx = request.getParameter("midx");
-//				int midx2 = Integer.parseInt(midx);
-//				
-//				//dao 생성
-//				MemberServiceImpl mdao = new MemberServiceImpl();
-//				
-//			 	EvMemberVo mbvo = mdao.selectMember(midx2);				
-//				
-//				request.setAttribute("mbvo", mbvo);			
-//				
-//				RequestDispatcher rd = request.getRequestDispatcher("/boardDelete.jsp");
-//				rd.forward(request, response);
-//		
-//				
-//				//회원 정보 삭제 action
-//			}else if (str.equals("/board/boardDeleteAction.do")) {
-//				
-//				//1. 넘겨받는다
-//				String midx = request.getParameter("midx");
-//				int midx2 = Integer.parseInt(midx);
-//				String password = request.getParameter("password");
-//				
-//				//2.처리한다
-//				MemberServiceImpl mdao = new MemberServiceImpl();
-//				int value = mdao.deleteMember(midx, password);			
-//				
-//			 	EvMemberVo mbvo = mdao.selectMember(midx2);
-//				
-//				//3.이동한다
-//				if (value > 0) {  
-//				response.sendRedirect(request.getContextPath()+"/board/boardList.do");	
-//				}else {
-//				response.sendRedirect(request.getContextPath()+"/board/boardDelete.do?bidx="+midx);					
-//				}
-//				}
-		
-				/*회원가입 Action 페이지 이동*/			
-
-		}else if(str2.equals("EventMan_Mapge_ModifyAction.do")) {
-					
 
 /*회원가입 Action 페이지 이동*/			
 		}else if(str.equals("/memberWriteAction.do")) {
@@ -222,7 +217,9 @@ public class MemberController extends HttpServlet {
 /*	로그아웃 실행	*/
 			
 		}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
-				
+				System.out.println("logout");
+			
+			
 				HttpSession session = request.getSession();
 				
 				session.invalidate(); // 모든세션정보 삭제
