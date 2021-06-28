@@ -23,6 +23,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import service.BoardServiceImpl;
 import service.EventAskServiceImpl;
+import vo.EvBoardAskVo;
 
 
 @WebServlet("/BoardController")
@@ -127,26 +128,15 @@ public class BoardController extends HttpServlet {
 				e.printStackTrace();
 			}	
 			
-			
 			String cata = multi.getParameter("cata");
 			String title = multi.getParameter("title");
 			String content = multi.getParameter("content");
 			String midx = multi.getParameter("midx");
 			String hidx = multi.getParameter("hidx");
-
-			
-			System.out.println("cata = "+cata);
-			System.out.println("title = "+title);
-			System.out.println("content = "+content);
-			System.out.println("file = "+file);
-			System.out.println("midx = "+midx);
-			System.out.println("hidx = "+hidx);			
 			
 			EventAskServiceImpl askdao = new EventAskServiceImpl();
 			int value = askdao.insertAdvice(cata, title, content, file, midx, hidx);
 			
-			
-
 					
 			if(value > 0) {
 				System.out.println("성공 상담신청글 전송 성공");
@@ -159,12 +149,11 @@ public class BoardController extends HttpServlet {
 				out.println("<script>alert('상듬글 작성 실패');</script>");
 			}
 			
-/*	마이페이지 리스트 화면	*/			
-		}else if(str2.equals("EventMan_Mypage_myboardlist.do")) {
 			
-		System.out.println("EventMan_Mypage_myboardlist.do if문");
-		
-		// midx 넘겨줘야하는데....
+/*	마이페이지 리스트 화면	*/			
+		}else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
+	
+		System.out.println("EventMan_Mypage_Myboardlist.do if문");
 		
 		String midx = request.getParameter("midx");
 		
@@ -175,9 +164,25 @@ public class BoardController extends HttpServlet {
 		
 		request.setAttribute("alistboard", alistboard);
 		
-		RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_myboardlist.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 		rd.forward(request, response);
-	}
+		
+	
+	
+/*	마이페이지 리스트 상세보기	*/		
+		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardlistDetail.do if문");
+			
+			/*
+			 * BoardServiceImpl boarddao = new BoardServiceImpl(); EvBoardAskVo bavo =
+			 * boarddao.boardlistselectone();
+			 */	
+																				
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);			
+		}
 		
 		
 		

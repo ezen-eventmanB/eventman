@@ -23,7 +23,7 @@ public class BoardServiceImpl {
 	}
 	
 
-/* 마이페이지에서 본인이 작성한 글 불러오기	*/
+/* 마이페이지에서 본인이 작성한 글 리스트 불러오기	*/
 	public ArrayList selectmyboardlist(String midx) {
 		
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
@@ -51,13 +51,6 @@ public class BoardServiceImpl {
 
 				alistboard.add(bv);
 
-				System.out.println("bcata = "+bv.getBcata());
-				System.out.println("btitle = "+bv.getBtitle());
-				System.out.println("bwriteday = "+bv.getBwriteday());
-				System.out.println("mname = "+bv.getBname());
-				System.out.println("bcount = "+bv.getBcount());
-				
-				
 			}
 			
 			
@@ -76,5 +69,7 @@ public class BoardServiceImpl {
 		
 		return alistboard;
 	}
+
+/*	마이페이지 게시글 상세 보기	*/
 
 }
