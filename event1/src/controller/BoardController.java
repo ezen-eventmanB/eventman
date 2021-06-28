@@ -159,12 +159,11 @@ public class BoardController extends HttpServlet {
 				out.println("<script>alert('상듬글 작성 실패');</script>");
 			}
 			
-/*	마이페이지 리스트 화면	*/			
-		}else if(str2.equals("EventMan_Mypage_myboardlist.do")) {
 			
-		System.out.println("EventMan_Mypage_myboardlist.do if문");
-		
-		// midx 넘겨줘야하는데....
+/*	마이페이지 리스트 화면	*/			
+		}else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
+
+		System.out.println("EventMan_Mypage_Myboardlist.do if문");
 		
 		String midx = request.getParameter("midx");
 		
@@ -175,9 +174,19 @@ public class BoardController extends HttpServlet {
 		
 		request.setAttribute("alistboard", alistboard);
 		
-		RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_myboardlist.jsp");
+		RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 		rd.forward(request, response);
-	}
+
+		
+/*	마이페이지 리스트 상세보기	*/		
+		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardlistDetail.do if문");
+			
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);			
+		}
 		
 		
 		

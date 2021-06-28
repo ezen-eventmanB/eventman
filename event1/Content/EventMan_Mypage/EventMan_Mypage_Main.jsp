@@ -33,9 +33,8 @@
 	 var midx = <%=midx%>;
 	 
 	 $.ajax({
-		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_myboardlist.do", 
+		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do", 
 		typy:"post",
-		data:"",
 		data:{midx:midx},
 		datatype:"html",
 		success:function(data){

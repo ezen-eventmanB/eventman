@@ -57,7 +57,6 @@ public class BoardServiceImpl {
 				System.out.println("mname = "+bv.getBname());
 				System.out.println("bcount = "+bv.getBcount());
 				
-				
 			}
 			
 			

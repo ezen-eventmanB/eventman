@@ -28,17 +28,28 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<title>EVENT MAN!</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script>
 
-<script type="text/javascript">
 	function myboarddetailFn(){
-		
 		alert("ajax실행");
-		
-	}
-</script>
+			
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do",
+			type:"post",
+			datatype:"html",
+			success:function(data){
+				$("#myboardbox").html(data);
+			}
+		});
+	};
 
+
+	
+
+</script>
+<title>EVENT MAN!</title>
 	
 <style>
 
@@ -52,30 +63,32 @@
 </div>
 
 <!-- 게시글 리스트 -->
-
-<table class="table table-hover">
-	<thead>
-		<th>카테고리</th>
-		<th colspan="2">제목</th>
-		<th></th>
-		<th>작성일</th>
-		<th>작성자</th>
-		<th>조회수</th>  
-	</thead>
-	<tbody>
-	<% for(EvBoardAskVo bavo: alistboardask){ %>
-		<tr onclick="myboarddetailFn()">
-			<td><%=bavo.getBcata()%></td>
-			<td colspan="2"><%=bavo.getBtitle()%></td>
-			<td></td>
-			<td><%=bavo.getBWrieday2()%></td>
-			<td><%=bavo.getBname()%></td>
-			<td><%=bavo.getBcount() %></td>
-		</tr>
-	<%} %>
-	</tbody>
-</table>
-
+<div class="container">
+	<section id="myboardbox">
+	<table class="table table-hover">
+		<thead>
+			<th>카테고리</th>
+			<th colspan="2">제목</th>
+			<th></th>
+			<th>작성일</th>
+			<th>작성자</th>
+			<th>조회수</th>  
+		</thead>
+		<tbody>
+		<% for(EvBoardAskVo bavo: alistboardask){ %>
+			<tr onclick="myboarddetailFn()">
+				<td><%=bavo.getBcata()%></td>
+				<td colspan="2"><%=bavo.getBtitle()%></td>
+				<td></td>
+				<td><%=bavo.getBWrieday2()%></td>
+				<td><%=bavo.getBname()%></td>
+				<td><%=bavo.getBcount() %></td>
+			</tr>
+		<%}; %>
+		</tbody>
+	</table>
+	</section>
+</div>
 
 
 
