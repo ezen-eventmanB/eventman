@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import service.BoardServiceImpl;
 import service.MemberServiceImpl;
 import vo.EvMemberVo;
 
@@ -279,6 +279,34 @@ public class MemberController extends HttpServlet {
 			System.out.println("EventMan_phonecheck_Action.do if문");
 			
 				
+/*	마이페이지 리스트 화면	*/			
+		}else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
+	
+		System.out.println("EventMan_Mypage_Myboardlist.do if문");
+		
+		String midx = request.getParameter("midx");
+		
+		System.out.println("midx= "+midx);
+		
+		BoardServiceImpl boarddao = new BoardServiceImpl();
+		ArrayList alistboard = boarddao.selectmyboardlist(midx);
+		
+		request.setAttribute("alistboard", alistboard);
+		
+		
+		RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
+		rd.forward(request, response);
+		
+	
+	
+/*	마이페이지 리스트 상세보기	*/		
+		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardlistDetail.do if문");
+			
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);			
 		}
 		
 

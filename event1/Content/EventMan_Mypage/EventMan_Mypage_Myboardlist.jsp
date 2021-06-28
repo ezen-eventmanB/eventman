@@ -30,87 +30,83 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+
+<title>EVENT MAN!</title>
+
 <script>
 
 	function myboarddetailFn(){
-		alert("ajax실행");
-			
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do",
 			type:"post",
+			data:"",
 			datatype:"html",
 			success:function(data){
 				$("#myboardbox").html(data);
 			}
 		});
-	};
-
-
-	
+	}
 
 </script>
-<title>EVENT MAN!</title>
-	
-<style>
 
-</style>
 </head>
 <body>
 
-<div class="fs-4 fw-bold">게시글 목록</div>
-<div class="text-end">
-	<button type="button" class="btn btn-outline-secondary btn-sm">게시글 작성</button>
+<div class="container"  id="myboardbox">
+	<div class="fs-4 fw-bold">게시글 목록</div>
+	<div class="text-end">
+		<button type="button" class="btn btn-outline-secondary btn-sm">게시글 작성</button>
+	</div>
+	
+	<!-- 게시글 리스트 -->
+	<div class="container">
+		<table class="table table-hover">
+			<thead>
+				<th>카테고리</th>
+				<th colspan="2">제목</th>
+				<th></th>
+				<th>작성일</th>
+				<th>작성자</th>
+				<th>조회수</th>  
+			</thead>
+			<tbody>
+			<% for(EvBoardAskVo bavo: alistboardask){ %>
+				<tr onclick="myboarddetailFn()">
+					<td><%=bavo.getBcata()%></td>
+					<td colspan="2"><%=bavo.getBtitle()%></td>
+					<td></td>
+					<td><%=bavo.getBWrieday2()%></td>
+					<td><%=bavo.getBname()%></td>
+					<td><%=bavo.getBcount() %></td>
+				</tr>
+			<%}; %>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+	
+	<nav aria-label="Page navigation example">
+	   <ul class="pagination">
+	      <li class="page-item">
+	         <a class="page-link" href="#" aria-label="Previous">
+	            <span aria-hidden="true">&laquo;</span>
+	         </a>
+	      </li>
+	      <li class="page-item"><a class="page-link" href="#">1</a></li>
+	      <li class="page-item"><a class="page-link" href="#">2</a></li>
+	      <li class="page-item"><a class="page-link" href="#">3</a></li>
+	      <li class="page-item">
+	         <a class="page-link" href="#" aria-label="Next">
+	            <span aria-hidden="true">&raquo;</span>
+	         </a>
+	      </li>
+	   </ul>
+	</nav>
+
 </div>
-
-<!-- 게시글 리스트 -->
-<div class="container">
-	<section id="myboardbox">
-	<table class="table table-hover">
-		<thead>
-			<th>카테고리</th>
-			<th colspan="2">제목</th>
-			<th></th>
-			<th>작성일</th>
-			<th>작성자</th>
-			<th>조회수</th>  
-		</thead>
-		<tbody>
-		<% for(EvBoardAskVo bavo: alistboardask){ %>
-			<tr onclick="myboarddetailFn()">
-				<td><%=bavo.getBcata()%></td>
-				<td colspan="2"><%=bavo.getBtitle()%></td>
-				<td></td>
-				<td><%=bavo.getBWrieday2()%></td>
-				<td><%=bavo.getBname()%></td>
-				<td><%=bavo.getBcount() %></td>
-			</tr>
-		<%}; %>
-		</tbody>
-	</table>
-	</section>
-</div>
-
-
-
-<nav aria-label="Page navigation example">
-   <ul class="pagination">
-      <li class="page-item">
-         <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-         </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-         <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-         </a>
-      </li>
-   </ul>
-</nav>
-
-
 
 
 <!-- Bootstrap에 필요한 JS파일 -->

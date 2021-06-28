@@ -23,31 +23,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<script>
-
- function myBoardListFn(){
-	 
-	 var midx = <%=midx%>;
-	 
-	 $.ajax({
-		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do", 
-		typy:"post",
-		data:{midx:midx},
-		datatype:"html",
-		success:function(data){
-			$("#mypageajax").html(data);
-		}
-	 });
- };
- 
-
-</script>
-
-<title>EVENT MAN!</title>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
 	<!-- footer CSS -->
@@ -56,15 +33,28 @@
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	<!-- mypage CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/mypage.css">
-	
-	
-	
-	
-	
-<style>
 
-</style>
+<title>EVENT MAN!</title>
 
+<script>
+function myBoardListFn(){
+
+	var midx = <%=midx%>;
+
+	$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do", 
+		type:"post",
+		data:{midx:midx},
+		datatype:"html",
+		success:function(data){
+			$("#mypageajax").html(data);
+		}
+	});
+}
+ 
+
+
+</script>
 
 </head>
 <body>
@@ -164,6 +154,7 @@
 			<img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
 		</div>
 	</dvi>
+	
 	<div class="container" id="mypageajax">
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto text-center px-3">
