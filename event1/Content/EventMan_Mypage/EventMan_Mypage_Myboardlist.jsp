@@ -1,3 +1,5 @@
+<%@page import="java.io.Console"%>
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -13,9 +15,6 @@
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }
-	out.println("세션에 담긴 아이디는?");
-	out.println(member_id);
-	out.println(midx);
 	
 	ArrayList<EvBoardAskVo> alistboardask = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
 	
@@ -35,9 +34,10 @@
 
 <script>
 
-	function myboarddetailFn(){
+	function myboarddetailFn(bidx){
+
 		$.ajax({
-			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do",
+			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx="+bidx,
 			type:"post",
 			data:"",
 			datatype:"html",
@@ -71,7 +71,7 @@
 			</thead>
 			<tbody>
 			<% for(EvBoardAskVo bavo: alistboardask){ %>
-				<tr onclick="myboarddetailFn()">
+				<tr onclick="myboarddetailFn(<%=bavo.getBidx()%>)">
 					<td><%=bavo.getBcata()%></td>
 					<td colspan="2"><%=bavo.getBtitle()%></td>
 					<td></td>
@@ -83,6 +83,7 @@
 			</tbody>
 		</table>
 	</div>
+
 
 
 

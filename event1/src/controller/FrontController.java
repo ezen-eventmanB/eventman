@@ -25,13 +25,9 @@ public class FrontController extends HttpServlet {
 		
 		System.out.println("uri : "+uri);
 		System.out.println("getContextPath() : "+request.getContextPath());
-		System.out.println("pathlength : "+pathlength);
 		System.out.println("str : "+str);
-		System.out.println("gubun[0] : "+gubun[0]);
-		System.out.println("gubun[1] : "+gubun[1]);
-		//System.out.println("gubun[2] : "+gubun[2]);
 		System.out.println("str2 = "+str2);
-		
+		System.out.println("");
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
