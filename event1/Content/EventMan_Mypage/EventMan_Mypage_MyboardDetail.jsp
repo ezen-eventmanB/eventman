@@ -1,3 +1,4 @@
+<%@page import="vo.EvBoardAskVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -9,9 +10,8 @@
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }
-	out.println("세션에 담긴 아이디는?");
-	out.println(member_id);
-	out.println(midx);
+	
+	EvBoardAskVo bavo = (EvBoardAskVo)request.getAttribute("bavo");
 	
 	%>    
     
@@ -33,27 +33,31 @@
 </head>
 <body>
 
-<div class="fs-4 fw-bold">게시글 상세보기</div>
-<div class="text-end">
-	<button type="button" class="btn btn-outline-secondary btn-sm">게시글 수정하기</button>
-</div>
+<div class="fs-4 fw-bold mb-5">게시글 상세보기</div>
+
 
 <!-- 게시글 리스트 -->
 <div class="container" id="myboardbox">
-	<div>게시판 제목</div>
-	<div>
-		<span>등록일</span>
-		<span>000000</span>
-		<span>작성자</span>
-		<span>ㄱㄱㄱㄱㄱ</span>
-		<span>조회수</span>
-		<span>98999</span>
+	<div><%=bavo.getBcata() %></div>
+	<div class="fs-1 fw-bold mb-3"><%=bavo.getBtitle() %></div>
+	<div class="mb-5">
+		<span class="fw-bold me-2">등록일</span>
+		<span class=" me-3"><%=bavo.getBWrieday2() %></span>
+		<span class="fw-bold me-2">작성자</span>
+		<span class=" me-3"><%=bavo.getBname() %></span>
+		<span class="fw-bold me-2">조회수</span>
+		<span class=" me-3"><%=bavo.getBcount() %></span>
 	</div>
 	<div>
-		<div>게시물내여ㅛㅇ</div>
-		<div>게시물내여ㅛㅇ</div>
-		<div>게시물내여ㅛㅇ</div>
-		<div>게시물내여ㅛㅇ</div>
+		<div><%=bavo.getBcontents() %></div>
+		<div>
+			<%if(bavo.getBfile()!=null){%>
+				<img></img><%=bavo.getBfile() %>
+			<%} %>
+		</div>
+	</div>
+	<div class="text-end">
+		<button type="button" class="btn btn-outline-secondary btn-sm">게시글 수정하기</button>
 	</div>
 </div>
 

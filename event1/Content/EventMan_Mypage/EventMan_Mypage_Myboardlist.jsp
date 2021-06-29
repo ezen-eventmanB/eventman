@@ -1,3 +1,5 @@
+<%@page import="java.io.Console"%>
+<%@page import="jdk.internal.misc.FileSystemOption"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -35,17 +37,19 @@
 
 <script>
 
-   function myboarddetailFn(){
-      $.ajax({
-         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do",
-         type:"post",
-         data:"",
-         datatype:"html",
-         success:function(data){
-            $("#myboardbox").html(data);
-         }
-      });
-   }
+	function myboarddetailFn(bidx){
+
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx="+bidx,
+			type:"post",
+			data:"",
+			datatype:"html",
+			success:function(data){
+				$("#myboardbox").html(data);
+			}
+		});
+	}
+
 
 </script>
 
@@ -71,7 +75,7 @@
          </thead>
          <tbody>
          <% for(EvBoardAskVo bavo: alistboardask){ %>
-            <tr onclick="myboarddetailFn()">
+            <tr onclick="myboarddetailFn(<%=bavo.getBidx()%>)">
                <td><%=bavo.getBcata()%></td>
                <td colspan="2"><%=bavo.getBtitle()%></td>
                <td></td>
@@ -83,8 +87,6 @@
          </tbody>
       </table>
    </div>
-
-
 
 
    
@@ -105,6 +107,7 @@
          </li>
       </ul>
    </nav>
+
 
 </div>
 

@@ -7,6 +7,7 @@ public class EvBoardAskVo {
 	private String bmenu;
 	private String btitle;
 	private String bcontents;
+	private String bfile;
 	private String bwriteday;
 	private String bname;
 	private String bcount; 
@@ -15,6 +16,12 @@ public class EvBoardAskVo {
 	private int gidx;
 	private int originbidx;
 	
+	public String getBfile() {
+		return bfile;
+	}
+	public void setBfile(String bfile) {
+		this.bfile = bfile;
+	}
 	public String getBname() {
 		return bname;
 	}

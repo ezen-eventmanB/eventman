@@ -34,13 +34,11 @@ public class MemberController extends HttpServlet {
 		String uri = request.getRequestURI();														
 		System.out.println("uri"+uri);																			
 		int pnamelength = request.getContextPath().length();	
-		System.out.println(pnamelength);
 		String str = uri.substring(pnamelength);															
 		System.out.println("str = "+str);												
 		String[]str1 = str.split("/"); 
 		String str2 = str1[2];
 
-		System.out.println("str0 = "+str1[0]);
 		System.out.println("str1 = "+str1[1]);	
 		System.out.println("str2 = "+str1[2]);	
 		
