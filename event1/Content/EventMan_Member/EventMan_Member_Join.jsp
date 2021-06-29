@@ -68,6 +68,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 <script language = "javascript">
 
 			function check(){
+				
 				var fm = document.frm;		
 		
 			if (fm.mId.value =="")	{
@@ -99,12 +100,15 @@ String member_id = (String)session.getAttribute("S_memberId");
 			    alert("핸드폰번호를 입력해주세요.");
 				fm.mPhone.focus();
 				return;
-			}
-			
+			}else{
+		
 				document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
 				document.frm.method = "post";
-				document.frm.submit();    
-				return;
+				document.frm.submit();
+				alert("완료.");
+
+			}
+			
 		}
 		
 		 </script>
@@ -273,6 +277,29 @@ String member_id = (String)session.getAttribute("S_memberId");
 							</table>
 						</div>
 					</form>
+					
+					<!-- 회원가입 완료시 띄우는 모달 -->
+
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">회원가입 완료</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					       	 <span id="modaltext"></span>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+					
+					
+					
 <!-- 메인 푸터 -->
 <div class="footer">
 </div>

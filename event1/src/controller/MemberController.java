@@ -58,12 +58,16 @@ public class MemberController extends HttpServlet {
 				String mPhone = request.getParameter("mPhn");
 				String mType = request.getParameter("mType");
 				
+				int value = 0;
 												
 				MemberServiceImpl md = new MemberServiceImpl();
-				md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
-						
-				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");	
-			
+				value = md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+				
+				if(value >=1) {
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");	
+				}else {
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		
+				}	
 				
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
