@@ -133,7 +133,7 @@ public class BoardController extends HttpServlet {
 			String hidx = multi.getParameter("hidx");
 			
 			EventAskServiceImpl askdao = new EventAskServiceImpl();
-			int value = askdao.insertAdvice(cata, title, content, file, midx, hidx);
+			int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
 			
 					
 			if(value > 0) {
@@ -168,7 +168,7 @@ public class BoardController extends HttpServlet {
 		
 	
 	
-/*	마이페이지 리스트 상세보기	*/		
+/*	마이페이지 게시글 상세보기	*/		
 		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
 			
 			System.out.println("EventMan_Mypage_MyboardlistDetail.do if문");
@@ -186,6 +186,37 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
 			rd.forward(request, response);			
+			
+			
+/* 게시글 수정하기로 이동	*/			
+		}else if(str2.equals("EventMan_Mypage_BoardModify.do")) {
+			
+			System.out.println("EventMan_Mypage_BoardModify.do if문");
+			
+			int bidx = Integer.parseInt( request.getParameter("bidx"));
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			EvBoardAskVo bavo = boarddao.boardModify(bidx);
+			
+			request.setAttribute("bavo", bavo);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_BoardModify.jsp");
+			rd.forward(request, response);
+			
+			
+/*	게시글 수정하기 완료	*/			
+		}else if(str2.equals("EventMan_Mypage_BoardModify_Action.do")) {
+
+			System.out.println("EventMan_Mypage_BoardModify_Action.do if문");
+			
+			
+			
+			
+			
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);
 		}
 		
 		

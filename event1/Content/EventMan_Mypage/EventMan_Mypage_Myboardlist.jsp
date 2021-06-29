@@ -14,9 +14,6 @@
     if (session.getAttribute("midx") != null) {
        midx = (int)session.getAttribute("midx");
     }
-   out.println("세션에 담긴 아이디는?");
-   out.println(member_id);
-   out.println(midx);
    
    ArrayList<EvBoardAskVo> alistboardask = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
    
@@ -58,7 +55,7 @@
 <div class="container"  id="myboardbox">
    <div class="fs-4 fw-bold">게시글 목록</div>
    <div class="text-end">
-      <button type="button" class="btn btn-outline-secondary btn-sm">게시글 작성</button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">게시글 작성</button>
    </div>
    
    <!-- 게시글 리스트 -->

@@ -192,7 +192,7 @@ function ajaxsubimtFn(){
 			
 			<!-- 제목 부분 -->
 			<div class="writetitle">
-				<input  class="writetitle" type="text" name="title"placeholder="제목을 입력해주세요">
+				<input  class="form-control writetitle" type="text" name="title"placeholder="제목을 입력해주세요">
 			</div>
 		
 			<!-- 내용 작성 부분 -->

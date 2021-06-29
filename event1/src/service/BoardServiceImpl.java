@@ -87,6 +87,7 @@ public class BoardServiceImpl {
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				bavo.setBidx(rs.getInt("bidx"));
 				bavo.setBcata(rs.getString("bcata"));
 				bavo.setBtitle(rs.getString("btitle"));
 				bavo.setBwriteday(rs.getString("bwriteday"));
@@ -113,6 +114,50 @@ public class BoardServiceImpl {
 		return bavo;
 	}
 
-/*	마이페이지 게시글 상세 보기	*/
+/*	마이페이지 게시글 수정하기.*/
+	public EvBoardAskVo boardModify(int bidx) {
+		
+		String sql = "select * "
+				+"from EVE_BOARD B , EVE_MEMBER M "
+				+"where B.midx = M.midx "
+				+"and B.bidx=?";
+
+		EvBoardAskVo bavo = new EvBoardAskVo();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bavo.setBidx(rs.getInt("bidx"));
+				bavo.setBcata(rs.getString("bcata"));
+				bavo.setBtitle(rs.getString("btitle"));
+				bavo.setBwriteday(rs.getString("bwriteday"));
+				bavo.setBname(rs.getString("mname"));
+				bavo.setBcount(rs.getString("bcount"));
+				bavo.setBcontents(rs.getString("bcontents"));
+				bavo.setBfile(rs.getString("bfile"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return bavo;
+		
+	}
+
+
 
 }

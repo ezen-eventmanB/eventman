@@ -51,6 +51,8 @@ public class MemberController extends HttpServlet {
 /*회원가입 Action 페이지 이동*/			
 		}else if(str2.equals("EventMan_Member_JoinAction.do")) {
 			
+				System.out.println("EventMan_Member_JoinAction 실행");
+			
 				String mId = request.getParameter("mId");
 				String mPwd = request.getParameter("mPwd");
 				String mName = request.getParameter("mName");
@@ -64,6 +66,7 @@ public class MemberController extends HttpServlet {
 				value = md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
 				
 				if(value >=1) {
+					PrintWriter out = response.getWriter();
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");	
 				}else {
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		

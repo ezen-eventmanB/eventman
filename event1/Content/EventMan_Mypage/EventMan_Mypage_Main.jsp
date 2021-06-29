@@ -59,7 +59,6 @@ function myBoardListFn(){
 </head>
 <body>
 
-<div class="container ajax">
 
    <!-- 상단 네비 부분 -->
    <div class="container">
