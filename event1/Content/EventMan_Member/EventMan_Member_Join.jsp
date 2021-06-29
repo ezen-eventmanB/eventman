@@ -51,7 +51,6 @@ String member_id = (String)session.getAttribute("S_memberId");
 		max-width:700px;	
 		margin:10px auto;
 	}
-<<<<<<< HEAD
 	.membertype{
 		border:1px solid black;
 	}
@@ -62,7 +61,9 @@ String member_id = (String)session.getAttribute("S_memberId");
 		text-align:center;
 	}
 		</style>
-				<script language = "javascript">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>	
+<script language = "javascript">
+
 			function check(){
 				var fm = document.frm;		
 		
@@ -91,20 +92,16 @@ String member_id = (String)session.getAttribute("S_memberId");
 			    alert("이메일 입력해주세요.");
 				fm.mEmail.focus();
 				return;
-			}else if (fm.mPhone.value ==""){
+			}else if (fm.mPhn.value ==""){
 			    alert("핸드폰번호를 입력해주세요.");
 				fm.mPhone.focus();
 				return;
-			}else if (fm.memberPhone.value ==""){
-			    alert("폰번호 입력");
-				fm.memberPhone.focus();
-				return;
 			}
-				fm.action ="<%=request.getContextPath()%>/memberWriteAction.do";
-				fm.method = "post";
-				fm.submit();	
-		
-			return;
+			
+				document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
+				document.frm.method = "post";
+				document.frm.submit();    
+				return;
 		}
 		
 		 </script>
@@ -202,7 +199,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 							</div>
 							
 						 <table border="1" style="text-align:left;width:700px;height:80px">
-								<tr>
+								<!-- <tr>
 									<td>아이디</td>
 									<td><input type="text" name="mId" size="30"></td>
 								</tr>
@@ -224,14 +221,54 @@ String member_id = (String)session.getAttribute("S_memberId");
 								</tr>
 								<tr>
 									<td>연락처</td>
-									<td><input type="text" name="mPhone" size="30"></td>
+									<td><input type="text" name="mPhn" size="30"></td>
+								</tr> -->
+							
+							 	<!--  css 입힌 회원가입  -->
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId">
+									</div>
 								</tr>
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd">
+									</div>
+								</tr>
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">비밀번호 확인</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2">
+									</div>
+								</tr>
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName">
+									</div>
+								</tr>
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail">
+									</div>
+								</tr>
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
+										<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn">
+									</div>
+								</tr> 
+								
+								
 								<tr>
 									<td>계정 종류</td>
 									<td><select name="mType" style="width:100px;height:25px">
-										<option value="1">개인</option>
-										<option value="2">단체</option>
-										<option value="3">기업</option>
+										<option value="개인">개인</option>
+										<option value="단체">단체</option>
+										<option value="기업">기업</option>
 										</select>
 									</td>
 									</tr>

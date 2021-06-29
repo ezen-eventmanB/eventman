@@ -49,8 +49,24 @@ public class MemberController extends HttpServlet {
 		if(str2.equals("EventMan_Member_Join.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp"); 	
 			rd.forward(request, response);
+
+/*회원가입 Action 페이지 이동*/			
+		}else if(str2.equals("EventMan_Member_JoinAction.do")) {
 			
+				String mId = request.getParameter("mId");
+				String mPwd = request.getParameter("mPwd");
+				String mName = request.getParameter("mName");
+				String mEmail = request.getParameter("mEmail");
+				String mPhone = request.getParameter("mPhn");
+				String mType = request.getParameter("mType");
+				
+												
+				MemberServiceImpl md = new MemberServiceImpl();
+				md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+						
+				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");	
 			
+				
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
@@ -166,25 +182,6 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  
 			}
 			
-
-/*회원가입 Action 페이지 이동*/			
-		}else if(str.equals("/memberWriteAction.do")) {
-				
-				String mId = request.getParameter("mId");
-				String mPwd = request.getParameter("mPwd");
-				String mName = request.getParameter("mName");
-				String mEmail = request.getParameter("mEmail");
-				String mPhone = request.getParameter("mPhone");
-				String mType = request.getParameter("mType");
-				
-				String ip = InetAddress.getLocalHost().getHostAddress();
-
-				MemberServiceImpl md = new MemberServiceImpl();
-				md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
-						
-				response.sendRedirect(request.getContextPath()+"/memberInsert.do");
-			
-				
 /* 로그인 Action 페이지로 이동*/    
 		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
 			String memberId  = request.getParameter("memberId");
