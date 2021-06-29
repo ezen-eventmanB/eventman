@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import service.BoardServiceImpl;
 import service.MemberServiceImpl;
 import vo.EvMemberVo;
 
@@ -27,71 +27,128 @@ public class MemberController extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=utf-8");
       
-      System.out.println("-----MemberController ½ÇÇà-----");
+      System.out.println("-----MemberController ì‹¤í–‰-----");
       
       request.setCharacterEncoding("UTF-8");
       
       String uri = request.getRequestURI();                                          
       System.out.println("uri"+uri);                                                         
       int pnamelength = request.getContextPath().length();   
-      System.out.println(pnamelength);
       String str = uri.substring(pnamelength);                                             
       System.out.println("str = "+str);                                    
       String[]str1 = str.split("/"); 
       String str2 = str1[2];
 
-      System.out.println("str0 = "+str1[0]);
       System.out.println("str1 = "+str1[1]);   
       System.out.println("str2 = "+str1[2]);   
       
       
-/* È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿*/
+/* íšŒì›ê°€ì… í˜ì´ì§€ë¡œ ì´ë™*/
       if(str2.equals("EventMan_Member_Join.do")) {
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Join.jsp");    
          rd.forward(request, response);
+
+/*íšŒì›ê°€ì… Action í˜ì´ì§€ ì´ë™*/         
+      }else if(str2.equals("EventMan_Member_JoinAction.do")) {
          
-         
-/* ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿*/
+            String mId = request.getParameter("mId");
+            String mPwd = request.getParameter("mPwd");
+            String mName = request.getParameter("mName");
+            String mEmail = request.getParameter("mEmail");
+            String mPhone = request.getParameter("mPhn");
+            String mType = request.getParameter("mType");
+            
+            int value = 0;
+                                    
+            MemberServiceImpl md = new MemberServiceImpl();
+            value = md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+            
+            if(value >=1) {
+               response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");   
+            }else {
+               response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");      
+            }   
+            
+/* ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™*/
       }else if(str2.equals("EventMan_Member_Login.do")) {
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp");    
 
          rd.forward(request, response);   
 
          
-/* ¸¶ÀÌ ÆäÀÌÁö·Î ÀÌµ¿*/      
+/* ë§ˆì´ í˜ì´ì§€ë¡œ ì´ë™*/      
       }else if(str2.equals("EventMan_Mypage_Main.do")) {
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp");    
          rd.forward(request, response);
 
          
-/*¾ÆÀÌµğ Ã£±â·Î ÀÌµ¿*/         
+/*ì•„ì´ë”” ì°¾ê¸°ë¡œ ì´ë™*/         
       }else if(str2.equals("EventMan_Member_Find_Id.do")) {
          
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp");    
          rd.forward(request, response);
          
          
-/*ºñ¹Ğ¹øÈ£ Ã£±â·Î ÀÌµ¿*/            
+/*ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°ë¡œ ì´ë™*/            
       }else if(str2.equals("EventMan_Member_Find_Pw.do")) {
          
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp");    
          rd.forward(request, response);   
-
-/* È¸¿øÁ¤º¸ ¼öÁ¤ È­¸é ÀÌµ¿*/         
+/*íšŒì› íƒˆí‡´ë¡œ ì´ë™*/         
+      }else if(str2.equals("EventMan_Mypage_Dropout.do")) {
+            //sessionê³¼ ì—°ê²°
+            HttpSession session=request.getSession();
+            //midx ê°’ì„ getìœ¼ë¡œ ë°›ì•„ì˜´
+             int member_midx = (int)session.getAttribute("midx");
+            
+             //daoì™€ ì—°ê²°
+            MemberServiceImpl mdao = new MemberServiceImpl();
+            
+            //voì— ë‹´ê²¨ì ¸ ìˆëŠ” midx ë¥¼ ê°€ì ¸ì˜´
+             EvMemberVo mbvo = mdao.selectMember(member_midx);
+                        
+             request.setAttribute("mbvo", mbvo);
+         
+         
+            RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Dropout.jsp");    
+            rd.forward(request, response);
+      
+      }else if (str2.equals("EventMan_Mypage_Dropout_Action.do")) {
+               
+            //1. ë„˜ê²¨ë°›ëŠ”ë‹¤
+            String midx = request.getParameter("midx");
+            
+            int midx2 = Integer.parseInt(midx);
+            String mPwd2 = request.getParameter("mPwd");
+               
+            //2.ì²˜ë¦¬í•œë‹¤
+            MemberServiceImpl mdao = new MemberServiceImpl();
+            int value = mdao.memberDelete(midx2, mPwd2);      
+            System.out.println("value"+value);
+            
+            //3.ì´ë™í•œë‹¤
+         
+           if (value > 0) {
+           response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_LogoutAction.do");
+           }else {
+           response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Dropout.do"); }
+              
+               
+/* íšŒì›ì •ë³´ ìˆ˜ì • í™”ë©´ ì´ë™*/         
       }else if(str2.equals("EventMan_Mypage_Modify.do")) {
          
 //         String midx = request.getParameter("midx");
 //         int midx2 = Integer.parseInt(midx);
          
-         //session°ú ¿¬°á
+         //sessionê³¼ ì—°ê²°
          HttpSession session=request.getSession();
-         //midx °ªÀ» getÀ¸·Î ¹Ş¾Æ¿È
+         //midx ê°’ì„ getìœ¼ë¡œ ë°›ì•„ì˜´
           int member_midx = (int)session.getAttribute("midx");
          
-          //dao¿Í ¿¬°á
+          //daoì™€ ì—°ê²°
          MemberServiceImpl mdao = new MemberServiceImpl();
          
-         //vo¿¡ ´ã°ÜÁ® ÀÖ´Â midx ¸¦ °¡Á®¿È
+         //voì— ë‹´ê²¨ì ¸ ìˆëŠ” midx ë¥¼ ê°€ì ¸ì˜´
           EvMemberVo mbvo = mdao.selectMember(member_midx);
                      
           request.setAttribute("mbvo", mbvo);
@@ -100,10 +157,10 @@ public class MemberController extends HttpServlet {
          rd.forward(request, response);
          
          
-/*È¸¿øÁ¤º¸ ¼öÁ¤ Action ÀÌµ¿*/         
+/*íšŒì›ì •ë³´ ìˆ˜ì • Action ì´ë™*/         
       }else if (str2.equals("EventMan_Mypage_Modify_Action.do")) {
          
-         //1. °ªÀ» ³Ñ°Ü¹Ş´Â´Ù
+         //1. ê°’ì„ ë„˜ê²¨ë°›ëŠ”ë‹¤
          String midx = request.getParameter("midx");
          String mPwd = request.getParameter("mPwd");
          String mPhn = request.getParameter("mPhn");
@@ -111,93 +168,30 @@ public class MemberController extends HttpServlet {
          
          System.out.println(midx+mPwd+mPhn+mEmail);
          
-         //¼öÁ¤ °ª
-         MemberServiceImpl bd = new MemberServiceImpl();   // °´Ã¼»ı¼º
+         //ìˆ˜ì • ê°’
+         MemberServiceImpl bd = new MemberServiceImpl();   // ê°ì²´ìƒì„±
          int value = bd.memberModify(midx, mPwd, mPhn, mEmail);
          System.out.println("value:"+value);
          
          
-         //¼öÁ¤ÀÌ Á¦´ë·Î µÈ´Ù¸é ÀÌµ¿
+         //ìˆ˜ì •ì´ ì œëŒ€ë¡œ ëœë‹¤ë©´ ì´ë™
          if (value >0)      
             
             response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Main.do");  
             
-         //¼öÁ¤ÀÌ µÇÁö ¾ÊÀ¸¸é ÀÌµ¿
+         //ìˆ˜ì •ì´ ë˜ì§€ ì•Šìœ¼ë©´ ì´ë™
          else {
             response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  
          }
          
-         
-      //È¸¿ø Á¤º¸ »èÁ¦
-//         }else if (str.equals("/board/boardDelete.do")) {
-//            
-//            String midx = request.getParameter("midx");
-//            int midx2 = Integer.parseInt(midx);
-//            
-//            //dao »ı¼º
-//            MemberServiceImpl mdao = new MemberServiceImpl();
-//            
-//             EvMemberVo mbvo = mdao.selectMember(midx2);            
-//            
-//            request.setAttribute("mbvo", mbvo);         
-//            
-//            RequestDispatcher rd = request.getRequestDispatcher("/boardDelete.jsp");
-//            rd.forward(request, response);
-//      
-//            
-//            //È¸¿ø Á¤º¸ »èÁ¦ action
-//         }else if (str.equals("/board/boardDeleteAction.do")) {
-//            
-//            //1. ³Ñ°Ü¹Ş´Â´Ù
-//            String midx = request.getParameter("midx");
-//            int midx2 = Integer.parseInt(midx);
-//            String password = request.getParameter("password");
-//            
-//            //2.Ã³¸®ÇÑ´Ù
-//            MemberServiceImpl mdao = new MemberServiceImpl();
-//            int value = mdao.deleteMember(midx, password);         
-//            
-//             EvMemberVo mbvo = mdao.selectMember(midx2);
-//            
-//            //3.ÀÌµ¿ÇÑ´Ù
-//            if (value > 0) {  
-//            response.sendRedirect(request.getContextPath()+"/board/boardList.do");   
-//            }else {
-//            response.sendRedirect(request.getContextPath()+"/board/boardDelete.do?bidx="+midx);               
-//            }
-//            }
-      
-            /*È¸¿ø°¡ÀÔ Action ÆäÀÌÁö ÀÌµ¿*/         
-
-      }else if(str2.equals("EventMan_Mapge_ModifyAction.do")) {
-               
-
-/*È¸¿ø°¡ÀÔ Action ÆäÀÌÁö ÀÌµ¿*/         
-      }else if(str.equals("/memberWriteAction.do")) {
-            
-            String mId = request.getParameter("mId");
-            String mPwd = request.getParameter("mPwd");
-            String mName = request.getParameter("mName");
-            String mEmail = request.getParameter("mEmail");
-            String mPhone = request.getParameter("mPhone");
-            String mType = request.getParameter("mType");
-            
-            String ip = InetAddress.getLocalHost().getHostAddress();
-
-            MemberServiceImpl md = new MemberServiceImpl();
-            md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
-                  
-            response.sendRedirect(request.getContextPath()+"/memberInsert.do");
-         
-            
-/* ·Î±×ÀÎ Action ÆäÀÌÁö·Î ÀÌµ¿*/    
+/* ë¡œê·¸ì¸ Action í˜ì´ì§€ë¡œ ì´ë™*/    
       }else if (str2.equals("EventMan_Member_LoginAction.do")) {
          String memberId  = request.getParameter("memberId");
          String memberPwd  = request.getParameter("memberPwd");
          System.out.println("memberId"+memberId);
          System.out.println("memberPwd"+memberPwd);
          
-         //sql ¹Ş¾Æ¿À±â
+         //sql ë°›ì•„ì˜¤ê¸°
          MemberServiceImpl md = new MemberServiceImpl();
          System.out.println("md"+md);
          
@@ -219,69 +213,99 @@ public class MemberController extends HttpServlet {
          }
          
          
-/*   ·Î±×¾Æ¿ô ½ÇÇà   */
+/*   ë¡œê·¸ì•„ì›ƒ ì‹¤í–‰   */
          
       }else if(str2.equals("EventMan_Member_LogoutAction.do")) {
-            
+            System.out.println("logout");
+         
+         
             HttpSession session = request.getSession();
             
-            session.invalidate(); // ¸ğµç¼¼¼ÇÁ¤º¸ »èÁ¦
+            session.invalidate(); // ëª¨ë“ ì„¸ì…˜ì •ë³´ ì‚­ì œ
             PrintWriter out =response.getWriter();   
             
             out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp';</script>");
       
             
-/* IDÃ£±â ÆäÀÌÁö·Î ÀÌµ¿*/
+/* IDì°¾ê¸° í˜ì´ì§€ë¡œ ì´ë™*/
       }else if(str2.equals("EventMan_Member_Find_Id.do")) {      
          
-         System.out.println("EventMan_Member_Find_Id.do if¹® ½ÇÇà");   
+         System.out.println("EventMan_Member_Find_Id.do ifë¬¸ ì‹¤í–‰");   
          
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp");    
          rd.forward(request, response);
          
          
-/* IDÃ£±â Action ½ÇÇà*/
+/* IDì°¾ê¸° Action ì‹¤í–‰*/
       }else if(str2.equals("EventMan_Member_Find_Id_Action.do")) {   
          
-         System.out.println("EventMan_Member_Find_Id_Action.do if¹® ½ÇÇà");   
+         System.out.println("EventMan_Member_Find_Id_Action.do ifë¬¸ ì‹¤í–‰");   
          
-         //Dao »ı¼º ÈÄ ¸Ş¼Òµå È£ÃâÇÏÀÚ
+         //Dao ìƒì„± í›„ ë©”ì†Œë“œ í˜¸ì¶œí•˜ì
          MemberServiceImpl msdao = new MemberServiceImpl();
          
          String name = request.getParameter("name");
          String phone = request.getParameter("phone");
          
-         System.out.println("-------³Ñ¾î¿Â °ª--------");
+         System.out.println("-------ë„˜ì–´ì˜¨ ê°’--------");
          System.out.println("name = "+name);
          System.out.println("phone="+phone);
          
-         //Àü´Ş¿Â °ªÀ» ¸Å°³º¯¼ö·Î ´øÁ®ÁÖÀÚ  
+         //ì „ë‹¬ì˜¨ ê°’ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë˜ì ¸ì£¼ì  
          String id = msdao.findId(name, phone);
          
          
          if(id=="") {
-            response.getWriter().write("È¸¿øÁ¤º¸°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+            response.getWriter().write("íšŒì›ì •ë³´ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
          }else {
-            response.getWriter().write("È¸¿ø´ÔÀÇ ¾ÆÀÌµğ´Â "+id+" ÀÔ´Ï´Ù.");
+            response.getWriter().write("íšŒì›ë‹˜ì˜ ì•„ì´ë””ëŠ” "+id+" ì…ë‹ˆë‹¤.");
          }
 
-/* ÈŞ´ëÆù º»ÀÎ È®ÀÎ */
+/* íœ´ëŒ€í° ë³¸ì¸ í™•ì¸ */
       }else if(str2.equals("EventMan_phonecheck.do")) {
             
-         System.out.println("EventMan_phonecheck.do if¹® ½ÇÇà");   
+         System.out.println("EventMan_phonecheck.do ifë¬¸ ì‹¤í–‰");   
          
          
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_phonecheck.jsp");    
          rd.forward(request, response);
    
 
-/* º»ÀÎÈ®ÀÎ µ¥ÀÌÅÍ °¡Á®¿À±â*/                  
+/* ë³¸ì¸í™•ì¸ ë°ì´í„° ê°€ì ¸ì˜¤ê¸°*/                  
       }else if(str2.equals("EventMan_phonecheck_Action.do")){
       
          
-         System.out.println("EventMan_phonecheck_Action.do if¹®");
+         System.out.println("EventMan_phonecheck_Action.do ifë¬¸");
          
             
+/*   ë§ˆì´í˜ì´ì§€ ë¦¬ìŠ¤íŠ¸ í™”ë©´   */         
+      }else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
+   
+      System.out.println("EventMan_Mypage_Myboardlist.do ifë¬¸");
+      
+      String midx = request.getParameter("midx");
+      
+      System.out.println("midx= "+midx);
+      
+      BoardServiceImpl boarddao = new BoardServiceImpl();
+      ArrayList alistboard = boarddao.selectmyboardlist(midx);
+      
+      request.setAttribute("alistboard", alistboard);
+      
+      
+      RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
+      rd.forward(request, response);
+      
+   
+   
+/*   ë§ˆì´í˜ì´ì§€ ë¦¬ìŠ¤íŠ¸ ìƒì„¸ë³´ê¸°   */      
+      }else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
+         
+         System.out.println("EventMan_Mypage_MyboardlistDetail.do ifë¬¸");
+         
+         
+         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+         rd.forward(request, response);         
       }
       
 
@@ -298,7 +322,7 @@ public class MemberController extends HttpServlet {
 
    
    
-   /* (À±Áø) */
+   /* (ìœ¤ì§„) */
    
    
    

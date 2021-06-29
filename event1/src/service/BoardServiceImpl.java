@@ -2,10 +2,13 @@ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbconn.DBconn;
+import vo.EvBoardAskVo;
+import vo.EvReviewVo;
 
 public class BoardServiceImpl {
 	
@@ -19,24 +22,37 @@ public class BoardServiceImpl {
 		
 	}
 	
-/*	상담글 작성하기	*/	
-	public int insertAdvice(String cata, String title, String content, String file , String midx ,String hidx) {
+
+/* 마이페이지에서 본인이 작성한 글 리스트 불러오기	*/
+	public ArrayList selectmyboardlist(String midx) {
 		
-		int value=0;
+		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
 		
-		String sql = "insert into EVE_EVENTASK(sidx , scata , stitle ,stext, sfile , midx , hidx , writeday)"
-				    + "values(EVENTASK_SEQ.NEXTVAL , ? , ? , ? , ? , ? , ? ,  TO_CHAR(SYSDATE,'YYYY-MM-DD'))";
+		String sql ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, M.mname "
+				   +"from " 
+			       +"EVE_BOARD B, EVE_MEMBER M "
+				   +"where B.midx = M.midx and B.midx=? order by bidx desc";
+
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cata);
-			pstmt.setString(2, title);
-			pstmt.setString(3, content);
-			pstmt.setString(4, file);
-			pstmt.setString(5, midx);
-			pstmt.setString(6, hidx);
+			pstmt.setString(1, midx);
+			ResultSet rs = pstmt.executeQuery();
 			
-			value=pstmt.executeUpdate();
+			while(rs.next()) {
+				
+				EvBoardAskVo bv = new EvBoardAskVo();
+				bv.setBidx(rs.getInt("bidx"));
+				bv.setBcata(rs.getString("bcata"));
+				bv.setBtitle(rs.getString("btitle"));
+				bv.setBwriteday(rs.getString("bwriteday"));
+				bv.setBname(rs.getString("mname"));
+				bv.setBcount(rs.getString("bcount"));
+
+				alistboard.add(bv);
+				
+			}
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -49,31 +65,54 @@ public class BoardServiceImpl {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
-		}
-		
-		
-		return value; 
-	}
-	
-
-/* 마이페이지에서 본인이 작성한 글 불러오기	*/
-	public ArrayList selectmyboardlist() {
-		
-		ArrayList alistboard = new ArrayList();
-		
-		//작성해야함
-		String sql = "";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		return alistboard;
 	}
+
+
+/*마이페이지 게시글 상세보기*/
+	public EvBoardAskVo boardlistselectone(int bidx) {
+		
+		String sql = "select * "
+					+"from EVE_BOARD B , EVE_MEMBER M "
+					+"where B.midx = M.midx "
+					+"and B.bidx=?";
+		
+		EvBoardAskVo bavo = new EvBoardAskVo();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bavo.setBcata(rs.getString("bcata"));
+				bavo.setBtitle(rs.getString("btitle"));
+				bavo.setBwriteday(rs.getString("bwriteday"));
+				bavo.setBname(rs.getString("mname"));
+				bavo.setBcount(rs.getString("bcount"));
+				bavo.setBcontents(rs.getString("bcontents"));
+				bavo.setBfile(rs.getString("bfile"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return bavo;
+	}
+
+/*	마이페이지 게시글 상세 보기	*/
 
 }

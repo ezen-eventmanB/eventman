@@ -122,7 +122,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 	<!-- 회사 소개 이미지 -->
 	<div class="container">	
 		<div class="bd-example">
-			<img src="../회사소개이미지.jpg" alt="">
+			<img src="../회사소개이미지.jpg" alt="" class="container">
 			<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
 		</div>
 	</div>

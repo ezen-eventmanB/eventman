@@ -51,7 +51,6 @@ String member_id = (String)session.getAttribute("S_memberId");
       max-width:700px;   
       margin:10px auto;
    }
-<<<<<<< HEAD
    .membertype{
       border:1px solid black;
    }
@@ -61,9 +60,15 @@ String member_id = (String)session.getAttribute("S_memberId");
    #underline1{
       text-align:center;
    }
+   .input-group-text{
+      width:30%;
+   }
       </style>
-            <script language = "javascript">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
+<script language = "javascript">
+
          function check(){
+            
             var fm = document.frm;      
       
          if (fm.mId.value =="")   {
@@ -91,20 +96,19 @@ String member_id = (String)session.getAttribute("S_memberId");
              alert("이메일 입력해주세요.");
             fm.mEmail.focus();
             return;
-         }else if (fm.mPhone.value ==""){
+         }else if (fm.mPhn.value ==""){
              alert("핸드폰번호를 입력해주세요.");
             fm.mPhone.focus();
             return;
-         }else if (fm.memberPhone.value ==""){
-             alert("폰번호 입력");
-            fm.memberPhone.focus();
-            return;
-         }
-            fm.action ="<%=request.getContextPath()%>/memberWriteAction.do";
-            fm.method = "post";
-            fm.submit();   
+         }else{
       
-         return;
+            document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
+            document.frm.method = "post";
+            document.frm.submit();
+            alert("완료.");
+
+         }
+         
       }
       
        </script>
@@ -201,50 +205,98 @@ String member_id = (String)session.getAttribute("S_memberId");
                         <hr>
                      </div>
                      
-                   <table border="1" style="text-align:left;width:700px;height:80px">
-                        <tr>
-                           <td>아이디</td>
-                           <td><input type="text" name="mId" size="30"></td>
+                   <table style="text-align:left;width:700px;height:80px">
+                     
+                         <!--  css 입힌 회원가입  -->
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId">
+                           </div>
                         </tr>
-                        <tr>
-                           <td>비밀번호</td>
-                           <td><input type="password" name="mPwd" size="30"></td>
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd">
+                           </div>
                         </tr>
-                        <tr>
-                           <td>비밀번호 확인</td>
-                           <td><input type="password" name="mPwd2" size="30"></td>
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">비밀번호 확인</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2">
+                           </div>
                         </tr>
-                        <tr>
-                           <td>이름</td>
-                           <td><input type="text" name="mName" size="30"></td>
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName">
+                           </div>
                         </tr>
-                        <tr>
-                           <td>이메일</td>
-                           <td><input type="email" name="mEmail" size="30"></td>
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail">
+                           </div>
                         </tr>
-                        <tr>
-                           <td>연락처</td>
-                           <td><input type="text" name="mPhone" size="30"></td>
-                        </tr>
-                        <tr>
-                           <td>계정 종류</td>
-                           <td><select name="mType" style="width:100px;height:25px">
-                              <option value="1">개인</option>
-                              <option value="2">단체</option>
-                              <option value="3">기업</option>
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn">
+                           </div>
+                        </tr> 
+                        
+                        
+                        <tr id="inputwidth">
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
+                                 <select class="form-select" aria-label="Default select example" name="mType">
+                                   <option selected>회원 종류를 선택해주세요.</option>
+                                   <option value="개인">개인</option>
+                                   <option value="단체">단체</option>
+                                   <option value="기업">기업</option>
+                                 </select>
+                           </div>
+                        </tr> 
+                           
+                           <!-- <td><select name="mType" style="width:100px;height:25px">
+                              <option value="개인">개인</option>
+                              <option value="단체">단체</option>
+                              <option value="기업">기업</option>
                               </select>
-                           </td>
-                           </tr>
-                        <tr>
-                        <td></td>
-                        <td>
-                        <input type="button" value="확인" onclick="check();"> 
-                        <input type="reset" value="reset"> 
-                        </td>
-                        </tr>
+                           </td> -->
+                                                
+                        <div class="d-grid gap-2">
+                        
+                          <button class="btn btn-outline-success" type="button"  onclick="check();">회원가입</button>
+                          <button class="btn btn-outline-secondary" type="reset">초기화</button>
+                        </div>
+                        
                      </table>
                   </div>
                </form>
+               
+               <!-- 회원가입 완료시 띄우는 모달 -->
+
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLabel">회원가입 완료</h5>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                          <span id="modaltext"></span>
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               
+               
+               
+               
 <!-- 메인 푸터 -->
 <div class="footer">
 </div>

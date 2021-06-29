@@ -20,6 +20,7 @@ String member_id = (String)session.getAttribute("S_memberId");
     <!-- Bootstrap에 필요한 CSS파일 -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <title>EVENT MAN!</title>
 
 	<!-- top nav CSS -->
@@ -100,32 +101,21 @@ String member_id = (String)session.getAttribute("S_memberId");
 	
 </style>
 	 <script type="text/javascript">
-	  function check(){
-		  if (document.frm.mPwd.value == ""){
-			  alert("비밀번호를 입력해주세요.");
-			  document.frm.mPwd.focus();
-			  return;
-		  }else if (document.frm.mPhn.value ==""){
-			  alert("연락처를 입력해주세요");
-			  document.frm.mPhn.focus();
-			  return;
-		  }else if (document.frm.mEmail.value ==""){
-			  alert("이메일을 입력해주세요");
-			  document.frm.mEmail.focus();
-			  return;
-		  }
-		  
-		  alert("전송합니다");
-		  document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Modify_Action.do";
-		  document.frm.method = "post";
-		  document.frm.submit(); 
-		  return;
-	  } 
-	  function dropout(){
-		  
-		  
-		  
-	  }
+	 
+	 function check(){         
+			 var frm = document.frm;
+		 
+			 if(document.frm.mPwd.value==""){
+				$("#modaltext").html("비밀번호를 입력해주세요");
+				$("#failModal").modal("show");	
+				document.getlementById('mPwd').focus();
+			}else{                                 
+				document.frm.action ="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Dropout_Action.do";
+				document.frm.method = "post";
+				document.frm.submit();    
+				return;
+		    }
+		 }
 	 </script>
 </head>
 <body>
@@ -217,13 +207,14 @@ String member_id = (String)session.getAttribute("S_memberId");
 			<div class="container">
 				<div id="roginbox">
 					<div id="underline1">
-						<p class="fs-5 text-black-50">Modify</p>
+						<p class="fs-5 text-black-50">Drop Out</p>
 					</div>
 		
 				<div id="underline2">
-					<p class="fs-1 text-muted" id="EVENTMAN">회 원 정 보</p>
+					<p class="fs-1 text-muted" id="EVENTMAN">탈 퇴 하 기</p>
 				</div>
 				<form name="frm">
+								<input type="hidden" name="midx" value="<%=member_midx%>">
 							<table>
 								<tr>
 									<td>계정 종류</td>
@@ -234,36 +225,42 @@ String member_id = (String)session.getAttribute("S_memberId");
 									<td><%=mbvo.getmId() %></td>
 								</tr>
 								<tr>
-									<td>비밀번호</td>
-									<td><input type="text" name="mPwd" size="30" value="<%=mbvo.getmPwd()%>"></td>
-								</tr>
-								<tr>
 									<td>이름</td>
 									<td><%=mbvo.getmName() %></td>
 								</tr>
 								<tr>
-									<td>연락처</td>
-									<td><input type="text" name="mPhn" size="30" value="<%=mbvo.getmPhn()%>"></td>
-								</tr>
-								<tr>
-									<td>이메일</td>
-									<td><input type="text" name="mEmail" size="30" value="<%=mbvo.getmEmail()%>"></td>
-									<!-- 세션값을 받으려면 컨트롤러에서 받는게 아닌 받으려는 페이지에서 히든값으로 적어 놓을것 -->
-									<td><input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>"></td>
+									<td>비밀번호</td>
+									<td>
+									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="mPwd"></td>
 								</tr>
 							</table>
-						<div>													
-							<button type="button" class="btn btn-outline-secondary" id="b1" onclick="location.href='EventMan_Mypage_Main.do'">돌아가기</button>
-							<button type="button" class="btn btn-outline-success" id="b1" onclick ="check()">수정완료</button>
-						</div>
 						<div class="d-grid gap-2">		
-							<button type="button" class="btn btn-outline-danger" onclick="location.href='EventMan_Mypage_Dropout.do'">탈퇴하기</button>
-						</div>					
+							<button type="button" class="btn btn-outline-danger" onclick="check()">탈퇴하기</button>
+						</div>
+				
 					</form>
 				</div>
 			</div>
 		
 </div>
+
+				<!-- 아이디 및 비밀번호 틀렸을때  -->
+					<div class="modal fade" id="failModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">탈퇴 실패</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					       	 비밀번호를 입력해주세요.
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 
 
 

@@ -1,6 +1,6 @@
 package vo;
 
-public class EvEventAskAnswerVo {
+public class X_EvEventAskAnswerVo {
 	private int sridx;
 	private String EventAskAnswerCatagory;
 	private String EventAskAnswerTitle;
