@@ -181,7 +181,6 @@ public class BoardController extends HttpServlet {
 			
 			bavo = boarddao.boardlistselectone(bidx);
 					
-			
 			request.setAttribute("bavo", bavo);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
@@ -206,17 +205,27 @@ public class BoardController extends HttpServlet {
 			
 /*	게시글 수정하기 완료	*/			
 		}else if(str2.equals("EventMan_Mypage_BoardModify_Action.do")) {
-
+			
 			System.out.println("EventMan_Mypage_BoardModify_Action.do if문");
 			
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+
+			System.out.println("bidx="+bidx);
+			System.out.println("title="+title);
+			System.out.println("content="+content);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			int value = boarddao.boardModifyAction(bidx, title, content);			
 			
 			
-			
-			
-			
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
-			rd.forward(request, response);
+			if(value>0) {
+				request.setAttribute("bidx", bidx);
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+				rd.forward(request, response);
+			}
+		
 		}
 		
 		

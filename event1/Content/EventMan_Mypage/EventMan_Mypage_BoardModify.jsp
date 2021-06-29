@@ -28,7 +28,7 @@
 
 /* 사진 미리보기*/
 function setImageFn(f){
-	var file = f.files;
+	var file = f.files; 
 	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
 		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
 		f.outerHTML = f.outerHTML;
@@ -73,14 +73,18 @@ function submitFn(){
 
 /*	수정완료	*/
 function submitmodalFn(){
+	
 	var frm = document.frm;
-	 
+
+	var midx = <%=midx%>;
+	
 	frm.action = "<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify_Action.do";
-	frm.enctype = "multipart/form-data";
 	frm.method = "post";
 	frm.submit();
 	
+	//ajax 로 submit을 시켜야하는데......
 	return;
+	
 };
 </script>
 <title>EVENT MAN!</title>
@@ -93,9 +97,9 @@ function submitmodalFn(){
 
 <div class="mypageajax">
 
-<from name="frm">
+<form name="frm">
 	<div class="fs-4 fw-bold mb-5">게시글 수정하기</div>
-	
+	<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>">
 	<div class="mb-1"><%=bavo.getBcata() %></div>
 	
 	<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example">
@@ -120,7 +124,7 @@ function submitmodalFn(){
 			</div>
 			<div class="mb-3">
 				<label for="formFile" class="form-label">첨부파일</label>
-				<input class="form-control" type="file" id="formFile" name="file"  onchange="setImageFn(this)">
+				<input class="form-control" type="file" id="formFile" name="file"  onchange="setImageFn(this)" multiple>
 			</div>
 		</div>
 	</div>
@@ -128,7 +132,7 @@ function submitmodalFn(){
 		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="backboardFn()">뒤로</button>
 		<button type="button" class="btn btn-outline-secondary btn-sm" onclick="submitFn()">완료</button>
 	</div>
-</from>
+</form>
 
 
 <!-- 취소 모달 -->
@@ -149,6 +153,7 @@ function submitmodalFn(){
     </div>
   </div>
 </div>
+
 
 <!-- submut 모달 -->
 <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

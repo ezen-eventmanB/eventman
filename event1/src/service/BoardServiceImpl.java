@@ -159,5 +159,39 @@ public class BoardServiceImpl {
 	}
 
 
+/*	게시판 수정 액션	*/
+	public int boardModifyAction(int bidx, String title, String content) {
+		
+		int value=0;
+		
+		String sql = "UPDATE EVE_BOARD SET btitle=?, bcontents=? where bidx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3,bidx);
+			value = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		return value;
+	}
+
+
 
 }
