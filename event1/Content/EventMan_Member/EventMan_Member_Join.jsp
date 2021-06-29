@@ -60,6 +60,9 @@ String member_id = (String)session.getAttribute("S_memberId");
 	#underline1{
 		text-align:center;
 	}
+	.input-group-text{
+		width:30%;
+	}
 		</style>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>	
 <script language = "javascript">
@@ -198,31 +201,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 								<hr>
 							</div>
 							
-						 <table border="1" style="text-align:left;width:700px;height:80px">
-								<!-- <tr>
-									<td>아이디</td>
-									<td><input type="text" name="mId" size="30"></td>
-								</tr>
-								<tr>
-									<td>비밀번호</td>
-									<td><input type="password" name="mPwd" size="30"></td>
-								</tr>
-								<tr>
-									<td>비밀번호 확인</td>
-									<td><input type="password" name="mPwd2" size="30"></td>
-								</tr>
-								<tr>
-									<td>이름</td>
-									<td><input type="text" name="mName" size="30"></td>
-								</tr>
-								<tr>
-									<td>이메일</td>
-									<td><input type="email" name="mEmail" size="30"></td>
-								</tr>
-								<tr>
-									<td>연락처</td>
-									<td><input type="text" name="mPhn" size="30"></td>
-								</tr> -->
+						 <table style="text-align:left;width:700px;height:80px">
 							
 							 	<!--  css 입힌 회원가입  -->
 								<tr id="inputwidth">
@@ -263,15 +242,27 @@ String member_id = (String)session.getAttribute("S_memberId");
 								</tr> 
 								
 								
-								<tr>
-									<td>계정 종류</td>
-									<td><select name="mType" style="width:100px;height:25px">
+								<tr id="inputwidth">
+									<div class="input-group mb-3">
+										<span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
+											<select class="form-select" aria-label="Default select example" name="mType">
+											  <option selected>회원 종류를 선택해주세요.</option>
+											  <option value="개인">개인</option>
+											  <option value="단체">단체</option>
+											  <option value="기업">기업</option>
+											</select>
+									</div>
+								</tr> 
+									
+									<!-- <td><select name="mType" style="width:100px;height:25px">
 										<option value="개인">개인</option>
 										<option value="단체">단체</option>
 										<option value="기업">기업</option>
 										</select>
-									</td>
-									</tr>
+									</td> -->
+									
+									
+									
 								<tr>
 								<td></td>
 								<td>
