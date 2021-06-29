@@ -75,7 +75,7 @@
          </thead>
          <tbody>
          <% for(EvBoardAskVo bavo: alistboardask){ %>
-            <tr onclick="myboarddetailFn()">
+            <tr onclick="myboarddetailFn(<%=bavo.getBidx()%>)">
                <td><%=bavo.getBcata()%></td>
                <td colspan="2"><%=bavo.getBtitle()%></td>
                <td></td>
