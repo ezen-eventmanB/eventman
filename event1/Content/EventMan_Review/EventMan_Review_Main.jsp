@@ -136,7 +136,7 @@
 
 
 
-	<!-- 상단 네비 부분 -->
+<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -164,7 +164,7 @@
 	       		</ul>
 	       	
 	
-				<!--로그인 전 상단 화면  -->	
+					<!--로그인 전 상단 화면  -->	
 						<%
 						if(member_id == null){
 						%>
@@ -184,7 +184,7 @@
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do">My page</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
 			       		</li>
 			       		<li class="nav-item"> 
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
@@ -198,6 +198,8 @@
 				    	%>
 	    	</div>	
 		</nav>
+</div>
+
 
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">	

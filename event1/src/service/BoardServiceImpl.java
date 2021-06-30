@@ -21,9 +21,8 @@ public class BoardServiceImpl {
 		this.conn =dbconn.getConnection();
 		
 	}
-	
 
-/* 마이페이지에서 본인이 작성한 글 리스트 불러오기	*/
+	/* 마이페이지에서 본인이 작성한 글 리스트 불러오기	*/
 	public ArrayList selectmyboardlist(String midx) {
 		
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
@@ -73,6 +72,8 @@ public class BoardServiceImpl {
 
 /*마이페이지 게시글 상세보기*/
 	public EvBoardAskVo boardlistselectone(int bidx) {
+		
+		System.out.println("boardlistselectone 게시글 상세보기 메소드");
 		
 		String sql = "select * "
 					+"from EVE_BOARD B , EVE_MEMBER M "
@@ -190,6 +191,39 @@ public class BoardServiceImpl {
 		
 		
 		return value;
+	}
+
+	/*	마이페이지 게시판 글 수	*/
+	public int boardCount(int midx) {
+		int count = 0;
+		
+		String sql = "select count(*) as cnt from EVE_BOARD where midx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, midx);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		return count;
 	}
 
 

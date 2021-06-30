@@ -174,6 +174,14 @@ public class BoardController extends HttpServlet {
 			System.out.println("EventMan_Mypage_MyboardlistDetail.do if문");
 			
 			int bidx = Integer.parseInt(request.getParameter("bidx"));
+
+			
+			
+			/*
+			 * System.out.println("request.getAttribute(\"bidx\") = "+request.getAttribute(
+			 * "bidx")); int modifybidx = (int)request.getAttribute("bidx");
+			 */
+			
 			
 			BoardServiceImpl boarddao = new BoardServiceImpl();
 			
@@ -219,11 +227,27 @@ public class BoardController extends HttpServlet {
 			BoardServiceImpl boarddao = new BoardServiceImpl();
 			int value = boarddao.boardModifyAction(bidx, title, content);			
 			
+			System.out.println("value = "+value);
 			
-			if(value>0) {
+			if(value == 1) {
+
 				request.setAttribute("bidx", bidx);
+				 
+				EvBoardAskVo bavo = new EvBoardAskVo();
+				
+				BoardServiceImpl boarddao1 = new BoardServiceImpl();
+				  
+				bavo = boarddao1.boardlistselectone(bidx);
+				  
+				request.setAttribute("bavo", bavo);
+				
+				 System.out.println("value가 1입니다 페이지 이동합니다.");
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
 				rd.forward(request, response);
+				
+			}else {
+				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
 			}
 		
 		}

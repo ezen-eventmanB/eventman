@@ -81,6 +81,21 @@ public class MemberController extends HttpServlet {
 			
 /* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
+			
+			System.out.println("EventMan_Mypage_Main.do if문");
+			
+			System.out.println("request.getParameter(\"midx\")="+request.getParameter("midx"));
+			
+			int midx = Integer.parseInt( request.getParameter("midx"));
+			
+			System.out.println("midx = "+midx);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			
+			int boardcount = boarddao.boardCount(midx);
+			
+			request.setAttribute("boardcount", boardcount);
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
 
