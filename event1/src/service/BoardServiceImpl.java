@@ -28,9 +28,9 @@ public class BoardServiceImpl {
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
 		
 		String sql ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, M.mname "
-				   +"from " 
-			       +"EVE_BOARD B, EVE_MEMBER M "
-				   +"where B.midx = M.midx and B.midx=? order by bidx desc";
+				   +"from "
+				   +"EVE_BOARD B, EVE_MEMBER M "
+				   +"where B.midx = M.midx and B.midx=? and bdelyn='N' order by bidx desc";
 
 		
 		try {
@@ -187,17 +187,14 @@ public class BoardServiceImpl {
 			}
 		}
 		
-		
-		
-		
 		return value;
 	}
 
-	/*	마이페이지 게시판 글 수	*/
+/*	마이페이지 게시판 글 수	*/
 	public int boardCount(int midx) {
 		int count = 0;
 		
-		String sql = "select count(*) as cnt from EVE_BOARD where midx=?";
+		String sql = "select count(*) as cnt from EVE_BOARD where midx=? and bdelyn='N'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -226,6 +223,57 @@ public class BoardServiceImpl {
 		return count;
 	}
 
+	
+/*	마이페이지 게시글 삭제하기		*/	
+	public int myPageBoardDelet(int bidx) {
+		
+		System.out.println("myPageBoardDelet(int bidx) 입니다.");
+		System.out.println(bidx);
+		
+		int value = 0;
+		
+		String sql = "UPDATE EVE_BOARD SET BDELYN='Y' where bidx=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
+		System.out.println("turn되는 값 = "+value);
+		return value;
+	}
 
 
+/*	게시글 Count	*/
+	public int hitCount(int bidx) {
+		
+		int value=0; 
+		
+		String sql = "update EVE_BOARD set bcount=bcount+1 where bidx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		return value;
+	}
 }

@@ -42,7 +42,15 @@
 <title>EVENT MAN!</title>
 
 <script>
+	function boardDeletModalFn(){
+		$("#textbox").html("&#34;<%=bavo.getBtitle()%>&#34; 글을 삭제합니다.");
+		$("#modal").modal("show");
 
+	};
+	
+	function boardDeletFn() {
+		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardDelet.do?bidx=<%=bavo.getBidx()%>&midx=<%=midx%>'
+	};
 </script>
 
 </head>
@@ -156,20 +164,39 @@
 		</div>
 		<div>
 			<div><%=bavo.getBcontents() %></div>
-			<div>
+			<div class="text-center">
 				<%if(bavo.getBfile() != null){%>
-					<img style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
+					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
 				<%}; %>
 			</div>
 		</div>
-		<div class="text-end">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">목록으로</button>
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify.do?bidx=<%=bavo.getBidx()%>'">게시글 수정하기</button>
+		<div class="text-end mt-5">
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">목록</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
 		</div>
 	</div>
 	
 </div>
 
+<!--   모달   -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="boardDeletFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 

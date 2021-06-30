@@ -175,15 +175,9 @@ public class BoardController extends HttpServlet {
 			
 			int bidx = Integer.parseInt(request.getParameter("bidx"));
 
-			
-			
-			/*
-			 * System.out.println("request.getAttribute(\"bidx\") = "+request.getAttribute(
-			 * "bidx")); int modifybidx = (int)request.getAttribute("bidx");
-			 */
-			
-			
 			BoardServiceImpl boarddao = new BoardServiceImpl();
+
+			boarddao.hitCount(bidx);
 			
 			EvBoardAskVo bavo = new EvBoardAskVo();
 			
@@ -250,6 +244,40 @@ public class BoardController extends HttpServlet {
 				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
 			}
 		
+/*	게시글 삭제하기	*/			
+		}else if(str2.equals("EventMan_Mypage_MyboardDelet.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardDelet.do if문입ㄴ다.");
+			
+			int value=0;
+			
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+			System.out.println("bidx = "+bidx);
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			
+			value = boarddao.myPageBoardDelet(bidx);
+			
+			System.out.println("메소드 처리결과 "+value);
+			
+			
+			if(value==1) {
+				
+				String midx = request.getParameter("midx");
+				
+				System.out.println("midx= "+midx);
+				
+				BoardServiceImpl boarddao1 = new BoardServiceImpl();
+				ArrayList alistboard = boarddao1.selectmyboardlist(midx);
+				
+				System.out.println("성공입니다.");
+				request.setAttribute("alistboard", alistboard);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
+				rd.forward(request, response);
+			}else {
+				
+				System.out.println("실패입니다.");
+			}
 		}
 		
 		

@@ -211,9 +211,8 @@
 			</div>
 		</div>
 		<div class="text-end">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="backboardFn()">뒤로</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="submitFn()">완료</button>
-			
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="backboardFn()">뒤로</button>
 		</div>
 	</form>
 	
