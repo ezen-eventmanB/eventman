@@ -5,14 +5,17 @@
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
 	out.println(midx);
-	
+	out.println(gidx);	
 	
 	%>    
 	
@@ -76,7 +79,7 @@
 	
 					<!--로그인 전 상단 화면  -->	
 						<%
-						if(member_id == null){
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -90,7 +93,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -104,8 +107,21 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
+				   		
+				    	
 	    	</div>	
 		</nav>
 </div>

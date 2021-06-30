@@ -74,8 +74,8 @@ public class MemberController extends HttpServlet {
 				
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
-
 			rd.forward(request, response);	
 
 			
@@ -213,20 +213,38 @@ public class MemberController extends HttpServlet {
 			MemberServiceImpl md = new MemberServiceImpl();
 			System.out.println("md"+md);
 			
-			int midx = md.memberLoginCheck(memberId, memberPwd);	
+			String user = md.memberLoginCheck(memberId, memberPwd);	
 
-			System.out.println(midx);
+			String[] user1 = user.split("/");
+			
+			System.out.println("user1[0] = "+user1[0]);
+			System.out.println("user1[1] = "+user1[1]);
+			
+			String usertype = user1[0];
+			int useridx = Integer.parseInt(user1[1]);
 			
 
+			System.out.println("usertype = "+usertype);
+			System.out.println("useridx = "+useridx);
+			
 			PrintWriter out = response.getWriter();
 			
-			if (midx > 0) { 
+			if (usertype.equals("member")) { 
 				HttpSession session = request.getSession();
 				session.setAttribute("S_memberId", memberId);
-				session.setAttribute("midx", midx);
+				session.setAttribute("midx", useridx);
 				
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
-			}else{
+				
+			}else if(usertype.equals("master")){
+				HttpSession session = request.getSession();
+				session.setAttribute("S_memberId", memberId);
+				session.setAttribute("gidx", useridx);
+				
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
+				
+			}else {
+
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
 			}
 			
