@@ -1,4 +1,5 @@
 /controller/
+/dbconn/
+/domain/
 /service/
 /vo/
-/domain/
