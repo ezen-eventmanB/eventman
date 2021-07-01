@@ -75,7 +75,6 @@
       width:30%;
    }
       </style>
-<<<<<<< HEAD
       
       
 <script>
@@ -85,8 +84,6 @@
 		"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
 	}
 </script>
-=======
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
 
@@ -127,19 +124,15 @@
       
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
-<<<<<<< HEAD
             document.frm.submit();
             alert("회원가입이 완료되었습니다.");
-=======
             document.frm.submit(); 
             alert("완료."); 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
          }
          
-<<<<<<< HEAD
+
       }
-=======
       };
          function idCheck(){
         		
@@ -163,14 +156,12 @@
 					}	
 				});
          };
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
       
        </script>
 </head>
 <body>
 
 
-<<<<<<< HEAD
    <!-- 상단 네비 부분 -->
    <div class="container">
       <nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
@@ -233,7 +224,6 @@
                    %>
           </div>   
       </nav>
-=======
 <!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
@@ -296,10 +286,8 @@
 				    	%>
 	    	</div>	
 		</nav>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 </div>
       
-<<<<<<< HEAD
       
    <!-- 페이지 위치 안내 -->
    <div class="container"  id="containermargin">   
@@ -415,8 +403,7 @@
                  </div>
                </div>
                
-               
-=======
+           
    <!-- 페이지 위치 안내 -->
    <div class="container"  id="containermargin">   
       <!-- 집 아이콘 -->
@@ -529,7 +516,6 @@
 				    </div>
 				  </div>
 				</div>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
                
                
 <!-- 메인 푸터 -->
