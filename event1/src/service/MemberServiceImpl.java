@@ -15,7 +15,7 @@ public class MemberServiceImpl {
    private ResultSet rs; // 결과값 받아오기
 
    /* dao를 호출할때 생성자를 통해서 DBconn을 객체와 시키고 dbconn안의 getConnection()을 호출한다. */
-   public MemberServiceImpl() {
+   public MemberServiceImpl ()  {
       DBconn dbconn = new DBconn();
       this.conn = dbconn.getConnection();
    }
@@ -33,6 +33,7 @@ public class MemberServiceImpl {
       try {
          String sql = "insert into EVE_MEMBER(MIDX,MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(midx_seq.nextval,?,?,?,?,?,?,sysdate)";
          
+         //sql 명령대기 상태 연결 
          pstmt = conn.prepareStatement(sql);
 
          pstmt.setString(1, mId);
@@ -58,6 +59,52 @@ public class MemberServiceImpl {
       }
       return value;
    }
+   
+   public void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+	   if (rs != null) {
+		   try {
+			   rs.close();
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }
+	   }
+	   
+	   if (pstmt != null) {
+		   try {
+			   pstmt.close();
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }
+	   }
+	   if(conn != null) {
+		   try {
+			   conn.close();
+		   } catch (SQLException e) {
+			   e.printStackTrace();
+		   }
+	   }
+   }
+   
+   
+   /* 아이디 체크  */ 
+	public boolean confirmId(String lid) {
+		boolean result = false;
+		try {
+			conn = DBconn.getConnection();
+			String sql = "SELECT LID FROM LOGIN WHERE LID = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, lid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, null); 
+		}
+		return result;
+	}
 
    /*
     * 로그인 확인 화면

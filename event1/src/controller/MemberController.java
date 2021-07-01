@@ -50,7 +50,8 @@ public class MemberController extends HttpServlet {
 
 /*회원가입 Action 페이지 이동*/         
       }else if(str2.equals("EventMan_Member_JoinAction.do")) {
-         
+    	  
+    	  	MemberServiceImpl mdao = new MemberServiceImpl();
             String mId = request.getParameter("mId");
             String mPwd = request.getParameter("mPwd");
             String mName = request.getParameter("mName");
@@ -59,12 +60,18 @@ public class MemberController extends HttpServlet {
             String mType = request.getParameter("mType");
             
             int value = 0;
-                                    
+            
+            
+            	//dao 생선하는 부분
             MemberServiceImpl md = new MemberServiceImpl();
+            	//값을 입력시켜주는 부분
             value = md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
             
+            	//값이 제대로 넘어가면 로그페이지로 이동
             if(value >=1) {
-               response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");   
+               response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");
+               
+               //값이 제대로 넘어가지 않으면 회원가입 페이지로 이동
             }else {
                response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");      
             }   

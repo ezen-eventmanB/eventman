@@ -64,6 +64,15 @@ String member_id = (String)session.getAttribute("S_memberId");
       width:30%;
    }
       </style>
+      
+      
+<script>
+	function () {
+		url = "<%=request.getContextPath()%>/.jsp?lID=" + document.form.lID.value;
+		open(url, "confirm",
+		"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+	}
+</script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
 
@@ -105,7 +114,7 @@ String member_id = (String)session.getAttribute("S_memberId");
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
             document.frm.submit();
-            alert("완료.");
+            alert("회원가입이 완료되었습니다.");
 
          }
          
@@ -210,38 +219,39 @@ String member_id = (String)session.getAttribute("S_memberId");
                          <!--  css 입힌 회원가입  -->
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId">
+                              <span class="input-group-text" name="lID" id="inputGroup-sizing-default">아이디</span>
+                              <input type="button" value="중복확인" name="confirm_id" onclick="(this.form)" align = "right">
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" placeholder = "ID를 입력해주세요.">
                            </div>
                         </tr>
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd">
+                              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd" placeholder = "비밀번호를 입력해주세요.">
                            </div>
                         </tr>
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">비밀번호 확인</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2">
+                              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2" placeholder = "비밀번호를 입력해주세요.">
                            </div>
                         </tr>
-                        <tr id="inputwidth">
+                        <tr id="inputwidth"> 
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName">
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName" placeholder = "이름을 입력해주세요.">
                            </div>
                         </tr>
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail">
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail" placeholder = "이메일을 입력해주세요.">
                            </div>
                         </tr>
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn">
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn" placeholder = "핸드폰 번호를 입력해주세요.">
                            </div>
                         </tr> 
                         
