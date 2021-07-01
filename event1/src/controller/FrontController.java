@@ -22,7 +22,9 @@ public class FrontController extends HttpServlet {
 		String str = uri.substring(pathlength);					
 		String[] gubun = str.split("/");
 		String str2 = gubun[1];
-		
+
+		System.out.println("");
+		System.out.println("-----Front Controller-----");
 		System.out.println("uri : "+uri);
 		System.out.println("getContextPath() : "+request.getContextPath());
 		System.out.println("str : "+str);

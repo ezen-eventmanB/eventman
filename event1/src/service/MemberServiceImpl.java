@@ -62,20 +62,35 @@ public class MemberServiceImpl {
 	/*
 	 * 로그인 확인 화면
 	 */
-	public int memberLoginCheck(String memberId, String memberPwd) {
+	public String memberLoginCheck(String memberId, String memberPwd) {
 
 		int midx = 0;
-
-		String sql = "select midx from EVE_MEMBER where mdelyn='N' and mId=? and mPwd=?";
-		System.out.println("conn " + conn);
+		int gidx = 0;
+		
+		String user="";
+		
+		String membersql = "select midx from EVE_MEMBER where mdelyn='N' and mId=? and mPwd=?";
+		String mastersql = "select gidx from EVE_MASTER where gId=? and gPwd=?";
+		
 		try {
-			pstmt = conn.prepareStatement(sql); // sql 쿼리문 대기
+			pstmt = conn.prepareStatement(membersql); // sql 쿼리문 대기
 			pstmt.setString(1, memberId); // 첫번째 '?' 매개변수로 받아온 'membeId'를 대입
 			pstmt.setString(2, memberPwd); // 두번째 '?' 매개변수로 받아온 'memberPwd'를 대입
-			ResultSet rs = pstmt.executeQuery(); // 쿼리를 실행한 결과를 rs에 저장
-
-			if (rs.next()) {
-				midx = rs.getInt("midx");
+			ResultSet memberrs = pstmt.executeQuery(); // 쿼리를 실행한 결과를 rs에 저장
+			
+			if (memberrs.next()) {
+				midx = memberrs.getInt("midx");
+				
+			}else{
+				pstmt = conn.prepareStatement(mastersql);
+				pstmt.setString(1, memberId);
+				pstmt.setString(2, memberPwd);
+				ResultSet masterrs = pstmt.executeQuery();
+				
+				if( masterrs.next()) {
+					gidx = masterrs.getInt("gidx");
+				}
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -87,8 +102,16 @@ public class MemberServiceImpl {
 				e.printStackTrace();
 			}
 		}
-
-		return midx;
+		
+		if(midx>0) {
+			user="member/"+midx;
+		}else if(gidx>0) {
+			user="master/"+gidx;
+		}
+		
+		System.out.println("로그인 한 사람은? "+user);
+		
+		return user;
 	}
 
 	/*
