@@ -71,7 +71,28 @@ public class MemberController extends HttpServlet {
 				}else {
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		
 				}	
-				
+				/* 아이디 중복확인 Action*/				
+		}else if(str2.equals("EventMan_Member_IdCheckAction.do")) {	
+			
+			System.out.println("EventMan_Member_IdCheckAction");
+			
+			//Dao 생성 후 메소드 호출하자
+			MemberServiceImpl msdao = new MemberServiceImpl();
+			
+			String mid = request.getParameter("mid");
+			
+			System.out.println("-------넘어온 값--------");
+			System.out.println("mid = "+mid);
+			
+			//전달온 값을 매개변수로 던져주자  
+			String id = msdao.idCheck(mid);
+			
+			
+			if(id=="") {
+				response.getWriter().write("사용가능한 아이디 입니다.");
+			}else {
+				response.getWriter().write("사용 가능하지 않은 아이디 입니다.");
+			}	
 /* 로그인 페이지로 이동*/
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			

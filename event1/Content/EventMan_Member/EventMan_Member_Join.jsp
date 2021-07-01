@@ -115,12 +115,34 @@
       
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
-            document.frm.submit();
-            alert("완료.");
+            document.frm.submit(); 
+            alert("완료."); 
 
          }
          
-      }
+      };
+         function idCheck(){
+        		
+        	  var userid = $("#mId").val();
+              var alldata = { "mid": userid};
+             
+        	var userid = $("#mId").val();
+        		
+        	
+	        	$.ajax({
+					url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_IdCheckAction.do",
+					type:"post",
+					data: alldata,
+					success:function(data){
+						$("#checkidspan").html(data);
+						$("#modal").modal("show");
+						//리셋 ajax 설정하기
+						
+						//if문 설정하기
+						$("#mId").val("");
+					}	
+				});
+         };
       
        </script>
 </head>
@@ -191,7 +213,6 @@
 		</nav>
 </div>
       
-      
    <!-- 페이지 위치 안내 -->
    <div class="container"  id="containermargin">   
       <!-- 집 아이콘 -->
@@ -207,8 +228,8 @@
       
       <!-- 현제 페이지 이름 -->
       회원가입
+      
    </div>
-               
             <form name="frm"> 
                   <div class="joinroom">
                      <div id="underline1">
@@ -222,7 +243,8 @@
                         <tr id="inputwidth">
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">아이디</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId">
+                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" id="mId">
+                              <button type="button" class="btn btn-outline-secondary" onclick="idCheck()">아이디 중복체크</button>
                            </div>
                         </tr>
                         <tr id="inputwidth">
@@ -278,7 +300,7 @@
                                                 
                         <div class="d-grid gap-2">
                         
-                          <button class="btn btn-outline-success" type="button"  onclick="check();">회원가입</button>
+                          <button class="btn btn-outline-secondary" type="button"  onclick="check();">회원가입</button>
                           <button class="btn btn-outline-secondary" type="reset">초기화</button>
                         </div>
                         
@@ -286,26 +308,23 @@
                   </div>
                </form>
                
-               <!-- 회원가입 완료시 띄우는 모달 -->
-
-               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog modal-dialog-centered">
-                   <div class="modal-content">
-                     <div class="modal-header">
-                       <h5 class="modal-title" id="exampleModalLabel">회원가입 완료</h5>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
-                          <span id="modaltext"></span>
-                     </div>
-                     <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                     </div>
-                   </div>
-                 </div>
-               </div>
                
-               
+               <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel"></h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+				      </div>
+				      <div class="modal-body">
+				         <span id="checkidspan"> </span>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
                
                
 <!-- 메인 푸터 -->
