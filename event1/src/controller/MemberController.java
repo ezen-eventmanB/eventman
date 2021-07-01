@@ -22,7 +22,244 @@ public class MemberController extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
 
+<<<<<<< HEAD
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+=======
+/*회원가입 Action 페이지 이동*/			
+		}else if(str2.equals("EventMan_Member_JoinAction.do")) {
+			
+				System.out.println("EventMan_Member_JoinAction 실행");
+			
+				String mId = request.getParameter("mId");
+				String mPwd = request.getParameter("mPwd");
+				String mName = request.getParameter("mName");
+				String mEmail = request.getParameter("mEmail");
+				String mPhone = request.getParameter("mPhn");
+				String mType = request.getParameter("mType");
+				
+				int value = 0;
+												
+				MemberServiceImpl md = new MemberServiceImpl();
+				value = md.memberInsert(mId, mPwd, mName, mEmail, mPhone, mType);
+				
+				if(value >=1) {
+					PrintWriter out = response.getWriter();
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do");	
+				}else {
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		
+				}	
+				/* 아이디 중복확인 Action*/				
+		}else if(str2.equals("EventMan_Member_IdCheckAction.do")) {	
+			
+			System.out.println("EventMan_Member_IdCheckAction");
+			
+			//Dao 생성 후 메소드 호출하자
+			MemberServiceImpl msdao = new MemberServiceImpl();
+			
+			String mid = request.getParameter("mid");
+			
+			System.out.println("-------넘어온 값--------");
+			System.out.println("mid = "+mid);
+			
+			//전달온 값을 매개변수로 던져주자  
+			String id = msdao.idCheck(mid);
+			
+			
+			if(id=="") {
+				response.getWriter().write("사용가능한 아이디 입니다.");
+			}else {
+				response.getWriter().write("사용 가능하지 않은 아이디 입니다.");
+			}	
+/* 로그인 페이지로 이동*/
+		}else if(str2.equals("EventMan_Member_Login.do")) {
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
+			rd.forward(request, response);	
+
+			
+/* 마이 페이지로 이동*/		
+		}else if(str2.equals("EventMan_Mypage_Main.do")) {
+			
+			System.out.println("EventMan_Mypage_Main.do if문");
+			
+			System.out.println("request.getParameter(\"midx\")="+request.getParameter("midx"));
+			
+			int midx = Integer.parseInt( request.getParameter("midx"));
+			
+			System.out.println("midx = "+midx);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			
+			int boardcount = boarddao.boardCount(midx);
+			
+			request.setAttribute("boardcount", boardcount);
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
+			rd.forward(request, response);
+
+			
+/*아이디 찾기로 이동*/			
+		}else if(str2.equals("EventMan_Member_Find_Id.do")) {
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
+			rd.forward(request, response);
+			
+			
+/*비밀번호 찾기로 이동*/				
+		}else if(str2.equals("EventMan_Member_Find_Pw.do")) {
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Pw.jsp"); 	
+			rd.forward(request, response);	
+/*회원 탈퇴로 이동*/			
+		}else if(str2.equals("EventMan_Mypage_Dropout.do")) {
+				//session과 연결
+				HttpSession session=request.getSession();
+				//midx 값을 get으로 받아옴
+				 int member_midx = (int)session.getAttribute("midx");
+				
+				 //dao와 연결
+				MemberServiceImpl mdao = new MemberServiceImpl();
+				
+				//vo에 담겨져 있는 midx 를 가져옴
+			 	EvMemberVo mbvo = mdao.selectMember(member_midx);
+								
+			 	request.setAttribute("mbvo", mbvo);
+			
+			
+				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Dropout.jsp"); 	
+				rd.forward(request, response);
+		
+		}else if (str2.equals("EventMan_Mypage_Dropout_Action.do")) {
+					
+				//1. 넘겨받는다
+				String midx = request.getParameter("midx");
+				
+				int midx2 = Integer.parseInt(midx);
+				String mPwd2 = request.getParameter("mPwd");
+					
+				//2.처리한다
+				MemberServiceImpl mdao = new MemberServiceImpl();
+				int value = mdao.memberDelete(midx2, mPwd2);		
+				System.out.println("value"+value);
+				
+				//3.이동한다
+			
+			  if (value > 0) {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_LogoutAction.do");
+			  }else {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Dropout.do"); }
+			  	
+					
+/* 회원정보 수정 화면 이동*/			
+		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
+			
+//			String midx = request.getParameter("midx");
+//			int midx2 = Integer.parseInt(midx);
+			
+			//session과 연결
+			HttpSession session=request.getSession();
+			//midx 값을 get으로 받아옴
+			 int member_midx = (int)session.getAttribute("midx");
+			
+			 //dao와 연결
+			MemberServiceImpl mdao = new MemberServiceImpl();
+			
+			//vo에 담겨져 있는 midx 를 가져옴
+		 	EvMemberVo mbvo = mdao.selectMember(member_midx);
+							
+		 	request.setAttribute("mbvo", mbvo);
+		 	 	
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Modify.jsp"); 	
+			rd.forward(request, response);
+			
+			
+/*회원정보 수정 Action 이동*/			
+		}else if (str2.equals("EventMan_Mypage_Modify_Action.do")) {
+			
+			//1. 값을 넘겨받는다
+			String midx = request.getParameter("midx");
+			String mPwd = request.getParameter("mPwd");
+			String mPhn = request.getParameter("mPhn");
+			String mEmail = request.getParameter("mEmail");
+			
+			System.out.println(midx+mPwd+mPhn+mEmail);
+			
+			//수정 값
+			MemberServiceImpl bd = new MemberServiceImpl();   // 객체생성
+			int value = bd.memberModify(midx, mPwd, mPhn, mEmail);
+			System.out.println("value:"+value);
+			
+			
+			//수정이 제대로 된다면 이동
+			if (value >0)		
+				
+				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Main.do");  
+				
+			//수정이 되지 않으면 이동
+			else {
+				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  
+			}
+			
+/* 로그인 Action 페이지로 이동*/    
+		}else if (str2.equals("EventMan_Member_LoginAction.do")) {
+			String memberId  = request.getParameter("memberId");
+			String memberPwd  = request.getParameter("memberPwd");
+			System.out.println("memberId"+memberId);
+			System.out.println("memberPwd"+memberPwd);
+			
+			//sql 받아오기
+			MemberServiceImpl md = new MemberServiceImpl();
+			System.out.println("md"+md);
+			
+			String user = md.memberLoginCheck(memberId, memberPwd);	
+
+			String[] user1 = user.split("/");
+			
+			System.out.println("user1[0] = "+user1[0]);
+			System.out.println("user1[1] = "+user1[1]);
+			
+			String usertype = user1[0];
+			int useridx = Integer.parseInt(user1[1]);
+			
+
+			System.out.println("usertype = "+usertype);
+			System.out.println("useridx = "+useridx);
+			
+			PrintWriter out = response.getWriter();
+			
+			if (usertype.equals("member")) { 
+				HttpSession session = request.getSession();
+				session.setAttribute("S_memberId", memberId);
+				session.setAttribute("midx", useridx);
+				
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
+				
+			}else if(usertype.equals("master")){
+				HttpSession session = request.getSession();
+				session.setAttribute("S_memberId", memberId);
+				session.setAttribute("gidx", useridx);
+				
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
+				
+			}else {
+
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
+			}
+			
+			
+/*	로그아웃 실행	*/
+			
+		}else if(str2.equals("EventMan_Member_LogoutAction.do")) {
+				System.out.println("logout");
+			
+			
+				HttpSession session = request.getSession();
+				
+				session.invalidate(); // 모든세션정보 삭제
+				PrintWriter out =response.getWriter();   
+				
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp';</script>");
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
       
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=utf-8");

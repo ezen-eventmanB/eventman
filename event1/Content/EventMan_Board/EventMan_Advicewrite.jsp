@@ -86,7 +86,8 @@ function ajaxsubimtFn(){
 </head>
 <body>
 
-	<!-- 상단 네비 부분 -->
+
+<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -114,7 +115,7 @@ function ajaxsubimtFn(){
 	       		</ul>
 	       	
 	
-				<!--로그인 전 상단 화면  -->	
+					<!--로그인 전 상단 화면  -->	
 						<%
 						if(member_id == null){
 						%>
@@ -134,7 +135,7 @@ function ajaxsubimtFn(){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do">My page</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
 			       		</li>
 			       		<li class="nav-item"> 
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
@@ -148,6 +149,7 @@ function ajaxsubimtFn(){
 				    	%>
 	    	</div>	
 		</nav>
+</div>
 		
 		
 		<!-- 페이지 위치 안내 -->
@@ -192,7 +194,7 @@ function ajaxsubimtFn(){
 			
 			<!-- 제목 부분 -->
 			<div class="writetitle">
-				<input  class="writetitle" type="text" name="title"placeholder="제목을 입력해주세요">
+				<input  class="form-control writetitle" type="text" name="title" placeholder="제목을 입력해주세요">
 			</div>
 		
 			<!-- 내용 작성 부분 -->
@@ -206,6 +208,7 @@ function ajaxsubimtFn(){
 			<div class="mb-3">
 				<label for="formFile" class="form-label">첨부파일</label>
 				<input class="form-control" type="file" id="formFile" name="file" onchange="setImageFn(this)">
+
 			</div>
 			
 			
