@@ -113,7 +113,44 @@ public class MemberServiceImpl {
 		
 		return user;
 	}
+	/*
+	 *아이디 중복 확인
+	 */
+	public String idCheck(String mid) {
 
+		System.out.println("MemberServiceImpl idCheck() 실행");
+
+		String id = "";
+
+		ResultSet rs = null;
+		String sql = "select * from EVE_MEMBER where mid=?";
+
+		System.out.println("sql");
+		System.out.println("conn" + conn);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+
+			/* ResultSet은 if문을 통해서 next가 존재하면 받겠다! 를 해줘야한다. */
+			if (rs.next()) {
+
+				id = rs.getString("mid");
+				System.out.println("*******rs.getString(mid)" + rs.getString("mid"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	} 
+	
 	/*
 	 * 
 	 * 아이디 찾기 버튼 클릭시 메소드 (황현호)
