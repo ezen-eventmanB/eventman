@@ -39,7 +39,7 @@ public class CostController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 
-		System.out.println("-----CostController 실행-----");
+		System.out.println("-----CostController 실행-----");  
 
 		request.setCharacterEncoding("UTF-8");
 

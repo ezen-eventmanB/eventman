@@ -18,7 +18,7 @@ public class CostServiceImpl {
 	public CostServiceImpl() {
 		DBconn dbconn = new DBconn();
 		this.conn = dbconn.getConnection();
-	}
+	}  
 	
 	//견적신청 값 넘기기
 	public int costInsert(String cName, String cSdate, String cEdate, String cWday, 

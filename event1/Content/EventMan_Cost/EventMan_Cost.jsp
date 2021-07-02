@@ -14,10 +14,10 @@
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-
+    
 	out.println(midx); 
 	
-	
+	   
 	%>    
 <!doctype html>
 <html>
@@ -30,7 +30,7 @@
 <title>EVENT MAN!</title>
 		<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
-	<!-- footer CSS -->
+	<!-- footer CSS -->  
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
@@ -58,7 +58,7 @@
 		}
 	.CostDate{
 		width:20%;
-		text-align:center;
+		text-align:center;  
 	}
 
 </style>
@@ -84,7 +84,7 @@
 		         }else if(!costCataChk){
 		        	 alert("카테고리를 한개 이상 선택해주세요.");
 		        	 fm.costCataChk.focus();
-			         return false;
+			         return false;  
 		         }else if (fm.cLoca.value ==""){
 	                 alert("행사 지역을 입력 해주세요..");
 	                 fm.cLoca.focus();
