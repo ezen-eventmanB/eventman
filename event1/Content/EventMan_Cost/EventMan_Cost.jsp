@@ -17,7 +17,7 @@
     
 	out.println(midx); 
 	
-	   
+	    
 	%>    
 <!doctype html>
 <html>
