@@ -84,7 +84,7 @@ public class BoardController extends HttpServlet {
 			
 			//업로드 파일 경로		
 			//나중에 웹서버로 공통된 경로로 올리게 된다.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			String uploadPath =  "C:\\Users\\759\\git\\eventman2\\event1\\Content\\";
 			
 			//저장 폴더
 			String savedPath = "Advice_img";
@@ -144,7 +144,7 @@ public class BoardController extends HttpServlet {
 				
 				PrintWriter out = response.getWriter();   
 				
-				out.println("<script>alert('상듬글 작성 실패');</script>");
+				out.println("<script>alert('상담글 작성 실패');</script>");
 			}
 			
 			

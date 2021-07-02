@@ -75,18 +75,6 @@
       width:30%;
    }
       </style>
-<<<<<<< HEAD
-      
-      
-<script>
-	function () {
-		url = "<%=request.getContextPath()%>/.jsp?lID=" + document.form.lID.value;
-		open(url, "confirm",
-		"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
-	}
-</script>
-=======
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
 
@@ -127,19 +115,11 @@
       
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
-<<<<<<< HEAD
-            document.frm.submit();
-            alert("회원가입이 완료되었습니다.");
-=======
             document.frm.submit(); 
-            alert("완료."); 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+            alert("회원가입이 되셨습니다."); 
 
          }
          
-<<<<<<< HEAD
-      }
-=======
       };
          function idCheck(){
         		
@@ -163,77 +143,12 @@
 					}	
 				});
          };
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
       
        </script>
 </head>
 <body>
 
 
-<<<<<<< HEAD
-   <!-- 상단 네비 부분 -->
-   <div class="container">
-      <nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
-      
-         <a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
-              <img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-          </a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-          <div class="collapse navbar-collapse w-50" id="navbarNav">
-          
-               <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
-                 <li class="nav-item px-5">
-                      <a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-                 </li>
-                 <li class="nav-item px-5">
-                      <a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-                 </li>
-                   <li class="nav-item px-5">
-                      <a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-                   </li>
-                   <li class="nav-item px-5">
-                      <a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-                   </li>
-                </ul>
-             
-   
-            <!--로그인 전 상단 화면  -->   
-                  <%
-                  if(member_id == null){
-                  %>
-                  
-                   <ul class="navbar-nav" id="Memberbox" >   
-                      <li class="nav-item">
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-                      </li>                                                   
-                  </ul>
-                  
-               <!--로그인 후 상단 화면  -->
-                  <%
-                     }else{
-                  %>   
-                   <ul class="navbar-nav" id="Memberbox" >   
-                      <li class="nav-item">
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-                      </li>                                                         
-                  </ul>
-                     <%
-                     }
-                   %>
-          </div>   
-      </nav>
-=======
 <!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
@@ -296,127 +211,8 @@
 				    	%>
 	    	</div>	
 		</nav>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 </div>
       
-<<<<<<< HEAD
-      
-   <!-- 페이지 위치 안내 -->
-   <div class="container"  id="containermargin">   
-      <!-- 집 아이콘 -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-         <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-         <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-      </svg>
-      
-      <!-- 화살표 아이콘 -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
-      
-      <!-- 현제 페이지 이름 -->
-      회원가입
-   </div>
-               
-            <form name="frm"> 
-                  <div class="joinroom">
-                     <div id="underline1">
-                        <p class="fs-5 text-black-50">회원가입</p>
-                        <hr>
-                     </div>
-                     
-                   <table style="text-align:left;width:700px;height:80px">
-                     
-                         <!--  css 입힌 회원가입  -->
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" name="lID" id="inputGroup-sizing-default">아이디</span>
-                              <input type="button" value="중복확인" name="confirm_id" onclick="(this.form)" align = "right">
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" placeholder = "ID를 입력해주세요.">
-                           </div>
-                        </tr>
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">비밀번호</span>
-                              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd" placeholder = "비밀번호를 입력해주세요.">
-                           </div>
-                        </tr>
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">비밀번호 확인</span>
-                              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2" placeholder = "비밀번호를 입력해주세요.">
-                           </div>
-                        </tr>
-                        <tr id="inputwidth"> 
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">이름</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName" placeholder = "이름을 입력해주세요.">
-                           </div>
-                        </tr>
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">이메일</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail" placeholder = "이메일을 입력해주세요.">
-                           </div>
-                        </tr>
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">연락처</span>
-                              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn" placeholder = "핸드폰 번호를 입력해주세요.">
-                           </div>
-                        </tr> 
-                        
-                        
-                        <tr id="inputwidth">
-                           <div class="input-group mb-3">
-                              <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
-                                 <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected>회원 종류를 선택해주세요.</option>
-                                   <option value="개인">개인</option>
-                                   <option value="단체">단체</option>
-                                   <option value="기업">기업</option>
-                                 </select>
-                           </div>
-                        </tr> 
-                           
-                           <!-- <td><select name="mType" style="width:100px;height:25px">
-                              <option value="개인">개인</option>
-                              <option value="단체">단체</option>
-                              <option value="기업">기업</option>
-                              </select>
-                           </td> -->
-                                                
-                        <div class="d-grid gap-2">
-                        
-                          <button class="btn btn-outline-success" type="button"  onclick="check();">회원가입</button>
-                          <button class="btn btn-outline-secondary" type="reset">초기화</button>
-                        </div>
-                        
-                     </table>
-                  </div>
-               </form>
-               
-               <!-- 회원가입 완료시 띄우는 모달 -->
-
-               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                 <div class="modal-dialog modal-dialog-centered">
-                   <div class="modal-content">
-                     <div class="modal-header">
-                       <h5 class="modal-title" id="exampleModalLabel">회원가입 완료</h5>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
-                          <span id="modaltext"></span>
-                     </div>
-                     <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               
-               
-=======
    <!-- 페이지 위치 안내 -->
    <div class="container"  id="containermargin">   
       <!-- 집 아이콘 -->
@@ -529,7 +325,6 @@
 				    </div>
 				  </div>
 				</div>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
                
                
 <!-- 메인 푸터 -->

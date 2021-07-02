@@ -208,7 +208,6 @@ function ajaxsubimtFn(){
 			<div class="mb-3">
 				<label for="formFile" class="form-label">첨부파일</label>
 				<input class="form-control" type="file" id="formFile" name="file" onchange="setImageFn(this)">
-
 			</div>
 			
 			
