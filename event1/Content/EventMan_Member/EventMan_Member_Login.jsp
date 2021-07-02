@@ -38,16 +38,16 @@ function check(){
  
 
 	if(document.frm.memberId.value =="")   {
-		
 		$("#modaltext").html("아이디를 입력해주세요");
 		$("#exampleModal").modal("show");	
 		document.getlementById('memberId').focus();
-	}else if(document.frm.memberPwd.value==""){
 		
+	}else if(document.frm.memberPwd.value==""){
 		$("#modaltext").html("비밀번호를 입력해주세요");
 		$("#exampleModal").modal("show");	
 		document.getlementById('memberPwd').focus();
-	}else{                                 
+		
+	}else{             
 		document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
 		document.frm.method = "post";
 		document.frm.submit();    
@@ -56,7 +56,7 @@ function check(){
  }
 
 	
-	</script>
+</script>
 <style>
 
 /* 로그인 화면 */
@@ -256,7 +256,7 @@ function check(){
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	       	 <span id="modaltext""></span>
+	       	 <span id="modaltext"></span>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

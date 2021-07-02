@@ -115,7 +115,7 @@ public class BoardServiceImpl {
 		return bavo;
 	}
 
-/*	마이페이지 게시글 수정하기.*/
+/*	마이페이지 게시글 수정하기 페이지로 이동	.*/
 	public EvBoardAskVo boardModify(int bidx) {
 		
 		String sql = "select * "
@@ -161,32 +161,35 @@ public class BoardServiceImpl {
 
 
 /*	게시판 수정 액션	*/
-	public int boardModifyAction(int bidx, String title, String content) {
+	public int boardModifyAction(int bidx, String title, String content, String file) {
 		
 		int value=0;
+		String sql = null;
 		
-		String sql = "UPDATE EVE_BOARD SET btitle=?, bcontents=? where bidx=?";
-		
-		try {
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, title);
-			pstmt.setString(2, content);
-			pstmt.setInt(3,bidx);
-			value = pstmt.executeUpdate();
+
+			sql = "UPDATE EVE_BOARD SET btitle=?, bcontents=?, bfile=? where bidx=?";
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
 			try {
-				pstmt.close();
-				conn.close();
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, title);
+				pstmt.setString(2, content);
+				pstmt.setString(3,file);
+				pstmt.setInt(4,bidx);
+				value = pstmt.executeUpdate();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		}
-		
+
 		return value;
 	}
 

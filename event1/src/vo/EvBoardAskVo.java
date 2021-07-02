@@ -15,7 +15,7 @@ public class EvBoardAskVo {
 	private int midx;
 	private int gidx;
 	private int originbidx;
-	
+	 
 	public String getBfile() {
 		return bfile;
 	}

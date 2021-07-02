@@ -1,172 +1,61 @@
 package controller;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Enumeration;
 
-import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.imgscalr.Scalr;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-import service.CostServiceImpl;
-import service.MemberServiceImpl;
-import vo.EvCostVo;
 
 @WebServlet("/CostController")
 public class CostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+ 
+    public CostController() {
+        super();
+    
+    }
 
-	public CostController() {
-		super();
-
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
-
+		
 		System.out.println("-----CostController 실행-----");
-
+		
+		
 		request.setCharacterEncoding("UTF-8");
 
-		String uri = request.getRequestURI();
-		System.out.println("uri" + uri);
-		int pnamelength = request.getContextPath().length();
+		String uri = request.getRequestURI();														
+		System.out.println("uri"+uri);																			
+		int pnamelength = request.getContextPath().length();	
 		System.out.println(pnamelength);
-		String str = uri.substring(pnamelength);
-		System.out.println("str = " + str);
-		String[] str1 = str.split("/");
+		String str = uri.substring(pnamelength);															
+		System.out.println("str = "+str);												
+		String[]str1 = str.split("/"); 
 		String str2 = str1[2];
 
-		System.out.println("str1 = " + str1[0]);
-		System.out.println("str1 = " + str1[1]);
-		System.out.println("str2 = " + str1[2]);
-
-		if (str2.equals("EventMan_Cost.do")) {
-
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp");
-			rd.forward(request, response);
-
-		} else if (str2.equals("EventMan_Cost_Submit_Action.do")) {
-
-			System.out.println("EventMan_Cost_Submit_Action 실행");
-			
-			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
-			
-			String savedPath = "Advice_img";
-			
-			String saveFullPath = uploadPath + savedPath;
-			
-			int sizeLimit = 1024 * 1024 * 15;
-			
-			String fileName = null;
-			
-			String originFileName = null;
-			
-			// MultipartRequest 객체생성
-			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-			// 열거자에 파일Name속성의 이름을 담는다
-			Enumeration files = multi.getFileNames();
-			// 담긴 파일 객체의 Name값을 담는다.
-			// 여기까지 일단 넘어옴
-
-			
-			// 여기서 부터 안 넘어옴
-			// 담긴 파일 객체의 Name값을 담는다.
-			String file = (String)files.nextElement();
-				System.out.println("file = "+file);
-			
-			//저장되는 파일이름
-			fileName = multi.getFilesystemName(file); 
-				System.out.println("fileName = "+fileName);
+		System.out.println("str1 = "+str1[0]);
+		System.out.println("str1 = "+str1[1]);	
+		System.out.println("str2 = "+str1[2]);	
 		
-			//원래파일 이름
-			originFileName = multi.getOriginalFileName(file);
+		if(str2.equals("EventMan_Cost.do")) {
 			
-				System.out.println("originFileName = "+originFileName);
 			
-			String ThumbnailFileName = null;
-			 
-				try {
-					if(fileName != null)
-					ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}	
-
-			String cName = multi.getParameter("cName"); // 견적 이름
-			String cSdate = multi.getParameter("cSdate"); // 시작일
-			String cEdate = multi.getParameter("cEdate"); // 종료일
-			String cWday = multi.getParameter("cWday"); // 작성날 sysdate 로 받음
-			String cCata = multi.getParameter("cCata"); // 카테고리
-			String cText = multi.getParameter("cText"); // 내용
-			//String cFile = multi.getParameter("cFile"); // 견적 자료
-			String cLoca = multi.getParameter("cLoca"); // 지역
-			String cTarget = multi.getParameter("cTarget"); // 참여대상
-			String cMethod = multi.getParameter("cMethod"); // 참여방식
-			String cPrice = multi.getParameter("cPrice"); // 예산
-			String cPeople = multi.getParameter("cPeople"); // 참여인원
-			String midx = multi.getParameter("midx"); // midx 회원번호
-
-			HttpSession session = request.getSession();
-
-			/*
-			 * String[] costbox = request.getParameterValues("costbox"); for(int i =0;
-			 * i<costbox.length; i++){ System.out.println(costbox[i]); }
-			 */
-			System.out.println("test");
-
-			CostServiceImpl costdao = new CostServiceImpl(); // 객체 생성
-			int value = costdao.costInsert(cName, cSdate, cEdate, cWday, cCata, cText, fileName, cLoca, cTarget, cMethod,
-					cPrice, cPeople, midx);
-
-			if (value >= 1) {
-				PrintWriter out = response.getWriter();
-				response.sendRedirect(request.getContextPath() + "/EventMan_Mypage/EventMan_Mypage_Main.do?midx="+midx);
-			} else {
-				response.sendRedirect(request.getContextPath() + "/EventMan_Cost/EventMan_Cost.do");
-
-			}
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp"); 	
+			rd.forward(request, response);
+		
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);
-	}
-
-	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
-
-		// 올린 소스파일을 읽어드린다
-		BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path + File.separator + fileName));
-		// 이미지를 리사이징한다(높이 100에 맞춰서 원본이미지 비율을 유지한다)
-		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
-		// 썸네일 풀경로
-		String thumbnailPath = uploadPath + path + File.separator + "s-" + fileName;
-		// 파일 객체생성
-		File newFile = new File(thumbnailPath);
-		// 확장자 추출
-		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-		// 썸네일 이미지 만들기(리사이징한 이미지를 해당 이미지형식으로 해당 위치에 파일 객체생성한다)
-		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-
-		// 썸네일 파일 이름 추출
-		return thumbnailPath.substring((uploadPath + path).length()).replace(File.separatorChar, ' ');
 	}
 
 }

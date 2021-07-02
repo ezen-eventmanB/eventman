@@ -116,7 +116,7 @@
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
             document.frm.submit(); 
-            alert("회원가입이 되셨습니다."); 
+            alert("완료."); 
 
          }
          

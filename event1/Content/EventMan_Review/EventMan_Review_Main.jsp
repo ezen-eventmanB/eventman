@@ -6,15 +6,24 @@
 
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
+ 
 	 int midx = 0;
+	 int gidx = 0;
+	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
 	 }
-	 
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-	out.println(midx);
-%>    
+
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
+	
+	%>    
+	
+
 
 	<%
 		ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
@@ -45,6 +54,10 @@
 <style>
 	#imgbax{
 		object-fit: cover;
+	}
+	
+	form{
+		margin-bottom: 0px;
 	}
 </style>
 
@@ -108,7 +121,6 @@
 	
 	
 
-	
 /*	 상세보기  ajax	*/
  	function detailFn(param1){
 		
@@ -127,6 +139,20 @@
 	}
  
  
+/*	관리자 행사 리뷰 작성하기	*/ 
+
+ 	function reviewWriteFn(){
+ 				
+ 		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_Review_Write.do?gidx="+<%=gidx%>,
+			type:"get",			
+			datatype:"html",
+			success:function(data){
+				$("#detailload").html(data);
+			}
+					
+		});
+ 	}
 </script>
 
 </head>
@@ -135,8 +161,6 @@
 <div class="container ajax">
 
 
-
-<!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -166,7 +190,7 @@
 	
 					<!--로그인 전 상단 화면  -->	
 						<%
-						if(member_id == null){
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -180,7 +204,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -194,8 +218,21 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
+				   		
+				    	
 	    	</div>	
 		</nav>
 </div>
@@ -223,15 +260,20 @@
 
 <!-- 중앙 네비 카테고리 검색창 -->
 <div class="container">
+	<%if(gidx != 0 ){ %>
+		<div class="text-end w-100">
+			<button type="button" class="btn btn-outline-primary btn-lg mb-n5 mt-2" onclick="reviewWriteFn()">리뷰 작성하기</button>
+		</div>
+	<%}; %>
 	<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
 		<div class="container-fluid">
 			<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse" id="navbarsExample09" >
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
-					<li class="nav-item" >
-						<a class="nav-link fw-bolder" type="button" onclick="selectAll()">전체</a>
+				<ul class="navbar-nav me-auto mb-lg-0" id="midnav">
+					<li class="nav-itemmb-5" >
+						<a class="nav-link fw-bolder " type="button" onclick="selectAll()">전체</a>
 					</li>
 					<li class="nav-item" >
 						<a class="nav-link fw-bolder" type="button" onclick="selectCompany()">기업</a>
@@ -247,25 +289,26 @@
 					</li>
 				</ul>
 				<form>
-			    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-			    	<div style="display:inline-block;">
-						<select class="form-control" style="display:inline-block;">
-							<option selected>예산</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
-						</select>
-					</div>
-					<div style="display:inline-block;">
-						<select class="form-control" style="display:inline-block;">
-							<option selected>인원</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
-						</select>
-					</div>	
-					<div style="display:inline-block;">	
-				        <input class="form-control" type="text" placeholder="Search" aria-label="Search" >
+					<div class="text-center align-middle">
+				    	<div class="align-middle text-center vox" style="display:inline-block;">
+							<select class="form-control form-select-sm " style="display:inline-block;">
+								<option selected >예산</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</div>
+						<div class="align-middle text-center  vox" style="display:inline-block;">
+							<select class="form-control form-select-sm" style="display:inline-block;">
+								<option selected>인원</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</div>	
+						<div style="display:inline-block;">	
+					        <input class="form-control form-control-sm " type="text" placeholder="Search" aria-label="Search" >
+						</div>
 					</div>
 				</form>
 			</div>
@@ -283,8 +326,10 @@
 					<% for(EvReviewVo erv : reviewList){ %>
 					<div class="col">
 						<div class="card shadow-sm">
-							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')"><img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../리뷰이미지.png"></img></a>
-								<title><%=erv.gethName() %></title>
+							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
+								<img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../리뷰이미지.png"></img>
+							</a>
+							<title><%=erv.gethName() %></title>
 							
 							<div class="card-body">
 								<div class="justify-content-between align-items-center">

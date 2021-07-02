@@ -84,7 +84,7 @@ public class BoardController extends HttpServlet {
 			
 			//업로드 파일 경로		
 			//나중에 웹서버로 공통된 경로로 올리게 된다.
-			String uploadPath =  "C:\\Users\\759\\git\\eventman2\\event1\\Content\\";
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
 			
 			//저장 폴더
 			String savedPath = "Advice_img";
@@ -138,13 +138,14 @@ public class BoardController extends HttpServlet {
 					
 			if(value > 0) {
 				System.out.println("성공 상담신청글 전송 성공");
-				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do");	
+				request.setAttribute("midx", midx);
+				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
 			}else {
 				System.out.println("실패 상담신청글 전송 실패");
 				
 				PrintWriter out = response.getWriter();   
 				
-				out.println("<script>alert('상담글 작성 실패');</script>");
+				out.println("<script>alert('상듬글 작성 실패');</script>");
 			}
 			
 			
@@ -201,11 +202,11 @@ public class BoardController extends HttpServlet {
 			
 			request.setAttribute("bavo", bavo);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_BoardModify.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyBoardModify.jsp");
 			rd.forward(request, response);
 			
 			
-/*	게시글 수정하기 완료	*/			
+/*	게시글 수정하기 액션	*/			
 		}else if(str2.equals("EventMan_Mypage_BoardModify_Action.do")) {
 			
 			System.out.println("EventMan_Mypage_BoardModify_Action.do if문");
@@ -213,13 +214,14 @@ public class BoardController extends HttpServlet {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			int bidx = Integer.parseInt(request.getParameter("bidx"));
-
+			String file = request.getParameter("file");
+			
 			System.out.println("bidx="+bidx);
 			System.out.println("title="+title);
 			System.out.println("content="+content);
 			
 			BoardServiceImpl boarddao = new BoardServiceImpl();
-			int value = boarddao.boardModifyAction(bidx, title, content);			
+			int value = boarddao.boardModifyAction(bidx, title, content, file);			
 			
 			System.out.println("value = "+value);
 			
@@ -278,8 +280,7 @@ public class BoardController extends HttpServlet {
 				
 				System.out.println("실패입니다.");
 			}
-		}
-		
+		}	
 		
 		
 	}

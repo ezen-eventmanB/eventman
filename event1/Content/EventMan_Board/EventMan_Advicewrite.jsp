@@ -19,6 +19,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
     <!-- Bootstrap에 필요한 CSS파일 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
@@ -39,28 +40,61 @@
 
 <script>
 /*	이미지 미리보이 스크립트*/
-function setImageFn(f){
-
-	var file = f.files;
+  function setImageFn(f){
+	/*alert(f.files);
+	var files[] = f.files;
 	
-	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
-		alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+	$(document).ready(function(){
+		$("#formFile").on("change",handleImgFileSelect);
+	});
 	
-		f.outerHTML = f.outerHTML;
-
-		document.getElementById('preview').innerHTML = '';
-
-	}else {
-
-		var reader = new FileReader();
-
-		reader.onload = function(rst){
-			document.getElementById('preview').innerHTML = '<img style="max-width:90%; margin:5px auto;" src="' + rst.target.result + '">';
-		}
-	
-		reader.readAsDataURL(file[0]);
-
+	function handleImgFileSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		
+		filesArr.forEach(function(f){
+			if(!f.type.match("image.*")){
+				alert("이미지 파이일만 업로드 가능합니다.");
+				return;
+			}
+			sel_file.push(f);
+			
+			var reader = new FileReader();
+			reader.onload = function(e){
+				var img_html = "<img style='max-width:90%; margin:5px auto;' src=" + e.target.result + ">";
+				$("#preview").append(img_html)
+			}
+			reader.readAsDataURL(f);
+		});
 	}
+}	
+	 */
+/////////////////////////////////////
+	 	var file = f.files;
+		
+		alert(f.files);
+		
+		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+			alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+		
+			f.outerHTML = f.outerHTML;
+
+			document.getElementById('preview').innerHTML = '';
+
+		}else {
+
+			var reader = new FileReader();
+
+			reader.onload = function(rst){
+				document.getElementById('preview').innerHTML = '<img style="max-width:90%; margin:5px auto;" src="' + rst.target.result + '">';
+			}
+		
+			reader.readAsDataURL(file[0]);
+
+		}
+		
+	
+	
 }
 
 /*	확인 모달 띄우기	*/
@@ -72,14 +106,37 @@ function ajaxsubimtFn(){
 /*	제출하기 */
  function submitFn(){
 	
-	 var frm = document.frm;
-		
-	frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_AdvicewriteAction.do";
-	frm.enctype="multipart/form-data";
-	frm.method="POST";
-	frm.submit();
+	var frm = document.frm;
+	var cata = $("#cata").val();
+	var title = $("#title").val();
+	var content = $("#floatingTextarea2").val();
 	
-	return;
+	if(cata == "카테고리"){
+		$("#textbox").html("카테고리를 선택해주세요");
+		$("#modal1").modal("show");
+		$("#cata").focus();
+		
+	}else if(title == ""){
+		$("#textbox").html("제목을 입력해주세요.");
+		$("#modal1").modal("show");
+		
+	}else if(content == ""){
+		$("#textbox").html("내용을 입력해주세요.");
+		$("#modal1").modal("show");	
+		
+	}else{
+		frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_AdvicewriteAction.do";
+		frm.enctype="multipart/form-data";
+		frm.method="POST";
+		frm.submit();
+		return;
+	}
+}
+
+/*	이미지 지우기	*/
+function imageemptyFn(){
+	$("#preview").empty();
+	$("#formFile").val("");
 	
 }
 </script>
@@ -152,7 +209,7 @@ function ajaxsubimtFn(){
 </div>
 		
 		
-		<!-- 페이지 위치 안내 -->
+<!-- 페이지 위치 안내 -->
 	<div class="container"  id="containermargin">	
 		<!-- 집 아이콘 -->
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
@@ -183,7 +240,7 @@ function ajaxsubimtFn(){
 			<input type="hidden" name="midx" value="<%=midx%>">
 			<input type="hidden" name="hidx" value="<%=request.getParameter("hidx")%>">
 			<!-- 카테고리 -->
-			<select class="form-select" aria-label="Default select example" name="cata">
+			<select class="form-select" aria-label="Default select example" name="cata" id="cata">
 				<option selected>카테고리</option>
 				<option value="1">서비스 문의</option>
 				<option value="2">입정 문의</option>
@@ -194,22 +251,22 @@ function ajaxsubimtFn(){
 			
 			<!-- 제목 부분 -->
 			<div class="writetitle">
-				<input  class="form-control writetitle" type="text" name="title" placeholder="제목을 입력해주세요">
+				<input  class="form-control writetitle" type="text" name="title" id="title" placeholder="제목을 입력해주세요">
 			</div>
 		
 			<!-- 내용 작성 부분 -->
-			<div class="form-floating">
+			<div class="form-floating mb-3">
 				<textarea class="form-control" id="floatingTextarea2" name="content" style="height: 400px" placeholder="상담 내용을 작성해주세요."></textarea>
 				<div id="preview">
 				</div>
+				<div id="img"></div>
 			</div>
 		
 			<!-- 첨부파일 -->
-			<div class="mb-3">
-				<label for="formFile" class="form-label">첨부파일</label>
-				<input class="form-control" type="file" id="formFile" name="file" onchange="setImageFn(this)">
+			<div class="input-group mb-3">
+				<input class="form-control" type="file" id="formFile" name="file" onchange="setImageFn(this)" multiple/>
+				<button class="btn btn-outline-secondary" type="button" id="imageempty" onclick="imageemptyFn()">지우기</button>
 			</div>
-			
 			
 			<div class="d-grid gap-2">
 				<button class="btn btn-outline-secondary" type="button" onclick="ajaxsubimtFn()">제출하기</button>
@@ -234,7 +291,24 @@ function ajaxsubimtFn(){
 			  </div>
 			</div>
 			
-			
+	<!-- 입력요구 모달 -->
+		<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+					</div>
+					<div class="modal-body">
+						<span id="textbox"></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		</form>
 	</div>
 </div>

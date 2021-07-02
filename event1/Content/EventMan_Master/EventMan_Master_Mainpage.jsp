@@ -1,8 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String member_id = (String)session.getAttribute("S_memberId");
-%> 
+ <%
+	String member_id = (String)session.getAttribute("S_memberId");
+ 
+	 int midx = 0;
+	 int gidx = 0;
+	 
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
+	 }
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
+
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
+	
+	%>    
+	
+
 <!DOCTYPE html>
 <html>
 <head>

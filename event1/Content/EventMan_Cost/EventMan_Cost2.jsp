@@ -1,21 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
- <%
+     <%
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
-	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
-	 }else if(session.getAttribute("gidx") !=null ){
-		 gidx= (int)session.getAttribute("gidx");
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-
-	out.println(midx); 
+	out.println(midx);
+	
 	
 	%>    
 <!doctype html>
@@ -24,20 +20,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap에 필요한 CSS파일 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-	
-<title>EVENT MAN!</title>
-		<!-- top nav CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/footer.css">
-	<!-- subnav CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-	<!-- 메인페이지 행사리뷰 CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/mainpagereview.css">
-	<!-- 메인페이지 하단 게시판 CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/mainpageboard.css">
-	
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<title>EVENT MAN! 견적신청-2</title>
+
 <style>
 /*top nav CSS*/
 	#navbar-nav{
@@ -349,36 +334,125 @@
 	
 	
 	
-				
-			<table border="1px solid black">
-			
-					<tr>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-						<td>1</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-						<td>2</td>
-					</tr>
-			</table>
+	
+	<!-- 행사 기본정보 -->
+	<div class="container">
+		<div class="sc-qPIWj eXGQeW">행사 기본정보
+		<div step="1" class="sc-pIUfD hQBClp">STEP
+		<div step="2" class="sc-pIUfD lnpFnt">1</div>
+		<div step="3" class="sc-PIUfD hQBClp">2</div>
+		</div>
+		</div>
+		<hr/>	
+	</div>
+	
+	<!-- 행사 구성 -->
+		<div class="container">
+  	<div class="sc-qPIWj eXGQeW">행사 구성</div>
+   	<input type="text" class="form-control" placeholder="행사 명을 입력해주세요" aria-label="cost name">
+ 	<br>
+ 	</div>
+		
+		
+	<!-- 구성 카테고리 선택 -->
+			<div class="sc-fzqAui eoGDzK" style="margin: 0.3rem;">
+			<div class="container">
+			<table>
+		      	<select placeholder="참여대상" class="sc-fzokvW jKoelK">
+			         <option>참여대상</option>
+			         <option value="all">전체</option>
+			         <option value="children">어린이</option>
+			         <option value="student">학생</option>
+			         <option value="youth">청년</option>
+			         <option value="female">여성</option>
+			         <option value="worker">직장인</option>
+			         <option value="disabled">장애인</option>
+			         <option value="aged">노인</option>
+			         <option value="corporation">기업·단체</option>
+			         <option value="etc">기타</option>
+		      	</select>
+		      	</table>
+		  <br>
+		  </div>
+		  </div>
+		  </div>
+		  
+		  <table>
+		  	<div class="sc-fzqAui eoGDzK" style="margin: 0.3rem;">
+		    <div class="container">
+		    <select placeholder="방식" class="sc-fzokvW jKoelK">
+		         <option>방식</option>
+		         <option value="offline">오프라인</option>
+		         <option value="online">온라인</option>
+		         <option value="both">온ㆍ오프라인</option>
+		         <option value="etc">기타</option>
+		      </select>
+		  </table>
+		  <br>
+		  </div>
+		  </div>
+		   
+		 
+		   <div class="container">
+		  <table>
+		      <select placeholder="예산" class="sc-fzokvW jKoelK">
+		         <option>예산</option>
+		         <option value="x">1,000만원 미만</option>
+		         <option value="xs">1,000만원 이상 ~ 5,000만원 미만</option>
+		         <option value="s">5,000만원 ~ 1억 미만</option>
+		         <option value="sm">1억 이상 ~ 3억 미만</option>
+		         <option value="m">3억 이상</option>
+		         <option value="etc">기타</option>
+		      </select>
+		   </table>
+		   <br>
+		   </div>
+		   
+		   
+		   
+		   <div class="container">
+		  <table>
+		      <select placeholder="참여인원" class="sc-fzokvW jKoelK">
+		         <option>참여인원</option>
+		         <option value="less50">50명 미만</option>
+		         <option value="less100">50명~100명 미만</option>
+		         <option value="less300">100~300명 미만</option>
+		         <option value="less500">300~500명 미만</option>
+		         <option value="more500">500명 이상</option>
+		         <option value="etc">기타</option>
+		      </select>
+		   </table>
+		   <br>
+		   </div> 
+
+		   
+		 <!-- 이전 , 제출 버튼 -->  
+		 <div class="container" align="right">
+			<button class="btn btn-primary" onclick="location.href='EventMan_Cost1.jsp'" type="button">이전</button>
+			<input class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" value="제출">
+		</div>
+		
+		<!--  모달 부분 -->
+			<div class="modal"  id="exampleModal" tabindex="-1">
+			  <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title">견적 신청</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="취소"></button>
+			      </div>
+			      <div class="modal-body">
+			        <p>작성하시겠습니까?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+			        <button type="button" class="btn btn-primary">제출 하기</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+
+
 
 
 <!-- 메인 푸터 -->

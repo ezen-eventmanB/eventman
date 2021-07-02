@@ -71,7 +71,7 @@ public class MemberController extends HttpServlet {
 				}else {
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		
 				}	
-/* 아이디 중복확인 Action*/				
+				/* 아이디 중복확인 Action*/				
 		}else if(str2.equals("EventMan_Member_IdCheckAction.do")) {	
 			
 			System.out.println("EventMan_Member_IdCheckAction");
@@ -105,7 +105,9 @@ public class MemberController extends HttpServlet {
 			
 			System.out.println("EventMan_Mypage_Main.do if문");
 			
-			System.out.println("request.getParameter(\"midx\")="+request.getParameter("midx"));
+			
+			
+			System.out.println("request.getAttribute(\"midx\")="+request.getAttribute("midx"));
 			
 			int midx = Integer.parseInt( request.getParameter("midx"));
 			
@@ -235,38 +237,49 @@ public class MemberController extends HttpServlet {
 			System.out.println("md"+md);
 			
 			String user = md.memberLoginCheck(memberId, memberPwd);	
+			
+			System.out.println("useruseruseruseruser : "+user);
+			
+			if(!user.equals("")) {
+				
+				String[] user1 = user.split("/");
+				
+				System.out.println("user1[0] = "+user1[0]);
+				System.out.println("user1[1] = "+user1[1]);
 
-			String[] user1 = user.split("/");
-			
-			System.out.println("user1[0] = "+user1[0]);
-			System.out.println("user1[1] = "+user1[1]);
-			
-			String usertype = user1[0];
-			int useridx = Integer.parseInt(user1[1]);
-			
+				
+				String usertype = user1[0];
+				int useridx = Integer.parseInt(user1[1]);
+				
 
-			System.out.println("usertype = "+usertype);
-			System.out.println("useridx = "+useridx);
-			
-			PrintWriter out = response.getWriter();
-			
-			if (usertype.equals("member")) { 
-				HttpSession session = request.getSession();
-				session.setAttribute("S_memberId", memberId);
-				session.setAttribute("midx", useridx);
+				System.out.println("usertype = "+usertype);
+				System.out.println("useridx = "+useridx);
 				
-				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
+				PrintWriter out = response.getWriter();
 				
-			}else if(usertype.equals("master")){
-				HttpSession session = request.getSession();
-				session.setAttribute("S_memberId", memberId);
-				session.setAttribute("gidx", useridx);
+				if (usertype.equals("member")) { 
+					HttpSession session = request.getSession();
+					session.setAttribute("S_memberId", memberId);
+					session.setAttribute("midx", useridx);
+					
+					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
+					
+				}else if(usertype.equals("master")){
+					HttpSession session = request.getSession();
+					session.setAttribute("S_memberId", memberId);
+					session.setAttribute("gidx", useridx);
+					
+					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
+					
+				}
 				
-				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
-				
-			}else {
-
+			}else if(user.equals("")) {
+				PrintWriter out = response.getWriter();				
+				out.println("<script>$('#failModal').modal('show')</script>");				
+				out.println("<script>alert('아이디와 비밀번호를 확인해주세요.')</script>");
 				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Member/EventMan_Member_Login.do'</script>");
+
+
 			}
 			
 			

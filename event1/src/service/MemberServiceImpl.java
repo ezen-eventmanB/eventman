@@ -59,6 +59,7 @@ public class MemberServiceImpl {
 		return value;
 	}
 
+	
 	/*
 	 * 로그인 확인 화면
 	 */

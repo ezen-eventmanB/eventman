@@ -15,7 +15,8 @@
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
 
-	out.println(midx); 
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
 	
 	%>    
 	
@@ -111,7 +112,7 @@
 				   		%>
 				   		<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=gidx%>">Master page</a>
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
 			       		</li>
 			       		<li class="nav-item"> 
 			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
@@ -191,24 +192,24 @@
 				
 			    <form>
 			    	<!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-			    	<div class="inline">
-						<select class="form-select form-select-sm">
-							<option selected>검색타입1</option>
+			    	<div class="pt-3" style="display:inline-block;">
+						<select class="form-control form-select-sm" style="display:inline-block;">
+							<option selected>예산</option>
 							<option value="1">One</option>
 							<option value="2">Two</option>
 							<option value="3">Three</option>
 						</select>
 					</div>
-					<div class="inline">
-						<select class="form-select form-select-sm">
-							<option selected>검색타입2</option>
+					<div class="pt-3" style="display:inline-block;">
+						<select class="form-control form-select-sm" style="display:inline-block;">
+							<option selected>인원</option>
 							<option value="1">One</option>
 							<option value="2">Two</option>
 							<option value="3">Three</option>
 						</select>
 					</div>	
-					<div class="inline">	
-				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" >
+					<div style="display:inline-block;">	
+				        <input class="form-control form-control-sm " type="text" placeholder="Search" aria-label="Search" >
 					</div>
 			    </form>
 			</div>
