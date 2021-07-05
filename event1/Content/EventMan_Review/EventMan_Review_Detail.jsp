@@ -126,7 +126,7 @@ function deleteFn(){
 						<div class="carousel-inner ">
 						
 							<div class="carousel-item active">
-								<img src="../filefolder/detailimg.jpg" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
+								<img src="../Advice_img/<%=erv.getHimg() %>" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
 							</div>
 							<div class="carousel-item">
 								<img src="../filefolder/review.png" style="max-height:384px; object-fit: cover;"  class="d-block w-100 " alt="">

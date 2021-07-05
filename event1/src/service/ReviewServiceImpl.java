@@ -274,6 +274,7 @@ public class ReviewServiceImpl {
 				erv.sethName(rs.getString("hname"));
 				erv.setHloca(rs.getString("hloca"));
 				erv.setHdate(rs.getString("hdate"));
+				erv.setHimg(rs.getString("himg"));
 				erv.setHenddate(rs.getString("henddate"));
 				erv.setHprice(rs.getString("hprice"));
 				erv.setHpeople(rs.getString("hpeople"));

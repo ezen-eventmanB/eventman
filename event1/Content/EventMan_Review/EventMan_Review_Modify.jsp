@@ -291,7 +291,7 @@ $(document).ready(function(e){
 							<div class="carousel-inner " id="preview">
 							
 									<div class="carousel-item active">
-										<img src="../seletimg.jpg" class="d-block w-100" alt="">
+										<img src="../Advice_img/<%=erv.getHimg()%>" class="d-block w-100" alt="">
 										<div class="carousel-caption d-none d-md-block">
 											<h5>이미지 파일을 선택해주세요.</h5>
 											<p>파일 선택시 미리보기 됩니다.</p>
@@ -323,7 +323,7 @@ $(document).ready(function(e){
 										<div class="mt-2">
 											<input type="date" name="startdate" class="form-control CostDate" value="<%=erv.getstartdate()%>">
 											~<br>
-											<input type="date" name="enddate" class="form-control CostDate">
+											<input type="date" name="enddate" class="form-control CostDate" value="<%=erv.getendenddate()%>">
 										</div>
 									</div>
 								</div>
@@ -348,11 +348,11 @@ $(document).ready(function(e){
 										<div class="mt-2">
 											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon">
 												<option selected value="catamenu">참여인원</option>
-												<option value="50명 미만">50명 미만</option>
-												<option value="50~100명미만">50명~100명 미만</option>
-												<option value="100~500명미만">100~500명 미만</option>
-												<option value="500~1000명 미만">500~1000명 미만</option>
-												<option value="1000명이상">1000명 이상</option>
+												<option value="50명 미만" <%=erv.getHpeople().equals("50명 미만") ? " selected" : "" %>>50명 미만</option>
+												<option value="50~100명미만" <%=erv.getHpeople().equals("50~100명미만") ? " selected" : "" %>>50명~100명 미만</option>
+												<option value="100~500명미만" <%=erv.getHpeople().equals("100~500명미만") ? " selected" : "" %>>100~500명 미만</option>
+												<option value="500~1000명 미만" <%=erv.getHpeople().equals("500~1000명 미만") ? " selected" : "" %>>500~1000명 미만</option>
+												<option value="1000명이상" <%=erv.getHpeople().equals("1000명이상") ? " selected" : "" %>>1000명 이상</option>
 											</select>
 										</div>
 									</div>
@@ -363,16 +363,16 @@ $(document).ready(function(e){
 									<div class="mt-2">
 										<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon">
 											<option selected value="catamenu">참여대상</option>
-											<option value="전체">전체</option>
-											<option value="어린이이">어린이</option>
-											<option value="학생">학생</option>
-											<option value="청년">청년</option>
-											<option value="여성">여성</option>
-											<option value="직장인">직장인</option>
-											<option value="장애인">장애인</option>
-											<option value="노인">노인</option>
-											<option value="기업·단체">기업·단체</option>
-											<option value="기타">기타</option>
+											<option value="전체" <%=erv.getHtarget().equals("전체") ? " selected" : "" %>>전체</option>
+											<option value="어린이이" <%=erv.getHtarget().equals("어린이이") ? " selected" : "" %>>어린이</option>
+											<option value="학생" <%=erv.getHtarget().equals("학생") ? " selected" : "" %>>학생</option>
+											<option value="청년" <%=erv.getHtarget().equals("청년") ? " selected" : "" %>>청년</option>
+											<option value="여성" <%=erv.getHtarget().equals("여성") ? " selected" : "" %>>여성</option>
+											<option value="직장인" <%=erv.getHtarget().equals("직장인") ? " selected" : "" %>>직장인</option>
+											<option value="장애인" <%=erv.getHtarget().equals("장애인") ? " selected" : "" %>>장애인</option>
+											<option value="노인" <%=erv.getHtarget().equals("노인") ? " selected" : "" %>>노인</option>
+											<option value="기업·단체" <%=erv.getHtarget().equals("기업·단체") ? " selected" : "" %>>기업·단체</option>
+											<option value="기타" <%=erv.getHtarget().equals("기타") ? " selected" : "" %>>기타</option>
 										</select>
 									</div>
 								</div>

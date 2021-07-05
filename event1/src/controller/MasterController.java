@@ -1,8 +1,12 @@
 package controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +14,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import service.EventAskServiceImpl;
 import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
 import vo.EvReviewVo;
 
+import org.imgscalr.Scalr;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/MasterController")
 public class MasterController extends HttpServlet {
@@ -85,23 +97,70 @@ public class MasterController extends HttpServlet {
 			
 			System.out.println("-----EventMan_Review_Write_Action.do 실행-----");
 			
-			String title = request.getParameter("title");
-			String target = request.getParameter("target");
-			String startdate = request.getParameter("startdate");
-			String enddate = request.getParameter("enddate");
-			String price = request.getParameter("price");
-			String staff = request.getParameter("staff");
-			String company = request.getParameter("company");
-			String content = request.getParameter("company");
-			String file = request.getParameter("uploadFile");
-			String cata = request.getParameter("cata");
-			String loca = request.getParameter("hloca");
-			String people = request.getParameter("people");
-			int gidx = Integer.parseInt( request.getParameter("gidx"));
+			
+			//업로드 파일 경로		
+			//나중에 웹서버로 공통된 경로로 올리게 된다.
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			
+			//저장 폴더
+			String savedPath = "Advice_img";
+			
+			//저장된 총 경로
+			String saveFullPath = uploadPath + savedPath;
+			
+			int sizeLimit = 1024*1024*15;
+			String fileName = null;
+			String originFileName = null;
+				System.out.println("saveFullPath = "+saveFullPath);
+			
+			//MultipartRequest 객체생성
+			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
+
+			//열거자에 파일Name속성의 이름을 담는다
+			Enumeration files = multi.getFileNames();
+				System.out.println("files = "+files);
+				
+			//담긴 파일 객체의 Name값을 담는다.
+			String file = (String)files.nextElement();
+				System.out.println("file = "+file);
+			
+			//저장되는 파일이름
+			fileName = multi.getFilesystemName(file); 
+				System.out.println("fileName = "+fileName);
+		
+			//원래파일 이름
+			originFileName = multi.getOriginalFileName(file);
+			
+				System.out.println("originFileName = "+originFileName);
+			
+			String ThumbnailFileName = null;
+					
+			try {
+				if(fileName != null)
+				ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+			
+			
+			
+			String title = multi.getParameter("title");
+			String target = multi.getParameter("target");
+			String startdate = multi.getParameter("startdate");
+			String enddate = multi.getParameter("enddate");
+			String price = multi.getParameter("price");
+			String staff = multi.getParameter("staff");
+			String company = multi.getParameter("company");
+			String content = multi.getParameter("content");
+			String cata = multi.getParameter("cata");
+			String loca = multi.getParameter("hloca");
+			String people = multi.getParameter("people");
+			int gidx = Integer.parseInt( multi.getParameter("gidx"));
+			
 			
 			MasterServiceImpl mdao = new MasterServiceImpl();
 			
-			int value = mdao.insertReview(title,target, startdate, enddate, price, staff, company, content, file, cata, loca, people, gidx);
+			int value = mdao.insertReview(title,target, startdate, enddate, price, staff, company, content, fileName, cata, loca, people, gidx);
 			
 			if(value == 1) {
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
@@ -159,11 +218,9 @@ public class MasterController extends HttpServlet {
 /*	행사리뷰글 수정하기 action*/			
 		}else if(str2.equals("EventMan_ReviewModifyAction.do")) {
 
-			
-			
-			
-			
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
+			
+			
 			
 			
 			
@@ -176,6 +233,26 @@ public class MasterController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+		
+		
 	}
-
+	
+	private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
+		
+		//올린 소스파일을 읽어드린다
+		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path+File.separator+fileName));
+		//이미지를 리사이징한다(높이 100에 맞춰서 원본이미지 비율을 유지한다)
+		BufferedImage destImg = Scalr.resize(sourceImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
+		//썸네일 풀경로
+		String thumbnailPath = uploadPath + path + File.separator + "s-"+fileName;
+		//파일 객체생성
+		File newFile = new File(thumbnailPath);
+		//확장자 추출
+		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
+		//썸네일 이미지 만들기(리사이징한 이미지를 해당 이미지형식으로 해당 위치에 파일 객체생성한다)
+		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
+		
+		//썸네일 파일 이름 추출
+		return thumbnailPath.substring((uploadPath+path).length()).replace(File.separatorChar, ' ');
+	}
 }
