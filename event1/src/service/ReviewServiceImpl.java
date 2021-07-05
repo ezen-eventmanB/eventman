@@ -252,7 +252,7 @@ public class ReviewServiceImpl {
 	}
 	
 
-/*	리뷰 상세보기 메소드  */
+/*	리뷰 상세보기   */
 	public EvReviewVo reviewSelectOne(int hidx){
 		
 		System.out.println("reviewSelectOne 메소드 호출 성공");
@@ -270,6 +270,7 @@ public class ReviewServiceImpl {
 				erv = new EvReviewVo();
 				
 				erv.setHidx(rs.getInt("hidx"));
+				erv.setHcata(rs.getString("hcata"));
 				erv.sethName(rs.getString("hname"));
 				erv.setHloca(rs.getString("hloca"));
 				erv.setHdate(rs.getString("hdate"));
@@ -281,6 +282,10 @@ public class ReviewServiceImpl {
 				erv.setHcompany(rs.getString("hcompany"));
 				erv.setHtext(rs.getString("htext"));
 				
+				
+				System.out.println(erv.getHidx());
+				System.out.println(erv.gethName());
+				System.out.println(erv.getHcata());
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

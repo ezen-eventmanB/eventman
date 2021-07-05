@@ -19,7 +19,8 @@
 
 	out.println("midx="+midx); 
 	out.println("gidx="+gidx); 
-	   
+	
+	EvReviewVo erv = (EvReviewVo)request.getAttribute("erv");
 	%>    
 	
 
@@ -264,16 +265,16 @@ $(document).ready(function(e){
 					</div>
 					<div class="col-md mt-2">
 						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
-							<option selected value="catamenu">카테고리</option>
-							<option value="기업">기업</option>
-							<option value="대학">대학</option>
-							<option value="공연">공연</option>
-							<option value="예술">예술</option>
-							<option value="기타">기타</option>
+							<option selected value="catamenu">카테고리</option> 
+							<option value="기업" <%=erv.getHcata().equals("기업") ? " selected" : "" %>>기업</option>
+							<option value="대학" <%=erv.getHcata().equals("대학") ? " selected" : "" %>>대학</option>
+							<option value="공연" <%=erv.getHcata().equals("공연") ? " selected" : "" %>>공연</option>
+							<option value="예술" <%=erv.getHcata().equals("예술") ? " selected" : "" %>>예술</option>
+							<option value="기타" <%=erv.getHcata().equals("기타") ? " selected" : "" %>>기타</option>
 						</select>
 					</div>
 					<div class="col-md  mt-2">
-						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소">
+						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소" value="<%=erv.getHloca() %>">
 					</div>
 				</div>
 			</div>
@@ -320,7 +321,7 @@ $(document).ready(function(e){
 									<div class="text-center align-middle ">
 										<img class="icon w-100" src="../icon/free-icon-calendar-with-squares-85000.png">
 										<div class="mt-2">
-											<input type="date" name="startdate" class="form-control CostDate">
+											<input type="date" name="startdate" class="form-control CostDate" value="<%=erv.getstartdate()%>">
 											~<br>
 											<input type="date" name="enddate" class="form-control CostDate">
 										</div>
@@ -332,11 +333,11 @@ $(document).ready(function(e){
 										<div class="mt-2">
 											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
 												<option selected value="catamenu">예산</option>
-												<option value="1000만원 미만">1,000만원 미만</option>
-												<option value="1000~5000">1,000만원 이상 ~ 5,000만원 미만</option>
-												<option value="5000~1억">5,000만원 ~ 1억 미만</option>
-												<option value="1억 이상">1억 이상 ~ 3억 미만</option>
-												<option value="3억 이상">3억 이상</option>
+												<option value="1000만원 미만" <%=erv.getHprice().equals("1000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
+												<option value="5000만원 이하" <%=erv.getHprice().equals("5000만원 이하") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
+												<option value="1억원 이하" <%=erv.getHprice().equals("1억원 이하") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
+												<option value="3억 이하" <%=erv.getHprice().equals("3억 이하") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
+												<option value="3억 이상" <%=erv.getHprice().equals("3억 이상") ? " selected" : "" %>>3억 이상</option>
 											</select>
 										</div>
 									</div>
@@ -378,13 +379,13 @@ $(document).ready(function(e){
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-business-cards-47976.png">
 									<div class="mt-2">
-										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="진행담당">
+										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="진행담당" value="<%=erv.getHstaff() %>">
 									</div>
 								</div>
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-university-campus-68286.png">
 									<div class="mt-2">
-										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="기관,단체">
+										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="기관,단체" value="<%=erv.getHcompany() %>">
 									</div>
 								</div>
 							</div>
@@ -399,12 +400,12 @@ $(document).ready(function(e){
 					</div>		
 					<div>
 						<div class="fs-1 fw-bold mt-5 ">
-							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요.">
+							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요." value="<%=erv.gethName()%>">
 						</div>
 					</div>
 					<div>
 						<div class="fs-5 mt-5">
-							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요."></textarea>
+							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요."><%=erv.getHtext() %></textarea>
 						</div>	
 					</div>
 				</div>

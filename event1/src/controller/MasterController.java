@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import service.MasterServiceImpl;
+import service.ReviewServiceImpl;
+import vo.EvReviewVo;
 
 
 @WebServlet("/MasterController")
@@ -145,8 +147,11 @@ public class MasterController extends HttpServlet {
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
 			
 			int hidx = Integer.parseInt( request.getParameter("hidx"));
+			EvReviewVo erv = new EvReviewVo();
+			ReviewServiceImpl rdao = new ReviewServiceImpl();
+			erv = rdao.reviewSelectOne(hidx);
 			
-			request.setAttribute("hidx", hidx);
+			request.setAttribute("erv", erv);
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
 			rd.forward(request, response);
 			
@@ -154,6 +159,10 @@ public class MasterController extends HttpServlet {
 /*	행사리뷰글 수정하기 action*/			
 		}else if(str2.equals("EventMan_ReviewModifyAction.do")) {
 
+			
+			
+			
+			
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
 			
 			
