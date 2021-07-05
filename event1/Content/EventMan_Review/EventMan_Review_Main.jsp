@@ -333,7 +333,7 @@
 					<div class="col">
 						<div class="card shadow-sm">
 							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
-								<img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../리뷰이미지.png"></img>
+								<img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
 							</a>
 							<title><%=erv.gethName() %></title>
 							<div class="card-body">

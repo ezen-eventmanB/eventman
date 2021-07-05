@@ -200,9 +200,10 @@ $(document).ready(function(e){
 	function submitFn(){
 	
 	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_Review_Write_Action.do";
+	document.frm.enctype="multipart/form-data";
 	document.frm.method="post";
 	document.frm.submit();
-
+	return;
 };
 
 </script>
@@ -260,7 +261,7 @@ $(document).ready(function(e){
 					<input type="hidden" name="gidx" value="<%=gidx%>">
 					<div class="col-md">
 						<label for="uploadFile" class="form-label"></label>
-						<input class="form-control" name="uploadFile" type="file" id="uploadFile" multiple>
+						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple>
 					</div>
 					<div class="col-md mt-2">
 						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
