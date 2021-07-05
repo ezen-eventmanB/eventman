@@ -169,8 +169,6 @@ public class CostServiceImpl {
 		}
 		
 		
-		
-
 		/*	마이페이지 견적신청 수정하기 페이지로 이동	.*/
 		public EvCostVo costModify(int cidx) {
 			

@@ -24,6 +24,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import service.BoardServiceImpl;
 import service.CostServiceImpl;
 import service.MemberServiceImpl;
+import vo.EvBoardAskVo;
 import vo.EvCostVo;
 
 @WebServlet("/CostController")
@@ -107,7 +108,7 @@ public class CostController extends HttpServlet {
 			String cWday = multi.getParameter("cWday"); // 작성날 sysdate 로 받음
 			String cCata = multi.getParameter("cCata"); // 카테고리
 			String cText = multi.getParameter("cText"); // 내용
-			//String cFile = multi.getParameter("cFile"); // 견적 자료
+			String cFile = multi.getParameter("cFile"); // 견적 자료
 			String cLoca = multi.getParameter("cLoca"); // 지역
 			String cTarget = multi.getParameter("cTarget"); // 참여대상
 			String cMethod = multi.getParameter("cMethod"); // 참여방식
@@ -170,7 +171,62 @@ public class CostController extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
 				
 				rd.forward(request, response);			
-		}
+				//완료
+				
+			}else if(str2.equals("EventMan_Mypage_CostModify.do")) {
+				
+				System.out.println("EventMan_Mypage_CostModify.do if문");
+				
+				int cidx = Integer.parseInt( request.getParameter("cidx"));
+				
+				CostServiceImpl costdao = new CostServiceImpl();
+				EvCostVo covo = costdao.costlistselectone(cidx);
+				
+				request.setAttribute("covo", covo);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyBoardModify.jsp");
+				rd.forward(request, response);
+			
+			
+/*	게시글 수정하기 액션	*/			
+			}else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
+				
+				System.out.println("EventMan_Mypage_CostModify_Action.do문");
+				
+				String title = request.getParameter("title");
+				String content = request.getParameter("content");
+				int cidx = Integer.parseInt(request.getParameter("cidx"));
+				String file = request.getParameter("file");
+				
+				System.out.println("cidx="+cidx);
+				System.out.println("title="+title);
+				System.out.println("content="+content);
+				
+				CostServiceImpl costdao = new CostServiceImpl();
+				int value = costdao.costModifyAction(cidx, title, content, file);			
+				
+				System.out.println("value = "+value);
+				
+				if(value == 1) {
+	
+					request.setAttribute("cidx", cidx);
+					 
+					EvCostVo covo = new EvCostVo();
+					
+					CostServiceImpl costdao2 = new CostServiceImpl();
+					  
+					covo = costdao2.costlistselectone(cidx);
+					  
+					request.setAttribute("covo", covo);
+					
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+					rd.forward(request, response);
+					
+				}else {
+					System.out.println("게시글 수정후 상세화면 페이지이동 실패");
+				}
+			}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
