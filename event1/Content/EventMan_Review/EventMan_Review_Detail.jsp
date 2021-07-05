@@ -6,10 +6,15 @@
 <% EvReviewVo erv = (EvReviewVo)request.getAttribute("erv"); %>
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
-	 int midx = 0;
-	 if (session.getAttribute("midx") != null) {
-	 	midx = (int)session.getAttribute("midx");
-	 }
+ 
+ int midx = 0;
+ int gidx = 0;
+ 
+ if (session.getAttribute("midx") != null) {
+ 	midx = (int)session.getAttribute("midx");
+ }else if(session.getAttribute("gidx") !=null ){
+	 gidx= (int)session.getAttribute("gidx");
+ }
 
 %> 
 <!DOCTYPE html>
@@ -23,14 +28,44 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 
- function AdviceFn(){
-	 if(<%=session.getAttribute("midx")%> == null){
-		 $("#findidspan").html("로그인후 이용해주세요.");
-		 $("#modal").modal("show");
-	 }else{
-		 document.location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do?hidx=<%=erv.getHidx()%>";
-	 };
- };
+/*	로그인 안되있을시에	*/
+function AdviceFn(){
+	if(<%=session.getAttribute("midx")%> == null){
+		$("#findidspan").html("로그인후 이용해주세요.");
+		$("#modal").modal("show");
+	}else{
+		document.location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do?hidx=<%=erv.getHidx()%>";
+	};
+};
+
+function deletemodalFn(){
+	$("#textbox1").html("현재 리뷰를 삭제 하시겠습니까?");
+	$("#modal1").modal("show");
+};
+
+function deleteFn(){
+	document.location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewDelete.do?hidx=<%=erv.getHidx()%>";
+};
+
+
+
+
+/*	관리자 행사 리뷰 작성하기	*/ 
+
+	function modifyFn(hidx){
+				
+		$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModify.do?hidx=<%=erv.getHidx()%>",
+		type:"post",			
+		datatype:"html",
+		success:function(data){
+			$("#detailload").html(data);
+		}
+				
+	});
+	}
+
+
 </script>
 <style>
 		
@@ -151,6 +186,7 @@
 							</div>
 						</div>
 				</div>
+				<%if(gidx == 0){ %>
 				<div class="row mt-2">
 					<div class="col-md">
 						<button type="button" class="btn btn-outline-secondary w-100" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청</button>
@@ -159,12 +195,22 @@
 						<button type="button" class="btn btn-outline-secondary w-100" onclick="AdviceFn()">상담하기</button>
 					</div>
 				</div>
+				<%} %>
+				<%if(gidx !=0 ){ %>
+				<div class="row mt-2">
+					<div class="col-md">
+						<button type="button" class="btn btn-outline-secondary w-100" onclick="deletemodalFn()">삭제하기</button>
+					</div>	
+					<div class="col-md">
+						<button type="button" class="btn btn-outline-secondary w-100" onclick="modifyFn()">수정하기</button>
+					</div>
+				</div>
+				<%} %>
 			</div>	
 		</div>	
 		<div class="row mt-5">
 			<div class="mt-5">
 				<div class="mt-5">			
-					<div class="fs-5">주요 프로그램?</div>
 				</div>			
 				<div>
 					<div class="fs-1 fw-bold mt-5 "><%=erv.gethName() %></div>
@@ -198,8 +244,26 @@
       </div>
     </div>
   </div>
-</div>			
-				
+</div>		
+	
+<!-- 삭제 확인 모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox1"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeModal()">취소</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="deleteFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 				
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>	

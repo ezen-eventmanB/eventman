@@ -59,6 +59,12 @@
 	form{
 		margin-bottom: 0px;
 	}
+	.hname{
+		display:block;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}
 </style>
 
 <script>
@@ -330,10 +336,9 @@
 								<img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../리뷰이미지.png"></img>
 							</a>
 							<title><%=erv.gethName() %></title>
-							
 							<div class="card-body">
 								<div class="justify-content-between align-items-center">
-									<p class="card-text"><%=erv.gethName() %></p>
+									<p class="card-text hname"><%=erv.gethName() %></p>
 									<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
 								</div>	
 							</div>

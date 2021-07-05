@@ -189,17 +189,17 @@ $(document).ready(function(e){
 			return;
 			
 		}else{
-			$("#textbox").html("게시글을 등록합니다.");
+			$("#textbox").html("게시글을 수정합니다.");
 			$("#modal").modal("show");
 		};
 		
 };
 
 
-//게시글 SUBMIT버튼
-	function submitFn(){
+//게시글 modify 버튼
+	function ModifyactionFn(){
 	
-	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_Review_Write_Action.do";
+	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModifyAction.do";
 	document.frm.method="post";
 	document.frm.submit();
 
@@ -411,8 +411,8 @@ $(document).ready(function(e){
 			</div>
 		</div>
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary " onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">뒤로가기</button>
-			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()">작성완료</button>
+			<button type="button" class="btn btn-outline-secondary " onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">취소</button>
+			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()">수정완료</button>
 		</div>
 	</div>
 </form>						
@@ -452,7 +452,7 @@ $(document).ready(function(e){
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
-				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="submitFn()">확인</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="ModifyactionFn()">확인</button>
 			</div>
 		</div>
 	</div>
