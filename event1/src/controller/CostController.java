@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File; 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
@@ -20,6 +21,7 @@ import org.imgscalr.Scalr;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import service.BoardServiceImpl;
 import service.CostServiceImpl;
 import service.MemberServiceImpl;
 import vo.EvCostVo;
@@ -56,11 +58,13 @@ public class CostController extends HttpServlet {
 		System.out.println("str1 = " + str1[1]);
 		System.out.println("str2 = " + str1[2]);
 
+		//견적신적 이동 부분
 		if (str2.equals("EventMan_Cost.do")) {
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp");
 			rd.forward(request, response);
-
+		
+		//견적 작성 보내주는 부분
 		} else if (str2.equals("EventMan_Cost_Submit_Action.do")) {
 
 			System.out.println("EventMan_Cost_Submit_Action 실행");
@@ -82,32 +86,21 @@ public class CostController extends HttpServlet {
 			// 열거자에 파일Name속성의 이름을 담는다
 			Enumeration files = multi.getFileNames();
 			// 담긴 파일 객체의 Name값을 담는다.
-			// 여기까지 일단 넘어옴
-
-			
-			// 여기서 부터 안 넘어옴
-			// 담긴 파일 객체의 Name값을 담는다.
 			String file = (String)files.nextElement();
 				System.out.println("file = "+file);
-			
 			//저장되는 파일이름
 			fileName = multi.getFilesystemName(file); 
 				System.out.println("fileName = "+fileName);
-		
 			//원래파일 이름
 			originFileName = multi.getOriginalFileName(file);
-			
 				System.out.println("originFileName = "+originFileName);
-			
 			String ThumbnailFileName = null;
-			 
 				try {
 					if(fileName != null)
 					ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}	
-
+				}
 			String cName = multi.getParameter("cName"); // 견적 이름
 			String cSdate = multi.getParameter("cSdate"); // 시작일
 			String cEdate = multi.getParameter("cEdate"); // 종료일
@@ -123,7 +116,6 @@ public class CostController extends HttpServlet {
 			String midx = multi.getParameter("midx"); // midx 회원번호
 
 			HttpSession session = request.getSession();
-
 			/*
 			 * String[] costbox = request.getParameterValues("costbox"); for(int i =0;
 			 * i<costbox.length; i++){ System.out.println(costbox[i]); }
@@ -139,8 +131,41 @@ public class CostController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/EventMan_Mypage/EventMan_Mypage_Main.do?midx="+midx);
 			} else {
 				response.sendRedirect(request.getContextPath() + "/EventMan_Cost/EventMan_Cost.do");
-
-			}
+				}
+			
+			
+			/*	마이페이지 견적 리스트 화면	*/			
+			}else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
+		
+			System.out.println("EventMan_Mypage_MyCostlist.do if문");
+			String midx = request.getParameter("midx");
+			System.out.println("midx= "+midx);
+			CostServiceImpl costdao = new CostServiceImpl();
+			ArrayList alistcost = costdao.selectmycostlist(midx);
+			request.setAttribute("alistcost", alistcost);
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
+			rd.forward(request, response);
+			//완료 
+			
+			
+			//마이페이지 견적 상세보기
+			}else if(str2.equals("EventMan_Mypage_MyCostDetail.do")) {
+				
+				System.out.println("EventMan_Mypage_MyCostlistDetail.do if문");
+				
+				int cidx = Integer.parseInt(request.getParameter("cidx"));
+				
+				CostServiceImpl costdao = new CostServiceImpl();
+				
+				EvCostVo covo = new EvCostVo();
+				
+				covo = costdao.costlistselectone(cidx);
+				
+				request.setAttribute("covo", covo);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
+				
+				rd.forward(request, response);			
 		}
 	}
 

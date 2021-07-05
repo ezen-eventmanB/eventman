@@ -167,8 +167,6 @@ public class BoardController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 		rd.forward(request, response);
 		
-	
-	
 /*	마이페이지 게시글 상세보기	*/		
 		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
 			

@@ -71,7 +71,7 @@ public class MemberController extends HttpServlet {
 				}else {
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_Join.do");		
 				}	
-				/* 아이디 중복확인 Action*/				
+/* 아이디 중복확인 Action*/				
 		}else if(str2.equals("EventMan_Member_IdCheckAction.do")) {	
 			
 			System.out.println("EventMan_Member_IdCheckAction");
@@ -98,14 +98,10 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);	
-
-			
 /* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			
 			System.out.println("EventMan_Mypage_Main.do if문");
-			
-			
 			
 			System.out.println("request.getAttribute(\"midx\")="+request.getAttribute("midx"));
 			
@@ -121,15 +117,13 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
-
-			
+	
 /*아이디 찾기로 이동*/			
 		}else if(str2.equals("EventMan_Member_Find_Id.do")) {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Find_Id.jsp"); 	
 			rd.forward(request, response);
-			
-			
+				
 /*비밀번호 찾기로 이동*/				
 		}else if(str2.equals("EventMan_Member_Find_Pw.do")) {
 			
@@ -153,7 +147,7 @@ public class MemberController extends HttpServlet {
 			
 				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Dropout.jsp"); 	
 				rd.forward(request, response);
-		
+/*회원탈퇴 기능 */		
 		}else if (str2.equals("EventMan_Mypage_Dropout_Action.do")) {
 					
 				//1. 넘겨받는다
@@ -172,9 +166,7 @@ public class MemberController extends HttpServlet {
 			  if (value > 0) {
 			  response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Member_LogoutAction.do");
 			  }else {
-			  response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Dropout.do"); }
-			  	
-					
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Dropout.do"); }	
 /* 회원정보 수정 화면 이동*/			
 		}else if(str2.equals("EventMan_Mypage_Modify.do")) {
 			
@@ -196,8 +188,6 @@ public class MemberController extends HttpServlet {
 		 	 	
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Modify.jsp"); 	
 			rd.forward(request, response);
-			
-			
 /*회원정보 수정 Action 이동*/			
 		}else if (str2.equals("EventMan_Mypage_Modify_Action.do")) {
 			
@@ -359,6 +349,7 @@ public class MemberController extends HttpServlet {
 		
 		BoardServiceImpl boarddao = new BoardServiceImpl();
 		ArrayList alistboard = boarddao.selectmyboardlist(midx);
+		
 		
 		request.setAttribute("alistboard", alistboard);
 		
