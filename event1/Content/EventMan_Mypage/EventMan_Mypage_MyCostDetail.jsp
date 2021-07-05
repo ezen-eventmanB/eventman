@@ -49,7 +49,7 @@
 	};
 	
 	function costDeletFn() {
-		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardDelet.do?bidx=<%=covo.getCidx()%>&midx=<%=midx%>'
+		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelet.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
 	};
 </script>
 </head>
@@ -150,9 +150,7 @@
       <hr/>   
    </div>
    
-   <form name="frm">
 							<table>
-								<input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
 								<tr>
 									<td>행사명</td>
 									<td><%=covo.getCostName() %></td>
@@ -182,7 +180,7 @@
 									<td><%=covo.getCostText() %></td>
 								</tr>
 							</table>
-
+	
 
 				<div>
 					<div class="container">
@@ -193,11 +191,10 @@
 					</div>
 				</div>
 				<div class="text-end mt-5">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costDeletModalFn()">삭제</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostList.do?midx=<%=midx%>'">목록</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
-					
-							</div>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costDeletModalFn()">삭제</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
+							</div>												
 						</div>
 					</div>
 		</form>

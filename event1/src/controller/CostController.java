@@ -137,14 +137,18 @@ public class CostController extends HttpServlet {
 			/*	마이페이지 견적 리스트 화면	*/			
 			}else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
 		
-			System.out.println("EventMan_Mypage_MyCostlist.do if문");
-			String midx = request.getParameter("midx");
-			System.out.println("midx= "+midx);
-			CostServiceImpl costdao = new CostServiceImpl();
-			ArrayList alistcost = costdao.selectmycostlist(midx);
-			request.setAttribute("alistcost", alistcost);
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
-			rd.forward(request, response);
+				System.out.println("EventMan_Mypage_MyCostlist.do if문");
+				
+				String midx = request.getParameter("midx");
+				
+				System.out.println("midx= "+midx);
+				
+				CostServiceImpl costdao = new CostServiceImpl();
+				ArrayList alistcost = costdao.selectmycostlist(midx);
+				
+				request.setAttribute("alistcost", alistcost);
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
+				rd.forward(request, response);
 			//완료 
 			
 			

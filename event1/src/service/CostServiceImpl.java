@@ -126,11 +126,11 @@ public class CostServiceImpl {
 			
 			String sql = "select * "
 						+"from EVE_COST C , EVE_MEMBER M "
-						+"where C.cidx = M.midx "
+						+"where C.midx = M.midx "
 						+"and C.cidx=?";
 			
 			EvCostVo covo = new EvCostVo();
-			
+
 			try {
 				pstmt=conn.prepareStatement(sql);
 				pstmt.setInt(1, cidx);
@@ -246,6 +246,53 @@ public class CostServiceImpl {
 					}
 				}
 	
+			return value;
+		}
+		/*	마이페이지 견적신청 삭제하기		*/	
+		public int myPageCostDelet(int cidx) {
+			
+			System.out.println("myPageCostDelet(int cidx) 입니다.");
+			System.out.println(cidx);
+			
+			int value = 0;
+			
+			String sql = "UPDATE EVE_COST SET CDELYN='Y' where cidx=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, cidx);
+				value = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+
+			return value;
+		}
+		/*	견적신청 Count	*/
+		public int hitCount(int cidx) {
+			
+			int value=0; 
+			
+			String sql = "update EVE_COST set ccount=ccount+1 where cidx=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, cidx);
+				value = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			return value;
 		}
 }
