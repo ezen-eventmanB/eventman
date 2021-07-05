@@ -70,31 +70,34 @@ $(document).ready(function(e){
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
 				str += '<div class="carousel-item active">';
-				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover; class="d-block w-100" title="'+arr[0].name+'"/>';
+				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
+				
+				alert(str);
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
 			
 		//사진 한장 이상 업로드
 		}else if(arrlength > 1){
+			alert("arr.length >>>>> 1");
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
-				alert("arr.length >>>>> 1");
-
 				str += '<div class="carousel-item active">';
-				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover; class="d-block w-100" title="'+arr[0].name+'"/>';
+				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				for(var i=1; i<arr.length; i++){
-					str += '<div class="carousel-item">';
-					str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover; class="d-block w-100" title="'+arr[i].name+'"/>';
-					str += '</div>';
-				};
-				$('#preview').html(str);
+				alert(str);
+				//for(var i=1; i<arr.length; i++){
+				//	str += '<div class="carousel-item">';
+				//	str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[i].name+'" alt="">';
+				//	str += '</div>';
+				//};
+				$('#preview').html(str);			
 			};
-			for(var i=0; i<arr.length; i++){
-				reader.readAsDataURL(arr[i]);
-			}
+		//	for(var i=0; i<arr.length; i++){
+		//		reader = new FileReader();
+		//		reader.readAsDataURL(arr[i]);
+		//	};
 		//사진 0장 업로드
 		}else{
 			alert("else else else else");
@@ -112,11 +115,15 @@ $(document).ready(function(e){
 </script>
 
 <style>
+
+	.imgbax{
+		object-fit: cover;
+		max-height:384px;
+	}
+	
 	/* 이미지 박스*/
 	#carouselExampleIndicators{
-		heighr:370px;
 		max-width:576px;
-		min-width:576px;
 		max-height:370px;
 	}
 
@@ -133,7 +140,6 @@ $(document).ready(function(e){
 	.icon{
 		max-width:70px;
 	}
-	
 	
 
 </style>
@@ -155,16 +161,17 @@ $(document).ready(function(e){
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg">
-				<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+				<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
 						<div class="carousel-indicators">
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 						</div>
-						<div class="carousel-inner ">
-							<input type="file" name="uploadFile" id="uploadFile" multiple>
-							<div id="preview">
+						
+						<input type="file" name="uploadFile" id="uploadFile" multiple>
+						<div class="carousel-inner " id="preview">
+						
 								<div class="carousel-item active">
 									<img src="../seletimg.jpg" class="d-block w-100" alt="">
 									<div class="carousel-caption d-none d-md-block">
@@ -172,8 +179,9 @@ $(document).ready(function(e){
 										<p>파일 선택시 미리보기 됩니다.</p>
 									</div>
 								</div>
-							</div>
+								
 						</div>
+						
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
