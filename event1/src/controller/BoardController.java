@@ -64,19 +64,90 @@ public class BoardController extends HttpServlet {
 
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp"); 	
 			rd.forward(request, response);
+			
+		//게시판 글 작성
+		}else if(str2.equals("EventMan_BoardWrite.do")){
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
+			rd.forward(request, response);
+			
+		}else if(str2.equals("EventMan_BoardwriteAction.do")) {
+			
+			System.out.println("EventMan_BoardwriteAction 실행");
+				
+				//업로드 파일 경로		
+				//나중에 웹서버로 공통된 경로로 올리게 된다.
+				//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+				String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+				//저장 폴더
+				String savedPath = "Advice_img";
+				
+				//저장된 총 경로
+				String saveFullPath = uploadPath + savedPath;
+				
+				int sizeLimit = 1024*1024*15;
+				String fileName = null;
+				String originFileName = null;
+					System.out.println("saveFullPath = "+saveFullPath);
+				
+				//MultipartRequest 객체생성
+				MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
+				//열거자에 파일Name속성의 이름을 담는다
+				Enumeration files = multi.getFileNames();
+					System.out.println("files = "+files);
+					
+				//담긴 파일 객체의 Name값을 담는다.
+				String file = (String)files.nextElement();
+					System.out.println("file = "+file);
+				
+				//저장되는 파일이름
+				fileName = multi.getFilesystemName(file); 
+					System.out.println("fileName = "+fileName);
+			
+				//원래파일 이름
+				originFileName = multi.getOriginalFileName(file);
+				
+					System.out.println("originFileName = "+originFileName);
+				
+				String ThumbnailFileName = null;
+						
+				try {
+					if(fileName != null)
+					ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+				
+				String cata = multi.getParameter("cata");
+				String title = multi.getParameter("title");
+				String content = multi.getParameter("content");
+				String midx = multi.getParameter("midx");
+				String hidx = multi.getParameter("hidx");
+				
+				EventAskServiceImpl askdao = new EventAskServiceImpl();
+				int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
+				
+						
+				if(value > 0) {
+					System.out.println("성공 상담신청글 전송 성공");
+					request.setAttribute("midx", midx);
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
+				}else {
+					System.out.println("실패 상담신청글 전송 실패");
+					
+					PrintWriter out = response.getWriter();   
+					
+					out.println("<script>alert('상담 작성 실패');</script>");
+				}
+				 
+				
+				
 /*	상담하기 페이지로 연결	*/			
 		}else if(str2.equals("EventMan_Advicewrite.do")){
 			
-//			int hidx = Integer.parseInt(request.getParameter("hidx"));
-//			
-//			System.out.println("hidxhidxhidxhidxhidxhidx   =   "+hidx);
-//			
-//			request.setAttribute("hidx", hidx);
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Advicewrite.jsp"); 	
-			rd.forward(request, response);
-			
+			rd.forward(request, response);	
 /*	상담하기 작성 완료하기	*/			
 		}else if(str2.equals("EventMan_AdvicewriteAction.do")) {
 			
@@ -84,8 +155,8 @@ public class BoardController extends HttpServlet {
 			
 			//업로드 파일 경로		
 			//나중에 웹서버로 공통된 경로로 올리게 된다.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
 			//저장 폴더
 			String savedPath = "Advice_img";
 			
@@ -145,7 +216,7 @@ public class BoardController extends HttpServlet {
 				
 				PrintWriter out = response.getWriter();   
 				
-				out.println("<script>alert('상듬글 작성 실패');</script>");
+				out.println("<script>alert('상담 작성 실패');</script>");
 			}
 			
 			

@@ -31,8 +31,6 @@ public class BoardServiceImpl {
 				   +"from "
 				   +"EVE_BOARD B, EVE_MEMBER M "
 				   +"where B.midx = M.midx and B.midx=? and bdelyn='N' order by bidx desc";
-
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, midx);

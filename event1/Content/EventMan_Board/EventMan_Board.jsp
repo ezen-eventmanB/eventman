@@ -174,7 +174,7 @@
 	            <span>과거</span><span>최신</span>
 	         </div>   
 	         <div style="display:inline-block;">   
-	                <a href="EventMan_BoardWrite.jsp">게시물 등록하기</a>
+	                <a href="<%=request.getContextPath()%>/EventMan_Board/EventMan_BoardWrite.do">게시물 등록하기</a>
 	         </div>
 	         
 	       </form>
@@ -201,86 +201,6 @@
       <td>2021-06-14</td>
       <td>EVENTMAN</td>
       <td>1</td>
-    </tr>
-    <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
     </tr>
     
   </tbody>
