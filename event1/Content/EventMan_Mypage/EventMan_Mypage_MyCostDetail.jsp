@@ -264,7 +264,7 @@
                         <input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" <%=covo.getCostTarget().equals("대학 섭외") ? " checked" : "" %>>
                          <label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
                 </td>
-            </tr> 
+            </tr>   
             <tr>
                 <td>
                           <input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" <%=covo.getCostTarget().equals("대학 체육대회") ? " checked" : "" %>>
