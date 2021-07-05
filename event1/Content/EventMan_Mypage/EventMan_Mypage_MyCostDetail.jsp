@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+    pageEncoding="UTF-8"%>    
+<%@ page import = "java.util.*" %>
+<%@ page import = "vo.*" %>
+<%@ page import = "domain.*" %>
 
  <%
    String member_id = (String)session.getAttribute("S_memberId");
@@ -11,9 +15,9 @@
     }
    out.println("세션에 담긴 아이디는?");
    out.println(member_id);
-   out.println(midx);
+   out.println(midx);  
    
-   int count = (int)request.getAttribute("boardcount");
+	EvCostVo covo = (EvCostVo)request.getAttribute("covo");
    
    %>    
     
@@ -38,14 +42,18 @@
 <title>EVENT MAN!</title>
 
 <script>
+	function costDeletModalFn(){
+		$("#textbox").html("&#34;<%=covo.getCostName()%>&#34; 글을 삭제합니다.");
+		$("#modal").modal("show");
 
+	};
+	
+	function costDeletFn() {
+		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelet.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
+	};
 </script>
-
 </head>
 <body>
-
-
-
 <!-- 상단 네비 부분 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
@@ -72,13 +80,10 @@
 	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
 	       			</li>
 	       		</ul>
-	       	
-	
 					<!--로그인 전 상단 화면  -->	
 						<%
 						if(member_id == null){
-						%>
-						
+						%>	
 		       		<ul class="navbar-nav" id="Memberbox" >	
 		       			<li class="nav-item">
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
@@ -87,7 +92,6 @@
 		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
 		       			</li>																	
 		      		</ul>
-		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
 				      	}else{
@@ -129,41 +133,92 @@
    </div>
       
 
-
-      
-<!-- 마이페이지 부분 -->
-
 <div class="container">
    <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
-   
-   <div class="container" id="mypageajax">
-      <div class="row justify-content-md-center">
-         <div class="col-md-auto text-center px-3">
-            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">
-               <img src="../budget.png" alt="견적신청이미지" class="images w-100">
-               <div class="text-center fw-bold texts">
-                 <span>견적신청<br><span><%=count%></span>건</span>
-               </div>
-            </a>
-         </div>
-         
-         
-         <div class="col-md-auto text-center px-3">
-            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">
-               <img src="../presentation.png" alt="게시판이미지" class="images w-100">
-               <div class="text-center fw-bold texts">
-                  <span>게시판<br><span><%=count%></span>건</span>
-               </div>
-            </a>
-         </div>
-      </div>
+      
+<div class="mypageajax">
+	<div class="fs-4 fw-bold mb-5">견적신청 상세보기</div>
+	
+	<!-- 상세보기-->
+	<!-- 행사 기본정보 -->
+   <div class="container">
+      <div class="sc-qPIWj eXGQeW">행사 견적신청 상세보기</div>
+      <hr/>   
    </div>
+   
+							<table>
+								<tr>
+									<td>행사명</td>
+									<td><%=covo.getCostName() %></td>
+								</tr>
+								<tr>
+									<td>행사일정</td>
+									<td><%=covo.getCostStartDate() %></td>
+									<td><%=covo.getCostEndDate() %></td>
+								</tr>
+								<tr>
+									<td>행사카테고리</td>
+									<td><%=covo.getCostCatagory() %></td>
+								</tr>
+								<tr>
+									<td>행사 지역</td>
+									<td><%=covo.getCostLocation() %></td>
+								</tr>
+								<tr>
+									<td>행사 구성</td>
+									<td><%=covo.getCostTarget() %></td>
+									<td><%=covo.getCostMethod() %></td>
+									<td><%=covo.getCostPrice() %></td>
+									<td><%=covo.getCostPeople() %></td>
+								</tr>
+								<tr>
+									<td>행사 설명</td>
+									<td><%=covo.getCostText() %></td>
+								</tr>
+							</table>
+	
+
+				<div>
+					<div class="container">
+		      			<div class="sc-qPIWj eXGQeW">행사 자료</div>
+						<%if(covo.getCostFile() != null){%>
+							<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>">
+						<%}; %>
+					</div>
+				</div>
+				<div class="text-end mt-5">
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costDeletModalFn()">삭제</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
+							</div>												
+						</div>
+					</div>
+		</form>
+	</div>
 </div>
 
+<!--   모달   -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="costDeletModalFn()">확인</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
@@ -184,13 +239,6 @@
          </div>
       </div>
    </div>
-
-
-
-
-
-
-
 
 <!-- Bootstrap에 필요한 JS파일 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>

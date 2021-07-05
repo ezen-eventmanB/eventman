@@ -227,12 +227,12 @@
 
 <!-- 행사 기본정보 -->
    <div class="container">
-      <div class="sc-qPIWj eXGQeW">행사 견적신청</div>
+      <div class="sc-qPIWj eXGQeW">행사 기본정보
+      </div>
       <hr/>   
    </div>
    
    <form name="frm">
-   
    <input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
 <!-- 행사 명 -->
 	     <div class="container">

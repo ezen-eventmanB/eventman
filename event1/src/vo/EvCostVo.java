@@ -6,16 +6,41 @@ public class EvCostVo {
 	private String CostName;
 	private String CostStartDate;
 	private String CostEndDate;
+	private String CostWritedate;
 	private String CostCatagory;
 	private String CostText;
+	private String CostFile;
 	private String CostLocation;
 	private String CostTarget;
 	private String CostMethod;
 	private String CostPrice;
 	private String CostPeople;
+	private String Ccount; 
+	private String CName;
+
+	
+	public String getCcount() {
+		return Ccount;
+	}
+	public void setCcount(String Ccount) {
+		this.Ccount = Ccount;
+	}
+	public String getCName() {
+		return CName;
+	}
+	public void setCName(String cName) {
+		CName = cName;
+	}
 	private int CostDelYn;
 	private int midx;
 	
+	
+	public String getCostFile() {
+		return CostFile;
+	}
+	public void setCostFile(String costFile) {
+		CostFile = costFile;
+	}
 	public int getCidx() {
 		return cidx;
 	}
@@ -93,6 +118,12 @@ public class EvCostVo {
 	}
 	public void setMidx(int midx) {
 		this.midx = midx;
+	}
+	public String getCostWritedate() {
+		return CostWritedate;
+	}
+	public void setCostWritedate(String costWritedate) {
+		CostWritedate = costWritedate;
 	}
 	
 }

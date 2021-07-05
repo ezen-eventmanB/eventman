@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+    pageEncoding="UTF-8"%>    
+<%@ page import = "java.util.*" %>
+<%@ page import = "vo.*" %>
+<%@ page import = "domain.*" %>
 
  <%
    String member_id = (String)session.getAttribute("S_memberId");
@@ -13,7 +17,8 @@
    out.println(member_id);
    out.println(midx);
    
-   int count = (int)request.getAttribute("boardcount");
+
+   ArrayList<EvCostVo> alistcost = (ArrayList<EvCostVo>)request.getAttribute("alistcost");   
    
    %>    
     
@@ -43,7 +48,6 @@
 
 </head>
 <body>
-
 
 
 <!-- 상단 네비 부분 -->
@@ -129,39 +133,60 @@
    </div>
       
 
-
-      
-<!-- 마이페이지 부분 -->
-
 <div class="container">
    <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
-   
-   <div class="container" id="mypageajax">
-      <div class="row justify-content-md-center">
-         <div class="col-md-auto text-center px-3">
-            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">
-               <img src="../budget.png" alt="견적신청이미지" class="images w-100">
-               <div class="text-center fw-bold texts">
-                 <span>견적신청<br><span><%=count%></span>건</span>
-               </div>
-            </a>
-         </div>
-         
-         
-         <div class="col-md-auto text-center px-3">
-            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">
-               <img src="../presentation.png" alt="게시판이미지" class="images w-100">
-               <div class="text-center fw-bold texts">
-                  <span>게시판<br><span><%=count%></span>건</span>
-               </div>
-            </a>
-         </div>
-      </div>
+      
+   <!-- 게시글 리스트 -->
+   <div class="container">
+      <table class="table table-hover">
+         <thead>
+            <th>카테고리</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th>
+            <th>조회수</th>  
+         </thead>
+        <tbody>
+         <% for(EvCostVo covo: alistcost){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
+               <td><%=covo.getCostCatagory()%></td>
+               <td colspan="2"><%=covo.getCostName()%></td>
+               <td></td>
+               <td><%=covo.getCostWritedate()%></td>
+               <td><%=covo.getCName()%></td>
+               <td><%=covo.getCcount()%></td>
+            </tr>
+         <%}; %>
+         </tbody> 
+      </table>
    </div>
+
+
+   
+   <nav aria-label="Page navigation example">
+      <ul class="pagination">
+         <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+               <span aria-hidden="true">&laquo;</span>
+            </a>
+         </li>
+         <li class="page-item"><a class="page-link" href="#">1</a></li>
+         <li class="page-item"><a class="page-link" href="#">2</a></li>
+         <li class="page-item"><a class="page-link" href="#">3</a></li>
+         <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+               <span aria-hidden="true">&raquo;</span>
+            </a>
+         </li>
+      </ul>
+   </nav>
+
+
 </div>
 
 
