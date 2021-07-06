@@ -259,14 +259,14 @@ public class MemberController extends HttpServlet {
 					session.setAttribute("S_memberId", memberId);
 					session.setAttribute("midx", useridx);
 					
-					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");	
+					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.do'</script>");	
 					
 				}else if(usertype.equals("master")){
 					HttpSession session = request.getSession();
 					session.setAttribute("S_memberId", memberId);
 					session.setAttribute("gidx", useridx);
 					
-					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp'</script>");
+					out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.do'</script>");
 					
 				}
 				
@@ -291,7 +291,7 @@ public class MemberController extends HttpServlet {
 				session.invalidate(); // 모든세션정보 삭제
 				PrintWriter out =response.getWriter();   
 				
-				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.jsp';</script>");
+				out.println("<script>document.location.href='"+request.getContextPath()+"/EventMan_Main/EventMan_Main.do';</script>");
       
 				
 /* ID찾기 페이지로 이동*/
