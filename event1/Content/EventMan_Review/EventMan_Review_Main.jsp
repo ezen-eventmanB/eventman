@@ -20,7 +20,6 @@
 
 	out.println("midx="+midx);
 	out.println("gidx="+gidx); 
-	
 	%>    
 	
 
@@ -28,7 +27,7 @@
 	<%
 		ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
 	%>  
-<%-- <%PageMaker pm = (PageMaker)request.getAttribute("pm"); %> --%>
+ 	<%PageMaker pm = (PageMaker)request.getAttribute("pm"); %>
 
 <!doctype html>
 <html>
@@ -50,26 +49,13 @@
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
-	
-<style>
-	#imgbax{
-		object-fit: cover;
-	}
-	
-	form{
-		margin-bottom: 0px;
-	}
-	.hname{
-		display:block;
-		white-space:nowrap;
-		overflow:hidden;
-		text-overflow:ellipsis;
-	}
-</style>
+	<!-- Review CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/review.css">
 
 <script>
 
 /*	카테고리 별로 보는 ajax	*/
+	/*전체*/
 	function selectAll(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectAll.do",
@@ -80,7 +66,7 @@
 			}	
 		});
 	};
-	
+	/*기업*/
 	function selectCompany(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectCompany.do",
@@ -91,7 +77,7 @@
 			}	
 		});
 	}
-	
+	/*대학*/
 	function selectUniversity(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectUniversity.do",
@@ -102,7 +88,7 @@
 			}	
 		});
 	}
-	
+	/*공연*/
 	function selectStage(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectStage.do",
@@ -113,7 +99,7 @@
 			}	
 		});
 	}
-	
+	/*기타*/
 	function selectxEeption(){
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectxEeption.do",
@@ -156,6 +142,53 @@
 					
 		});
  	}
+ 	
+ 	
+ 	
+/*	SELECT BOX 선택시 검색해서 보여주기	*/ 	
+ 	function selectCataFn(){
+ 		var val1 = "";
+ 		var val2 = "";
+ 		
+ 		val1 = $("#selectbox1").val();
+ 		val2 = $("#selectbox2").val();
+ 		
+ 		var allData = { "val1": val1, "val2": val2 };
+
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectbox.do?&val1="+val1+"&val2="+val2,
+			type:"get",
+			datatype:"html",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
+ 	}
+
+
+/*	검색하기 	*/
+	function searchReview(){
+	
+		var val1 = "";
+		var val2 = "";
+		var val3 = "";
+		
+		val1 = $("#selectbox1").val();
+		val2 = $("#selectbox2").val();
+		val3 = $("#serchbox").val();
+		
+		var allData = { "val1": val1, "val2": val2 };
+		
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_search.do?&val1="+val1+"&val2="+val2+"&val3="+val3,
+			type:"get",
+			datatype:"html",
+			success:function(data){
+				$("#load").html(data);
+			}	
+		});
+	
+	}
 </script>
 
 </head>
@@ -163,7 +196,7 @@
 
 <div class="container ajax">
 
-
+<!-- 상단메뉴	 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -291,29 +324,33 @@
 						<a class="nav-link fw-bolder" type="button" onclick="selectxEeption()">기타</a>
 					</li>
 				</ul>
-				<form>
 					<div class="text-center align-middle">
 				    	<div class="align-middle text-center vox" style="display:inline-block;">
-							<select class="form-control form-select-sm " style="display:inline-block;">
+							<select class="form-control form-select-sm selectbox" style="display:inline-block;" onchange="selectCataFn()" id="selectbox1">
 								<option selected >예산</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="1,000만원 미만">1,000만원 미만</option>
+								<option value="1,000만원 이상 ~ 5,000만원 미만">1,000만원 이상~5,000만원 미만</option>
+								<option value="5,000만원 ~ 1억 미만"">5,000만원 ~ 1억 미만</option>
+								<option value="1억 이상 ~ 3억 미만">1억 이상 ~ 3억 미만</option>
+								<option value="3억 이상">3억 이상</option>
+								<option value="예산">전체</option>
 							</select>
 						</div>
 						<div class="align-middle text-center  vox" style="display:inline-block;">
-							<select class="form-control form-select-sm" style="display:inline-block;">
+							<select class="form-control form-select-sm selectbox" style="display:inline-block;" onchange="selectCataFn()" id="selectbox2">
 								<option selected>인원</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="50명 미만">50명 미만</option>
+								<option value="50명~100명 미만">50명~100명 미만</option>
+								<option value="100~500명 미만">100~500명 미만</option>
+								<option value="500~1000명 미만">500~1000명 미만</option>	
+								<option value="1000명 이상">1000명 이상</option>
+								<option value="인원">전체</option>	
 							</select>
 						</div>	
 						<div style="display:inline-block;">	
-					        <input class="form-control form-control-sm " type="text" placeholder="Search" aria-label="Search" >
-						</div>
+					        <input class="form-control form-control-sm " id="serchbox"type="text" placeholder="Search" aria-label="Search" onkeypress="if( event.keyCode == 13 ){searchReview();}">
+						</div>	
 					</div>
-				</form>
 			</div>
 		</div>
 	</nav>
@@ -330,7 +367,7 @@
 					<div class="col">
 						<div class="card shadow-sm">
 							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
-								<img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
+								<img class="bd-placeholder-img card-img-top stretched-link imgbox" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
 							</a>
 							<title><%=erv.gethName() %></title>
 							<div class="card-body">
@@ -346,37 +383,42 @@
 			</div>
 		</div> 
 	</div>
+
+
+<!-- 행사리뷰 페이징 처리 -->
+	<div class="container mt-5 text-center">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">	
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+					<%if(pm.isPrev() == true) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>">
+								<span aria-hidden="false">&laquo;</span>
+							</a>
+						</li>
+					<%} %>
+					<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>"><%=i %></a>
+						</li>
+					<% } %>
+				
+					<% if(pm.isNext() == true){ %>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getEndPage()+1 %>" >
+								<span aria-hidden="false">&raquo;</span>
+							</a>
+						</li>
+					<%} %>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+	
+
 </section>
-
-</div>
-
-<%-- <!-- 행사리뷰 페이징 처리 -->
-<nav aria-label="Page navigation example">
-	<ul class="pagination">
-	
-		<%if(pm.isPrev() == true) {%>
-			<li class="page-item">
-				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-		<%} %>
-		<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) { %>
-		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword()) %>"><%=i %></a></li>
-		<% } %>
-
-		<% if(pm.isNext() == true){ %>
-			<li class="page-item">
-				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-		<%} %>
-	</ul>
-</nav> --%>
-	
-
-
 
 
 

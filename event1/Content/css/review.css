@@ -1,0 +1,15 @@
+@charset "UTF-8";	
+	
+/* 사진크기 중앙 자동 맞춤 */
+	.imgbox{
+		object-fit: cover;
+	}
+	
+	
+/* 제목 두줄 이상이면 ... 처리 */
+	.hname{
+		display:block;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	}

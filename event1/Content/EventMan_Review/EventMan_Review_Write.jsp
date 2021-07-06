@@ -40,9 +40,6 @@ $(document).ready(function(e){
 
 	$("input[type='file']").change(function(e){
 		
-		//div 내용 비워주기
-		$('#preview').empty();
-		
 		var files = e.target.files;
 		var arr =Array.prototype.slice.call(files);
 		
@@ -53,6 +50,9 @@ $(document).ready(function(e){
 				return false;
 			};
 		};
+
+		//div 내용 비워주기
+		$('#preview').empty();
 		preview(arr);
 	});//file change
 
@@ -109,7 +109,7 @@ $(document).ready(function(e){
 			str+='<img src="../seletimg.jpg" class="d-block w-100" alt="">'
 			str+='<div class="carousel-caption d-none d-md-block">'
 			str+='<h5>이미지 파일을 선택해주세요.</h5>'
-			str+='<p>파일 선택시 미리보기 됩니다.</p>'
+			str+='<p>파일 선택시 미리보기 됩니다요.</p>'
 			str+='</div>'
 			str+='</div>';
 			$('#preview').html(str);
@@ -333,10 +333,10 @@ $(document).ready(function(e){
 										<div class="mt-2">
 											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
 												<option selected value="catamenu">예산</option>
-												<option value="1000만원 미만">1,000만원 미만</option>
-												<option value="1000~5000">1,000만원 이상 ~ 5,000만원 미만</option>
-												<option value="5000~1억">5,000만원 ~ 1억 미만</option>
-												<option value="1억 이상">1억 이상 ~ 3억 미만</option>
+												<option value="1,000만원 미만">1,000만원 미만</option>
+												<option value="1,000만원 이상 ~ 5,000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
+												<option value="5,000만원 ~ 1억 미만">5,000만원 ~ 1억 미만</option>
+												<option value="1억 이상 ~ 3억 미만">1억 이상 ~ 3억 미만</option>
 												<option value="3억 이상">3억 이상</option>
 											</select>
 										</div>
@@ -349,8 +349,8 @@ $(document).ready(function(e){
 											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon">
 												<option selected value="catamenu">참여인원</option>
 												<option value="50명 미만">50명 미만</option>
-												<option value="50~100명미만">50명~100명 미만</option>
-												<option value="100~500명미만">100~500명 미만</option>
+												<option value="50명~100명 미만">50명~100명 미만</option>
+												<option value="100~500명 미만">100~500명 미만</option>
 												<option value="500~1000명 미만">500~1000명 미만</option>
 												<option value="1000명이상">1000명 이상</option>
 											</select>

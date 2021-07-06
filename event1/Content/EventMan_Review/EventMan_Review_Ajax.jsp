@@ -5,8 +5,7 @@
 <%@ page import = "domain.*" %>
    
 <%ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); %>    
-<%-- <%PageMaker pm = (PageMaker)request.getAttribute("pm"); %> --%>
-
+<%PageMaker pm = (PageMaker)request.getAttribute("pm"); %>
 <!doctype html>
 <html>
 <title>EVENT MAN!</title>
@@ -26,6 +25,9 @@
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
+	<!-- Review CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/review.css">
+	
 	
 <style>
 </style>
@@ -39,7 +41,7 @@
 		
 
 
-<!-- 메인 행사리뷰 부분 3x3출력 -->
+ <!-- 메인 행사리뷰 부분 3x3출력 -->
 <div class="album">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -47,12 +49,13 @@
 				<% for(EvReviewVo erv : reviewList){ %>
 				<div class="col">
 					<div class="card shadow-sm">
-						<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')"><img class="bd-placeholder-img card-img-top stretched-link" width="100%" height="225" src="리뷰이미지.png"></img></a>
-							<title><%=erv.gethName() %></title>
-						
+						<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
+							<img class="bd-placeholder-img card-img-top stretched-link imgbox" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
+						</a>
+						<title><%=erv.gethName() %></title>
 						<div class="card-body">
 							<div class="justify-content-between align-items-center">
-								<p class="card-text"><%=erv.gethName() %></p>
+								<p class="card-text hname"><%=erv.gethName() %></p>
 								<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
 							</div>	
 						</div>
@@ -65,31 +68,39 @@
 </div>
 
 
+<!-- 행사리뷰 페이징 처리 -->
+	<div class="container mt-5 text-center">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">	
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+					<%if(pm.isPrev() == true) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>">
+								<span aria-hidden="false">&laquo;</span>
+							</a>
+						</li>
+					<%} %>
+					<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>"><%=i %></a>
+						</li>
+					<% } %>
+				
+					<% if(pm.isNext() == true){ %>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getEndPage()+1 %>" >
+								<span aria-hidden="false">&raquo;</span>
+							</a>
+						</li>
+					<%} %>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
 
-<%-- <!-- 행사리뷰 페이징 처리 -->
-<nav aria-label="Page navigation example">
-	<ul class="pagination">
-	
-		<%if(pm.isPrev() == true) {%>
-			<li class="page-item">
-				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-		<%} %>
-		<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) { %>
-		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword()) %>"><%=i %></a></li>
-		<% } %>
 
-		<% if(pm.isNext() == true){ %>
-			<li class="page-item">
-				<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>&searchType=<%=pm.getScri().getSearchType()%>&keyword=<%=pm.encoding(pm.getScri().getKeyword())%>" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
-		<%} %>
-	</ul>
-</nav> --%>
 	
 
 

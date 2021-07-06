@@ -110,10 +110,8 @@ public class MemberController extends HttpServlet {
 			System.out.println("midx = "+midx);
 			
 			BoardServiceImpl boarddao = new BoardServiceImpl();
-			
 			int boardcount = boarddao.boardCount(midx);
 			
-			request.setAttribute("boardcount", boardcount);
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
