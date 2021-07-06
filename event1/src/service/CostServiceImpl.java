@@ -118,6 +118,36 @@ public class CostServiceImpl {
             }
             return alistboard;
          }
+         
+         /*	마이페이지 견적신청 글 수	*/
+     	public int costCount(int midx) {
+     		int count = 0;
+     		
+     		String sql = "select count(*) as cnt from EVE_COST where midx=? and cdelyn='N'";
+     		
+     		try {
+     			pstmt = conn.prepareStatement(sql);
+     			pstmt.setInt(1, midx);
+     			ResultSet rs = pstmt.executeQuery();
+     			
+     			if(rs.next()) {
+     				count = rs.getInt("cnt");
+     			}
+     			
+     		} catch (SQLException e) {
+     			// TODO Auto-generated catch block
+     			e.printStackTrace();
+     		}finally {
+     			try {
+     				pstmt.close();
+     				conn.close();
+     			} catch (SQLException e) {
+     				// TODO Auto-generated catch block
+     				e.printStackTrace();
+     			}
+     		}
+     		return count;
+     	}
 
       /*마이페이지 게시글 상세보기*/
       public EvCostVo costlistselectone(int cidx) {
@@ -134,6 +164,7 @@ public class CostServiceImpl {
          try {
             pstmt=conn.prepareStatement(sql);
             pstmt.setInt(1, cidx);
+            
             ResultSet rs = pstmt.executeQuery();
             
             if(rs.next()) {
@@ -143,13 +174,13 @@ public class CostServiceImpl {
                covo.setCostEndDate(rs.getString("cSdate2")); //견적 종료
                covo.setCostWritedate(rs.getString("cWday")); //견적 작성일
                covo.setCostCatagory(rs.getString("cCata")); //견적 카테고리
+               covo.setCostText(rs.getString("cText")); //견적 내용
                covo.setCostLocation(rs.getString("cLoca")); //견적 장소
                covo.setCostTarget(rs.getString("cTarget")); //견적대상
                covo.setCostMethod(rs.getString("cMethod")); //견적 방식
                covo.setCostPrice(rs.getString("cPrice")); //견적 예산
                covo.setCostPeople(rs.getString("cPeople")); //견적 참여인원
-               covo.setCostText(rs.getString("cText")); //견적 내용
-               covo.setCostFile(rs.getString("cfile")); //견적 신청 파일
+               covo.setCostFile(rs.getString("cfile2")); //견적 신청 파일
             }
             
          } catch (SQLException e) {
@@ -214,21 +245,32 @@ public class CostServiceImpl {
          return covo;
          
       }
-   /*   게시판 수정 액션   */
-      public int costModifyAction(int cidx, String title, String content, String file) {
-         
+   /*   견적신청 수정 액션   */
+      public int costModifyAction(String cName, String cSdate, String cEdate, String cWday, 
+              String cCata, String cText,String cFile2,String cLoca,
+              String cTarget, String cMethod, String cPrice,String cPeople,int cidx) {
+						    	 
          int value=0;
          String sql = null;
          
    
-            sql = "UPDATE EVE_COST SET CNAME=?, bcontents=?, bfile=? where cidx=?";
+            sql = "UPDATE EVE_COST SET CNAME=?, CSDATE=?, CSDATE2=?, CCATA=?,CTEXT=?,CFILE2=?,CLOCA=?,CTARGET=?,CMETHOD=?,CPRICE=?,CPEOPLE=? where cidx=?";
             
             try {
                pstmt=conn.prepareStatement(sql);
-               pstmt.setString(1, title);
-               pstmt.setString(2, content);
-               pstmt.setString(3,file);
-               pstmt.setInt(4,cidx);
+               pstmt.setString(1, cName);
+               pstmt.setString(2, cSdate);
+               pstmt.setString(3, cEdate);
+               pstmt.setString(4, cCata);
+               pstmt.setString(5, cText);
+               pstmt.setString(6, cFile2);
+               pstmt.setString(7, cLoca);
+               pstmt.setString(8, cTarget);
+               pstmt.setString(9, cMethod);
+               pstmt.setString(10, cPrice);
+               pstmt.setString(11, cPeople);
+               
+               pstmt.setInt(12, cidx);
                value = pstmt.executeUpdate();
                
             } catch (SQLException e) {
@@ -246,36 +288,23 @@ public class CostServiceImpl {
    
          return value;
       }
-      /*   마이페이지 견적신청 삭제하기      */   
-      public int myPageCostDelet(int cidx) {
-         
-         System.out.println("myPageCostDelet(int cidx) 입니다.");
-         System.out.println(cidx);
-         
+      
+      /*   견적신청 삭제하기      */   
+      public int myPageCostDelete(int cidx, int midx) {
          int value = 0;
-         
-         String sql = "UPDATE EVE_COST SET CDELYN='Y' where cidx=?";
+         String sql = "UPDATE EVE_COST SET CDELYN='Y' where midx=? and cidx=?";
          
          try {
             pstmt=conn.prepareStatement(sql);
             pstmt.setInt(1, cidx);
+            pstmt.setInt(2, midx);
             value = pstmt.executeUpdate();
-         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-         }finally {
-            try {
-               pstmt.close();
-               conn.close();
-            } catch (SQLException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
-            }
-            
-         }
-
-         return value;
-      }
+ 		} catch (SQLException e) {			
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
       /*   견적신청 Count   */
       public int hitCount(int cidx) {
          

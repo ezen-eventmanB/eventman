@@ -131,11 +131,6 @@
 		  document.frm.submit(); 
 		  return;
 	  } 
-	  function dropout(){
-		  
-		  
-		  
-	  }
 	 </script>
 </head>
 <body>

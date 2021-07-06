@@ -68,7 +68,7 @@
            
             var fm = document.frm;   
             var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
-
+            
 		       if (fm.cName.value =="")   {
 		            alert("행사명을 입력해주세요.");
 		            fm.cName.focus();
@@ -314,7 +314,7 @@
             </tr> 
             <tr>
                 <td>
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연  마술">
                          <label class="form-check-label" for="inlineCheckbox3">마술</label>
                 </td>
                 <td>       
@@ -452,12 +452,12 @@
 				<td>
 					 <select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
 			         <option selected value="catamenu">예산</option>
-			         <option value="1000만원 미만">1,000만원 미만</option>
-			         <option value="1000~5000">1,000만원 이상 ~ 5,000만원 미만</option>
-			         <option value="5000~1억">5,000만원 ~ 1억 미만</option>
-			         <option value="1억 이상">1억 이상 ~ 3억 미만</option>
-			         <option value="3억 이상">3억 이상</option>
-			         <option value="예산 기타">기타</option>
+						<option value="1000만원 미만">1,000만원 미만</option>
+						<option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
+						<option value="5000~1억 미만">5,000만원 ~ 1억 미만</option>
+						<option value="1억 이상~3억 미만">1억 이상 ~ 3억 미만</option>
+						<option value="3억 이상">3억 이상</option>
+						<option value="예산 기타">기타</option>
 		    		 </select>
 				</td>
 				<td>
