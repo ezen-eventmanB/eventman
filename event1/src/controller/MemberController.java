@@ -121,7 +121,7 @@ public class MemberController extends HttpServlet {
 			
 			request.setAttribute("boardcount", boardcount);
 			request.setAttribute("costcount", costcount);
-			
+
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
 	

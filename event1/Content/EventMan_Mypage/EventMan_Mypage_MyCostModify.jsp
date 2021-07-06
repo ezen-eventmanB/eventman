@@ -98,7 +98,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
