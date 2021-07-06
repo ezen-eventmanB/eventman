@@ -303,39 +303,38 @@
 	         </tr>
 	         <tr> 
 	           
-            <td>
+            	<td>
                       <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌">
-                         <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
+                      <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
                 </td>
                 <td>
                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스">
-                         <label class="form-check-label" for="inlineCheckbox2">댄스</label>
+                 	    <label class="form-check-label" for="inlineCheckbox2">댄스</label>
                 </td>
             </tr> 
             <tr>
                 <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬">
                          <label class="form-check-label" for="inlineCheckbox3">마술</label>
                 </td>
                 <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식">
                          <label class="form-check-label" for="inlineCheckbox4">클래식</label>
                 </td>
             </tr>
             <tr>
                 <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑">
                          <label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
                 </td>
                 <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타">
                          <label class="form-check-label" for="inlineCheckbox6">기타</label>
                 </td>
             </tr>
 
                <!-- 대학 -->
         <tr>
-       
          <td rowspan="4"><img src="../school.png" class="cataimg"></td>
          <th>대학</th>
          </tr>

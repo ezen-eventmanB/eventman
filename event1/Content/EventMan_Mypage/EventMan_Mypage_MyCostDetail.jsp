@@ -164,9 +164,11 @@
 	   <div class="container">
 	        <div class="sc-qPIWj eXGQeW">행사 일정</div>
 	        	<div class="container">
-				    <input type="date" id="cSdate" name="cSdate" class="CostDate" value="<%=covo.getCostStartDate()%>"> ~
-				    <input type="date" id="cSdate2" name="cEdate" class="CostDate" value="<%=covo.getCostEndDate()%>">
-				</div>		
+
+								<div class="text-center align-middle ">
+									<div class="mt-2"><%=covo.getCostStartDate()%><br>~<br><%=covo.getCostEndDate()%></div>
+								</div>
+							</div>	
 	      	<div class="icon">
 	      <hr/>
 	 	  </div>
@@ -178,151 +180,172 @@
    
          <!-- 기업 행사 -->
    	<div class="cataselect">          
-
-      <table>
-         <tr>
-         	<th>기업행사</th>
-         </tr>
-        	 <tr>   
-            <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" <%=covo.getCostTarget().equals("기업 워크숍") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" <%=covo.getCostTarget().equals("기업 판촉행사") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회" <%=covo.getCostTarget().equals("기업 체육대회") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사" <%=covo.getCostTarget().equals("기업 오픈행사") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션" <%=covo.getCostTarget().equals("기업 레크레이션") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 기타" <%=covo.getCostTarget().equals("기업 기타") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-   
-            <!-- 공연 -->
-	         <tr>
-	         	<th>공연</th>
-	         </tr>
-	         <tr> 
-	           
-            <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" <%=covo.getCostTarget().equals("공연 지역 페스티벌") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스" <%=covo.getCostTarget().equals("공연 댄스") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox2">댄스</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬" <%=covo.getCostTarget().equals("공연 마슬") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox3">마술</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식" <%=covo.getCostTarget().equals("공연 클래식") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox4">클래식</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑" <%=covo.getCostTarget().equals("공연 장기자랑") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타" <%=covo.getCostTarget().equals("공연 기타") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-
-               <!-- 대학 -->
-        <tr>
-      
-         <th>대학</th>
-         </tr>
-         <tr>   
-            <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" <%=covo.getCostTarget().equals("대학 축제") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox1">축제</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" <%=covo.getCostTarget().equals("대학 섭외") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
-                </td>
-            </tr>   
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" <%=covo.getCostTarget().equals("대학 체육대회") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사" <%=covo.getCostTarget().equals("대학 개강행사") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트" <%=covo.getCostTarget().equals("기타 종강이벤트") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 기타" <%=covo.getCostTarget().equals("대학 결혼식") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-
-         <!-- 기타-->
-  
-         <tr>
-         <th>기타</th>
-         </tr>
-         <tr>   
-           		<td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" <%=covo.getCostTarget().equals("기타 결혼식") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식" <%=covo.getCostTarget().equals("기타 약혼식") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox2">약혼식</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치" <%=covo.getCostTarget().equals("기타 돌잔치") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치" <%=covo.getCostTarget().equals("기타 칠순잔치") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈" <%=covo.getCostTarget().equals("기타 프로포즈") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 기타" <%=covo.getCostTarget().equals("기타 기타") ? " checked" : "" %>>
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-            
-     	 </table>
+			         <div class="container">
+			            <div class="fs-5 text-black-50">기업행사</div>
+						  <div class="row">
+						    <div class="col">
+						    	<div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" <%=covo.getCostCatagory().equals("기업 워크숍") ? " checked" : "" %> disabled="disabled">
+                        			<label class="form-check-label" for="inlineCheckbox1">워크숍</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						    <div>
+						     		<input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" <%=covo.getCostCatagory().equals("기업 판촉행사") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
+                         			</div>
+						    </div>
+						    <div class="col">
+						     <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회" <%=covo.getCostCatagory().equals("기업 체육대회") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
+                        		 </div>
+						    </div>
+						     <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사" <%=covo.getCostCatagory().equals("기업 오픈행사") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션" <%=covo.getCostCatagory().equals("기업 레크레이션") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 기타" <%=covo.getCostCatagory().equals("기업 기타") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox6">기타</label>
+                        		 </div>
+						    </div>
+						  </div>
+						  <p>
+						  
+						  
+						   <div class="fs-5 text-black-50">공연</div>
+						  <div class="row">
+						    <div class="col">
+						    	<div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" <%=covo.getCostCatagory().equals("공연 지역 페스티벌") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						    <div>
+						     		<input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스" <%=covo.getCostCatagory().equals("공연 댄스") ? " checked" : "" %> disabled="disabled">
+                       				<label class="form-check-label" for="inlineCheckbox2">댄스</label>
+                         			</div>
+						    </div>
+						    <div class="col">
+						     <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬" <%=covo.getCostCatagory().equals("공연 마슬") ? " checked" : "" %> disabled="disabled">
+                        			<label class="form-check-label" for="inlineCheckbox3">마술</label>
+                        		 </div>
+						    </div>
+						     <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식" <%=covo.getCostCatagory().equals("공연 클래식") ? " checked" : "" %> disabled="disabled">
+                      				<label class="form-check-label" for="inlineCheckbox4">클래식</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑" <%=covo.getCostCatagory().equals("공연 장기자랑") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 기타" <%=covo.getCostCatagory().equals("공연 기타") ? " checked" : "" %> disabled="disabled">
+                         			<label class="form-check-label" for="inlineCheckbox6">기타</label>
+                        		 </div>
+						    </div>
+						  </div>
+						  <p>
+						  
+						  <div class="fs-5 text-black-50">대학</div>
+						  <div class="row">
+						    <div class="col">
+						    	<div>
+						    		    <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" <%=covo.getCostCatagory().equals("대학 축제") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox1">축제</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						    <div>
+		            					<input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" <%=covo.getCostCatagory().equals("대학 섭외") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
+                         			</div>
+						    </div>
+						    <div class="col">
+						     <div>
+						             	<input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" <%=covo.getCostCatagory().equals("대학 체육대회") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
+                        		 </div>
+						    </div>
+						     <div class="col">
+						      <div>
+                          				<input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사" <%=covo.getCostCatagory().equals("대학 개강행사") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		 	<input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트" <%=covo.getCostCatagory().equals("기타 종강이벤트") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    			<input class="form-check-input" type="checkbox" name="cCata" value="대학 기타" <%=covo.getCostCatagory().equals("대학 결혼식") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox6">기타</label>
+                        		 </div>
+						    </div>
+						  </div>
+						  <p>
+						  
+						  <div class="fs-5 text-black-50">기타</div>
+						  <div class="row">
+						    <div class="col">
+						    	<div>
+						    		    <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" <%=covo.getCostCatagory().equals("기타 결혼식") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox1">결혼식</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						    <div>
+		            					<input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식" <%=covo.getCostCatagory().equals("기타 약혼식") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox2">약혼식</label>
+                         			</div>
+						    </div>
+						    <div class="col">
+						     <div>
+						             	<input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치" <%=covo.getCostCatagory().equals("기타 돌잔치") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
+                        		 </div>
+						    </div>
+						     <div class="col">
+						      <div>
+                          				<input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치" <%=covo.getCostCatagory().equals("기타 칠순잔치") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    		 	<input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈" <%=covo.getCostCatagory().equals("기타 프로포즈") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
+                        		 </div>
+						    </div>
+						    <div class="col">
+						      <div>
+						    			<input class="form-check-input" type="checkbox" name="cCata" value="기타 기타" <%=covo.getCostCatagory().equals("기타 기타") ? " checked" : "" %> disabled="disabled">
+                         				<label class="form-check-label" for="inlineCheckbox6">기타</label>
+                        		 </div>
+						    </div>
+						  </div>
+						  
+						</div>
       </div>
       <hr/>
       
@@ -336,10 +359,25 @@
         <div class="sc-qPIWj eXGQeW">행사 구성</div>
 			
 			<div class="container">
-			<table>
-			<tr>   
-          		<td>
-		      		<select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
+				<div class="fs-5 text-black-50">참여대상</div>
+				<div class="mt-2"><%=covo.getCostTarget()%></div>
+				<p>
+				
+				<div class="fs-5 text-black-50">행사 방식</div>
+				<div class="mt-2"><%=covo.getCostMethod()%></div>
+				<p>
+				
+				<div class="fs-5 text-black-50">행사 예산</div>
+				<div class="mt-2"><%=covo.getCostPrice()%></div>
+				<p>
+				
+				<div class="fs-5 text-black-50">행사 인원</div>
+				<div class="mt-2"><%=covo.getCostPeople() %></div>	 
+			</div>
+				<hr/>
+				
+				
+		      		<%-- <select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
 					  <option selected value="catamenu">참여대상</option>
 					  <option value="전체"<%=covo.getCostTarget().equals("전체") ? " selected" : "" %>>전체</option>
 					  <option value="어린아이"<%=covo.getCostTarget().equals("어린아이") ? " selected" : "" %>>어린이</option>
@@ -351,48 +389,37 @@
 					  <option value="노인"<%=covo.getCostTarget().equals("노인") ? " selected" : "" %>>노인</option>
 					  <option value="기업·단체"<%=covo.getCostTarget().equals("기업·단체") ? " selected" : "" %>>기업·단체</option>
 					  <option value="참여대상 기타"<%=covo.getCostTarget().equals("참여대상 기타") ? " selected" : "" %>>기타</option>
-					</select>
-               	</td>
-                <td>
-                         <select class="form-select me-5"" aria-label="Default select example" name="cMethod" class="catanon">
-					         <option selected value="catamenu">방식</option>
-					         <option value="오프라인"<%=covo.getCostTarget().equals("오프라인") ? " selected" : "" %>>오프라인</option>
-					         <option value="온라인"<%=covo.getCostTarget().equals("온라인") ? " selected" : "" %>>온라인</option>
-					         <option value="온ㆍ오프라인"<%=covo.getCostTarget().equals("온ㆍ오프라인") ? " selected" : "" %>>온ㆍ오프라인</option>
-					         <option value="방식 기타"<%=covo.getCostTarget().equals("방식 기타") ? " selected" : "" %>>기타</option>
-					      </select>
-                </td>
-            </tr> 
-            <tr></tr>
-			<tr>
-				<td>
-					 <select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
-			         <option selected value="catamenu">예산</option>
-			         <option value="1000만원 미만">1,000만원 미만</option>
-			         <option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
-			         <option value="5000~1억원 미만">5,000만원 ~ 1억 미만</option>
-			         <option value="1억 이상">1억 이상 ~ 3억 미만</option>
-			         <option value="3억 이상">3억 이상</option>
-			         <option value="예산 기타">기타</option>
-		    		 </select>
-				</td>
-				<td>
-					<select class="form-select me-5"" aria-label="Default select example" name="cPeople" class="catanon">
-		         	<option selected value="catamenu">참여인원</option>
-			         <option value="50명 미만">50명 미만</option>
-			         <option value="50~100명미만">50명~100명 미만</option>
-			         <option value="100~500명미만">100~500명 미만</option>
-			         <option value="500~1000명 미만">500~1000명 미만</option>
-			         <option value="1000명이상">1000명 이상</option>
-			         <option value="인원 기타">기타</option>
-		      		</select>
-				</td>
-			</tr>
-			</table>
+					</select> --%>
+
+                    <%--  <select class="form-select me-5"" aria-label="Default select example" name="cMethod" class="catanon">
+					     <option selected value="catamenu">방식</option>
+					     <option value="오프라인"<%=covo.getCostMethod().equals("오프라인") ? " selected" : "" %>>오프라인</option>
+					     <option value="온라인"<%=covo.getCostMethod().equals("온라인") ? " selected" : "" %>>온라인</option>
+					     <option value="온ㆍ오프라인"<%=covo.getCostMethod().equals("온ㆍ오프라인") ? " selected" : "" %>>온ㆍ오프라인</option>
+					     <option value="방식 기타"<%=covo.getCostMethod().equals("방식 기타") ? " selected" : "" %>>기타</option>
+				     </select> --%>
+					 								
+					<%--  <select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
+					 <option selected value="catamenu">예산</option>
+			         <option value="1000만원 미만"<%=covo.getCostPrice().equals("1000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
+			         <option value="1000~5000만원 미만"<%=covo.getCostPrice().equals("1000~5000만원 미만") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
+			         <option value="5000~1억원 미만"<%=covo.getCostPrice().equals("5000~1억원 미만") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
+			         <option value="1억 이상"<%=covo.getCostPrice().equals("1억 이상") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
+			         <option value="3억 이상"<%=covo.getCostPrice().equals("3억 이상") ? " selected" : "" %>>3억 이상</option>
+			         <option value="예산 기타"<%=covo.getCostPrice().equals("예산 기타") ? " selected" : "" %>>기타</option>
+		    		 </select> --%>
+
+					<%-- <select class="form-select me-5"" aria-label="Default select example" name="cPeople" class="catanon">	
+											
+		         	 <option selected value="catamenu">참여인원</option>
+			         <option value="50명 미만" <%=covo.getCostPeople().equals("1000만원 미만") ? " selected" : "" %>>50명 미만</option>
+			         <option value="50~100명미만"<%=covo.getCostPeople().equals("50~100명미만") ? " selected" : "" %>>50명~100명 미만</option>
+			         <option value="100~500명미만"<%=covo.getCostPeople().equals("100~500명미만") ? " selected" : "" %>>100~500명 미만</option>
+			         <option value="500~1000명 미만"<%=covo.getCostPeople().equals("500~1000명 미만") ? " selected" : "" %>>500~1000명 미만</option>
+			         <option value="1000명이상"<%=covo.getCostPeople().equals("1000명이상만") ? " selected" : "" %>>1000명 이상</option>
+			         <option value="인원 기타"<%=covo.getCostPeople().equals("인원 기타") ? " selected" : "" %>>기타</option>
+		      		</select> --%>
 			
-		</div>
-		<br>
-		<hr/>
 <!-- 행사 설명 -->   
         <div class="sc-qPIWj eXGQeW">행사 설명</div>
                 <div class="form-floating">
@@ -405,7 +432,7 @@
 
 <!-- 참고자료  -->
    <div class="container">
-   <div class="sc-qPIWj eXGQeW">참고 자료</div>
+   <div class="sc-qPIWj eXGQeW">참고 자료<%if(covo.getCostFile() != null){%><img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>"><%}; %></div>
    <div class="form-group">
       <input class="form-control" type="file" id="formFile" name="file">
     <hr/>
@@ -418,45 +445,6 @@
 					</div>	
     	</div>
 	</form>
-		
-									<table>
-								<tr>
-									<td>행사명</td>
-									<td><%=covo.getCostName() %></td>
-								</tr>
-								<tr>
-									<td>행사일정</td>
-									<td><%=covo.getCostStartDate() %></td>
-									<td><%=covo.getCostEndDate() %></td>
-								</tr>
-								<tr>
-									<td>행사카테고리</td>
-									<td><%=covo.getCostCatagory() %></td>
-								</tr>
-								<tr>
-									<td>행사 지역</td>
-									<td><%=covo.getCostLocation() %></td>
-								</tr>
-								<tr>
-									<td>행사 구성</td>
-									<td><%=covo.getCostTarget() %></td>
-									<td><%=covo.getCostMethod() %></td>
-									<td><%=covo.getCostPrice() %></td>
-									<td><%=covo.getCostPeople() %></td>
-								</tr>
-								<tr>
-									<td>행사 설명</td>
-									<td><%=covo.getCostText() %></td>
-								</tr>
-							</table>
-									<div>
-										<div class="container">
-							      			<div class="sc-qPIWj eXGQeW">행사 자료</div>
-											<%if(covo.getCostFile() != null){%>
-												<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>">
-											<%}; %>
-										</div>
-									</div>
 
 <!--   모달   -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
