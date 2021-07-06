@@ -68,6 +68,11 @@ public class FrontController extends HttpServlet {
 		}else if(str2.equals("EventMan_Master")) {
 			MasterController mc = new MasterController();
 			mc.doGet(request, response);
+			
+			//메인 페이지
+		}else if(str2.equals("EventMan_Main")) {
+			MainController mc = new MainController();
+			mc.doGet(request, response);
 		}
 	}
 

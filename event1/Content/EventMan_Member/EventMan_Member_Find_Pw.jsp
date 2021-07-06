@@ -86,7 +86,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -196,7 +196,7 @@
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='../EventMan_Main/EventMan_Main.jsp'">홈 화면</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do'">홈 화면</button>
 				</div>
 			</form>
 		</div>

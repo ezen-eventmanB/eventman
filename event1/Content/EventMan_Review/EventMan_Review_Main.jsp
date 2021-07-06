@@ -25,7 +25,7 @@
 
 
 	<%
-		ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
+	ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
 	%>  
  	<%PageMaker pm = (PageMaker)request.getAttribute("pm"); %>
 
@@ -200,7 +200,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -290,11 +290,13 @@
 	<!-- 현제 페이지 이름 -->
 	행사리뷰
 </div>
+
+
 		
+<!-- 중앙 네비 카테고리 검색창 -->
 
 <div id="detailload">
 
-<!-- 중앙 네비 카테고리 검색창 -->
 <div class="container">
 	<%if(gidx != 0 ){ %>
 		<div class="text-end w-100">
