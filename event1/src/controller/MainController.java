@@ -31,7 +31,7 @@ public class MainController extends HttpServlet {
 		System.out.println("-----MemberController ½ÇÇà-----");
 		
 		request.setCharacterEncoding("UTF-8");
-		
+		  
 		String uri = request.getRequestURI();														
 		System.out.println("uri"+uri);																			
 		int pnamelength = request.getContextPath().length();	

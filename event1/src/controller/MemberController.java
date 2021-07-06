@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import service.BoardServiceImpl;
+import service.CostServiceImpl;
 import service.MemberServiceImpl;
 import vo.EvMemberVo;
 
@@ -98,6 +99,8 @@ public class MemberController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
 			rd.forward(request, response);	
+			
+			
 /* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			
@@ -112,7 +115,13 @@ public class MemberController extends HttpServlet {
 			BoardServiceImpl boarddao = new BoardServiceImpl();
 			int boardcount = boarddao.boardCount(midx);
 			
+			CostServiceImpl costdao = new CostServiceImpl();
+			int costcount = costdao.costCount(midx);
 			
+			
+			request.setAttribute("boardcount", boardcount);
+			request.setAttribute("costcount", costcount);
+
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
 	

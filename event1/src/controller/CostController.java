@@ -107,15 +107,22 @@ public class CostController extends HttpServlet {
 			String cSdate = multi.getParameter("cSdate"); // 시작일
 			String cEdate = multi.getParameter("cEdate"); // 종료일
 			String cWday = multi.getParameter("cWday"); // 작성날 sysdate 로 받음
-			String cCata = multi.getParameter("cCata"); // 카테고리
+			
 			String cText = multi.getParameter("cText"); // 내용
-			String cFile = multi.getParameter("cFile"); // 견적 자료
+			String cFile2 = multi.getParameter("cFile"); // 견적 자료
 			String cLoca = multi.getParameter("cLoca"); // 지역
 			String cTarget = multi.getParameter("cTarget"); // 참여대상
 			String cMethod = multi.getParameter("cMethod"); // 참여방식
 			String cPrice = multi.getParameter("cPrice"); // 예산
 			String cPeople = multi.getParameter("cPeople"); // 참여인원
 			String midx = multi.getParameter("midx"); // midx 회원번호
+			String[] cCata = multi.getParameterValues("cCata"); // 카테고리
+			
+			String totalCCata ="";
+			for(int i=0; i<cCata.length;i++) {
+				totalCCata = totalCCata +cCata[i];
+			}
+			System.out.println("totalCCata:"+totalCCata);
 
 			HttpSession session = request.getSession();
 			/*
@@ -125,7 +132,7 @@ public class CostController extends HttpServlet {
 			System.out.println("test");
 
 			CostServiceImpl costdao = new CostServiceImpl(); // 객체 생성
-			int value = costdao.costInsert(cName, cSdate, cEdate, cWday, cCata, cText, fileName, cLoca, cTarget, cMethod,
+			int value = costdao.costInsert(cName, cSdate, cEdate, cWday, totalCCata, cText, fileName, cLoca, cTarget, cMethod,
 					cPrice, cPeople, midx);
 
 			if (value >= 1) {
@@ -174,9 +181,10 @@ public class CostController extends HttpServlet {
 				rd.forward(request, response);			
 				//완료
 				
-			}else if(str2.equals("EventMan_Mypage_CostModify.do")) {
+			/*  견적신청 수정 화면 이동 */
+			}else if(str2.equals("EventMan_Mypage_MyCostModify.do")) {
 				
-				System.out.println("EventMan_Mypage_CostModify.do if문");
+				System.out.println("EventMan_Mypage_MyCostModify");
 				
 				int cidx = Integer.parseInt( request.getParameter("cidx"));
 				
@@ -185,48 +193,102 @@ public class CostController extends HttpServlet {
 				
 				request.setAttribute("covo", covo);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyBoardModify.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostModify.jsp");
 				rd.forward(request, response);
+				
+			/* 견적신청 삭제 액션 */
+			}else if (str2.equals("EventMan_Mypage_Cost_DeleteAction.do")) {
+				
+				//1. 넘겨받는다
+				String cidx = request.getParameter("cidx");
+				String midx = request.getParameter("midx");
+				
+				int cidx2 = Integer.parseInt(cidx);
+				int midx2 = Integer.parseInt(midx);
+				
+				//2.처리한다
+				CostServiceImpl costdao = new CostServiceImpl();
+				int value = costdao.myPageCostDelete(cidx2,midx2);		
+				System.out.println("value"+value);
+				
+				//3.이동한다
 			
-			
-/*	게시글 수정하기 액션	*/			
+			  if (value > 0) {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_MyCostlist.do");
+			  }else {
+			  response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_MyCostModify.do"); }	
+				
+			/*	게시글 수정하기 액션	*/			
 			}else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
 				
-				System.out.println("EventMan_Mypage_CostModify_Action.do문");
+				System.out.println("EventMan_Mypage_CostModify_Action 실행");
 				
-				String title = request.getParameter("title");
-				String content = request.getParameter("content");
-				int cidx = Integer.parseInt(request.getParameter("cidx"));
-				String file = request.getParameter("file");
+				String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
 				
-				System.out.println("cidx="+cidx);
-				System.out.println("title="+title);
-				System.out.println("content="+content);
+				String savedPath = "Advice_img";
 				
-				CostServiceImpl costdao = new CostServiceImpl();
-				int value = costdao.costModifyAction(cidx, title, content, file);			
+				String saveFullPath = uploadPath + savedPath;
 				
-				System.out.println("value = "+value);
+				int sizeLimit = 1024 * 1024 * 15;
 				
-				if(value == 1) {
-	
-					request.setAttribute("cidx", cidx);
-					 
-					EvCostVo covo = new EvCostVo();
-					
-					CostServiceImpl costdao2 = new CostServiceImpl();
-					  
-					covo = costdao2.costlistselectone(cidx);
-					  
-					request.setAttribute("covo", covo);
-					
-					
-					RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
-					rd.forward(request, response);
-					
-				}else {
-					System.out.println("게시글 수정후 상세화면 페이지이동 실패");
+				String fileName = null;
+				
+				String originFileName = null;
+				
+				// MultipartRequest 객체생성
+				MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+				// 열거자에 파일Name속성의 이름을 담는다
+				Enumeration files = multi.getFileNames();
+				// 담긴 파일 객체의 Name값을 담는다.
+				String file = (String)files.nextElement();
+					System.out.println("file = "+file);
+				//저장되는 파일이름
+				fileName = multi.getFilesystemName(file); 
+					System.out.println("fileName = "+fileName);
+				//원래파일 이름
+				originFileName = multi.getOriginalFileName(file);
+					System.out.println("originFileName = "+originFileName);
+				String ThumbnailFileName = null;
+					try {
+						if(fileName != null)
+						ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				String cName = multi.getParameter("cName"); // 견적 이름
+				String cSdate = multi.getParameter("cSdate"); // 시작일
+				String cEdate = multi.getParameter("cEdate"); // 종료일
+				String cWday = multi.getParameter("cWday"); // 작성날 sysdate 로 받음
+				String cText = multi.getParameter("cText"); // 내용
+				String cFile2 = multi.getParameter("cFile"); // 견적 자료
+				String cLoca = multi.getParameter("cLoca"); // 지역
+				String cTarget = multi.getParameter("cTarget"); // 참여대상
+				String cMethod = multi.getParameter("cMethod"); // 참여방식
+				String cPrice = multi.getParameter("cPrice"); // 예산
+				String cPeople = multi.getParameter("cPeople"); // 참여인원
+				
+				String[] cCata = multi.getParameterValues("cCata"); // 카테고리
+				
+				String totalCCata ="";
+				for(int i=0; i<cCata.length;i++) {
+					totalCCata = totalCCata +cCata[i];
 				}
+				System.out.println("totalCCata:"+totalCCata);
+
+				HttpSession session = request.getSession();
+
+				CostServiceImpl costdao = new CostServiceImpl(); // 객체 생성
+				int cidx = 0;
+				
+				int value = costdao.costModifyAction(cName, cSdate, cEdate, cWday ,totalCCata, cText, cFile2, cLoca, cTarget, cMethod,cPrice, cPeople, cidx);
+
+				if (value >= 1) {
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
+					rd.forward(request, response);
+				} else {
+					System.out.println("수정 실패!");
+					}
 			}
 	}
 

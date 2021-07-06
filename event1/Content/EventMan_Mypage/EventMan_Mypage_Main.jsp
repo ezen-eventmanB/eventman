@@ -14,6 +14,7 @@
    out.println(midx);
    
    int count = (int)request.getAttribute("boardcount");
+   int count2 = (int)request.getAttribute("costcount");
    
    %>    
     
@@ -146,7 +147,7 @@
             <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">
                <img src="../budget.png" alt="견적신청이미지" class="images w-100">
                <div class="text-center fw-bold texts">
-                 <span>견적신청<br><span><%=count%></span>건</span>
+                 <span>견적신청<br><span><%=count2%></span>건</span>
                </div>
             </a>
          </div>

@@ -49,7 +49,7 @@
 	};
 	
 	function costDeletFn() {
-		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelet.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
+		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_Cost_DeleteAction.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
 	};
 </script>
 </head>
@@ -129,7 +129,7 @@
       </svg>
       
       <!-- 현제 페이지 이름 -->
-      My page
+      My Cost Detail
    </div>
       
 
@@ -166,7 +166,7 @@
 	        	<div class="container">
 
 								<div class="text-center align-middle ">
-									<div class="mt-2"><%=covo.getCostStartDate()%><br>~<br><%=covo.getCostEndDate()%></div>
+									<div class="mt-2"><%=covo.getCostStartDate2()%><br>~<br><%=covo.getCostEndDate2()%></div>
 								</div>
 							</div>	
 	      	<div class="icon">
@@ -185,37 +185,43 @@
 						  <div class="row">
 						    <div class="col">
 						    	<div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" <%=covo.getCostCatagory().equals("기업 워크숍") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" 
+						    		<%if(covo.getCostCatagory().indexOf("기업 워크숍")>=0) { out.println("checked"); } %>   disabled="disabled">
                         			<label class="form-check-label" for="inlineCheckbox1">워크숍</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						    <div>
-						     		<input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" <%=covo.getCostCatagory().equals("기업 판촉행사") ? " checked" : "" %> disabled="disabled">
+						     		<input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" 
+									<%if(covo.getCostCatagory().indexOf("기업 판촉행사")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
                          			</div>
 						    </div>
 						    <div class="col">
 						     <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회" <%=covo.getCostCatagory().equals("기업 체육대회") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회" 
+						    		<%if(covo.getCostCatagory().indexOf("기업 체육대회")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
                         		 </div>
 						    </div>
 						     <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사" <%=covo.getCostCatagory().equals("기업 오픈행사") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사" 
+						    		<%if(covo.getCostCatagory().indexOf("기업 오픈행사")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션" <%=covo.getCostCatagory().equals("기업 레크레이션") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션" 
+						    		<%if(covo.getCostCatagory().indexOf("기업 레크레이션")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 기타" <%=covo.getCostCatagory().equals("기업 기타") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 기타" 
+						    		<%if(covo.getCostCatagory().indexOf("기업 기타")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox6">기타</label>
                         		 </div>
 						    </div>
@@ -227,37 +233,43 @@
 						  <div class="row">
 						    <div class="col">
 						    	<div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" <%=covo.getCostCatagory().equals("공연 지역 페스티벌") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" 
+						    		<%if(covo.getCostCatagory().indexOf("공연 지역 페스티벌")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						    <div>
-						     		<input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스" <%=covo.getCostCatagory().equals("공연 댄스") ? " checked" : "" %> disabled="disabled">
+						     		<input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스" 
+						     		<%if(covo.getCostCatagory().indexOf("공연 댄스")>=0) { out.println("checked"); } %>   disabled="disabled">
                        				<label class="form-check-label" for="inlineCheckbox2">댄스</label>
                          			</div>
 						    </div>
 						    <div class="col">
-						     <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 마슬" <%=covo.getCostCatagory().equals("공연 마슬") ? " checked" : "" %> disabled="disabled">
+						     <div>	
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연  마술" 
+						    		<%if(covo.getCostCatagory().indexOf("공연 마술")>=0) { out.println("checked"); } %>   disabled="disabled">
                         			<label class="form-check-label" for="inlineCheckbox3">마술</label>
                         		 </div>
 						    </div>
 						     <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식" <%=covo.getCostCatagory().equals("공연 클래식") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식" 
+						    		<%if(covo.getCostCatagory().indexOf("공연 클래식")>=0) { out.println("checked"); } %>   disabled="disabled">
                       				<label class="form-check-label" for="inlineCheckbox4">클래식</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑" <%=covo.getCostCatagory().equals("공연 장기자랑") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑" 
+						    		<%if(covo.getCostCatagory().indexOf("공연 장기자랑")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 기타" <%=covo.getCostCatagory().equals("공연 기타") ? " checked" : "" %> disabled="disabled">
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 기타" 
+						    		<%if(covo.getCostCatagory().indexOf("공연 기타")>=0) { out.println("checked"); } %>   disabled="disabled">
                          			<label class="form-check-label" for="inlineCheckbox6">기타</label>
                         		 </div>
 						    </div>
@@ -268,37 +280,43 @@
 						  <div class="row">
 						    <div class="col">
 						    	<div>
-						    		    <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" <%=covo.getCostCatagory().equals("대학 축제") ? " checked" : "" %> disabled="disabled">
+						    		    <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" 
+						    		    <%if(covo.getCostCatagory().indexOf("대학 축제")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox1">축제</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						    <div>
-		            					<input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" <%=covo.getCostCatagory().equals("대학 섭외") ? " checked" : "" %> disabled="disabled">
+		            					<input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" 
+		            					<%if(covo.getCostCatagory().indexOf("대학 섭외")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
                          			</div>
 						    </div>
 						    <div class="col">
 						     <div>
-						             	<input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" <%=covo.getCostCatagory().equals("대학 체육대회") ? " checked" : "" %> disabled="disabled">
+						             	<input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" 
+						             	<%if(covo.getCostCatagory().indexOf("대학 체육대회")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
                         		 </div>
 						    </div>
 						     <div class="col">
 						      <div>
-                          				<input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사" <%=covo.getCostCatagory().equals("대학 개강행사") ? " checked" : "" %> disabled="disabled">
+                          				<input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사" 
+                          				<%if(covo.getCostCatagory().indexOf("대학 개강행사")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		 	<input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트" <%=covo.getCostCatagory().equals("기타 종강이벤트") ? " checked" : "" %> disabled="disabled">
+						    		 	<input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트" 
+						    		 	<%if(covo.getCostCatagory().indexOf("대학 종강이벤트")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    			<input class="form-check-input" type="checkbox" name="cCata" value="대학 기타" <%=covo.getCostCatagory().equals("대학 결혼식") ? " checked" : "" %> disabled="disabled">
+						    			<input class="form-check-input" type="checkbox" name="cCata" value="대학 기타" 
+						    			<%if(covo.getCostCatagory().indexOf("대학 기타")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox6">기타</label>
                         		 </div>
 						    </div>
@@ -309,37 +327,43 @@
 						  <div class="row">
 						    <div class="col">
 						    	<div>
-						    		    <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" <%=covo.getCostCatagory().equals("기타 결혼식") ? " checked" : "" %> disabled="disabled">
+						    		    <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" 
+						    		    <%if(covo.getCostCatagory().indexOf("기타 결혼식")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox1">결혼식</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						    <div>
-		            					<input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식" <%=covo.getCostCatagory().equals("기타 약혼식") ? " checked" : "" %> disabled="disabled">
+		            					<input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식" 
+		            					<%if(covo.getCostCatagory().indexOf("기타 약혼식")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox2">약혼식</label>
                          			</div>
 						    </div>
 						    <div class="col">
 						     <div>
-						             	<input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치" <%=covo.getCostCatagory().equals("기타 돌잔치") ? " checked" : "" %> disabled="disabled">
+						             	<input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치" 
+						             	<%if(covo.getCostCatagory().indexOf("기타 돌잔치")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
                         		 </div>
 						    </div>
 						     <div class="col">
 						      <div>
-                          				<input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치" <%=covo.getCostCatagory().equals("기타 칠순잔치") ? " checked" : "" %> disabled="disabled">
+                          				<input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치" 
+                          				<%if(covo.getCostCatagory().indexOf("기타 칠순잔치")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    		 	<input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈" <%=covo.getCostCatagory().equals("기타 프로포즈") ? " checked" : "" %> disabled="disabled">
+						    		 	<input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈" 
+						    		 	<%if(covo.getCostCatagory().indexOf("기타 프로포즈")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
                         		 </div>
 						    </div>
 						    <div class="col">
 						      <div>
-						    			<input class="form-check-input" type="checkbox" name="cCata" value="기타 기타" <%=covo.getCostCatagory().equals("기타 기타") ? " checked" : "" %> disabled="disabled">
+						    			<input class="form-check-input" type="checkbox" name="cCata" value="기타 기타" 
+						    			<%if(covo.getCostCatagory().indexOf("기타 기타")>=0) { out.println("checked"); } %>   disabled="disabled">
                          				<label class="form-check-label" for="inlineCheckbox6">기타</label>
                         		 </div>
 						    </div>
@@ -439,7 +463,7 @@
     </div>
 
 					<div class="text-end mt-5">
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costDeletModalFn()">삭제</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
 					</div>	

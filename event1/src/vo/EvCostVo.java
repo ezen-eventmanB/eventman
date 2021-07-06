@@ -56,11 +56,21 @@ public class EvCostVo {
 	public String getCostStartDate() {
 		return CostStartDate;
 	}
+	public String getCostStartDate2() {
+		String date =  getCostStartDate();
+		String startdate = date.substring(0,10);
+		return startdate;
+	}
 	public void setCostStartDate(String costStartDate) {
 		CostStartDate = costStartDate;
 	}
 	public String getCostEndDate() {
 		return CostEndDate;
+	}
+	public String getCostEndDate2() {
+		String date =  getCostEndDate();
+		String enddate = date.substring(0,10);
+		return enddate;
 	}
 	public void setCostEndDate(String costEndDate) {
 		CostEndDate = costEndDate;

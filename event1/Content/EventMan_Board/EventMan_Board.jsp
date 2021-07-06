@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "vo.*" %>
 
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
@@ -11,8 +13,9 @@
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-	out.println(midx);
-	
+	out.println(midx); 
+	 
+	 ArrayList<EvBoardAskVo> alistcost = (ArrayList<EvBoardAskVo>)request.getAttribute("alistcost");   
 	
 	%>    
     
@@ -184,45 +187,30 @@
 
 
 <!-- 게시글 리스트 -->
-<table class="table">
-     <thead>
-       <th>카테고리</th>
-       <th colspan="2">제목</th>
-       <th></th>
-       <th>작성일</th>
-       <th>작성자</th>
-       <th>조회수</th>  
-     </thead>
-  <tbody>
-    <tr class="table-active">
-      <td>행사</td>
-      <td colspan="2"><a href="#">[행사홍보] 전북대학교 대동제 </a></td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>1</td>
-    </tr>
-    
-  </tbody>
-</table>
-      <nav aria-label="Page navigation example">
-         <ul class="pagination">
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-               </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-               </a>
-            </li>
-         </ul>
-      </nav>
-
+   <div class="container">
+      <table class="table table-hover">
+         <thead>
+            <th>카테고리</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th>
+            <th>조회수</th>  
+         </thead>
+        <tbody>
+         <% for(EvBoardAskVo bovo: alistcost){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=bovo.getGidx()%>'">
+               <td><%=bovo.getBcata()%></td>
+               <td colspan="2"><%=bovo.getBtitle()%></td>
+               <td></td>
+               <td><%=bovo.getBwriteday()%></td>
+               <td><%=bovo.getBname()%></td>
+               <td><%=bovo.getBcount()%></td>
+            </tr>
+         <%}; %>
+         </tbody> 
+      </table>
+   </div>
 
 
 <!-- 메인 푸터 -->
