@@ -61,28 +61,25 @@ public class BoardController extends HttpServlet {
 
 		
 		if(str2.equals("EventMan_Board.do")) {	
+
+			 System.out.println("EventMan_Board.do문");
+			 
+			 String gidx = request.getParameter("gidx");
+			 
+			 BoardServiceImpl boarddao = new BoardServiceImpl();
+			 
+			 ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
+			 
+			 request.setAttribute("alistboard", alistboard);
+			 
 			
-			/*
-			 * System.out.println("EventMan_Board.do문");
-			 * 
-			 * String gidx = request.getParameter("gidx");
-			 * 
-			 * BoardServiceImpl boarddao = new BoardServiceImpl();
-			 * 
-			 * ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
-			 * 
-			 * request.setAttribute("alistboard", alistboard);
-			 */
-			
-			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp"); 	
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
 			
-		//게시판 글 작성
+			//게시판 글 작성
 		}else if(str2.equals("EventMan_BoardWrite.do")){
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
 			rd.forward(request, response);
-			
 		}else if(str2.equals("EventMan_BoardwriteAction.do")) {
 			
 			System.out.println("EventMan_BoardwriteAction 실행");

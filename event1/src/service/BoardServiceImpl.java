@@ -22,36 +22,37 @@ public class BoardServiceImpl {
 
 	}
 
-	/*
-	 * 게시판 관리자 작성한 글 리스트 불러오기 public ArrayList selectMasterboardlist(String gidx) {
-	 * 
-	 * ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-	 * 
-	 * String sql
-	 * ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname "
-	 * +"from " +"EVE_BOARD B, EVE_MASTER G "
-	 * +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; try
-	 * { pstmt = conn.prepareStatement(sql); pstmt.setString(1, gidx); ResultSet rs
-	 * = pstmt.executeQuery();
-	 * 
-	 * while(rs.next()) {
-	 * 
-	 * EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
-	 * bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
-	 * bv.setBwriteday(rs.getString("bwriteday"));
-	 * bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
-	 * 
-	 * alistboard.add(bv);
-	 * 
-	 * }
-	 * 
-	 * } catch (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }finally { try { pstmt.close(); conn.close(); } catch
-	 * (SQLException e) { // TODO Auto-generated catch block e.printStackTrace(); }
-	 * }
-	 * 
-	 * return alistboard; }
-	 */
+	/* 게시판 관리자 작성 글 리스트 출력 하기*/
+	  public ArrayList selectMasterboardlist(String gidx) {
+		  
+		  ArrayList<EvBoardAskVo> alistboard = new ArrayList();
+	  
+	  String sql
+	  ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname " +"from " +"EVE_BOARD B, EVE_MASTER G "
+	  +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; 
+	  try{ 
+		  pstmt = conn.prepareStatement(sql); 
+		  pstmt.setString(1, gidx); ResultSet 
+		  rs= pstmt.executeQuery();
+	  
+	  while(rs.next()) {
+	  
+	  EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
+	  bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
+	  bv.setBwriteday(rs.getString("bwriteday"));
+	  bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
+	  
+	  alistboard.add(bv);
+	  	}
+	  } catch (SQLException e) { 
+	  e.printStackTrace(); }finally { try { pstmt.close(); conn.close(); } catch
+	  (SQLException e) { 
+	  		}
+	  	}
+	  	return alistboard; 
+	  }
+	  
+	  
 	/* 마이페이지에서 본인이 작성한 글 리스트 불러오기 */
 	public ArrayList selectmyboardlist(String midx) {
 

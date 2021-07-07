@@ -68,17 +68,14 @@ public class MasterController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp"); 	
 			rd.forward(request, response);
-		
 			
 /*	master main 페이지로 이동	*/			
 		}else if(str2.equals("EventMan_Master_Mainpage.do")) {
 			
 			System.out.println("-----EventMan_Master_Mainpage.do 실행-----");
 			
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp"); 	
 			rd.forward(request, response);
-			
 			
 /*	행사 리뷰 작성 페이지로 이동	*/
 		}else if(str2.equals("EventMan_Review_Write.do")) {
@@ -91,6 +88,12 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Write.jsp");
 			rd.forward(request, response);
 			
+/* 게시판 관리자 게시글 작성 페이지 이동*/			
+		}else if(str2.equals("EventMan_Master_Write.do")) {
+			System.out.println("게시판 글 작성 페이지 이동");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
+			rd.forward(request, response);	
 			
 /*	행사 리뷰 작성 ACTION*/			
 		}else if(str2.equals("EventMan_Review_Write_Action.do")) {
