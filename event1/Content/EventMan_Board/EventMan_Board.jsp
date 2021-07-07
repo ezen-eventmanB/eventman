@@ -197,7 +197,7 @@
 				   		}else if(gidx > 0){
 				   		%>
 			<div style="display:inline-block;">   
-	                <a href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardWrite.do">관리자 게시물 등록하기</a>
+	                <a href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_BoardWrite.do">관리자 게시물 등록하기</a>
 	         </div>
 				   		<%
 				   		}
