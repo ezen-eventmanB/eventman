@@ -15,10 +15,9 @@
 	out.println(member_id);
 	out.println(midx); 
 	 
-	 ArrayList<EvBoardAskVo> alistcost = (ArrayList<EvBoardAskVo>)request.getAttribute("alistcost");   
+	ArrayList<EvBoardAskVo> alist = (ArrayList<EvBoardAskVo>)request.getAttribute("alist");   
 	
 	%>    
-    
     
 <!doctype html>
 <html>
@@ -190,7 +189,7 @@
    <div class="container">
       <table class="table table-hover">
          <thead>
-            <th>카테고리</th>
+            <th>순번</th>
             <th colspan="2">제목</th>
             <th></th>
             <th>작성일</th>
@@ -198,9 +197,9 @@
             <th>조회수</th>  
          </thead>
         <tbody>
-         <% for(EvBoardAskVo bovo: alistcost){ %>
-            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=bovo.getGidx()%>'">
-               <td><%=bovo.getBcata()%></td>
+         <% for(EvBoardAskVo bovo: alist){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=bovo.getBidx()%>'">
+               <td><%=bovo.getBidx()%></td>
                <td colspan="2"><%=bovo.getBtitle()%></td>
                <td></td>
                <td><%=bovo.getBwriteday()%></td>
@@ -210,6 +209,7 @@
          <%}; %>
          </tbody> 
       </table>
+   </div>
    </div>
 
 

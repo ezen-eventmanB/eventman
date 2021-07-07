@@ -98,17 +98,14 @@ public class MemberController extends HttpServlet {
 		}else if(str2.equals("EventMan_Member_Login.do")) {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Member/EventMan_Member_Login.jsp"); 	
-			rd.forward(request, response);	
-			
+			rd.forward(request, response);		
 			
 /* 마이 페이지로 이동*/		
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			
 			System.out.println("EventMan_Mypage_Main.do if문");
-			
-			System.out.println("request.getAttribute(\"midx\")="+request.getAttribute("midx"));
-			
-			int midx = Integer.parseInt( request.getParameter("midx"));
+
+			int midx = Integer.parseInt(request.getParameter("midx"));
 			
 			System.out.println("midx = "+midx);
 			
@@ -151,9 +148,9 @@ public class MemberController extends HttpServlet {
 								
 			 	request.setAttribute("mbvo", mbvo);
 			
-			
 				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Dropout.jsp"); 	
 				rd.forward(request, response);
+				
 /*회원탈퇴 기능 */		
 		}else if (str2.equals("EventMan_Mypage_Dropout_Action.do")) {
 					
@@ -211,12 +208,9 @@ public class MemberController extends HttpServlet {
 			int value = bd.memberModify(midx, mPwd, mPhn, mEmail);
 			System.out.println("value:"+value);
 			
-			
 			//수정이 제대로 된다면 이동
 			if (value >0)		
-				
 				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Main.do");  
-				
 			//수정이 되지 않으면 이동
 			else {
 				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  

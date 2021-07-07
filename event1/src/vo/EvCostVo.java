@@ -135,5 +135,4 @@ public class EvCostVo {
 	public void setCostWritedate(String costWritedate) {
 		CostWritedate = costWritedate;
 	}
-	
 }

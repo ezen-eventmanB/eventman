@@ -42,15 +42,17 @@
 <title>EVENT MAN!</title>
 
 <script>
-	function costDeletModalFn(){
-		$("#textbox").html("&#34;<%=covo.getCostName()%>&#34; 글을 삭제합니다.");
-		$("#modal").modal("show");
+function ModalcostDeletFn(){
+	$("#textbox").html("&#34;<%=covo.getCostName()%>&#34; 글을 삭제합니다.");
+	$("#modal").modal("show");
 
-	};
-	
-	function costDeletFn() {
-		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_Cost_DeleteAction.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
-	};
+};
+
+function costDeletFn() {
+	location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelete.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
+};
+
+
 </script>
 </head>
 <body>
@@ -464,12 +466,12 @@
 
 					<div class="text-end mt-5">
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costDeletModalFn()">삭제</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalcostDeletFn()">삭제</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
 					</div>	
     	</div>
 	</form>
-
+	
 <!--   모달   -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
@@ -482,13 +484,12 @@
 				<span id="textbox"></span>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="costDeletModalFn()">확인</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="costDeletFn()">확인</button>
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
 			</div>
 		</div>
 	</div>
 </div>
-
 
 
 <!-- 메인 푸터 -->

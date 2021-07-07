@@ -40,58 +40,20 @@
    <link rel="stylesheet" type="text/css" href="../css/mypage.css">
 
 <title>EVENT MAN!</title>
-
-<script>
-	function costDeletModalFn(){
-		$("#textbox").html("&#34;<%=covo.getCostName()%>&#34; 글을 삭제합니다.");
-		$("#modal").modal("show");
-
-	};
-	
-	function costDeletFn() {
-		location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_Cost_DeleteAction.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
-	};
-	
-	function costModify(){      
+		<script>
 		
-		var fm = document.frm;   
-      
-/* 	       if (fm.cName.value =="")   {
-	            alert("행사명을 입력해주세요.");
-	            fm.cName.focus();
-	            return;
-	         }else if (fm.cSdate.value ==""){
-	            alert("행사 시작일을 선택해주세요..");
-	            fm.cSdate.focus();
-	            return;
-	         }else if (fm.cEdate.value ==""){
-	             alert("행사 종료일을 선택해주세요..");
-	             fm.cEdate.focus();
-	             return;
-	         }else if(!costCataChk){
-	        	 alert("카테고리를 한개 이상 선택해주세요.");
-	        	 fm.costCataChk.focus();
-		         return false;  
-	         }else if (fm.cLoca.value ==""){
-                 alert("행사 지역을 입력 해주세요..");
-                 fm.cLoca.focus();
-                 return;
-            }else if($(".catanon").value =="catamenu"){
-                 alter("카테고리를 선택해주세요.");
-                 fm.catamenu.focus();
-	         }else if (document.frm.cText.value ==""){
-           		  alert("행사 설명을 적어주세요.");
-           		  document.frm.cText.focus();
-           		  return;
-	         }else{ */
-	            document.frm.action ="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify_Action.do";
-	        	document.frm.enctype="multipart/form-data";
-	        	document.frm.method="POST";
-	            document.frm.submit();
-	            alert("견적신청이 수정 되었습니다."); 
-	         } 
-     };
-</script>
+		function modifyFn(){
+			
+			var frm = document.form;
+			
+			document.frm.action="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify_Action.do";
+			document.frm.method="post";
+			document.frm.submit();
+			
+			};
+			
+		</script>
+
 </head>
 <body>
 <!-- 상단 네비 부분 -->
@@ -192,7 +154,9 @@
 		   
 		   <form name="frm">
 		   
-		   <input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
+		   <input type="hidden" name="cidx" value="<%=covo.getCidx()%>">
+		   <input type="hidden" name="midx" value="<%=covo.getMidx()%>">
+		   
 		<!-- 행사 명 -->
 			    <div class="container">
 				   <div class="sc-qPIWj eXGQeW">행사 명</div>
@@ -208,9 +172,9 @@
 											
 													<div class="text-center align-middle ">
 														<div class="mt-2">
-															<input type="date" name="startdate" class="form-control CostDate" value="<%=covo.getCostStartDate2()%>">
+															<input type="date" name="cSdate" class="form-control CostDate" value="<%=covo.getCostStartDate2()%>">
 															~<br>
-															<input type="date" name="enddate" class="form-control CostDate" value="<%=covo.getCostEndDate2()%>">
+															<input type="date" name="cEdate" class="form-control CostDate" value="<%=covo.getCostEndDate2()%>">
 														</div>
 													</div>
 											</div>
@@ -292,7 +256,7 @@
 						    </div>
 						    <div class="col">
 						     <div>	
-						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연  마술" 
+						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 마술" 
 						    		<%if(covo.getCostCatagory().indexOf("공연 마술")>=0) { out.println("checked"); } %>>
                         			<label class="form-check-label" for="inlineCheckbox3">마술</label>
                         		 </div>
@@ -420,7 +384,7 @@
       
 <!-- 행사 지역  -->
 				   <div class="sc-qPIWj eXGQeW">행사 지역</div>
-				   	<input type="text" name="cName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  value="<%=covo.getCostLocation() %>">
+				   	<input type="text" name="cLoca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  value="<%=covo.getCostLocation() %>">
 				   <hr/>
 
    
@@ -430,7 +394,7 @@
 				<!-- 14:12다시 -->
 			<div class="container">
 				<div class="fs-5 text-black-50">참여대상</div>
-											<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
 												<option selected value="catamenu">참여대상</option>
 												<option value="전체"<%=covo.getCostTarget().equals("전체") ? "selected" : ""%>>전체</option>
 												<option value="어린이"<%=covo.getCostTarget().equals("어린이") ? "selected" : ""%>>어린이</option>
@@ -446,7 +410,7 @@
 				
 				<div class="fs-5 text-black-50">행사 방식</div>
 										<div class="mt-2">
-											<select class="form-select me-5" aria-label="Default select example" name="method" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="cMethod" class="catanon">
 												 <option selected value="catamenu" <%=covo.getCostMethod()%>>방식</option>
 										         <option value="오프라인"<%=covo.getCostMethod().equals("오프라인") ? "selected" : ""%>>오프라인</option>
 										         <option value="온라인"<%=covo.getCostMethod().equals("온라인") ? "selected" : ""%>>온라인</option>
@@ -455,7 +419,7 @@
 										    </select><p>
 										    
 				<div class="fs-5 text-black-50">행사 예산</div>
-											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
 												<option selected value="catamenu">예산</option>
 												<option value="1000만원 미만"<%=covo.getCostPrice().equals("1000만원 미만") ? "selected" : ""%>>1,000만원 미만</option>
 										        <option value="1000~5000만원 미만"<%=covo.getCostPrice().equals("1000~5000만원 미만") ? "selected" : ""%>>1,000만원 이상 ~ 5,000만원 미만</option>
@@ -466,7 +430,7 @@
 											</select><p>
 				
 				<div class="fs-5 text-black-50">행사 인원</div>
-											<select class="form-select me-5" aria-label="Default select example" name="people" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="cPeople" class="catanon">
 												<option selected value="catamenu">참여인원</option>
 										        <option value="50명 미만" <%=covo.getCostPeople().equals("50명 미만") ? " selected" : ""%>>50명 미만</option>
 										        <option value="50~100명 미만" <%=covo.getCostPeople().equals("50~100명 미만") ? " selected" : ""%>>>50명~100명 미만</option>
@@ -492,36 +456,16 @@
    <div class="container">
    <div class="sc-qPIWj eXGQeW">참고 자료<%if(covo.getCostFile() != null){%><img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>"><%}; %></div>
    <div class="form-group">
-      <input class="form-control" type="file" id="formFile" name="file">
+      <input class="form-control" type="file" id="formFile" name="cFile2">
     <hr/>
     </div>
 
 					<div class="text-end mt-5">
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costModify()">수정 완료</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
 					</div>	
     	</div>
 	</form>
-
-<!--   모달   -->
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
-			</div>
-			<div class="modal-body">
-				<span id="textbox"></span>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="costDeletModalFn()">확인</button>
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
-			</div>
-		</div>
-	</div>
-</div>
-
 
 
 <!-- 메인 푸터 -->
