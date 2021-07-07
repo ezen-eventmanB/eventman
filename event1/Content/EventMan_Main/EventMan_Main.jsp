@@ -277,7 +277,6 @@
 	<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
 		<div class="carousel-inner">
 			<div class="carousel-item">
-				<!-- <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="자리 표시 자 : 두 번째 슬라이드" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"></rect><text x="50%" y="50%" fill="#444" dy=".3em">상담 신청</text></svg> -->
 				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner1.jpg" >
 			</div>
 			<div class="carousel-item active">

@@ -211,6 +211,7 @@ public class MasterController extends HttpServlet {
 			erv = rdao.reviewSelectOne(hidx);
 			
 			request.setAttribute("erv", erv);
+			request.setAttribute("hidx", hidx);
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
 			rd.forward(request, response);
 			
@@ -220,10 +221,32 @@ public class MasterController extends HttpServlet {
 
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
 			
+			int value=0;
+			
+			int hidx = Integer.parseInt(request.getParameter("hidx"));
+			String file = request.getParameter("uploadFile");
+			String cata = request.getParameter("cata");
+			String hloca = request.getParameter("hloca");
+			String startdate = request.getParameter("startdate");
+			String enddate = request.getParameter("enddate");
+			String price = request.getParameter("price");
+			String people = request.getParameter("people");
+			String target = request.getParameter("target");
+			String staff = request.getParameter("staff");
+			String company = request.getParameter("company");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			value = mdao.modifyAction(hidx,file,cata,hloca,startdate,enddate,price,people,target,staff,company,title,content);
+			
+			System.out.println("행사리뷰수정하기 value : "+value);
 			
 			
-			
-			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
+			rd.forward(request, response);
 		}
 
 		

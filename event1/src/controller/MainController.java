@@ -62,7 +62,7 @@ scri.setPage(page2);
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount();
+int cnt = reviewDao.boardTotalCount("");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();

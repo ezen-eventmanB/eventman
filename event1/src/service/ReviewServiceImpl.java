@@ -463,13 +463,25 @@ public class ReviewServiceImpl {
 	}
 	
 /* 리뷰의 전체 카운트 구하기*/		
-	public int boardTotalCount() {
+	public int boardTotalCount(String cata) {
+		
 		int cnt=0;
 		
-		String sql = "select count(*) as cnt from EVE_REVIEW where hdelyn='N'";
+		String sql = "select count(*) as cnt from EVE_REVIEW where hdelyn='N' and hcata like ?";
+		
+		String cata1="";
+		
+		cata1=cata;
+		
+		if(cata.equals("전체")) {
+			cata1 = "%%";
+		}else if(cata.equals("공연")){
+			sql = "select count(*) as cnt from EVE_REVIEW where hdelyn='N' and hcata like ? or hcata like '예술'";
+		}
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cata1);
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

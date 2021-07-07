@@ -69,7 +69,7 @@ scri.setPage(page2);
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount();
+int cnt = reviewDao.boardTotalCount("전체");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();
@@ -104,7 +104,7 @@ scri.setPage(page2);
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount();
+int cnt = reviewDao.boardTotalCount("전체");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();
@@ -139,8 +139,10 @@ request.setAttribute("pm", pm);
 			scri.setPage(page2);	
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
-
-			int cnt = reviewDao.boardTotalCount();
+			
+			String cata="기업";
+			
+			int cnt = reviewDao.boardTotalCount(cata);
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -175,7 +177,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount();
+			int cnt = reviewDao.boardTotalCount("대학");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -191,7 +193,7 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	중간 네비 공연 클릭시 ajax	*/			
+/*	중간 네비 공연예예술 클릭시 ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectStage.do")) {
 			
 			System.out.println("--if문 => ajax EventMan_Review_selectStage.do 실행");
@@ -209,7 +211,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount();
+			int cnt = reviewDao.boardTotalCount("공연");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -243,7 +245,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount();
+			int cnt = reviewDao.boardTotalCount("기타");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -299,7 +301,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 			
-			int cnt = reviewDao.boardTotalCount();
+			int cnt = reviewDao.boardTotalCount("전체");
 			System.out.println("cnt "+ cnt);
 			
 			PageMaker pm = new PageMaker();
@@ -337,7 +339,7 @@ scri.setPage(page2);
 			
 ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount();
+int cnt = reviewDao.boardTotalCount("전체");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();

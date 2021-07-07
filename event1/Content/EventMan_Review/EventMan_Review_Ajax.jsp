@@ -28,17 +28,16 @@
 	<!-- Review CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/review.css">
 	
-	
-<style>
-</style>
-
 <script>
+	
+
 </script>
 
 </head>
 <body>
 
 		
+<section id="load">
 
 
  <!-- 메인 행사리뷰 부분 3x3출력 -->
@@ -84,6 +83,7 @@
 					<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) {%>
 						<li class="page-item">
 							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>"><%=i %></a>
+							<%-- <a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_selectUniversity.do?page=<%=i %>"><%=i %></a> --%>
 						</li>
 					<% } %>
 				
@@ -101,6 +101,7 @@
 	</div>
 
 
+</section>
 	
 
 
