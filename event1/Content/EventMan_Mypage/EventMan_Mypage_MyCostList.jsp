@@ -9,7 +9,7 @@
    String member_id = (String)session.getAttribute("S_memberId");
  
     int midx = 0;
-    
+
     if (session.getAttribute("midx") != null) {
        midx = (int)session.getAttribute("midx");
     }
@@ -139,12 +139,12 @@
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
-      
+
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
          <thead>
-            <th>카테고리</th>
+            <th>순번</th>
             <th colspan="2">제목</th>
             <th></th>
             <th>작성일</th>
@@ -154,7 +154,7 @@
         <tbody>
          <% for(EvCostVo covo: alistcost){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
-               <td><%=covo.getCostCatagory()%></td>
+               <td><%=covo.getCidx()%></td>
                <td colspan="2"><%=covo.getCostName()%></td>
                <td></td>
                <td><%=covo.getCostWritedate()%></td>
@@ -165,28 +165,6 @@
          </tbody> 
       </table>
    </div>
-
-
-   
-   <nav aria-label="Page navigation example">
-      <ul class="pagination">
-         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-               <span aria-hidden="true">&laquo;</span>
-            </a>
-         </li>
-         <li class="page-item"><a class="page-link" href="#">1</a></li>
-         <li class="page-item"><a class="page-link" href="#">2</a></li>
-         <li class="page-item"><a class="page-link" href="#">3</a></li>
-         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-               <span aria-hidden="true">&raquo;</span>
-            </a>
-         </li>
-      </ul>
-   </nav>
-
-
 </div>
 
 

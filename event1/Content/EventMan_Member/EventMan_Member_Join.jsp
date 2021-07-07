@@ -283,7 +283,7 @@
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
                                  <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected>회원 종류를 선택해주세요.</option>
+                                   <option selected disabled>회원 종류를 선택해주세요.</option>
                                    <option value="개인">개인</option>
                                    <option value="단체">단체</option>
                                    <option value="기업">기업</option>

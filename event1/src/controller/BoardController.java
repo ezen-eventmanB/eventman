@@ -61,7 +61,19 @@ public class BoardController extends HttpServlet {
 
 		
 		if(str2.equals("EventMan_Board.do")) {	
-
+			
+			/*
+			 * System.out.println("EventMan_Board.do¹®");
+			 * 
+			 * String gidx = request.getParameter("gidx");
+			 * 
+			 * BoardServiceImpl boarddao = new BoardServiceImpl();
+			 * 
+			 * ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
+			 * 
+			 * request.setAttribute("alistboard", alistboard);
+			 */
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp"); 	
 			rd.forward(request, response);
 			

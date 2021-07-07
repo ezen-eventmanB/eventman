@@ -80,7 +80,7 @@ public class CostServiceImpl {
    }
    
          /* 마이페이지에서 본인이 작성한 글 리스트 불러오기   */
-         public ArrayList selectmycostlist(String midx) {
+         public ArrayList<EvCostVo> selectmycostlist(String midx) {
             
             ArrayList<EvCostVo> alistboard = new ArrayList();
             String sql ="select C.cidx, C.midx, C.cCata, C.cName, C.cWday, C.ccount, M.mname "
@@ -168,6 +168,7 @@ public class CostServiceImpl {
             ResultSet rs = pstmt.executeQuery();
             
             if(rs.next()) {
+            	covo.setMidx(rs.getInt("midx"));
                covo.setCidx(rs.getInt("cidx")); //견적 번호
                covo.setCostName(rs.getString("cName")); //견적 이름
                covo.setCostStartDate(rs.getString("cSdate")); //견적 시작
@@ -246,7 +247,7 @@ public class CostServiceImpl {
          
       }
    /*   견적신청 수정 액션   */
-      public int costModifyAction(String cName, String cSdate, String cEdate, String cWday, 
+      public int costModifyAction(String cName, String cSdate, String cEdate,  
               String cCata, String cText,String cFile2,String cLoca,
               String cTarget, String cMethod, String cPrice,String cPeople,int cidx) {
 						    	 
@@ -269,7 +270,6 @@ public class CostServiceImpl {
                pstmt.setString(9, cMethod);
                pstmt.setString(10, cPrice);
                pstmt.setString(11, cPeople);
-               
                pstmt.setInt(12, cidx);
                value = pstmt.executeUpdate();
                
@@ -290,21 +290,31 @@ public class CostServiceImpl {
       }
       
       /*   견적신청 삭제하기      */   
-      public int myPageCostDelete(int cidx, int midx) {
-         int value = 0;
-         String sql = "UPDATE EVE_COST SET CDELYN='Y' where midx=? and cidx=?";
-         
-         try {
-            pstmt=conn.prepareStatement(sql);
-            pstmt.setInt(1, cidx);
-            pstmt.setInt(2, midx);
-            value = pstmt.executeUpdate();
- 		} catch (SQLException e) {			
-			e.printStackTrace();
-		}
-		
-		return value;
-	}
+      
+      public int myPageCostDelete(int cidx) {
+    	  
+  		int value = 0;
+  		
+  		String sql = "UPDATE EVE_COST SET CDELYN='Y' where cidx=?";
+  		
+  		try {
+  			pstmt=conn.prepareStatement(sql);
+  			pstmt.setInt(1, cidx);
+  			value = pstmt.executeUpdate();
+  			
+  		} catch (SQLException e) {
+  			e.printStackTrace();
+  		}finally {
+  			try {
+  				pstmt.close();
+  				conn.close();
+  			} catch (SQLException e) {
+  				e.printStackTrace();
+  			}
+  		}
+  		return value;
+  	}
+      
       /*   견적신청 Count   */
       public int hitCount(int cidx) {
          
