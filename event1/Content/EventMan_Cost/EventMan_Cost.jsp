@@ -74,19 +74,22 @@
                   fm.cName.focus();
                   return;
                }else if (fm.cSdate.value ==""){
-                  alert("행사 시작일을 선택해주세요..");
+                  alert("행사 시작일을 선택해주세요.");
                   fm.cSdate.focus();
                   return;
                }else if (fm.cEdate.value ==""){
-                   alert("행사 종료일을 선택해주세요..");
+                   alert("행사 종료일을 선택해주세요.");
                    fm.cEdate.focus();
                    return;
+               }else if (fm.cTarget == "참여대상"){
+            	  alert("참여 대상을 선택해주세요.")
+            	  fm.cTarget.focuse();
                }else if(!costCataChk){
                   alert("카테고리를 한개 이상 선택해주세요.");
                   fm.costCataChk.focus();
                   return false;  
                }else if (fm.cLoca.value ==""){
-                    alert("행사 지역을 입력 해주세요..");
+                    alert("행사 지역을 입력 해주세요.");
                     fm.cLoca.focus();
                     return;
                }else if($(".catanon").value =="catamenu"){
@@ -140,47 +143,47 @@
    
                <!--로그인 전 상단 화면  -->   
                   <%
-                  if(midx == 0 && gidx ==0){
-                  %>
-                  
-                   <ul class="navbar-nav" id="Memberbox" >   
-                      <li class="nav-item">
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-                      </li>                                                   
-                  </ul>
-                  
-               <!--로그인 후 상단 화면  -->
-                  <%
-                     }else if(midx > 0){
-                  %>   
-                   <ul class="navbar-nav" id="Memberbox" >   
-                      <li class="nav-item">
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-                      </li>                                                         
-                  </ul>
-                     <%
-                     }else if(gidx > 0){
-                     %>
-                     <ul class="navbar-nav" id="Memberbox" >   
-                      <li class="nav-item">
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=gidx%>">Master page</a>
-                      </li>
-                      <li class="nav-item"> 
-                         <a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-                      </li>                                                         
-                  </ul>
-                     <%
-                     }
-                     %>
+						if(midx == 0 && gidx ==0){
+						%>
+						
+		       		<ul class="navbar-nav" id="Memberbox" >	
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+		       			</li>
+		       			<li class="nav-item"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+		       			</li>																	
+		      		</ul>
+		      		
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else if(midx > 0){
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				   		%>
                      
                    
           </div>   
@@ -419,7 +422,7 @@
          <tr>   
                 <td>
                   <select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
-                 <option selected value="catamenu">참여대상</option>
+                 <option selected value="catamenu" name="joinTarget">참여대상</option>
                  <option value="전체">전체</option>
                  <option value="어린이이">어린이</option>
                  <option value="학생">학생</option>

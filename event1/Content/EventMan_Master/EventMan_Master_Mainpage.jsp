@@ -72,36 +72,47 @@
 
 		<!--로그인 전 상단 화면  -->	
 				<%
-				if(member_id == null){
-				%>
-				
-       		<ul class="navbar-nav" id="Memberbox" >	
-       			<li class="nav-item">
-          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-       			</li>
-       			<li class="nav-item"> 
-          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-       			</li>																	
-      		</ul>
-      		
-      	<!--로그인 후 상단 화면  -->
-				<%
-		      	}else{
-				%>	
-	       	<ul class="navbar-nav" id="Memberbox" >	
-	       		<li class="nav-item">
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-	       		</li>
-	       		<li class="nav-item"> 
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-	       		</li>
-	       		<li class="nav-item"> 
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-	       		</li>																			
-	      	</ul>
-		   		<%
-		   		}
-		    	%>
+						if(midx == 0 && gidx ==0){
+						%>
+						
+		       		<ul class="navbar-nav" id="Memberbox" >	
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+		       			</li>
+		       			<li class="nav-item"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+		       			</li>																	
+		      		</ul>
+		      		
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else if(midx > 0){
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				   		%>
 	    	</div>	
 		</nav>
 </div>
