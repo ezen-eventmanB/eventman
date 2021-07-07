@@ -244,9 +244,12 @@ public class MasterController extends HttpServlet {
 			
 			System.out.println("행사리뷰수정하기 value : "+value);
 			
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
-			rd.forward(request, response);
+			 response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Detail.do?hidx="+hidx);
+				/*
+				 * RequestDispatcher rd =
+				 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
+				 * rd.forward(request, response);
+				 */
 		}
 
 		

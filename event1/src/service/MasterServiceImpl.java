@@ -93,29 +93,34 @@ public class MasterServiceImpl {
 	}
 
 
-	public int modifyAction(int hidx, String file, String cata, String hloca, String startdate, String enddate, String price, String people, String target, String staff, String company, String title, String content) {
+/*	행사 리뷰 수정하기	*/	
+	public int modifyAction(int hidx, String file, String cata, String hloca, 
+							String startdate, String enddate, String price, String people, 
+							String target, String staff, String company, String title, String content) {
 		
 		System.out.println("수정하기 엑션 메소드 입니다.");
+
+		System.out.println("hidx : "+hidx);
+		System.out.println("file : "+file);
+		System.out.println("cata : "+cata);
+		System.out.println("hloca : "+hloca);
+		System.out.println("startdate : "+startdate);
+		System.out.println("enddate : "+enddate);
+		System.out.println("price : "+price);
+		System.out.println("people : "+people);
+		System.out.println("target : "+target);
+		System.out.println("staff : "+staff);
+		System.out.println("company : "+company);
+		System.out.println("title : "+title);
+		System.out.println("content : "+content);
 		
 		int value=0;
 		
-		String sql = "update EVE_REVIEW "
-				+ "set hname=?, "
-				+ "hdate=?, "
-				+ "hcata=?, "
-				+ "hprice=?, "
-				+ "htarget=?, "
-				+ "hloca=?, "
-				+ "hpeople=?, "
-				+ "htext=?, "
-				+ "himg=?, "
-				+ "henddate=?, "
-				+ "hcompany=?, "
-				+ "hstaff=? "
-				+ "where hidx=?";
+		String sql = "update EVE_REVIEW set hname=?, hdate=?, hcata=?, hprice=?, htarget=?, hloca=?, hpeople=?, htext=?, himg=?, henddate=?, hcompany=?, hstaff=? where hidx=?";
 
-		System.out.println("sql : "+sql);
 		try {
+			System.out.println("try");
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
 			pstmt.setString(2, startdate);
@@ -130,6 +135,9 @@ public class MasterServiceImpl {
 			pstmt.setString(11, company);
 			pstmt.setString(12, staff);
 			pstmt.setInt(13, hidx);
+			
+			System.out.println("try");
+			
 			value = pstmt.executeUpdate();
 			
 			System.out.println("value는 ? "+value);
@@ -147,7 +155,9 @@ public class MasterServiceImpl {
 			}
 			
 		}
-		System.out.println("value는??! "+value);
+		
+		System.out.println("value는 ? "+value);
+		
 		return value;
 	}
 	

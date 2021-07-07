@@ -204,7 +204,7 @@ $(document).ready(function(e){
 	var frm = document.frm;
 		
 	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModifyAction.do";
-	document.frm.method="get";
+	document.frm.method="post";
 	document.frm.submit();
 
 };

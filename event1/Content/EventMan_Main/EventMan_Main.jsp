@@ -304,7 +304,7 @@
 
 <!-- 중앙 네비 카테고리 검색창 -->
 
-<div id="detailload">
+<div class="container "id="detailload">
 
 <div class="container">
 	<%if(gidx != 0 ){ %>
