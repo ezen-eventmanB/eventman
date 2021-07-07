@@ -3,8 +3,10 @@ package service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dbconn.DBconn;
+import vo.EvCostVo;
 
 public class MasterServiceImpl {
 
@@ -159,6 +161,17 @@ public class MasterServiceImpl {
 		System.out.println("value´Â ? "+value);
 		
 		return value;
+	}
+
+
+	public ArrayList<EvCostVo> costSelectList() {
+		
+		String sql = "";
+		
+		
+		
+		
+		return null;
 	}
 	
 

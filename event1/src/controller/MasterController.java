@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
@@ -17,9 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import service.CostServiceImpl;
 import service.EventAskServiceImpl;
 import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
+import vo.EvCostVo;
 import vo.EvReviewVo;
 
 import org.imgscalr.Scalr;
@@ -75,6 +78,12 @@ public class MasterController extends HttpServlet {
 			
 			System.out.println("-----EventMan_Master_Mainpage.do 실행-----");
 			
+			int costcount=0;
+			
+			CostServiceImpl cdao = new CostServiceImpl();
+			costcount = cdao.allSelectCost();
+			
+			request.setAttribute("costcount", costcount);			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp"); 	
 			rd.forward(request, response);
 			
@@ -252,12 +261,22 @@ public class MasterController extends HttpServlet {
 			
 			System.out.println("행사리뷰수정하기 value : "+value);
 			
-			 response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Detail.do?hidx="+hidx);
-				/*
-				 * RequestDispatcher rd =
-				 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
-				 * rd.forward(request, response);
-				 */
+			 response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Main.do");
+				
+			 
+/*	관리 전체 견적신청리스트 보기	*/			 
+		}else if(str2.equals("EventMan_AllCostList.do")) {
+			
+			System.out.println("관리자 전체 견적신청리스트 보기");
+			
+			MasterServiceImpl masterdao = new MasterServiceImpl();
+			ArrayList<EvCostVo> arraycost = masterdao.costSelectList();
+			
+			
+			request.setAttribute("arraycost", arraycost);
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList.jsp");
+			rd.forward(request, response);
+			 
 		}
 
 		

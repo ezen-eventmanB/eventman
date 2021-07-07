@@ -119,35 +119,35 @@ public class CostServiceImpl {
             return alistboard;
          }
          
-         /*	마이페이지 견적신청 글 수	*/
-     	public int costCount(int midx) {
-     		int count = 0;
-     		
-     		String sql = "select count(*) as cnt from EVE_COST where midx=? and cdelyn='N'";
-     		
-     		try {
-     			pstmt = conn.prepareStatement(sql);
-     			pstmt.setInt(1, midx);
-     			ResultSet rs = pstmt.executeQuery();
-     			
-     			if(rs.next()) {
-     				count = rs.getInt("cnt");
-     			}
-     			
-     		} catch (SQLException e) {
-     			// TODO Auto-generated catch block
-     			e.printStackTrace();
-     		}finally {
-     			try {
-     				pstmt.close();
-     				conn.close();
-     			} catch (SQLException e) {
-     				// TODO Auto-generated catch block
-     				e.printStackTrace();
-     			}
-     		}
-     		return count;
-     	}
+         /*   마이페이지 견적신청 글 수   */
+        public int costCount(int midx) {
+           int count = 0;
+           
+           String sql = "select count(*) as cnt from EVE_COST where midx=? and cdelyn='N'";
+           
+           try {
+              pstmt = conn.prepareStatement(sql);
+              pstmt.setInt(1, midx);
+              ResultSet rs = pstmt.executeQuery();
+              
+              if(rs.next()) {
+                 count = rs.getInt("cnt");
+              }
+              
+           } catch (SQLException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+           }finally {
+              try {
+                 pstmt.close();
+                 conn.close();
+              } catch (SQLException e) {
+                 // TODO Auto-generated catch block
+                 e.printStackTrace();
+              }
+           }
+           return count;
+        }
 
       /*마이페이지 게시글 상세보기*/
       public EvCostVo costlistselectone(int cidx) {
@@ -168,7 +168,7 @@ public class CostServiceImpl {
             ResultSet rs = pstmt.executeQuery();
             
             if(rs.next()) {
-            	covo.setMidx(rs.getInt("midx"));
+               covo.setMidx(rs.getInt("midx"));
                covo.setCidx(rs.getInt("cidx")); //견적 번호
                covo.setCostName(rs.getString("cName")); //견적 이름
                covo.setCostStartDate(rs.getString("cSdate")); //견적 시작
@@ -250,7 +250,7 @@ public class CostServiceImpl {
       public int costModifyAction(String cName, String cSdate, String cEdate,  
               String cCata, String cText,String cFile2,String cLoca,
               String cTarget, String cMethod, String cPrice,String cPeople,int cidx) {
-						    	 
+                          
          int value=0;
          String sql = null;
          
@@ -292,28 +292,28 @@ public class CostServiceImpl {
       /*   견적신청 삭제하기      */   
       
       public int myPageCostDelete(int cidx) {
-    	  
-  		int value = 0;
-  		
-  		String sql = "UPDATE EVE_COST SET CDELYN='Y' where cidx=?";
-  		
-  		try {
-  			pstmt=conn.prepareStatement(sql);
-  			pstmt.setInt(1, cidx);
-  			value = pstmt.executeUpdate();
-  			
-  		} catch (SQLException e) {
-  			e.printStackTrace();
-  		}finally {
-  			try {
-  				pstmt.close();
-  				conn.close();
-  			} catch (SQLException e) {
-  				e.printStackTrace();
-  			}
-  		}
-  		return value;
-  	}
+         
+        int value = 0;
+        
+        String sql = "UPDATE EVE_COST SET CDELYN='Y' where cidx=?";
+        
+        try {
+           pstmt=conn.prepareStatement(sql);
+           pstmt.setInt(1, cidx);
+           value = pstmt.executeUpdate();
+           
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }finally {
+           try {
+              pstmt.close();
+              conn.close();
+           } catch (SQLException e) {
+              e.printStackTrace();
+           }
+        }
+        return value;
+     }
       
       /*   견적신청 Count   */
       public int hitCount(int cidx) {
@@ -332,4 +332,41 @@ public class CostServiceImpl {
          }
          return value;
       }
+
+      
+      /*관리자 견적신청 글 count */
+	public int allSelectCost() {
+		
+		System.out.println("allSelectCost()실행");
+		
+		int allcount=0;
+		
+		String sql = "select count(*) as cnt from EVE_COST";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				allcount = (rs.getInt("cnt"));
+			}
+			
+			System.out.println("견적신청글수 : "+allcount);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return allcount;
+	}
 }
