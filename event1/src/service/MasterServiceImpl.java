@@ -92,4 +92,64 @@ public class MasterServiceImpl {
 		return value;
 	}
 
+
+	public int modifyAction(int hidx, String file, String cata, String hloca, String startdate, String enddate, String price, String people, String target, String staff, String company, String title, String content) {
+		
+		System.out.println("수정하기 엑션 메소드 입니다.");
+		
+		int value=0;
+		
+		String sql = "update EVE_REVIEW "
+				+ "set hname=?, "
+				+ "hdate=?, "
+				+ "hcata=?, "
+				+ "hprice=?, "
+				+ "htarget=?, "
+				+ "hloca=?, "
+				+ "hpeople=?, "
+				+ "htext=?, "
+				+ "himg=?, "
+				+ "henddate=?, "
+				+ "hcompany=?, "
+				+ "hstaff=? "
+				+ "where hidx=?";
+
+		System.out.println("sql : "+sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, startdate);
+			pstmt.setString(3, cata);
+			pstmt.setString(4, price);
+			pstmt.setString(5, target);
+			pstmt.setString(6, hloca);
+			pstmt.setString(7, people);
+			pstmt.setString(8, content);
+			pstmt.setString(9, file);
+			pstmt.setString(10, enddate);
+			pstmt.setString(11, company);
+			pstmt.setString(12, staff);
+			pstmt.setInt(13, hidx);
+			value = pstmt.executeUpdate();
+			
+			System.out.println("value는 ? "+value);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		System.out.println("value는??! "+value);
+		return value;
+	}
+	
+
 }

@@ -8,7 +8,8 @@
  
 	 int midx = 0;
 	 int gidx = 0;
-	 
+	 int hidx = (int)request.getAttribute("hidx");
+		
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }else if(session.getAttribute("gidx") !=null ){
@@ -21,6 +22,7 @@
 	out.println("gidx="+gidx); 
 	
 	EvReviewVo erv = (EvReviewVo)request.getAttribute("erv");
+
 	%>    
 	
 
@@ -199,9 +201,10 @@ $(document).ready(function(e){
 
 //게시글 modify 버튼
 	function ModifyactionFn(){
-	
+	var frm = document.frm;
+		
 	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModifyAction.do";
-	document.frm.method="post";
+	document.frm.method="get";
 	document.frm.submit();
 
 };
@@ -259,6 +262,7 @@ $(document).ready(function(e){
 			<div class="container mb-2">
 				<div class="row">
 					<input type="hidden" name="gidx" value="<%=gidx%>">
+					<input type="hidden" name="hidx" value="<%=hidx %>">
 					<div class="col-md">
 						<label for="uploadFile" class="form-label"></label>
 						<input class="form-control" name="uploadFile" type="file" id="uploadFile" multiple>
@@ -334,9 +338,9 @@ $(document).ready(function(e){
 											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
 												<option selected value="catamenu">예산</option>
 												<option value="1000만원 미만" <%=erv.getHprice().equals("1000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
-												<option value="5000만원 이하" <%=erv.getHprice().equals("5000만원 이하") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
-												<option value="1억원 이하" <%=erv.getHprice().equals("1억원 이하") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
-												<option value="3억 이하" <%=erv.getHprice().equals("3억 이하") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
+												<option value="1,000만원 이상 ~ 5,000만원 미만" <%=erv.getHprice().equals("1,000만원 이상 ~ 5,000만원 미만") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
+												<option value="5,000만원 ~ 1억 미만" <%=erv.getHprice().equals("5,000만원 ~ 1억 미만") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
+												<option value="1억 이상 ~ 3억 미만" <%=erv.getHprice().equals("1억 이상 ~ 3억 미만") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
 												<option value="3억 이상" <%=erv.getHprice().equals("3억 이상") ? " selected" : "" %>>3억 이상</option>
 											</select>
 										</div>
