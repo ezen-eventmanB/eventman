@@ -119,16 +119,16 @@ var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
           fm.cLoca.focus();
           return;
      }else if (fm.cTarget.value == "catamenu"){
-  		  fm.cTarget.focuse();
+  		  fm.cTarget.focus();
   		  return;
      }else if (fm.cMethod.value == "catamenu"){
- 		  fm.cMethod.focuse();
+ 		  fm.cMethod.focus();
  		  return;
      }else if (fm.cPrice.value == "catamenu"){
- 		  fm.cPrice.focuse();
+ 		  fm.cPrice.focus();
  		  return;
      }else if (fm.cPeople.value == "catamenu"){
- 		  fm.cPeople.focuse();
+ 		  fm.cPeople.focus();
  		  return;
      }else if (document.frm.cText.value ==""){
           document.frm.cText.focus();
