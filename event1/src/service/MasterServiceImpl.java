@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbconn.DBconn;
+import vo.EvCostVo;
 import vo.EvMemberVo;
 
 public class MasterServiceImpl {
@@ -191,6 +192,37 @@ public class MasterServiceImpl {
 		System.out.println("value는 ? "+value);
 		
 		return value;
+	}
+
+
+	public ArrayList<EvCostVo> allCostList() {
+		
+		ArrayList<EvCostVo> alist = new ArrayList<EvCostVo>();
+		
+		String slq="select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx";
+		
+		try {
+			pstmt=conn.prepareStatement(slq);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvCostVo cvo = new EvCostVo();
+				cvo.setCidx(rs.getInt("cidx"));
+				cvo.setCostName(rs.getString("cname"));
+				cvo.setCostWritedate(rs.getString("cwday"));
+				cvo.setCName(rs.getString("mid"));
+				cvo.setRealname(rs.getString("mname"));
+				cvo.setCcount(rs.getString("ccount"));
+				alist.add(cvo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return alist;
 	}
 	
 

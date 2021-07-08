@@ -38,6 +38,10 @@
 	
 <title>견적신청리스트</title>
 
+<style>
+
+
+</style>
 
 </head>
 <body>
@@ -119,34 +123,39 @@
 </div>
 
 
+<!-- 중간 네비 부분 -->
 <div class="container">
-	<p class="fs-2 fw-bold mt-5">견적 신청함</p>
-	<div class="row">
-		<div class="col">
-			
+	<p class="fs-2 fw-bold mt-5 mb-5">견적 신청함</p>
+	
+	<div class="row float-end mt-5">
+		<div class="col-md-auto mt-1">
+			<div class="input-group input-group-sm ">	
+				<div class="btn-group"  id="orderbybtn" role="group" aria-label="Basic radio toggle button group">
+					<input type="radio" class="btn-check" name="btnradio" autocomplete="off" >
+					<label class="btn btn-outline-secondary btn-sm" for="btnradio1">과거</label>
+					
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+					<label class="btn btn-outline-secondary btn-sm" for="btnradio2">최신</label>
+				</div>
+			</div>
 		</div>
-
-		<div class="col-6">
-			<div class="input-group input-group-sm mb-3">	<div class="btn-group me-3" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
-				<label class="btn btn-outline-secondary btn-sm" for="btnradio1">과거</label>
-				
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-				<label class="btn btn-outline-secondary btn-sm" for="btnradio2">최신</label>
-			</div>	
-				<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-					<option selected>검색타입</option>
-					<option value="1">제목</option>
-					<option value="2">아이디</option>
-					<option value="3">이름</option>
-				</select>
-				<input type="text" class="form-control w-50" placeholder="검색" aria-label="Recipient's username" aria-describedby="button-addon2">
-				<button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+		<div class="col-md-auto mt-1">	
+			<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+				<option selected>검색타입</option>
+				<option value="1">제목</option>
+				<option value="2">아이디</option>
+				<option value="3">이름</option>
+			</select>
+		</div>
+		<div class="col-md-auto mt-1">
+			<div class="input-group input-group-sm mb-3">
+				<input type="text" class="form-control" id="searchbox2" placeholder="검색어입력" aria-label="Recipient's username" aria-describedby="button-addon2">
+				<button class="btn btn-outline-secondary " type="button" id="button-addon2">검색</button>
 			</div>
 		</div>
 	</div>
+	
 </div>
-
 
 
 <!-- 견적신청 -->

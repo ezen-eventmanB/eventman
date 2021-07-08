@@ -39,29 +39,7 @@
    <!-- 메인페이지 하단 게시판 CSS -->
    <link rel="stylesheet" type="text/css" href="../css/mainpageboard.css">
    
-<style>   
-/* 부제목 글꼴 굵게 , 크기 변경 */
-   .eXGQeW {
-    position: relative;
-    box-sizing: border-box;
-    flex: 1 1 auto;
-    padding: 1rem 1rem 0px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: rgb(47, 51, 56);
-}
-    .cataselect{
-         display: inline-block;
-      }
-   .cataimg{
-      width:50px;
-      }
-   .CostDate{
-      width:20%;
-      text-align:center;  
-   }
 
-</style>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
          function check(){
@@ -229,38 +207,36 @@
 
 
 <!-- 행사 기본정보 -->
-   <div class="container">
-      <div class="sc-qPIWj eXGQeW">행사 견적신청</div>
-      <hr/>   
-   </div>
+<div class="container">
+	<div class="fs-2 fw-bold mt-5">행사 견적신청</div>
+</div>
    
-   <form name="frm">
-   
-   <input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
+
+<form name="frm">
+	<input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
 <!-- 행사 명 -->
         <div class="container">
-           <div class="sc-qPIWj eXGQeW">행사 명</div>
+           <div class="fs-5 fw-bold">행사 명</div>
                <input type="text" name="cName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 명을 입력해주세요">
       <hr/>
        </div>
    
 <!-- 행사 일정 -->   
       <div class="container">
-           <div class="sc-qPIWj eXGQeW">행사 일정</div>
+           <div class="fs-5 fw-bold">행사 일정</div>
               <div class="container">
-                <input type="date" id="cSdate" name="cSdate" class="CostDate"> ~
-                <input type="date" id="cSdate2" name="cEdate" class="CostDate">
+                <input type="date" id="cSdate" name="cSdate" class="form-control CostDate"> ~
+                <input type="date" id="cSdate2" name="cEdate" class="form-control CostDate">
             </div>      
             <div class="icon">
          <hr/>
          </div>
 
-<!-- 행사 카테고리 선택 -->
   <!-- 행사 카테고리 선택 -->
-   <div class="sc-qPIWj eXGQeW">행사 카테고리</div>
+   <div class="fs-5 fw-bold">행사 카테고리</div>
    
    
-         <!-- 기업 행사 -->
+  <!-- 기업 행사 -->
       <div class="cataselect">          
 
       <table>
@@ -409,13 +385,13 @@
       <hr/>
       
 <!-- 행사 지역  -->
-         <div class="sc-qPIWj eXGQeW">행사 지역</div>
+         <div class="fs-5 fw-bold">행사 지역</div>
          <input type="text" name="cLoca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요.">
       <hr/>
 
    
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 구성</div>
+        <div class="fs-5 fw-bold">행사 구성</div>
          
          <div class="container">
          <table>
@@ -476,7 +452,7 @@
       <br>
       <hr/>
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 설명</div>
+        <div class="fs-5 fw-bold">행사 설명</div>
                 <div class="form-floating">
               <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"></textarea>
               <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
@@ -487,7 +463,7 @@
 
 <!-- 참고자료  -->
    <div class="container">
-   <div class="sc-qPIWj eXGQeW">참고 자료</div>
+   <div class="fs-5 fw-bold">참고 자료</div>
    <div class="form-group">
       <input class="form-control" type="file" id="formFile" name="file">
     <hr/>

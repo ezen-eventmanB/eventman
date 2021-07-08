@@ -50,6 +50,15 @@
 	<!-- Review CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/review.css">
 	
+<style>
+	#fixedbutton {
+	    position: fixed;
+	    bottom: 0px;
+	    right: 0px; 
+	}
+</style>
+	
+	
 <script>
 
 /*	카테고리 별로 보는 ajax	*/
@@ -472,6 +481,13 @@
 			  </tr>
 		  </tbody>
 	</table>
+	
+	
+	
+
+	<div id="fixedbutton">
+		<button type="button" class="btn btn-secondary" id="zindex">버튼</button>
+	</div>
 	
 	
 	<!-- 메인 푸터 -->

@@ -18,12 +18,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import service.CostServiceImpl;
 import service.EventAskServiceImpl;
 import service.MemberServiceImpl;
 import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
 import vo.EvMemberVo;
 import vo.EvReviewVo;
+import vo.EvCostVo;
 
 import org.imgscalr.Scalr;
 
@@ -78,6 +80,13 @@ public class MasterController extends HttpServlet {
 			
 			System.out.println("-----EventMan_Master_Mainpage.do 실행-----");
 			
+			
+			CostServiceImpl cdao = new CostServiceImpl();
+			int value = cdao.allSelectCost();
+			
+			
+			
+			request.setAttribute("value", value);
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp"); 	
 			rd.forward(request, response);
 			
@@ -102,6 +111,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);	
 			
+			
 /* 관리자 회원 관리 페이지 이동*/			
 		}else if(str2.equals("EventMan_Master_Modify.do")) {
 								
@@ -113,6 +123,7 @@ public class MasterController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");
 			rd.forward(request, response);				
+			
 			
 /*	행사 리뷰 작성 ACTION*/			
 		}else if(str2.equals("EventMan_Review_Write_Action.do")) {
@@ -191,6 +202,7 @@ public class MasterController extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
 				rd.forward(request, response);
 			}
+			
 			
 /*	행사 리뷰 삭제	action	*/			
 		}else if(str2.equals("EventMan_ReviewDelete.do")) {
@@ -272,6 +284,31 @@ public class MasterController extends HttpServlet {
 				 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
 				 * rd.forward(request, response);
 				 */
+			 
+			 
+/*	견적신청함 리스트 페이지 연결	*/
+		}else if(str2.equals("EventMan_Master_AllCostList.do")) {
+			
+			System.out.println("견적신청함페이지 연결");
+			
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			ArrayList<EvCostVo> arraycost = mdao.allCostList();
+			
+			request.setAttribute("arraycost", arraycost);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList.jsp");
+			rd.forward(request, response);
+			
+			
+/*	회사 소개 변경하기 페이지 이동*/			
+		}else if(str2.equals("EventMan_Company_Modify.do")) {
+						
+			System.out.println("EventMan_Company_Modify.do if문");
+
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Modify.jsp"); 	
+			rd.forward(request, response);
 		}
 
 		

@@ -1,20 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-     <%
+ <%
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-	out.println(midx);
-	
-	
-	%>    
+
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
+	%>          
+    
 	
 <!DOCTYPE html>
 <html>
@@ -24,6 +28,11 @@
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+	<!-- top nav CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
+	<!-- footer CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 
 <script>
 	function setImageFn(f){
@@ -51,100 +60,9 @@
 	}	
 </script>
 
-<style>
-
-/*top nav CSS*/
-	#navbar-nav{
-		width:800px;
-		margin:1px auto;
-		text-align: center;
-		font-weight:900;
-	}
-	#navbar-nav li{
-		margin:1px auto;
-		text-align: center;
-	}
-	#liright1, #liright2{
-		width:80px;
-		text-align: right;
-	}
-	.navbar{
-		background-color:white !important;
-	}
-	.nav li a{
-		background-color:white;
-	} 
-	.nav .active a{
-		background-color:white!important;
-	}
-	.nav-li:hover {
-		color:black;	
-	}
-	
-/*위에서 살짝 떨어지는 밑줄 CSS*/
-	#topnav .nav-link{
-		  position: relative;
-		  padding-bottom: 10px;
-	}
-	#topnav .nav-link:before{
-		  content: '';
-		  position: absolute;
-		  bottom: 2px;
-		  left: 0; right: 0;
-		  height: 2px;
-		  background-color: #3f8ad4;
-	}
-	#topnav .nav-link:before{
-		  opacity: 0;
-		  -webkit-transform: translateY(-8px);
-		  transform: translateY(-8px);
-		  -webkit-transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		    transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-		    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-	#topnav .nav-link:hover:before{
-		  opacity: 1;
-		    -webkit-transform: translateY(0);
-		    transform: translateY(0);
-		  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		    transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-		    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	}
-
-/* 메인 푸터*/
-	.footer{
-		width:500px;
-		padding-top:40px;
-		margin:0px auto;	
-	}
-
-
-/* 회사소개페이지 CSS*/
-	article{
-		margin-top:20px;
-	}
-	
-/* 현재 페이지 위치*/	
-	#containermargin{
-	 	margin-bottom:30px;
-	}
-	
-/*버튼위치*/
-	.btnright{
-		widht:400px;
-		text-align: right;
-	}
-	
-
-</style>
-
-
 
 </head>
 <body>
-
 
 <!-- 상단 네비 부분 -->
 	<div class="container">
@@ -174,9 +92,8 @@
 	       		</ul>
 	       	
 	
-					<!--로그인 전 상단 화면  -->	
-						<%
-						if(member_id == null){
+					<%
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -190,7 +107,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -204,10 +121,43 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
+				   		
 	    	</div>	
 		</nav>
+</div>
+		
+	
+	
+	
+
+<!-- 페이지 위치 안내 -->
+<div class="container"  id="containermargin">	
+	<!-- 집 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+	</svg>
+	
+	<!-- 화살표 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	
+	<!-- 현제 페이지 이름 -->
+	회사소개
 </div>
 		
 		
@@ -237,32 +187,12 @@
 	<!-- 회사 지도 API-->
 	<div class="container">	
 		<div id="map" style="width:100%;height:350px;"></div>
-		
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
-		<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = { 
-		        center: new kakao.maps.LatLng(35.84025999489788, 127.13247645455057), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };
-		
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		
-		// 마커가 표시될 위치입니다 
-		var markerPosition  = new kakao.maps.LatLng(35.84025999489788, 127.13247645455057); 
-		
-		// 마커를 생성합니다
-		var marker = new kakao.maps.Marker({
-		    position: markerPosition
-		});
-		
-		// 마커가 지도 위에 표시되도록 설정합니다
-		marker.setMap(map);
-		
-		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-		// marker.setMap(null);    
-			
-		</script>
+		<div class="d-grid gap-2">
+				<button type="button" class="btn btn-outline-secondary mt-5" onclick="panTo()">회사 위치 보기</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
+	<script src="../js/kakaoView.js"></script>
 	</div>
 
 

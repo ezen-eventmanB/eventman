@@ -40,9 +40,11 @@
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	
-<style>
-	
-</style>
+<script type="text/javascript">
+	function companyModifyFn(){
+		location.href= "<%=request.getContextPath()%>/EventMan_Master/EventMan_Company_Modify.do";
+	}
+</script>
 </head>
 <body>
 
@@ -148,7 +150,13 @@
 
 <!-- 회사소개 페이지 -->
 <article>
+	
 	<!-- 회사 소개 이미지 -->
+	<%if(gidx>0){ %>
+		<div class="mt-5 mb-5 float-end">
+			<button type="button" class="btn btn-outline-secondary me-3" onclick="companyModifyFn()">회사소개 수정</button>
+		</div>
+	<%}; %>
 	<div class="container">	
 		<div class="bd-example">
 			<img src="../회사소개이미지.jpg" alt="" class="container">
@@ -156,13 +164,18 @@
 		</div>
 	</div>
 
+
+
 	<!-- 회사 지도 API-->
 	<div class="container">	
 		<div id="map" style="width:100%;height:350px;"></div>
-		<div><button type="button" class="btn btn-outline-secondary" onclick="panTo()">회사 위치 보기</button></div> 
+		<div class="d-grid gap-2">
+				<button type="button" class="btn btn-outline-secondary mt-5" onclick="panTo()">회사 위치 보기</button>
+		</div>
 	</div>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
 	<script src="../js/kakaoView.js"></script>
+	
 </article>
 
 
