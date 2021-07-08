@@ -12,10 +12,18 @@ public class EvBoardAskVo {
 	private String bname;
 	private String bcount; 
 	private String bdelyn;
+	private String gName;
 	private int midx;
 	private int gidx;
 	private int originbidx;
 	 
+	
+	public String getgName() {
+		return gName;
+	}
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
 	public String getBfile() {
 		return bfile;
 	}

@@ -42,14 +42,14 @@ public class CostController extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=utf-8");
 
-      System.out.println("-----CostController ½ÇÇà-----");  
+      System.out.println("-----CostController ì‹¤í–‰-----");  
 
       request.setCharacterEncoding("UTF-8");
 
       String uri = request.getRequestURI();
       System.out.println("uri" + uri);
       int pnamelength = request.getContextPath().length();
-      System.out.println(pnamelength);
+      System.out.println(pnamelength);   
       String str = uri.substring(pnamelength);
       System.out.println("str = " + str);
       String[] str1 = str.split("/");
@@ -59,16 +59,16 @@ public class CostController extends HttpServlet {
       System.out.println("str1 = " + str1[1]);
       System.out.println("str2 = " + str1[2]);
 
-      //°ßÀû½ÅÀû ÀÌµ¿ ºÎºĞ
+      //ê²¬ì ì‹ ì  ì´ë™ ë¶€ë¶„
       if (str2.equals("EventMan_Cost.do")) {
 
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp");
          rd.forward(request, response);
       
-      //°ßÀû ÀÛ¼º º¸³»ÁÖ´Â ºÎºĞ
+      //ê²¬ì  ì‘ì„± ë³´ë‚´ì£¼ëŠ” ë¶€ë¶„
       } else if (str2.equals("EventMan_Cost_Submit_Action.do")) {
 
-         System.out.println("EventMan_Cost_Submit_Action ½ÇÇà");
+         System.out.println("EventMan_Cost_Submit_Action ì‹¤í–‰");
          
          String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
          //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
@@ -83,17 +83,17 @@ public class CostController extends HttpServlet {
          
          String originFileName = null;
          
-         // MultipartRequest °´Ã¼»ı¼º
+         // MultipartRequest ê°ì²´ìƒì„±
          MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-         // ¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+         // ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
          Enumeration files = multi.getFileNames();
-         // ´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+         // ë‹´ê¸´ íŒŒì¼ ê°ì²´ì˜ Nameê°’ì„ ë‹´ëŠ”ë‹¤.
          String file = (String)files.nextElement();
             System.out.println("file = "+file);
-         //ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+         //ì €ì¥ë˜ëŠ” íŒŒì¼ì´ë¦„
          fileName = multi.getFilesystemName(file); 
             System.out.println("fileName = "+fileName);
-         //¿ø·¡ÆÄÀÏ ÀÌ¸§
+         //ì›ë˜íŒŒì¼ ì´ë¦„
          originFileName = multi.getOriginalFileName(file);
             System.out.println("originFileName = "+originFileName);
          String ThumbnailFileName = null;
@@ -103,20 +103,20 @@ public class CostController extends HttpServlet {
             } catch (Exception e) {
                e.printStackTrace();
             }
-         String cName = multi.getParameter("cName"); // °ßÀû ÀÌ¸§
-         String cSdate = multi.getParameter("cSdate"); // ½ÃÀÛÀÏ
-         String cEdate = multi.getParameter("cEdate"); // Á¾·áÀÏ
-         String cWday = multi.getParameter("cWday"); // ÀÛ¼º³¯ sysdate ·Î ¹ŞÀ½
+         String cName = multi.getParameter("cName"); // ê²¬ì  ì´ë¦„
+         String cSdate = multi.getParameter("cSdate"); // ì‹œì‘ì¼
+         String cEdate = multi.getParameter("cEdate"); // ì¢…ë£Œì¼
+         String cWday = multi.getParameter("cWday"); // ì‘ì„±ë‚  sysdate ë¡œ ë°›ìŒ
          
-         String cText = multi.getParameter("cText"); // ³»¿ë
-         String cFile2 = multi.getParameter("cFile"); // °ßÀû ÀÚ·á
-         String cLoca = multi.getParameter("cLoca"); // Áö¿ª
-         String cTarget = multi.getParameter("cTarget"); // Âü¿©´ë»ó
-         String cMethod = multi.getParameter("cMethod"); // Âü¿©¹æ½Ä
-         String cPrice = multi.getParameter("cPrice"); // ¿¹»ê
-         String cPeople = multi.getParameter("cPeople"); // Âü¿©ÀÎ¿ø
-         String midx = multi.getParameter("midx"); // midx È¸¿ø¹øÈ£
-         String[] cCata = multi.getParameterValues("cCata"); // Ä«Å×°í¸®
+         String cText = multi.getParameter("cText"); // ë‚´ìš©
+         String cFile2 = multi.getParameter("cFile"); // ê²¬ì  ìë£Œ
+         String cLoca = multi.getParameter("cLoca"); // ì§€ì—­
+         String cTarget = multi.getParameter("cTarget"); // ì°¸ì—¬ëŒ€ìƒ
+         String cMethod = multi.getParameter("cMethod"); // ì°¸ì—¬ë°©ì‹
+         String cPrice = multi.getParameter("cPrice"); // ì˜ˆì‚°
+         String cPeople = multi.getParameter("cPeople"); // ì°¸ì—¬ì¸ì›
+         String midx = multi.getParameter("midx"); // midx íšŒì›ë²ˆí˜¸
+         String[] cCata = multi.getParameterValues("cCata"); // ì¹´í…Œê³ ë¦¬
          
          String totalCCata ="";
          for(int i=0; i<cCata.length;i++) {
@@ -131,7 +131,7 @@ public class CostController extends HttpServlet {
           */
          System.out.println("test");
 
-         CostServiceImpl costdao = new CostServiceImpl(); // °´Ã¼ »ı¼º
+         CostServiceImpl costdao = new CostServiceImpl(); // ê°ì²´ ìƒì„±
          int value = costdao.costInsert(cName, cSdate, cEdate, cWday, totalCCata, cText, fileName, cLoca, cTarget, cMethod,
                cPrice, cPeople, midx);
 
@@ -143,10 +143,10 @@ public class CostController extends HttpServlet {
             }
          
          
-         /*   ¸¶ÀÌÆäÀÌÁö °ßÀû ¸®½ºÆ® È­¸é   */         
+         /*   ë§ˆì´í˜ì´ì§€ ê²¬ì  ë¦¬ìŠ¤íŠ¸ í™”ë©´   */         
          }else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
 
-            System.out.println("EventMan_Mypage_MyCostlist.do if¹®");
+            System.out.println("EventMan_Mypage_MyCostlist.do ifë¬¸");
             
             String midx = request.getParameter("midx");
             
@@ -159,13 +159,13 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
             rd.forward(request, response);
-         //¿Ï·á 
+         //ì™„ë£Œ 
          
          
-         //¸¶ÀÌÆäÀÌÁö °ßÀû »ó¼¼º¸±â
+         //ë§ˆì´í˜ì´ì§€ ê²¬ì  ìƒì„¸ë³´ê¸°
          }else if(str2.equals("EventMan_Mypage_MyCostDetail.do")) {
             
-            System.out.println("EventMan_Mypage_MyCostlistDetail.do if¹®");
+            System.out.println("EventMan_Mypage_MyCostlistDetail.do ifë¬¸");
             
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
@@ -179,9 +179,9 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
             rd.forward(request, response);         
-            //¿Ï·á
+            //ì™„ë£Œ
             
-         /*  °ßÀû½ÅÃ» ¼öÁ¤ È­¸é ÀÌµ¿ */
+         /*  ê²¬ì ì‹ ì²­ ìˆ˜ì • í™”ë©´ ì´ë™ */
          }else if(str2.equals("EventMan_Mypage_MyCostModify.do")) {
             
             System.out.println("EventMan_Mypage_MyCostModify");
@@ -196,7 +196,7 @@ public class CostController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostModify.jsp");
             rd.forward(request, response);
             
-         /* °ßÀû½ÅÃ» »èÁ¦ ¾×¼Ç */
+         /* ê²¬ì ì‹ ì²­ ì‚­ì œ ì•¡ì…˜ */
          }else if(str2.equals("EventMan_Mypage_MyCostDelete.do")) {
             
             int value=0;
@@ -211,24 +211,24 @@ public class CostController extends HttpServlet {
             
             response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
             
-         /*°ßÀû ¼öÁ¤ ºÎºĞ*/
+         /*ê²¬ì  ìˆ˜ì • ë¶€ë¶„*/
          }else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
             
-            String cName = request.getParameter("cName"); // °ßÀû ÀÌ¸§
-            String cSdate = request.getParameter("cSdate"); // ½ÃÀÛÀÏ
-            String cEdate = request.getParameter("cEdate"); // Á¾·áÀÏ
-            String cText = request.getParameter("cText"); // ³»¿ë
-            String cFile2 = request.getParameter("cFile2"); // °ßÀû ÀÚ·á
-            String cLoca = request.getParameter("cLoca"); // Áö¿ª
-            String cTarget = request.getParameter("cTarget"); // Âü¿©´ë»ó
-            String cMethod = request.getParameter("cMethod"); // Âü¿©¹æ½Ä
-            String cPrice = request.getParameter("cPrice"); // ¿¹»ê
-            String cPeople = request.getParameter("cPeople"); // Âü¿©ÀÎ¿ø
+            String cName = request.getParameter("cName"); // ê²¬ì  ì´ë¦„
+            String cSdate = request.getParameter("cSdate"); // ì‹œì‘ì¼
+            String cEdate = request.getParameter("cEdate"); // ì¢…ë£Œì¼
+            String cText = request.getParameter("cText"); // ë‚´ìš©
+            String cFile2 = request.getParameter("cFile2"); // ê²¬ì  ìë£Œ
+            String cLoca = request.getParameter("cLoca"); // ì§€ì—­
+            String cTarget = request.getParameter("cTarget"); // ì°¸ì—¬ëŒ€ìƒ
+            String cMethod = request.getParameter("cMethod"); // ì°¸ì—¬ë°©ì‹
+            String cPrice = request.getParameter("cPrice"); // ì˜ˆì‚°
+            String cPeople = request.getParameter("cPeople"); // ì°¸ì—¬ì¸ì›
 
             int midx = Integer.parseInt(request.getParameter("midx"));
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
-            String[] cCata = request.getParameterValues("cCata"); // Ä«Å×°í¸®
+            String[] cCata = request.getParameterValues("cCata"); // ì¹´í…Œê³ ë¦¬
             
             String totalCCata ="";
             for(int i=0; i<cCata.length;i++) {
@@ -236,14 +236,14 @@ public class CostController extends HttpServlet {
             }
             
             System.out.println("totalCCata:"+totalCCata);
-            CostServiceImpl costdao = new CostServiceImpl(); // °´Ã¼ »ı¼º
+            CostServiceImpl costdao = new CostServiceImpl(); // ê°ì²´ ìƒì„±
             int value = costdao.costModifyAction(cName, cSdate, cEdate ,totalCCata, cText, cFile2, cLoca, cTarget, cMethod,cPrice, cPeople, cidx);
 
             if(value >=0) {
                response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
 
             } else {
-               System.out.println("¼öÁ¤ ½ÇÆĞ!");
+               System.out.println("ìˆ˜ì • ì‹¤íŒ¨!");
                }
          }
    }
@@ -256,20 +256,20 @@ public class CostController extends HttpServlet {
 
    private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 
-      // ¿Ã¸° ¼Ò½ºÆÄÀÏÀ» ÀĞ¾îµå¸°´Ù
+      // ì˜¬ë¦° ì†ŒìŠ¤íŒŒì¼ì„ ì½ì–´ë“œë¦°ë‹¤
       BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path + File.separator + fileName));
-      // ÀÌ¹ÌÁö¸¦ ¸®»çÀÌÂ¡ÇÑ´Ù(³ôÀÌ 100¿¡ ¸ÂÃç¼­ ¿øº»ÀÌ¹ÌÁö ºñÀ²À» À¯ÁöÇÑ´Ù)
+      // ì´ë¯¸ì§€ë¥¼ ë¦¬ì‚¬ì´ì§•í•œë‹¤(ë†’ì´ 100ì— ë§ì¶°ì„œ ì›ë³¸ì´ë¯¸ì§€ ë¹„ìœ¨ì„ ìœ ì§€í•œë‹¤)
       BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
-      // ½æ³×ÀÏ Ç®°æ·Î
+      // ì¸ë„¤ì¼ í’€ê²½ë¡œ
       String thumbnailPath = uploadPath + path + File.separator + "s-" + fileName;
-      // ÆÄÀÏ °´Ã¼»ı¼º
+      // íŒŒì¼ ê°ì²´ìƒì„±
       File newFile = new File(thumbnailPath);
-      // È®ÀåÀÚ ÃßÃâ
+      // í™•ì¥ì ì¶”ì¶œ
       String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-      // ½æ³×ÀÏ ÀÌ¹ÌÁö ¸¸µé±â(¸®»çÀÌÂ¡ÇÑ ÀÌ¹ÌÁö¸¦ ÇØ´ç ÀÌ¹ÌÁöÇü½ÄÀ¸·Î ÇØ´ç À§Ä¡¿¡ ÆÄÀÏ °´Ã¼»ı¼ºÇÑ´Ù)
+      // ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë§Œë“¤ê¸°(ë¦¬ì‚¬ì´ì§•í•œ ì´ë¯¸ì§€ë¥¼ í•´ë‹¹ ì´ë¯¸ì§€í˜•ì‹ìœ¼ë¡œ í•´ë‹¹ ìœ„ì¹˜ì— íŒŒì¼ ê°ì²´ìƒì„±í•œë‹¤)
       ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 
-      // ½æ³×ÀÏ ÆÄÀÏ ÀÌ¸§ ÃßÃâ
+      // ì¸ë„¤ì¼ íŒŒì¼ ì´ë¦„ ì¶”ì¶œ
       return thumbnailPath.substring((uploadPath + path).length()).replace(File.separatorChar, ' ');
    }
 

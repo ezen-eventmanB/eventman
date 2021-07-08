@@ -44,7 +44,7 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		System.out.println("-----BoardController ½ÇÇà-----");
+		System.out.println("-----BoardController ì‹¤í–‰-----");
 		
 		
 		request.setCharacterEncoding("UTF-8");
@@ -65,7 +65,7 @@ public class BoardController extends HttpServlet {
 		
 		if(str2.equals("EventMan_Board.do")) {	
 			 		 
-			System.out.println("°Ô½ÃÆÇ ¸®½ºÆ® »Ñ·ÁÁÖ±â");
+			System.out.println("ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸ ë¿Œë ¤ì£¼ê¸°");
 			
 			BoardServiceImpl boarddao = new BoardServiceImpl(); 
 			
@@ -76,22 +76,22 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
 			
-			//°Ô½ÃÆÇ ±Û ÀÛ¼º
+			//ê²Œì‹œíŒ ê¸€ ì‘ì„±
 		}else if(str2.equals("EventMan_BoardWrite.do")){
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
 			rd.forward(request, response);
 		}else if(str2.equals("EventMan_BoardwriteAction.do")) {
 			
-			System.out.println("EventMan_BoardwriteAction ½ÇÇà");
+			System.out.println("EventMan_BoardwriteAction ì‹¤í–‰");
 				
-				//¾÷·Îµå ÆÄÀÏ °æ·Î		
-				//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
-				String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //ÇöÈ£´Ô²¨
-				//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //¹ÚÁ¾ºó °æ·Î
-				//ÀúÀå Æú´õ
+				//ì—…ë¡œë“œ íŒŒì¼ ê²½ë¡œ		
+				//ë‚˜ì¤‘ì— ì›¹ì„œë²„ë¡œ ê³µí†µëœ ê²½ë¡œë¡œ ì˜¬ë¦¬ê²Œ ëœë‹¤.
+				String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //í˜„í˜¸ë‹˜êº¼
+				//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //ë°•ì¢…ë¹ˆ ê²½ë¡œ
+				//ì €ì¥ í´ë”
 				String savedPath = "Advice_img";
 				
-				//ÀúÀåµÈ ÃÑ °æ·Î
+				//ì €ì¥ëœ ì´ ê²½ë¡œ
 				String saveFullPath = uploadPath + savedPath;
 				
 				int sizeLimit = 1024*1024*15;
@@ -99,22 +99,22 @@ public class BoardController extends HttpServlet {
 				String originFileName = null;
 					System.out.println("saveFullPath = "+saveFullPath);
 				
-				//MultipartRequest °´Ã¼»ı¼º
+				//MultipartRequest ê°ì²´ìƒì„±
 				MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
-				//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+				//ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
 				Enumeration files = multi.getFileNames();
 					System.out.println("files = "+files);
 					
-				//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+				//ë‹´ê¸´ íŒŒì¼ ê°ì²´ì˜ Nameê°’ì„ ë‹´ëŠ”ë‹¤.
 				String file = (String)files.nextElement();
 					System.out.println("file = "+file);
 				
-				//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+				//ì €ì¥ë˜ëŠ” íŒŒì¼ì´ë¦„
 				fileName = multi.getFilesystemName(file); 
 					System.out.println("fileName = "+fileName);
 			
-				//¿ø·¡ÆÄÀÏ ÀÌ¸§
+				//ì›ë˜íŒŒì¼ ì´ë¦„
 				originFileName = multi.getOriginalFileName(file);
 				
 					System.out.println("originFileName = "+originFileName);
@@ -139,37 +139,37 @@ public class BoardController extends HttpServlet {
 				
 						
 				if(value > 0) {
-					System.out.println("¼º°ø »ó´ã½ÅÃ»±Û Àü¼Û ¼º°ø");
+					System.out.println("ì„±ê³µ ìƒë‹´ì‹ ì²­ê¸€ ì „ì†¡ ì„±ê³µ");
 					request.setAttribute("midx", midx);
 					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
 				}else {
-					System.out.println("½ÇÆĞ »ó´ã½ÅÃ»±Û Àü¼Û ½ÇÆĞ");
+					System.out.println("ì‹¤íŒ¨ ìƒë‹´ì‹ ì²­ê¸€ ì „ì†¡ ì‹¤íŒ¨");
 					
 					PrintWriter out = response.getWriter();   
 					
-					out.println("<script>alert('»ó´ã ÀÛ¼º ½ÇÆĞ');</script>");
+					out.println("<script>alert('ìƒë‹´ ì‘ì„± ì‹¤íŒ¨');</script>");
 				}
 				 
 				
 				
-/*	»ó´ãÇÏ±â ÆäÀÌÁö·Î ¿¬°á	*/			
+/*	ìƒë‹´í•˜ê¸° í˜ì´ì§€ë¡œ ì—°ê²°	*/			
 		}else if(str2.equals("EventMan_Advicewrite.do")){
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Advicewrite.jsp"); 	
 			rd.forward(request, response);	
-/*	»ó´ãÇÏ±â ÀÛ¼º ¿Ï·áÇÏ±â	*/			
+/*	ìƒë‹´í•˜ê¸° ì‘ì„± ì™„ë£Œí•˜ê¸°	*/			
 		}else if(str2.equals("EventMan_AdvicewriteAction.do")) {
 			
-		System.out.println("--if¹® EventMan_AdvicewriteAction ½ÇÇà");
+		System.out.println("--ifë¬¸ EventMan_AdvicewriteAction ì‹¤í–‰");
 			
-			//¾÷·Îµå ÆÄÀÏ °æ·Î		
-			//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //ÇöÈ£´Ô²¨
-			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //¹ÚÁ¾ºó °æ·Î
-			//ÀúÀå Æú´õ
+			//ì—…ë¡œë“œ íŒŒì¼ ê²½ë¡œ		
+			//ë‚˜ì¤‘ì— ì›¹ì„œë²„ë¡œ ê³µí†µëœ ê²½ë¡œë¡œ ì˜¬ë¦¬ê²Œ ëœë‹¤.
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //í˜„í˜¸ë‹˜êº¼
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //ë°•ì¢…ë¹ˆ ê²½ë¡œ
+			//ì €ì¥ í´ë”
 			String savedPath = "Advice_img";
 			
-			//ÀúÀåµÈ ÃÑ °æ·Î
+			//ì €ì¥ëœ ì´ ê²½ë¡œ
 			String saveFullPath = uploadPath + savedPath;
 			
 			int sizeLimit = 1024*1024*15;
@@ -177,22 +177,22 @@ public class BoardController extends HttpServlet {
 			String originFileName = null;
 				System.out.println("saveFullPath = "+saveFullPath);
 			
-			//MultipartRequest °´Ã¼»ı¼º
+			//MultipartRequest ê°ì²´ìƒì„±
 			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
-			//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+			//ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
 			Enumeration files = multi.getFileNames();
 				System.out.println("files = "+files);
 				
-			//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+			//ë‹´ê¸´ íŒŒì¼ ê°ì²´ì˜ Nameê°’ì„ ë‹´ëŠ”ë‹¤.
 			String file = (String)files.nextElement();
 				System.out.println("file = "+file);
 			
-			//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+			//ì €ì¥ë˜ëŠ” íŒŒì¼ì´ë¦„
 			fileName = multi.getFilesystemName(file); 
 				System.out.println("fileName = "+fileName);
 		
-			//¿ø·¡ÆÄÀÏ ÀÌ¸§
+			//ì›ë˜íŒŒì¼ ì´ë¦„
 			originFileName = multi.getOriginalFileName(file);
 			
 				System.out.println("originFileName = "+originFileName);
@@ -217,22 +217,22 @@ public class BoardController extends HttpServlet {
 			
 					
 			if(value > 0) {
-				System.out.println("¼º°ø »ó´ã½ÅÃ»±Û Àü¼Û ¼º°ø");
+				System.out.println("ì„±ê³µ ìƒë‹´ì‹ ì²­ê¸€ ì „ì†¡ ì„±ê³µ");
 				request.setAttribute("midx", midx);
 				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
 			}else {
-				System.out.println("½ÇÆĞ »ó´ã½ÅÃ»±Û Àü¼Û ½ÇÆĞ");
+				System.out.println("ì‹¤íŒ¨ ìƒë‹´ì‹ ì²­ê¸€ ì „ì†¡ ì‹¤íŒ¨");
 				
 				PrintWriter out = response.getWriter();   
 				
-				out.println("<script>alert('»ó´ã ÀÛ¼º ½ÇÆĞ');</script>");
+				out.println("<script>alert('ìƒë‹´ ì‘ì„± ì‹¤íŒ¨');</script>");
 			}
 			
 			
-/*	¸¶ÀÌÆäÀÌÁö ¸®½ºÆ® È­¸é	*/			
+/*	ë§ˆì´í˜ì´ì§€ ë¦¬ìŠ¤íŠ¸ í™”ë©´	*/			
 		}else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
 	
-		System.out.println("EventMan_Mypage_Myboardlist.do if¹®");
+		System.out.println("EventMan_Mypage_Myboardlist.do ifë¬¸");
 		
 		String midx = request.getParameter("midx");
 		
@@ -247,10 +247,10 @@ public class BoardController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 		rd.forward(request, response);
 		
-/*	¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »ó¼¼º¸±â	*/		
+/*	ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸°	*/		
 		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
 			
-			System.out.println("EventMan_Mypage_MyboardlistDetail.do if¹®");
+			System.out.println("EventMan_Mypage_MyboardlistDetail.do ifë¬¸");
 			
 			int bidx = Integer.parseInt(request.getParameter("bidx"));
 
@@ -268,10 +268,10 @@ public class BoardController extends HttpServlet {
 			rd.forward(request, response);			
 			
 			
-/* °Ô½Ã±Û ¼öÁ¤ÇÏ±â·Î ÀÌµ¿	*/			
+/* ê²Œì‹œê¸€ ìˆ˜ì •í•˜ê¸°ë¡œ ì´ë™	*/			
 		}else if(str2.equals("EventMan_Mypage_BoardModify.do")) {
 			
-			System.out.println("EventMan_Mypage_BoardModify.do if¹®");
+			System.out.println("EventMan_Mypage_BoardModify.do ifë¬¸");
 			
 			int bidx = Integer.parseInt( request.getParameter("bidx"));
 			
@@ -284,10 +284,10 @@ public class BoardController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-/*	°Ô½Ã±Û ¼öÁ¤ÇÏ±â ¾×¼Ç	*/			
+/*	ê²Œì‹œê¸€ ìˆ˜ì •í•˜ê¸° ì•¡ì…˜	*/			
 		}else if(str2.equals("EventMan_Mypage_BoardModify_Action.do")) {
 			
-			System.out.println("EventMan_Mypage_BoardModify_Action.do if¹®");
+			System.out.println("EventMan_Mypage_BoardModify_Action.do ifë¬¸");
 			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
@@ -315,19 +315,19 @@ public class BoardController extends HttpServlet {
 				  
 				request.setAttribute("bavo", bavo);
 				
-				 System.out.println("value°¡ 1ÀÔ´Ï´Ù ÆäÀÌÁö ÀÌµ¿ÇÕ´Ï´Ù.");
+				 System.out.println("valueê°€ 1ì…ë‹ˆë‹¤ í˜ì´ì§€ ì´ë™í•©ë‹ˆë‹¤.");
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
 				rd.forward(request, response);
 				
 			}else {
-				System.out.println("°Ô½Ã±Û ¼öÁ¤ÈÄ »ó¼¼È­¸é ÆäÀÌÁöÀÌµ¿ ½ÇÆĞ");
+				System.out.println("ê²Œì‹œê¸€ ìˆ˜ì •í›„ ìƒì„¸í™”ë©´ í˜ì´ì§€ì´ë™ ì‹¤íŒ¨");
 			}
 		
-/*	°Ô½Ã±Û »èÁ¦ÇÏ±â	*/			
+/*	ê²Œì‹œê¸€ ì‚­ì œí•˜ê¸°	*/			
 		}else if(str2.equals("EventMan_Mypage_MyboardDelet.do")) {
 			
-			System.out.println("EventMan_Mypage_MyboardDelet.do if¹®ÀÔ¤¤´Ù.");
+			System.out.println("EventMan_Mypage_MyboardDelet.do ifë¬¸ì…ã„´ë‹¤.");
 			
 			int value=0;
 			
@@ -337,7 +337,7 @@ public class BoardController extends HttpServlet {
 			
 			value = boarddao.myPageBoardDelet(bidx);
 			
-			System.out.println("¸Ş¼Òµå Ã³¸®°á°ú "+value);
+			System.out.println("ë©”ì†Œë“œ ì²˜ë¦¬ê²°ê³¼ "+value);
 			
 			
 			if(value==1) {
@@ -349,14 +349,14 @@ public class BoardController extends HttpServlet {
 				BoardServiceImpl boarddao1 = new BoardServiceImpl();
 				ArrayList alistboard = boarddao1.selectmyboardlist(midx);
 				
-				System.out.println("¼º°øÀÔ´Ï´Ù.");
+				System.out.println("ì„±ê³µì…ë‹ˆë‹¤.");
 				request.setAttribute("alistboard", alistboard);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 				rd.forward(request, response);
 			}else {
 				
-				System.out.println("½ÇÆĞÀÔ´Ï´Ù.");
+				System.out.println("ì‹¤íŒ¨ì…ë‹ˆë‹¤.");
 			}
 		}	
 		
@@ -373,20 +373,20 @@ public class BoardController extends HttpServlet {
 	
 	private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
 		
-		//¿Ã¸° ¼Ò½ºÆÄÀÏÀ» ÀĞ¾îµå¸°´Ù
+		//ì˜¬ë¦° ì†ŒìŠ¤íŒŒì¼ì„ ì½ì–´ë“œë¦°ë‹¤
 		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path+File.separator+fileName));
-		//ÀÌ¹ÌÁö¸¦ ¸®»çÀÌÂ¡ÇÑ´Ù(³ôÀÌ 100¿¡ ¸ÂÃç¼­ ¿øº»ÀÌ¹ÌÁö ºñÀ²À» À¯ÁöÇÑ´Ù)
+		//ì´ë¯¸ì§€ë¥¼ ë¦¬ì‚¬ì´ì§•í•œë‹¤(ë†’ì´ 100ì— ë§ì¶°ì„œ ì›ë³¸ì´ë¯¸ì§€ ë¹„ìœ¨ì„ ìœ ì§€í•œë‹¤)
 		BufferedImage destImg = Scalr.resize(sourceImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
-		//½æ³×ÀÏ Ç®°æ·Î
+		//ì¸ë„¤ì¼ í’€ê²½ë¡œ
 		String thumbnailPath = uploadPath + path + File.separator + "s-"+fileName;
-		//ÆÄÀÏ °´Ã¼»ı¼º
+		//íŒŒì¼ ê°ì²´ìƒì„±
 		File newFile = new File(thumbnailPath);
-		//È®ÀåÀÚ ÃßÃâ
+		//í™•ì¥ì ì¶”ì¶œ
 		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-		//½æ³×ÀÏ ÀÌ¹ÌÁö ¸¸µé±â(¸®»çÀÌÂ¡ÇÑ ÀÌ¹ÌÁö¸¦ ÇØ´ç ÀÌ¹ÌÁöÇü½ÄÀ¸·Î ÇØ´ç À§Ä¡¿¡ ÆÄÀÏ °´Ã¼»ı¼ºÇÑ´Ù)
+		//ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë§Œë“¤ê¸°(ë¦¬ì‚¬ì´ì§•í•œ ì´ë¯¸ì§€ë¥¼ í•´ë‹¹ ì´ë¯¸ì§€í˜•ì‹ìœ¼ë¡œ í•´ë‹¹ ìœ„ì¹˜ì— íŒŒì¼ ê°ì²´ìƒì„±í•œë‹¤)
 		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 		
-		//½æ³×ÀÏ ÆÄÀÏ ÀÌ¸§ ÃßÃâ
+		//ì¸ë„¤ì¼ íŒŒì¼ ì´ë¦„ ì¶”ì¶œ
 		return thumbnailPath.substring((uploadPath+path).length()).replace(File.separatorChar, ' ');
 	}
 

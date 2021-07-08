@@ -39,37 +39,37 @@ public class FrontController extends HttpServlet {
 			MemberController mc = new MemberController();
 			mc.doGet(request, response);
 			
-			//°ßÀû ½ÅÃ» È­¸é ÀÌµ¿
+			//ê²¬ì  ì‹ ì²­ í™”ë©´ ì´ë™
 		}else if(str2.equals("EventMan_Cost")) {
 			CostController cc = new CostController();
 			cc.doGet(request, response);
 			
-			//¸®ºä ÆäÀÌÁö ÀÌµ¿ 
+			//ë¦¬ë·° í˜ì´ì§€ ì´ë™ 
 		}else if(str2.equals("EventMan_Review")) {
 			ReviewController rc = new ReviewController();
 			rc.doGet(request, response);
 			
-			//È¸»ç¼Ò°³ ÆäÀÌÁö ÀÌµ¿
+			//íšŒì‚¬ì†Œê°œ í˜ì´ì§€ ì´ë™
 		}else if(str2.equals("EventMan_Company")) {
 			MasterController ccc = new MasterController();
 			ccc.doGet(request, response);
 			
-			//°Ô½ÃÆÇ ÆäÀÌÁö ÀÌµ¿
+			//ê²Œì‹œíŒ í˜ì´ì§€ ì´ë™
 		}else if(str2.equals("EventMan_Board")) {
 			BoardController bc = new BoardController();
 			bc.doGet(request, response);
 			
-			//¸¶ÀÌÆäÀÌÁö
+			//ë§ˆì´í˜ì´ì§€
 		}else if(str2.equals("EventMan_Mypage")) {
 			MemberController mmc = new MemberController();
 			mmc.doGet(request, response);
 			
-			//¸¶½ºÅÍ ÆäÀÌÁö
+			//ë§ˆìŠ¤í„° í˜ì´ì§€
 		}else if(str2.equals("EventMan_Master")) {
 			MasterController mc = new MasterController();
 			mc.doGet(request, response);
 			
-			//¸ŞÀÎ ÆäÀÌÁö
+			//ë©”ì¸ í˜ì´ì§€
 		}else if(str2.equals("EventMan_Main")) {
 			MainController mc = new MainController();
 			mc.doGet(request, response);

@@ -6,18 +6,22 @@
 <%@ page import = "domain.*" %>
 
  <%
-   String member_id = (String)session.getAttribute("S_memberId");
+	String member_id = (String)session.getAttribute("S_memberId");
  
-    int midx = 0;
+	 int midx = 0;
+	 int gidx = 0;
+	 
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
+	 }
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
 
-    if (session.getAttribute("midx") != null) {
-       midx = (int)session.getAttribute("midx");
-    }
-   out.println("세션에 담긴 아이디는?");
-   out.println(member_id);
-   out.println(midx);
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
    
-
    ArrayList<EvMemberVo> alist = (ArrayList<EvMemberVo>)request.getAttribute("alist");   
    
    %>    
@@ -49,38 +53,36 @@
 </head>
 <body>
 
-
-<!-- 상단 네비 부분 -->
-	<div class="container">
-		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
-		
-			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
-		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-		    </a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		      	<span class="navbar-toggler-icon"></span>
-		   	</button>
-		    <div class="collapse navbar-collapse w-50" id="navbarNav">
-		    
-	      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
-	        		<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-	        		</li>
-	        		<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-	        		</li>
-	       			<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-	       			</li>
-	       			<li class="nav-item px-5">
-	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-	       			</li>
-	       		</ul>
-	       	
+<div class="container">
+	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 	
-					<!--로그인 전 상단 화면  -->	
-						<%
-						if(member_id == null){
+		<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
+	     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+	    </a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      	<span class="navbar-toggler-icon"></span>
+	   	</button>
+	    <div class="collapse navbar-collapse w-50" id="navbarNav">
+	    
+      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+        		<li class="nav-item px-5">
+          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+       		</li>
+       		<li class="nav-item px-5">
+         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+       		</li>
+      			<li class="nav-item px-5">
+         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+      			</li>
+      			<li class="nav-item px-5">
+         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+      			</li>
+      		</ul>
+      	
+
+		<!--로그인 전 상단 화면  -->	
+				<%
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -94,7 +96,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -108,11 +110,23 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
 	    	</div>	
 		</nav>
 </div>
+		
       
 
 <!-- 페이지 위치 안내 -->

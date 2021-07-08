@@ -62,6 +62,7 @@ public class BoardServiceImpl {
 				ebvo.setBcata(rs.getString("Bcata"));
 				ebvo.setBtitle(rs.getString("Btitle"));
 				ebvo.setBwriteday(rs.getString("Bwriteday"));
+				ebvo.setgName(rs.getString("setgName"));
 				ebvo.setBmenu(rs.getString("Bmenu"));
 				ebvo.setBcount(rs.getString("Bcount"));
 

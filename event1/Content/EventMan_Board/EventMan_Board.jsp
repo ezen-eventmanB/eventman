@@ -228,7 +228,7 @@
 		               <td colspan="2"><%=evbo.getBtitle()%></td>
 		               <td></td>
 		               <td><%=evbo.getBwriteday()%></td>
-		               <td><%=evbo.getBname()%></td>
+		               <td><%=evbo.getgName()%></td>
 		               <td><%=evbo.getBcount()%></td>
 		            </tr>
 	       		  <%}; %> 
