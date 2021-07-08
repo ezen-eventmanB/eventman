@@ -104,7 +104,9 @@ public class MemberController extends HttpServlet {
 		}else if(str2.equals("EventMan_Mypage_Main.do")) {
 			
 			System.out.println("EventMan_Mypage_Main.do if문");
-
+			
+			System.out.println("midx"+request.getParameter("midx"));
+			
 			int midx = Integer.parseInt(request.getParameter("midx"));
 			
 			System.out.println("midx = "+midx);
@@ -210,8 +212,8 @@ public class MemberController extends HttpServlet {
 			
 			//수정이 제대로 된다면 이동
 			if (value >0)		
-				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Main.do");  
-			//수정이 되지 않으면 이동
+				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Main.do?midx="+midx);  
+			//수정이 되지 않으면 이동 																			//파라미터로 midx값을 같이 넘겨줘야한다.
 			else {
 				response.sendRedirect(request.getContextPath()+"/EventMan_Mypage/EventMan_Mypage_Modify.do");  
 			}

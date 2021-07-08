@@ -8,7 +8,7 @@ public class EvMemberVo {
 	private String mPhn;
 	private String mName;
 	private String mEmail;
-	private int mType;
+	private String mType;
 	private String mDate;
 	private String mDelYn;
 	
@@ -48,10 +48,10 @@ public class EvMemberVo {
 	public void setmEmail(String mEmail) {
 		this.mEmail = mEmail;
 	}
-	public int getmType() {
+	public String getmType() {
 		return mType;
 	}
-	public void setmType(int mType) {
+	public void setmType(String mType) {
 		this.mType = mType;
 	}
 	public String getmDate() {

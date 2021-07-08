@@ -67,22 +67,24 @@ public class MasterServiceImpl {
 	public ArrayList<EvMemberVo> memberSelectAll(){
 		ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
 		
-		String sql="select * from EVE_MEMBER where mDelYn='N' order by midx";
+		String sql="select * from EVE_MEMBER order by midx";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs  = pstmt.executeQuery();
-			
 			while(rs.next()) {
 				EvMemberVo mvo = new EvMemberVo();
+				
 				mvo.setMidx(rs.getInt("midx"));
 				mvo.setmId(rs.getString("mId"));
 				mvo.setmPhn(rs.getString("mPhn"));
 				mvo.setmName(rs.getString("mName"));
 				mvo.setmEmail(rs.getString("mEmail"));
 				mvo.setmDate(rs.getString("mDate"));
-				mvo.setmType(rs.getInt("mtype"));
+				mvo.setmType(rs.getString("mtype"));
 				mvo.setmDelYn(rs.getString("mDelYn"));
+				
+				//앞에가 vo 뒤에가 컬럼 입력 명
 				
 				alist.add(mvo);				
 			}			

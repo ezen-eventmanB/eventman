@@ -215,7 +215,7 @@ public class MemberServiceImpl {
 				mbvo.setmPhn(rs.getString("mPhn"));
 				mbvo.setmName(rs.getString("mName"));
 				mbvo.setmEmail(rs.getString("mEmail"));
-				mbvo.setmType(rs.getInt("mtype"));
+				mbvo.setmType(rs.getString("mtype"));
 			}	
 			
 		} catch (SQLException e) {			

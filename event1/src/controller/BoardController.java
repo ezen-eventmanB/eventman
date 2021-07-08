@@ -67,13 +67,9 @@ public class BoardController extends HttpServlet {
 			 		 
 			System.out.println("게시판 리스트 뿌려주기");
 			
-			String gidx = request.getParameter("gidx");
-			 
-			System.out.println("gidx= "+gidx);
-			 
-			
 			BoardServiceImpl boarddao = new BoardServiceImpl(); 
-			ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
+			
+			ArrayList alistboard = boarddao.selectMasterboardlist();
 			 
 			 request.setAttribute("alistboard", alistboard);
 			 

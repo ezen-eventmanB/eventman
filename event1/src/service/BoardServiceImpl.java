@@ -48,14 +48,13 @@ public class BoardServiceImpl {
 	 */
 
 	/* 관리자가 작성한 게시판 게시글 리스트 불러오기 */
-	public ArrayList<EvBoardAskVo> selectMasterboardlist(String gidx) {
+	public ArrayList<EvBoardAskVo> selectMasterboardlist() {
 		
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
 		String sql = "select * from EVE_BOARD where gidx='1' order by bidx";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, gidx);
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {

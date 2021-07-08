@@ -105,15 +105,10 @@ public class MasterController extends HttpServlet {
 /* 관리자 회원 관리 페이지 이동*/			
 		}else if(str2.equals("EventMan_Master_Modify.do")) {
 								
-			System.out.println("회원 관리 페이지 이동");
-			
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			
-			System.out.println("회원 관리 페이지 이동2");
 			
 			ArrayList<EvMemberVo> alist  =  mdao.memberSelectAll();
 			
-						
 			request.setAttribute("alist", alist);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");

@@ -256,7 +256,7 @@
 									<td>이메일</td>
 									<td><input type="text" name="mEmail" size="30" value="<%=mbvo.getmEmail()%>"></td>
 									<!-- 세션값을 받으려면 컨트롤러에서 받는게 아닌 받으려는 페이지에서 히든값으로 적어 놓을것 -->
-									<td><input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>"></td>
+									<td><input type="hidden" name="midx" value="<%=midx%>"></td>
 								</tr>
 							</table>								
 						<div>													
