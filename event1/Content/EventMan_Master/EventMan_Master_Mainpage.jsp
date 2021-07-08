@@ -124,7 +124,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 		<div class="col-sm-4 mx-auto">
 			<img class="iconimg" src="../member.png">
 			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">회원관리</button>
+				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Member.do'">회원관리</button>
 			</div>
 		</div>
 	</div>

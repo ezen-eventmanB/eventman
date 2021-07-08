@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,7 @@ import vo.EvMemberVo;
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
    private static final long serialVersionUID = 1L;
+private ServletRequest request;
 
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -363,24 +366,26 @@ public class MemberController extends HttpServlet {
          
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);         
-      }
       
-
+/* 회원 리스트 */     
+   	  }else if(str2.equals("EventMan_Master_EventMan_Master_Member.do")) {
+   		
+    	  MemberServiceImpl md = new MemberServiceImpl();
+	   
+    	  ArrayList<EvMemberVo> alist = md.memberSelectAll();
+	   
+    	  request.setAttribute("alist", alist);
+	   
+          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Member.jsp");
+          rd.forward(request, response);
+         
    }
+   	   
+}   
       
-      
-   
-
-   
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-      doGet(request, response);
+	   
+	   doGet(request, response);
    }
-
-   
-   
-   /* (윤진) */
-   
-   
    
 }

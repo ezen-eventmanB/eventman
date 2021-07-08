@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dbconn.DBconn;
 import vo.EvMemberVo;
@@ -24,6 +25,43 @@ public class MemberServiceImpl {
     * 로그인 클릭시 체크 Dao 매소드 아이디 비밀번호 sql에서 확인 하는 dao
     */
 
+   
+   
+   /* 회원 리스트 불러오기 */
+   
+   public ArrayList<EvMemberVo> memberSelectAll(){
+		ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
+		
+		String sql="select * from EVE_MEMBER where delyn='N' order by midx desc";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs  = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvMemberVo mv = new EvMemberVo();
+				mv.setMidx(rs.getInt("midx"));
+				mv.setmId(rs.getString("mId"));
+				mv.setmName(rs.getString("mName"));
+				mv.setmEmail(rs.getString("mEmail"));
+				mv.setmPhn(rs.getString("mPhn"));
+				mv.setmType(rs.getInt("mType"));
+				mv.setWdate(rs.getString("mWdate"));
+				mv.setmDelYn(rs.getString("DelYn"));
+				
+				alist.add(mv);				
+			}			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}	
+		
+		return alist;
+	}
+   
+   
+   
+
+   
    /*
     * 회원가입 정보 넘겨주기 Dao
     */
