@@ -193,8 +193,7 @@ public class MasterServiceImpl {
 		
 		return value;
 	}
-
-
+	
 	public ArrayList<EvCostVo> allCostList() {
 		
 		ArrayList<EvCostVo> alist = new ArrayList<EvCostVo>();
@@ -225,5 +224,46 @@ public class MasterServiceImpl {
 		return alist;
 	}
 	
+	/*	게시판 관리자 글 작성 action		*/
+	public int writeMasterBoard(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
+		int value = 0;
+		
+		String sql = "INSERT INTO EVE_REVIEW(HIDX, HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
+				    +"VALUES(HIDX_SEQ.NEXTVAL,TO_DATE(?,'YY-MM-DD'),TO_DATE(?,'YY-MM-DD'),?,?,?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,startdate);
+			pstmt.setString(2,enddate);
+			pstmt.setString(3,price);
+			pstmt.setString(4,people);
+			pstmt.setString(5,target);
+			pstmt.setString(6,staff);
+			pstmt.setString(7,company);
+			pstmt.setString(8,title);
+			pstmt.setString(9,content);
+			pstmt.setString(10,cata);
+			pstmt.setString(11,file);
+			pstmt.setInt(12,gidx);
+			pstmt.setString(13,loca);
+			value = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return value;
+	}
 
 }
