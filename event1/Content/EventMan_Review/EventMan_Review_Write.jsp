@@ -254,7 +254,7 @@ $(document).ready(function(e){
 		
 		<!-- 이미지 -->
 	
-		<div class="container-fluid">
+		<div class="container">
 				
 			<div class="container mb-2">
 				<div class="row">
@@ -320,10 +320,16 @@ $(document).ready(function(e){
 								<div class="col-sm align-self-center">
 									<div class="text-center align-middle ">
 										<img class="icon w-100" src="../icon/free-icon-calendar-with-squares-85000.png">
-										<div class="mt-2">
-											<input type="date" name="startdate" class="form-control CostDate">
-											~<br>
-											<input type="date" name="enddate" class="form-control CostDate">
+										<div class="row mt-2">
+											<div class="col">
+												<input type="date" name="startdate" class="form-control CostDate">
+											</div>
+											<div class="col">
+											~
+											</div>
+											<div class="col">
+												<input type="date" name="enddate" class="form-control CostDate">
+											</div>
 										</div>
 									</div>
 								</div>

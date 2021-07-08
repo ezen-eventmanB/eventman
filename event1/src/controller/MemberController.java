@@ -369,7 +369,10 @@ public class MemberController extends HttpServlet {
 			
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
-			rd.forward(request, response);			
+			rd.forward(request, response);
+			
+			
+
 		}
 		
 
