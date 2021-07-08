@@ -122,44 +122,7 @@
 
 <!-- 관리자 페이지 화면 -->
 <div class="container" id="masterpage">
-<<<<<<< HEAD
-	<div class="row">
-		<div class="col mx-auto">
-			<img class="iconimg" src="../cost.png">
-			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청<br>1 건</button>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4 mx-auto">
-			<img class="iconimg" src="../review.png">
-			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">행사리뷰</button>
-			</div>
-		</div>
-		<div class="col-sm-4 mx-auto">
-			<img class="iconimg" src="../company.png">
-			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do'">회사소개</button>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4 mx-auto">
-			<img class="iconimg" src="../board.png">
-			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do'">게시판</button>
-			</div>
-		</div>
-		<div class="col-sm-4 mx-auto">
-			<img class="iconimg" src="../member.png">
-			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Modify.do'">회원관리</button>
-			</div>
-		</div>
-	</div>
-=======
+
    <div class="row">
       <div class="col mx-auto">
          <img class="iconimg" src="../cost.png">
@@ -196,7 +159,7 @@
          </div>
       </div>
    </div>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
 </div>
 
 
