@@ -42,51 +42,84 @@
 
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
-         function check(){
-           
-            var fm = document.frm;   
-            var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
-            
-             if (fm.cName.value =="")   {
-                  alert("행사명을 입력해주세요.");
-                  fm.cName.focus();
-                  return;
-               }else if (fm.cSdate.value ==""){
-                  alert("행사 시작일을 선택해주세요.");
-                  fm.cSdate.focus();
-                  return;
-               }else if (fm.cEdate.value ==""){
-                   alert("행사 종료일을 선택해주세요.");
-                   fm.cEdate.focus();
-                   return;
-               }else if (fm.cTarget == "참여대상"){
-            	  alert("참여 대상을 선택해주세요.")
-            	  fm.cTarget.focuse();
-               }else if(!costCataChk){
-                  alert("카테고리를 한개 이상 선택해주세요.");
-                  fm.costCataChk.focus();
-                  return false;  
-               }else if (fm.cLoca.value ==""){
-                    alert("행사 지역을 입력 해주세요.");
-                    fm.cLoca.focus();
-                    return;
-               }else if($(".catanon").value =="catamenu"){
-                    alter("카테고리를 선택해주세요.");
-                    fm.catamenu.focus();
-               }else if (document.frm.cText.value ==""){
-                      alert("행사 설명을 적어주세요.");
-                      document.frm.cText.focus();
-                      return;
-               }else{
-                  document.frm.action ="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost_Submit_Action.do";
-                 document.frm.enctype="multipart/form-data";
-                 document.frm.method="POST";
-                  document.frm.submit();
-                  alert("견적신청이 되었습니다."); 
-               } 
-         };
+
+function check(){
+
+var fm = document.frm;   
+var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
+
+if (fm.cName.value =="")   {
+	$("#textbox").html("행사명을 입력해주세요.");
+	$("#modal").modal("show")
+	return;
+}else if (fm.cSdate.value ==""){
+	$("#textbox").html("행사 시작일을 선택해주세요.");
+	$("#modal").modal("show")
+	return;
+}else if (fm.cEdate.value ==""){
+	$("#textbox").html("행사 종료일을 선택해주세요.");
+	$("#modal").modal("show")
+	return;
+}else if (fm.cTarget == "참여대상"){
+	$("#textbox").html("참여 대상을 선택해주세요.");
+	$("#modal").modal("show")
+	return;  
+}else if(!costCataChk){
+	$("#textbox").html("카테고리를 한개 이상 선택해주세요.");
+	$("#modal").modal("show")
+	return;  
+}else if (fm.cLoca.value ==""){
+	$("#textbox").html("행사 지역을 입력 해주세요.");
+	$("#modal").modal("show")
+	return;
+}else if($(".catanon").value =="catamenu"){
+	$("#textbox").html("카테고리를 선택해주세요.");
+	$("#modal").modal("show")
+	return;
+}else if (document.frm.cText.value ==""){
+	$("#textbox").html("행사 설명을 적어주세요.");
+	$("#modal").modal("show")
+	return;
+}else{
+	document.frm.action ="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost_Submit_Action.do";
+	document.frm.enctype="multipart/form-data";
+	document.frm.method="POST";
+	document.frm.submit();
+	alert("견적신청이 되었습니다."); 
+} 
+}
              
-            
+function moveFn(){
+	
+var fm = document.frm; 
+var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
+	  
+if (fm.cName.value =="")   {
+        fm.cName.focus();
+        return;
+     }else if (fm.cSdate.value ==""){
+        fm.cSdate.focus();
+        return;
+     }else if (fm.cEdate.value ==""){
+         fm.cEdate.focus();
+         return;
+     }else if (fm.cTarget == "참여대상"){
+  	  fm.cTarget.focuse();
+     }else if(!costCataChk){
+    	location.href="#cataA";
+        fm.cCata.focus();
+        return false;  
+     }else if (fm.cLoca.value ==""){
+          fm.cLoca.focus();
+          return;
+     }else if($(".catanon").value =="catamenu"){
+          fm.catamenu.focus();
+          return;
+     }else if (document.frm.cText.value ==""){
+          document.frm.cText.focus();
+          return;
+     }
+}
          
       </script>
 </head>
@@ -186,25 +219,33 @@
    견적신청
 </div>
 
-      <%
-         if(member_id == null){
-         %>
-         <div class="container text-center">
-            <div class="container w-50">
-            <br/>   
-            <img src="../padlock.png" class="lock w-50 mb-3" >
-            <br/>
-            <header class="fs-3">로그인이 필요한 서비스입니다.</header>
-            <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">Login</button>
-            </div>
-         </div>
-         <!-- 로그인을 한 후에 나타나는 화면 -->
-         <%
-              }else{
-         %>   
+     	
+     	
+     	
+     	
+     	
+     	
+     	
+<!-- 행사 견적 신청 로그인시 확인  -->   
+ 	
+<%
+if(member_id == null){
+%>
+	<!-- 로그인이 안되있다면 -->
+	<div class="container text-center">
+		<div class="container w-50">
+			<br/>   
+			<img src="../padlock.png" class="lock w-50 mb-3" >
+			<br/>
+			<header class="fs-3">로그인이 필요한 서비스입니다.</header>
+			<button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">Login</button>
+		</div>
+	</div>
 
-
-
+<%
+ }else{
+%>
+<!-- 로그인을 한 후에 나타나는 화면 -->
 
 <!-- 행사 기본정보 -->
 <div class="container">
@@ -213,272 +254,271 @@
    
 
 <form name="frm">
+
+	<!-- input HIDDEN -->
 	<input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
-<!-- 행사 명 -->
-        <div class="container">
-           <div class="fs-5 fw-bold">행사 명</div>
-               <input type="text" name="cName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 명을 입력해주세요">
-      <hr/>
-       </div>
+	
+	<!-- 행사 명 -->
+	<div class="container mt-3">
+		<div class="fs-4 fw-bold mt-5">행사 명</div>
+		<input type="text" name="cName" class="form-control mt-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 명을 입력해주세요">
+	</div>
    
-<!-- 행사 일정 -->   
-      <div class="container">
-           <div class="fs-5 fw-bold">행사 일정</div>
-              <div class="container">
-                <input type="date" id="cSdate" name="cSdate" class="form-control CostDate"> ~
-                <input type="date" id="cSdate2" name="cEdate" class="form-control CostDate">
-            </div>      
-            <div class="icon">
-         <hr/>
-         </div>
+	<!-- 행사 일정 -->   
+	<div class="container mt-5">
+		<div class="fs-4 fw-bold">행사 일정</div>
+		<div class="row mt-3">
+			<div class="col">
+				<input type="date" id="cSdate" name="cSdate" class="form-control CostDate">
+			</div>
+			<div class="col-sm-auto">
+				~
+			</div>
+			<div class="col">
+				<input type="date" id="cSdate2" name="cEdate" class="form-control CostDate">
+			</div>
+		</div>
+	</div>
 
-  <!-- 행사 카테고리 선택 -->
-   <div class="fs-5 fw-bold">행사 카테고리</div>
-   
-   
-  <!-- 기업 행사 -->
-      <div class="cataselect">          
+	<!-- 행사 카테고리 선택 -->
+	<div class="container fs-4 fw-bold mt-5">행사 카테고리</div>
+	
+		<!-- 카테고리 -->		
+		<div class="container mt-3 rounded-3 border border-1 p-4">
+		
+					<div class="fs-5 fw-bold mb-1" id="cataA">기업행사</div>
+					<div class="row">
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" >
+			                <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
+			            </div>
+						<div class="col">
+			                <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사">
+							<label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회">
+							<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사">
+							<label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션">
+							<label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 기타">
+							<label class="form-check-label" for="inlineCheckbox6">기타</label>
+						</div>
+					</div>
 
-      <table>
-         <tr>
-            <th>기업행사</th>
-         </tr>
-            <tr>   
-            <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" >
-                         <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사">
-                         <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회">
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사">
-                         <label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션">
-                         <label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 기타">
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-   
-            <!-- 공연 -->
-            <tr>
-               <th>공연</th>
-            </tr>
-            <tr> 
-              
-               <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌">
-                      <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스">
-                        <label class="form-check-label" for="inlineCheckbox2">댄스</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연  마술">
-                         <label class="form-check-label" for="inlineCheckbox3">마술</label>
-                </td>
-                <td>       
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식">
-                         <label class="form-check-label" for="inlineCheckbox4">클래식</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑">
-                         <label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
-                </td>
-                <td>
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타">
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
+					<div class="fs-5 fw-bold mb-1 mt-3">공연</div>
+					<div class="row">
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌">
+							<label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
+						</div>
+						<div class="col">
+			                <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스">
+							<label class="form-check-label" for="inlineCheckbox2">댄스</label>
+						</div>
+						<div class="col">
+			                <input class="form-check-input" type="checkbox" name="cCata" value="공연  마술">
+							<label class="form-check-label" for="inlineCheckbox3">마술</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식">
+			                <label class="form-check-label" for="inlineCheckbox4">클래식</label>
+		                </div>
+						<div class="col">
+			                <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑">
+							<label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="공연 기타">
+							<label class="form-check-label" for="inlineCheckbox6">기타</label>
+						</div>
+					</div>
 
-               <!-- 대학 -->
-      	 <tr>
-         <th>대학</th>
-         </tr>
-         <tr>   
-            <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제">
-                         <label class="form-check-label" for="inlineCheckbox1">축제</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외">
-                         <label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회">
-                         <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사">
-                         <label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트">
-                         <label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="대학 기타">
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
+			
 
-         <!-- 기타-->
-         <tr>
-         <th>기타</th>
-         </tr>
-         <tr>   
-                 <td>
-                      <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식">
-                         <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
-                </td>
-                <td>
-                        <input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식">
-                         <label class="form-check-label" for="inlineCheckbox2">약혼식</label>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치">
-                         <label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
-                </td>
-                <td>       
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치">
-                         <label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈">
-                         <label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
-                </td>
-                <td>
-                          <input class="form-check-input" type="checkbox" name="cCata" value="기타 기타">
-                         <label class="form-check-label" for="inlineCheckbox6">기타</label>
-                </td>
-            </tr>
-            
-         </table>
-      </div>
-      <hr/>
+					<div class="fs-5 fw-bold mb-1 mt-3">대학</div>
+					<div class="row">
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="대학 축제">
+							<label class="form-check-label" for="inlineCheckbox1">축제</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외">
+							<label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회">
+							<label class="form-check-label" for="inlineCheckbox3">체육대회</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사">
+							<label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트">
+							<label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="대학 기타">
+							<label class="form-check-label" for="inlineCheckbox6">기타</label>
+						</div>
+
+					<div class="fs-5 fw-bold mb-1 mt-3">기타</div>
+					<div class="row">
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식">
+							<label class="form-check-label" for="inlineCheckbox1">결혼식</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식">
+							<label class="form-check-label" for="inlineCheckbox2">약혼식</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치">
+							<label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치">
+							<label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈">
+							<label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
+						</div>
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기타 기타">
+							<label class="form-check-label" for="inlineCheckbox6">기타</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
       
-<!-- 행사 지역  -->
-         <div class="fs-5 fw-bold">행사 지역</div>
-         <input type="text" name="cLoca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요.">
-      <hr/>
+	<!-- 행사 지역  -->
+	<div class="container">
+		<div class="fs-4 fw-bold mt-5">행사 지역</div>
+		<input type="text" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요.">
+	</div>
 
-   
-<!-- 행사 설명 -->   
-        <div class="fs-5 fw-bold">행사 구성</div>
-         
-         <div class="container">
-         <table>
-         <tr>   
-                <td>
-                  <select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
-                 <option selected value="catamenu" name="joinTarget">참여대상</option>
-                 <option value="전체">전체</option>
-                 <option value="어린이이">어린이</option>
-                 <option value="학생">학생</option>
-                 <option value="청년">청년</option>
-                 <option value="여성">여성</option>
-                 <option value="직장인">직장인</option>
-                 <option value="장애인">장애인</option>
-                 <option value="노인">노인</option>
-                 <option value="기업·단체">기업·단체</option>
-                 <option value="참여대상 기타">기타</option>
-               </select>
-                  </td>
-                <td>
-                         <select class="form-select me-5"" aria-label="Default select example" name="cMethod" class="catanon">
-                        <option selected value="catamenu">방식</option>
-                        <option value="오프라인">오프라인</option>
-                        <option value="온라인">온라인</option>
-                        <option value="온ㆍ오프라인">온ㆍ오프라인</option>
-                        <option value="방식 기타">기타</option>
-                     </select>
-                </td>
-            </tr> 
-            <tr></tr>
-         <tr>
-            <td>
-                <select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
-                  <option selected value="catamenu">예산</option>
-                  <option value="1000만원 미만">1,000만원 미만</option>
-                  <option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
-                  <option value="5000~1억 미만">5,000만원 ~ 1억 미만</option>
-                  <option value="1억 이상~3억 미만">1억 이상 ~ 3억 미만</option>
-                  <option value="3억 이상">3억 이상</option>
-                  <option value="예산 기타">기타</option>
-                 </select>
-            </td>
-            <td>
-               <select class="form-select me-5"" aria-label="Default select example" name="cPeople" class="catanon">
-                  <option selected value="catamenu">참여인원</option>
-                  <option value="50명 미만">50명 미만</option>
-                  <option value="50~100명미만">50명~100명 미만</option>
-                  <option value="100~500명미만">100~500명 미만</option>
-                  <option value="500~1000명 미만">500~1000명 미만</option>
-                  <option value="1000명이상">1000명 이상</option>
-                  <option value="인원 기타">기타</option>
-                  </select>
-            </td>
-         </tr>
-         </table>
-         
-      </div>
-      <br>
-      <hr/>
-<!-- 행사 설명 -->   
-        <div class="fs-5 fw-bold">행사 설명</div>
-                <div class="form-floating">
-              <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"></textarea>
-              <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
-            </div>
-               <hr/>
-         </div>
+
+	<!-- 행사 설명 -->   
+	<div class="container">
+		<div class="fs-4 fw-bold mt-5">행사 구성</div>
+		<div class="row">
+			<div class="col">
+				<select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon">
+					<option selected value="catamenu" name="joinTarget">참여대상</option>
+					<option value="전체">전체</option>
+					<option value="어린이이">어린이</option>
+					<option value="학생">학생</option>
+					<option value="청년">청년</option>
+					<option value="여성">여성</option>
+					<option value="직장인">직장인</option>
+					<option value="장애인">장애인</option>
+					<option value="노인">노인</option>
+					<option value="기업·단체">기업·단체</option>
+					<option value="참여대상 기타">기타</option>
+				</select>
+			</div>
+			
+			<div class="col">
+				<select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon">
+					<option selected value="catamenu">방식</option>
+					<option value="오프라인">오프라인</option>
+					<option value="온라인">온라인</option>
+					<option value="온ㆍ오프라인">온ㆍ오프라인</option>
+					<option value="방식 기타">기타</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon">
+					<option selected value="catamenu">예산</option>
+					<option value="1000만원 미만">1,000만원 미만</option>
+					<option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
+					<option value="5000~1억 미만">5,000만원 ~ 1억 미만</option>
+					<option value="1억 이상~3억 미만">1억 이상 ~ 3억 미만</option>
+					<option value="3억 이상">3억 이상</option>
+					<option value="예산 기타">기타</option>
+				</select>
+			</div>
+			<div class="col">
+				<select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon">
+					<option selected value="catamenu">참여인원</option>
+					<option value="50명 미만">50명 미만</option>
+					<option value="50~100명미만">50명~100명 미만</option>
+					<option value="100~500명미만">100~500명 미만</option>
+					<option value="500~1000명 미만">500~1000명 미만</option>
+					<option value="1000명이상">1000명 이상</option>
+					<option value="인원 기타">기타</option>
+				</select>
+			</div>
+	</div>
+
+	<!-- 행사 설명 -->   
+	<div class="fs-4 fw-bold mt-5">행사 설명</div>
+		<div class="form-floating">
+			<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"></textarea>
+			<label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
+		</div>
+	</div>
    
 
-<!-- 참고자료  -->
-   <div class="container">
-   <div class="fs-5 fw-bold">참고 자료</div>
-   <div class="form-group">
-      <input class="form-control" type="file" id="formFile" name="file">
-    <hr/>
-    </div>
+	<!-- 참고자료  -->
+	<div class="container">
+		<div class="fs-4 fw-bold mt-5">참고 자료</div>
+		<div class="form-group">
+			<input class="form-control" type="file" id="formFile" name="file">
+		</div>
+	
+		<div class="d-grid gap-2">
+			<button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();">제출하기</button>
+		</div>
+	</div>
+</form>
 
-             <div class="d-grid gap-2">
-                <button type="button" class="btn btn-outline-secondary"  onclick="check();">제출하기</button>
-            </div>
-       </div>
-   </form>
+
+<%
+}
+%>
 
 
-     <%
-         }
-         %>
+
+
+
+<!-- 입력요구모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="moveFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
 
 
 
