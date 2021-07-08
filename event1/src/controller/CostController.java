@@ -42,7 +42,7 @@ public class CostController extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=utf-8");
 
-      System.out.println("-----CostController ½ÇÇà-----");  
+      System.out.println("-----CostController ï¿½ï¿½ï¿½ï¿½-----");  
 
       request.setCharacterEncoding("UTF-8");
 
@@ -59,16 +59,16 @@ public class CostController extends HttpServlet {
       System.out.println("str1 = " + str1[1]);
       System.out.println("str2 = " + str1[2]);
 
-      //°ßÀû½ÅÀû ÀÌµ¿ ºÎºÐ
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Îºï¿½
       if (str2.equals("EventMan_Cost.do")) {
 
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp");
          rd.forward(request, response);
       
-      //°ßÀû ÀÛ¼º º¸³»ÁÖ´Â ºÎºÐ
+      //ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Îºï¿½
       } else if (str2.equals("EventMan_Cost_Submit_Action.do")) {
 
-         System.out.println("EventMan_Cost_Submit_Action ½ÇÇà");
+         System.out.println("EventMan_Cost_Submit_Action ï¿½ï¿½ï¿½ï¿½");
          
          //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
          String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
@@ -83,17 +83,17 @@ public class CostController extends HttpServlet {
          
          String originFileName = null;
          
-         // MultipartRequest °´Ã¼»ý¼º
+         // MultipartRequest ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
          MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-         // ¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+         // ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½Nameï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Â´ï¿½
          Enumeration files = multi.getFileNames();
-         // ´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+         // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Nameï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Â´ï¿½.
          String file = (String)files.nextElement();
             System.out.println("file = "+file);
-         //ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+         //ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
          fileName = multi.getFilesystemName(file); 
             System.out.println("fileName = "+fileName);
-         //¿ø·¡ÆÄÀÏ ÀÌ¸§
+         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
          originFileName = multi.getOriginalFileName(file);
             System.out.println("originFileName = "+originFileName);
          String ThumbnailFileName = null;
@@ -103,20 +103,20 @@ public class CostController extends HttpServlet {
             } catch (Exception e) {
                e.printStackTrace();
             }
-         String cName = multi.getParameter("cName"); // °ßÀû ÀÌ¸§
-         String cSdate = multi.getParameter("cSdate"); // ½ÃÀÛÀÏ
-         String cEdate = multi.getParameter("cEdate"); // Á¾·áÀÏ
-         String cWday = multi.getParameter("cWday"); // ÀÛ¼º³¯ sysdate ·Î ¹ÞÀ½
+         String cName = multi.getParameter("cName"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+         String cSdate = multi.getParameter("cSdate"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+         String cEdate = multi.getParameter("cEdate"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+         String cWday = multi.getParameter("cWday"); // ï¿½Û¼ï¿½ï¿½ï¿½ sysdate ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
          
-         String cText = multi.getParameter("cText"); // ³»¿ë
-         String cFile2 = multi.getParameter("cFile"); // °ßÀû ÀÚ·á
-         String cLoca = multi.getParameter("cLoca"); // Áö¿ª
-         String cTarget = multi.getParameter("cTarget"); // Âü¿©´ë»ó
-         String cMethod = multi.getParameter("cMethod"); // Âü¿©¹æ½Ä
-         String cPrice = multi.getParameter("cPrice"); // ¿¹»ê
-         String cPeople = multi.getParameter("cPeople"); // Âü¿©ÀÎ¿ø
-         String midx = multi.getParameter("midx"); // midx È¸¿ø¹øÈ£
-         String[] cCata = multi.getParameterValues("cCata"); // Ä«Å×°í¸®
+         String cText = multi.getParameter("cText"); // ï¿½ï¿½ï¿½ï¿½
+         String cFile2 = multi.getParameter("cFile"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½
+         String cLoca = multi.getParameter("cLoca"); // ï¿½ï¿½ï¿½ï¿½
+         String cTarget = multi.getParameter("cTarget"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+         String cMethod = multi.getParameter("cMethod"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+         String cPrice = multi.getParameter("cPrice"); // ï¿½ï¿½ï¿½ï¿½
+         String cPeople = multi.getParameter("cPeople"); // ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½
+         String midx = multi.getParameter("midx"); // midx È¸ï¿½ï¿½ï¿½ï¿½È£
+         String[] cCata = multi.getParameterValues("cCata"); // Ä«ï¿½×°ï¿½
          
          String totalCCata ="";
          for(int i=0; i<cCata.length;i++) {
@@ -131,7 +131,7 @@ public class CostController extends HttpServlet {
           */
          System.out.println("test");
 
-         CostServiceImpl costdao = new CostServiceImpl(); // °´Ã¼ »ý¼º
+         CostServiceImpl costdao = new CostServiceImpl(); // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
          int value = costdao.costInsert(cName, cSdate, cEdate, cWday, totalCCata, cText, fileName, cLoca, cTarget, cMethod,
                cPrice, cPeople, midx);
 
@@ -143,10 +143,10 @@ public class CostController extends HttpServlet {
             }
          
          
-         /*   ¸¶ÀÌÆäÀÌÁö °ßÀû ¸®½ºÆ® È­¸é   */         
+         /*   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® È­ï¿½ï¿½   */         
          }else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
 
-            System.out.println("EventMan_Mypage_MyCostlist.do if¹®");
+            System.out.println("EventMan_Mypage_MyCostlist.do ifï¿½ï¿½");
             
             String midx = request.getParameter("midx");
             
@@ -159,13 +159,13 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
             rd.forward(request, response);
-         //¿Ï·á 
+         //ï¿½Ï·ï¿½ 
          
          
-         //¸¶ÀÌÆäÀÌÁö °ßÀû »ó¼¼º¸±â
+         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
          }else if(str2.equals("EventMan_Mypage_MyCostDetail.do")) {
             
-            System.out.println("EventMan_Mypage_MyCostlistDetail.do if¹®");
+            System.out.println("EventMan_Mypage_MyCostlistDetail.do ifï¿½ï¿½");
             
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
@@ -179,9 +179,9 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
             rd.forward(request, response);         
-            //¿Ï·á
+            //ï¿½Ï·ï¿½
             
-         /*  °ßÀû½ÅÃ» ¼öÁ¤ È­¸é ÀÌµ¿ */
+         /*  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½Ìµï¿½ */
          }else if(str2.equals("EventMan_Mypage_MyCostModify.do")) {
             
             System.out.println("EventMan_Mypage_MyCostModify");
@@ -196,7 +196,7 @@ public class CostController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostModify.jsp");
             rd.forward(request, response);
             
-         /* °ßÀû½ÅÃ» »èÁ¦ ¾×¼Ç */
+         /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ ï¿½×¼ï¿½ */
          }else if(str2.equals("EventMan_Mypage_MyCostDelete.do")) {
             
             int value=0;
@@ -211,24 +211,24 @@ public class CostController extends HttpServlet {
             
             response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
             
-         /*°ßÀû ¼öÁ¤ ºÎºÐ*/
+         /*ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½*/
          }else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
             
-            String cName = request.getParameter("cName"); // °ßÀû ÀÌ¸§
-            String cSdate = request.getParameter("cSdate"); // ½ÃÀÛÀÏ
-            String cEdate = request.getParameter("cEdate"); // Á¾·áÀÏ
-            String cText = request.getParameter("cText"); // ³»¿ë
-            String cFile2 = request.getParameter("cFile2"); // °ßÀû ÀÚ·á
-            String cLoca = request.getParameter("cLoca"); // Áö¿ª
-            String cTarget = request.getParameter("cTarget"); // Âü¿©´ë»ó
-            String cMethod = request.getParameter("cMethod"); // Âü¿©¹æ½Ä
-            String cPrice = request.getParameter("cPrice"); // ¿¹»ê
-            String cPeople = request.getParameter("cPeople"); // Âü¿©ÀÎ¿ø
+            String cName = request.getParameter("cName"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+            String cSdate = request.getParameter("cSdate"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            String cEdate = request.getParameter("cEdate"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            String cText = request.getParameter("cText"); // ï¿½ï¿½ï¿½ï¿½
+            String cFile2 = request.getParameter("cFile2"); // ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½
+            String cLoca = request.getParameter("cLoca"); // ï¿½ï¿½ï¿½ï¿½
+            String cTarget = request.getParameter("cTarget"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            String cMethod = request.getParameter("cMethod"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            String cPrice = request.getParameter("cPrice"); // ï¿½ï¿½ï¿½ï¿½
+            String cPeople = request.getParameter("cPeople"); // ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½
 
             int midx = Integer.parseInt(request.getParameter("midx"));
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
-            String[] cCata = request.getParameterValues("cCata"); // Ä«Å×°í¸®
+            String[] cCata = request.getParameterValues("cCata"); // Ä«ï¿½×°ï¿½
             
             String totalCCata ="";
             for(int i=0; i<cCata.length;i++) {
@@ -236,14 +236,14 @@ public class CostController extends HttpServlet {
             }
             
             System.out.println("totalCCata:"+totalCCata);
-            CostServiceImpl costdao = new CostServiceImpl(); // °´Ã¼ »ý¼º
+            CostServiceImpl costdao = new CostServiceImpl(); // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
             int value = costdao.costModifyAction(cName, cSdate, cEdate ,totalCCata, cText, cFile2, cLoca, cTarget, cMethod,cPrice, cPeople, cidx);
 
             if(value >=0) {
                response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
 
             } else {
-               System.out.println("¼öÁ¤ ½ÇÆÐ!");
+               System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
                }
          }
    }
@@ -256,20 +256,20 @@ public class CostController extends HttpServlet {
 
    private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 
-      // ¿Ã¸° ¼Ò½ºÆÄÀÏÀ» ÀÐ¾îµå¸°´Ù
+      // ï¿½Ã¸ï¿½ ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½å¸°ï¿½ï¿½
       BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path + File.separator + fileName));
-      // ÀÌ¹ÌÁö¸¦ ¸®»çÀÌÂ¡ÇÑ´Ù(³ôÀÌ 100¿¡ ¸ÂÃç¼­ ¿øº»ÀÌ¹ÌÁö ºñÀ²À» À¯ÁöÇÑ´Ù)
+      // ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½Ñ´ï¿½(ï¿½ï¿½ï¿½ï¿½ 100ï¿½ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½)
       BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
-      // ½æ³×ÀÏ Ç®°æ·Î
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ï¿½
       String thumbnailPath = uploadPath + path + File.separator + "s-" + fileName;
-      // ÆÄÀÏ °´Ã¼»ý¼º
+      // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
       File newFile = new File(thumbnailPath);
-      // È®ÀåÀÚ ÃßÃâ
+      // È®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
       String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-      // ½æ³×ÀÏ ÀÌ¹ÌÁö ¸¸µé±â(¸®»çÀÌÂ¡ÇÑ ÀÌ¹ÌÁö¸¦ ÇØ´ç ÀÌ¹ÌÁöÇü½ÄÀ¸·Î ÇØ´ç À§Ä¡¿¡ ÆÄÀÏ °´Ã¼»ý¼ºÇÑ´Ù)
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½)
       ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 
-      // ½æ³×ÀÏ ÆÄÀÏ ÀÌ¸§ ÃßÃâ
+      // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
       return thumbnailPath.substring((uploadPath + path).length()).replace(File.separatorChar, ' ');
    }
 
