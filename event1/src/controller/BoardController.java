@@ -26,6 +26,7 @@ import service.CostServiceImpl;
 import service.EventAskServiceImpl;
 import service.MasterServiceImpl;
 import vo.EvBoardAskVo;
+import vo.EvCostVo;
 import vo.EvMemberVo;
 
 
@@ -62,7 +63,7 @@ public class BoardController extends HttpServlet {
 		System.out.println("");
 		
 
-		
+			//게시판 보기 및 게시글 뿌려주기
 		if(str2.equals("EventMan_Board.do")) {	
 			 		 
 			System.out.println("게시판 리스트 뿌려주기");
@@ -76,6 +77,23 @@ public class BoardController extends HttpServlet {
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
 			
+			//게시글 상세보기
+         }else if(str2.equals("EventMan_Board_Detail.do")) {
+            
+            System.out.println("EventMan_Mypage_MyCostlistDetail.do if문");
+            
+            int bidx = Integer.parseInt(request.getParameter("bidx"));
+            
+            BoardServiceImpl boarddao = new BoardServiceImpl();
+            
+            EvBoardAskVo bovo = new EvBoardAskVo();
+            
+            bovo = boarddao.boardlistselectone(bidx);
+            
+            request.setAttribute("bovo", bovo);
+            
+            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Detail.jsp");
+            rd.forward(request, response);         
 			//게시판 글 작성
 		}else if(str2.equals("EventMan_BoardWrite.do")){
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
@@ -86,8 +104,8 @@ public class BoardController extends HttpServlet {
 				
 				//업로드 파일 경로		
 				//나중에 웹서버로 공통된 경로로 올리게 된다.
-				String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-				//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+				//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+				String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
 				//저장 폴더
 				String savedPath = "Advice_img";
 				
@@ -164,8 +182,8 @@ public class BoardController extends HttpServlet {
 			
 			//업로드 파일 경로		
 			//나중에 웹서버로 공통된 경로로 올리게 된다.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
 			//저장 폴더
 			String savedPath = "Advice_img";
 			

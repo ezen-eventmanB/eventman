@@ -23,30 +23,6 @@ public class BoardServiceImpl {
 
 	}
 
-	/*
-	 * 게시판 관리자 작성 글 리스트 출력 하기 public ArrayList selectMasterboardlist(String gidx) {
-	 * 
-	 * ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-	 * 
-	 * String sql
-	 * ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname "
-	 * +"from " +"EVE_BOARD B, EVE_MASTER G "
-	 * +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; try{
-	 * pstmt = conn.prepareStatement(sql); pstmt.setString(1, gidx); ResultSet rs=
-	 * pstmt.executeQuery();
-	 * 
-	 * while(rs.next()) {
-	 * 
-	 * EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
-	 * bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
-	 * bv.setBwriteday(rs.getString("bwriteday"));
-	 * bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
-	 * 
-	 * alistboard.add(bv); } } catch (SQLException e) { e.printStackTrace();
-	 * }finally { try { pstmt.close(); conn.close(); } catch (SQLException e) { } }
-	 * return alistboard; }
-	 */
-
 	/* 관리자가 작성한 게시판 게시글 리스트 불러오기 */
 	public ArrayList<EvBoardAskVo> selectMasterboardlist() {
 		
@@ -62,7 +38,7 @@ public class BoardServiceImpl {
 				ebvo.setBcata(rs.getString("Bcata"));
 				ebvo.setBtitle(rs.getString("Btitle"));
 				ebvo.setBwriteday(rs.getString("Bwriteday"));
-				ebvo.setgName(rs.getString("setgName"));
+				ebvo.setgName(rs.getString("gName"));
 				ebvo.setBmenu(rs.getString("Bmenu"));
 				ebvo.setBcount(rs.getString("Bcount"));
 
@@ -80,7 +56,51 @@ public class BoardServiceImpl {
          }
          return alistboard;
       }
-
+		/*	관리자 게시판 글 작성하기	*/	
+		public int insertAdvice(String cata, String title, String content, String fileName , String midx ,String hidx) {
+	
+			System.out.println("cara"+cata);
+			System.out.println("title"+title);
+			System.out.println("content"+content);
+			System.out.println("file"+fileName);
+			System.out.println("midx"+midx);
+			System.out.println("hidx"+hidx);
+			
+			
+			
+			int value=0;
+			
+			String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL, HIDX)"
+						+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0 , ?)";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, cata);
+				pstmt.setString(2, title);
+				pstmt.setString(3, content);
+				pstmt.setString(4, fileName);
+				pstmt.setString(5, midx);
+				pstmt.setString(6, hidx);
+				
+				value=pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
+			}
+			
+			
+			return value; 
+		}
 	/* 마이페이지에서 본인이 작성한 글 리스트 불러오기 */
 	public ArrayList selectmyboardlist(String midx) {
 
@@ -128,40 +148,40 @@ public class BoardServiceImpl {
 
 		System.out.println("boardlistselectone 게시글 상세보기 메소드");
 
-		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
+		String sql = "select * " 
+				+ "from EVE_BOARD B , EVE_MEMBER M "
+				+ "where B.midx = M.midx " 
+				+ "and B.bidx=?";
 
-		EvBoardAskVo bavo = new EvBoardAskVo();
+		EvBoardAskVo bovo = new EvBoardAskVo();
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bidx);
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				bavo.setBidx(rs.getInt("bidx"));
-				bavo.setBcata(rs.getString("bcata"));
-				bavo.setBtitle(rs.getString("btitle"));
-				bavo.setBwriteday(rs.getString("bwriteday"));
-				bavo.setBname(rs.getString("mname"));
-				bavo.setBcount(rs.getString("bcount"));
-				bavo.setBcontents(rs.getString("bcontents"));
-				bavo.setBfile(rs.getString("bfile"));
+				bovo.setBidx(rs.getInt("bidx"));
+				bovo.setBcata(rs.getString("bcata"));
+				bovo.setBtitle(rs.getString("btitle"));
+				bovo.setBwriteday(rs.getString("bwriteday"));
+				bovo.setBname(rs.getString("mname"));
+				bovo.setBcount(rs.getString("bcount"));
+				bovo.setBcontents(rs.getString("bcontents"));
+				bovo.setBfile(rs.getString("bfile"));
 			}
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
-		return bavo;
+		return bovo;
 	}
 
 	/* 마이페이지 게시글 수정하기 페이지로 이동 . */
