@@ -23,7 +23,7 @@ public class ReviewServiceImpl {
 	}
 	
 
-/*	¸®ºä ¸ŞÀÎ ÆäÀÌÁö ÀüÃ¼ ¿¤¹ü »Ñ¸®±â	*/
+/*	ë¦¬ë·° ë©”ì¸ í˜ì´ì§€ ì „ì²´ ì—˜ë²” ë¿Œë¦¬ê¸°	*/
 	public ArrayList<EvReviewVo> reviewSelectAll(int page){
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
@@ -74,14 +74,14 @@ public class ReviewServiceImpl {
 	}
 
 	
-/*	Áß°£ ³×ºñ ±â¾÷Çà»ç¸¸ º¸±â	*/
+/*	ì¤‘ê°„ ë„¤ë¹„ ê¸°ì—…í–‰ì‚¬ë§Œ ë³´ê¸°	*/
 	public ArrayList<EvReviewVo> reviewSelectCompany(int page) {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
 		String sql =  "select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '±â¾÷' ORDER BY hidx DESC) A "
+				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like 'ê¸°ì—…' ORDER BY hidx DESC) A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
@@ -125,14 +125,14 @@ public class ReviewServiceImpl {
 	}
 
 	
-/*	Áß°£ ³×ºñ ´ëÇĞ Å¬¸¯½Ã ajax	*/	
+/*	ì¤‘ê°„ ë„¤ë¹„ ëŒ€í•™ í´ë¦­ì‹œ ajax	*/	
 	public ArrayList<EvReviewVo> reviewSelectUniversity(int page) {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
 		String sql = "select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '´ëÇĞ' ORDER BY hidx DESC) A "
+				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like 'ëŒ€í•™' ORDER BY hidx DESC) A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
@@ -176,14 +176,14 @@ public class ReviewServiceImpl {
 	}
 	
 	
-/*	Áß°£ ³×ºñ °ø¿¬ Å¬¸¯½Ã ajax	*/	
+/*	ì¤‘ê°„ ë„¤ë¹„ ê³µì—° í´ë¦­ì‹œ ajax	*/	
 	public ArrayList<EvReviewVo> reviewSelectStage(int page) {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
 		String sql = "select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '°ø¿¬' or hcata like '¿¹¼ú' ORDER BY hidx DESC) A "
+				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like 'ê³µì—°' or hcata like 'ì˜ˆìˆ ' ORDER BY hidx DESC) A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
@@ -227,14 +227,14 @@ public class ReviewServiceImpl {
 	}
 	
 	
-/*	Áß°£ ³×ºñ ±âÅ¸ Å¬¸¯½Ã ajax	*/	
+/*	ì¤‘ê°„ ë„¤ë¹„ ê¸°íƒ€ í´ë¦­ì‹œ ajax	*/	
 	public ArrayList<EvReviewVo> reviewSelectxEeption(int page) {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
 		String sql = "select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '±âÅ¸' ORDER BY hidx DESC) A "
+				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like 'ê¸°íƒ€' ORDER BY hidx DESC) A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
@@ -278,10 +278,10 @@ public class ReviewServiceImpl {
 	}
 	
 
-/*	¸®ºä »ó¼¼º¸±â   */
+/*	ë¦¬ë·° ìƒì„¸ë³´ê¸°   */
 	public EvReviewVo reviewSelectOne(int hidx){
 		
-		System.out.println("reviewSelectOne ¸Ş¼Òµå È£Ãâ ¼º°ø");
+		System.out.println("reviewSelectOne ë©”ì†Œë“œ í˜¸ì¶œ ì„±ê³µ");
 		
 		String sql = "select * from EVE_REVIEW where hdelYn='N' and hidx=?";
 
@@ -331,17 +331,17 @@ public class ReviewServiceImpl {
 	}
 
 
-/*	SELECT ¹Ú½º ¼±ÅÃ½Ã	*/
+/*	SELECT ë°•ìŠ¤ ì„ íƒì‹œ	*/
 	public ArrayList<EvReviewVo> selecBoxCata(String val1, String val2, int page) {
 		
 		String value1 = val1;
 		String value2 = val2;
 		
 
-		if(value1.equals("¿¹»ê")) {
+		if(value1.equals("ì˜ˆì‚°")) {
 			value1=" ";
 		}
-		if(value2.equals("ÀÎ¿ø")){
+		if(value2.equals("ì¸ì›")){
 			value2=" ";
 		}
 		
@@ -394,7 +394,7 @@ public class ReviewServiceImpl {
 	}
 
 
-/* reivew °Ë»ö ±â´É*/
+/* reivew ê²€ìƒ‰ ê¸°ëŠ¥*/
 	public ArrayList<EvReviewVo> reviewSearch(String val1, String val2, String val3,int page) {
 		
 		
@@ -402,10 +402,10 @@ public class ReviewServiceImpl {
 		String value2 = val2;
 		String value3 = val3;
 
-		if(value1.equals("¿¹»ê")) {
+		if(value1.equals("ì˜ˆì‚°")) {
 			value1=" ";
 		}
-		if(value2.equals("ÀÎ¿ø")){
+		if(value2.equals("ì¸ì›")){
 			value2=" ";
 		}
 
@@ -462,7 +462,7 @@ public class ReviewServiceImpl {
 		return alist;
 	}
 	
-/* ¸®ºäÀÇ ÀüÃ¼ Ä«¿îÆ® ±¸ÇÏ±â*/		
+/* ë¦¬ë·°ì˜ ì „ì²´ ì¹´ìš´íŠ¸ êµ¬í•˜ê¸°*/		
 	public int boardTotalCount(String cata) {
 		
 		int cnt=0;
@@ -473,10 +473,10 @@ public class ReviewServiceImpl {
 		
 		cata1=cata;
 		
-		if(cata.equals("ÀüÃ¼")) {
+		if(cata.equals("ì „ì²´")) {
 			cata1 = "%%";
-		}else if(cata.equals("°ø¿¬")){
-			sql = "select count(*) as cnt from EVE_REVIEW where hdelyn='N' and hcata like ? or hcata like '¿¹¼ú'";
+		}else if(cata.equals("ê³µì—°")){
+			sql = "select count(*) as cnt from EVE_REVIEW where hdelyn='N' and hcata like ? or hcata like 'ì˜ˆìˆ '";
 		}
 		
 		try {

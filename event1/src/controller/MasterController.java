@@ -45,7 +45,7 @@ public class MasterController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		System.out.println("-----MasterController ½ÇÇà-----");
+		System.out.println("-----MasterController ì‹¤í–‰-----");
 		
 		
 		request.setCharacterEncoding("UTF-8");
@@ -64,28 +64,28 @@ public class MasterController extends HttpServlet {
 		System.out.println("str2 = "+str1[2]);	
 		
 		
-/*	È¸»ç ¼Ò°³	 */		
+/*	íšŒì‚¬ ì†Œê°œ	 */		
 		if(str2.equals("EventMan_Company_Main.do")) {
 			
-			System.out.println("-----EventMan_Company_Main.do ½ÇÇà-----");
+			System.out.println("-----EventMan_Company_Main.do ì‹¤í–‰-----");
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp"); 	
 			rd.forward(request, response);
 			
 			
-/*	master main ÆäÀÌÁö·Î ÀÌµ¿	*/			
+/*	master main í˜ì´ì§€ë¡œ ì´ë™	*/			
 		}else if(str2.equals("EventMan_Master_Mainpage.do")) {
 			
-			System.out.println("-----EventMan_Master_Mainpage.do ½ÇÇà-----");
+			System.out.println("-----EventMan_Master_Mainpage.do ì‹¤í–‰-----");
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp"); 	
 			rd.forward(request, response);
 			
 			
-/*	Çà»ç ¸®ºä ÀÛ¼º ÆäÀÌÁö·Î ÀÌµ¿	*/
+/*	í–‰ì‚¬ ë¦¬ë·° ì‘ì„± í˜ì´ì§€ë¡œ ì´ë™	*/
 		}else if(str2.equals("EventMan_Review_Write.do")) {
 			
-			System.out.println("-----EventMan_Review_Write.do ½ÇÇà-----");
+			System.out.println("-----EventMan_Review_Write.do ì‹¤í–‰-----");
 			
 			int gidx = Integer.parseInt( request.getParameter("gidx"));
 			request.setAttribute("gidx", gidx);
@@ -94,15 +94,15 @@ public class MasterController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-/* °Ô½ÃÆÇ °ü¸®ÀÚ °Ô½Ã±Û ÀÛ¼º ÆäÀÌÁö ÀÌµ¿*/			
+/* ê²Œì‹œíŒ ê´€ë¦¬ì ê²Œì‹œê¸€ ì‘ì„± í˜ì´ì§€ ì´ë™*/			
 		}else if(str2.equals("EventMan_Master_BoardWrite.do")) {
 								
-			System.out.println("°Ô½ÃÆÇ ±Û ÀÛ¼º ÆäÀÌÁö ÀÌµ¿");
+			System.out.println("ê²Œì‹œíŒ ê¸€ ì‘ì„± í˜ì´ì§€ ì´ë™");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);	
 			
-/* °ü¸®ÀÚ È¸¿ø °ü¸® ÆäÀÌÁö ÀÌµ¿*/			
+/* ê´€ë¦¬ì íšŒì› ê´€ë¦¬ í˜ì´ì§€ ì´ë™*/			
 		}else if(str2.equals("EventMan_Master_Modify.do")) {
 								
 			MasterServiceImpl mdao = new MasterServiceImpl();
@@ -114,20 +114,20 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");
 			rd.forward(request, response);				
 			
-/*	Çà»ç ¸®ºä ÀÛ¼º ACTION*/			
+/*	í–‰ì‚¬ ë¦¬ë·° ì‘ì„± ACTION*/			
 		}else if(str2.equals("EventMan_Review_Write_Action.do")) {
 			
-			System.out.println("-----EventMan_Review_Write_Action.do ½ÇÇà-----");
+			System.out.println("-----EventMan_Review_Write_Action.do ì‹¤í–‰-----");
 			
 			
-			//¾÷·Îµå ÆÄÀÏ °æ·Î		
-			//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
+			//ì—…ë¡œë“œ íŒŒì¼ ê²½ë¡œ		
+			//ë‚˜ì¤‘ì— ì›¹ì„œë²„ë¡œ ê³µí†µëœ ê²½ë¡œë¡œ ì˜¬ë¦¬ê²Œ ëœë‹¤.
 			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
 			
-			//ÀúÀå Æú´õ
+			//ì €ì¥ í´ë”
 			String savedPath = "Advice_img";
 			
-			//ÀúÀåµÈ ÃÑ °æ·Î
+			//ì €ì¥ëœ ì´ ê²½ë¡œ
 			String saveFullPath = uploadPath + savedPath;
 			
 			int sizeLimit = 1024*1024*15;
@@ -135,22 +135,22 @@ public class MasterController extends HttpServlet {
 			String originFileName = null;
 				System.out.println("saveFullPath = "+saveFullPath);
 			
-			//MultipartRequest °´Ã¼»ı¼º
+			//MultipartRequest ê°ì²´ìƒì„±
 			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
-			//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+			//ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
 			Enumeration files = multi.getFileNames();
 				System.out.println("files = "+files);
 				
-			//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+			//ë‹´ê¸´ íŒŒì¼ ê°ì²´ì˜ Nameê°’ì„ ë‹´ëŠ”ë‹¤.
 			String file = (String)files.nextElement();
 				System.out.println("file = "+file);
 			
-			//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+			//ì €ì¥ë˜ëŠ” íŒŒì¼ì´ë¦„
 			fileName = multi.getFilesystemName(file); 
 				System.out.println("fileName = "+fileName);
 		
-			//¿ø·¡ÆÄÀÏ ÀÌ¸§
+			//ì›ë˜íŒŒì¼ ì´ë¦„
 			originFileName = multi.getOriginalFileName(file);
 			
 				System.out.println("originFileName = "+originFileName);
@@ -192,10 +192,10 @@ public class MasterController extends HttpServlet {
 				rd.forward(request, response);
 			}
 			
-/*	Çà»ç ¸®ºä »èÁ¦	action	*/			
+/*	í–‰ì‚¬ ë¦¬ë·° ì‚­ì œ	action	*/			
 		}else if(str2.equals("EventMan_ReviewDelete.do")) {
 
-			System.out.println("-----EventMan_ReviewDelete.do ½ÇÇà-----");
+			System.out.println("-----EventMan_ReviewDelete.do ì‹¤í–‰-----");
 			
 			int value=0;
 			
@@ -206,13 +206,13 @@ public class MasterController extends HttpServlet {
 			MasterServiceImpl mdao = new MasterServiceImpl();
 			value = mdao.reviewDelete(hidx);
 
-			System.out.println("ÀÌµ¿¸¸ÇÏ¸éµÈ´Ù.");
+			System.out.println("ì´ë™ë§Œí•˜ë©´ëœë‹¤.");
 			
 			if(value == 1) {
 				
 				response.setContentType("text/html; charset=euc-kr");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('ÇØ´ç±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.'); </script>");
+				out.println("<script>alert('í•´ë‹¹ê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.'); </script>");
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
 				rd.forward(request, response);
@@ -222,10 +222,10 @@ public class MasterController extends HttpServlet {
 			}
 			
 
-/*	Çà»ç¸®ºä ¼öÁ¤ È­¸éÀÌµ¿	*/			
+/*	í–‰ì‚¬ë¦¬ë·° ìˆ˜ì • í™”ë©´ì´ë™	*/			
 		}else if(str2.equals("EventMan_ReviewModify.do")) {
 
-			System.out.println("-----EventMan_ReviewModify.do ½ÇÇà-----");
+			System.out.println("-----EventMan_ReviewModify.do ì‹¤í–‰-----");
 			
 			int hidx = Integer.parseInt( request.getParameter("hidx"));
 			EvReviewVo erv = new EvReviewVo();
@@ -238,10 +238,10 @@ public class MasterController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-/*	Çà»ç¸®ºä±Û ¼öÁ¤ÇÏ±â action*/			
+/*	í–‰ì‚¬ë¦¬ë·°ê¸€ ìˆ˜ì •í•˜ê¸° action*/			
 		}else if(str2.equals("EventMan_ReviewModifyAction.do")) {
 
-			System.out.println("-----EventMan_ReviewModify.do ½ÇÇà-----");
+			System.out.println("-----EventMan_ReviewModify.do ì‹¤í–‰-----");
 			
 			int value=0;
 			
@@ -264,7 +264,7 @@ public class MasterController extends HttpServlet {
 			MasterServiceImpl mdao = new MasterServiceImpl();
 			value = mdao.modifyAction(hidx,file,cata,hloca,startdate,enddate,price,people,target,staff,company,title,content);
 			
-			System.out.println("Çà»ç¸®ºä¼öÁ¤ÇÏ±â value : "+value);
+			System.out.println("í–‰ì‚¬ë¦¬ë·°ìˆ˜ì •í•˜ê¸° value : "+value);
 			
 			 response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Detail.do?hidx="+hidx);
 				/*
@@ -287,20 +287,20 @@ public class MasterController extends HttpServlet {
 	
 	private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
 		
-		//¿Ã¸° ¼Ò½ºÆÄÀÏÀ» ÀĞ¾îµå¸°´Ù
+		//ì˜¬ë¦° ì†ŒìŠ¤íŒŒì¼ì„ ì½ì–´ë“œë¦°ë‹¤
 		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path+File.separator+fileName));
-		//ÀÌ¹ÌÁö¸¦ ¸®»çÀÌÂ¡ÇÑ´Ù(³ôÀÌ 100¿¡ ¸ÂÃç¼­ ¿øº»ÀÌ¹ÌÁö ºñÀ²À» À¯ÁöÇÑ´Ù)
+		//ì´ë¯¸ì§€ë¥¼ ë¦¬ì‚¬ì´ì§•í•œë‹¤(ë†’ì´ 100ì— ë§ì¶°ì„œ ì›ë³¸ì´ë¯¸ì§€ ë¹„ìœ¨ì„ ìœ ì§€í•œë‹¤)
 		BufferedImage destImg = Scalr.resize(sourceImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
-		//½æ³×ÀÏ Ç®°æ·Î
+		//ì¸ë„¤ì¼ í’€ê²½ë¡œ
 		String thumbnailPath = uploadPath + path + File.separator + "s-"+fileName;
-		//ÆÄÀÏ °´Ã¼»ı¼º
+		//íŒŒì¼ ê°ì²´ìƒì„±
 		File newFile = new File(thumbnailPath);
-		//È®ÀåÀÚ ÃßÃâ
+		//í™•ì¥ì ì¶”ì¶œ
 		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-		//½æ³×ÀÏ ÀÌ¹ÌÁö ¸¸µé±â(¸®»çÀÌÂ¡ÇÑ ÀÌ¹ÌÁö¸¦ ÇØ´ç ÀÌ¹ÌÁöÇü½ÄÀ¸·Î ÇØ´ç À§Ä¡¿¡ ÆÄÀÏ °´Ã¼»ı¼ºÇÑ´Ù)
+		//ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë§Œë“¤ê¸°(ë¦¬ì‚¬ì´ì§•í•œ ì´ë¯¸ì§€ë¥¼ í•´ë‹¹ ì´ë¯¸ì§€í˜•ì‹ìœ¼ë¡œ í•´ë‹¹ ìœ„ì¹˜ì— íŒŒì¼ ê°ì²´ìƒì„±í•œë‹¤)
 		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 		
-		//½æ³×ÀÏ ÆÄÀÏ ÀÌ¸§ ÃßÃâ
+		//ì¸ë„¤ì¼ íŒŒì¼ ì´ë¦„ ì¶”ì¶œ
 		return thumbnailPath.substring((uploadPath+path).length()).replace(File.separatorChar, ' ');
 	}
 }

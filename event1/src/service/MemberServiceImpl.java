@@ -10,22 +10,22 @@ import vo.EvMemberVo;
 
 public class MemberServiceImpl {
 
-	private PreparedStatement pstmt; // Äõ¸®¹® ´ë±â ¹× ¼³Á¤
-	private Connection conn; // ÀÚ¹Ù¿Í µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á
-	private ResultSet rs; // °á°ú°ª ¹Ş¾Æ¿À±â
+	private PreparedStatement pstmt; // ì¿¼ë¦¬ë¬¸ ëŒ€ê¸° ë° ì„¤ì •
+	private Connection conn; // ìë°”ì™€ ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²°
+	private ResultSet rs; // ê²°ê³¼ê°’ ë°›ì•„ì˜¤ê¸°
 
-	/* dao¸¦ È£ÃâÇÒ¶§ »ı¼ºÀÚ¸¦ ÅëÇØ¼­ DBconnÀ» °´Ã¼¿Í ½ÃÅ°°í dbconn¾ÈÀÇ getConnection()À» È£ÃâÇÑ´Ù. */
+	/* daoë¥¼ í˜¸ì¶œí• ë•Œ ìƒì„±ìë¥¼ í†µí•´ì„œ DBconnì„ ê°ì²´ì™€ ì‹œí‚¤ê³  dbconnì•ˆì˜ getConnection()ì„ í˜¸ì¶œí•œë‹¤. */
 	public MemberServiceImpl() {
 		DBconn dbconn = new DBconn();
 		this.conn = dbconn.getConnection();
 	}
 
 	/*
-	 * ·Î±×ÀÎ Å¬¸¯½Ã Ã¼Å© Dao ¸Å¼Òµå ¾ÆÀÌµğ ºñ¹Ğ¹øÈ£ sql¿¡¼­ È®ÀÎ ÇÏ´Â dao
+	 * ë¡œê·¸ì¸ í´ë¦­ì‹œ ì²´í¬ Dao ë§¤ì†Œë“œ ì•„ì´ë”” ë¹„ë°€ë²ˆí˜¸ sqlì—ì„œ í™•ì¸ í•˜ëŠ” dao
 	 */
 
 	/*
-	 * È¸¿ø°¡ÀÔ Á¤º¸ ³Ñ°ÜÁÖ±â Dao
+	 * íšŒì›ê°€ì… ì •ë³´ ë„˜ê²¨ì£¼ê¸° Dao
 	 */
 	public int memberInsert(String mId, String mPwd, String mName, String mEmail, String mPhn, String mType) {
 		int value = 0;
@@ -42,7 +42,7 @@ public class MemberServiceImpl {
 			pstmt.setString(5, mPhn);
 			pstmt.setString(6, mType);
 			
-			//executeUpdate »ç¿ëÇÏ±â 
+			//executeUpdate ì‚¬ìš©í•˜ê¸° 
 			value=pstmt.executeUpdate();
 			
 			
@@ -61,7 +61,7 @@ public class MemberServiceImpl {
 
 	
 	/*
-	 * ·Î±×ÀÎ È®ÀÎ È­¸é
+	 * ë¡œê·¸ì¸ í™•ì¸ í™”ë©´
 	 */
 	public String memberLoginCheck(String memberId, String memberPwd) {
 
@@ -74,10 +74,10 @@ public class MemberServiceImpl {
 		String mastersql = "select gidx from EVE_MASTER where gId=? and gPwd=?";
 		
 		try {
-			pstmt = conn.prepareStatement(membersql); // sql Äõ¸®¹® ´ë±â
-			pstmt.setString(1, memberId); // Ã¹¹øÂ° '?' ¸Å°³º¯¼ö·Î ¹Ş¾Æ¿Â 'membeId'¸¦ ´ëÀÔ
-			pstmt.setString(2, memberPwd); // µÎ¹øÂ° '?' ¸Å°³º¯¼ö·Î ¹Ş¾Æ¿Â 'memberPwd'¸¦ ´ëÀÔ
-			ResultSet memberrs = pstmt.executeQuery(); // Äõ¸®¸¦ ½ÇÇàÇÑ °á°ú¸¦ rs¿¡ ÀúÀå
+			pstmt = conn.prepareStatement(membersql); // sql ì¿¼ë¦¬ë¬¸ ëŒ€ê¸°
+			pstmt.setString(1, memberId); // ì²«ë²ˆì§¸ '?' ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ì˜¨ 'membeId'ë¥¼ ëŒ€ì…
+			pstmt.setString(2, memberPwd); // ë‘ë²ˆì§¸ '?' ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ì˜¨ 'memberPwd'ë¥¼ ëŒ€ì…
+			ResultSet memberrs = pstmt.executeQuery(); // ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•œ ê²°ê³¼ë¥¼ rsì— ì €ì¥
 			
 			if (memberrs.next()) {
 				midx = memberrs.getInt("midx");
@@ -110,16 +110,16 @@ public class MemberServiceImpl {
 			user="master/"+gidx;
 		}
 		
-		System.out.println("·Î±×ÀÎ ÇÑ »ç¶÷Àº? "+user);
+		System.out.println("ë¡œê·¸ì¸ í•œ ì‚¬ëŒì€? "+user);
 		
 		return user;
 	}
 	/*
-	 *¾ÆÀÌµğ Áßº¹ È®ÀÎ
+	 *ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 	 */
 	public String idCheck(String mid) {
 
-		System.out.println("MemberServiceImpl idCheck() ½ÇÇà");
+		System.out.println("MemberServiceImpl idCheck() ì‹¤í–‰");
 
 		String id = "";
 
@@ -133,7 +133,7 @@ public class MemberServiceImpl {
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 
-			/* ResultSetÀº if¹®À» ÅëÇØ¼­ next°¡ Á¸ÀçÇÏ¸é ¹Ş°Ú´Ù! ¸¦ ÇØÁà¾ßÇÑ´Ù. */
+			/* ResultSetì€ ifë¬¸ì„ í†µí•´ì„œ nextê°€ ì¡´ì¬í•˜ë©´ ë°›ê² ë‹¤! ë¥¼ í•´ì¤˜ì•¼í•œë‹¤. */
 			if (rs.next()) {
 
 				id = rs.getString("mid");
@@ -154,11 +154,11 @@ public class MemberServiceImpl {
 	
 	/*
 	 * 
-	 * ¾ÆÀÌµğ Ã£±â ¹öÆ° Å¬¸¯½Ã ¸Ş¼Òµå (È²ÇöÈ£)
+	 * ì•„ì´ë”” ì°¾ê¸° ë²„íŠ¼ í´ë¦­ì‹œ ë©”ì†Œë“œ (í™©í˜„í˜¸)
 	 */
 	public String findId(String name, String phone) {
 
-		System.out.println("MemberServiceImpl findId() ½ÇÇà");
+		System.out.println("MemberServiceImpl findId() ì‹¤í–‰");
 
 		String id = "";
 
@@ -174,7 +174,7 @@ public class MemberServiceImpl {
 			pstmt.setString(2, phone);
 			rs = pstmt.executeQuery();
 
-			/* ResultSetÀº if¹®À» ÅëÇØ¼­ next°¡ Á¸ÀçÇÏ¸é ¹Ş°Ú´Ù! ¸¦ ÇØÁà¾ßÇÑ´Ù. */
+			/* ResultSetì€ ifë¬¸ì„ í†µí•´ì„œ nextê°€ ì¡´ì¬í•˜ë©´ ë°›ê² ë‹¤! ë¥¼ í•´ì¤˜ì•¼í•œë‹¤. */
 			if (rs.next()) {
 				mv = new EvMemberVo();
 				mv.setmId(rs.getString("mid"));
@@ -206,7 +206,7 @@ public class MemberServiceImpl {
 			pstmt.setInt(1, midx);
 			rs = pstmt.executeQuery();
 			
-			//´ÙÀ½ ÇàÀÌ Á¸ÀçÇÏ¸é
+			//ë‹¤ìŒ í–‰ì´ ì¡´ì¬í•˜ë©´
 			if (rs.next()) {
 				mbvo = new EvMemberVo();
 				mbvo.setMidx(rs.getInt("midx"));
@@ -233,10 +233,10 @@ public class MemberServiceImpl {
 		return mbvo;
 	}
 	
-	//Á¾ºó ¸â¹ö Á¤º¸ ¼öÁ¤
+	//ì¢…ë¹ˆ ë©¤ë²„ ì •ë³´ ìˆ˜ì •
 	public int memberModify(String midx, String mPwd, String mPhn, String mEmail) {
 		int value= 0;
-					//ºñ¹Ğ¹øÈ£ , ¿¬¶ôÃ³ , ÀÌ¸ŞÀÏ
+					//ë¹„ë°€ë²ˆí˜¸ , ì—°ë½ì²˜ , ì´ë©”ì¼
 		String sql ="update Eve_member set mPwd=?, mPhn=?, mEmail=? where midx=? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -252,7 +252,7 @@ public class MemberServiceImpl {
 		
 		return value;
 	}		
-	//Á¾ºó ¸â¹ö È¸¿ø Å»ÅğÇÏ±â
+	//ì¢…ë¹ˆ ë©¤ë²„ íšŒì› íƒˆí‡´í•˜ê¸°
 	public int memberDelete(int midx, String mPwd) {
 		int value=0;
 		String sql="update Eve_member set mdelYn='Y' where midx= ? and mPwd= ?";

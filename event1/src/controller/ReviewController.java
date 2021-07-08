@@ -25,13 +25,13 @@ public class ReviewController extends HttpServlet {
         super();
    
     }
-
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		System.out.println("-----ReviewController ½ÇÇà-----");
+		System.out.println("-----ReviewController ï¿½ï¿½ï¿½ï¿½-----");
 		
 		
 		request.setCharacterEncoding("UTF-8");
@@ -50,11 +50,11 @@ public class ReviewController extends HttpServlet {
 		System.out.println("str2 = "+str1[2]);	
 
 		
-/*	Çà»ç¸®ºä ¸ÞÀÎ ÆäÀÌÁö »Ñ·ÁÁÖ´Â ºÎºÐ	*/
+/*	ï¿½ï¿½ç¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ·ï¿½ï¿½Ö´ï¿½ ï¿½Îºï¿½	*/
 		
 		if(str2.equals("EventMan_Review_Main.do")) {
 			
-			System.out.println("--if¹® =>EventMan_Review_Main.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ =>EventMan_Review_Main.do ï¿½ï¿½ï¿½ï¿½");
 			
 String page = request.getParameter("page");
 			
@@ -69,7 +69,7 @@ scri.setPage(page2);
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount("ÀüÃ¼");
+int cnt = reviewDao.boardTotalCount("ï¿½ï¿½Ã¼");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();
@@ -86,10 +86,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 	
 			
-/*	Áß°£ ³×ºñ¿¡¼­ ÀüÃ¼ Å¬¸¯½Ã Ajax	*/			
+/*	ï¿½ß°ï¿½ ï¿½×ºñ¿¡¼ï¿½ ï¿½ï¿½Ã¼ Å¬ï¿½ï¿½ï¿½ï¿½ Ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectAll.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_selectAll.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectAll.do ï¿½ï¿½ï¿½ï¿½");
 			
 String page = request.getParameter("page");
 
@@ -104,7 +104,7 @@ scri.setPage(page2);
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount("ÀüÃ¼");
+int cnt = reviewDao.boardTotalCount("ï¿½ï¿½Ã¼");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();
@@ -122,10 +122,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	Áß°£ ³×ºñ ±â¾÷ Å¬¸¯½Ã ajax	*/			
+/*	ï¿½ß°ï¿½ ï¿½×ºï¿½ ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectCompany.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_selectCompany.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectCompany.do ï¿½ï¿½ï¿½ï¿½");
 			
 			String page = request.getParameter("page");
 
@@ -140,7 +140,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 			
-			String cata="±â¾÷";
+			String cata="ï¿½ï¿½ï¿½";
 			
 			int cnt = reviewDao.boardTotalCount(cata);
 			System.out.println("cnt "+ cnt);
@@ -158,10 +158,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	Áß°£ ³×ºñ ´ëÇÐ Å¬¸¯½Ã ajax	*/			
+/*	ï¿½ß°ï¿½ ï¿½×ºï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectUniversity.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_selectUniversity.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectUniversity.do ï¿½ï¿½ï¿½ï¿½");
 			
 
 			String page = request.getParameter("page");
@@ -177,7 +177,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount("´ëÇÐ");
+			int cnt = reviewDao.boardTotalCount("ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -193,10 +193,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	Áß°£ ³×ºñ °ø¿¬¿¹¿¹¼ú Å¬¸¯½Ã ajax	*/			
+/*	ï¿½ß°ï¿½ ï¿½×ºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectStage.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_selectStage.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectStage.do ï¿½ï¿½ï¿½ï¿½");
 			
 			String page = request.getParameter("page");
 
@@ -211,7 +211,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount("°ø¿¬");
+			int cnt = reviewDao.boardTotalCount("ï¿½ï¿½ï¿½ï¿½");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -227,10 +227,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	Áß°£ ³×ºñ ±âÅ¸ Å¬¸¯½Ã ajax	*/			
+/*	ï¿½ß°ï¿½ ï¿½×ºï¿½ ï¿½ï¿½Å¸ Å¬ï¿½ï¿½ï¿½ï¿½ ajax	*/			
 		}else if(str2.equals("EventMan_Review_selectxEeption.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_selectxEeption.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectxEeption.do ï¿½ï¿½ï¿½ï¿½");
 			
 			String page = request.getParameter("page");
 
@@ -245,7 +245,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount("±âÅ¸");
+			int cnt = reviewDao.boardTotalCount("ï¿½ï¿½Å¸");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -261,14 +261,14 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 			
-/*	¸®ºä »ó¼¼º¸±â ajax*/			
+/*	ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½ ajax*/			
 		}else if(str2.equals("EventMan_Review_detail.do")) {
 			
-			System.out.println("--if¹® => ajax EventMan_Review_detail.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_detail.do ï¿½ï¿½ï¿½ï¿½");
 			
 			int hidx = Integer.parseInt(request.getParameter("hidx"));
 			
-			System.out.println("ÆÄ¸¶¹ÌÅÍ hidx = "+hidx);
+			System.out.println("ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ hidx = "+hidx);
 			
 			ReviewServiceImpl rsimpl = new ReviewServiceImpl();
 			EvReviewVo erv = rsimpl.reviewSelectOne(hidx);
@@ -279,10 +279,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 		
 			
-/*	SELECT BOX ¼±ÅÃ½Ã*/
+/*	SELECT BOX ï¿½ï¿½ï¿½Ã½ï¿½*/
 		}else if(str2.equals("EventMan_Review_selectbox.do")) {
 
-			System.out.println("--if¹® => ajax EventMan_Review_selectbox.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_selectbox.do ï¿½ï¿½ï¿½ï¿½");
 			
 			String val1 = request.getParameter("val1");
 			String val2 = request.getParameter("val2");
@@ -301,7 +301,7 @@ request.setAttribute("pm", pm);
 						
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 			
-			int cnt = reviewDao.boardTotalCount("ÀüÃ¼");
+			int cnt = reviewDao.boardTotalCount("ï¿½ï¿½Ã¼");
 			System.out.println("cnt "+ cnt);
 			
 			PageMaker pm = new PageMaker();
@@ -317,10 +317,10 @@ request.setAttribute("pm", pm);
 			rd.forward(request, response);
 			
 					
-/* SEACH BOX °Ë»ö*/				
+/* SEACH BOX ï¿½Ë»ï¿½*/				
 		}else if(str2.equals("EventMan_Review_search.do")) {
 
-			System.out.println("--if¹® => ajax EventMan_Review_search.do ½ÇÇà");
+			System.out.println("--ifï¿½ï¿½ => ajax EventMan_Review_search.do ï¿½ï¿½ï¿½ï¿½");
 			
 			String val1 = request.getParameter("val1");
 			String val2 = request.getParameter("val2");
@@ -339,7 +339,7 @@ scri.setPage(page2);
 			
 ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount("ÀüÃ¼");
+int cnt = reviewDao.boardTotalCount("ï¿½ï¿½Ã¼");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();

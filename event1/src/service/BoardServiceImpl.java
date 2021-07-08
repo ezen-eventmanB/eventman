@@ -24,7 +24,7 @@ public class BoardServiceImpl {
 	}
 
 	/*
-	 * °Ô½ÃÆÇ °ü¸®ÀÚ ÀÛ¼º ±Û ¸®½ºÆ® Ãâ·Â ÇÏ±â public ArrayList selectMasterboardlist(String gidx) {
+	 * ê²Œì‹œíŒ ê´€ë¦¬ì ì‘ì„± ê¸€ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ í•˜ê¸° public ArrayList selectMasterboardlist(String gidx) {
 	 * 
 	 * ArrayList<EvBoardAskVo> alistboard = new ArrayList();
 	 * 
@@ -47,7 +47,7 @@ public class BoardServiceImpl {
 	 * return alistboard; }
 	 */
 
-	/* °ü¸®ÀÚ°¡ ÀÛ¼ºÇÑ °Ô½ÃÆÇ °Ô½Ã±Û ¸®½ºÆ® ºÒ·¯¿À±â */
+	/* ê´€ë¦¬ìê°€ ì‘ì„±í•œ ê²Œì‹œíŒ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸° */
 	public ArrayList<EvBoardAskVo> selectMasterboardlist() {
 		
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
@@ -81,7 +81,7 @@ public class BoardServiceImpl {
          return alistboard;
       }
 
-	/* ¸¶ÀÌÆäÀÌÁö¿¡¼­ º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û ¸®½ºÆ® ºÒ·¯¿À±â */
+	/* ë§ˆì´í˜ì´ì§€ì—ì„œ ë³¸ì¸ì´ ì‘ì„±í•œ ê¸€ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸° */
 	public ArrayList selectmyboardlist(String midx) {
 
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
@@ -123,10 +123,10 @@ public class BoardServiceImpl {
 		return alistboard;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »ó¼¼º¸±â */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸° */
 	public EvBoardAskVo boardlistselectone(int bidx) {
 
-		System.out.println("boardlistselectone °Ô½Ã±Û »ó¼¼º¸±â ¸Ş¼Òµå");
+		System.out.println("boardlistselectone ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸° ë©”ì†Œë“œ");
 
 		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
 
@@ -164,7 +164,7 @@ public class BoardServiceImpl {
 		return bavo;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û ¼öÁ¤ÇÏ±â ÆäÀÌÁö·Î ÀÌµ¿ . */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìˆ˜ì •í•˜ê¸° í˜ì´ì§€ë¡œ ì´ë™ . */
 	public EvBoardAskVo boardModify(int bidx) {
 
 		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
@@ -204,7 +204,7 @@ public class BoardServiceImpl {
 
 	}
 
-	/* °Ô½ÃÆÇ ¼öÁ¤ ¾×¼Ç */
+	/* ê²Œì‹œíŒ ìˆ˜ì • ì•¡ì…˜ */
 	public int boardModifyAction(int bidx, String title, String content, String file) {
 
 		int value = 0;
@@ -236,7 +236,7 @@ public class BoardServiceImpl {
 		return value;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½ÃÆÇ ±Û ¼ö */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œíŒ ê¸€ ìˆ˜ */
 	public int boardCount(int midx) {
 		int count = 0;
 
@@ -268,10 +268,10 @@ public class BoardServiceImpl {
 		return count;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »èÁ¦ÇÏ±â */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ì‚­ì œí•˜ê¸° */
 	public int myPageBoardDelet(int bidx) {
 
-		System.out.println("myPageBoardDelet(int bidx) ÀÔ´Ï´Ù.");
+		System.out.println("myPageBoardDelet(int bidx) ì…ë‹ˆë‹¤.");
 		System.out.println(bidx);
 
 		int value = 0;
@@ -296,11 +296,11 @@ public class BoardServiceImpl {
 
 		}
 
-		System.out.println("turnµÇ´Â °ª = " + value);
+		System.out.println("turnë˜ëŠ” ê°’ = " + value);
 		return value;
 	}
 
-	/* °Ô½Ã±Û Count */
+	/* ê²Œì‹œê¸€ Count */
 	public int hitCount(int bidx) {
 
 		int value = 0;

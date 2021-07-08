@@ -36,7 +36,7 @@ public class BoardController extends HttpServlet {
     public BoardController() {
         super();
         
-       }
+       }  
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

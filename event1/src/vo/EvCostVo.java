@@ -17,8 +17,16 @@ public class EvCostVo {
 	private String CostPeople;
 	private String Ccount; 
 	private String CName;
-
+	private String realname;
+	private int CostDelYn;
+	private int midx;
 	
+	public String getRealname() {
+		return realname;
+	}
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
 	public String getCcount() {
 		return Ccount;
 	}
@@ -31,10 +39,6 @@ public class EvCostVo {
 	public void setCName(String cName) {
 		CName = cName;
 	}
-	private int CostDelYn;
-	private int midx;
-	
-	
 	public String getCostFile() {
 		return CostFile;
 	}
@@ -134,5 +138,11 @@ public class EvCostVo {
 	}
 	public void setCostWritedate(String costWritedate) {
 		CostWritedate = costWritedate;
+		
+	}
+	public String getSubWritedate() {
+		String date1 =  getCostWritedate();
+		String date2 = date1.substring(0,10);
+		return date2;
 	}
 }

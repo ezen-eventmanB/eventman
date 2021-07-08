@@ -76,7 +76,7 @@ public class MemberController extends HttpServlet {
 		}else if(str2.equals("EventMan_Member_IdCheckAction.do")) {	
 			
 			System.out.println("EventMan_Member_IdCheckAction");
-			
+			  
 			//Dao 생성 후 메소드 호출하자
 			MemberServiceImpl msdao = new MemberServiceImpl();
 			

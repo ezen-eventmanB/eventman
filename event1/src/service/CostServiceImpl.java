@@ -14,15 +14,15 @@
 	
 	public class CostServiceImpl {
 	
-	   private PreparedStatement pstmt; // Äõ¸®¹® ´ë±â ¹× ¼³Á¤
-	   private Connection conn; // ÀÚ¹Ù¿Í µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á
+	   private PreparedStatement pstmt; // ì¿¼ë¦¬ë¬¸ ëŒ€ê¸° ë° ì„¤ì •
+	   private Connection conn; // ìë°”ì™€ ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²°
 	
 	   public CostServiceImpl() {
 	      DBconn dbconn = new DBconn();
 	      this.conn = dbconn.getConnection();
 	   }  
 	   
-	   //°ßÀû½ÅÃ» °ª ³Ñ±â±â
+	   //ê²¬ì ì‹ ì²­ ê°’ ë„˜ê¸°ê¸°
 	   public int costInsert(String cName, String cSdate, String cEdate, String cWday, 
 	                     String cCata, String cText,String fileName,String cLoca,
 	                        String cTarget, String cMethod, String cPrice,String cPeople,String midx ) {
@@ -47,7 +47,7 @@
 	         String sql = "insert into EVE_COST(CIDX,CNAME,CSDATE,CSDATE2,CWDAY,CCATA,CTEXT,CFILE2,CLOCA,CTARGET,CMETHOD,CPRICE,CPEOPLE,MIDX) "
 	                  + "values(cidx_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?,?,?)";
 	         
-	         //½ÃÄö½º »ı¼º ¿Ï·á
+	         //ì‹œí€€ìŠ¤ ìƒì„± ì™„ë£Œ
 	         pstmt = conn.prepareStatement(sql);
 	         
 	         pstmt.setString(1, cName);
@@ -79,7 +79,7 @@
 	      return value;
 	   }
 	   
-	         /* ¸¶ÀÌÆäÀÌÁö¿¡¼­ º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û ¸®½ºÆ® ºÒ·¯¿À±â   */
+	         /* ë§ˆì´í˜ì´ì§€ì—ì„œ ë³¸ì¸ì´ ì‘ì„±í•œ ê¸€ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸°   */
 	         public ArrayList<EvCostVo> selectmycostlist(String midx) {
 	            
 	            ArrayList<EvCostVo> alistboard = new ArrayList();
@@ -119,7 +119,7 @@
 	            return alistboard;
 	         }
 	         
-	         /*	¸¶ÀÌÆäÀÌÁö °ßÀû½ÅÃ» ±Û ¼ö	*/
+	         /*	ë§ˆì´í˜ì´ì§€ ê²¬ì ì‹ ì²­ ê¸€ ìˆ˜	*/
 	     	public int costCount(int midx) {
 	     		int count = 0;
 	     		
@@ -149,10 +149,10 @@
 	     		return count;
 	     	}
 	
-	      /*¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »ó¼¼º¸±â*/
+	      /*ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸°*/
 	      public EvCostVo costlistselectone(int cidx) {
 	         
-	         System.out.println("costlistselectone °ßÀû½ÅÃ» »ó¼¼º¸±â");
+	         System.out.println("costlistselectone ê²¬ì ì‹ ì²­ ìƒì„¸ë³´ê¸°");
 	         
 	         String sql = "select * "
 	                  +"from EVE_COST C , EVE_MEMBER M "
@@ -169,19 +169,19 @@
 	            
 	            if(rs.next()) {
 	            	covo.setMidx(rs.getInt("midx"));
-	               covo.setCidx(rs.getInt("cidx")); //°ßÀû ¹øÈ£
-	               covo.setCostName(rs.getString("cName")); //°ßÀû ÀÌ¸§
-	               covo.setCostStartDate(rs.getString("cSdate")); //°ßÀû ½ÃÀÛ
-	               covo.setCostEndDate(rs.getString("cSdate2")); //°ßÀû Á¾·á
-	               covo.setCostWritedate(rs.getString("cWday")); //°ßÀû ÀÛ¼ºÀÏ
-	               covo.setCostCatagory(rs.getString("cCata")); //°ßÀû Ä«Å×°í¸®
-	               covo.setCostText(rs.getString("cText")); //°ßÀû ³»¿ë
-	               covo.setCostLocation(rs.getString("cLoca")); //°ßÀû Àå¼Ò
-	               covo.setCostTarget(rs.getString("cTarget")); //°ßÀû´ë»ó
-	               covo.setCostMethod(rs.getString("cMethod")); //°ßÀû ¹æ½Ä
-	               covo.setCostPrice(rs.getString("cPrice")); //°ßÀû ¿¹»ê
-	               covo.setCostPeople(rs.getString("cPeople")); //°ßÀû Âü¿©ÀÎ¿ø
-	               covo.setCostFile(rs.getString("cfile2")); //°ßÀû ½ÅÃ» ÆÄÀÏ
+	               covo.setCidx(rs.getInt("cidx")); //ê²¬ì  ë²ˆí˜¸
+	               covo.setCostName(rs.getString("cName")); //ê²¬ì  ì´ë¦„
+	               covo.setCostStartDate(rs.getString("cSdate")); //ê²¬ì  ì‹œì‘
+	               covo.setCostEndDate(rs.getString("cSdate2")); //ê²¬ì  ì¢…ë£Œ
+	               covo.setCostWritedate(rs.getString("cWday")); //ê²¬ì  ì‘ì„±ì¼
+	               covo.setCostCatagory(rs.getString("cCata")); //ê²¬ì  ì¹´í…Œê³ ë¦¬
+	               covo.setCostText(rs.getString("cText")); //ê²¬ì  ë‚´ìš©
+	               covo.setCostLocation(rs.getString("cLoca")); //ê²¬ì  ì¥ì†Œ
+	               covo.setCostTarget(rs.getString("cTarget")); //ê²¬ì ëŒ€ìƒ
+	               covo.setCostMethod(rs.getString("cMethod")); //ê²¬ì  ë°©ì‹
+	               covo.setCostPrice(rs.getString("cPrice")); //ê²¬ì  ì˜ˆì‚°
+	               covo.setCostPeople(rs.getString("cPeople")); //ê²¬ì  ì°¸ì—¬ì¸ì›
+	               covo.setCostFile(rs.getString("cfile2")); //ê²¬ì  ì‹ ì²­ íŒŒì¼
 	            }
 	            
 	         } catch (SQLException e) {
@@ -201,7 +201,7 @@
 	      }
 	      
 	      
-	      /*   ¸¶ÀÌÆäÀÌÁö °ßÀû½ÅÃ» ¼öÁ¤ÇÏ±â ÆäÀÌÁö·Î ÀÌµ¿   .*/
+	      /*   ë§ˆì´í˜ì´ì§€ ê²¬ì ì‹ ì²­ ìˆ˜ì •í•˜ê¸° í˜ì´ì§€ë¡œ ì´ë™   .*/
 	      public EvCostVo costModify(int cidx) {
 	         
 	         String sql = "select * "
@@ -246,7 +246,7 @@
 	         return covo;
 	         
 	      }
-	   /*   °ßÀû½ÅÃ» ¼öÁ¤ ¾×¼Ç   */
+	   /*   ê²¬ì ì‹ ì²­ ìˆ˜ì • ì•¡ì…˜   */
 	      public int costModifyAction(String cName, String cSdate, String cEdate,  
 	              String cCata, String cText,String cFile2,String cLoca,
 	              String cTarget, String cMethod, String cPrice,String cPeople,int cidx) {
@@ -289,7 +289,7 @@
 	         return value;
 	      }
 	      
-	      /*   °ßÀû½ÅÃ» »èÁ¦ÇÏ±â      */   
+	      /*   ê²¬ì ì‹ ì²­ ì‚­ì œí•˜ê¸°      */   
 	      
 	      public int myPageCostDelete(int cidx) {
 	    	  
@@ -315,7 +315,7 @@
 	  		return value;
 	  	}
 	      
-	      /*   °ßÀû½ÅÃ» Count   */
+	      /*   ê²¬ì ì‹ ì²­ Count   */
 	      public int hitCount(int cidx) {
 	         
 	         int value=0; 
@@ -332,4 +332,38 @@
 	         }
 	         return value;
 	      }
+	      
+	      /*ë§ˆì´í˜ì´ì§€ ê°ˆë•Œ ê²¬ì ì‹ ì²­ ëª¨ë“  ë¶€ë¶„ ì¹´ìš´íŠ¸*/
+		public int allSelectCost() {
+		
+		
+		int allcount=0;
+		
+		String sql = "select count(*) as cnt from EVE_COST";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				allcount = (rs.getInt("cnt"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return allcount;
+	}
 	}

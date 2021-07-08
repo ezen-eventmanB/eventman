@@ -34,7 +34,7 @@ public class CostController extends HttpServlet {
    public CostController() {
       super();
 
-   }
+   }  
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {

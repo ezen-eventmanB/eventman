@@ -22,7 +22,7 @@ public class MasterServiceImpl {
 	};
 	
 	
-/*	Çà»ç¸®ºä ÀÛ¼ºÇÏ±â action		*/
+/*	í–‰ì‚¬ë¦¬ë·° ì‘ì„±í•˜ê¸° action		*/
 	public int insertReview(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
 		int value = 0;
 		
@@ -63,7 +63,7 @@ public class MasterServiceImpl {
 		
 		return value;
 	}
-/*È¸¿ø Á¤º¸ Ãâ·Â ÇÏ±â*/	
+/*íšŒì› ì •ë³´ ì¶œë ¥ í•˜ê¸°*/	
 	public ArrayList<EvMemberVo> memberSelectAll(){
 		ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
 		
@@ -84,7 +84,7 @@ public class MasterServiceImpl {
 				mvo.setmType(rs.getString("mtype"));
 				mvo.setmDelYn(rs.getString("mDelYn"));
 				
-				//¾Õ¿¡°¡ vo µÚ¿¡°¡ ÄÃ·³ ÀÔ·Â ¸í
+				//ì•ì—ê°€ vo ë’¤ì—ê°€ ì»¬ëŸ¼ ì…ë ¥ ëª…
 				
 				alist.add(mvo);				
 			}			
@@ -94,7 +94,7 @@ public class MasterServiceImpl {
 		return alist;
 	}
 	
-/*	Çà»ç¸®ºä »èÁ¦ÇÏ±â	*/
+/*	í–‰ì‚¬ë¦¬ë·° ì‚­ì œí•˜ê¸°	*/
 	public int reviewDelete(int hidx) {
 		
 		
@@ -125,12 +125,12 @@ public class MasterServiceImpl {
 	}
 
 
-/*	Çà»ç ¸®ºä ¼öÁ¤ÇÏ±â	*/	
+/*	í–‰ì‚¬ ë¦¬ë·° ìˆ˜ì •í•˜ê¸°	*/	
 	public int modifyAction(int hidx, String file, String cata, String hloca, 
 							String startdate, String enddate, String price, String people, 
 							String target, String staff, String company, String title, String content) {
 		
-		System.out.println("¼öÁ¤ÇÏ±â ¿¢¼Ç ¸Ş¼Òµå ÀÔ´Ï´Ù.");
+		System.out.println("ìˆ˜ì •í•˜ê¸° ì—‘ì…˜ ë©”ì†Œë“œ ì…ë‹ˆë‹¤.");
 
 		System.out.println("hidx : "+hidx);
 		System.out.println("file : "+file);
@@ -172,7 +172,7 @@ public class MasterServiceImpl {
 			
 			value = pstmt.executeUpdate();
 			
-			System.out.println("value´Â ? "+value);
+			System.out.println("valueëŠ” ? "+value);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -188,7 +188,7 @@ public class MasterServiceImpl {
 			
 		}
 		
-		System.out.println("value´Â ? "+value);
+		System.out.println("valueëŠ” ? "+value);
 		
 		return value;
 	}

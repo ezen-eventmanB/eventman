@@ -118,7 +118,7 @@
             document.frm.submit(); 
             alert("완료."); 
 
-         }
+         };
          
       };
          function idCheck(){
