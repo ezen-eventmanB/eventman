@@ -24,7 +24,7 @@
 		</div>
 		<script type="text/javascript">
 			opener.joinform.id.value="${id}";
-		</script>	
+		</script>	  
 	</c:if>
 	
 	<div align="center">
