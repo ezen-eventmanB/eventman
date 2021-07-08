@@ -22,8 +22,11 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import service.BoardServiceImpl;
+import service.CostServiceImpl;
 import service.EventAskServiceImpl;
+import service.MasterServiceImpl;
 import vo.EvBoardAskVo;
+import vo.EvMemberVo;
 
 
 @WebServlet("/BoardController")
@@ -61,18 +64,19 @@ public class BoardController extends HttpServlet {
 
 		
 		if(str2.equals("EventMan_Board.do")) {	
-
-			 System.out.println("EventMan_Board.do문");
+			 		 
+			System.out.println("게시판 리스트 뿌려주기");
+			
+			String gidx = request.getParameter("gidx");
 			 
-			 String gidx = request.getParameter("gidx");
+			System.out.println("gidx= "+gidx);
 			 
-			 BoardServiceImpl boarddao = new BoardServiceImpl();
-			 
-			 ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl(); 
+			ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
 			 
 			 request.setAttribute("alistboard", alistboard);
 			 
-			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
 			

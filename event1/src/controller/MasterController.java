@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.imageio.ImageIO;
@@ -18,8 +19,10 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import service.EventAskServiceImpl;
+import service.MemberServiceImpl;
 import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
+import vo.EvMemberVo;
 import vo.EvReviewVo;
 
 import org.imgscalr.Scalr;
@@ -99,6 +102,22 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);	
 			
+/* 관리자 회원 관리 페이지 이동*/			
+		}else if(str2.equals("EventMan_Master_Modify.do")) {
+								
+			System.out.println("회원 관리 페이지 이동");
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			
+			System.out.println("회원 관리 페이지 이동2");
+			
+			ArrayList<EvMemberVo> alist  =  mdao.memberSelectAll();
+			
+						
+			request.setAttribute("alist", alist);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");
+			rd.forward(request, response);				
 			
 /*	행사 리뷰 작성 ACTION*/			
 		}else if(str2.equals("EventMan_Review_Write_Action.do")) {

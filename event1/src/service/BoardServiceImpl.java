@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import dbconn.DBconn;
 import vo.EvBoardAskVo;
+import vo.EvMemberVo;
 import vo.EvReviewVo;
 
 public class BoardServiceImpl {
@@ -22,37 +23,64 @@ public class BoardServiceImpl {
 
 	}
 
-	/* 게시판 관리자 작성 글 리스트 출력 하기*/
-	  public ArrayList selectMasterboardlist(String gidx) {
-		  
-		  ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-	  
-	  String sql
-	  ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname " +"from " +"EVE_BOARD B, EVE_MASTER G "
-	  +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; 
-	  try{ 
-		  pstmt = conn.prepareStatement(sql); 
-		  pstmt.setString(1, gidx); ResultSet 
-		  rs= pstmt.executeQuery();
-	  
-	  while(rs.next()) {
-	  
-	  EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
-	  bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
-	  bv.setBwriteday(rs.getString("bwriteday"));
-	  bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
-	  
-	  alistboard.add(bv);
-	  	}
-	  } catch (SQLException e) { 
-	  e.printStackTrace(); }finally { try { pstmt.close(); conn.close(); } catch
-	  (SQLException e) { 
-	  		}
-	  	}
-	  	return alistboard; 
-	  }
-	  
-	  
+	/*
+	 * 게시판 관리자 작성 글 리스트 출력 하기 public ArrayList selectMasterboardlist(String gidx) {
+	 * 
+	 * ArrayList<EvBoardAskVo> alistboard = new ArrayList();
+	 * 
+	 * String sql
+	 * ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname "
+	 * +"from " +"EVE_BOARD B, EVE_MASTER G "
+	 * +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; try{
+	 * pstmt = conn.prepareStatement(sql); pstmt.setString(1, gidx); ResultSet rs=
+	 * pstmt.executeQuery();
+	 * 
+	 * while(rs.next()) {
+	 * 
+	 * EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
+	 * bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
+	 * bv.setBwriteday(rs.getString("bwriteday"));
+	 * bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
+	 * 
+	 * alistboard.add(bv); } } catch (SQLException e) { e.printStackTrace();
+	 * }finally { try { pstmt.close(); conn.close(); } catch (SQLException e) { } }
+	 * return alistboard; }
+	 */
+
+	/* 관리자가 작성한 게시판 게시글 리스트 불러오기 */
+	public ArrayList<EvBoardAskVo> selectMasterboardlist(String gidx) {
+		
+		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
+		String sql = "select * from EVE_BOARD where gidx='1' order by bidx";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gidx);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				ebvo.setBcata(rs.getString("Bcata"));
+				ebvo.setBtitle(rs.getString("Btitle"));
+				ebvo.setBwriteday(rs.getString("Bwriteday"));
+				ebvo.setBmenu(rs.getString("Bmenu"));
+				ebvo.setBcount(rs.getString("Bcount"));
+
+				alistboard.add(ebvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+        }finally {
+            try {
+               pstmt.close();
+               conn.close();
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
+         }
+         return alistboard;
+      }
+
 	/* 마이페이지에서 본인이 작성한 글 리스트 불러오기 */
 	public ArrayList selectmyboardlist(String midx) {
 

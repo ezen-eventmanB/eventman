@@ -2,9 +2,12 @@ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dbconn.DBconn;
+import vo.EvMemberVo;
 
 public class MasterServiceImpl {
 
@@ -60,7 +63,34 @@ public class MasterServiceImpl {
 		
 		return value;
 	}
-
+/*회원 정보 출력 하기*/	
+	public ArrayList<EvMemberVo> memberSelectAll(){
+		ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
+		
+		String sql="select * from EVE_MEMBER where mDelYn='N' order by midx";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs  = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvMemberVo mvo = new EvMemberVo();
+				mvo.setMidx(rs.getInt("midx"));
+				mvo.setmId(rs.getString("mId"));
+				mvo.setmPhn(rs.getString("mPhn"));
+				mvo.setmName(rs.getString("mName"));
+				mvo.setmEmail(rs.getString("mEmail"));
+				mvo.setmDate(rs.getString("mDate"));
+				mvo.setmType(rs.getInt("mtype"));
+				mvo.setmDelYn(rs.getString("mDelYn"));
+				
+				alist.add(mvo);				
+			}			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}	
+		return alist;
+	}
 	
 /*	행사리뷰 삭제하기	*/
 	public int reviewDelete(int hidx) {
