@@ -1,6 +1,3 @@
-<<<<<<< HEAD
- 
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%
@@ -257,7 +254,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -494,4 +491,3 @@
 <!-- Bootstrap에 필요한 JS파일 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>
 </html>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git

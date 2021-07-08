@@ -38,16 +38,16 @@ function check(){
  
 
 	if(document.frm.memberId.value =="")   {
-		
 		$("#modaltext").html("아이디를 입력해주세요");
 		$("#exampleModal").modal("show");	
 		document.getlementById('memberId').focus();
-	}else if(document.frm.memberPwd.value==""){
 		
+	}else if(document.frm.memberPwd.value==""){
 		$("#modaltext").html("비밀번호를 입력해주세요");
 		$("#exampleModal").modal("show");	
 		document.getlementById('memberPwd').focus();
-	}else{                                 
+		
+	}else{             
 		document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LoginAction.do";
 		document.frm.method = "post";
 		document.frm.submit();    
@@ -56,7 +56,7 @@ function check(){
  }
 
 	
-	</script>
+</script>
 <style>
 
 /* 로그인 화면 */
@@ -114,7 +114,7 @@ function check(){
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -178,7 +178,7 @@ function check(){
 <!-- 페이지 위치 안내 -->
 	<div class="container"  id="containermargin">	
 		<!-- 집 아이콘 -->
-		<a href="../EventMan_Main/EventMan_Main.jsp">
+		<a href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
@@ -256,7 +256,7 @@ function check(){
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	       	 <span id="modaltext""></span>
+	       	 <span id="modaltext"></span>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

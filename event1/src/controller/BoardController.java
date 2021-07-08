@@ -54,16 +54,222 @@ public class BoardController extends HttpServlet {
       String[]str1 = str.split("/"); 
       String str2 = str1[2];
 
+<<<<<<< HEAD
       System.out.println("str1 = "+str1[1]);   
       System.out.println("str2 = "+str1[2]);   
       System.out.println("");
       
+=======
+		System.out.println("str1 = "+str1[1]);	
+		System.out.println("str2 = "+str1[2]);	
+		System.out.println("");
+		
 
+		
+		if(str2.equals("EventMan_Board.do")) {	
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
+<<<<<<< HEAD
       
       if(str2.equals("EventMan_Board.do")) {   
+=======
+			 System.out.println("EventMan_Board.do¹®");
+			 
+			 String gidx = request.getParameter("gidx");
+			 
+			 BoardServiceImpl boarddao = new BoardServiceImpl();
+			 
+			 ArrayList alistboard = boarddao.selectMasterboardlist(gidx);
+			 
+			 request.setAttribute("alistboard", alistboard);
+			 
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
+			rd.forward(request, response);
+			
+			//°Ô½ÃÆÇ ±Û ÀÛ¼º
+		}else if(str2.equals("EventMan_BoardWrite.do")){
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
+			rd.forward(request, response);
+		}else if(str2.equals("EventMan_BoardwriteAction.do")) {
+			
+			System.out.println("EventMan_BoardwriteAction ½ÇÇà");
+				
+				//¾÷·Îµå ÆÄÀÏ °æ·Î		
+				//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
+				String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //ÇöÈ£´Ô²¨
+				//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //¹ÚÁ¾ºó °æ·Î
+				//ÀúÀå Æú´õ
+				String savedPath = "Advice_img";
+				
+				//ÀúÀåµÈ ÃÑ °æ·Î
+				String saveFullPath = uploadPath + savedPath;
+				
+				int sizeLimit = 1024*1024*15;
+				String fileName = null;
+				String originFileName = null;
+					System.out.println("saveFullPath = "+saveFullPath);
+				
+				//MultipartRequest °´Ã¼»ı¼º
+				MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
+				//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+				Enumeration files = multi.getFileNames();
+					System.out.println("files = "+files);
+					
+				//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+				String file = (String)files.nextElement();
+					System.out.println("file = "+file);
+				
+				//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+				fileName = multi.getFilesystemName(file); 
+					System.out.println("fileName = "+fileName);
+			
+				//¿ø·¡ÆÄÀÏ ÀÌ¸§
+				originFileName = multi.getOriginalFileName(file);
+				
+					System.out.println("originFileName = "+originFileName);
+				
+				String ThumbnailFileName = null;
+						
+				try {
+					if(fileName != null)
+					ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
+				
+				String cata = multi.getParameter("cata");
+				String title = multi.getParameter("title");
+				String content = multi.getParameter("content");
+				String midx = multi.getParameter("midx");
+				String hidx = multi.getParameter("hidx");
+				
+				EventAskServiceImpl askdao = new EventAskServiceImpl();
+				int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
+				
+						
+				if(value > 0) {
+					System.out.println("¼º°ø »ó´ã½ÅÃ»±Û Àü¼Û ¼º°ø");
+					request.setAttribute("midx", midx);
+					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
+				}else {
+					System.out.println("½ÇÆĞ »ó´ã½ÅÃ»±Û Àü¼Û ½ÇÆĞ");
+					
+					PrintWriter out = response.getWriter();   
+					
+					out.println("<script>alert('»ó´ã ÀÛ¼º ½ÇÆĞ');</script>");
+				}
+				 
+				
+				
+/*	»ó´ãÇÏ±â ÆäÀÌÁö·Î ¿¬°á	*/			
+		}else if(str2.equals("EventMan_Advicewrite.do")){
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Advicewrite.jsp"); 	
+			rd.forward(request, response);	
+/*	»ó´ãÇÏ±â ÀÛ¼º ¿Ï·áÇÏ±â	*/			
+		}else if(str2.equals("EventMan_AdvicewriteAction.do")) {
+			
+		System.out.println("--if¹® EventMan_AdvicewriteAction ½ÇÇà");
+			
+			//¾÷·Îµå ÆÄÀÏ °æ·Î		
+			//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //ÇöÈ£´Ô²¨
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //¹ÚÁ¾ºó °æ·Î
+			//ÀúÀå Æú´õ
+			String savedPath = "Advice_img";
+			
+			//ÀúÀåµÈ ÃÑ °æ·Î
+			String saveFullPath = uploadPath + savedPath;
+			
+			int sizeLimit = 1024*1024*15;
+			String fileName = null;
+			String originFileName = null;
+				System.out.println("saveFullPath = "+saveFullPath);
+			
+			//MultipartRequest °´Ã¼»ı¼º
+			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
+<<<<<<< HEAD
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");    
          rd.forward(request, response);
+=======
+			//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
+			Enumeration files = multi.getFileNames();
+				System.out.println("files = "+files);
+				
+			//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
+			String file = (String)files.nextElement();
+				System.out.println("file = "+file);
+			
+			//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
+			fileName = multi.getFilesystemName(file); 
+				System.out.println("fileName = "+fileName);
+		
+			//¿ø·¡ÆÄÀÏ ÀÌ¸§
+			originFileName = multi.getOriginalFileName(file);
+			
+				System.out.println("originFileName = "+originFileName);
+			
+			String ThumbnailFileName = null;
+					
+			try {
+				if(fileName != null)
+				ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+			
+			String cata = multi.getParameter("cata");
+			String title = multi.getParameter("title");
+			String content = multi.getParameter("content");
+			String midx = multi.getParameter("midx");
+			String hidx = multi.getParameter("hidx");
+			
+			EventAskServiceImpl askdao = new EventAskServiceImpl();
+			int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
+			
+					
+			if(value > 0) {
+				System.out.println("¼º°ø »ó´ã½ÅÃ»±Û Àü¼Û ¼º°ø");
+				request.setAttribute("midx", midx);
+				response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
+			}else {
+				System.out.println("½ÇÆĞ »ó´ã½ÅÃ»±Û Àü¼Û ½ÇÆĞ");
+				
+				PrintWriter out = response.getWriter();   
+				
+				out.println("<script>alert('»ó´ã ÀÛ¼º ½ÇÆĞ');</script>");
+			}
+			
+			
+/*	¸¶ÀÌÆäÀÌÁö ¸®½ºÆ® È­¸é	*/			
+		}else if(str2.equals("EventMan_Mypage_Myboardlist.do")) {
+	
+		System.out.println("EventMan_Mypage_Myboardlist.do if¹®");
+		
+		String midx = request.getParameter("midx");
+		
+		System.out.println("midx= "+midx);
+		
+		BoardServiceImpl boarddao = new BoardServiceImpl();
+		ArrayList alistboard = boarddao.selectmyboardlist(midx);
+		
+		request.setAttribute("alistboard", alistboard);
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
+		rd.forward(request, response);
+		
+/*	¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »ó¼¼º¸±â	*/		
+		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardlistDetail.do if¹®");
+			
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
 /*   ìƒë‹´í•˜ê¸° í˜ì´ì§€ë¡œ ì—°ê²°   */         
       }else if(str2.equals("EventMan_Advicewrite.do")){
@@ -100,6 +306,7 @@ public class BoardController extends HttpServlet {
          //MultipartRequest ê°ì²´ìƒì„±
          MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
+<<<<<<< HEAD
          //ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
          Enumeration files = multi.getFileNames();
             System.out.println("files = "+files);
@@ -176,7 +383,58 @@ public class BoardController extends HttpServlet {
          int bidx = Integer.parseInt(request.getParameter("bidx"));
 
          BoardServiceImpl boarddao = new BoardServiceImpl();
+=======
+			boarddao.hitCount(bidx);
+			
+			EvBoardAskVo bavo = new EvBoardAskVo();
+			
+			bavo = boarddao.boardlistselectone(bidx);
+					
+			request.setAttribute("bavo", bavo);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);			
+			
+			
+/* °Ô½Ã±Û ¼öÁ¤ÇÏ±â·Î ÀÌµ¿	*/			
+		}else if(str2.equals("EventMan_Mypage_BoardModify.do")) {
+			
+			System.out.println("EventMan_Mypage_BoardModify.do if¹®");
+			
+			int bidx = Integer.parseInt( request.getParameter("bidx"));
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			EvBoardAskVo bavo = boarddao.boardModify(bidx);
+			
+			request.setAttribute("bavo", bavo);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyBoardModify.jsp");
+			rd.forward(request, response);
+			
+			
+/*	°Ô½Ã±Û ¼öÁ¤ÇÏ±â ¾×¼Ç	*/			
+		}else if(str2.equals("EventMan_Mypage_BoardModify_Action.do")) {
+			
+			System.out.println("EventMan_Mypage_BoardModify_Action.do if¹®");
+			
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+			String file = request.getParameter("file");
+			
+			System.out.println("bidx="+bidx);
+			System.out.println("title="+title);
+			System.out.println("content="+content);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			int value = boarddao.boardModifyAction(bidx, title, content, file);			
+			
+			System.out.println("value = "+value);
+			
+			if(value == 1) {
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
+<<<<<<< HEAD
          boarddao.hitCount(bidx);
          
          EvBoardAskVo bavo = new EvBoardAskVo();
@@ -213,6 +471,66 @@ public class BoardController extends HttpServlet {
          String title = request.getParameter("title");
          String content = request.getParameter("content");
          int bidx = Integer.parseInt(request.getParameter("bidx"));
+=======
+				request.setAttribute("bidx", bidx);
+				 
+				EvBoardAskVo bavo = new EvBoardAskVo();
+				
+				BoardServiceImpl boarddao1 = new BoardServiceImpl();
+				  
+				bavo = boarddao1.boardlistselectone(bidx);
+				  
+				request.setAttribute("bavo", bavo);
+				
+				 System.out.println("value°¡ 1ÀÔ´Ï´Ù ÆäÀÌÁö ÀÌµ¿ÇÕ´Ï´Ù.");
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+				rd.forward(request, response);
+				
+			}else {
+				System.out.println("°Ô½Ã±Û ¼öÁ¤ÈÄ »ó¼¼È­¸é ÆäÀÌÁöÀÌµ¿ ½ÇÆĞ");
+			}
+		
+/*	°Ô½Ã±Û »èÁ¦ÇÏ±â	*/			
+		}else if(str2.equals("EventMan_Mypage_MyboardDelet.do")) {
+			
+			System.out.println("EventMan_Mypage_MyboardDelet.do if¹®ÀÔ¤¤´Ù.");
+			
+			int value=0;
+			
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+			System.out.println("bidx = "+bidx);
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			
+			value = boarddao.myPageBoardDelet(bidx);
+			
+			System.out.println("¸Ş¼Òµå Ã³¸®°á°ú "+value);
+			
+			
+			if(value==1) {
+				
+				String midx = request.getParameter("midx");
+				
+				System.out.println("midx= "+midx);
+				
+				BoardServiceImpl boarddao1 = new BoardServiceImpl();
+				ArrayList alistboard = boarddao1.selectmyboardlist(midx);
+				
+				System.out.println("¼º°øÀÔ´Ï´Ù.");
+				request.setAttribute("alistboard", alistboard);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
+				rd.forward(request, response);
+			}else {
+				
+				System.out.println("½ÇÆĞÀÔ´Ï´Ù.");
+			}
+		}	
+		
+		
+	}
+	
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
          System.out.println("bidx="+bidx);
          System.out.println("title="+title);

@@ -1,8 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String member_id = (String)session.getAttribute("S_memberId");
-%> 
+ <%
+	String member_id = (String)session.getAttribute("S_memberId");
+ 
+	 int midx = 0;
+	 int gidx = 0;
+	 
+	 if (session.getAttribute("midx") != null) {
+	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
+	 }
+	out.println("세션에 담긴 아이디는?");
+	out.println(member_id);
+
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
+	
+	%>    
+	<%int costcount = (int)request.getAttribute("costcount"); %>
+	
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +47,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 <div class="container">
 	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 	
-		<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+		<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 	     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 	    </a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,36 +73,47 @@ String member_id = (String)session.getAttribute("S_memberId");
 
 		<!--로그인 전 상단 화면  -->	
 				<%
-				if(member_id == null){
-				%>
-				
-       		<ul class="navbar-nav" id="Memberbox" >	
-       			<li class="nav-item">
-          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-       			</li>
-       			<li class="nav-item"> 
-          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-       			</li>																	
-      		</ul>
-      		
-      	<!--로그인 후 상단 화면  -->
-				<%
-		      	}else{
-				%>	
-	       	<ul class="navbar-nav" id="Memberbox" >	
-	       		<li class="nav-item">
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">My page</a>
-	       		</li>
-	       		<li class="nav-item"> 
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">계정 설정</a>
-	       		</li>
-	       		<li class="nav-item"> 
-	          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-	       		</li>																			
-	      	</ul>
-		   		<%
-		   		}
-		    	%>
+						if(midx == 0 && gidx ==0){
+						%>
+						
+		       		<ul class="navbar-nav" id="Memberbox" >	
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+		       			</li>
+		       			<li class="nav-item"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+		       			</li>																	
+		      		</ul>
+		      		
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else if(midx > 0){
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				   		%>
 	    	</div>	
 		</nav>
 </div>
@@ -96,7 +125,7 @@ String member_id = (String)session.getAttribute("S_memberId");
 		<div class="col mx-auto">
 			<img class="iconimg" src="../cost.png">
 			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청<br>1 건</button>
+				<button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_AllCostList.do'">견적신청<br><%=costcount%> 건</button>
 			</div>
 		</div>
 	</div>

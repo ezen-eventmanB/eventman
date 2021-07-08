@@ -14,10 +14,11 @@
    out.println(midx);
    
    int count = (int)request.getAttribute("boardcount");
+   int count2 = (int)request.getAttribute("costcount");
    
    %>    
     
-    
+        
 <!doctype html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,13 +144,15 @@
    <div class="container" id="mypageajax">
       <div class="row justify-content-md-center">
          <div class="col-md-auto text-center px-3">
-            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="">
+            <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">
                <img src="../budget.png" alt="견적신청이미지" class="images w-100">
                <div class="text-center fw-bold texts">
-                  <span class="text-reset">견적신청<br><span>0</span>건</span>
+                 <span>견적신청<br><span><%=count2%></span>건</span>
                </div>
             </a>
          </div>
+         
+         
          <div class="col-md-auto text-center px-3">
             <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">
                <img src="../presentation.png" alt="게시판이미지" class="images w-100">

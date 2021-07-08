@@ -5,23 +5,23 @@ import java.sql.DriverManager;
 
 public class DBconn {
 	
-	static Connection conn = null;
+	Connection conn = null;
 	
 	
-		static String url ="jdbc:oracle:thin:@192.168.0.198:1521:xe";
-		static String id = "system";
-		static String password = "1234";		
+		String url ="jdbc:oracle:thin:@192.168.0.198:1521:xe";
+		String id = "system";
+		String password = "1234";		
 		
-		public static Connection getConnection() { 
+		public Connection getConnection() { 
 			try{	
-				//ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+				//µå¶óÀÌ¹ö °´Ã¼ »ý¼º
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				//ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½
+				//µå¶óÀÌ¹ö ¿¬°á
 				conn = DriverManager.getConnection(url, id, password);
-				//out.println("ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½");
+				//out.println("Á¢¼Ó¼º°ø");
 			}catch(Exception e){
 				e.printStackTrace();
-				//out.println("ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½");
+				//out.println("Á¢¼Ó½ÇÆÐ");
 			}
 			return conn;
 		}

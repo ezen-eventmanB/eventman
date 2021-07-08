@@ -131,11 +131,6 @@
 		  document.frm.submit(); 
 		  return;
 	  } 
-	  function dropout(){
-		  
-		  
-		  
-	  }
 	 </script>
 </head>
 <body>
@@ -146,7 +141,7 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -263,13 +258,13 @@
 									<!-- 세션값을 받으려면 컨트롤러에서 받는게 아닌 받으려는 페이지에서 히든값으로 적어 놓을것 -->
 									<td><input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>"></td>
 								</tr>
-							</table>
+							</table>								
 						<div>													
-							<button type="button" class="btn btn-outline-secondary" id="b1" onclick="location.href='EventMan_Mypage_Main.do'">돌아가기</button>
+							<button type="button" class="btn btn-outline-secondary" id="b1" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Main.do'">돌아가기</button>
 							<button type="button" class="btn btn-outline-success" id="b1" onclick ="check()">수정완료</button>
 						</div>
 						<div class="d-grid gap-2">		
-							<button type="button" class="btn btn-outline-danger" onclick="location.href='EventMan_Mypage_Dropout.do'">탈퇴하기</button>
+							<button type="button" class="btn btn-outline-danger" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Dropout.do'">탈퇴하기</button>
 						</div>					
 					</form>
 				</div>

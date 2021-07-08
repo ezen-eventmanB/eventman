@@ -11,20 +11,29 @@ import vo.EvMemberVo;
 
 public class MemberServiceImpl {
 
-   private PreparedStatement pstmt; // ì¿¼ë¦¬ë¬¸ ëŒ€ê¸° ë° ì„¤ì •
-   private Connection conn; // ìë°”ì™€ ë°ì´í„° ë² ì´ìŠ¤ ì—°ê²°
-   private ResultSet rs; // ê²°ê³¼ê°’ ë°›ì•„ì˜¤ê¸°
+	private PreparedStatement pstmt; // Äõ¸®¹® ´ë±â ¹× ¼³Á¤
+	private Connection conn; // ÀÚ¹Ù¿Í µ¥ÀÌÅÍ º£ÀÌ½º ¿¬°á
+	private ResultSet rs; // °á°ú°ª ¹Ş¾Æ¿À±â
 
+<<<<<<< HEAD
    /* daoë¥¼ í˜¸ì¶œí• ë•Œ ìƒì„±ìë¥¼ í†µí•´ì„œ DBconnì„ ê°ì²´ì™€ ì‹œí‚¤ê³  dbconnì•ˆì˜ getConnection()ì„ í˜¸ì¶œí•œë‹¤. */
    public MemberServiceImpl() {
       DBconn dbconn = new DBconn();
       this.conn = dbconn.getConnection();
    }
+=======
+	/* dao¸¦ È£ÃâÇÒ¶§ »ı¼ºÀÚ¸¦ ÅëÇØ¼­ DBconnÀ» °´Ã¼¿Í ½ÃÅ°°í dbconn¾ÈÀÇ getConnection()À» È£ÃâÇÑ´Ù. */
+	public MemberServiceImpl() {
+		DBconn dbconn = new DBconn();
+		this.conn = dbconn.getConnection();
+	}
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
-   /*
-    * ë¡œê·¸ì¸ í´ë¦­ì‹œ ì²´í¬ Dao ë§¤ì†Œë“œ ì•„ì´ë”” ë¹„ë°€ë²ˆí˜¸ sqlì—ì„œ í™•ì¸ í•˜ëŠ” dao
-    */
+	/*
+	 * ·Î±×ÀÎ Å¬¸¯½Ã Ã¼Å© Dao ¸Å¼Òµå ¾ÆÀÌµğ ºñ¹Ğ¹øÈ£ sql¿¡¼­ È®ÀÎ ÇÏ´Â dao
+	 */
 
+<<<<<<< HEAD
    
    
    /* íšŒì› ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸° */
@@ -67,7 +76,15 @@ public class MemberServiceImpl {
     */
    public int memberInsert(String mId, String mPwd, String mName, String mEmail, String mPhn, String mType) {
       int value = 0;
+=======
+	/*
+	 * È¸¿ø°¡ÀÔ Á¤º¸ ³Ñ°ÜÁÖ±â Dao
+	 */
+	public int memberInsert(String mId, String mPwd, String mName, String mEmail, String mPhn, String mType) {
+		int value = 0;
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
+<<<<<<< HEAD
       try {
          String sql = "insert into EVE_MEMBER(MIDX,MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(midx_seq.nextval,?,?,?,?,?,?,sysdate)";
          
@@ -96,7 +113,174 @@ public class MemberServiceImpl {
       }
       return value;
    }
+=======
+		try {
+			String sql = "insert into EVE_MEMBER(MIDX,MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(midx_seq.nextval,?,?,?,?,?,?,sysdate)";
+			
+			pstmt = conn.prepareStatement(sql);
 
+			pstmt.setString(1, mId);
+			pstmt.setString(2, mPwd);
+			pstmt.setString(3, mName);
+			pstmt.setString(4, mEmail);
+			pstmt.setString(5, mPhn);
+			pstmt.setString(6, mType);
+			
+			//executeUpdate »ç¿ëÇÏ±â 
+			value=pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return value;
+	}
+
+	
+	/*
+	 * ·Î±×ÀÎ È®ÀÎ È­¸é
+	 */
+	public String memberLoginCheck(String memberId, String memberPwd) {
+
+		int midx = 0;
+		int gidx = 0;
+		
+		String user="";
+		
+		String membersql = "select midx from EVE_MEMBER where mdelyn='N' and mId=? and mPwd=?";
+		String mastersql = "select gidx from EVE_MASTER where gId=? and gPwd=?";
+		
+		try {
+			pstmt = conn.prepareStatement(membersql); // sql Äõ¸®¹® ´ë±â
+			pstmt.setString(1, memberId); // Ã¹¹øÂ° '?' ¸Å°³º¯¼ö·Î ¹Ş¾Æ¿Â 'membeId'¸¦ ´ëÀÔ
+			pstmt.setString(2, memberPwd); // µÎ¹øÂ° '?' ¸Å°³º¯¼ö·Î ¹Ş¾Æ¿Â 'memberPwd'¸¦ ´ëÀÔ
+			ResultSet memberrs = pstmt.executeQuery(); // Äõ¸®¸¦ ½ÇÇàÇÑ °á°ú¸¦ rs¿¡ ÀúÀå
+			
+			if (memberrs.next()) {
+				midx = memberrs.getInt("midx");
+				
+			}else{
+				pstmt = conn.prepareStatement(mastersql);
+				pstmt.setString(1, memberId);
+				pstmt.setString(2, memberPwd);
+				ResultSet masterrs = pstmt.executeQuery();
+				
+				if( masterrs.next()) {
+					gidx = masterrs.getInt("gidx");
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(midx>0) {
+			user="member/"+midx;
+		}else if(gidx>0) {
+			user="master/"+gidx;
+		}
+		
+		System.out.println("·Î±×ÀÎ ÇÑ »ç¶÷Àº? "+user);
+		
+		return user;
+	}
+	/*
+	 *¾ÆÀÌµğ Áßº¹ È®ÀÎ
+	 */
+	public String idCheck(String mid) {
+
+		System.out.println("MemberServiceImpl idCheck() ½ÇÇà");
+
+		String id = "";
+
+		ResultSet rs = null;
+		String sql = "select * from EVE_MEMBER where mid=?";
+
+		System.out.println("sql");
+		System.out.println("conn" + conn);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+
+			/* ResultSetÀº if¹®À» ÅëÇØ¼­ next°¡ Á¸ÀçÇÏ¸é ¹Ş°Ú´Ù! ¸¦ ÇØÁà¾ßÇÑ´Ù. */
+			if (rs.next()) {
+
+				id = rs.getString("mid");
+				System.out.println("*******rs.getString(mid)" + rs.getString("mid"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	} 
+	
+	/*
+	 * 
+	 * ¾ÆÀÌµğ Ã£±â ¹öÆ° Å¬¸¯½Ã ¸Ş¼Òµå (È²ÇöÈ£)
+	 */
+	public String findId(String name, String phone) {
+
+		System.out.println("MemberServiceImpl findId() ½ÇÇà");
+
+		String id = "";
+
+		ResultSet rs = null;
+		EvMemberVo mv = null;
+		String sql = "select * from EVE_MEMBER where mname=? and mphn=?";
+
+		System.out.println("sql");
+		System.out.println("conn" + conn);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+
+			/* ResultSetÀº if¹®À» ÅëÇØ¼­ next°¡ Á¸ÀçÇÏ¸é ¹Ş°Ú´Ù! ¸¦ ÇØÁà¾ßÇÑ´Ù. */
+			if (rs.next()) {
+				mv = new EvMemberVo();
+				mv.setmId(rs.getString("mid"));
+				id = mv.getmId();
+				System.out.println("*******rs.getString(mid)" + rs.getString("mid"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return id;
+	}
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
+<<<<<<< HEAD
    /*
     * ë¡œê·¸ì¸ í™•ì¸ í™”ë©´
     */
@@ -306,5 +490,81 @@ public class MemberServiceImpl {
       
       return value;
    }
+=======
+	public EvMemberVo selectMember(int midx) {
+		EvMemberVo mbvo = null;
+		ResultSet rs = null;
+		
+		String sql="select * from Eve_member where midx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, midx);
+			rs = pstmt.executeQuery();
+			
+			//´ÙÀ½ ÇàÀÌ Á¸ÀçÇÏ¸é
+			if (rs.next()) {
+				mbvo = new EvMemberVo();
+				mbvo.setMidx(rs.getInt("midx"));
+				mbvo.setmId(rs.getString("mid"));
+				mbvo.setmPwd(rs.getString("mPwd"));
+				mbvo.setmPhn(rs.getString("mPhn"));
+				mbvo.setmName(rs.getString("mName"));
+				mbvo.setmEmail(rs.getString("mEmail"));
+				mbvo.setmType(rs.getInt("mtype"));
+			}	
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				//conn.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}			
+		}	
+		System.out.println(mbvo.getmName());
+		return mbvo;
+	}
+	
+	//Á¾ºó ¸â¹ö Á¤º¸ ¼öÁ¤
+	public int memberModify(String midx, String mPwd, String mPhn, String mEmail) {
+		int value= 0;
+					//ºñ¹Ğ¹øÈ£ , ¿¬¶ôÃ³ , ÀÌ¸ŞÀÏ
+		String sql ="update Eve_member set mPwd=?, mPhn=?, mEmail=? where midx=? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mPwd);
+			pstmt.setString(2, mPhn);
+			pstmt.setString(3, mEmail);
+			pstmt.setString(4, midx);
+			value = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return value;
+	}		
+	//Á¾ºó ¸â¹ö È¸¿ø Å»ÅğÇÏ±â
+	public int memberDelete(int midx, String mPwd) {
+		int value=0;
+		String sql="update Eve_member set mdelYn='Y' where midx= ? and mPwd= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, midx);
+			pstmt.setString(2, mPwd);
+			value = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}
+		
+		return value;
+	}
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
 }

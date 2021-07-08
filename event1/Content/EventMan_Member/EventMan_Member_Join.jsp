@@ -116,7 +116,11 @@
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
             document.frm.submit(); 
+<<<<<<< HEAD
             alert("회원가입이 되셨습니다."); 
+=======
+            alert("완료."); 
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
          }
          
@@ -150,6 +154,7 @@
 
 
 <!-- 상단 네비 부분 -->
+<<<<<<< HEAD
    <div class="container">
       <nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
       
@@ -211,6 +216,69 @@
                    %>
           </div>   
       </nav>
+=======
+	<div class="container">
+		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
+		
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
+		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+		    </a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      	<span class="navbar-toggler-icon"></span>
+		   	</button>
+		    <div class="collapse navbar-collapse w-50" id="navbarNav">
+		    
+	      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+	        		<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+	        		</li>
+	        		<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+	        		</li>
+	       			<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+	       			</li>
+	       			<li class="nav-item px-5">
+	          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+	       			</li>
+	       		</ul>
+	       	
+	
+					<!--로그인 전 상단 화면  -->	
+						<%
+						if(member_id == null){
+						%>
+						
+		       		<ul class="navbar-nav" id="Memberbox" >	
+		       			<li class="nav-item">
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+		       			</li>
+		       			<li class="nav-item"> 
+		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+		       			</li>																	
+		      		</ul>
+		      		
+		      	<!--로그인 후 상단 화면  -->
+						<%
+				      	}else{
+						%>	
+			       	<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
+				   		}
+				    	%>
+	    	</div>	
+		</nav>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 </div>
       
    <!-- 페이지 위치 안내 -->
@@ -283,7 +351,7 @@
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
                                  <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected>회원 종류를 선택해주세요.</option>
+                                   <option selected disabled>회원 종류를 선택해주세요.</option>
                                    <option value="개인">개인</option>
                                    <option value="단체">단체</option>
                                    <option value="기업">기업</option>
@@ -310,6 +378,7 @@
                
                
                <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<<<<<<< HEAD
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -325,6 +394,23 @@
                 </div>
               </div>
             </div>
+=======
+				  <div class="modal-dialog modal-dialog-centered">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel"></h5>
+				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+				      </div>
+				      <div class="modal-body">
+				         <span id="checkidspan"> </span>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
                
                
 <!-- 메인 푸터 -->

@@ -1,21 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import = "vo.*" %>
 
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
 	 }
 	out.println("세션에 담긴 아이디는?");
 	out.println(member_id);
-	out.println(midx);
-	
-	
+
+	out.println("midx="+midx);
+	out.println("gidx="+gidx); 
 	%>    
-    
+	
+	<%
+	ArrayList<EvBoardAskVo> reviewList = (ArrayList<EvBoardAskVo>)request.getAttribute("boardList"); 
+	%>  
     
 <!doctype html>
 <html>
@@ -34,19 +42,31 @@
 	<!-- subnav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	
-<style>
+<script>
 
-</style>
+	function boardwWriteFn(){
+			
+ 		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx="+<%=gidx%>,
+			type:"get",			
+			datatype:"html",
+			success:function(data){
+				$("#detailload").html(data);
+			}
+					
+		});
+ 	}
+
+</script>
 </head>
 <body>
 
 <div class="container ajax">
-
-<!-- 상단 네비 부분 -->
+<!-- 상단메뉴	 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
-			<a class="navbar-brand" href="../EventMan_Main/EventMan_Main.jsp">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
 		     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
 		    </a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +92,7 @@
 	
 					<!--로그인 전 상단 화면  -->	
 						<%
-						if(member_id == null){
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -86,7 +106,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -100,12 +120,24 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
+				   		
+				    	
 	    	</div>	
 		</nav>
 </div>
-		
 		
 
 <!-- 페이지 위치 안내 -->
@@ -125,17 +157,6 @@
 		게시판
 </div>
 
-
-<!-- 게시물 검색창 -->
-<nav style="max-width:1300px; margin:0px auto; margin-top: 30px;">
-	<div class="input-group input-group-sm mb-3">
-		 <div class="input-group input-group-sm mb-3">
-			<span class="input-group-text" id="inputGroup-sizing-sm">검색</span>
-			<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-		</div>
-	</div>
-</nav>
-   
 
 <!-- 중앙 네비 카테고리 검색창 -->
 <nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
@@ -166,143 +187,55 @@
 	       </ul>
 	       
 	       <form>
-	          <!-- 컬럼들은 모바일과 데스크탑에서 항상 50% 너비가 됩니다 -->
-	          <div style="display:inline-block;">
-	            <span>등록일</span>
-	         </div>
-	         <div style="display:inline-block;">
-	            <span>과거</span><span>최신</span>
-	         </div>   
+	        			<%
+						if(gidx ==0){
+						%>
 	         <div style="display:inline-block;">   
-	                <a href="EventMan_BoardWrite.jsp">게시물 등록하기</a>
+	                <a href="<%=request.getContextPath()%>/EventMan_Board/EventMan_BoardWrite.do">게시물 등록하기</a>
 	         </div>
-	         
-	       </form>
+	     			    <%
+				   		}else if(gidx > 0){
+				   		%>
+			<div style="display:inline-block;">   
+	                <a href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_BoardWrite.do">관리자 게시물 등록하기</a>
+	         </div>
+				   		<%
+				   		}
+				   		%>
 	     </div>
 	</div>
 </nav>
 
 
 <!-- 게시글 리스트 -->
-<table class="table">
-     <thead>
-       <th>카테고리</th>
-       <th colspan="2">제목</th>
-       <th></th>
-       <th>작성일</th>
-       <th>작성자</th>
-       <th>조회수</th>  
-     </thead>
-  <tbody>
-    <tr class="table-active">
-      <td>행사</td>
-      <td colspan="2"><a href="#">[행사홍보] 전북대학교 대동제 </a></td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-     <tr>
-      <td>공지</td>
-      <td colspan="2">[공지] EVENTMAN 공지사항 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>46</td>
-    </tr>
-    <tr class="table-active">
-      <td>입찰</td>
-      <td colspan="2">[입찰] 나라장터 수의계약 </td>
-      <th></th>
-      <td>2021-06-14</td>
-      <td>EVENTMAN</td>
-      <td>4</td>
-    </tr>
-    
-  </tbody>
-</table>
-      <nav aria-label="Page navigation example">
-         <ul class="pagination">
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-               </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-               <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-               </a>
-            </li>
-         </ul>
-      </nav>
-
+   <div class="container">
+      <table class="table table-hover">
+         <thead>
+            <th>순번</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th>
+            <th>조회수</th>  
+         </thead>
+        <tbody>
+<%--          <% for(EvBoardAskVo bovo: alist){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=bovo.getBidx()%>'">
+               <td><%=bovo.getBidx()%></td>
+               <td colspan="2"><%=bovo.getBtitle()%></td>
+               <td></td>
+               <td><%=bovo.getBwriteday()%></td>
+               <td><%=bovo.getBname()%></td>
+               <td><%=bovo.getBcount()%></td>
+            </tr>
+         <%}; %> --%>
+         </tbody> 
+         
+         
+				</table>
+			</div>
+		</form>
+   </div>
 
 
 <!-- 메인 푸터 -->
