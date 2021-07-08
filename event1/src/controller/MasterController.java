@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import service.CostServiceImpl;
 import service.EventAskServiceImpl;
+import service.MemberServiceImpl;
 import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
-import vo.EvCostVo;
+import vo.EvMemberVo;
 import vo.EvReviewVo;
 
 import org.imgscalr.Scalr;
@@ -32,7 +32,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/MasterController")
 public class MasterController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
     public MasterController() {
         super();
@@ -40,272 +40,272 @@ public class MasterController extends HttpServlet {
     }
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
-		
-		System.out.println("-----MasterController ½ÇÇà-----");
-		
-		
-		request.setCharacterEncoding("UTF-8");
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
+      request.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=utf-8");
+      
+      System.out.println("-----MasterController ì‹¤í–‰-----");
+      
+      
+      request.setCharacterEncoding("UTF-8");
 
-		String uri = request.getRequestURI();														
-		System.out.println("uri"+uri);																			
-		int pnamelength = request.getContextPath().length();	
-		System.out.println(pnamelength);
-		String str = uri.substring(pnamelength);															
-		System.out.println("str = "+str);												
-		String[]str1 = str.split("/"); 
-		String str2 = str1[2];
+      String uri = request.getRequestURI();                                          
+      System.out.println("uri"+uri);                                                         
+      int pnamelength = request.getContextPath().length();   
+      System.out.println(pnamelength);
+      String str = uri.substring(pnamelength);                                             
+      System.out.println("str = "+str);                                    
+      String[]str1 = str.split("/"); 
+      String str2 = str1[2];
 
-		System.out.println("str1 = "+str1[0]);
-		System.out.println("str1 = "+str1[1]);	
-		System.out.println("str2 = "+str1[2]);	
-		
-		
-/*	È¸»ç ¼Ò°³	 */		
-		if(str2.equals("EventMan_Company_Main.do")) {
-			
-			System.out.println("-----EventMan_Company_Main.do ½ÇÇà-----");
-			
-			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp"); 	
-			rd.forward(request, response);
-			
-			
-/*	master main ÆäÀÌÁö·Î ÀÌµ¿	*/			
-		}else if(str2.equals("EventMan_Master_Mainpage.do")) {
-			
-			System.out.println("-----EventMan_Master_Mainpage.do ½ÇÇà-----");
-			
-			int costcount=0;
-			
-			CostServiceImpl cdao = new CostServiceImpl();
-			costcount = cdao.allSelectCost();
-			
-			request.setAttribute("costcount", costcount);			
-			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp"); 	
-			rd.forward(request, response);
-			
-			
-/*	Çà»ç ¸®ºä ÀÛ¼º ÆäÀÌÁö·Î ÀÌµ¿	*/
-		}else if(str2.equals("EventMan_Review_Write.do")) {
-			
-			System.out.println("-----EventMan_Review_Write.do ½ÇÇà-----");
-			
-			int gidx = Integer.parseInt( request.getParameter("gidx"));
-			request.setAttribute("gidx", gidx);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Write.jsp");
-			rd.forward(request, response);
-			
-			
-/* °Ô½ÃÆÇ °ü¸®ÀÚ °Ô½Ã±Û ÀÛ¼º ÆäÀÌÁö ÀÌµ¿*/			
-		}else if(str2.equals("EventMan_Master_BoardWrite.do")) {
-								
-			System.out.println("°Ô½ÃÆÇ ±Û ÀÛ¼º ÆäÀÌÁö ÀÌµ¿");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
-			rd.forward(request, response);	
-			
-			
-/*	Çà»ç ¸®ºä ÀÛ¼º ACTION*/			
-		}else if(str2.equals("EventMan_Review_Write_Action.do")) {
-			
-			System.out.println("-----EventMan_Review_Write_Action.do ½ÇÇà-----");
-			
-			
-			//¾÷·Îµå ÆÄÀÏ °æ·Î		
-			//³ªÁß¿¡ À¥¼­¹ö·Î °øÅëµÈ °æ·Î·Î ¿Ã¸®°Ô µÈ´Ù.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			
-			//ÀúÀå Æú´õ
-			String savedPath = "Advice_img";
-			
-			//ÀúÀåµÈ ÃÑ °æ·Î
-			String saveFullPath = uploadPath + savedPath;
-			
-			int sizeLimit = 1024*1024*15;
-			String fileName = null;
-			String originFileName = null;
-				System.out.println("saveFullPath = "+saveFullPath);
-			
-			//MultipartRequest °´Ã¼»ı¼º
-			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
+      System.out.println("str1 = "+str1[0]);
+      System.out.println("str1 = "+str1[1]);   
+      System.out.println("str2 = "+str1[2]);   
+      
+      
+/*   íšŒì‚¬ ì†Œê°œ    */      
+      if(str2.equals("EventMan_Company_Main.do")) {
+         
+         System.out.println("-----EventMan_Company_Main.do ì‹¤í–‰-----");
+         
+         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp");    
+         rd.forward(request, response);
+         
+         
+/*   master main í˜ì´ì§€ë¡œ ì´ë™   */         
+      }else if(str2.equals("EventMan_Master_Mainpage.do")) {
+         
+         System.out.println("-----EventMan_Master_Mainpage.do ì‹¤í–‰-----");
+         
+         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp");    
+         rd.forward(request, response);
+         
+         
+/*   í–‰ì‚¬ ë¦¬ë·° ì‘ì„± í˜ì´ì§€ë¡œ ì´ë™   */
+      }else if(str2.equals("EventMan_Review_Write.do")) {
+         
+         System.out.println("-----EventMan_Review_Write.do ì‹¤í–‰-----");
+         
+         int gidx = Integer.parseInt( request.getParameter("gidx"));
+         request.setAttribute("gidx", gidx);
+         
+         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Write.jsp");
+         rd.forward(request, response);
+         
+         
+/* ê²Œì‹œíŒ ê´€ë¦¬ì ê²Œì‹œê¸€ ì‘ì„± í˜ì´ì§€ ì´ë™*/         
+      }else if(str2.equals("EventMan_Master_BoardWrite.do")) {
+                        
+         System.out.println("ê²Œì‹œíŒ ê¸€ ì‘ì„± í˜ì´ì§€ ì´ë™");
+         
+         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
+         rd.forward(request, response);   
+         
+/* ê´€ë¦¬ì íšŒì› ê´€ë¦¬ í˜ì´ì§€ ì´ë™*/         
+      }else if(str2.equals("EventMan_Master_Modify.do")) {
+                        
+         System.out.println("íšŒì› ê´€ë¦¬ í˜ì´ì§€ ì´ë™");
+         
+         MasterServiceImpl mdao = new MasterServiceImpl();
+         
+         System.out.println("íšŒì› ê´€ë¦¬ í˜ì´ì§€ ì´ë™2");
+         
+         ArrayList<EvMemberVo> alist  =  mdao.memberSelectAll();
+         
+                  
+         request.setAttribute("alist", alist);
+         
+         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");
+         rd.forward(request, response);            
+         
+/*   í–‰ì‚¬ ë¦¬ë·° ì‘ì„± ACTION*/         
+      }else if(str2.equals("EventMan_Review_Write_Action.do")) {
+         
+         System.out.println("-----EventMan_Review_Write_Action.do ì‹¤í–‰-----");
+         
+         
+         //ì—…ë¡œë“œ íŒŒì¼ ê²½ë¡œ      
+         //ë‚˜ì¤‘ì— ì›¹ì„œë²„ë¡œ ê³µí†µëœ ê²½ë¡œë¡œ ì˜¬ë¦¬ê²Œ ëœë‹¤.
+         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+         
+         //ì €ì¥ í´ë”
+         String savedPath = "Advice_img";
+         
+         //ì €ì¥ëœ ì´ ê²½ë¡œ
+         String saveFullPath = uploadPath + savedPath;
+         
+         int sizeLimit = 1024*1024*15;
+         String fileName = null;
+         String originFileName = null;
+            System.out.println("saveFullPath = "+saveFullPath);
+         
+         //MultipartRequest ê°ì²´ìƒì„±
+         MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy()); 
 
-			//¿­°ÅÀÚ¿¡ ÆÄÀÏName¼Ó¼ºÀÇ ÀÌ¸§À» ´ã´Â´Ù
-			Enumeration files = multi.getFileNames();
-				System.out.println("files = "+files);
-				
-			//´ã±ä ÆÄÀÏ °´Ã¼ÀÇ Name°ªÀ» ´ã´Â´Ù.
-			String file = (String)files.nextElement();
-				System.out.println("file = "+file);
-			
-			//ÀúÀåµÇ´Â ÆÄÀÏÀÌ¸§
-			fileName = multi.getFilesystemName(file); 
-				System.out.println("fileName = "+fileName);
-		
-			//¿ø·¡ÆÄÀÏ ÀÌ¸§
-			originFileName = multi.getOriginalFileName(file);
-			
-				System.out.println("originFileName = "+originFileName);
-			
-			String ThumbnailFileName = null;
-					
-			try {
-				if(fileName != null)
-				ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	
-			
-			
-			
-			String title = multi.getParameter("title");
-			String target = multi.getParameter("target");
-			String startdate = multi.getParameter("startdate");
-			String enddate = multi.getParameter("enddate");
-			String price = multi.getParameter("price");
-			String staff = multi.getParameter("staff");
-			String company = multi.getParameter("company");
-			String content = multi.getParameter("content");
-			String cata = multi.getParameter("cata");
-			String loca = multi.getParameter("hloca");
-			String people = multi.getParameter("people");
-			int gidx = Integer.parseInt( multi.getParameter("gidx"));
-			
-			
-			MasterServiceImpl mdao = new MasterServiceImpl();
-			
-			int value = mdao.insertReview(title,target, startdate, enddate, price, staff, company, content, fileName, cata, loca, people, gidx);
-			
-			if(value == 1) {
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-				rd.forward(request, response);
-			}else{
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-				rd.forward(request, response);
-			}
-			
-/*	Çà»ç ¸®ºä »èÁ¦	action	*/			
-		}else if(str2.equals("EventMan_ReviewDelete.do")) {
+         //ì—´ê±°ìì— íŒŒì¼Nameì†ì„±ì˜ ì´ë¦„ì„ ë‹´ëŠ”ë‹¤
+         Enumeration files = multi.getFileNames();
+            System.out.println("files = "+files);
+            
+         //ë‹´ê¸´ íŒŒì¼ ê°ì²´ì˜ Nameê°’ì„ ë‹´ëŠ”ë‹¤.
+         String file = (String)files.nextElement();
+            System.out.println("file = "+file);
+         
+         //ì €ì¥ë˜ëŠ” íŒŒì¼ì´ë¦„
+         fileName = multi.getFilesystemName(file); 
+            System.out.println("fileName = "+fileName);
+      
+         //ì›ë˜íŒŒì¼ ì´ë¦„
+         originFileName = multi.getOriginalFileName(file);
+         
+            System.out.println("originFileName = "+originFileName);
+         
+         String ThumbnailFileName = null;
+               
+         try {
+            if(fileName != null)
+            ThumbnailFileName = makeThumbnail(uploadPath,savedPath, fileName);
+         } catch (Exception e) {
+            e.printStackTrace();
+         }   
+         
+         
+         
+         String title = multi.getParameter("title");
+         String target = multi.getParameter("target");
+         String startdate = multi.getParameter("startdate");
+         String enddate = multi.getParameter("enddate");
+         String price = multi.getParameter("price");
+         String staff = multi.getParameter("staff");
+         String company = multi.getParameter("company");
+         String content = multi.getParameter("content");
+         String cata = multi.getParameter("cata");
+         String loca = multi.getParameter("hloca");
+         String people = multi.getParameter("people");
+         int gidx = Integer.parseInt( multi.getParameter("gidx"));
+         
+         
+         MasterServiceImpl mdao = new MasterServiceImpl();
+         
+         int value = mdao.insertReview(title,target, startdate, enddate, price, staff, company, content, fileName, cata, loca, people, gidx);
+         
+         if(value == 1) {
+            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
+            rd.forward(request, response);
+         }else{
+            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
+            rd.forward(request, response);
+         }
+         
+/*   í–‰ì‚¬ ë¦¬ë·° ì‚­ì œ   action   */         
+      }else if(str2.equals("EventMan_ReviewDelete.do")) {
 
-			System.out.println("-----EventMan_ReviewDelete.do ½ÇÇà-----");
-			
-			int value=0;
-			
-			int hidx = Integer.parseInt(request.getParameter("hidx"));
-			
-			System.out.println("hidx : "+hidx);
-			
-			MasterServiceImpl mdao = new MasterServiceImpl();
-			value = mdao.reviewDelete(hidx);
+         System.out.println("-----EventMan_ReviewDelete.do ì‹¤í–‰-----");
+         
+         int value=0;
+         
+         int hidx = Integer.parseInt(request.getParameter("hidx"));
+         
+         System.out.println("hidx : "+hidx);
+         
+         MasterServiceImpl mdao = new MasterServiceImpl();
+         value = mdao.reviewDelete(hidx);
 
-			System.out.println("ÀÌµ¿¸¸ÇÏ¸éµÈ´Ù.");
-			
-			if(value == 1) {
-				
-				response.setContentType("text/html; charset=euc-kr");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('ÇØ´ç±ÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.'); </script>");
-				
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-				rd.forward(request, response);
-			}else{
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-				rd.forward(request, response);
-			}
-			
+         System.out.println("ì´ë™ë§Œí•˜ë©´ëœë‹¤.");
+         
+         if(value == 1) {
+            
+            response.setContentType("text/html; charset=euc-kr");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('í•´ë‹¹ê¸€ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.'); </script>");
+            
+            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
+            rd.forward(request, response);
+         }else{
+            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
+            rd.forward(request, response);
+         }
+         
 
-/*	Çà»ç¸®ºä ¼öÁ¤ È­¸éÀÌµ¿	*/			
-		}else if(str2.equals("EventMan_ReviewModify.do")) {
+/*   í–‰ì‚¬ë¦¬ë·° ìˆ˜ì • í™”ë©´ì´ë™   */         
+      }else if(str2.equals("EventMan_ReviewModify.do")) {
 
-			System.out.println("-----EventMan_ReviewModify.do ½ÇÇà-----");
-			
-			int hidx = Integer.parseInt( request.getParameter("hidx"));
-			EvReviewVo erv = new EvReviewVo();
-			ReviewServiceImpl rdao = new ReviewServiceImpl();
-			erv = rdao.reviewSelectOne(hidx);
-			
-			request.setAttribute("erv", erv);
-			request.setAttribute("hidx", hidx);
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
-			rd.forward(request, response);
-			
-			
-/*	Çà»ç¸®ºä±Û ¼öÁ¤ÇÏ±â action*/			
-		}else if(str2.equals("EventMan_ReviewModifyAction.do")) {
+         System.out.println("-----EventMan_ReviewModify.do ì‹¤í–‰-----");
+         
+         int hidx = Integer.parseInt( request.getParameter("hidx"));
+         EvReviewVo erv = new EvReviewVo();
+         ReviewServiceImpl rdao = new ReviewServiceImpl();
+         erv = rdao.reviewSelectOne(hidx);
+         
+         request.setAttribute("erv", erv);
+         request.setAttribute("hidx", hidx);
+         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
+         rd.forward(request, response);
+         
+         
+/*   í–‰ì‚¬ë¦¬ë·°ê¸€ ìˆ˜ì •í•˜ê¸° action*/         
+      }else if(str2.equals("EventMan_ReviewModifyAction.do")) {
 
-			System.out.println("-----EventMan_ReviewModify.do ½ÇÇà-----");
-			
-			int value=0;
-			
-			int hidx = Integer.parseInt(request.getParameter("hidx"));
-			String file = request.getParameter("uploadFile");
-			String cata = request.getParameter("cata");
-			String hloca = request.getParameter("hloca");
-			String startdate = request.getParameter("startdate");
-			String enddate = request.getParameter("enddate");
-			String price = request.getParameter("price");
-			String people = request.getParameter("people");
-			String target = request.getParameter("target");
-			String staff = request.getParameter("staff");
-			String company = request.getParameter("company");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			
+         System.out.println("-----EventMan_ReviewModify.do ì‹¤í–‰-----");
+         
+         int value=0;
+         
+         int hidx = Integer.parseInt(request.getParameter("hidx"));
+         String file = request.getParameter("uploadFile");
+         String cata = request.getParameter("cata");
+         String hloca = request.getParameter("hloca");
+         String startdate = request.getParameter("startdate");
+         String enddate = request.getParameter("enddate");
+         String price = request.getParameter("price");
+         String people = request.getParameter("people");
+         String target = request.getParameter("target");
+         String staff = request.getParameter("staff");
+         String company = request.getParameter("company");
+         String title = request.getParameter("title");
+         String content = request.getParameter("content");
+         
 
-			
-			MasterServiceImpl mdao = new MasterServiceImpl();
-			value = mdao.modifyAction(hidx,file,cata,hloca,startdate,enddate,price,people,target,staff,company,title,content);
-			
-			System.out.println("Çà»ç¸®ºä¼öÁ¤ÇÏ±â value : "+value);
-			
-			 response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Main.do");
-				
-			 
-/*	°ü¸® ÀüÃ¼ °ßÀû½ÅÃ»¸®½ºÆ® º¸±â	*/			 
-		}else if(str2.equals("EventMan_AllCostList.do")) {
-			
-			System.out.println("°ü¸®ÀÚ ÀüÃ¼ °ßÀû½ÅÃ»¸®½ºÆ® º¸±â");
-			
-			MasterServiceImpl masterdao = new MasterServiceImpl();
-			ArrayList<EvCostVo> arraycost = masterdao.costSelectList();
-			
-			
-			request.setAttribute("arraycost", arraycost);
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList.jsp");
-			rd.forward(request, response);
-			 
-		}
+         
+         MasterServiceImpl mdao = new MasterServiceImpl();
+         value = mdao.modifyAction(hidx,file,cata,hloca,startdate,enddate,price,people,target,staff,company,title,content);
+         
+         System.out.println("í–‰ì‚¬ë¦¬ë·°ìˆ˜ì •í•˜ê¸° value : "+value);
+         
+          response.sendRedirect(request.getContextPath()+"/EventMan_Review/EventMan_Review_Detail.do?hidx="+hidx);
+            /*
+             * RequestDispatcher rd =
+             * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
+             * rd.forward(request, response);
+             */
+      }
 
-		
-		
-	}
+      
+      
+   }
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		
-		
-	}
-	
-	private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
-		
-		//¿Ã¸° ¼Ò½ºÆÄÀÏÀ» ÀĞ¾îµå¸°´Ù
-		BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path+File.separator+fileName));
-		//ÀÌ¹ÌÁö¸¦ ¸®»çÀÌÂ¡ÇÑ´Ù(³ôÀÌ 100¿¡ ¸ÂÃç¼­ ¿øº»ÀÌ¹ÌÁö ºñÀ²À» À¯ÁöÇÑ´Ù)
-		BufferedImage destImg = Scalr.resize(sourceImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
-		//½æ³×ÀÏ Ç®°æ·Î
-		String thumbnailPath = uploadPath + path + File.separator + "s-"+fileName;
-		//ÆÄÀÏ °´Ã¼»ı¼º
-		File newFile = new File(thumbnailPath);
-		//È®ÀåÀÚ ÃßÃâ
-		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-		//½æ³×ÀÏ ÀÌ¹ÌÁö ¸¸µé±â(¸®»çÀÌÂ¡ÇÑ ÀÌ¹ÌÁö¸¦ ÇØ´ç ÀÌ¹ÌÁöÇü½ÄÀ¸·Î ÇØ´ç À§Ä¡¿¡ ÆÄÀÏ °´Ã¼»ı¼ºÇÑ´Ù)
-		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-		
-		//½æ³×ÀÏ ÆÄÀÏ ÀÌ¸§ ÃßÃâ
-		return thumbnailPath.substring((uploadPath+path).length()).replace(File.separatorChar, ' ');
-	}
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
+      
+      
+   }
+   
+   private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
+      
+      //ì˜¬ë¦° ì†ŒìŠ¤íŒŒì¼ì„ ì½ì–´ë“œë¦°ë‹¤
+      BufferedImage sourceImg = ImageIO.read(new File(uploadPath+path+File.separator+fileName));
+      //ì´ë¯¸ì§€ë¥¼ ë¦¬ì‚¬ì´ì§•í•œë‹¤(ë†’ì´ 100ì— ë§ì¶°ì„œ ì›ë³¸ì´ë¯¸ì§€ ë¹„ìœ¨ì„ ìœ ì§€í•œë‹¤)
+      BufferedImage destImg = Scalr.resize(sourceImg,Scalr.Method.AUTOMATIC,Scalr.Mode.FIT_TO_HEIGHT,100);
+      //ì¸ë„¤ì¼ í’€ê²½ë¡œ
+      String thumbnailPath = uploadPath + path + File.separator + "s-"+fileName;
+      //íŒŒì¼ ê°ì²´ìƒì„±
+      File newFile = new File(thumbnailPath);
+      //í™•ì¥ì ì¶”ì¶œ
+      String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
+      //ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë§Œë“¤ê¸°(ë¦¬ì‚¬ì´ì§•í•œ ì´ë¯¸ì§€ë¥¼ í•´ë‹¹ ì´ë¯¸ì§€í˜•ì‹ìœ¼ë¡œ í•´ë‹¹ ìœ„ì¹˜ì— íŒŒì¼ ê°ì²´ìƒì„±í•œë‹¤)
+      ImageIO.write(destImg, formatName.toUpperCase(), newFile);
+      
+      //ì¸ë„¤ì¼ íŒŒì¼ ì´ë¦„ ì¶”ì¶œ
+      return thumbnailPath.substring((uploadPath+path).length()).replace(File.separatorChar, ' ');
+   }
 }

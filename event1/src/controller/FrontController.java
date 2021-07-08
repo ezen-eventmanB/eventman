@@ -12,74 +12,74 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-																
-		String uri = request.getRequestURI();					
-		int pathlength = request.getContextPath().length();		
-		String str = uri.substring(pathlength);					
-		String[] gubun = str.split("/");
-		String str2 = gubun[1];
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                                                
+      String uri = request.getRequestURI();               
+      int pathlength = request.getContextPath().length();      
+      String str = uri.substring(pathlength);               
+      String[] gubun = str.split("/");
+      String str2 = gubun[1];
 
-		System.out.println("");
-		System.out.println("-----Front Controller-----");
-		System.out.println("uri : "+uri);
-		System.out.println("getContextPath() : "+request.getContextPath());
-		System.out.println("str : "+str);
-		System.out.println("str2 = "+str2);
-		System.out.println("");
+      System.out.println("");
+      System.out.println("-----Front Controller-----");
+      System.out.println("uri : "+uri);
+      System.out.println("getContextPath() : "+request.getContextPath());
+      System.out.println("str : "+str);
+      System.out.println("str2 = "+str2);
+      System.out.println("");
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=utf-8");
-		
+      request.setCharacterEncoding("UTF-8");
+      response.setContentType("text/html; charset=utf-8");
+      
 
-		if(str2.equals("EventMan_Member")) {														
-			MemberController mc = new MemberController();
-			mc.doGet(request, response);
-			
-			//°ßÀû ½ÅÃ» È­¸é ÀÌµ¿
-		}else if(str2.equals("EventMan_Cost")) {
-			CostController cc = new CostController();
-			cc.doGet(request, response);
-			
-			//¸®ºä ÆäÀÌÁö ÀÌµ¿ 
-		}else if(str2.equals("EventMan_Review")) {
-			ReviewController rc = new ReviewController();
-			rc.doGet(request, response);
-			
-			//È¸»ç¼Ò°³ ÆäÀÌÁö ÀÌµ¿
-		}else if(str2.equals("EventMan_Company")) {
-			MasterController ccc = new MasterController();
-			ccc.doGet(request, response);
-			
-			//°Ô½ÃÆÇ ÆäÀÌÁö ÀÌµ¿
-		}else if(str2.equals("EventMan_Board")) {
-			BoardController bc = new BoardController();
-			bc.doGet(request, response);
-			
-			//¸¶ÀÌÆäÀÌÁö
-		}else if(str2.equals("EventMan_Mypage")) {
-			MemberController mmc = new MemberController();
-			mmc.doGet(request, response);
-			
-			//¸¶½ºÅÍ ÆäÀÌÁö
-		}else if(str2.equals("EventMan_Master")) {
-			MasterController mc = new MasterController();
-			mc.doGet(request, response);
-			
-			//¸ŞÀÎ ÆäÀÌÁö
-		}else if(str2.equals("EventMan_Main")) {
-			MainController mc = new MainController();
-			mc.doGet(request, response);
-		}
-	}
+      if(str2.equals("EventMan_Member")) {                                          
+         MemberController mc = new MemberController();
+         mc.doGet(request, response);
+         
+         //ê²¬ì  ì‹ ì²­ í™”ë©´ ì´ë™
+      }else if(str2.equals("EventMan_Cost")) {
+         CostController cc = new CostController();
+         cc.doGet(request, response);
+         
+         //ë¦¬ë·° í˜ì´ì§€ ì´ë™ 
+      }else if(str2.equals("EventMan_Review")) {
+         ReviewController rc = new ReviewController();
+         rc.doGet(request, response);
+         
+         //íšŒì‚¬ì†Œê°œ í˜ì´ì§€ ì´ë™
+      }else if(str2.equals("EventMan_Company")) {
+         MasterController ccc = new MasterController();
+         ccc.doGet(request, response);
+         
+         //ê²Œì‹œíŒ í˜ì´ì§€ ì´ë™
+      }else if(str2.equals("EventMan_Board")) {
+         BoardController bc = new BoardController();
+         bc.doGet(request, response);
+         
+         //ë§ˆì´í˜ì´ì§€
+      }else if(str2.equals("EventMan_Mypage")) {
+         MemberController mmc = new MemberController();
+         mmc.doGet(request, response);
+         
+         //ë§ˆìŠ¤í„° í˜ì´ì§€
+      }else if(str2.equals("EventMan_Master")) {
+         MasterController mc = new MasterController();
+         mc.doGet(request, response);
+         
+         //ë©”ì¸ í˜ì´ì§€
+      }else if(str2.equals("EventMan_Main")) {
+         MainController mc = new MainController();
+         mc.doGet(request, response);
+      }
+   }
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		doGet(request, response);
-	}
+      doGet(request, response);
+   }
 
 }

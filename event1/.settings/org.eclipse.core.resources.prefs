@@ -5,3 +5,6 @@ eclipse.preferences.version=1
 encoding//Content/EventMan_Board/EventMan_Board_Detail.jsp=UTF-8
 encoding//Content/EventMan_Main/EventMan_Main.jsp=UTF-8
 encoding//Content/EventMan_Member/EventMan_Member_Find_Id.jsp=UTF-8
+encoding//src/controller/MemberController.java=UTF-8
+encoding//src/service/MemberServiceImpl.java=UTF-8
+encoding/<project>=UTF-8
