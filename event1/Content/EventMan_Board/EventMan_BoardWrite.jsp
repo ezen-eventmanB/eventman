@@ -243,7 +243,7 @@ function imageemptyFn(){
 			<select class="form-select" aria-label="Default select example" name="cata" id="cata">
 				<option selected>카테고리</option>
 				<option value="1">행사 홍보</option>
-				<option value="2">행사 콘텐츠</option>
+				<option value="2">공지 사항</option>
 				<option value="3">기타</option>
 			</select>
 			

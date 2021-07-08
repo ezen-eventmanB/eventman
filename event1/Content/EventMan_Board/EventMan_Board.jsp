@@ -223,11 +223,11 @@
 	        <tbody>
 				 <% for(EvBoardAskVo evbo: alistboard){ %>
 				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 	
-		            <tr>
+		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do'">
 		               <td><%=evbo.getBcata()%></td>
 		               <td colspan="2"><%=evbo.getBtitle()%></td>
 		               <td></td>
-		               <td><%=evbo.getBwriteday()%></td>
+		               <td><%=evbo.getBWrieday2()%></td>
 		               <td><%=evbo.getgName()%></td>
 		               <td><%=evbo.getBcount()%></td>
 		            </tr>

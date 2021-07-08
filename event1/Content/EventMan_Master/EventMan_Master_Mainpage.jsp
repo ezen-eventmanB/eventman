@@ -18,7 +18,6 @@
 	out.println("gidx="+gidx); 
 	
 	%>    
-	<%int costcount = (int)request.getAttribute("costcount"); %>
 	
 
 <!DOCTYPE html>
@@ -125,7 +124,7 @@
 		<div class="col mx-auto">
 			<img class="iconimg" src="../cost.png">
 			<div class="d-grid gap-2">
-				<button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_AllCostList.do'">견적신청<br><%=costcount%> 건</button>
+				<button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청<br>1 건</button>
 			</div>
 		</div>
 	</div>
