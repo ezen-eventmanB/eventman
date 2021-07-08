@@ -34,7 +34,7 @@ public class CostController extends HttpServlet {
    public CostController() {
       super();
 
-   }
+   }  
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response)
          throws ServletException, IOException {
@@ -42,14 +42,14 @@ public class CostController extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=utf-8");
 
-      System.out.println("-----CostController ����-----");  
+      System.out.println("-----CostController 실행-----");  
 
       request.setCharacterEncoding("UTF-8");
 
       String uri = request.getRequestURI();
       System.out.println("uri" + uri);
       int pnamelength = request.getContextPath().length();
-      System.out.println(pnamelength);
+      System.out.println(pnamelength);   
       String str = uri.substring(pnamelength);
       System.out.println("str = " + str);
       String[] str1 = str.split("/");
@@ -59,19 +59,19 @@ public class CostController extends HttpServlet {
       System.out.println("str1 = " + str1[1]);
       System.out.println("str2 = " + str1[2]);
 
-      //�������� �̵� �κ�
+      //견적신적 이동 부분
       if (str2.equals("EventMan_Cost.do")) {
 
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Cost/EventMan_Cost.jsp");
          rd.forward(request, response);
       
-      //���� �ۼ� �����ִ� �κ�
+      //견적 작성 보내주는 부분
       } else if (str2.equals("EventMan_Cost_Submit_Action.do")) {
 
-         System.out.println("EventMan_Cost_Submit_Action ����");
+         System.out.println("EventMan_Cost_Submit_Action 실행");
          
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
+         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
          
          String savedPath = "Advice_img";
          
@@ -83,17 +83,17 @@ public class CostController extends HttpServlet {
          
          String originFileName = null;
          
-         // MultipartRequest ��ü����
+         // MultipartRequest 객체생성
          MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-         // �����ڿ� ����Name�Ӽ��� �̸��� ��´�
+         // 열거자에 파일Name속성의 이름을 담는다
          Enumeration files = multi.getFileNames();
-         // ��� ���� ��ü�� Name���� ��´�.
+         // 담긴 파일 객체의 Name값을 담는다.
          String file = (String)files.nextElement();
             System.out.println("file = "+file);
-         //����Ǵ� �����̸�
+         //저장되는 파일이름
          fileName = multi.getFilesystemName(file); 
             System.out.println("fileName = "+fileName);
-         //�������� �̸�
+         //원래파일 이름
          originFileName = multi.getOriginalFileName(file);
             System.out.println("originFileName = "+originFileName);
          String ThumbnailFileName = null;
@@ -103,20 +103,20 @@ public class CostController extends HttpServlet {
             } catch (Exception e) {
                e.printStackTrace();
             }
-         String cName = multi.getParameter("cName"); // ���� �̸�
-         String cSdate = multi.getParameter("cSdate"); // ������
-         String cEdate = multi.getParameter("cEdate"); // ������
-         String cWday = multi.getParameter("cWday"); // �ۼ��� sysdate �� ����
+         String cName = multi.getParameter("cName"); // 견적 이름
+         String cSdate = multi.getParameter("cSdate"); // 시작일
+         String cEdate = multi.getParameter("cEdate"); // 종료일
+         String cWday = multi.getParameter("cWday"); // 작성날 sysdate 로 받음
          
-         String cText = multi.getParameter("cText"); // ����
-         String cFile2 = multi.getParameter("cFile"); // ���� �ڷ�
-         String cLoca = multi.getParameter("cLoca"); // ����
-         String cTarget = multi.getParameter("cTarget"); // �������
-         String cMethod = multi.getParameter("cMethod"); // �������
-         String cPrice = multi.getParameter("cPrice"); // ����
-         String cPeople = multi.getParameter("cPeople"); // �����ο�
-         String midx = multi.getParameter("midx"); // midx ȸ����ȣ
-         String[] cCata = multi.getParameterValues("cCata"); // ī�װ�
+         String cText = multi.getParameter("cText"); // 내용
+         String cFile2 = multi.getParameter("cFile"); // 견적 자료
+         String cLoca = multi.getParameter("cLoca"); // 지역
+         String cTarget = multi.getParameter("cTarget"); // 참여대상
+         String cMethod = multi.getParameter("cMethod"); // 참여방식
+         String cPrice = multi.getParameter("cPrice"); // 예산
+         String cPeople = multi.getParameter("cPeople"); // 참여인원
+         String midx = multi.getParameter("midx"); // midx 회원번호
+         String[] cCata = multi.getParameterValues("cCata"); // 카테고리
          
          String totalCCata ="";
          for(int i=0; i<cCata.length;i++) {
@@ -131,7 +131,7 @@ public class CostController extends HttpServlet {
           */
          System.out.println("test");
 
-         CostServiceImpl costdao = new CostServiceImpl(); // ��ü ����
+         CostServiceImpl costdao = new CostServiceImpl(); // 객체 생성
          int value = costdao.costInsert(cName, cSdate, cEdate, cWday, totalCCata, cText, fileName, cLoca, cTarget, cMethod,
                cPrice, cPeople, midx);
 
@@ -143,10 +143,10 @@ public class CostController extends HttpServlet {
             }
          
          
-         /*   ���������� ���� ����Ʈ ȭ��   */         
+         /*   마이페이지 견적 리스트 화면   */         
          }else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
 
-            System.out.println("EventMan_Mypage_MyCostlist.do if��");
+            System.out.println("EventMan_Mypage_MyCostlist.do if문");
             
             String midx = request.getParameter("midx");
             
@@ -159,13 +159,13 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostList.jsp");
             rd.forward(request, response);
-         //�Ϸ� 
+         //완료 
          
          
-         //���������� ���� �󼼺���
+         //마이페이지 견적 상세보기
          }else if(str2.equals("EventMan_Mypage_MyCostDetail.do")) {
             
-            System.out.println("EventMan_Mypage_MyCostlistDetail.do if��");
+            System.out.println("EventMan_Mypage_MyCostlistDetail.do if문");
             
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
@@ -179,9 +179,9 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
             rd.forward(request, response);         
-            //�Ϸ�
+            //완료
             
-         /*  ������û ���� ȭ�� �̵� */
+         /*  견적신청 수정 화면 이동 */
          }else if(str2.equals("EventMan_Mypage_MyCostModify.do")) {
             
             System.out.println("EventMan_Mypage_MyCostModify");
@@ -196,7 +196,7 @@ public class CostController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostModify.jsp");
             rd.forward(request, response);
             
-         /* ������û ���� �׼� */
+         /* 견적신청 삭제 액션 */
          }else if(str2.equals("EventMan_Mypage_MyCostDelete.do")) {
             
             int value=0;
@@ -211,24 +211,24 @@ public class CostController extends HttpServlet {
             
             response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
             
-         /*���� ���� �κ�*/
+         /*견적 수정 부분*/
          }else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
             
-            String cName = request.getParameter("cName"); // ���� �̸�
-            String cSdate = request.getParameter("cSdate"); // ������
-            String cEdate = request.getParameter("cEdate"); // ������
-            String cText = request.getParameter("cText"); // ����
-            String cFile2 = request.getParameter("cFile2"); // ���� �ڷ�
-            String cLoca = request.getParameter("cLoca"); // ����
-            String cTarget = request.getParameter("cTarget"); // �������
-            String cMethod = request.getParameter("cMethod"); // �������
-            String cPrice = request.getParameter("cPrice"); // ����
-            String cPeople = request.getParameter("cPeople"); // �����ο�
+            String cName = request.getParameter("cName"); // 견적 이름
+            String cSdate = request.getParameter("cSdate"); // 시작일
+            String cEdate = request.getParameter("cEdate"); // 종료일
+            String cText = request.getParameter("cText"); // 내용
+            String cFile2 = request.getParameter("cFile2"); // 견적 자료
+            String cLoca = request.getParameter("cLoca"); // 지역
+            String cTarget = request.getParameter("cTarget"); // 참여대상
+            String cMethod = request.getParameter("cMethod"); // 참여방식
+            String cPrice = request.getParameter("cPrice"); // 예산
+            String cPeople = request.getParameter("cPeople"); // 참여인원
 
             int midx = Integer.parseInt(request.getParameter("midx"));
             int cidx = Integer.parseInt(request.getParameter("cidx"));
             
-            String[] cCata = request.getParameterValues("cCata"); // ī�װ�
+            String[] cCata = request.getParameterValues("cCata"); // 카테고리
             
             String totalCCata ="";
             for(int i=0; i<cCata.length;i++) {
@@ -236,14 +236,14 @@ public class CostController extends HttpServlet {
             }
             
             System.out.println("totalCCata:"+totalCCata);
-            CostServiceImpl costdao = new CostServiceImpl(); // ��ü ����
+            CostServiceImpl costdao = new CostServiceImpl(); // 객체 생성
             int value = costdao.costModifyAction(cName, cSdate, cEdate ,totalCCata, cText, cFile2, cLoca, cTarget, cMethod,cPrice, cPeople, cidx);
 
             if(value >=0) {
                response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
 
             } else {
-               System.out.println("���� ����!");
+               System.out.println("수정 실패!");
                }
          }
    }
@@ -256,20 +256,20 @@ public class CostController extends HttpServlet {
 
    private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 
-      // �ø� �ҽ������� �о�帰��
+      // 올린 소스파일을 읽어드린다
       BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path + File.separator + fileName));
-      // �̹����� ������¡�Ѵ�(���� 100�� ���缭 �����̹��� ������ �����Ѵ�)
+      // 이미지를 리사이징한다(높이 100에 맞춰서 원본이미지 비율을 유지한다)
       BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
-      // ����� Ǯ���
+      // 썸네일 풀경로
       String thumbnailPath = uploadPath + path + File.separator + "s-" + fileName;
-      // ���� ��ü����
+      // 파일 객체생성
       File newFile = new File(thumbnailPath);
-      // Ȯ���� ����
+      // 확장자 추출
       String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
-      // ����� �̹��� �����(������¡�� �̹����� �ش� �̹����������� �ش� ��ġ�� ���� ��ü�����Ѵ�)
+      // 썸네일 이미지 만들기(리사이징한 이미지를 해당 이미지형식으로 해당 위치에 파일 객체생성한다)
       ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 
-      // ����� ���� �̸� ����
+      // 썸네일 파일 이름 추출
       return thumbnailPath.substring((uploadPath + path).length()).replace(File.separatorChar, ' ');
    }
 

@@ -181,7 +181,7 @@
 <td><%=mv.getmEmail() %></td>
 <td><%=mv.getmPhn() %></td>
 <td><%=mv.getmType()%></td>
-<td><%=mv.getWdate()%></td>
+
 <td><%=mv.getmDelYn()%></td>
 
 </tr>

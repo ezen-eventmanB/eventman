@@ -8,8 +8,8 @@ public class EvMemberVo {
 	private String mPhn;
 	private String mName;
 	private String mEmail;
-	private int mType;
-	private String wdate;
+	private String mType;
+	private String mDate;
 	private String mDelYn;
 	
 	public int getMidx() {
@@ -48,17 +48,17 @@ public class EvMemberVo {
 	public void setmEmail(String mEmail) {
 		this.mEmail = mEmail;
 	}
-	public int getmType() {
+	public String getmType() {
 		return mType;
 	}
-	public void setmType(int mType) {
+	public void setmType(String mType) {
 		this.mType = mType;
 	}
-	public String getWdate() {
-		return wdate;
+	public String getmDate() {
+		return mDate;
 	}
-	public void setWdate(String wdate) {
-		this.wdate = wdate;
+	public void setmDate(String mDate) {
+		this.mDate = mDate;
 	}
 	public String getmDelYn() {
 		return mDelYn;

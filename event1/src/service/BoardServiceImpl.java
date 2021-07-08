@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import dbconn.DBconn;
 import vo.EvBoardAskVo;
+import vo.EvMemberVo;
 import vo.EvReviewVo;
 
 public class BoardServiceImpl {
@@ -22,38 +23,65 @@ public class BoardServiceImpl {
 
 	}
 
-	/* °Ô½ÃÆÇ °ü¸®ÀÚ ÀÛ¼º ±Û ¸®½ºÆ® Ãâ·Â ÇÏ±â*/
-	  public ArrayList selectMasterboardlist(String gidx) {
-		  
-		  ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-	  
-	  String sql
-	  ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname " +"from " +"EVE_BOARD B, EVE_MASTER G "
-	  +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; 
-	  try{ 
-		  pstmt = conn.prepareStatement(sql); 
-		  pstmt.setString(1, gidx); ResultSet 
-		  rs= pstmt.executeQuery();
-	  
-	  while(rs.next()) {
-	  
-	  EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
-	  bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
-	  bv.setBwriteday(rs.getString("bwriteday"));
-	  bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
-	  
-	  alistboard.add(bv);
-	  	}
-	  } catch (SQLException e) { 
-	  e.printStackTrace(); }finally { try { pstmt.close(); conn.close(); } catch
-	  (SQLException e) { 
-	  		}
-	  	}
-	  	return alistboard; 
-	  }
-	  
-	  
-	/* ¸¶ÀÌÆäÀÌÁö¿¡¼­ º»ÀÎÀÌ ÀÛ¼ºÇÑ ±Û ¸®½ºÆ® ºÒ·¯¿À±â */
+	/*
+	 * ê²Œì‹œíŒ ê´€ë¦¬ì ì‘ì„± ê¸€ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ í•˜ê¸° public ArrayList selectMasterboardlist(String gidx) {
+	 * 
+	 * ArrayList<EvBoardAskVo> alistboard = new ArrayList();
+	 * 
+	 * String sql
+	 * ="select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, G.gname "
+	 * +"from " +"EVE_BOARD B, EVE_MASTER G "
+	 * +"where B.GIDX = G.GIDX and B.Gidx=1 and bdelyn='N' order by bidx desc"; try{
+	 * pstmt = conn.prepareStatement(sql); pstmt.setString(1, gidx); ResultSet rs=
+	 * pstmt.executeQuery();
+	 * 
+	 * while(rs.next()) {
+	 * 
+	 * EvBoardAskVo bv = new EvBoardAskVo(); bv.setGidx(rs.getInt("gidx"));
+	 * bv.setBcata(rs.getString("bcata")); bv.setBtitle(rs.getString("btitle"));
+	 * bv.setBwriteday(rs.getString("bwriteday"));
+	 * bv.setBname(rs.getString("mname")); bv.setBcount(rs.getString("bcount"));
+	 * 
+	 * alistboard.add(bv); } } catch (SQLException e) { e.printStackTrace();
+	 * }finally { try { pstmt.close(); conn.close(); } catch (SQLException e) { } }
+	 * return alistboard; }
+	 */
+
+	/* ê´€ë¦¬ìê°€ ì‘ì„±í•œ ê²Œì‹œíŒ ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸° */
+	public ArrayList<EvBoardAskVo> selectMasterboardlist() {
+		
+		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
+		String sql = "select * from EVE_BOARD where gidx='1' order by bidx";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				ebvo.setBcata(rs.getString("Bcata"));
+				ebvo.setBtitle(rs.getString("Btitle"));
+				ebvo.setBwriteday(rs.getString("Bwriteday"));
+				ebvo.setgName(rs.getString("setgName"));
+				ebvo.setBmenu(rs.getString("Bmenu"));
+				ebvo.setBcount(rs.getString("Bcount"));
+
+				alistboard.add(ebvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+        }finally {
+            try {
+               pstmt.close();
+               conn.close();
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
+         }
+         return alistboard;
+      }
+
+	/* ë§ˆì´í˜ì´ì§€ì—ì„œ ë³¸ì¸ì´ ì‘ì„±í•œ ê¸€ ë¦¬ìŠ¤íŠ¸ ë¶ˆëŸ¬ì˜¤ê¸° */
 	public ArrayList selectmyboardlist(String midx) {
 
 		ArrayList<EvBoardAskVo> alistboard = new ArrayList();
@@ -95,10 +123,10 @@ public class BoardServiceImpl {
 		return alistboard;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »ó¼¼º¸±â */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸° */
 	public EvBoardAskVo boardlistselectone(int bidx) {
 
-		System.out.println("boardlistselectone °Ô½Ã±Û »ó¼¼º¸±â ¸Ş¼Òµå");
+		System.out.println("boardlistselectone ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸° ë©”ì†Œë“œ");
 
 		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
 
@@ -136,7 +164,7 @@ public class BoardServiceImpl {
 		return bavo;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û ¼öÁ¤ÇÏ±â ÆäÀÌÁö·Î ÀÌµ¿ . */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ìˆ˜ì •í•˜ê¸° í˜ì´ì§€ë¡œ ì´ë™ . */
 	public EvBoardAskVo boardModify(int bidx) {
 
 		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
@@ -176,7 +204,7 @@ public class BoardServiceImpl {
 
 	}
 
-	/* °Ô½ÃÆÇ ¼öÁ¤ ¾×¼Ç */
+	/* ê²Œì‹œíŒ ìˆ˜ì • ì•¡ì…˜ */
 	public int boardModifyAction(int bidx, String title, String content, String file) {
 
 		int value = 0;
@@ -208,7 +236,7 @@ public class BoardServiceImpl {
 		return value;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½ÃÆÇ ±Û ¼ö */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œíŒ ê¸€ ìˆ˜ */
 	public int boardCount(int midx) {
 		int count = 0;
 
@@ -240,10 +268,10 @@ public class BoardServiceImpl {
 		return count;
 	}
 
-	/* ¸¶ÀÌÆäÀÌÁö °Ô½Ã±Û »èÁ¦ÇÏ±â */
+	/* ë§ˆì´í˜ì´ì§€ ê²Œì‹œê¸€ ì‚­ì œí•˜ê¸° */
 	public int myPageBoardDelet(int bidx) {
 
-		System.out.println("myPageBoardDelet(int bidx) ÀÔ´Ï´Ù.");
+		System.out.println("myPageBoardDelet(int bidx) ì…ë‹ˆë‹¤.");
 		System.out.println(bidx);
 
 		int value = 0;
@@ -268,11 +296,11 @@ public class BoardServiceImpl {
 
 		}
 
-		System.out.println("turnµÇ´Â °ª = " + value);
+		System.out.println("turnë˜ëŠ” ê°’ = " + value);
 		return value;
 	}
 
-	/* °Ô½Ã±Û Count */
+	/* ê²Œì‹œê¸€ Count */
 	public int hitCount(int bidx) {
 
 		int value = 0;

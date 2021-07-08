@@ -22,13 +22,13 @@ import vo.EvReviewVo;
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		System.out.println("-----MemberController ½ÇÇà-----");
+		System.out.println("-----MemberController ì‹¤í–‰-----");
 		
 		request.setCharacterEncoding("UTF-8");
 		  
@@ -44,10 +44,10 @@ public class MainController extends HttpServlet {
 		System.out.println("str2 = "+str1[2]);	
 		
 		
-/*	¸ŞÀÎ ÆäÀÌÁö·Î ÀÌµ¿	*/
+/*	ë©”ì¸ í˜ì´ì§€ë¡œ ì´ë™	*/
 		if(str2.equals("EventMan_Main.do")) {
 			
-			System.out.println("EventMan_Main.do if ¹® ½ÇÇà ");
+			System.out.println("EventMan_Main.do if ë¬¸ ì‹¤í–‰ ");
 			
 String page = request.getParameter("page");
 			

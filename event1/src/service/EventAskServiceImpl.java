@@ -20,7 +20,7 @@ public class EventAskServiceImpl {
 	
 	
 	
-	/*	ªÛ¥„±€ ¿€º∫«œ±‚	*/	
+	/*	ÏÉÅÎã¥Í∏Ä ÏûëÏÑ±ÌïòÍ∏∞	*/	
 	public int insertAdvice(String cata, String title, String content, String fileName , String midx ,String hidx) {
 
 		System.out.println("cara"+cata);
@@ -35,7 +35,7 @@ public class EventAskServiceImpl {
 		int value=0;
 		
 		String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL, HIDX)"
-					+"values(EVENTASK_SEQ.NEXTVAL , ? , 'ªÛ¥„Ω≈√ª' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0 , ?)";
+					+"values(EVENTASK_SEQ.NEXTVAL , ? , 'ÏÉÅÎã¥Ïã†Ï≤≠' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0 , ?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -19,12 +19,12 @@
 
 	out.println("midx="+midx);
 	out.println("gidx="+gidx); 
-	%>    
 	
-	<%
-	ArrayList<EvBoardAskVo> reviewList = (ArrayList<EvBoardAskVo>)request.getAttribute("boardList"); 
-	%>  
-    
+	
+	
+	ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");  
+	%>    
+
 <!doctype html>
 <html>
 <head>
@@ -209,27 +209,30 @@
 
 <!-- 게시글 리스트 -->
    <div class="container">
-      <table class="table table-hover">
+  	 
+      <table class="table table-hover">	   
          <thead>
-            <th>순번</th>
+            <th>카테고리</th>
             <th colspan="2">제목</th>
             <th></th>
             <th>작성일</th>
             <th>작성자</th>
             <th>조회수</th>  
          </thead>
-        <tbody>
-<%--          <% for(EvBoardAskVo bovo: alist){ %>
-            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=bovo.getBidx()%>'">
-               <td><%=bovo.getBidx()%></td>
-               <td colspan="2"><%=bovo.getBtitle()%></td>
-               <td></td>
-               <td><%=bovo.getBwriteday()%></td>
-               <td><%=bovo.getBname()%></td>
-               <td><%=bovo.getBcount()%></td>
-            </tr>
-         <%}; %> --%>
-         </tbody> 
+         
+	        <tbody>
+				 <% for(EvBoardAskVo evbo: alistboard){ %>
+				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 	
+		            <tr>
+		               <td><%=evbo.getBcata()%></td>
+		               <td colspan="2"><%=evbo.getBtitle()%></td>
+		               <td></td>
+		               <td><%=evbo.getBwriteday()%></td>
+		               <td><%=evbo.getgName()%></td>
+		               <td><%=evbo.getBcount()%></td>
+		            </tr>
+	       		  <%}; %> 
+	         </tbody> 
          
          
 				</table>

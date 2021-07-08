@@ -7,6 +7,18 @@ encoding//Content/EventMan_Main/EventMan_Main.jsp=UTF-8
 encoding//Content/EventMan_Member/EventMan_Member_Find_Id.jsp=UTF-8
 encoding//src/controller/BoardController.java=UTF-8
 encoding//src/controller/CostController.java=UTF-8
+<<<<<<< HEAD
+=======
+encoding//src/controller/FrontController.java=UTF-8
+encoding//src/controller/MainController.java=UTF-8
+encoding//src/controller/MasterController.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 encoding//src/controller/MemberController.java=UTF-8
+encoding//src/controller/ReviewController.java=UTF-8
+encoding//src/service/BoardServiceImpl.java=UTF-8
+encoding//src/service/CostServiceImpl.java=UTF-8
+encoding//src/service/EventAskServiceImpl.java=UTF-8
+encoding//src/service/MasterServiceImpl.java=UTF-8
 encoding//src/service/MemberServiceImpl.java=UTF-8
+encoding//src/service/ReviewServiceImpl.java=UTF-8
 encoding/<project>=UTF-8
