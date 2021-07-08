@@ -1,5 +1,7 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "vo.EvCostVo" %>
  <%
 	String member_id = (String)session.getAttribute("S_memberId");
  
@@ -18,7 +20,9 @@
 	out.println("gidx="+gidx); 
 	
 	%>    
-	
+	<%
+	ArrayList<EvCostVo> arraycost = (ArrayList<EvCostVo>)request.getAttribute("arraycost");
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,6 +118,107 @@
 		</nav>
 </div>
 
+
+<div class="container">
+	<p class="fs-2 fw-bold mt-5">견적 신청함</p>
+	<div class="row">
+		<div class="col">
+			
+		</div>
+
+		<div class="col-6">
+			<div class="input-group input-group-sm mb-3">	<div class="btn-group me-3" role="group" aria-label="Basic radio toggle button group">
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+				<label class="btn btn-outline-secondary btn-sm" for="btnradio1">과거</label>
+				
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
+				<label class="btn btn-outline-secondary btn-sm" for="btnradio2">최신</label>
+			</div>	
+				<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+					<option selected>검색타입</option>
+					<option value="1">제목</option>
+					<option value="2">아이디</option>
+					<option value="3">이름</option>
+				</select>
+				<input type="text" class="form-control w-50" placeholder="검색" aria-label="Recipient's username" aria-describedby="button-addon2">
+				<button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 견적신청 -->
+<div class="container">
+	<table class="table table-hover">
+		<thead>
+			<tr class="text-center">
+				<th>글번호</th>
+				<th colspan="2">제목</th>
+				<th></th>
+				<th>작성일</th>
+				<th>작성아이디</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th></th>
+			</tr>
+		</thead>
+	<tbody class="align-middle">
+		<% for(EvCostVo cvo : arraycost){ %>
+			<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?bidx=<%=cvo.getCidx()%>'">
+				<td class="text-center"><%=cvo.getCidx() %></td>
+				<td colspan="2"><%=cvo.getCostName()%></td>
+				<td></td>
+				<td class="text-center"><%=cvo.getSubWritedate()%></td>
+				<td class="text-center"><%=cvo.getCName()%></td>
+				<td class="text-center"><%=cvo.getRealname()%></td>
+				<td class="text-center"><%=cvo.getCcount() %></td>
+				<td>
+					<div class="btn-group" role="group" aria-label="Basic outlined example">
+						<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+					</div>
+				</td>
+			</tr>
+		<%}; %>
+		</tbody>
+	</table>
+</div>
+
+
+<%-- 
+<!-- 행사리뷰 페이징 처리 -->
+	<div class="container mt-5 text-center">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto">	
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+					<%if(pm.isPrev() == true) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>">
+								<span aria-hidden="false">&laquo;</span>
+							</a>
+						</li>
+					<%} %>
+					<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) {%>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>"><%=i %></a>
+						</li>
+					<% } %>
+				
+					<% if(pm.isNext() == true){ %>
+						<li class="page-item">
+							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getEndPage()+1 %>" >
+								<span aria-hidden="false">&raquo;</span>
+							</a>
+						</li>
+					<%} %>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div> --%>
 
 
 

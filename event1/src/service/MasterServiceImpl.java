@@ -2,6 +2,7 @@ package service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -166,12 +167,40 @@ public class MasterServiceImpl {
 
 	public ArrayList<EvCostVo> costSelectList() {
 		
-		String sql = "";
+		String sql = "select * from EVE_COST C, EVE_MEMBER M where C.MIDX = M.MIDX";
 		
+		ArrayList<EvCostVo> alistCost = new ArrayList<EvCostVo>();
 		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvCostVo cvo = new EvCostVo();
+				cvo.setCidx(rs.getInt("Cidx"));
+				cvo.setCostName(rs.getString("CNAME"));
+				cvo.setCostWritedate(rs.getString("CWDAY"));
+				cvo.setCName(rs.getString("MNAME"));
+				cvo.setCcount(rs.getString("CCOUNT"));
+				cvo.setRealname(rs.getString("MNAME"));
+				alistCost.add(cvo);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 		
-		
-		return null;
+		return alistCost;
 	}
 	
 
