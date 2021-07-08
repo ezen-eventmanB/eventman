@@ -48,45 +48,54 @@ function check(){
 var fm = document.frm;   
 var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
 
-if (fm.cName.value =="")   {
-	$("#textbox").html("행사명을 입력해주세요.");
-	$("#modal").modal("show")
-	return;
-}else if (fm.cSdate.value ==""){
-	$("#textbox").html("행사 시작일을 선택해주세요.");
-	$("#modal").modal("show")
-	return;
-}else if (fm.cEdate.value ==""){
-	$("#textbox").html("행사 종료일을 선택해주세요.");
-	$("#modal").modal("show")
-	return;
-}else if (fm.cTarget == "참여대상"){
-	$("#textbox").html("참여 대상을 선택해주세요.");
-	$("#modal").modal("show")
-	return;  
-}else if(!costCataChk){
-	$("#textbox").html("카테고리를 한개 이상 선택해주세요.");
-	$("#modal").modal("show")
-	return;  
-}else if (fm.cLoca.value ==""){
-	$("#textbox").html("행사 지역을 입력 해주세요.");
-	$("#modal").modal("show")
-	return;
-}else if($(".catanon").value =="catamenu"){
-	$("#textbox").html("카테고리를 선택해주세요.");
-	$("#modal").modal("show")
-	return;
-}else if (document.frm.cText.value ==""){
-	$("#textbox").html("행사 설명을 적어주세요.");
-	$("#modal").modal("show")
-	return;
-}else{
-	document.frm.action ="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost_Submit_Action.do";
-	document.frm.enctype="multipart/form-data";
-	document.frm.method="POST";
-	document.frm.submit();
-	alert("견적신청이 되었습니다."); 
-} 
+	if (fm.cName.value =="")   {
+		$("#textbox").html("행사명을 입력해주세요.");
+		$("#modal").modal("show")
+		return;
+	}else if (fm.cSdate.value ==""){
+		$("#textbox").html("행사 시작일을 선택해주세요.");
+		$("#modal").modal("show")
+		return;
+	}else if (fm.cEdate.value ==""){
+		$("#textbox").html("행사 종료일을 선택해주세요.");
+		$("#modal").modal("show")
+		return;
+	}else if(!costCataChk){
+		$("#textbox").html("카테고리를 한개 이상 선택해주세요.");
+		$("#modal").modal("show")
+		return;  
+	}else if (fm.cLoca.value ==""){
+		$("#textbox").html("행사 지역을 입력 해주세요.");
+		$("#modal").modal("show")
+		return;
+	}else if (fm.cTarget.value == "catamenu"){
+		$("#textbox").html("참여 대상을 선택해주세요.");
+		$("#modal").modal("show")
+		return;  
+	}else if (fm.cMethod.value == "catamenu"){
+		$("#textbox").html("방식을 선택해주세요.");
+		$("#modal").modal("show")
+		return; 
+	}else if (fm.cPrice.value == "catamenu"){
+		$("#textbox").html("예산을 선택해주세요.");
+		$("#modal").modal("show")
+		return; 
+	}else if (fm.cPeople.value == "catamenu"){
+		$("#textbox").html("인원을 선택해주세요.");
+		$("#modal").modal("show")
+		return; 
+	}else if($(".catanon").value =="catamenu"){
+		$("#textbox").html("카테고리를 선택해주세요.");
+		$("#modal").modal("show")
+		return;
+	}else if (document.frm.cText.value ==""){
+		$("#textbox").html("행사 설명을 적어주세요.");
+		$("#modal").modal("show")
+		return;
+	}else{
+		$("#textbox1").html("견적신청을 완료합니다.");
+		$("#modal1").modal("show")
+	} 
 }
              
 function moveFn(){
@@ -94,7 +103,7 @@ function moveFn(){
 var fm = document.frm; 
 var costCataChk = $("input:checkbox[name='cCata']").is(":checked");
 	  
-if (fm.cName.value =="")   {
+	if (fm.cName.value =="")   {
         fm.cName.focus();
         return;
      }else if (fm.cSdate.value ==""){
@@ -103,24 +112,39 @@ if (fm.cName.value =="")   {
      }else if (fm.cEdate.value ==""){
          fm.cEdate.focus();
          return;
-     }else if (fm.cTarget == "참여대상"){
-  	  fm.cTarget.focuse();
      }else if(!costCataChk){
-    	location.href="#cataA";
-        fm.cCata.focus();
-        return false;  
+     	location.href="#cataA";
+        return;  
      }else if (fm.cLoca.value ==""){
           fm.cLoca.focus();
           return;
-     }else if($(".catanon").value =="catamenu"){
-          fm.catamenu.focus();
-          return;
+     }else if (fm.cTarget.value == "catamenu"){
+  		  fm.cTarget.focuse();
+  		  return;
+     }else if (fm.cMethod.value == "catamenu"){
+ 		  fm.cMethod.focuse();
+ 		  return;
+     }else if (fm.cPrice.value == "catamenu"){
+ 		  fm.cPrice.focuse();
+ 		  return;
+     }else if (fm.cPeople.value == "catamenu"){
+ 		  fm.cPeople.focuse();
+ 		  return;
      }else if (document.frm.cText.value ==""){
           document.frm.cText.focus();
           return;
      }
 }
-         
+ 
+
+function submitFn(){
+
+	   document.frm.action ="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost_Submit_Action.do";
+	   document.frm.enctype="multipart/form-data";
+	   document.frm.method="POST";
+	   document.frm.submit();
+
+}
       </script>
 </head>
 <body>
@@ -515,7 +539,23 @@ if(member_id == null){
 </div>
 
 
-
+<!-- submit모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox1"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="submitFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
