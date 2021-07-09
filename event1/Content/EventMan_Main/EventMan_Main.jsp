@@ -22,8 +22,9 @@
 	out.println("gidx="+gidx); 
 	
 	%>
-		<%
-	ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList"); 
+	<%
+	ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList");
+	ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");  
 	%>  
  	<%PageMaker pm = (PageMaker)request.getAttribute("pm"); %>
 
@@ -464,35 +465,29 @@
 	공지사항이미지입니다.
 	</div>
 	<table class="table table-hover">
-	      <thead>
-			  <tr>
-			    <th scope="col">제목</th>
-			    <th scope="col">카테고리</th>
-			    <th scope="col">작성일</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr>
-			    <td>견적 신청 공지사항</td>
-			    <td>공지사항</td>
-			    <td>2021-05-20</td>
-			  </tr>
-			    <tr>
-			    <td>견적 신청 공지사항</td>
-			    <td>공지사항</td>
-			    <td>2021-05-20</td>
-			  </tr>  
-			  <tr>
-			    <td>견적 신청 공지사항</td>
-			    <td>공지사항</td>
-			    <td>2021-05-20</td>
-			  </tr>  
-			  <tr>
-			    <td>견적 신청 공지사항</td>
-			    <td>공지사항</td>
-			    <td>2021-05-20</td>
-			  </tr>
 		  </tbody>
+		          <thead>
+            <th>카테고리</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th> 
+         </thead>
+	        <tbody>
+				 	<% for(EvBoardAskVo evbo: alistboard){ %>
+				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
+		               <td><%=evbo.getBcata()%></td>
+		               <td colspan="2"><%=evbo.getBtitle()%></td>
+		               <td></td>
+		               <td><%=evbo.getBWrieday2()%></td>
+		               <td><%=evbo.getgName()%></td>
+		            </tr>
+	       		  <%}; %> 
+	         </tbody> 
+	         
+				</table>
+			</div>
 	</table>
 	
 	

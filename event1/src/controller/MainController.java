@@ -49,31 +49,31 @@ public class MainController extends HttpServlet {
 			
 			System.out.println("EventMan_Main.do if 문 실행 ");
 			
-String page = request.getParameter("page");
+			String page = request.getParameter("page");
 			
-int page2=0;  
-if(page == null) { 
-	page = "1";					
-}													
-page2 = Integer.parseInt(page);
+			int page2=0;  
+			if(page == null) { 
+			page = "1";					
+			}													
+			page2 = Integer.parseInt(page);
 													
-SearchCriteria scri = new SearchCriteria();
-scri.setPage(page2);	
+			SearchCriteria scri = new SearchCriteria();
+			scri.setPage(page2);	
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount("");
-System.out.println("cnt "+ cnt);
+			int cnt = reviewDao.boardTotalCount("");
+			System.out.println("cnt "+ cnt);
 
-PageMaker pm = new PageMaker();
-pm.setScri(scri);
-pm.setTotalCount(cnt);	
+			PageMaker pm = new PageMaker();
+			pm.setScri(scri);
+			pm.setTotalCount(cnt);	
 
 			ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll(page2);
 			ReviewServiceImpl reviewdao = new ReviewServiceImpl();
 			
 			request.setAttribute("reviewList", reviewList);
-request.setAttribute("pm", pm);			
+			request.setAttribute("pm", pm);			
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Main/EventMan_Main.jsp"); 	
 			rd.forward(request, response);
