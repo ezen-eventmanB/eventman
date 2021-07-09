@@ -54,7 +54,7 @@
 						<title><%=erv.gethName() %></title>
 						<div class="card-body">
 							<div class="justify-content-between align-items-center">
-								<p class="card-text hname"><%=erv.gethName() %></p>
+								<p class="card-text hname fw-bold"><%=erv.gethName() %></p>
 								<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
 							</div>	
 						</div>

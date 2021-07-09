@@ -53,8 +53,8 @@
 <style>
 	#fixedbutton {
 	    position: fixed;
-	    bottom: 0px;
-	    right: 0px; 
+	    bottom: 5px;
+	    right: 5px; 
 	}
 </style>
 	
@@ -196,6 +196,20 @@
 		});
 	
 	}
+	
+/*	화면구석 상담하기 버튼	*/
+ 	function askFn(){
+		//일단 로그인 확인 로그인 안되있다면 로그인 요구 모달창 - 로그인창
+		//로그인 된상태라면 이동
+		
+ 		if(<%=session.getAttribute("midx")%> == null){
+ 			$("#textbox").html("로그인후 이용해주세요.");
+ 			$("#modal").modal("show");
+ 		}else{
+ 			location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_MainAdvice.do?midx="+<%=session.getAttribute("midx")%>;
+ 		};
+	}
+ 
 </script>
 </head>
 <body>
@@ -290,7 +304,6 @@
 			</div>
 			<div class="carousel-item active">
 				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner2.jpg" >
-
 			</div>
 			<div class="carousel-item">
 				<img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" src="../banner3.jpg" >
@@ -392,7 +405,7 @@
 							<title><%=erv.gethName() %></title>
 							<div class="card-body">
 								<div class="justify-content-between align-items-center">
-									<p class="card-text hname"><%=erv.gethName() %></p>
+									<p class="card-text hname fw-bold"><%=erv.gethName() %></p>
 									<small class="text-muted"><%=erv.getstartdate() %>~<%=erv.getendenddate() %></small>
 								</div>	
 							</div>
@@ -484,10 +497,43 @@
 	
 	
 	
-
-	<div id="fixedbutton">
-		<button type="button" class="btn btn-secondary" id="zindex">버튼</button>
+<!-- 화면구석 상담하기 버튼 -->
+<div id="fixedbutton">
+	<div class="rounded-3 border border-3 border-warning">
+		<div class="bg-warning bg-gradient">
+			<div class="text-center fw-bold">EVENT</div>
+			<div class="text-center fw-bold">MAN</div>
+			<div class="text-center fw-bold">상담문의</div>
+			<button type="button" class="bg-light rounded-3 border border-1 border-secondary text-center ms-1 me-1 pb-1" onclick="askFn()">
+				<img src="../pencil.png" class="mt-1 mb-1 ms-3 me-3" style="width:50px;"/><br>
+				<div class="fw-bold">상담문의</div>
+				<div class="fw-bold">신청</div>
+			</button>
+		</div>
 	</div>
+
+</div>
+
+<!-- 로그인 확인 모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인페이지로 이동</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="moveFn()">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+	
 	
 	
 	<!-- 메인 푸터 -->

@@ -376,7 +376,18 @@ public class BoardController extends HttpServlet {
 				
 				System.out.println("실패입니다.");
 			}
-		}	
+			
+			
+/*	메인페이지 화면 구석 상담하기 버튼*/
+		}else if(str2.equals("EventMan_MainAdvice.do")) {
+
+			System.out.println("메인화면 구석 상담하기");
+			System.out.println(request.getParameter("midx"));
+			int midx = Integer.parseInt(request.getParameter("midx"));
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_MainAdvice.jsp");
+			rd.forward(request, response);
+		}
 		
 		
 	}

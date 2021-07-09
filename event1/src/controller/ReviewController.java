@@ -50,7 +50,7 @@ public class ReviewController extends HttpServlet {
       System.out.println("str2 = "+str1[2]);   
 
       
-/*     縮                ѷ  ִ   κ    */
+/*   행사리뷰 메인 페이지 뿌려주는 부분   */
       
       if(str2.equals("EventMan_Review_Main.do")) {
          
@@ -86,7 +86,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
    
          
-/*    ߰   ׺񿡼    ü Ŭ     Ajax   */         
+/*   중간 네비에서 전체 클릭시 Ajax   */           
       }else if(str2.equals("EventMan_Review_selectAll.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
@@ -122,7 +122,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
          
-/*    ߰   ׺      Ŭ     ajax   */         
+/*   중간 네비 기업 클릭시 ajax   */           
       }else if(str2.equals("EventMan_Review_selectCompany.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_selectCompany.do     ");
@@ -158,7 +158,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
          
-/*    ߰   ׺       Ŭ     ajax   */         
+/*   중간 네비 대학 클릭시 ajax   */         
       }else if(str2.equals("EventMan_Review_selectUniversity.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_selectUniversity.do     ");
@@ -193,7 +193,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
          
-/*    ߰   ׺             Ŭ     ajax   */         
+/*   중간 네비 공연 클릭시 ajax   */         
       }else if(str2.equals("EventMan_Review_selectStage.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_selectStage.do     ");
@@ -227,7 +227,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
          
-/*    ߰   ׺    Ÿ Ŭ     ajax   */         
+/*   중간 네비 기타 클릭시 ajax   */              
       }else if(str2.equals("EventMan_Review_selectxEeption.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_selectxEeption.do     ");
@@ -261,10 +261,11 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
          
-/*         󼼺    ajax*/         
+/*   리뷰 상세보기 ajax*/             
       }else if(str2.equals("EventMan_Review_detail.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_detail.do     ");
+         System.out.println("가나다라마ㅏ바사아아아");
          
          int hidx = Integer.parseInt(request.getParameter("hidx"));
          
@@ -279,7 +280,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
       
          
-/*   SELECT BOX    ý */
+/*   SELECT BOX  선택시 */
       }else if(str2.equals("EventMan_Review_selectbox.do")) {
 
          System.out.println("--if   => ajax EventMan_Review_selectbox.do     ");
@@ -317,7 +318,7 @@ request.setAttribute("pm", pm);
          rd.forward(request, response);
          
                
-/* SEACH BOX  ˻ */            
+/* SEACH BOX 검색시 */            
       }else if(str2.equals("EventMan_Review_search.do")) {
 
          System.out.println("--if   => ajax EventMan_Review_search.do     ");

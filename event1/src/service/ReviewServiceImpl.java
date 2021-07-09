@@ -349,7 +349,7 @@ public class ReviewServiceImpl {
 		
 		String sql = "select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ?) A "
+				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N') A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
@@ -417,7 +417,7 @@ public class ReviewServiceImpl {
 		
 		String sql ="select B.* from "
 				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and HNAME like ? or HTEXT like ?) A "
+				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N' and HNAME like ? or HTEXT like ?) A "
 				+ "where rownum <= ?) B "
 				+ "where B.rnum >= ?";
 		try {
