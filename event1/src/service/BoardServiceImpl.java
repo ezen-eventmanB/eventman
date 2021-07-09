@@ -109,22 +109,24 @@ public class BoardServiceImpl {
 			
 			return bavo;
 		}
+		
 		/*	관리자 게시판 글 작성하기	*/	
-		public int insertAdvice(String cata, String title, String content, String fileName , String midx ,String hidx) {
-	
+		/*	상담글 작성하기	*/	
+		public int masterinsertAdvice(String cata, String title, String content, String fileName , String gidx) {
+
 			System.out.println("cara"+cata);
 			System.out.println("title"+title);
 			System.out.println("content"+content);
 			System.out.println("file"+fileName);
-			System.out.println("midx"+midx);
-			System.out.println("hidx"+hidx);
+			System.out.println("gidx"+gidx);
+
 			
 			
 			
 			int value=0;
 			
-			String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL, HIDX)"
-						+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0 , ?)";
+			String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL)"
+						+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0)";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -132,8 +134,8 @@ public class BoardServiceImpl {
 				pstmt.setString(2, title);
 				pstmt.setString(3, content);
 				pstmt.setString(4, fileName);
-				pstmt.setString(5, midx);
-				pstmt.setString(6, hidx);
+				pstmt.setString(5, gidx);
+
 				
 				value=pstmt.executeUpdate();
 				

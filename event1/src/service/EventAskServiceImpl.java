@@ -21,21 +21,21 @@ public class EventAskServiceImpl {
 	
 	
 	/*	상담글 작성하기	*/	
-	public int insertAdvice(String cata, String title, String content, String fileName , String midx ,String hidx) {
+	public int insertAdvice(String cata, String title, String content, String fileName , String midx) {
 
 		System.out.println("cara"+cata);
 		System.out.println("title"+title);
 		System.out.println("content"+content);
 		System.out.println("file"+fileName);
 		System.out.println("midx"+midx);
-		System.out.println("hidx"+hidx);
+
 		
 		
 		
 		int value=0;
 		
-		String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL, HIDX)"
-					+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0 , ?)";
+		String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
+					+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class EventAskServiceImpl {
 			pstmt.setString(3, content);
 			pstmt.setString(4, fileName);
 			pstmt.setString(5, midx);
-			pstmt.setString(6, hidx);
+
 			
 			value=pstmt.executeUpdate();
 			

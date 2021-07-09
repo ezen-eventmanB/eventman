@@ -75,6 +75,7 @@ public class MainController extends HttpServlet {
 			request.setAttribute("reviewList", reviewList);
 			request.setAttribute("pm", pm);			
 			
+			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Main/EventMan_Main.jsp"); 	
 			rd.forward(request, response);
 

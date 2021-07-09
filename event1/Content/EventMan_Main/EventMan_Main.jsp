@@ -24,7 +24,6 @@
 	%>
 	<%
 	ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList");
-	ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");  
 	%>  
  	<%PageMaker pm = (PageMaker)request.getAttribute("pm"); %>
 
@@ -474,7 +473,7 @@
             <th>작성자</th> 
          </thead>
 	        <tbody>
-				 	<% for(EvBoardAskVo evbo: alistboard){ %>
+<%-- 				 	<% for(EvBoardAskVo evbo: alistboard){ %>
 				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
 		               <td><%=evbo.getBcata()%></td>
@@ -483,7 +482,7 @@
 		               <td><%=evbo.getBWrieday2()%></td>
 		               <td><%=evbo.getgName()%></td>
 		            </tr>
-	       		  <%}; %> 
+	       		  <%}; %>  --%>
 	         </tbody> 
 	         
 				</table>
