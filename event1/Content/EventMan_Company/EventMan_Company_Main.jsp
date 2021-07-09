@@ -197,8 +197,7 @@
 		</div>
 	</div>
 
-
-
+<jsp:include page="../EventMan_Main/mainadvice.jsp" flush="false"/>
 
 
 
