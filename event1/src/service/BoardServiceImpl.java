@@ -120,13 +120,10 @@ public class BoardServiceImpl {
 			System.out.println("file"+fileName);
 			System.out.println("gidx"+gidx);
 
-			
-			
-			
 			int value=0;
 			
 			String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL)"
-						+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0)";
+						+"values(EVENTASK_SEQ.NEXTVAL , ? , '공지사항' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0)";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);

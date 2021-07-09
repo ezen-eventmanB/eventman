@@ -473,7 +473,11 @@
             <th>작성자</th> 
          </thead>
 	        <tbody>
-<%-- 				 	<% for(EvBoardAskVo evbo: alistboard){ %>
+
+	        <tbody>
+	        
+				 	<%-- <% for(EvBoardAskVo evbo: alistboard){ %>
+
 				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
 		               <td><%=evbo.getBcata()%></td>
@@ -484,7 +488,7 @@
 		            </tr>
 	       		  <%}; %>  --%>
 	         </tbody> 
-	         
+
 				</table>
 			</div>
 	</table>
