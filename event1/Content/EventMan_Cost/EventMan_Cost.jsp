@@ -393,7 +393,7 @@ if(member_id == null){
                   </div>
 
                <div class="fs-5 fw-bold mb-1 mt-3">기타</div>
-               <div class="row">
+               <div class="row">  
                   <div class="col">
                      <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식">
                      <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
