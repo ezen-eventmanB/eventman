@@ -440,7 +440,7 @@ if(member_id == null){
       <div class="row">
          <div class="col">
             <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon">
-               <option selected value="catamenu" name="joinTarget">참여대상</option>
+               <option selected value="catamenu" name="joinTarget" disabled>참여대상</option>
                <option value="전체">전체</option>
                <option value="어린이이">어린이</option>
                <option value="학생">학생</option>
@@ -456,7 +456,7 @@ if(member_id == null){
          
          <div class="col">
             <select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon">
-               <option selected value="catamenu">방식</option>
+               <option selected value="catamenu" disabled>방식</option>
                <option value="오프라인">오프라인</option>
                <option value="온라인">온라인</option>
                <option value="온ㆍ오프라인">온ㆍ오프라인</option>
@@ -467,7 +467,7 @@ if(member_id == null){
       <div class="row">
          <div class="col">
             <select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon">
-               <option selected value="catamenu">예산</option>
+               <option selected value="catamenu" disabled>예산</option>
                <option value="1000만원 미만">1,000만원 미만</option>
                <option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
                <option value="5000~1억 미만">5,000만원 ~ 1억 미만</option>
@@ -478,7 +478,7 @@ if(member_id == null){
          </div>
          <div class="col">
             <select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon">
-               <option selected value="catamenu">참여인원</option>
+               <option selected value="catamenu" disabled>참여인원</option>
                <option value="50명 미만">50명 미만</option>
                <option value="50~100명미만">50명~100명 미만</option>
                <option value="100~500명미만">100~500명 미만</option>

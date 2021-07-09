@@ -228,7 +228,7 @@ function check(){
 					<td id="inputwidth">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="inputGroup-sizing-default">PW</span>
-							<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+							<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
 						</div>
 					</td>
 				</tr>
