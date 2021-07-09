@@ -14,11 +14,7 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }
-	out.println("세션에 담긴 아이디는?");
-	out.println(member_id);
-
-	out.println("midx="+midx); 
-	out.println("gidx="+gidx); 
+; 
 	   
 	%>    
 	

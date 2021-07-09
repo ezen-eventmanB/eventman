@@ -15,11 +15,7 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }
-	out.println("세션에 담긴 아이디는?");
-	out.println(member_id);
 
-	out.println("midx="+midx);
-	out.println("gidx="+gidx); 
 	
 	%>
 	<%
@@ -461,8 +457,8 @@
 
 		
 	<!-- 메인 공지사항 4개 출력 -->
-	<div class="container bg-light">
-	공지사항이미지입니다.
+	<div class="container">
+		<img alt="" src="../sm-banner.jpg">
 	</div>
 	<table class="table table-hover">
 		  </tbody>
