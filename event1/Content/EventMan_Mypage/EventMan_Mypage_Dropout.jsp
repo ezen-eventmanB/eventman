@@ -5,18 +5,14 @@
 
  <%
 
- String member_id = (String)session.getAttribute("S_memberId");
+	 String member_id = (String)session.getAttribute("S_memberId");
 
-  int midx = 0;
+  	int midx = 0;
   
-  if (session.getAttribute("midx") != null) {
-     midx = (int)session.getAttribute("midx");
-  }
-
+  	if (session.getAttribute("midx") != null) {
+  	   midx = (int)session.getAttribute("midx");
+  	}
  
- int count = (int)request.getAttribute("boardcount");
- 
-  
  	EvMemberVo mbvo = (EvMemberVo)request.getAttribute("mbvo");
 %>     
 

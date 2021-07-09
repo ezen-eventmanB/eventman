@@ -140,7 +140,7 @@ public class MemberController extends HttpServlet {
 				//session과 연결
 				HttpSession session=request.getSession();
 				//midx 값을 get으로 받아옴
-				 int member_midx = (int)session.getAttribute("midx");
+				int member_midx = (int)session.getAttribute("midx");
 				
 				 //dao와 연결
 				MemberServiceImpl mdao = new MemberServiceImpl();
