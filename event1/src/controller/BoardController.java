@@ -157,17 +157,16 @@ public class BoardController extends HttpServlet {
 				String cata = multi.getParameter("cata");
 				String title = multi.getParameter("title");
 				String content = multi.getParameter("content");
-				String midx = multi.getParameter("midx");
-				String hidx = multi.getParameter("hidx");
+				String gidx = multi.getParameter("gidx");
 				
-				EventAskServiceImpl askdao = new EventAskServiceImpl();
-				int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
+				BoardServiceImpl bodao = new BoardServiceImpl();
+				int value = bodao.masterinsertAdvice(cata, title, content, fileName, gidx);
 				
 						
 				if(value > 0) {
 					System.out.println("성공 상담신청글 전송 성공");
-					request.setAttribute("midx", midx);
-					response.sendRedirect(request.getContextPath()+"/EventMan_Member/EventMan_Mypage_Main.do?midx="+midx);
+					request.setAttribute("gidx", gidx);
+					response.sendRedirect(request.getContextPath()+"/EventMan_Board/EventMan_Board.do?gidx="+gidx);
 				}else {
 					System.out.println("실패 상담신청글 전송 실패");
 					
@@ -239,7 +238,7 @@ public class BoardController extends HttpServlet {
 			String hidx = multi.getParameter("hidx");
 			
 			EventAskServiceImpl askdao = new EventAskServiceImpl();
-			int value = askdao.insertAdvice(cata, title, content, fileName, midx, hidx);
+			int value = askdao.insertAdvice(cata, title, content, fileName, midx);
 			
 					
 			if(value > 0) {

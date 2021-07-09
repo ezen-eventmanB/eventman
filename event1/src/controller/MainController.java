@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.PageMaker;
 import domain.SearchCriteria;
+import service.BoardServiceImpl;
 import service.ReviewServiceImpl;
 import vo.EvReviewVo;
 
@@ -75,6 +76,12 @@ public class MainController extends HttpServlet {
 			request.setAttribute("reviewList", reviewList);
 			request.setAttribute("pm", pm);			
 			
+			BoardServiceImpl boarddao = new BoardServiceImpl(); 
+			
+			ArrayList alistboard = boarddao.selectMasterboardlist();
+			 
+			 request.setAttribute("alistboard", alistboard);
+			 	
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Main/EventMan_Main.jsp"); 	
 			rd.forward(request, response);
 
