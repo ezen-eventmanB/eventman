@@ -185,21 +185,17 @@
 	            }
 	            
 	         } catch (SQLException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	         }finally {
 	            try {
 	               pstmt.close();
 	               conn.close();
 	            } catch (SQLException e) {
-	               // TODO Auto-generated catch block
 	               e.printStackTrace();
 	            }
 	         }
-	         
 	         return covo;
 	      }
-	      
 	      
 	      /*   마이페이지 견적신청 수정하기 페이지로 이동   .*/
 	      public EvCostVo costModify(int cidx) {
@@ -207,7 +203,6 @@
 	         String sql = "select * "
 	               +"from EVE_COST C , EVE_MEMBER M "
 	               +"where C.midx = M.midx "+"and B.bidx=?";
-	   
 	         EvCostVo covo = new EvCostVo();
 	         
 	         try {
@@ -229,22 +224,17 @@
 	               covo.setCostFile(rs.getString("cfile"));
 	            }
 	            
-	            
 	         } catch (SQLException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	         }finally {
 	            try {
 	               pstmt.close();
 	               conn.close();
 	            } catch (SQLException e) {
-	               // TODO Auto-generated catch block
 	               e.printStackTrace();
 	            }
 	         }
-	         
 	         return covo;
-	         
 	      }
 	   /*   견적신청 수정 액션   */
 	      public int costModifyAction(String cName, String cSdate, String cEdate,  
@@ -254,7 +244,6 @@
 	         int value=0;
 	         String sql = null;
 	         
-	   
 	            sql = "UPDATE EVE_COST SET CNAME=?, CSDATE=?, CSDATE2=?, CCATA=?,CTEXT=?,CFILE2=?,CLOCA=?,CTARGET=?,CMETHOD=?,CPRICE=?,CPEOPLE=? where cidx=?";
 	            
 	            try {
@@ -274,14 +263,12 @@
 	               value = pstmt.executeUpdate();
 	               
 	            } catch (SQLException e) {
-	               // TODO Auto-generated catch block
 	               e.printStackTrace();
 	            }finally {
 	               try {
 	                  pstmt.close();
 	                  conn.close();
 	               } catch (SQLException e) {
-	                  // TODO Auto-generated catch block
 	                  e.printStackTrace();
 	               }
 	            }
@@ -290,7 +277,6 @@
 	      }
 	      
 	      /*   견적신청 삭제하기      */   
-	      
 	      public int myPageCostDelete(int cidx) {
 	    	  
 	  		int value = 0;

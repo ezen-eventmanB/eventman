@@ -326,7 +326,7 @@ public class MasterController extends HttpServlet {
 
 			System.out.println("행사리뷰수정하기 value : " + value);
 
-			response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Detail.do?hidx=" + hidx);
+			response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
 			/*
 			 * RequestDispatcher rd =
 			 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");

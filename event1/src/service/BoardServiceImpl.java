@@ -41,6 +41,7 @@ public class BoardServiceImpl {
 				ebvo.setgName(rs.getString("gName"));
 				ebvo.setBmenu(rs.getString("Bmenu"));
 				ebvo.setBcount(rs.getString("Bcount"));
+				ebvo.setBidx(rs.getInt("bidx"));
 
 				alistboard.add(ebvo);
 			}
@@ -56,6 +57,58 @@ public class BoardServiceImpl {
          }
          return alistboard;
       }
+	
+		/*게시글 공지사항  상세보기*/
+		public EvBoardAskVo allboardlistselectone(int bidx) {
+			
+			System.out.println("allboardlistselectone 게시글 상세보기");
+			
+			String sql = "select * from EVE_BOARD where GIDX='1' and bidx=?";
+
+			EvBoardAskVo bavo = new EvBoardAskVo();
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, bidx);
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					bavo.setBidx(rs.getInt("bidx"));
+					
+					bavo.setBcata(rs.getString("bcata"));
+					
+					bavo.setBtitle(rs.getString("btitle"));
+
+					
+					bavo.setBwriteday(rs.getString("bwriteday"));
+
+					
+					bavo.setgName(rs.getString("gName"));
+
+					
+					bavo.setBcount(rs.getString("bcount"));
+
+					
+					bavo.setBcontents(rs.getString("bcontents"));
+
+					
+					bavo.setBfile(rs.getString("bfile"));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			return bavo;
+		}
 		/*	관리자 게시판 글 작성하기	*/	
 		public int insertAdvice(String cata, String title, String content, String fileName , String midx ,String hidx) {
 	
@@ -143,45 +196,49 @@ public class BoardServiceImpl {
 		return alistboard;
 	}
 
-	/* 마이페이지 게시글 상세보기 */
+	/*마이페이지 게시글 상세보기*/
 	public EvBoardAskVo boardlistselectone(int bidx) {
-
+		
 		System.out.println("boardlistselectone 게시글 상세보기 메소드");
-
-		String sql = "select * " 
-				+ "from EVE_BOARD B , EVE_MEMBER M "
-				+ "where B.midx = M.midx " 
-				+ "and B.bidx=?";
-
-		EvBoardAskVo bovo = new EvBoardAskVo();
-
+		
+		String sql = "select * "
+					+"from EVE_BOARD B , EVE_MEMBER M "
+					+"where B.midx = M.midx "
+					+"and B.bidx=?";
+		
+		EvBoardAskVo bavo = new EvBoardAskVo();
+		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, bidx);
-			
 			ResultSet rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				bovo.setBidx(rs.getInt("bidx"));
-				bovo.setBcata(rs.getString("bcata"));
-				bovo.setBtitle(rs.getString("btitle"));
-				bovo.setBwriteday(rs.getString("bwriteday"));
-				bovo.setBname(rs.getString("mname"));
-				bovo.setBcount(rs.getString("bcount"));
-				bovo.setBcontents(rs.getString("bcontents"));
-				bovo.setBfile(rs.getString("bfile"));
+			
+			if(rs.next()) {
+				bavo.setBidx(rs.getInt("bidx"));
+				bavo.setBcata(rs.getString("bcata"));
+				bavo.setBtitle(rs.getString("btitle"));
+				bavo.setBwriteday(rs.getString("bwriteday"));
+				bavo.setBname(rs.getString("mname"));
+				bavo.setBcount(rs.getString("bcount"));
+				bavo.setBcontents(rs.getString("bcontents"));
+				bavo.setBfile(rs.getString("bfile"));
 			}
+			
+			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
+		}finally {
 			try {
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return bovo;
+		
+		return bavo;
 	}
 
 	/* 마이페이지 게시글 수정하기 페이지로 이동 . */

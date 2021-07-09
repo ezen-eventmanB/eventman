@@ -60,7 +60,7 @@ if (fm.cName.value =="")   {
 	$("#textbox").html("행사 종료일을 선택해주세요.");
 	$("#modal").modal("show")
 	return;
-}else if (fm.cTarget == "참여대상"){
+}else if (fm.cTarget.value == "참여대상"){
 	$("#textbox").html("참여 대상을 선택해주세요.");
 	$("#modal").modal("show")
 	return;  
