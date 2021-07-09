@@ -69,7 +69,7 @@ public class ReviewController extends HttpServlet {
                   
                   ReviewServiceImpl reviewDao = new ReviewServiceImpl();
          
-         int cnt = reviewDao.boardTotalCount("  ü");
+         int cnt = reviewDao.boardTotalCount("전체");
          System.out.println("cnt "+ cnt);
          
          PageMaker pm = new PageMaker();
@@ -104,7 +104,7 @@ public class ReviewController extends HttpServlet {
                   
                   ReviewServiceImpl reviewDao = new ReviewServiceImpl();
          
-         int cnt = reviewDao.boardTotalCount("  ü");
+         int cnt = reviewDao.boardTotalCount("전체");
          System.out.println("cnt "+ cnt);
          
          PageMaker pm = new PageMaker();
@@ -140,7 +140,7 @@ public class ReviewController extends HttpServlet {
                   
          ReviewServiceImpl reviewDao = new ReviewServiceImpl();
          
-         String cata="   ";
+         String cata="기업";
          
          int cnt = reviewDao.boardTotalCount(cata);
          System.out.println("cnt "+ cnt);
@@ -177,7 +177,7 @@ public class ReviewController extends HttpServlet {
                   
          ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-         int cnt = reviewDao.boardTotalCount("    ");
+         int cnt = reviewDao.boardTotalCount("대학");
          System.out.println("cnt "+ cnt);
 
          PageMaker pm = new PageMaker();
@@ -211,7 +211,7 @@ public class ReviewController extends HttpServlet {
                   
          ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-         int cnt = reviewDao.boardTotalCount("    ");
+         int cnt = reviewDao.boardTotalCount("공연");
          System.out.println("cnt "+ cnt);
 
          PageMaker pm = new PageMaker();
@@ -245,7 +245,7 @@ public class ReviewController extends HttpServlet {
                   
          ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-         int cnt = reviewDao.boardTotalCount("  Ÿ");
+         int cnt = reviewDao.boardTotalCount("기타");
          System.out.println("cnt "+ cnt);
 
          PageMaker pm = new PageMaker();
@@ -265,7 +265,6 @@ public class ReviewController extends HttpServlet {
       }else if(str2.equals("EventMan_Review_detail.do")) {
          
          System.out.println("--if   => ajax EventMan_Review_detail.do     ");
-         System.out.println("가나다라마ㅏ바사아아아");
          
          int hidx = Integer.parseInt(request.getParameter("hidx"));
          
@@ -302,7 +301,7 @@ public class ReviewController extends HttpServlet {
                   
          ReviewServiceImpl reviewDao = new ReviewServiceImpl();
          
-         int cnt = reviewDao.boardTotalCount("  ü");
+         int cnt = reviewDao.boardTotalCount("전체");
          System.out.println("cnt "+ cnt);
          
          PageMaker pm = new PageMaker();
@@ -340,7 +339,7 @@ scri.setPage(page2);
          
 ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-int cnt = reviewDao.boardTotalCount("  ü");
+int cnt = reviewDao.boardTotalCount("전체");
 System.out.println("cnt "+ cnt);
 
 PageMaker pm = new PageMaker();
