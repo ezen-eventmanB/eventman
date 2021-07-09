@@ -12,7 +12,7 @@
   	if (session.getAttribute("midx") != null) {
   	   midx = (int)session.getAttribute("midx");
   	}
- 
+   
  	EvMemberVo mbvo = (EvMemberVo)request.getAttribute("mbvo");
 %>     
 
