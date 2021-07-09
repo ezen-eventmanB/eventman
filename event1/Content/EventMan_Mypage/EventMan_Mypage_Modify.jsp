@@ -12,10 +12,7 @@
   if (session.getAttribute("midx") != null) {
      midx = (int)session.getAttribute("midx");
   }
- out.println("세션에 담긴 아이디는?");
- out.println(member_id);
- out.println(midx);  
-   
+
  
  	EvMemberVo mbvo = (EvMemberVo)request.getAttribute("mbvo");
 %>     

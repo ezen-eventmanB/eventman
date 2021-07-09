@@ -13,12 +13,7 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }
-	out.println("세션에 담긴 아이디는?");
-	out.println(member_id);
 
-	out.println("midx="+midx);
-	out.println("gidx="+gidx); 
-	
 	%>    
 	<%
 	ArrayList<EvCostVo> arraycost = (ArrayList<EvCostVo>)request.getAttribute("arraycost");
@@ -30,6 +25,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap에 필요한 CSS파일 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 	
 	<!-- top nav CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/topnav.css">
@@ -38,10 +34,16 @@
 	
 <title>견적신청리스트</title>
 
-<style>
-
-
-</style>
+<script>
+	
+	function orderbyFn(){
+		alert("정렬 변경 orderby : "+ $("#tnradio").val());
+	}
+	
+	function searchtypeFn(){
+		alert("searchtypeFn : "+ $("#tnradio").val());
+	}
+</script>
 
 </head>
 <body>
@@ -129,22 +131,20 @@
 	
 	<div class="row float-end mt-5">
 		<div class="col-md-auto mt-1">
-			<div class="input-group input-group-sm ">	
-				<div class="btn-group"  id="orderbybtn" role="group" aria-label="Basic radio toggle button group">
-					<input type="radio" class="btn-check" name="btnradio" autocomplete="off" >
-					<label class="btn btn-outline-secondary btn-sm" for="btnradio1">과거</label>
-					
-					<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked>
-					<label class="btn btn-outline-secondary btn-sm" for="btnradio2">최신</label>
-				</div>
+			<div class="btn-group btn-group-sm"  role="group" aria-label="Basic radio toggle button group" onchange="orderbyFn()">
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" vlaue="과거" autocomplete="off" >
+				<label class="btn btn-outline-secondary" for="btnradio1">과거</label>
+				
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" vlaue="최신" autocomplete="off" checked>
+				<label class="btn btn-outline-secondary" for="btnradio2">최신</label>
 			</div>
 		</div>
 		<div class="col-md-auto mt-1">	
-			<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+			<select class="form-select form-select-sm" aria-label=".form-select-sm example" onchange="searchtypeFn()">
 				<option selected>검색타입</option>
-				<option value="1">제목</option>
-				<option value="2">아이디</option>
-				<option value="3">이름</option>
+				<option value="title">제목</option>
+				<option value="id">아이디</option>
+				<option value="name">이름</option>
 			</select>
 		</div>
 		<div class="col-md-auto mt-1">
