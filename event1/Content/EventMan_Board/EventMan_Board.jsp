@@ -236,7 +236,6 @@
 	         
 				</table>
 			</div>
-		</form>
    </div>
 
 
