@@ -122,8 +122,8 @@ public class MasterController extends HttpServlet {
 
 			// 업로드 파일 경로
 			// 나중에 웹서버로 공통된 경로로 올리게 된다.
-			// String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+			 String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
 			// 저장 폴더
 			String savedPath = "Advice_img";
@@ -327,13 +327,10 @@ public class MasterController extends HttpServlet {
 			System.out.println("행사리뷰수정하기 value : " + value);
 
 			response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
-			/*
-			 * RequestDispatcher rd =
-			 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Detail.do");
-			 * rd.forward(request, response);
-			 */
 
-			/* 견적신청함 리스트 페이지 연결 */
+
+
+/* 견적신청함 리스트 페이지 연결 */
 		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
 			System.out.println("견적신청함페이지 연결");

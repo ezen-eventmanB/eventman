@@ -358,7 +358,7 @@ $(document).ready(function(e){
 												<option value="50명~100명 미만">50명~100명 미만</option>
 												<option value="100~500명 미만">100~500명 미만</option>
 												<option value="500~1000명 미만">500~1000명 미만</option>
-												<option value="1000명이상">1000명 이상</option>
+												<option value="1000명 이상">1000명 이상</option>
 											</select>
 										</div>
 									</div>

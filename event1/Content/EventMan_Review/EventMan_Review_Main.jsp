@@ -373,7 +373,7 @@
 							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
 								<img class="bd-placeholder-img card-img-top stretched-link imgbox" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
 							</a>
-							<title><%=erv.gethName() %></title>
+							<title class="fw-bold"><%=erv.gethName() %></title>
 							<div class="card-body">
 								<div class="justify-content-between align-items-center">
 									<p class="card-text hname"><%=erv.gethName() %></p>
