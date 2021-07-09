@@ -52,74 +52,74 @@ public class ReviewController extends HttpServlet {
       
 /*   행사리뷰 메인 페이지 뿌려주는 부분   */
       
-      if(str2.equals("EventMan_Review_Main.do")) {
-         
-         System.out.println("--if   =>EventMan_Review_Main.do     ");
-         
-String page = request.getParameter("page");
-         
-int page2=0;  
-if(page == null) { 
-   page = "1";               
-}                                       
-page2 = Integer.parseInt(page);
-                                       
-SearchCriteria scri = new SearchCriteria();
-scri.setPage(page2);   
-         
-         ReviewServiceImpl reviewDao = new ReviewServiceImpl();
-
-int cnt = reviewDao.boardTotalCount("  ü");
-System.out.println("cnt "+ cnt);
-
-PageMaker pm = new PageMaker();
-pm.setScri(scri);
-pm.setTotalCount(cnt);   
-
-         //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
-         ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll(page2);
-         ReviewServiceImpl reviewdao = new ReviewServiceImpl();
-         
-         request.setAttribute("reviewList", reviewList);
-request.setAttribute("pm", pm);         
-         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.jsp");    
-         rd.forward(request, response);
+	      if(str2.equals("EventMan_Review_Main.do")) {
+	         
+	         System.out.println("--if   =>EventMan_Review_Main.do     ");
+	         
+			String page = request.getParameter("page");
+			         
+			int page2=0;  
+			if(page == null) { 
+			   page = "1";               
+			}                                       
+			page2 = Integer.parseInt(page);
+			                                       
+			SearchCriteria scri = new SearchCriteria();
+			scri.setPage(page2);   
+			         
+			         ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+			
+			int cnt = reviewDao.boardTotalCount("  ü");
+			System.out.println("cnt "+ cnt);
+			
+			PageMaker pm = new PageMaker();
+			pm.setScri(scri);
+			pm.setTotalCount(cnt);   
+			
+			         //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
+			         ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll(page2);
+			         ReviewServiceImpl reviewdao = new ReviewServiceImpl();
+			         
+			         request.setAttribute("reviewList", reviewList);
+			request.setAttribute("pm", pm);         
+			         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.jsp");    
+	         rd.forward(request, response);
    
          
 /*   중간 네비에서 전체 클릭시 Ajax   */           
       }else if(str2.equals("EventMan_Review_selectAll.do")) {
          
-         System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
-         
-String page = request.getParameter("page");
-
-int page2=0;  
-if(page == null) { 
-   page = "1";               
-}                                       
-page2 = Integer.parseInt(page);
-                                       
-SearchCriteria scri = new SearchCriteria();
-scri.setPage(page2);   
-         
-         ReviewServiceImpl reviewDao = new ReviewServiceImpl();
-
-int cnt = reviewDao.boardTotalCount("  ü");
-System.out.println("cnt "+ cnt);
-
-PageMaker pm = new PageMaker();
-pm.setScri(scri);
-pm.setTotalCount(cnt);   
-
-         //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
-         ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll(page2);
-         ReviewServiceImpl reviewdao = new ReviewServiceImpl();
-         
-         request.setAttribute("reviewList", reviewList);
-request.setAttribute("pm", pm);   
-         
-         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    
-         rd.forward(request, response);
+	         System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
+	         
+			String page = request.getParameter("page");
+			
+			int page2=0;  
+			if(page == null) { 
+			   page = "1";               
+			}                                       
+			page2 = Integer.parseInt(page);
+			                                       
+			SearchCriteria scri = new SearchCriteria();
+			scri.setPage(page2);   
+			         
+			         ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+			
+			int cnt = reviewDao.boardTotalCount("  ü");
+			System.out.println("cnt "+ cnt);
+			
+			PageMaker pm = new PageMaker();
+			pm.setScri(scri);
+			pm.setTotalCount(cnt);   
+			
+			         //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
+			         ArrayList<EvReviewVo> reviewList = reviewDao.reviewSelectAll(page2);
+			         ReviewServiceImpl reviewdao = new ReviewServiceImpl();
+			         
+			         request.setAttribute("reviewList", reviewList);
+			request.setAttribute("pm", pm);   
+	         
+	         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    
+	         rd.forward(request, response);
          
          
 /*   중간 네비 기업 클릭시 ajax   */           

@@ -23,8 +23,8 @@
 	out.println("gidx="+gidx); 
 
    
-	EvBoardAskVo bovo = (EvBoardAskVo)request.getAttribute("bovo");
-   
+	EvBoardAskVo evbo = (EvBoardAskVo)request.getAttribute("evbo");
+
    %>    
     
     
@@ -154,37 +154,36 @@
       
 
 <div class="container">
-   <dvi class="row justify-content-md-center">
-      <div class="col-md-auto">
-         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
-      </div>
-   </dvi>
-      
+            
 <div class="mypageajax">
 	<div class="fs-4 fw-bold mb-5">게시글 상세보기</div>
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-		<div><%=bovo.getBcata()%></div>
-		<div class="fs-1 fw-bold mb-3"><%=bovo.getBtitle() %></div>
-		<div class="mb-5 pb-2 border-bottom border-3 ">
-			<span class="fw-bold me-2">등록일</span>
-			<span class=" me-3"><%=bovo.getBWrieday2()%></span>
-			<span class="fw-bold me-2">작성자</span>
-			<span class=" me-3"><%=bovo.getgName() %></span>
-			<span class="fw-bold me-2">조회수</span>
-			<span class=" me-3"><%=bovo.getBcount()%></span>
-		</div>
+		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
+			<div><%=evbo.getBcata()%></div>
+			<div class="fs-1 fw-bold mb-3"><%=evbo.getBtitle() %></div>
+			<div class="mb-5 pb-2 border-bottom border-3 ">
+				<span class="fw-bold me-2">등록일</span>
+				<span class=" me-3"><%=evbo.getBWrieday2()%></span>
+				<span class="fw-bold me-2">작성자</span>
+				<span class=" me-3"><%=evbo.getgName() %></span>
+				<span class="fw-bold me-2">조회수</span>
+				<span class=" me-3"><%=evbo.getBcount()%></span>
+			</div>
 		<div>
-			<div><%=bovo.getBcontents() %></div>
+		
+
+		
+			<div><%=evbo.getBcontents() %></div>
 			<div class="text-center">
-				<%if(bovo.getBfile() != null){%>
-					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bovo.getBfile() %>">
+				<%if(evbo.getBfile() != null){%>
+					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=evbo.getBfile() %>">
 				<%}; %>
 			</div>
 		</div>
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">목록</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
 		</div>
 	</div>
 	

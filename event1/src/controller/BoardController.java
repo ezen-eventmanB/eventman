@@ -76,28 +76,36 @@ public class BoardController extends HttpServlet {
 			 
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
+		
 			
-			//게시글 상세보기
-         }else if(str2.equals("EventMan_Board_Detail.do")) {
-            
-            System.out.println("EventMan_Mypage_MyCostlistDetail.do if문");
-            
-            int bidx = Integer.parseInt(request.getParameter("bidx"));
-            
-            BoardServiceImpl boarddao = new BoardServiceImpl();
-            
-            EvBoardAskVo bovo = new EvBoardAskVo();
-            
-            bovo = boarddao.boardlistselectone(bidx);
-            
-            request.setAttribute("bovo", bovo);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Detail.jsp");
-            rd.forward(request, response);         
-			//게시판 글 작성
+			//게시판 공지사항 상세보기
+		}else if(str2.equals("EventMan_Board_Detail.do")) {
+			
+			System.out.println("EventMan_Board_Detail문");
+
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+		
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+		
+			boarddao.hitCount(bidx);
+	
+			EvBoardAskVo evbo = new EvBoardAskVo();
+		
+			evbo = boarddao.allboardlistselectone(bidx);
+
+			request.setAttribute("evbo", evbo);
+
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Detail.jsp");
+			rd.forward(request, response);			
+			   
+
+			//게시판 글 작성 페이지 이동
 		}else if(str2.equals("EventMan_BoardWrite.do")){
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	
 			rd.forward(request, response);
+			
+			//게시판 글 작성 액션
 		}else if(str2.equals("EventMan_BoardwriteAction.do")) {
 			
 			System.out.println("EventMan_BoardwriteAction 실행");

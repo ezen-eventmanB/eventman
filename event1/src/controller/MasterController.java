@@ -329,7 +329,8 @@ public class MasterController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
 
 
-			/* 견적신청함 리스트 페이지 연결 */
+
+/* 견적신청함 리스트 페이지 연결 */
 		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
 			System.out.println("견적신청함페이지 연결");
