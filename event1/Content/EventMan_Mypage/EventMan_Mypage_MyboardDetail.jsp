@@ -197,26 +197,10 @@
 
 
 
-<!-- 메인 푸터 -->
-<div class="footer">
-</div>
-   <div class="container">
-       <div class="row justify-content-md-center">
-         <div class="col-md-auto">
-            <img src="../rogo1.png" alt="" width="200" class="d-inline-block align-text-center">
-         </div>
-         <div class="col-md-auto">
-            <small class="text-muted">
-               전화번호 063-222-2222<br>
-               EVENTMAN | 전주시 덕진구 효자동 | 대표. 000<br>
-               ACC. 계좌번호 (예금주 :홍길동) | 사업자 번호. 000-000-0000<br>
-            </small>
-         </div>
-      </div>
-   </div>
 
 
-
+<!-- footer include -->
+<jsp:include page="/WEB-INF/footer.jsp"/>
 
 
 
