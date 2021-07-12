@@ -39,15 +39,22 @@
 <!-- header include -->
 <jsp:include page="/WEB-INF/header.jsp"/>
       
-
+<br>
+<br>
 <!-- 관리자 페이지 화면 -->
 <div class="container" id="masterpage">
 
    <div class="row">
-      <div class="col mx-auto">
+      <div class="col-sm-4 mx-auto">
          <img class="iconimg" src="../cost.png">
          <div class="d-grid gap-2">
             <button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do'">견적신청<br><%=costcount %> 건</button>
+         </div>
+      </div>
+      <div class="col-sm-4 mx-auto">
+         <img class="iconimg" src="../counselling.png">
+         <div class="d-grid gap-2">
+            <button class="btn btn-outline-secondary heightsize1" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllBoardList.do'">상담신청<br> 건</button>
          </div>
       </div>
    </div>

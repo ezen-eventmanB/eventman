@@ -111,9 +111,7 @@
 	        			<%
 						if(gidx ==0){
 						%>
-	         <div style="display:inline-block;">   
-	                <a href="<%=request.getContextPath()%>/EventMan_Board/EventMan_BoardWrite.do">게시물 등록하기</a>
-	         </div>
+
 	     			    <%
 				   		}else if(gidx > 0){
 				   		%>

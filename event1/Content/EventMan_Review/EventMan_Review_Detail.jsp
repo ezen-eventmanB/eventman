@@ -199,10 +199,10 @@ function deleteFn(){
 				<%if(gidx !=0 ){ %>
 				<div class="row mt-2">
 					<div class="col-md">
-						<button type="button" class="btn btn-outline-secondary w-100" onclick="deletemodalFn()">삭제하기</button>
+						<button type="button" class="btn btn-outline-secondary w-100" onclick="modifyFn()">수정하기</button>
 					</div>	
 					<div class="col-md">
-						<button type="button" class="btn btn-outline-secondary w-100" onclick="modifyFn()">수정하기</button>
+						<button type="button" class="btn btn-outline-secondary w-100" onclick="deletemodalFn()">삭제하기</button>
 					</div>
 				</div>
 				<%} %>

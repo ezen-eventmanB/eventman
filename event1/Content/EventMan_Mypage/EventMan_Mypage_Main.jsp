@@ -12,7 +12,8 @@
 
    
    int count = (int)request.getAttribute("boardcount");
-   int count2 = (int)request.getAttribute("costcount");
+   
+   int count2 = (int)request.getAttribute("costcount2");
    
    %>    
     

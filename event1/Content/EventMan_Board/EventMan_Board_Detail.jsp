@@ -73,7 +73,7 @@
 <div class="container">
             
 <div class="mypageajax">
-	<div class="fs-4 fw-bold mb-5">게시글 상세보기</div>
+	<div class="fs-4 fw-bold mb-5">게시판</div>
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">

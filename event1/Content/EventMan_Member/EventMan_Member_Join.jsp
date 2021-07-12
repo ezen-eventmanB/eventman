@@ -5,15 +5,14 @@
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }
-
 	
 	%>        
-    
-    
+
 <!doctype html>
 <html>
 <head>
@@ -27,7 +26,6 @@
 
    <!-- subnav CSS -->
    <link rel="stylesheet" type="text/css" href="../css/subnav.css">
-<style>
    
 <style>
 
@@ -144,9 +142,9 @@
 </head>
 <body>
 
+
 <!-- header include -->
 <jsp:include page="/WEB-INF/header.jsp"/>
-     
       
    <!-- 페이지 위치 안내 -->
    <div class="container"  id="containermargin">   
@@ -218,7 +216,7 @@
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
                                  <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected disabled>회원 종류를 선택해주세요.</option>
+                                   <option selected>회원 종류를 선택해주세요.</option>
                                    <option value="개인">개인</option>
                                    <option value="단체">단체</option>
                                    <option value="기업">기업</option>
@@ -260,18 +258,11 @@
 				    </div>
 				  </div>
 				</div>
-               
-               
+
 
 
 <!-- footer include -->
 <jsp:include page="/WEB-INF/footer.jsp"/>
-
-
-
-
-
-
 
 <!-- Bootstrap에 필요한 JS파일 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>

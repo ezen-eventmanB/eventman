@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dbconn.DBconn;
+import vo.EvBoardAskVo;
 import vo.EvCostVo;
 import vo.EvMemberVo;
 
@@ -223,6 +224,36 @@ public class MasterServiceImpl {
 		
 		return alist;
 	}
+	
+	
+	/*상담 신청 목록*/
+	public ArrayList<EvBoardAskVo> allBoardList() {
+		
+		ArrayList<EvBoardAskVo> alist = new ArrayList<EvBoardAskVo>();
+		
+		String slq="select * from EVE_BOARD C , EVE_MEMBER M where C.midx = M.midx";
+		
+		try {
+			pstmt=conn.prepareStatement(slq);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvBoardAskVo bavo = new EvBoardAskVo();
+				bavo.setBidx(rs.getInt("bidx"));
+				bavo.setBtitle(rs.getString("btitle"));
+				bavo.setBwriteday(rs.getString("bwday"));
+				bavo.setBmenu(rs.getString("bmenu"));
+				bavo.setBcata(rs.getString("bcata"));
+				bavo.setBcount(rs.getString("bcount"));
+				alist.add(bavo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alist;
+	}
+	
+	
 	
 	/*	게시판 관리자 글 작성 action		*/
 	public int writeMasterBoard(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
