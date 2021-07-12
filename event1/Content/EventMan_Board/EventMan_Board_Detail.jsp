@@ -152,7 +152,7 @@
 <div class="container">
             
 <div class="mypageajax">
-	<div class="fs-4 fw-bold mb-5">게시글 상세보기</div>
+	<div class="fs-4 fw-bold mb-5">게시판</div>
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
@@ -179,7 +179,26 @@
 			</div>
 		</div>
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
+		
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
+						<%
+						if(midx == 0 && gidx ==0){
+						%>
+			
+						<%
+				   		}else if(gidx > 0){
+				   		%>
+					<div class="row mt-2">
+						<div class="col-md">
+							<button type="button" class="btn btn-outline-secondary w-100" onclick="modifyFn()">수정하기</button>
+						</div>	
+						<div class="col-md">
+							<button type="button" class="btn btn-outline-secondary w-100" onclick="deletemodalFn()">삭제하기</button>
+						</div>
+					</div>
+						<%
+				   		}
+				   		%>
 		</div>
 	</div>
 	

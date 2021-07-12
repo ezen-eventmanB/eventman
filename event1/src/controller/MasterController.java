@@ -284,9 +284,9 @@ public class MasterController extends HttpServlet {
 			
 			
 			/*상담 신청함 페이지*/ 
-		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
+		} else if (str2.equals("EventMan_Master_AllBoardList.do")) {
 
-			System.out.println("상담페이지");
+			System.out.println("상담페이지 신청 리스트 뿌려주기");
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
 			ArrayList<EvBoardAskVo> arrayboard = mdao.allBoardList();

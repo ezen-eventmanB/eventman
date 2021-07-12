@@ -242,7 +242,7 @@ public class MasterServiceImpl {
 				bavo.setBidx(rs.getInt("bidx"));
 				bavo.setBtitle(rs.getString("btitle"));
 				bavo.setBwriteday(rs.getString("bwday"));
-				bavo.setBname(rs.getString("bname"));
+				bavo.setBmenu(rs.getString("bmenu"));
 				bavo.setBcata(rs.getString("bcata"));
 				bavo.setBcount(rs.getString("bcount"));
 				alist.add(bavo);

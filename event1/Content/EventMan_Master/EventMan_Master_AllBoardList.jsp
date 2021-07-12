@@ -173,24 +173,25 @@
 				<th></th>
 			</tr>
 		</thead>
-	<%-- <tbody class="align-middle">
-		<% for(EvBoardAskVo ebvo : allBoardList){ %>
-			<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_boardDetail.do?bidx=<%=ebvo.getBidx()%>'">
-               <td class="text-center"><%=ebvo.getBcata()%></td>
-               <td class="text-center" colspan="2"><%=ebvo.getBtitle()%></td>
-               <td></td>
-               <td class="text-center"><%=ebvo.getBWrieday2()%></td>
-               <td class="text-center"><%=ebvo.getBname()%></td>
-			   <td class="text-center"><%=ebvo.getBcount() %></td>
-				<td>
-					<div class="btn-group" role="group" aria-label="Basic outlined example">
-						<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-						<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-					</div>
-				</td>
-			</tr>
-		<%}; %>
-		</tbody> --%>
+				
+<%-- 				<tbody class="align-middle">
+				<% for(EvBoardAskVo ebvo : allBoardList){ %>
+					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_boardDetail.do?bidx=<%=ebvo.getBidx()%>'">
+		               <td class="text-center"><%=ebvo.getBcata()%></td>
+		               <td class="text-center" colspan="2"><%=ebvo.getBtitle()%></td>
+		               <td></td>
+		               <td class="text-center"><%=ebvo.getBWrieday2()%></td>
+		               <td class="text-center"><%=ebvo.getBname()%></td>
+					   <td class="text-center"><%=ebvo.getBcount() %></td>
+						<td>
+							<div class="btn-group" role="group" aria-label="Basic outlined example">
+								<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
+								<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+							</div>
+						</td>
+					</tr>
+				<%}; %>
+				</tbody> --%>
 	</table>
 </div>
 
