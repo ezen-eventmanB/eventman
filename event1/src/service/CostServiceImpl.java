@@ -305,7 +305,7 @@
 	      public int hitCount(int cidx) {
 	         
 	         int value=0; 
-	         
+	         System.out.println(cidx);
 	         String sql = "update EVE_COST set ccount=ccount+1 where cidx=?";
 	         
 	         try {
@@ -313,7 +313,6 @@
 	            pstmt.setInt(1, cidx);
 	            value = pstmt.executeUpdate();
 	         } catch (SQLException e) {
-	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	         }
 	         return value;

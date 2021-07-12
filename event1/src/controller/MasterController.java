@@ -25,6 +25,7 @@ import service.MasterServiceImpl;
 import service.ReviewServiceImpl;
 import vo.EvMemberVo;
 import vo.EvReviewVo;
+import vo.EvBoardAskVo;
 import vo.EvCostVo;
 
 import org.imgscalr.Scalr;
@@ -192,69 +193,6 @@ public class MasterController extends HttpServlet {
 				rd.forward(request, response);
 			}
 
-			/*
-			 * //게시판 글 작성 }else if(str2.equals("EventMan_Board_Write_Action.do")) {
-			 * 
-			 * System.out.println("게시판 글 작성 ");
-			 * 
-			 * String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
-			 * 
-			 * String savedPath = "Advice_img";
-			 * 
-			 * String saveFullPath = uploadPath + savedPath;
-			 * 
-			 * int sizeLimit = 1024*1024*15; String fileName = null; String originFileName =
-			 * null; System.out.println("saveFullPath = "+saveFullPath);
-			 * 
-			 * MultipartRequest multi = new MultipartRequest(request, saveFullPath,
-			 * sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-			 * 
-			 * Enumeration files = multi.getFileNames();
-			 * System.out.println("files = "+files);
-			 * 
-			 * String file = (String)files.nextElement();
-			 * System.out.println("file = "+file);
-			 * 
-			 * //저장되는 파일이름 fileName = multi.getFilesystemName(file);
-			 * System.out.println("fileName = "+fileName);
-			 * 
-			 * //원래파일 이름 originFileName = multi.getOriginalFileName(file);
-			 * 
-			 * System.out.println("originFileName = "+originFileName);
-			 * 
-			 * String ThumbnailFileName = null;
-			 * 
-			 * try { if(fileName != null) ThumbnailFileName =
-			 * makeThumbnail(uploadPath,savedPath, fileName); } catch (Exception e) {
-			 * e.printStackTrace(); }
-			 * 
-			 * 
-			 * String title = multi.getParameter("title"); String target =
-			 * multi.getParameter("target"); String startdate =
-			 * multi.getParameter("startdate"); String enddate =
-			 * multi.getParameter("enddate"); String price = multi.getParameter("price");
-			 * String staff = multi.getParameter("staff"); String company =
-			 * multi.getParameter("company"); String content =
-			 * multi.getParameter("content"); String cata = multi.getParameter("cata");
-			 * String loca = multi.getParameter("hloca"); String people =
-			 * multi.getParameter("people"); int gidx = Integer.parseInt(
-			 * multi.getParameter("gidx"));
-			 * 
-			 * 
-			 * MasterServiceImpl mdao = new MasterServiceImpl();
-			 * 
-			 * 
-			 * int value = mdao.writeMasterBoard(title,target, startdate, enddate, price,
-			 * staff, company, content, fileName, cata, loca, people, gidx);
-			 * 
-			 * 
-			 * if(value == 1) { RequestDispatcher rd =
-			 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-			 * rd.forward(request, response); }else{ RequestDispatcher rd =
-			 * request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Main.do");
-			 * rd.forward(request, response); }
-			 */
-
 			/* 행사 리뷰 삭제 action */
 		} else if (str2.equals("EventMan_ReviewDelete.do")) {
 
@@ -330,7 +268,7 @@ public class MasterController extends HttpServlet {
 
 
 
-/* 견적신청함 리스트 페이지 연결 */
+			/* 견적신청함 리스트 페이지 연결 */
 		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
 			System.out.println("견적신청함페이지 연결");
@@ -342,6 +280,22 @@ public class MasterController extends HttpServlet {
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList.jsp");
 			rd.forward(request, response);
+			
+			
+			
+			/*상담 신청함 페이지*/ 
+		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
+
+			System.out.println("상담페이지");
+
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			ArrayList<EvBoardAskVo> arrayboard = mdao.allBoardList();
+
+			request.setAttribute("arrayboard", arrayboard);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
+			rd.forward(request, response);
+	
 
 			/* 회사 소개 변경하기 페이지 이동 */
 		} else if (str2.equals("EventMan_Company_Modify.do")) {

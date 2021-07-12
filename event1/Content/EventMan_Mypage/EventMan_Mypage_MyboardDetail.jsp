@@ -168,9 +168,9 @@
 			</div>
 		</div>
 		<div class="text-end mt-5">
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">목록</button>
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
 		</div>
 	</div>
 	

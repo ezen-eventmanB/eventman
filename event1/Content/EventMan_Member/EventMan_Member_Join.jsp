@@ -5,15 +5,14 @@
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
 	 }
-
 	
 	%>        
-    
-    
+
 <!doctype html>
 <html>
 <head>
@@ -77,7 +76,9 @@
 
          function check(){
             
-            var fm = document.frm;      
+            var fm = document.frm;
+            var re = /^[a-zA-Z0-9]{4,12}$/ // 아이디와 패스워드가 적합한지 검사할 정규식
+            var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //이메일 적합
       
          if (fm.mId.value =="")   {
             alert("아이디를 입력해주세요.");
@@ -113,9 +114,9 @@
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
             document.frm.method = "post";
             document.frm.submit(); 
-            alert("완료."); 
+            alert("회원가입이 되셨습니다."); 
 
-         };
+         }
          
       };
          function idCheck(){
@@ -146,7 +147,8 @@
 <body>
 
 
-<!-- 상단 네비 부분 -->
+<div class="container ajax">
+<!-- 상단메뉴	 -->
 	<div class="container">
 		<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
 		
@@ -176,7 +178,7 @@
 	
 					<!--로그인 전 상단 화면  -->	
 						<%
-						if(member_id == null){
+						if(midx == 0 && gidx ==0){
 						%>
 						
 		       		<ul class="navbar-nav" id="Memberbox" >	
@@ -190,7 +192,7 @@
 		      		
 		      	<!--로그인 후 상단 화면  -->
 						<%
-				      	}else{
+				      	}else if(midx > 0){
 						%>	
 			       	<ul class="navbar-nav" id="Memberbox" >	
 			       		<li class="nav-item">
@@ -204,8 +206,21 @@
 			       		</li>																			
 			      	</ul>
 				   		<%
+				   		}else if(gidx > 0){
+				   		%>
+				   		<ul class="navbar-nav" id="Memberbox" >	
+			       		<li class="nav-item">
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
+			       		</li>
+			       		<li class="nav-item"> 
+			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+			       		</li>																			
+			      	</ul>
+				   		<%
 				   		}
-				    	%>
+				   		%>
+				   		
+				    	
 	    	</div>	
 		</nav>
 </div>
@@ -280,7 +295,7 @@
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
                                  <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected disabled>회원 종류를 선택해주세요.</option>
+                                   <option selected>회원 종류를 선택해주세요.</option>
                                    <option value="개인">개인</option>
                                    <option value="단체">단체</option>
                                    <option value="기업">기업</option>
@@ -322,8 +337,7 @@
 				    </div>
 				  </div>
 				</div>
-               
-               
+                         
 <!-- 메인 푸터 -->
 <div class="footer">
 </div>
@@ -341,12 +355,6 @@
          </div>
       </div>
    </div>
-
-
-
-
-
-
 
 <!-- Bootstrap에 필요한 JS파일 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>

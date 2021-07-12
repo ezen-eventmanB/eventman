@@ -171,6 +171,8 @@ public class CostController extends HttpServlet {
             
             CostServiceImpl costdao = new CostServiceImpl();
             
+            costdao.hitCount(cidx);
+            
             EvCostVo covo = new EvCostVo();
             
             covo = costdao.costlistselectone(cidx);

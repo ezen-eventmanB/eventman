@@ -119,7 +119,7 @@ public class MemberController extends HttpServlet {
 			
 			
 			request.setAttribute("boardcount", boardcount);
-			request.setAttribute("costcount", costcount);
+			request.setAttribute("costcount2", costcount);
 
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Main.jsp"); 	
 			rd.forward(request, response);
