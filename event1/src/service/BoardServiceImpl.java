@@ -116,7 +116,7 @@ public class BoardServiceImpl {
 					bavo.setgName(rs.getString("gName"));
 					bavo.setBcount(rs.getString("bcount"));
 					bavo.setBcontents(rs.getString("bcontents"));
-				/* bavo.setBfile(rs.getString("bfile")); */
+					bavo.setBfile(rs.getString("bfile"));
 				}
 
 			} catch (SQLException e) {

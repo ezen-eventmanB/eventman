@@ -77,7 +77,6 @@
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
 			<div><%=evbo.getBcata()%></div>
 			<div class="fs-1 fw-bold mb-3"><%=evbo.getBtitle() %></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">

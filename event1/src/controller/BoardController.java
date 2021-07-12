@@ -110,7 +110,7 @@ public class BoardController extends HttpServlet {
 			EvBoardAskVo bavo = boarddao.MainboardModify(bidx);
 			
 			
-			request.setAttribute("bavo", bavo);
+			request.setAttribute("evbo", bavo);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Modify.jsp");
 			rd.forward(request, response);

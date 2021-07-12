@@ -74,7 +74,6 @@
             
 <div class="mypageajax">
 	<div class="fs-4 fw-bold mb-5">게시판</div>
-	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
 			<div><%=evbo.getBcata()%></div>
