@@ -249,7 +249,8 @@ $(document).ready(function(e){
 			<p class="fs-1 fw-bold"></p><br>
 			<p class="fs-6"></p>
 		</div>
-		
+		<input type="hidden" name="gidx" value="<%=gidx%>">
+		<input type="hidden" name="hidx" value="<%=hidx %>">
 		
 		<!-- 이미지 -->
 	
@@ -257,11 +258,9 @@ $(document).ready(function(e){
 				
 			<div class="container mb-2">
 				<div class="row">
-					<input type="hidden" name="gidx" value="<%=gidx%>">
-					<input type="hidden" name="hidx" value="<%=hidx %>">
-					<div class="col-md">
-						<label for="uploadFile" class="form-label"></label>
-						<input class="form-control" name="uploadFile" type="file" id="uploadFile" multiple>
+					<div class="col-md mt-2">
+						<label for="uploadFile" style="display: inline;" class="form-label"></label>
+						<input class="form-control" name="uploadFile" type="file" id="uploadFile" multiple>					
 					</div>
 					<div class="col-md mt-2">
 						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
@@ -273,7 +272,7 @@ $(document).ready(function(e){
 							<option value="기타" <%=erv.getHcata().equals("기타") ? " selected" : "" %>>기타</option>
 						</select>
 					</div>
-					<div class="col-md  mt-2">
+					<div class="col-md mt-2">
 						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소" value="<%=erv.getHloca() %>">
 					</div>
 				</div>

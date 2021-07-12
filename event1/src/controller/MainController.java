@@ -14,6 +14,7 @@ import domain.PageMaker;
 import domain.SearchCriteria;
 import service.BoardServiceImpl;
 import service.ReviewServiceImpl;
+import vo.EvBoardAskVo;
 import vo.EvReviewVo;
 
 /**
@@ -29,7 +30,7 @@ public class MainController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		System.out.println("-----MemberController 실행-----");
+		System.out.println("-----MainController 실행-----");
 		
 		request.setCharacterEncoding("UTF-8");
 		  
@@ -63,7 +64,7 @@ public class MainController extends HttpServlet {
 			
 			ReviewServiceImpl reviewDao = new ReviewServiceImpl();
 
-			int cnt = reviewDao.boardTotalCount("");
+			int cnt = reviewDao.boardTotalCount("전체");
 			System.out.println("cnt "+ cnt);
 
 			PageMaker pm = new PageMaker();
@@ -78,7 +79,7 @@ public class MainController extends HttpServlet {
 			
 			BoardServiceImpl boarddao = new BoardServiceImpl(); 
 			
-			ArrayList alistboard = boarddao.selectMasterboardlist();
+			ArrayList<EvBoardAskVo> alistboard = boarddao.selectMasterboardlist();
 			 
 			 request.setAttribute("alistboard", alistboard);
 			 	
