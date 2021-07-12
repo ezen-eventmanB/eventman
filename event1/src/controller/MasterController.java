@@ -65,7 +65,7 @@ public class MasterController extends HttpServlet {
 		System.out.println("str1 = " + str1[1]);
 		System.out.println("str2 = " + str1[2]);
 
-		/* 회사 소개 */
+/* 회사 소개 */
 		if (str2.equals("EventMan_Company_Main.do")) {
 
 			System.out.println("-----EventMan_Company_Main.do 실행-----");
@@ -73,7 +73,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp");
 			rd.forward(request, response);
 
-			/* master main 페이지로 이동 */
+/* master main 페이지로 이동 */
 		} else if (str2.equals("EventMan_Master_Mainpage.do")) {
 
 			System.out.println("-----EventMan_Master_Mainpage.do 실행-----");
@@ -85,7 +85,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp");
 			rd.forward(request, response);
 
-			/* 행사 리뷰 작성 페이지로 이동 */
+/* 행사 리뷰 작성 페이지로 이동 */
 		} else if (str2.equals("EventMan_Review_Write.do")) {
 
 			System.out.println("-----EventMan_Review_Write.do 실행-----");
@@ -96,7 +96,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Write.jsp");
 			rd.forward(request, response);
 
-			/* 게시판 관리자 게시글 작성 페이지 이동 */
+/* 게시판 관리자 게시글 작성 페이지 이동 */
 		} else if (str2.equals("EventMan_Master_BoardWrite.do")) {
 
 			System.out.println("게시판 글 작성 페이지 이동");
@@ -104,7 +104,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);
 
-			/* 관리자 회원 관리 페이지 이동 */
+/* 관리자 회원 관리 페이지 이동 */
 		} else if (str2.equals("EventMan_Master_Modify.do")) {
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
@@ -116,7 +116,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Modify.jsp");
 			rd.forward(request, response);
 
-			/* 행사 리뷰 작성 ACTION */
+/* 행사 리뷰 작성 ACTION */
 		} else if (str2.equals("EventMan_Review_Write_Action.do")) {
 
 			System.out.println("-----EventMan_Review_Write_Action.do 실행-----");
@@ -193,7 +193,7 @@ public class MasterController extends HttpServlet {
 				rd.forward(request, response);
 			}
 
-			/* 행사 리뷰 삭제 action */
+/* 행사 리뷰 삭제 action */
 		} else if (str2.equals("EventMan_ReviewDelete.do")) {
 
 			System.out.println("-----EventMan_ReviewDelete.do 실행-----");
@@ -222,7 +222,7 @@ public class MasterController extends HttpServlet {
 				rd.forward(request, response);
 			}
 
-			/* 행사리뷰 수정 화면이동 */
+/* 행사리뷰 수정 화면이동 */
 		} else if (str2.equals("EventMan_ReviewModify.do")) {
 
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
@@ -237,7 +237,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
 			rd.forward(request, response);
 
-			/* 행사리뷰글 수정하기 action */
+/* 행사리뷰글 수정하기 action */
 		} else if (str2.equals("EventMan_ReviewModifyAction.do")) {
 
 			System.out.println("-----EventMan_ReviewModify.do 실행-----");
@@ -268,22 +268,21 @@ public class MasterController extends HttpServlet {
 
 
 
-			/* 견적신청함 리스트 페이지 연결 */
+/* 견적신청함 리스트 페이지 연결 */
 		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
 			System.out.println("견적신청함페이지 연결");
-
+			
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			ArrayList<EvCostVo> arraycost = mdao.allCostList();
+			ArrayList<EvCostVo> descalist = mdao.alldescCostList();
 
-			request.setAttribute("arraycost", arraycost);
+			request.setAttribute("descalist", descalist);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList.jsp");
 			rd.forward(request, response);
+
 			
-			
-			
-			/*상담 신청함 페이지*/ 
+/*상담 신청함 페이지*/ 
 		} else if (str2.equals("EventMan_Master_AllBoardList.do")) {
 
 			System.out.println("상담페이지 신청 리스트 뿌려주기");
@@ -296,15 +295,45 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
 			rd.forward(request, response);
 	
+/*상담신청함 ajax*/
+		}else if(str2.equals("EventMan_Master_ajax_costlist.do")) {
+			
+			System.out.println("에이젝스 실행");
 
-			/* 회사 소개 변경하기 페이지 이동 */
+			String order = request.getParameter("order");
+			String searchtype = request.getParameter("searchtype");
+			String text = request.getParameter("text");
+			String check = request.getParameter("check");
+
+			System.out.println("order : "+order);
+			System.out.println("serachtype : "+searchtype);
+			System.out.println("text : "+text);
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			ArrayList<EvCostVo> alist = mdao.ajaxcostlist(order, searchtype, text,check);
+					
+			request.setAttribute("alist", alist);
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList_Ajax.jsp");
+			rd.forward(request, response);
+			
+/* 회사 소개 변경하기 페이지 이동 */
 		} else if (str2.equals("EventMan_Company_Modify.do")) {
 
 			System.out.println("EventMan_Company_Modify.do if문");
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Modify.jsp");
 			rd.forward(request, response);
+			
+			
+
 		}
+			
+			
+		
+		
+		
+		
+		
 
 	}
 

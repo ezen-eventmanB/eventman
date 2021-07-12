@@ -18,7 +18,7 @@ public class EvCostVo {
 	private String Ccount; 
 	private String CName;
 	private String realname;
-	private int CostDelYn;
+	private String CostDelYn;
 	private int midx;
 	
 	public String getRealname() {
@@ -121,10 +121,10 @@ public class EvCostVo {
 	public void setCostPeople(String costPeople) {
 		CostPeople = costPeople;
 	}
-	public int getCostDelYn() {
+	public String getCostDelYn() {
 		return CostDelYn;
 	}
-	public void setCostDelYn(int costDelYn) {
+	public void setCostDelYn(String costDelYn) {
 		CostDelYn = costDelYn;
 	}
 	public int getMidx() {

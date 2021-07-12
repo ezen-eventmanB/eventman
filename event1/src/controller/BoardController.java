@@ -112,8 +112,8 @@ public class BoardController extends HttpServlet {
 				
 				//업로드 파일 경로		
 				//나중에 웹서버로 공통된 경로로 올리게 된다.
-				//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-				String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+				String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+				//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
 				//저장 폴더
 				String savedPath = "Advice_img";
 				
@@ -182,6 +182,8 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Advicewrite.jsp"); 	
 			rd.forward(request, response);	
+			
+			
 /*	상담하기 작성 완료하기	*/			
 		}else if(str2.equals("EventMan_AdvicewriteAction.do")) {
 			
@@ -189,8 +191,8 @@ public class BoardController extends HttpServlet {
 			
 			//업로드 파일 경로		
 			//나중에 웹서버로 공통된 경로로 올리게 된다.
-			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
 			//저장 폴더
 			String savedPath = "Advice_img";
 			
@@ -272,6 +274,7 @@ public class BoardController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_Myboardlist.jsp");
 		rd.forward(request, response);
 		
+		
 /*	마이페이지 게시글 상세보기	*/		
 		}else if(str2.equals("EventMan_Mypage_MyboardlistDetail.do")) {
 			
@@ -349,6 +352,7 @@ public class BoardController extends HttpServlet {
 				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
 			}
 		
+			
 /*	게시글 삭제하기	*/			
 		}else if(str2.equals("EventMan_Mypage_MyboardDelet.do")) {
 			
@@ -394,7 +398,30 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_MainAdvice.jsp");
 			rd.forward(request, response);
+			
+			
+/*	마스터 견적 상세보기	*/			
+		}else if(str2.equals("EventMan_Mypage_CostDetail.do")){
+			
+			System.out.println("견적상세보기");
+			
+			int cidx = Integer.parseInt(request.getParameter("cidx"));
+            
+            CostServiceImpl costdao = new CostServiceImpl();
+            
+            costdao.hitCount(cidx);
+            
+            EvCostVo covo = new EvCostVo();
+            
+            covo = costdao.costlistselectone(cidx);
+            
+            request.setAttribute("covo", covo);
+            
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
+			rd.forward(request, response);
 		}
+		
+		
 		
 		
 	}

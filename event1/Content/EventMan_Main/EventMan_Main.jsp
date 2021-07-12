@@ -226,11 +226,6 @@
 <div class="container "id="detailload">
 
 <div class="container">
-   <%if(gidx != 0 ){ %>
-      <div class="text-end w-100">
-         <button type="button" class="btn btn-outline-primary btn-lg mb-n5 mt-2" onclick="reviewWriteFn()">리뷰 작성하기</button>
-      </div>
-   <%}; %>
    <nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
       <div class="container-fluid">
          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">

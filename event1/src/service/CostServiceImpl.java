@@ -324,7 +324,7 @@
 		
 		int allcount=0;
 		
-		String sql = "select count(*) as cnt from EVE_COST";
+		String sql = "select count(*) as cnt from EVE_COST where cdelyn='N'";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -195,11 +195,12 @@ public class MasterServiceImpl {
 		return value;
 	}
 	
-	public ArrayList<EvCostVo> allCostList() {
+	/*견적신청목록 최신순*/
+	public ArrayList<EvCostVo> alldescCostList() {
 		
-		ArrayList<EvCostVo> alist = new ArrayList<EvCostVo>();
+		ArrayList<EvCostVo> descalist = new ArrayList<EvCostVo>();
 		
-		String slq="select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx";
+		String slq="select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cdelyn='N' order by cidx DESC";
 		
 		try {
 			pstmt=conn.prepareStatement(slq);
@@ -213,7 +214,7 @@ public class MasterServiceImpl {
 				cvo.setCName(rs.getString("mid"));
 				cvo.setRealname(rs.getString("mname"));
 				cvo.setCcount(rs.getString("ccount"));
-				alist.add(cvo);
+				descalist.add(cvo);
 			}
 			
 		} catch (SQLException e) {
@@ -222,9 +223,102 @@ public class MasterServiceImpl {
 		}
 		
 		
-		return alist;
+		return descalist;
 	}
 	
+	/* 견적신청 리스트 ajax*/
+	public ArrayList<EvCostVo> ajaxcostlist(String order, String searchtype, String text,String check){
+		
+		System.out.println("메소드 부분입니다!!");
+		System.out.println("order : "+order);
+		System.out.println("searchtype : "+searchtype);
+		System.out.println("text : "+text);
+		System.out.println("체크박스 : "+check);
+		String order2 =order;
+		String searchtype2 = "";
+		String text2 ="";
+		
+		//체크박스는 on / undifined 로 온다.
+		String slq="";
+		
+		if(check.equals("undefined")) {
+			System.out.println("언디빠인드");
+			if(order.equals("ASC") && searchtype.equals("검색타입")) { 
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? and cdelyn='N' order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("title")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? and cdelyn='N' order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("id")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mid like ? and cdelyn='N' order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("name")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mname like ? and cdelyn='N' order by cidx asc";
+				
+			}else if(order.equals("DESC") && searchtype.equals("검색타입")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? and cdelyn='N' order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("title")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? and cdelyn='N' order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("id")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mid like ? and cdelyn='N' order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("name")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mname like ? and cdelyn='N' order by cidx DESC";
+			}
+			
+		}else if(check.equals("on")) {
+			System.out.println("온");
+			if(order.equals("ASC") && searchtype.equals("검색타입")) { 
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("title")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("id")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mid like ? order by cidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("name")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mname like ? order by cidx asc";
+				
+			}else if(order.equals("DESC") && searchtype.equals("검색타입")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("title")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and cname like ? order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("id")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mid like ? order by cidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("name")) {
+				slq = "select * from EVE_COST C , EVE_MEMBER M where C.midx = M.midx and mname like ? order by cidx DESC";
+			}
+		}
+
+		text2 = text;
+		
+		System.out.println("if문 통화구 !!!");
+		System.out.println("order2 : "+order2);
+		System.out.println("searchtype2 : "+searchtype2);
+		System.out.println("text2 : "+text2);
+
+		ArrayList<EvCostVo> alist = new ArrayList<EvCostVo>();
+
+		try {
+			pstmt=conn.prepareStatement(slq);
+			pstmt.setString(1, "%"+text2+"%");
+			System.out.println("slq = "+slq);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvCostVo cvo = new EvCostVo();
+				cvo.setCidx(rs.getInt("cidx"));
+				cvo.setCostName(rs.getString("cname"));
+				cvo.setCostWritedate(rs.getString("cwday"));
+				cvo.setCName(rs.getString("mid"));
+				cvo.setRealname(rs.getString("mname"));
+				cvo.setCcount(rs.getString("ccount"));
+				cvo.setCostDelYn(rs.getString("cdelyn"));
+				alist.add(cvo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return alist;
+	}
+
 	
 	/*상담 신청 목록*/
 	public ArrayList<EvBoardAskVo> allBoardList() {
