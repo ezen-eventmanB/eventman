@@ -98,7 +98,65 @@ public class BoardController extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Detail.jsp");
 			rd.forward(request, response);			
-			   
+			
+			
+			/* 게시글 수정하기로 이동	*/			
+		}else if(str2.equals("EventMan_Board_Modify.do")) {
+			
+			System.out.println("EventMan_Mypage_BoardModify.do if문");
+			int bidx = Integer.parseInt( request.getParameter("bidx"));
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			EvBoardAskVo bavo = boarddao.MainboardModify(bidx);
+			
+			
+			request.setAttribute("bavo", bavo);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Modify.jsp");
+			rd.forward(request, response);
+			
+			
+/*	게시글 수정하기 액션	*/			
+		}else if(str2.equals("EventMan_Board_Modify_Action.do")) {
+			
+			System.out.println("EventMan_Board_Modify_Action.do if문");
+			
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+			String file = request.getParameter("file");
+			
+			System.out.println("bidx="+bidx);
+			System.out.println("title="+title);
+			System.out.println("content="+content);
+			
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+			int value = boarddao.boardMainModifyAction(bidx, title, content, file);			
+			
+			System.out.println("value = "+value);
+			
+			if(value == 1) {
+
+				request.setAttribute("bidx", bidx);
+				 
+				EvBoardAskVo bavo = new EvBoardAskVo();
+				
+				BoardServiceImpl boarddao1 = new BoardServiceImpl();
+				  
+				bavo = boarddao1.boardlistselectone(bidx);
+				  
+				request.setAttribute("bavo", bavo);
+				
+				 System.out.println("value가 1입니다 페이지 이동합니다.");
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+				rd.forward(request, response);
+				
+			}else {
+				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
+			}
+		
+			
 
 			//게시판 글 작성 페이지 이동
 		}else if(str2.equals("EventMan_BoardWrite.do")){

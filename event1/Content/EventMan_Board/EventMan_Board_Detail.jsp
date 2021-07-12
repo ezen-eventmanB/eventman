@@ -109,14 +109,10 @@
 						<%
 				   		}else if(gidx > 0){
 				   		%>
-					<div class="row mt-2">
-						<div class="col-md">
-							<button type="button" class="btn btn-outline-secondary w-100" onclick="modifyFn()">수정하기</button>
-						</div>	
-						<div class="col-md">
-							<button type="button" class="btn btn-outline-secondary w-100" onclick="deletemodalFn()">삭제하기</button>
-						</div>
-					</div>
+		<div class="text-end mt-5">
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=evbo.getBidx()%>'">수정</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
+		</div>
 						<%
 				   		}
 				   		%>

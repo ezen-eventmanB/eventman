@@ -14,7 +14,7 @@
        midx = (int)session.getAttribute("midx");
     }
 
-   ArrayList<EvBoardAskVo> alistboardask = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
+   ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
    
    %>    
     
@@ -86,7 +86,7 @@
             </tr>
          </thead>
          <tbody>
-         <% for(EvBoardAskVo bavo: alistboardask){ %>
+         <% for(EvBoardAskVo bavo: alistboard){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
                <td><%=bavo.getBcata()%></td>
                <td colspan="2"><%=bavo.getBtitle()%></td>
