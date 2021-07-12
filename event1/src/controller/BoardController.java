@@ -156,8 +156,6 @@ public class BoardController extends HttpServlet {
 				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
 			}
 		
-			
-
 			//게시판 글 작성 페이지 이동
 		}else if(str2.equals("EventMan_BoardWrite.do")){
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	

@@ -19,7 +19,7 @@
 
 
    
-	EvBoardAskVo evbo = (EvBoardAskVo)request.getAttribute("evbo");
+	EvBoardAskVo bavo = (EvBoardAskVo)request.getAttribute("bavo");
 
    %>    
     
@@ -41,7 +41,16 @@
 <title>EVENT MAN!</title>
 
 <script>
-
+	function modifyFn(){
+	
+	var frm = document.form;
+	
+	document.frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify_Action.do";
+	document.frm.method="post";
+	document.frm.submit();
+	
+	};
+	
 </script>
 
 </head>
@@ -71,45 +80,52 @@
       
 
 <div class="container">
-            
+            <form name="frm">
 <div class="mypageajax">
 	<div class="fs-4 fw-bold mb-5">게시판</div>
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-			<div><%=evbo.getBcata()%></div>
-			<div class="fs-1 fw-bold mb-3"><%=evbo.getBtitle() %></div>
+			카테고리
+			<div><input type="text" value="<%=bavo.getBcata()%>"></div>
+			제목
+			<div class="fs-1 fw-bold mb-3"><input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example"></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">
 				<span class="fw-bold me-2">등록일</span>
-				<span class=" me-3"><%=evbo.getBWrieday2()%></span>
+				<span class=" me-3"><%=bavo.getBWrieday2()%></span>
 				<span class="fw-bold me-2">작성자</span>
-				<span class=" me-3"><%=evbo.getgName() %></span>
+				<span class=" me-3"><%=bavo.getgName() %></span>
 				<span class="fw-bold me-2">조회수</span>
-				<span class=" me-3"><%=evbo.getBcount()%></span>
+				<span class=" me-3"><%=bavo.getBcount()%></span>
 			</div>
 		<div>
 		
-
-		
-			<div><%=evbo.getBcontents() %></div>
+                <div class="form-floating">
+              <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"><%=bavo.getBcontents() %></textarea>
+              <label for="floatingTextarea2">게시판 내용을 작성해주세요.</label>
+            </div>
+               <hr/>
+         </div>
+			
+			
 			<div class="text-center">
-<%-- 				<%if(evbo.getBfile() != null){%>
-					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=evbo.getBfile() %>">
-				<%}; %> --%>
+				<%if(bavo.getBfile() != null){%>
+					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
+				<%}; %> 
 			</div>
 		</div>
 		<div class="text-end mt-5">
 		
-				<%-- <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button> --%>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
 
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Board_Modify.do?bidx=<%=evbo.getBidx()%>'">수정</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
 		</div>
 
 		</div>
 	</div>
-	
+	</form>
 </div>
 
 <!--   모달   -->
