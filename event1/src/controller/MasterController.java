@@ -289,9 +289,9 @@ public class MasterController extends HttpServlet {
 			System.out.println("상담페이지 신청 리스트 뿌려주기");
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			ArrayList<EvBoardAskVo> arrayboard = mdao.allBoardList();
+			ArrayList<EvBoardAskVo> allboardalist = mdao.allBoardList();
 
-			request.setAttribute("arrayboard", arrayboard);
+			request.setAttribute("allboardalist", allboardalist);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
 			rd.forward(request, response);

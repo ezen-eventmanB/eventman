@@ -231,28 +231,39 @@ public class MasterServiceImpl {
 		
 		ArrayList<EvBoardAskVo> alist = new ArrayList<EvBoardAskVo>();
 		
-		String slq="select * from EVE_BOARD C , EVE_MEMBER M where C.midx = M.midx";
+		String slq="select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx";
 		
 		try {
 			pstmt=conn.prepareStatement(slq);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				EvBoardAskVo bavo = new EvBoardAskVo();
-				bavo.setBidx(rs.getInt("bidx"));
-				bavo.setBtitle(rs.getString("btitle"));
-				bavo.setBwriteday(rs.getString("bwday"));
-				bavo.setBmenu(rs.getString("bmenu"));
-				bavo.setBcata(rs.getString("bcata"));
-				bavo.setBcount(rs.getString("bcount"));
-				alist.add(bavo);
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				ebvo.setBcata(rs.getString("Bcata"));
+				ebvo.setBtitle(rs.getString("Btitle"));
+				ebvo.setBwriteday(rs.getString("Bwriteday"));
+				ebvo.setgName(rs.getString("gName"));
+				ebvo.setBmenu(rs.getString("Bmenu"));
+				ebvo.setBcount(rs.getString("Bcount"));
+				ebvo.setBidx(rs.getInt("bidx"));
+
+				alist.add(ebvo);
 			}
 		} catch (SQLException e) {
+
 			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
 		}
 		return alist;
 	}
-	
+
 	
 	
 	/*	게시판 관리자 글 작성 action		*/

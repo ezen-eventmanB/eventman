@@ -14,8 +14,7 @@
 		 gidx= (int)session.getAttribute("gidx");
 	 }
 	
-	 
-	 ArrayList<EvBoardAskVo> allBoardList = (ArrayList<EvBoardAskVo>)request.getAttribute("allBoardList");
+	 ArrayList<EvBoardAskVo> arrayboard = (ArrayList<EvBoardAskVo>)request.getAttribute("arrayboard");
 	%>    
 
 <!DOCTYPE html>
@@ -173,16 +172,16 @@
 				<th></th>
 			</tr>
 		</thead>
-				
-<%-- 				<tbody class="align-middle">
-				<% for(EvBoardAskVo ebvo : allBoardList){ %>
-					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_boardDetail.do?bidx=<%=ebvo.getBidx()%>'">
-		               <td class="text-center"><%=ebvo.getBcata()%></td>
-		               <td class="text-center" colspan="2"><%=ebvo.getBtitle()%></td>
-		               <td></td>
-		               <td class="text-center"><%=ebvo.getBWrieday2()%></td>
-		               <td class="text-center"><%=ebvo.getBname()%></td>
-					   <td class="text-center"><%=ebvo.getBcount() %></td>
+		
+			<tbody class="align-middle">
+			         <% for(EvBoardAskVo ebvo : arrayboard){ %>
+			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=ebvo.getBidx()%>'">
+			               <td><%=ebvo.getBcata()%></td>
+			               <td colspan="2"><%=ebvo.getBtitle()%></td>
+			               <td></td>
+			               <td><%=ebvo.getBWrieday2()%></td>
+			               <td><%=ebvo.getBname()%></td>
+			               <td><%=ebvo.getBcount() %></td>
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic outlined example">
 								<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
@@ -191,7 +190,7 @@
 						</td>
 					</tr>
 				<%}; %>
-				</tbody> --%>
+				</tbody>
 	</table>
 </div>
 

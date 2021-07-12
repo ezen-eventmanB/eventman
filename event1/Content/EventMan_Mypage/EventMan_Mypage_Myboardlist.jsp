@@ -140,12 +140,14 @@
    <div class="container">
       <table class="table table-hover">
          <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th>
-            <th>조회수</th>
+         	<tr>
+	            <th>카테고리</th>
+	            <th colspan="2">제목</th>
+	            <th></th>
+	            <th>작성일</th>
+	            <th>작성자</th>
+	            <th>조회수</th>
+            </tr>
          </thead>
          <tbody>
          <% for(EvBoardAskVo bavo: alistboardask){ %>
