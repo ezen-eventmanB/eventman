@@ -62,37 +62,21 @@ public class BoardServiceImpl {
 		public EvBoardAskVo allboardlistselectone(int bidx) {
 			
 			System.out.println("allboardlistselectone 게시글 상세보기");
-			
 			String sql = "select * from EVE_BOARD where GIDX='1' and bidx=?";
-
 			EvBoardAskVo bavo = new EvBoardAskVo();
 			
 			try {
-				pstmt=conn.prepareStatement(sql);
+				pstmt= conn.prepareStatement(sql);
 				pstmt.setInt(1, bidx);
 				ResultSet rs = pstmt.executeQuery();
-				
 				if(rs.next()) {
-					
 					bavo.setBidx(rs.getInt("bidx"));
-					
-					bavo.setBcata(rs.getString("bcata"));
-					
+					bavo.setBcata(rs.getString("bcata"));	
 					bavo.setBtitle(rs.getString("btitle"));
-
-					
 					bavo.setBwriteday(rs.getString("bwriteday"));
-
-					
 					bavo.setgName(rs.getString("gName"));
-
-					
 					bavo.setBcount(rs.getString("bcount"));
-
-					
-					bavo.setBcontents(rs.getString("bcontents"));
-
-					
+					bavo.setBcontents(rs.getString("bcontents"));	
 					bavo.setBfile(rs.getString("bfile"));
 				}
 
@@ -110,6 +94,77 @@ public class BoardServiceImpl {
 			return bavo;
 		}
 		
+		/* 공지사항 게시글 수정하기 페이지로 이동 . */
+		public EvBoardAskVo MainboardModify(int bidx) {
+
+			String sql = "select * from EVE_BOARD where bidx=?";
+			EvBoardAskVo bavo = new EvBoardAskVo();
+
+			try {
+				pstmt= conn.prepareStatement(sql);
+				pstmt.setInt(1, bidx);
+				ResultSet rs = pstmt.executeQuery();
+
+
+				
+				if (rs.next()) {
+					
+					bavo.setBidx(rs.getInt("bidx"));
+					bavo.setBcata(rs.getString("bcata"));
+					bavo.setBtitle(rs.getString("btitle"));
+					bavo.setBwriteday(rs.getString("bwriteday"));
+					bavo.setgName(rs.getString("gName"));
+					bavo.setBcount(rs.getString("bcount"));
+					bavo.setBcontents(rs.getString("bcontents"));
+				/* bavo.setBfile(rs.getString("bfile")); */
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			return bavo;
+
+		}
+
+		/* 게시판 메인수정 액션 */
+		public int boardMainModifyAction(int bidx, String title, String content, String file) {
+
+			int value = 0;
+			String sql = null;
+
+			sql = "UPDATE EVE_BOARD SET btitle=?, bcontents=?, bfile=? where bidx=?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, title);
+				pstmt.setString(2, content);
+				pstmt.setString(3, file);
+				pstmt.setInt(4, bidx);
+				value = pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			return value;
+		}
 		/*	관리자 게시판 글 작성하기	*/	
 		/*	상담글 작성하기	*/	
 		public int masterinsertAdvice(String cata, String title, String content, String fileName , String gidx) {
@@ -243,7 +298,7 @@ public class BoardServiceImpl {
 	/* 마이페이지 게시글 수정하기 페이지로 이동 . */
 	public EvBoardAskVo boardModify(int bidx) {
 
-		String sql = "select * " + "from EVE_BOARD B , EVE_MEMBER M " + "where B.midx = M.midx " + "and B.bidx=?";
+		String sql = "select * " + "from EVE_BOARD B , EVE_MASTER M " + "where B.midx = M.midx " + "and B.bidx=?";
 
 		EvBoardAskVo bavo = new EvBoardAskVo();
 

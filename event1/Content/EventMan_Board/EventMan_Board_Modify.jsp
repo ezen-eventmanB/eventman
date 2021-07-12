@@ -77,7 +77,6 @@
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
 			<div><%=evbo.getBcata()%></div>
 			<div class="fs-1 fw-bold mb-3"><%=evbo.getBtitle() %></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">
@@ -94,28 +93,20 @@
 		
 			<div><%=evbo.getBcontents() %></div>
 			<div class="text-center">
-				<%if(evbo.getBfile() != null){%>
+<%-- 				<%if(evbo.getBfile() != null){%>
 					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=evbo.getBfile() %>">
-				<%}; %>
+				<%}; %> --%>
 			</div>
 		</div>
 		<div class="text-end mt-5">
 		
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
-						<%
-						if(midx == 0 && gidx ==0){
-						%>
-			
-						<%
-				   		}else if(gidx > 0){
-				   		%>
+				<%-- <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button> --%>
+
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=evbo.getBidx()%>'">수정</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Board_Modify.do?bidx=<%=evbo.getBidx()%>'">수정</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
 		</div>
-						<%
-				   		}
-				   		%>
+
 		</div>
 	</div>
 	
@@ -141,7 +132,7 @@
 </div>
 
 
-
+</div>
 
 <!-- footer include -->
 <jsp:include page="/WEB-INF/footer.jsp"/>

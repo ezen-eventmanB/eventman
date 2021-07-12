@@ -105,6 +105,9 @@
              alert("핸드폰번호를 입력해주세요.");
             fm.mPhone.focus();
             return;
+         }else if (fm.mType.value=="mType"){
+            alert("회원타입을 선택해주세요.");
+            fm.mType.focus();
          }else{
       
             document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
@@ -216,7 +219,7 @@
                            <div class="input-group mb-3">
                               <span class="input-group-text" id="inputGroup-sizing-default">계정 종류</span>
                                  <select class="form-select" aria-label="Default select example" name="mType">
-                                   <option selected>회원 종류를 선택해주세요.</option>
+                                   <option selected value="mType" disabled>회원 종류를 선택해주세요.</option>
                                    <option value="개인">개인</option>
                                    <option value="단체">단체</option>
                                    <option value="기업">기업</option>

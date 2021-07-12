@@ -104,6 +104,7 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);
 
+
 /* 관리자 회원 관리 페이지 이동 */
 		} else if (str2.equals("EventMan_Master_Modify.do")) {
 
@@ -123,8 +124,8 @@ public class MasterController extends HttpServlet {
 
 			// 업로드 파일 경로
 			// 나중에 웹서버로 공통된 경로로 올리게 된다.
-			 String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
 			// 저장 폴더
 			String savedPath = "Advice_img";
@@ -288,9 +289,9 @@ public class MasterController extends HttpServlet {
 			System.out.println("상담페이지 신청 리스트 뿌려주기");
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			ArrayList<EvBoardAskVo> arrayboard = mdao.allBoardList();
+			ArrayList<EvBoardAskVo> alistboard = mdao.alistboard();
 
-			request.setAttribute("arrayboard", arrayboard);
+			request.setAttribute("alistboard", alistboard);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
 			rd.forward(request, response);

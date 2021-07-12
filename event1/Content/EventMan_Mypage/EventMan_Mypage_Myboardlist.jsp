@@ -14,7 +14,7 @@
        midx = (int)session.getAttribute("midx");
     }
 
-   ArrayList<EvBoardAskVo> alistboardask = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
+   ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
    
    %>    
     
@@ -76,15 +76,17 @@
    <div class="container">
       <table class="table table-hover">
          <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th>
-            <th>조회수</th>
+         	<tr>
+	            <th>카테고리</th>
+	            <th colspan="2">제목</th>
+	            <th></th>
+	            <th>작성일</th>
+	            <th>작성자</th>
+	            <th>조회수</th>
+            </tr>
          </thead>
          <tbody>
-         <% for(EvBoardAskVo bavo: alistboardask){ %>
+         <% for(EvBoardAskVo bavo: alistboard){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
                <td><%=bavo.getBcata()%></td>
                <td colspan="2"><%=bavo.getBtitle()%></td>

@@ -65,7 +65,43 @@ public class MasterServiceImpl {
 		
 		return value;
 	}
-/*회원 정보 출력 하기*/	
+	
+	/*	관리자 게시판 작성하기	*/	
+	public int insertBoard(String cata, String title, String content, String fileName , String gidx,String gName) {
+		
+		int value=0;
+		
+		String sql= "insert into EVE_BOARD (GIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, ORIGINBIDX, DEPTH, LLEVEL,GNAME)"
+					+"values(EVENTASK_SEQ.NEXTVAL , ? , ? , ? , ? , '21-06-28' , 0 , ? ,  0 , 0 , 0,'이벤트맨')";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cata);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setString(4, fileName);
+			pstmt.setString(5, gName);
+			pstmt.setString(6, gidx);
+
+			
+			value=pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		}
+		return value; 
+	}
+	/*회원 정보 출력 하기*/	
 	public ArrayList<EvMemberVo> memberSelectAll(){
 		ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
 		
@@ -96,7 +132,7 @@ public class MasterServiceImpl {
 		return alist;
 	}
 	
-/*	행사리뷰 삭제하기	*/
+	/*	행사리뷰 삭제하기	*/
 	public int reviewDelete(int hidx) {
 		
 		
@@ -127,7 +163,7 @@ public class MasterServiceImpl {
 	}
 
 
-/*	행사 리뷰 수정하기	*/	
+	/*	행사 리뷰 수정하기	*/	
 	public int modifyAction(int hidx, String file, String cata, String hloca, 
 							String startdate, String enddate, String price, String people, 
 							String target, String staff, String company, String title, String content) {
@@ -195,8 +231,13 @@ public class MasterServiceImpl {
 		return value;
 	}
 	
+<<<<<<< HEAD
 	/*견적신청목록 최신순*/
 	public ArrayList<EvCostVo> alldescCostList() {
+=======
+	/*모든 견적 신청 리스트 */
+	public ArrayList<EvCostVo> allCostList() {
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 		
 		ArrayList<EvCostVo> descalist = new ArrayList<EvCostVo>();
 		
@@ -321,32 +362,43 @@ public class MasterServiceImpl {
 
 	
 	/*상담 신청 목록*/
-	public ArrayList<EvBoardAskVo> allBoardList() {
+	public ArrayList<EvBoardAskVo> alistboard() {
 		
 		ArrayList<EvBoardAskVo> alist = new ArrayList<EvBoardAskVo>();
 		
-		String slq="select * from EVE_BOARD C , EVE_MEMBER M where C.midx = M.midx";
+		String sql="select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx";
 		
 		try {
-			pstmt=conn.prepareStatement(slq);
+			pstmt=conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				EvBoardAskVo bavo = new EvBoardAskVo();
-				bavo.setBidx(rs.getInt("bidx"));
-				bavo.setBtitle(rs.getString("btitle"));
-				bavo.setBwriteday(rs.getString("bwday"));
-				bavo.setBmenu(rs.getString("bmenu"));
-				bavo.setBcata(rs.getString("bcata"));
-				bavo.setBcount(rs.getString("bcount"));
-				alist.add(bavo);
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				ebvo.setBcata(rs.getString("Bcata"));
+				ebvo.setBtitle(rs.getString("Btitle"));
+				ebvo.setBwriteday(rs.getString("Bwriteday"));
+				ebvo.setgName(rs.getString("gName"));
+				ebvo.setBmenu(rs.getString("Bmenu"));
+				ebvo.setBcount(rs.getString("Bcount"));
+				ebvo.setBidx(rs.getInt("bidx"));
+
+				alist.add(ebvo);
 			}
 		} catch (SQLException e) {
+
 			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
 		}
 		return alist;
 	}
-	
+
 	
 	
 	/*	게시판 관리자 글 작성 action		*/
