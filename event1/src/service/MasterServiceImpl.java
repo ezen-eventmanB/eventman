@@ -231,13 +231,10 @@ public class MasterServiceImpl {
 		return value;
 	}
 	
-<<<<<<< HEAD
+
 	/*견적신청목록 최신순*/
 	public ArrayList<EvCostVo> alldescCostList() {
-=======
-	/*모든 견적 신청 리스트 */
-	public ArrayList<EvCostVo> allCostList() {
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
 		
 		ArrayList<EvCostVo> descalist = new ArrayList<EvCostVo>();
 		
