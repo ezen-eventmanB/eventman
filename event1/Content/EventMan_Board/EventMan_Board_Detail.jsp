@@ -19,7 +19,7 @@
 
 
    
-	EvBoardAskVo evbo = (EvBoardAskVo)request.getAttribute("evbo");
+	EvBoardAskVo bavo = (EvBoardAskVo)request.getAttribute("bavo");
 
    %>    
     
@@ -77,24 +77,25 @@
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-			<div><%=evbo.getBcata()%></div>
-			<div class="fs-1 fw-bold mb-3"><%=evbo.getBtitle() %></div>
+		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
+			<div><%=bavo.getBcata()%></div>
+			<div class="fs-1 fw-bold mb-3"><%=bavo.getBtitle() %></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">
 				<span class="fw-bold me-2">등록일</span>
-				<span class=" me-3"><%=evbo.getBWrieday2()%></span>
+				<span class=" me-3"><%=bavo.getBWrieday2()%></span>
 				<span class="fw-bold me-2">작성자</span>
-				<span class=" me-3"><%=evbo.getgName() %></span>
+				<span class=" me-3"><%=bavo.getgName() %></span>
 				<span class="fw-bold me-2">조회수</span>
-				<span class=" me-3"><%=evbo.getBcount()%></span>
+				<span class=" me-3"><%=bavo.getBcount()%></span>
 			</div>
 		<div>
 		
 
 		
-			<div><%=evbo.getBcontents() %></div>
+			<div><%=bavo.getBcontents() %></div>
 			<div class="text-center">
-				<%if(evbo.getBfile() != null){%>
-					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=evbo.getBfile() %>">
+				<%if(bavo.getBfile() != null){%>
+					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
 				<%}; %>
 			</div>
 		</div>
@@ -109,7 +110,7 @@
 				   		}else if(gidx > 0){
 				   		%>
 		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=evbo.getBidx()%>'">수정</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
 		</div>
 						<%

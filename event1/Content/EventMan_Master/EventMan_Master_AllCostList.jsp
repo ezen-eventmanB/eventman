@@ -86,8 +86,8 @@ function deletFn(){
 	<div class="row float-end mt-5">
 		<div class="col-md-auto mt-1">
 			<div class="form-check form-switch" onchange="submitFn()">
-				<input class="form-check-input" name="check" type="checkbox" id="flexSwitchCheckDefault">
 				<label class="form-check-label" for="flexSwitchCheckDefault">삭제 글 포함</label>
+				<input class="form-check-input" name="check" type="checkbox" id="flexSwitchCheckDefault">
 			</div>
 		</div>
 		<div class="col-md-auto mt-1">
