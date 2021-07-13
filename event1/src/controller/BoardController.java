@@ -72,7 +72,7 @@ public class BoardController extends HttpServlet {
 			
 			ArrayList alistboard = boarddao.selectMasterboardlist();
 			 
-			 request.setAttribute("alistboard", alistboard);
+			request.setAttribute("alistboard", alistboard);
 			 
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.jsp");
 			rd.forward(request, response);
@@ -89,11 +89,11 @@ public class BoardController extends HttpServlet {
 		
 			boarddao.hitCount(bidx);
 	
-			EvBoardAskVo evbo = new EvBoardAskVo();
+			EvBoardAskVo bavo = new EvBoardAskVo();
 		
-			evbo = boarddao.allboardlistselectone(bidx);
+			bavo = boarddao.allboardlistselectone(bidx);
 
-			request.setAttribute("evbo", evbo);
+			request.setAttribute("bavo", bavo);
 
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_Detail.jsp");
@@ -120,42 +120,44 @@ public class BoardController extends HttpServlet {
 		}else if(str2.equals("EventMan_Board_Modify_Action.do")) {
 			
 			System.out.println("EventMan_Board_Modify_Action.do if문");
+
+			String Bcata = request.getParameter("Bcata");
+			String Btitle = request.getParameter("Btitle");
+			String Bcontents = request.getParameter("Bcontents");
+			String Bfile = request.getParameter("Bfile");
 			
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
 			int bidx = Integer.parseInt(request.getParameter("bidx"));
-			String file = request.getParameter("file");
-			
-			System.out.println("bidx="+bidx);
-			System.out.println("title="+title);
-			System.out.println("content="+content);
-			
+	
 			BoardServiceImpl boarddao = new BoardServiceImpl();
-			int value = boarddao.boardMainModifyAction(bidx, title, content, file);			
+			int value = boarddao.boardMainModifyAction(Bcata, Btitle, Bcontents, Bfile, bidx);			
 			
 			System.out.println("value = "+value);
 			
 			if(value == 1) {
-
-				request.setAttribute("bidx", bidx);
-				 
-				EvBoardAskVo bavo = new EvBoardAskVo();
 				
-				BoardServiceImpl boarddao1 = new BoardServiceImpl();
-				  
-				bavo = boarddao1.boardlistselectone(bidx);
-				  
-				request.setAttribute("bavo", bavo);
-				
-				 System.out.println("value가 1입니다 페이지 이동합니다.");
-				
-				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+				RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_Board.do");
 				rd.forward(request, response);
 				
 			}else {
 				System.out.println("게시글 수정후 상세화면 페이지이동 실패");
 			}
-		
+			
+	     /* 공지 삭제 액션 */
+	    }else if(str2.equals("EventMan_Mypage_MyCostDelete.do")) {
+	            
+	            int value=0;
+	            
+	            int bidx = Integer.parseInt(request.getParameter("bidx"));
+	            int gidx = Integer.parseInt(request.getParameter("gidx"));
+	            
+	            BoardServiceImpl boarddao = new BoardServiceImpl();
+	            value = boarddao.BoardDelete(bidx);
+	            
+	            System.out.println("value="+value);
+	            
+	            response.sendRedirect(request.getContextPath()+"/EventMan_Board/EventMan_Board.do?gidx="+gidx);
+	            
+	            
 			//게시판 글 작성 페이지 이동
 		}else if(str2.equals("EventMan_BoardWrite.do")){
 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp"); 	

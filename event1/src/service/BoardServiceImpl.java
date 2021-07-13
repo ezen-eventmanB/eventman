@@ -104,11 +104,7 @@ public class BoardServiceImpl {
 				pstmt= conn.prepareStatement(sql);
 				pstmt.setInt(1, bidx);
 				ResultSet rs = pstmt.executeQuery();
-
-
-				
 				if (rs.next()) {
-					
 					bavo.setBidx(rs.getInt("bidx"));
 					bavo.setBcata(rs.getString("bcata"));
 					bavo.setBtitle(rs.getString("btitle"));
@@ -116,9 +112,8 @@ public class BoardServiceImpl {
 					bavo.setgName(rs.getString("gName"));
 					bavo.setBcount(rs.getString("bcount"));
 					bavo.setBcontents(rs.getString("bcontents"));
-				/* bavo.setBfile(rs.getString("bfile")); */
+					bavo.setBfile(rs.getString("bfile"));
 				}
-
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
@@ -135,36 +130,61 @@ public class BoardServiceImpl {
 		}
 
 		/* 게시판 메인수정 액션 */
-		public int boardMainModifyAction(int bidx, String title, String content, String file) {
+		public int boardMainModifyAction(String Bcata, String Btitle, String Bcontents, String Bfile, int bidx) {
 
 			int value = 0;
 			String sql = null;
 
-			sql = "UPDATE EVE_BOARD SET btitle=?, bcontents=?, bfile=? where bidx=?";
+			sql = "UPDATE EVE_BOARD SET BCATA=? ,BTITLE=?, BCONTENTS=?, BFILE=? WHERE bidx=?";
 
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setString(3, file);
-				pstmt.setInt(4, bidx);
+				pstmt.setString(1, Bcata);
+				pstmt.setString(2, Btitle);
+				pstmt.setString(3, Bcontents);
+				pstmt.setString(4, Bfile);
+				pstmt.setInt(5, bidx);
 				value = pstmt.executeUpdate();
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} finally {
 				try {
 					pstmt.close();
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-
 			return value;
 		}
+		
+			/*   게시판 공지사항 삭제하기      */   
+			public int BoardDelete(int bidx) {
+	    	  
+	  		int value = 0;
+	  		
+	  		String sql = "UPDATE EVE_BOARD SET BDELYN='Y' where bidx=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, bidx);
+				value = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+			} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return value;
+		}
+  
+		
 		/*	관리자 게시판 글 작성하기	*/	
 		/*	상담글 작성하기	*/	
 		public int masterinsertAdvice(String cata, String title, String content, String fileName , String gidx) {

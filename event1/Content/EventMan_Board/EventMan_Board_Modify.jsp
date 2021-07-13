@@ -6,21 +6,18 @@
 <%@ page import = "domain.*" %>
 
  <%
-		String member_id = (String)session.getAttribute("S_memberId");
+	String member_id = (String)session.getAttribute("S_memberId");
 	 
-	 int midx = 0;
-	 int gidx = 0;
+	int midx = 0;
+	int gidx = 0;
 	 
-	 if (session.getAttribute("midx") != null) {
-	 	midx = (int)session.getAttribute("midx");
-	 }else if(session.getAttribute("gidx") !=null ){
-		 gidx= (int)session.getAttribute("gidx");
-	 }
-
-
-   
+	if (session.getAttribute("midx") != null) {
+		midx = (int)session.getAttribute("midx");
+	}else if(session.getAttribute("gidx") !=null ){
+		gidx= (int)session.getAttribute("gidx");
+	}
+	
 	EvBoardAskVo bavo = (EvBoardAskVo)request.getAttribute("bavo");
-
    %>    
     
     
@@ -40,18 +37,31 @@
 
 <title>EVENT MAN!</title>
 
-<script>
-	function modifyFn(){
-	
-	var frm = document.form;
-	
-	document.frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify_Action.do";
-	document.frm.method="post";
-	document.frm.submit();
-	
-	};
-	
-</script>
+		<script>
+			//수정 완료 버튼
+			function modifyFn(){
+			
+			var frm = document.form;
+			
+			document.frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify_Action.do";
+			document.frm.method="post";
+			document.frm.submit();
+			
+			};
+			
+			//삭제하기 버튼
+			function ModalcostDeletFn(){
+				$("#textbox").html("&#34;<%=bavo.getBname()%>&#34; 글을 삭제합니다.");
+				$("#modal").modal("show");
+			
+			};
+			
+			function costDeletFn() {
+				location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_BoardDelete.do?bidx=<%=bavo.getBidx()%>&gidx=<%=gidx%>'
+			};
+
+			
+		</script>
 
 </head>
 <body>
@@ -80,79 +90,80 @@
       
 
 <div class="container">
-            <form name="frm">
-<div class="mypageajax">
-	<div class="fs-4 fw-bold mb-5">게시판</div>
+<form name="frm">
+	<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>">
+	<div class="mypageajax">
+		<div class="fs-4 fw-bold mb-5">게시판</div>
+		
+		<!-- 상세보기-->
+		<div class="container" id="myboardbox">
+				카테고리
+				<div><input type="text" name="Bcata" value="<%=bavo.getBcata()%>"></div>
+				제목
+				<div class="fs-1 fw-bold mb-3"><input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="Btitle" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example"></div>
+				<div class="mb-5 pb-2 border-bottom border-3 ">
+					<span class="fw-bold me-2">등록일</span>
+					<span class=" me-3"><%=bavo.getBWrieday2()%></span>
+					<span class="fw-bold me-2">작성자</span>
+					<span class=" me-3"><%=bavo.getgName() %></span>
+					<span class="fw-bold me-2">조회수</span>
+					<span class=" me-3"><%=bavo.getBcount()%></span>
+				</div>
+			<div>
+			
+	                <div class="form-floating">
+	              <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="Bcontents"><%=bavo.getBcontents() %></textarea>
+	              <label for="floatingTextarea2">게시판 내용을 작성해주세요.</label>
+	            </div>
+	               <hr/>
+	         </div>
+				
+				
+				<div class="text-center">
+					<%if(bavo.getBfile() != null){%>
+						<img class="mt-3" style="max-width:90%; margin:5px auto;" name="Bfile" src="../Advice_img/<%=bavo.getBfile() %>">
+					<%}; %> 
+				</div>
+			</div>
+			<div class="text-end mt-5">
+			
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
 	
-	<!-- 상세보기-->
-	<div class="container" id="myboardbox">
-			카테고리
-			<div><input type="text" value="<%=bavo.getBcata()%>"></div>
-			제목
-			<div class="fs-1 fw-bold mb-3"><input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example"></div>
-			<div class="mb-5 pb-2 border-bottom border-3 ">
-				<span class="fw-bold me-2">등록일</span>
-				<span class=" me-3"><%=bavo.getBWrieday2()%></span>
-				<span class="fw-bold me-2">작성자</span>
-				<span class=" me-3"><%=bavo.getgName() %></span>
-				<span class="fw-bold me-2">조회수</span>
-				<span class=" me-3"><%=bavo.getBcount()%></span>
+			<div class="text-end mt-5">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
 			</div>
-		<div>
-		
-                <div class="form-floating">
-              <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"><%=bavo.getBcontents() %></textarea>
-              <label for="floatingTextarea2">게시판 내용을 작성해주세요.</label>
-            </div>
-               <hr/>
-         </div>
-			
-			
-			<div class="text-center">
-				<%if(bavo.getBfile() != null){%>
-					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
-				<%}; %> 
+	
 			</div>
 		</div>
-		<div class="text-end mt-5">
-		
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
-
-		<div class="text-end mt-5">
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
-		</div>
-
-		</div>
+		</form>
 	</div>
-	</form>
-</div>
-
-<!--   모달   -->
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
-			</div>
-			<div class="modal-body">
-				<span id="textbox"></span>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="boardDeletFn()">확인</button>
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+	
+	
+	<!--   모달   -->
+	<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"></h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+				</div>
+				<div class="modal-body">
+					<span id="textbox"></span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="costDeletFn()">확인</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-</div>
+	
 
 <!-- footer include -->
-<jsp:include page="/WEB-INF/footer.jsp"/>
+	<jsp:include page="/WEB-INF/footer.jsp"/>
 
 <!-- Bootstrap에 필요한 JS파일 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</body>
 </html>
