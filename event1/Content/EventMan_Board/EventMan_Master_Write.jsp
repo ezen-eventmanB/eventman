@@ -87,7 +87,7 @@ function ajaxsubimtFn(){
 		$("#modal1").modal("show");	
 		
 	}else{
-		frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_AdvicewriteAction.do";
+		frm.action="<%=request.getContextPath()%>/EventMan_Board/EventMan_MasterWriteAction.do";
 		frm.enctype="multipart/form-data";
 		frm.method="POST";
 		frm.submit();

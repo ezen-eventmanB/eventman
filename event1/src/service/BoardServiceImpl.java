@@ -186,7 +186,6 @@ public class BoardServiceImpl {
   
 		
 		/*	관리자 게시판 글 작성하기	*/	
-		/*	상담글 작성하기	*/	
 		public int masterinsertAdvice(String cata, String title, String content, String fileName , String gidx) {
 
 			System.out.println("cara"+cata);
@@ -197,9 +196,8 @@ public class BoardServiceImpl {
 
 			int value=0;
 			
-			String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL)"
-						+"values(EVENTASK_SEQ.NEXTVAL , ? , '공지사항' , ? , ? , '21-06-28' , 0 , ? , ? , 0 , 0 , 0)";
-			
+		    String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL)"
+		               +"values(EVENTASK_SEQ.NEXTVAL , ? , '게시판' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0)";			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, cata);
@@ -212,14 +210,12 @@ public class BoardServiceImpl {
 				value=pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				try {
 					pstmt.close();
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		

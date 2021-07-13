@@ -104,14 +104,13 @@ public class MasterController extends HttpServlet {
 			rd.forward(request, response);
 
 /* 게시판 관리자 게시글 작성 페이지 이동 */
-		} else if (str2.equals("EventMan_Master_BoardWrite.do")) {
+		} else if (str2.equals("EventMan_Master_Write.do")) {
 
 			System.out.println("게시판 글 작성 페이지 이동");
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
 			rd.forward(request, response);
-
-
+			
 /* 관리자 회원 관리 페이지 이동 */
 		} else if (str2.equals("EventMan_Master_Modify.do")) {
 

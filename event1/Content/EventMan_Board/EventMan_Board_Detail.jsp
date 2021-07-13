@@ -43,7 +43,7 @@
 <script>
 //삭제하기 버튼
 	function ModalBoardDeletFn(){
-		$("#textbox").html("&#34;<%=bavo.getBname()%>&#34; 글을 삭제합니다.");
+		$("#textbox").html("&#34;<%=bavo.getBtitle()%>&#34; 글을 삭제합니다.");
 		$("#modal").modal("show");
 	
 	};
@@ -51,6 +51,7 @@
 	function BoardDeletFn() {
 		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_BoardDelete.do?bidx=<%=bavo.getBidx()%>&gidx=<%=gidx%>'
 	};	
+	
 </script>
 
 </head>
