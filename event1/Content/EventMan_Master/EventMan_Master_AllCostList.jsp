@@ -57,6 +57,13 @@ function submitFn(){
 };
 
 
+function costdeletFn(){
+	alert();
+/* 	$("#textbox").html(name+" 글을 삭제 하시겠습니까?");
+	$("#modal").modal("show"); */
+};
+
+
 </script>
 
 </head>
@@ -123,25 +130,23 @@ function submitFn(){
 			</tr>
 		</thead>
 		<tbody class="align-middle">
-			<div id="ordertext">
 			<% for(EvCostVo cvo : descalist){ %>
-			</div>
-				<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?bidx=<%=cvo.getCidx()%>'">
-					<td class="text-center"><%=cvo.getCidx() %></td>
-					<td colspan="2"><%=cvo.getCostName()%></td>
+				<tr>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%></td>
 					<td></td>
-					<td class="text-center"><%=cvo.getSubWritedate()%></td>
-					<td class="text-center"><%=cvo.getCName()%></td>
-					<td class="text-center"><%=cvo.getRealname()%></td>
-					<td class="text-center"><%=cvo.getCcount() %></td>
-					<td>
-						<div class="btn-group" role="group" aria-label="Basic outlined example">
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getSubWritedate()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCName()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getRealname()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCcount() %></td>
+					<td class="text-center">
+						<div class="btn-group " role="group" aria-label="Basic outlined example">
 							<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-							<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>
 						</div>
 					</td>
 				</tr>
-			<div id="ordertext2"> <%}; %> </div>
+			 <%}; %>
 		</tbody>
 	</table>
 </div>
@@ -182,7 +187,24 @@ function submitFn(){
 
 
 
-
+<!-- 삭제 모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="deletFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 

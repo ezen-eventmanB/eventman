@@ -71,7 +71,7 @@
 					<td>
 						<div class="btn-group" role="group" aria-label="Basic outlined example">
 							<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-							<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
+							<button type="button" class="btn btn-outline-secondary btn-sm" oonclick="costdeletFn(<%=cvo.getCostName()%>)"">삭제</button>
 						</div>
 					</td>
 				</tr>
