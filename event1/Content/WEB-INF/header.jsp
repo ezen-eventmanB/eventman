@@ -39,7 +39,7 @@
 
 <!-- 상단 네비 부분 -->
 <div class="container">
-	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
+	<nav class="navbar navbar-expand-xxl navbar-light" id="topnav">
 
 		<a class="navbar-brand"
 			href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">

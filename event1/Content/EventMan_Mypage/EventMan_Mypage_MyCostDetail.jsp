@@ -46,10 +46,43 @@ function ModalcostDeletFn(){
 };
 
 function costDeletFn() {
-	location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelete.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>'
+	location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDelete.do?cidx=<%=covo.getCidx()%>&midx=<%=midx%>';
 };
 
+function masterreplyFn(){
+	
+	$("#replybox").empty();
+	$("#replybox").html('<div class="mb-3"><label for="exampleFormControlTextarea1" class="form-label">답변글 작성하기</label><textarea class="form-control" name="reply" id="exampleFormControlTextarea1" rows="3"></textarea></div>');
+	$("#replybtn").empty();
+	$("#replybtn").html('<button type="button" class="btn btn-outline-secondary btn-sm me-1" onclick="replyActionFn()">답변작성완료</button>'+'<button type="button" class="btn btn-outline-secondary btn-sm" onclick="listmoveFn()">목록</button>');
+	
+};
 
+function replyActionFn(){
+	alert('<%=covo.getCidx()%>');
+	
+	var reple = $("#exampleFormControlTextarea1").val();
+	
+	alert(reple);
+	var alldata = {"cidx" : <%=covo.getCidx()%>, "creply" : reple};
+	
+	alert(alldata);
+	
+	$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Cost/EventMan_Master_Reply.do?",
+		type:"post",
+		data:alldata,
+		success:function(data){
+			location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do";
+		}	
+	});
+
+	
+};
+
+function listmoveFn(){
+	location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do';
+}
 </script>
 </head>
 <body>
@@ -403,6 +436,21 @@ function costDeletFn() {
    <div class="form-group">
       <input class="form-control" type="file" id="formFile" name="file">
     <hr/>
+    
+    
+<!-- 관리자의 답변이 들어가는 부분 -->
+    <div id="replybox">
+		<%if(covo.getCcondition().equals("견적등록완료")){%>
+			<div>견적신청등록이 완료되었습니다.</div>
+			<div>해당 상담사가 1~2일내로 연락 드리겠습니다.</div>
+			<div>최고의 행사 파트너가 되겠습니다.</div>
+			<div>감사합니다.</div>
+			<div>연락처:063-222-2222</div>
+		<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료") ){ %>
+			<div><%=covo.getCreply() %></div>
+		<%}; %>
+	</div>
+    
     </div>
 		<%if(midx>0){ %>
 			<!-- 맴버 버튼 -->
@@ -414,11 +462,15 @@ function costDeletFn() {
 		<%}else if(gidx>0){ %>
 			<!-- 관리자 버튼 -->
 			<div class="text-end mt-5">
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do'">목록</button>
+				<div id="replybtn">
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="masterreplyFn()">답변</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do'">목록</button>
+				</div>
 			</div>	
 		<%}; %>
     	</div>
 	</form>
+
 	
 <!--   모달   -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

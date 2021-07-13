@@ -252,6 +252,7 @@ public class MasterServiceImpl {
 				cvo.setCName(rs.getString("mid"));
 				cvo.setRealname(rs.getString("mname"));
 				cvo.setCcount(rs.getString("ccount"));
+				cvo.setCcondition(rs.getString("Ccondition"));
 				descalist.add(cvo);
 			}
 			

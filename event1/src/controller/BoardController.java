@@ -458,25 +458,6 @@ public class BoardController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-/*	마스터 견적 상세보기	*/			
-		}else if(str2.equals("EventMan_Mypage_CostDetail.do")){
-			
-			System.out.println("견적상세보기");
-			
-			int cidx = Integer.parseInt(request.getParameter("cidx"));
-            
-            CostServiceImpl costdao = new CostServiceImpl();
-            
-            costdao.hitCount(cidx);
-            
-            EvCostVo covo = new EvCostVo();
-            
-            covo = costdao.costlistselectone(cidx);
-            
-            request.setAttribute("covo", covo);
-            
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
-			rd.forward(request, response);
 		}
 		
 		

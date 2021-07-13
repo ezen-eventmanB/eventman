@@ -19,6 +19,23 @@ public class EvCostVo {
 	private String CName;
 	private String realname;
 	private String CostDelYn;
+	private String Ccondition;
+	private String Creply;
+	
+	
+	
+	public String getCcondition() {
+		return Ccondition;
+	}
+	public void setCcondition(String ccondition) {
+		Ccondition = ccondition;
+	}
+	public String getCreply() {
+		return Creply;
+	}
+	public void setCreply(String creply) {
+		Creply = creply;
+	}
 	private int midx;
 	
 	public String getRealname() {

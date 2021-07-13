@@ -66,7 +66,18 @@ function deletFn(){
 
 	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Master_costdelete.do?idx="+idx;
 
+};
+
+function replyfinshFN(a, b){
+	idx = a;
+  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.?");
+	$("#modal1").modal("show"); 
 }
+
+
+function finsh(){
+	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_replyFinsh.do?idx="+idx;
+};
 </script>
 
 </head>
@@ -135,16 +146,20 @@ function deletFn(){
 		<tbody class="align-middle">
 			<% for(EvCostVo cvo : descalist){ %>
 				<tr>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%>
+		               	<%if(cvo.getCcondition()!=null){ %>
+	    	           		<span><button type="button" class="btn btn-light btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
+	        	       	<%}; %>
+					</td>
 					<td></td>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getSubWritedate()%></td>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCName()%></td>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getRealname()%></td>
-					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCcount() %></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getSubWritedate()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCName()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getRealname()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCcount() %></td>
 					<td class="text-center">
 						<div class="btn-group " role="group" aria-label="Basic outlined example">
-							<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
+							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="replyfinshFN(<%=cvo.getCidx()%>, '<%=cvo.getCostName()%>')">완료처리</button>
 							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn(<%=cvo.getCidx()%>, '<%=cvo.getCostName()%>')">삭제</button>
 						</div>
 					</td>
@@ -209,7 +224,24 @@ function deletFn(){
 	</div>
 </div>
 
-
+<!-- 상담완료모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox1"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="finsh()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <!-- footer include -->

@@ -89,7 +89,11 @@
          <% for(EvCostVo covo: alistcost){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
                <td><%=covo.getCidx()%></td>
-               <td colspan="2"><%=covo.getCostName()%></td>
+               <td colspan="2"><%=covo.getCostName()%>
+	               	<%if(covo.getCcondition()!=null){ %>
+	               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}; %>
+               	</td>
                <td></td>
                <td><%=covo.getCostWritedate()%></td>
                <td><%=covo.getCName()%></td>
