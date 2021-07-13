@@ -318,37 +318,38 @@
 	         return value;
 	      }
 	      
-	      /*마이페이지 갈때 견적신청 모든 부분 카운트*/
-		public int allSelectCost() {
-		
-		
-		int allcount=0;
-		
-		String sql = "select count(*) as cnt from EVE_COST where cdelyn='N'";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				allcount = (rs.getInt("cnt"));
-			}
+		      /*마이페이지 갈때 견적신청 모든 부분 카운트*/
+			public int allSelectCost() {
 			
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
+			int allcount=0;
+			
+			String sql = "select count(*) as cnt from EVE_COST where cdelyn='N'";
+			
 			try {
-				pstmt.close();
-				conn.close();
+				pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					allcount = (rs.getInt("cnt"));
+				}
+				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			
+			
+			return allcount;
 		}
-		
-		
-		return allcount;
-	}
-	}
+			
+}

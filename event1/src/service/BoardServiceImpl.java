@@ -419,6 +419,7 @@ public class BoardServiceImpl {
 		return count;
 	}
 
+	
 	/* 마이페이지 게시글 삭제하기 */
 	public int myPageBoardDelet(int bidx) {
 
@@ -450,7 +451,36 @@ public class BoardServiceImpl {
 		System.out.println("turn되는 값 = " + value);
 		return value;
 	}
+	
+	
+    /*마이페이지 갈때 견적신청 모든 부분 카운트*/
+	public int allSelectBoard() {
+	
+		int allBoardcount=0;
+		
+		String sql = "select count(*) as cnt from EVE_BOARD where bdelyn='N'";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				allBoardcount = (rs.getInt("cnt"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
+		return allBoardcount;
+		}
+	
 	/* 게시글 Count */
 	public int hitCount(int bidx) {
 
