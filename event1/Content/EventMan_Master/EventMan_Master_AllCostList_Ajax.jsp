@@ -59,23 +59,28 @@
 		<tbody class="align-middle">
 			<div id="ordertext">
 			<% for(EvCostVo cvo : alist){ %>
-			</div>
-				<tr <%if(cvo.getCostDelYn().equals("Y")){%> id="fontcolor"<% }; %>onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'">
-					<td class="text-center"><%=cvo.getCidx() %></td>
-					<td colspan="2"><%=cvo.getCostName()%></td>
+				<tr>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%>
+		               	<%if(cvo.getCcondition().equals("견적등록완료")){ %>
+		               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
+		               	<%}else if(cvo.getCcondition().equals("상담중") || cvo.getCcondition().equals("상담완료")){ %>
+		               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
+		               	<%}; %>
+					</td>
 					<td></td>
-					<td class="text-center"><%=cvo.getSubWritedate()%></td>
-					<td class="text-center"><%=cvo.getCName()%></td>
-					<td class="text-center"><%=cvo.getRealname()%></td>
-					<td class="text-center"><%=cvo.getCcount() %></td>
-					<td>
-						<div class="btn-group" role="group" aria-label="Basic outlined example">
-							<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getSubWritedate()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCName()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getRealname()%></td>
+					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCcount() %></td>
+					<td class="text-center">
+						<div class="btn-group " role="group" aria-label="Basic outlined example">
+							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="replyfinshFN(<%=cvo.getCidx()%>, '<%=cvo.getCostName()%>')">완료처리</button>
 							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn(<%=cvo.getCidx()%>, '<%=cvo.getCostName()%>')">삭제</button>
 						</div>
 					</td>
 				</tr>
-			<div id="ordertext2"> <%}; %> </div>
+			 <%}; %>
 		</tbody>
 	</table>
 </div>

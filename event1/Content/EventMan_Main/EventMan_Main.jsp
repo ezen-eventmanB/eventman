@@ -316,7 +316,7 @@
       
    <!-- 메인 공지사항 4개 출력 -->
    <div class="container">
-      <img alt="" src="../sm-banner.jpg">
+      <img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
    </div>
    <table class="table table-hover">
         </tbody>

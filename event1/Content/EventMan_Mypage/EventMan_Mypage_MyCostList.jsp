@@ -90,9 +90,12 @@
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
                <td><%=covo.getCidx()%></td>
                <td colspan="2"><%=covo.getCostName()%>
-	               	<%if(covo.getCcondition()!=null){ %>
+	               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
 	               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
+	               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=covo.getCcondition()%></button></span> 
 	               	<%}; %>
+	               	
                	</td>
                <td></td>
                <td><%=covo.getCostWritedate()%></td>

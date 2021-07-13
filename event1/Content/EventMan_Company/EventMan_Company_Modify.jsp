@@ -27,6 +27,7 @@
 
 
 <script>
+/*이미지 미리보기*/
 	function setImageFn(f){
 
 		var file = f.files;
@@ -44,12 +45,34 @@
 			var reader = new FileReader();
 	
 			reader.onload = function(rst){
-				document.getElementById('container').innerHTML = '<img src="' + rst.target.result + '">';
+				document.getElementById('container').innerHTML = '<img class="bd-placeholder-img card-img-top stretched-link mt-3" src="' + rst.target.result + '">';
 			}
 	
 			reader.readAsDataURL(file[0]);
 		}
 	}	
+	
+/*이미지 등록 액션*/
+	
+	function imgchageFn(){
+		
+		if($("#formFile").val() == ""){
+			$("#textbox1").html("이미지를 선택해주세요.");
+			$("#modal1").modal("show");
+		}else{
+			$("#textbox").html("회사소개 이미지를 변경합니다.");
+			$("#modal").modal("show");
+		}
+	}
+	
+	function submitFn(){
+		
+        document.frm.action ="<%=request.getContextPath()%>/EventMan_Master/EventMan_CompanyModifyAction.do";	
+        document.frm.enctype="multipart/form-data";
+        document.frm.method = "post";
+        document.frm.submit();
+        
+	}
 </script>
 
 
@@ -84,17 +107,21 @@
 	
 <article>
 <!-- 회사 소개 수정 -->
-	<div class="container">	
-		<form>
-			<div class="btnright">
-				<button type="button" class="btn btn-outline-secondary">완료</button>
-				<button type="button" class="btn btn-outline-secondary">뒤로</button>
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-body">
+				<form  name="frm" class="mt-5">
+					<div class="mb-3 mt-5">
+						<label for="formFile" class="form-label ">'gif, jpg, png' 파일만 선택해 주세요.</label>
+						<input class="form-control" type="file" id="formFile" name="file" onchange="setImageFn(this)">
+					</div>
+					<div class="text-end">
+						<button type="button" class="btn btn-outline-primary " onclick="imgchageFn()">이미지 변경 완료</button>
+					</div>
+				</form>
 			</div>
-			<div class="mb-3">
-				<label for="formFile" class="form-label">'gif, jpg, png' 파일만 선택해 주세요.</label>
-				<input class="form-control" type="file" id="formFile" onchange="setImageFn(this)">
-			</div>
-		</form>
+		</div>
+		
 	</div>
 	<div class="container" id="container">	
 	</div>
@@ -103,7 +130,7 @@
 	
 	
 	<!-- 회사 지도 API-->
-	<div class="container">	
+	<div class="container mt-3">	
 		<div id="map" style="width:100%;height:350px;"></div>
 		<div class="d-grid gap-2">
 				<button type="button" class="btn btn-outline-secondary mt-5" onclick="panTo()">회사 위치 보기</button>
@@ -118,8 +145,42 @@
 
 </article>
 
+<!-- 이미지요구 모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+         </div>
+         <div class="modal-body">
+            <span id="textbox1"></span>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+         </div>
+      </div>
+   </div>
+</div>
 
-
+<!-- submit모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+         </div>
+         <div class="modal-body">
+            <span id="textbox"></span>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="submitFn()">확인</button>
+         </div>
+      </div>
+   </div>
+</div>
 
 
 

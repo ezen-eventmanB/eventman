@@ -15,7 +15,9 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }
-
+	
+	 String img = (String)request.getAttribute("imgname");
+	 
 	%>          
     
     
@@ -72,12 +74,12 @@
 	<!-- 회사 소개 이미지 -->
 	<%if(gidx>0){ %>
 		<div class="mt-5 mb-5 float-end">
-			<button type="button" class="btn btn-outline-secondary me-3" onclick="companyModifyFn()">회사소개 수정</button>
+			<button type="button" class="btn btn-outline-primary me-3" onclick="companyModifyFn()">이미지수정</button>
 		</div>
 	<%}; %>
 	<div class="container">	
 		<div class="bd-example">
-			<img src="../회사소개이미지.jpg" alt="" class="container">
+			<img src="../filefolder/<%=img%>" alt="" class="bd-placeholder-img card-img-top stretched-link imgbox">
 			<!-- <img src="회사소개 이미지 불러오는 메소드();" alt=""> -->
 		</div>
 	</div>

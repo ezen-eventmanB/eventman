@@ -148,9 +148,11 @@ function finsh(){
 				<tr>
 					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
 					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%>
-		               	<%if(cvo.getCcondition()!=null){ %>
-	    	           		<span><button type="button" class="btn btn-light btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
-	        	       	<%}; %>
+		               	<%if(cvo.getCcondition().equals("견적등록완료")){ %>
+		               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
+		               	<%}else if(cvo.getCcondition().equals("상담중") || cvo.getCcondition().equals("상담완료")){ %>
+		               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=cvo.getCcondition()%></button></span> 
+		               	<%}; %>
 					</td>
 					<td></td>
 					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getSubWritedate()%></td>

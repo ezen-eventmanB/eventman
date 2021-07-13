@@ -70,7 +70,12 @@ public class MasterController extends HttpServlet {
 		if (str2.equals("EventMan_Company_Main.do")) {
 
 			System.out.println("-----EventMan_Company_Main.do 실행-----");
-
+			
+			BoardServiceImpl bdao = new BoardServiceImpl();
+			String imgname = bdao.companyload();
+			
+			System.out.println("imgname"+imgname);
+			request.setAttribute("imgname", imgname);
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp");
 			rd.forward(request, response);
 
@@ -147,7 +152,7 @@ public class MasterController extends HttpServlet {
 
 			// MultipartRequest 객체생성
 			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8",
-					new DefaultFileRenamePolicy());
+			new DefaultFileRenamePolicy());
 
 			// 열거자에 파일Name속성의 이름을 담는다
 			Enumeration files = multi.getFileNames();
@@ -333,7 +338,57 @@ public class MasterController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
+/* 회사 소개 이미지 변경하기 액션*/
+		}else if(str2.equals("EventMan_CompanyModifyAction.do")) {
+			
+			System.out.println("회사 소개 이미지 변경하자~");
+			
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
+			String savedPath = "filefolder";
+			
+			String saveFullPath = uploadPath + savedPath;
+			
+			String fileName = null;
+			String originFileName = null;
+			int sizeLimit = 1024 * 1024 * 15;
+			
+			// MultipartRequest 객체생성
+			MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8",
+			new DefaultFileRenamePolicy());
+
+			// 열거자에 파일Name속성의 이름을 담는다
+			Enumeration files = multi.getFileNames();
+			System.out.println("files = " + files);
+
+			// 담긴 파일 객체의 Name값을 담는다.
+			String file = (String) files.nextElement();
+			System.out.println("file = " + file);
+
+			// 저장되는 파일이름
+			fileName = multi.getFilesystemName(file);
+			System.out.println("fileName = " + fileName);
+
+			// 원래파일 이름
+			originFileName = multi.getOriginalFileName(file);
+
+			System.out.println("originFileName = " + originFileName);
+
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			int value = mdao.companyimgchang(fileName);
+			
+			if(value > 0 ) {
+				System.out.println("회사 이미지 변경 성공");
+				response.sendRedirect(request.getContextPath() + "/EventMan_Main/EventMan_Main.do");
+			}else {
+				System.out.println("회사 이미지 변경 실패");
+			}
+			
+			
+			
+			
 		}
 
 	}

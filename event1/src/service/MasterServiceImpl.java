@@ -347,6 +347,7 @@ public class MasterServiceImpl {
 				cvo.setRealname(rs.getString("mname"));
 				cvo.setCcount(rs.getString("ccount"));
 				cvo.setCostDelYn(rs.getString("cdelyn"));
+				cvo.setCcondition(rs.getString("ccondition"));
 				alist.add(cvo);
 			}
 			
@@ -434,6 +435,36 @@ public class MasterServiceImpl {
 		
 		
 		
+		return value;
+	}
+
+
+	public int companyimgchang(String file) {
+		
+		int value = 0;
+		
+		String img = file;
+		
+		String sql = "UPDATE EVE_COMPANY SET pimg = ? where gidx=1";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, img);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		System.out.println("리턴되는 벨류값 : "+value);
 		return value;
 	}
 
