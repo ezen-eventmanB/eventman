@@ -495,4 +495,33 @@ public class BoardServiceImpl {
 
 		return value;
 	}
+
+	public String companyload() {
+		
+		String img = "";
+		
+		String sql = "select pimg from EVE_COMPANY where gidx=1";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				img = rs.getString("pimg");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return img;
+	}
 }

@@ -143,7 +143,7 @@ public class CostController extends HttpServlet {
             }
          
          
-         /*   마이페이지 견적 리스트 화면   */         
+ /*   마이페이지 견적 리스트 화면   */         
          }else if(str2.equals("EventMan_Mypage_MyCostlist.do")) {
 
             System.out.println("EventMan_Mypage_MyCostlist.do if문");
@@ -183,7 +183,8 @@ public class CostController extends HttpServlet {
             rd.forward(request, response);         
             //완료
             
-         /*  견적신청 수정 화면 이동 */
+            
+ /*  견적신청 수정 화면 이동 */
          }else if(str2.equals("EventMan_Mypage_MyCostModify.do")) {
             
             System.out.println("EventMan_Mypage_MyCostModify");
@@ -197,8 +198,9 @@ public class CostController extends HttpServlet {
             
             RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostModify.jsp");
             rd.forward(request, response);
+         
             
-         /* 견적신청 삭제 액션 */
+ /* 견적신청 삭제 액션 */
          }else if(str2.equals("EventMan_Mypage_MyCostDelete.do")) {
             
             int value=0;
@@ -213,7 +215,7 @@ public class CostController extends HttpServlet {
             
             response.sendRedirect(request.getContextPath()+"/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx="+midx);
             
-         /*견적 수정 부분*/
+/*견적 수정 부분*/
          }else if(str2.equals("EventMan_Mypage_CostModify_Action.do")) {
             
             String cName = request.getParameter("cName"); // 견적 이름

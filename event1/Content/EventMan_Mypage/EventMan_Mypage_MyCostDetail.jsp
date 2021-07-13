@@ -59,14 +59,9 @@ function masterreplyFn(){
 };
 
 function replyActionFn(){
-	alert('<%=covo.getCidx()%>');
 	
 	var reple = $("#exampleFormControlTextarea1").val();
-	
-	alert(reple);
 	var alldata = {"cidx" : <%=covo.getCidx()%>, "creply" : reple};
-	
-	alert(alldata);
 	
 	$.ajax({
 		url:"<%=request.getContextPath()%>/EventMan_Cost/EventMan_Master_Reply.do?",
@@ -441,14 +436,15 @@ function listmoveFn(){
 <!-- 관리자의 답변이 들어가는 부분 -->
     <div id="replybox">
 		<%if(covo.getCcondition().equals("견적등록완료")){%>
-			<div>견적신청등록이 완료되었습니다.</div>
-			<div>해당 상담사가 1~2일내로 연락 드리겠습니다.</div>
-			<div>최고의 행사 파트너가 되겠습니다.</div>
-			<div>감사합니다.</div>
-			<div>연락처:063-222-2222</div>
+			<div>
+				<img class="bd-placeholder-img card-img-top stretched-link imgbox mt-4" src="../filefolder/costimg.jpg"/>
+			</div>
 		<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료") ){ %>
-			<div><%=covo.getCreply() %></div>
-		<%}; %>
+			<div class="card-body mt-5 fs-5 fw-bold">관리자 답변</div>
+			<div class="card">
+				<div class="card-body fs-6"><%=covo.getCreply() %></div>
+			</div>
+			<%}; %>
 	</div>
     
     </div>

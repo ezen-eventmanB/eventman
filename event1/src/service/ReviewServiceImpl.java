@@ -462,6 +462,9 @@ public class ReviewServiceImpl {
 		return alist;
 	}
 	
+	
+	
+	
 /* 리뷰의 전체 카운트 구하기*/		
 	public int boardTotalCount(String cata) {
 		
