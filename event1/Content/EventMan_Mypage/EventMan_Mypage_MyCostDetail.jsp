@@ -6,14 +6,16 @@
 <%@ page import = "domain.*" %>
 
  <%
-   String member_id = (String)session.getAttribute("S_memberId");
+	String member_id = (String)session.getAttribute("S_memberId");
  
-    int midx = 0;
-    
-    if (session.getAttribute("midx") != null) {
-       midx = (int)session.getAttribute("midx");
-    }
+ int midx = 0;
+ int gidx = 0;
  
+ if (session.getAttribute("midx") != null) {
+ 	midx = (int)session.getAttribute("midx");
+ }else if(session.getAttribute("gidx") !=null ){
+	 gidx= (int)session.getAttribute("gidx");
+ }
    
 	EvCostVo covo = (EvCostVo)request.getAttribute("covo");
    
@@ -402,12 +404,19 @@ function costDeletFn() {
       <input class="form-control" type="file" id="formFile" name="file">
     <hr/>
     </div>
-
-					<div class="text-end mt-5">
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalcostDeletFn()">삭제</button>
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
-					</div>	
+		<%if(midx>0){ %>
+			<!-- 맴버 버튼 -->
+			<div class="text-end mt-5">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostModify.do?cidx=<%=covo.getCidx()%>'">수정</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalcostDeletFn()">삭제</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
+			</div>	
+		<%}else if(gidx>0){ %>
+			<!-- 관리자 버튼 -->
+			<div class="text-end mt-5">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllCostList.do'">목록</button>
+			</div>	
+		<%}; %>
     	</div>
 	</form>
 	

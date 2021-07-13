@@ -34,9 +34,7 @@
 <script>
 
 function submitFn(){
-	
-	alert("실행");
-	
+
 	var order = $("input:radio[name=btnradio]:checked").val();
 	var searchtype=$("select[name=serchtype]").val();
 	var text = $("input[name=text]").val();
@@ -56,14 +54,19 @@ function submitFn(){
 
 };
 
+var idx = 0;
 
-function costdeletFn(){
-	alert();
-/* 	$("#textbox").html(name+" 글을 삭제 하시겠습니까?");
-	$("#modal").modal("show"); */
+function costdeletFn(a,b){
+	idx = a; 
+  	$("#textbox").html(b+" 글을 삭제 하시겠습니까?");
+	$("#modal").modal("show"); 
 };
 
+function deletFn(){
 
+	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Master_costdelete.do?idx="+idx;
+
+}
 </script>
 
 </head>
@@ -142,7 +145,7 @@ function costdeletFn(){
 					<td class="text-center">
 						<div class="btn-group " role="group" aria-label="Basic outlined example">
 							<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>
+							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn(<%=cvo.getCidx()%>, '<%=cvo.getCostName()%>')">삭제</button>
 						</div>
 					</td>
 				</tr>
