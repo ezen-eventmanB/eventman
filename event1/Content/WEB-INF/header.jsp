@@ -110,7 +110,7 @@
 			%>
 			<ul class="navbar-nav" id="Memberbox">
 				<li class="nav-item mx-auto"><a class="nav-link fw-bold"
-					href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master
+					href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do">Master
 						page</a></li>
 				<li class="nav-item mx-auto"><a class="nav-link fw-bold"
 					href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>

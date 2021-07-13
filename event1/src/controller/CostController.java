@@ -247,6 +247,25 @@ public class CostController extends HttpServlet {
             } else {
                System.out.println("수정 실패!");
                }
+            
+            
+            
+/* 관리자가 견적 신청 삭제하기	*/            
+         }else if(str2.equals("EventMan_Master_costdelete.do")) {
+        	 
+        	 System.out.println("마스터 견적신청 실행");
+        	 
+        	 int idx = Integer.parseInt(request.getParameter("idx"));
+        	 
+        	 CostServiceImpl cdao = new CostServiceImpl();
+        	 int value = cdao.myPageCostDelete(idx);
+        	 
+        	 if(value > 0) {
+        		 System.out.println("견적신청 삭제 성공");
+            	 response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllCostList.do");
+        	 }else {
+        		 System.out.println("삭제 실패");
+        	 }
          }
    }
 
