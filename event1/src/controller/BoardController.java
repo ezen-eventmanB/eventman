@@ -477,6 +477,26 @@ public class BoardController extends HttpServlet {
             
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
 			rd.forward(request, response);
+			
+			
+		}else if(str2.equals("EventMan_Master_BoardDetail.do")){
+			
+			System.out.println("상담 상세보기");
+			
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+            
+			BoardServiceImpl boarddao = new BoardServiceImpl();
+            
+			boarddao.hitCount(bidx);
+            
+            EvBoardAskVo bavo = new EvBoardAskVo();
+            
+            bavo = boarddao.boardlistselectone(bidx);
+            
+            request.setAttribute("bavo", bavo);
+            
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
+			rd.forward(request, response);
 		}
 		
 	}

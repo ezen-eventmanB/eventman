@@ -178,13 +178,13 @@
 			<tbody class="align-middle">
 					<% for(EvBoardAskVo ebvo : boardlist){ %>
 						<tr>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
 							<td></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
 							<td class="text-center">
 								<div class="btn-group " role="group" aria-label="Basic outlined example">
 									<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
