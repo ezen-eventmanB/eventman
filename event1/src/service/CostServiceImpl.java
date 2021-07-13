@@ -44,8 +44,8 @@
 	      int value = 0;
 	
 	      try {
-	         String sql = "insert into EVE_COST(CIDX,CNAME,CSDATE,CSDATE2,CWDAY,CCATA,CTEXT,CFILE2,CLOCA,CTARGET,CMETHOD,CPRICE,CPEOPLE,MIDX) "
-	                  + "values(cidx_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?,?,?)";
+	         String sql = "insert into EVE_COST(CIDX,CNAME,CSDATE,CSDATE2,CWDAY,CCATA,CTEXT,CFILE2,CLOCA,CTARGET,CMETHOD,CPRICE,CPEOPLE,MIDX,Ccondition) "
+	                  + "values(cidx_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?,?,?,'견적등록완료')";
 	         
 	         //시퀀스 생성 완료
 	         pstmt = conn.prepareStatement(sql);
@@ -83,7 +83,7 @@
 	         public ArrayList<EvCostVo> selectmycostlist(String midx) {
 	            
 	            ArrayList<EvCostVo> alistboard = new ArrayList();
-	            String sql ="select C.cidx, C.midx, C.cCata, C.cName, C.cWday, C.ccount, M.mname "
+	            String sql ="select C.cidx, C.midx, C.cCata, C.cName, C.cWday, C.ccount, M.mname, C.Ccondition "
 	                     +"from "
 	                     +"EVE_COST C, EVE_MEMBER M "
 	                     +"where C.midx = M.midx and M.midx=? and cdelyn='N' order by cidx desc";
@@ -101,6 +101,7 @@
 	                  cv.setCostWritedate(rs.getString("cwday"));                  
 	                  cv.setCcount(rs.getString("ccount"));                  
 	                  cv.setCName(rs.getString("mname"));
+	                  cv.setCcondition(rs.getString("Ccondition"));
 	                  
 	                  alistboard.add(cv);
 	               }               
@@ -118,6 +119,7 @@
 	            }
 	            return alistboard;
 	         }
+	         
 	         
 	         /*	마이페이지 견적신청 글 수	*/
 	     	public int costCount(int midx) {
@@ -149,6 +151,7 @@
 	     		return count;
 	     	}
 	
+	     	
 	      /*마이페이지 게시글 상세보기*/
 	      public EvCostVo costlistselectone(int cidx) {
 	         
@@ -182,6 +185,8 @@
 	               covo.setCostPrice(rs.getString("cPrice")); //견적 예산
 	               covo.setCostPeople(rs.getString("cPeople")); //견적 참여인원
 	               covo.setCostFile(rs.getString("cfile2")); //견적 신청 파일
+	               covo.setCcondition(rs.getString("Ccondition"));
+	               covo.setCreply(rs.getString("creply"));
 	            }
 	            
 	         } catch (SQLException e) {
@@ -351,5 +356,60 @@
 			
 			return allcount;
 		}
+
+
+		public int masterreply(int cidx, String creply) {
+			int value = 0;
+				
+				String sql = "UPDATE EVE_COST SET CCONDITION='상담중' , CREPLY = ? where cidx=?";
+				
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, creply);
+					pstmt.setInt(2, cidx);
+					value = pstmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					try {
+						pstmt.close();
+						conn.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			System.out.println("리플 된 항목수는 : "+value);
+			return value;
+		}
+
+/* 상담 완료 처리하기	*/		
+		public int finshreply(int cidx) {
+			int value = 0;
 			
-}
+			String sql = "UPDATE EVE_COST SET CCONDITION='상담완료' where cidx=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, cidx);
+				value = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			return value;
+		}
+	}
+

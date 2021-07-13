@@ -266,7 +266,68 @@ public class CostController extends HttpServlet {
         	 }else {
         		 System.out.println("삭제 실패");
         	 }
-         }
+        	 
+        	 
+/*	관리자가 견적답변을 다는 기능	*/
+         }else if(str2.equals("EventMan_Master_Reply.do")) {
+        	 System.out.println("관리자가 답변 컨트롤러");
+        	 
+        	 int cidx = Integer.parseInt(request.getParameter("cidx"));
+        	 String creply = request.getParameter("creply");
+
+        	 System.out.println(cidx);
+        	 System.out.println(creply);
+        	 
+        	 CostServiceImpl cdao = new CostServiceImpl();
+        	 int value = cdao.masterreply(cidx, creply);
+        	 
+        	 if(value == 1) {
+            	 response.sendRedirect(request.getContextPath() + "/EventMan_Board/EventMan_Mypage_CostDetail.do?cidx="+cidx);
+        	 }else {
+        		 System.out.println("@@답변등록실패했씁니다~");
+        	 }
+        	 
+        	 
+  /*	관리자가 견적 상세보기	*/      	 
+         }else if(str2.equals("EventMan_Mypage_CostDetail.do")){
+ 			
+ 			System.out.println("견적상세보기");
+ 			
+ 			int cidx = Integer.parseInt(request.getParameter("cidx"));
+             
+             CostServiceImpl costdao = new CostServiceImpl();
+             
+             costdao.hitCount(cidx);
+             
+             EvCostVo covo = new EvCostVo();
+             
+             covo = costdao.costlistselectone(cidx);
+             
+             request.setAttribute("covo", covo);
+             
+ 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyCostDetail.jsp");
+ 			rd.forward(request, response);
+ 			
+ 			
+ /*	관리자 상담완료 처리하기*/			
+ 		}else if(str2.equals("EventMan_replyFinsh.do")) {
+ 		
+ 			System.out.println("상담완료처리하기");
+ 			
+ 			int cidx = Integer.parseInt(request.getParameter("idx"));
+ 			
+ 			CostServiceImpl cdao = new CostServiceImpl();
+ 			
+ 			int value = cdao.finshreply(cidx);
+ 			
+ 			
+			if(value > 0) {
+				System.out.println("견적신청완료 처리 성공");
+				response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllCostList.do");
+			}else {
+				System.out.println("처리 실패");
+			}
+ 		}
    }
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
