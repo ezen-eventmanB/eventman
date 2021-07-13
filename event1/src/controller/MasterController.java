@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import service.BoardServiceImpl;
 import service.CostServiceImpl;
 import service.EventAskServiceImpl;
 import service.MemberServiceImpl;
@@ -80,8 +81,14 @@ public class MasterController extends HttpServlet {
 
 			CostServiceImpl cdao = new CostServiceImpl();
 			int value = cdao.allSelectCost();
+			
+			BoardServiceImpl bdao = new BoardServiceImpl();
+			int value2 = bdao.allSelectBoard();
+			
 
 			request.setAttribute("value", value);
+			request.setAttribute("value2", value2);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp");
 			rd.forward(request, response);
 
@@ -289,9 +296,9 @@ public class MasterController extends HttpServlet {
 			System.out.println("상담페이지 신청 리스트 뿌려주기");
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			ArrayList<EvBoardAskVo> alistboard = mdao.alistboard();
+			ArrayList<EvBoardAskVo> boardlist = mdao.allboardList();
 
-			request.setAttribute("alistboard", alistboard);
+			request.setAttribute("boardlist", boardlist);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
 			rd.forward(request, response);
@@ -328,13 +335,6 @@ public class MasterController extends HttpServlet {
 			
 
 		}
-			
-			
-		
-		
-		
-		
-		
 
 	}
 

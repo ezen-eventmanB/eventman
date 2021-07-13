@@ -14,7 +14,7 @@
 		 gidx= (int)session.getAttribute("gidx");
 	 }
 	
-	 ArrayList<EvBoardAskVo> arrayboard = (ArrayList<EvBoardAskVo>)request.getAttribute("arrayboard");
+	 ArrayList<EvBoardAskVo> boardlist = (ArrayList<EvBoardAskVo>)request.getAttribute("boardlist");
 	%>    
 
 <!DOCTYPE html>
@@ -123,37 +123,39 @@
 		</nav>
 </div>
 
-
-<!-- 중간 네비 부분 -->
 <div class="container">
-	<p class="fs-2 fw-bold mt-5 mb-5">견적 신청함</p>
-	
+	<p class="fs-2 fw-bold mt-5 mb-5">상담 신청함</p>
 	<div class="row float-end mt-5">
 		<div class="col-md-auto mt-1">
-			<div class="btn-group btn-group-sm"  role="group" aria-label="Basic radio toggle button group" onchange="orderbyFn()">
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" vlaue="과거" autocomplete="off" >
+			<div class="form-check form-switch" onchange="submitFn()">
+				<label class="form-check-label" for="flexSwitchCheckDefault">삭제 글 포함</label>
+				<input class="form-check-input" name="check" type="checkbox" id="flexSwitchCheckDefault">
+			</div>
+		</div>
+		<div class="col-md-auto mt-1">
+			<div class="btn-group btn-group-sm"  role="group" aria-label="Basic radio toggle button group" onchange="submitFn()">
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="ASC" autocomplete="off" >
 				<label class="btn btn-outline-secondary" for="btnradio1">과거</label>
 				
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" vlaue="최신" autocomplete="off" checked>
+				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" value="DESC" autocomplete="off" checked>
 				<label class="btn btn-outline-secondary" for="btnradio2">최신</label>
 			</div>
 		</div>
 		<div class="col-md-auto mt-1">	
-			<select class="form-select form-select-sm" aria-label=".form-select-sm example" onchange="searchtypeFn()">
+			<select class="form-select form-select-sm" name="serchtype" aria-label=".form-select-sm example">
 				<option selected>검색타입</option>
 				<option value="title">제목</option>
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
 			</select>
-		</div>
+		</div>	
 		<div class="col-md-auto mt-1">
 			<div class="input-group input-group-sm mb-3">
-				<input type="text" class="form-control" id="searchbox2" placeholder="검색어입력" aria-label="Recipient's username" aria-describedby="button-addon2">
-				<button class="btn btn-outline-secondary " type="button" id="button-addon2">검색</button>
+				<input type="text" class="form-control" id="searchbox2" name="text" placeholder="검색어입력" aria-label="Recipient's username" aria-describedby="button-addon2" onkeypress="if( event.keyCode == 13 ){submitFn();}">
+				<button class="btn btn-outline-secondary " type="button" id="button-addon2" onclick="submitFn()">검색</button>
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 
@@ -163,33 +165,34 @@
 		<thead>
 			<tr class="text-center">
 				<th>글번호</th>
-				<th colspan="2">제목</th>
+				<th colspan="2">카테고리</th>
 				<th></th>
-				<th>작성일</th>
+				<th>제목</th>
 				<th>작성아이디</th>
-				<th>작성자</th>
+				<th>작성일</th>
 				<th>조회수</th>
 				<th></th>
 			</tr>
 		</thead>
 		
 			<tbody class="align-middle">
-			         <% for(EvBoardAskVo ebvo : arrayboard){ %>
-			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=ebvo.getBidx()%>'">
-			               <td><%=ebvo.getBcata()%></td>
-			               <td colspan="2"><%=ebvo.getBtitle()%></td>
-			               <td></td>
-			               <td><%=ebvo.getBWrieday2()%></td>
-			               <td><%=ebvo.getBname()%></td>
-			               <td><%=ebvo.getBcount() %></td>
-						<td>
-							<div class="btn-group" role="group" aria-label="Basic outlined example">
-								<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-								<button type="button" class="btn btn-outline-secondary btn-sm">삭제</button>
-							</div>
-						</td>
-					</tr>
-				<%}; %>
+					<% for(EvBoardAskVo ebvo : boardlist){ %>
+						<tr>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
+							<td></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
+							<td class="text-center">
+								<div class="btn-group " role="group" aria-label="Basic outlined example">
+									<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>
+								</div>
+							</td>
+						</tr>
+					 <%}; %>
 				</tbody>
 	</table>
 </div>

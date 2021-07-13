@@ -34,8 +34,9 @@ public class EventAskServiceImpl {
 		
 		int value=0;
 		
-		String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
-					+"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0)";
+	    String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
+	               +"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0)";
+
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

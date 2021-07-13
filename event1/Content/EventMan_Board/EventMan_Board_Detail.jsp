@@ -41,7 +41,16 @@
 <title>EVENT MAN!</title>
 
 <script>
-
+//삭제하기 버튼
+	function ModalBoardDeletFn(){
+		$("#textbox").html("&#34;<%=bavo.getBname()%>&#34; 글을 삭제합니다.");
+		$("#modal").modal("show");
+	
+	};
+	
+	function BoardDeletFn() {
+		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_BoardDelete.do?bidx=<%=bavo.getBidx()%>&gidx=<%=gidx%>'
+	};	
 </script>
 
 </head>
@@ -78,6 +87,7 @@
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
 		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
+<%-- 		<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>"> --%>
 			<div><%=bavo.getBcata()%></div>
 			<div class="fs-1 fw-bold mb-3"><%=bavo.getBtitle() %></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">
@@ -111,7 +121,7 @@
 				   		%>
 		<div class="text-end mt-5">
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
-			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boardDeletModalFn()">삭제</button>
+			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalBoardDeletFn()">삭제</button>
 		</div>
 						<%
 				   		}
@@ -139,9 +149,6 @@
 		</div>
 	</div>
 </div>
-
-
-
 
 <!-- footer include -->
 <jsp:include page="/WEB-INF/footer.jsp"/>
