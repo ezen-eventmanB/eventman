@@ -78,16 +78,20 @@
 		게시판
 </div>
 
+<div class="container text-center">
+	<img class="w-50 mt-5" src="../boardimg.png"/>
+</div>
+
 
 <!-- 중앙 네비 카테고리 검색창 -->
-<nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
+<nav style="max-width: 1300px; margin:0px auto;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
 	<div class="container-fluid">
 	     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 	       <span class="navbar-toggler-icon"></span>
 	     </button>
 	   
 	     <div class="navbar-collapse collapse" id="navbarsExample09" >
-	       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="midnav">
+	       <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold" id="midnav">
 	       
 	                      <!-- 클릭시 검은색 배경으로 변경 수정  -->
 	         <li class="nav-item" >
