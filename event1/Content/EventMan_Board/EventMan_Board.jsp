@@ -78,8 +78,8 @@
 		게시판
 </div>
 
-<div class="container text-center">
-	<img class="w-50 mt-5" src="../boardimg.png"/>
+<div class="mt-5">
+<img src="../boardimg.jpg" class="img-fluid" alt="...">
 </div>
 
 

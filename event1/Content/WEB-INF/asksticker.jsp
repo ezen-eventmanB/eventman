@@ -30,7 +30,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 
-
+<script>
+	function closeFn(){
+		$("#fixedbutton").hide()
+	}
+</script>
 <style>
 #fixedbutton {
 	position: fixed;
@@ -58,16 +62,14 @@ function askFn(){
 <body>
 
 <!-- 화면구석 상담하기 버튼 -->
-<div id="fixedbutton" class="mb-3">
+<div id="fixedbutton" class="w-25" style="max-width:130px; display: block; ">
    <div class="rounded-3 border border-3 border-warning">
       <div class="bg-warning bg-gradient">
-         <div class="text-center fw-bold">EVENT</div>
-         <div class="text-center fw-bold">MAN</div>
-         <div class="text-center fw-bold">상담문의</div>
-         <button type="button" class="bg-light rounded-3 border border-1 border-secondary text-center ms-1 me-1 pb-1" onclick="askFn()">
-            <img src="../pencil.png" class="mt-1 mb-1 ms-3 me-3" style="width:50px;"/><br>
-            <div class="fw-bold">상담문의</div>
-            <div class="fw-bold">신청</div>
+   		<button type="button" class="btn-close" aria-label="Close" onclick="closeFn()"></button>
+         <div class="text-center fw-bold fs-6">EVENT<br>MAN</div>
+         <button type="button" class="bg-light rounded-3 border border-1 border-secondary text-center ms-1 me-1 pb-1 text-center" onclick="askFn()">
+            <img src="../pencil.png" class="mt-1 mb-1 w-75"/><br>
+            <div class="fw-bold">상담<br>신청</div>
          </button>
       </div>
    </div>
