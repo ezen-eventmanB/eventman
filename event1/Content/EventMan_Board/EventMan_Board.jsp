@@ -16,7 +16,7 @@
 	 }
 
 	
-	
+	 
 	
 	ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");  
 	%>    
