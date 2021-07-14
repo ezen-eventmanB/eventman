@@ -9,7 +9,7 @@
     <script>
     	document.location.href="/event1/EventMan_Main/EventMan_Main.do";
     </script>
-</head>
+</head>  
 <body>
 	index page
 </body>
