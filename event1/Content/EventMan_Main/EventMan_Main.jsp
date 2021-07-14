@@ -328,8 +328,9 @@
             <th>작성자</th> 
          </thead>
            <tbody>
+           	<!-- 일반 포문 5번  -->
                 <% for(EvBoardAskVo evbo: alistboard){ %>
-                <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+              	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
                    <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
                      <td><%=evbo.getBcata()%></td>
                      <td colspan="2"><%=evbo.getBtitle()%></td>
