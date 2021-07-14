@@ -27,7 +27,7 @@ public class BoardServiceImpl {
    public ArrayList<EvBoardAskVo> selectMasterboardlist() {
       
       ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-      String sql = "select * from EVE_BOARD where gidx='1' order by bidx";
+      String sql = "select * from EVE_BOARD where gidx='1' and gdelyn='N' order by bidx";
 
       try {
          pstmt = conn.prepareStatement(sql);
@@ -159,31 +159,6 @@ public class BoardServiceImpl {
          return value;
       }
       
-         /*   게시판 공지사항 삭제하기      */   
-         public int BoardDelete(int bidx) {
-            
-           int value = 0;
-           
-           String sql = "UPDATE EVE_BOARD SET BDELYN='Y' where bidx=?";
-         
-         try {
-            pstmt=conn.prepareStatement(sql);
-            pstmt.setInt(1, bidx);
-            value = pstmt.executeUpdate();
-            
-         } catch (SQLException e) {
-            e.printStackTrace();
-         }finally {
-            try {
-               pstmt.close();
-               conn.close();
-         } catch (SQLException e) {
-               e.printStackTrace();
-            }
-         }
-         return value;
-      }
-  
       
       /*   관리자 게시판 글 작성하기   */   
       public int masterinsertAdvice(String cata, String title, String content, String fileName , String gidx) {
@@ -447,6 +422,29 @@ public class BoardServiceImpl {
       return value;
    }
    
+	   /*   게시판 공지사항 삭제하기      */   
+	   public int BoardDelete(int bidx) {
+		   
+		      int value = 0;
+
+		      String sql = "UPDATE EVE_BOARD SET GDELYN='Y' where bidx=?";
+
+		      try {
+		         pstmt = conn.prepareStatement(sql);
+		         pstmt.setInt(1, bidx);
+		         value = pstmt.executeUpdate();
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      } finally {
+		         try {
+		            pstmt.close();
+		            conn.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      return value;
+		   }
    
     /*마이페이지 갈때 견적신청 모든 부분 카운트*/
    public int allSelectBoard() {
