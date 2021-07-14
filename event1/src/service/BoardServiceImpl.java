@@ -27,7 +27,7 @@ public class BoardServiceImpl {
    public ArrayList<EvBoardAskVo> selectMasterboardlist() {
       
       ArrayList<EvBoardAskVo> alistboard = new ArrayList();
-      String sql = "select * from EVE_BOARD where gidx='1' and gdelyn='N' order by bidx";
+      String sql = "select * from EVE_BOARD where gidx='1' and gdelyn='N' order by bidx DESC";
 
       try {
          pstmt = conn.prepareStatement(sql);
@@ -173,8 +173,8 @@ public class BoardServiceImpl {
          
          int value=0;
          
-          String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL)"
-                     +"values(EVENTASK_SEQ.NEXTVAL , ? , '게시판' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0)";         
+          String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL, BDELYN)"
+                     +"values(EVENTASK_SEQ.NEXTVAL , ? , '게시판' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0, 'K')";         
          try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, cata);
