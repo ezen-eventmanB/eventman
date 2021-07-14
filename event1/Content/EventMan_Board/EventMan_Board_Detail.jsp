@@ -48,9 +48,9 @@
 	
 	};
 	
-	function BoardDeletFn() {
+	function boardDeletFn() {
 		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_BoardDelete.do?bidx=<%=bavo.getBidx()%>&gidx=<%=gidx%>'
-	};	
+	};
 	
 </script>
 
@@ -87,8 +87,8 @@
 	
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
-		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
-<%-- 		<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>"> --%>
+<%-- 		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
+		<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>"> --%>
 			<div><%=bavo.getBcata()%></div>
 			<div class="fs-1 fw-bold mb-3"><%=bavo.getBtitle() %></div>
 			<div class="mb-5 pb-2 border-bottom border-3 ">

@@ -28,10 +28,7 @@ public class EventAskServiceImpl {
 		System.out.println("content"+content);
 		System.out.println("file"+fileName);
 		System.out.println("midx"+midx);
-
-		
-		
-		
+	
 		int value=0;
 		
 	    String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"

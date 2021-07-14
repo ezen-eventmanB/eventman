@@ -139,8 +139,7 @@ function imageemptyFn(){
 		<!-- 폼 -->
 		<form name=frm>
 			<!-- 로그인 정보 / 리뷰번호 담는 부분 -->
-			<input type="hidden" name="midx" value="<%=midx%>">
-			<input type="hidden" name="hidx" value="<%=request.getParameter("hidx")%>">
+			<input type="hidden" name="gidx" value=<%=gidx%>>
 			<!-- 카테고리 -->
 			<select class="form-select" aria-label="Default select example" name="cata" id="cata">
 				<option selected>카테고리</option>
