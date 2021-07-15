@@ -2,16 +2,16 @@
     pageEncoding="UTF-8"%>
 
  <%
-	String member_id = (String)session.getAttribute("S_memberId");
+   String member_id = (String)session.getAttribute("S_memberId");
  
-	 int midx = 0;
-	 int gidx = 0;
-	 
-	 if (session.getAttribute("midx") != null) {
-	 	midx = (int)session.getAttribute("midx");
-	 }
-	
-	%>        
+    int midx = 0;
+    int gidx = 0;
+    
+    if (session.getAttribute("midx") != null) {
+       midx = (int)session.getAttribute("midx");
+    }
+   
+   %>        
 
 <!doctype html>
 <html>
@@ -29,18 +29,18 @@
  function check(){
       
       var fm = document.frm;
-      var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/g; 				//영문으로 시작  영문,숫자만 사용가능 5~12자리
-      var pwpattern  = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{4,12}$/;	//반드시 영문과 숫자를 한개 이상씩 사용 5-12자리
-      var namepattern = /^[가-힣\s]{2,6}$/;								//한글만사용가능
+      var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/g;             //영문으로 시작  영문,숫자만 사용가능 5~12자리
+      var pwpattern  = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{4,12}$/;   //반드시 영문과 숫자를 한개 이상씩 사용 5-12자리
+      var namepattern = /^[가-힣\s]{2,6}$/;                        //한글만사용가능
       var emailpattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,4}$/; //이메일 적합
       var phonepattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
 
 
-      //	정규식은 //로 감싸져야한다.
-      //	^ 시작에서 일치하는
-      //	$ 끝에서 일치하는
-      // [가-힣]	가부터 힣 사이의 문자 구간에 일치(한글)
-      // [^abc]	a 또는 b 또는 c가 아닌 나머지 문자에 일치(부정)
+      //   정규식은 //로 감싸져야한다.
+      //   ^ 시작에서 일치하는
+      //   $ 끝에서 일치하는
+      // [가-힣]   가부터 힣 사이의 문자 구간에 일치(한글)
+      // [^abc]   a 또는 b 또는 c가 아닌 나머지 문자에 일치(부정)
       // \s 공백제외
       
 
@@ -65,11 +65,11 @@
       return;
       
    }else if (!pwpattern.test(fm.mPwd.value)){
-  	 fm.mPwd.focus();
-  	 return;
+      fm.mPwd.focus();
+      return;
        
    }else if (fm.mPwd2.value==""){
-	  $("#checkidspan").html("비밀번호를 확인해주세요.");
+     $("#checkidspan").html("비밀번호를 확인해주세요.");
       $("#modal").modal("show");
       
       fm.mPwd2.focus();
@@ -87,9 +87,9 @@
       return;
       
    }else if (!namepattern.test(fm.mName.value)){
-  	 fm.mName.focus();
-  	 return;   
-  	 
+      fm.mName.focus();
+      return;   
+      
    }else if (fm.mEmail.value ==""){
       $("#checkidspan").html("이메일을 입력해주세요.");
       $("#modal").modal("show");
@@ -97,9 +97,9 @@
       return;
       
    }else if (!emailpattern.test(fm.mEmail.value)){
-     	 fm.mEmail.focus();
-     	 return;  
-     	 
+         fm.mEmail.focus();
+         return;  
+         
    }else if (fm.mPhn.value ==""){
       $("#checkidspan").html("핸드폰 번호를 입력해주세요.");
       $("#modal").modal("show");
@@ -107,20 +107,20 @@
       return;
       
    }else if (!phonepattern.test(fm.mPhn.value)){
-     	 fm.mPhn.focus();
-     	 return;  
-     	 
+         fm.mPhn.focus();
+         return;  
+         
    }else if (fm.mType.value=="mType"){
       $("#checkidspan").html("회원타입을 선택해주세요.");
       $("#modal").modal("show");
       fm.mType.focus();
-  	 return;      
-  	 
+      return;      
+      
    }else if(fm.idcheck.value=="x"){
       $("#checkidspan").html("아이디 중복 확인을 해주세요.");
       $("#modal").modal("show");
-  	 return;      
-  	 
+      return;      
+      
    }else{
 
       document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_JoinAction.do";
@@ -134,120 +134,118 @@
 
 //아이디 중복 체크
 function idCheck(){
-   		
-	var userid = $("#mId").val();
-	var alldata = { "mid": userid};
-	var userid = $("#mId").val();
+         
+   var userid = $("#mId").val();
+   var alldata = { "mid": userid};
+   var userid = $("#mId").val();
 
     var fm = document.frm;
-	var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/g; 				//영문으로 시작  영문,숫자만 사용가능 5~12자리
-	 
-	if(!idpattern.test(fm.mId.value)){
-	      fm.mId.focus();
-	      return;
-	}else{
-		$.ajax({
-			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_IdCheckAction.do",
-			type:"post",
-			data: alldata,
-			success:function(data){
-				if(data == "사용가능한 아이디 입니다."){
-					$("#idcheck").val("o");
-					$("#checkidspan").html(data);
-					$("#modal").modal("show");
-				}else{
-					$("#checkidspan").html(data);
-					$("#modal").modal("show");
-					$("#mId").val("");
-				}
-			}	
-		});	
-	};
+   var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/g;             //영문으로 시작  영문,숫자만 사용가능 5~12자리
+    
+   if(!idpattern.test(fm.mId.value)){
+         fm.mId.focus();
+         return;
+   }else{
+      $.ajax({
+         url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_IdCheckAction.do",
+         type:"post",
+         data: alldata,
+         success:function(data){
+            if(data == "사용가능한 아이디 입니다."){
+               $("#idcheck").val("o");
+               $("#checkidspan").html(data);
+               $("#modal").modal("show");
+            }else{
+               $("#checkidspan").html(data);
+               $("#modal").modal("show");
+               $("#mId").val("");
+            }
+         }   
+      });   
+   };
 };
       
       
       
-	//정규식 확인
-	$(document).ready(function(){
-		
-	    var fm = document.frm;
-	    var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/; 				//영문으로 시작  영문,숫자만 사용가능 5~12자리
-	    var pwpattern  = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{4,12}$/;	//반드시 영문과 숫자를 한개 이상씩 사용 5-12자리
-	    var namepattern = /^[가-힣\s]{2,6}$/;								//한글만사용가능
-	    var emailpattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,4}$/; //이메일 적합
-	    var phonepattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
-	    
-		//아이디
-		 $("#mId").change(function(){
-	    	 $("#idcheck").val("x");
-	     }); 
-		
-		//아이디
-		 $("#mId").on('blur',function(){
-	    	 if(!idpattern.test(fm.mId.value)){
-	    		 $("#spanmid").css("visibility", "visible" );
-	    	 }else{
-	    		 $("#spanmid").css("visibility", "hidden" );
-	    	 }
-	     }); 
-		
-		//비밀번호
-		 $("#mPwd").on('blur',function(){
-	    	 if(!pwpattern.test(fm.mPwd.value)){
-	    		 $("#spanmPwd").css("visibility", "visible" );
-	    	 }else{
-	    		 $("#spanmPwd").css("visibility", "hidden" );
-	    	 }
-	     }); 
+   //정규식 확인
+   $(document).ready(function(){
+      
+       var fm = document.frm;
+       var idpattern  = /^[a-zA-Z][a-zA-Z0-9]{4,12}$/;             //영문으로 시작  영문,숫자만 사용가능 5~12자리
+       var pwpattern  = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{4,12}$/;   //반드시 영문과 숫자를 한개 이상씩 사용 5-12자리
+       var namepattern = /^[가-힣\s]{2,6}$/;                        //한글만사용가능
+       var emailpattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,4}$/; //이메일 적합
+       var phonepattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
+       
+      //아이디
+       $("#mId").change(function(){
 
-	    //비밀번호 재입력
-		 $("#mPwd2").on('blur',function(){
-	    	 if(fm.mPwd.value !=   fm.mPwd2.value){
-	    		 $("#spanmPwdre").css("visibility", "visible" );
-	    	 }else{
-	    		 $("#spanmPwdre").css("visibility", "hidden" );
-	    	 }
-	     }); 
-	
-		//이름
-		 $("#mName").on('blur',function(){
-	    	 if(!namepattern.test(fm.mName.value)){
-	    		 $("#spanmName").css("visibility", "visible" );
-	    	 }else{
-	    		 $("#spanmName").css("visibility", "hidden" );
-	    	 }
-	     }); 
-		
-		//이메일
-		 $("#mEmail").on('blur',function(){
-	    	 if(!emailpattern.test(fm.mEmail.value)){
-	    		 $("#spanmEmail").css("visibility", "visible" );
-	    	 }else{
-	    		 $("#spanmEmail").css("visibility", "hidden" );
-	    	 }
-	     }); 
-		 
-		//핸드폰
-		$("#mPhn").on('blur',function(){
-			 if(!phonepattern.test(fm.mPhn.value)){
-				 $("#spanmPhone").css("visibility", "visible" );
-			 }else{
-				 $("#spanmPhone").css("visibility", "hidden" );
-			 }
-		}); 	 	 
-	});
-	 
-	  
+           $("#idcheck").val("x");
+           
+          if(!idpattern.test(fm.mId.value)){
+              $("#spanmid").css("visibility", "visible" );
+           }else{
+              $("#spanmid").css("visibility", "hidden" );
+           }
+        }); 
+      
+      //비밀번호
+       $("#mPwd").change(function(){
+           if(!pwpattern.test(fm.mPwd.value)){
+              $("#spanmPwd").css("visibility", "visible" );
+           }else{
+              $("#spanmPwd").css("visibility", "hidden" );
+           }
+        }); 
+
+       //비밀번호 재입력
+       $("#mPwd2").change(function(){
+           if(fm.mPwd.value !=   fm.mPwd2.value){
+              $("#spanmPwdre").css("visibility", "visible" );
+           }else{
+              $("#spanmPwdre").css("visibility", "hidden" );
+           }
+        }); 
+   
+      //이름
+       $("#mName").change(function(){
+           if(!namepattern.test(fm.mName.value)){
+              $("#spanmName").css("visibility", "visible" );
+           }else{
+              $("#spanmName").css("visibility", "hidden" );
+           }
+        }); 
+      
+      //이메일
+       $("#mEmail").change(function(){
+           if(!emailpattern.test(fm.mEmail.value)){
+              $("#spanmEmail").css("visibility", "visible" );
+           }else{
+              $("#spanmEmail").css("visibility", "hidden" );
+           }
+        }); 
+       
+      //핸드폰
+      $("#mPhn").change(function(){
+          if(!phonepattern.test(fm.mPhn.value)){
+             $("#spanmPhone").css("visibility", "visible" );
+          }else{
+             $("#spanmPhone").css("visibility", "hidden" );
+          }
+      });         
+   });
+    
+     
          
          
 </script>
 
 <style>
-	.label1{
-		width:130px;
-		justify-content: space-around;
-		text-align: center;
-	}
+   .label1{
+      width:130px;
+      justify-content: space-around;
+      text-align: center;
+   }
 </style>
 
 </head>
@@ -259,105 +257,108 @@ function idCheck(){
       
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">   
-	<!-- 집 아이콘 -->
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-	</svg>
+   <!-- 집 아이콘 -->
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+      <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+   </svg>
 
-	<!-- 화살표 아이콘 -->
-	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-	</svg>
-	<!-- 현제 페이지 이름 -->
-	회원가입
+   <!-- 화살표 아이콘 -->
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+   </svg>
+   <!-- 현제 페이지 이름 -->
+   회원가입
 </div>
 
 
 <!-- 회원가입 폼 --> 
 <div class="container">  
-	<form name="frm"> 
-		<div class="joinroom mx-auto" style="max-width:700px;">
-			<div id="underline1">
-				<p class="fs-5 text-black-50 mt-5">회원가입</p>
-				<hr>
-			</div>         
-			<input type="hidden" name="idcheck" id="idcheck" value="x">
-			<div class="input-group mt-3">
-				<span class="input-group-text label1 " id="inputGroup-sizing-default">아이디</span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" id="mId" placeholder="5~12자리 숫자,영어 입력">
-				<button type="button" class="btn btn-outline-secondary fs-6" onclick="idCheck()">중복확인</button>
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmid"><small class="ms-4" style="color:#CC3D3D;">* 아이디는 5~12자리이며, 첫글자는 영어입니다.</small></div>
-			
-			
-			<div class="input-group mt-3">
-				<span class="input-group-text label1" id="inputGroup-sizing-default">비밀번호</span>
-				<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd" id="mPwd" placeholder="4~12자리 숫자,영어 필수 입력">
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmPwd"><small class="ms-4" style="color:#CC3D3D;">* 비밀번호는 4~12자리이고, 영문과 숫자 조합입니다.</small></div>
-			<div class="input-group mt-3">
-				<span class="input-group-text  label1" id="inputGroup-sizing-default">비밀번호 확인</span>
-				<input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2" id="mPwd2" placeholder="password">
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmPwdre"><small class="ms-4" style="color:#CC3D3D;">* 비밀번호가 일치하지 않습니다.</small></div>
-			
-			
-			<div class="input-group mt-3">
-				<span class="input-group-text label1" id="inputGroup-sizing-default">이름</span>
-				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName" id="mName" placeholder="name">
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmName"><small class="ms-4" style="color:#CC3D3D;">* 이름은 2~6자리며 한글만 사용가능합니다.</small></div>
-			
-			
-			<div class="input-group mt-3">
-				<span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
-				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail" id="mEmail" placeholder="email@eamail.com">
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmEmail"><small class="ms-4" style="color:#CC3D3D;">* 이메일을 바르게 입력해주세요. ex)email@email.com</small></div>
-			
-			
-			<div class="input-group mt-3">
-				<span class="input-group-text label1" id="inputGroup-sizing-default">연락처</span>
-				<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn" id="mPhn" placeholder="010-0000-0000">
-			</div>
-			<div class="ms-5" style="visibility: hidden;" id="spanmPhone"><small class="ms-4" style="color:#CC3D3D;">*핸드폰번호를 바르게 입력해주세요. ex)010-1234-5678</small></div>
-			
-			
-			<div class="input-group mt-3">
-				<span class="input-group-text label1" id="inputGroup-sizing-default">계정 종류</span>
-				<select class="form-select" aria-label="Default select example" name="mType" id="mType">
-					<option selected value="mType" disabled>회원 종류를 선택해주세요.</option>
-					<option value="개인">개인</option>
-					<option value="단체">단체</option>
-					<option value="기업">기업</option>
-				</select>
-			</div>
-			<div class="d-grid gap-2 mt-5">
-				<button class="btn btn-outline-secondary" type="button"  onclick="check();">회원가입</button>
-				<button class="btn btn-outline-secondary" type="reset">초기화</button>
-			</div>  
-		</div>
-	</form>
+   <form name="frm"> 
+      <div class="joinroom mx-auto" style="max-width:700px;">
+         <div id="underline1">
+            <p class="fs-5 text-black-50 mt-5">회원가입</p>
+            <hr>
+         </div>         
+         <input type="hidden" name="idcheck" id="idcheck" value="x">
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1 " id="inputGroup-sizing-default">아이디</span>
+               <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" id="mId" placeholder="5~12자리 숫자,영어 입력">
+            <button type="button" class="btn btn-outline-secondary fs-6" onclick="idCheck()">중복확인</button>
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmid"><small style="color:#CC3D3D;">* 아이디는 5~12자리이며, 첫글자는 영어입니다.</small></div>
+         
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1" id="inputGroup-sizing-default">비밀번호</span>
+            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd" id="mPwd" placeholder="4~12자리 숫자,영어 필수 입력">
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmPwd"><small style="color:#CC3D3D;">* 비밀번호는 4~12자리이고, 영문과 숫자 조합입니다.</small></div>
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text  label1" id="inputGroup-sizing-default">비밀번호 확인</span>
+            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2" id="mPwd2" placeholder="password">
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmPwdre"><small style="color:#CC3D3D;">* 비밀번호가 일치하지 않습니다.</small></div>
+         
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1" id="inputGroup-sizing-default">이름</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName" id="mName" placeholder="name">
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmName"><small style="color:#CC3D3D;">* 이름은 2~6자리며 한글만 사용가능합니다.</small></div>
+         
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail" id="mEmail" placeholder="email@eamail.com">
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmEmail"><small style="color:#CC3D3D;">* 이메일을 바르게 입력해주세요. ex)email@email.com</small></div>
+         
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1" id="inputGroup-sizing-default">연락처</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn" id="mPhn" placeholder="010-0000-0000">
+         </div>
+         <div class="ms-2" style="visibility: hidden;" id="spanmPhone"><small style="color:#CC3D3D;">*핸드폰번호를 바르게 입력해주세요. ex)010-1234-5678</small></div>
+         
+         
+         <div class="input-group mt-3">
+            <span class="input-group-text label1" id="inputGroup-sizing-default">계정 종류</span>
+            <select class="form-select" aria-label="Default select example" name="mType" id="mType">
+               <option selected value="mType" disabled>회원 종류를 선택해주세요.</option>
+               <option value="개인">개인</option>
+               <option value="단체">단체</option>
+               <option value="기업">기업</option>
+            </select>
+         </div>
+         
+         <div class="d-grid gap-2 mt-5">
+            <button class="btn btn-outline-secondary" type="button"  onclick="check();">회원가입</button>
+            <button class="btn btn-outline-secondary" type="reset">초기화</button>
+         </div>  
+      </div>
+   </form>
 </div>         
          
          
 <!-- 모달창 -->         
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"></h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
-			</div>
-			<div class="modal-body">
-				<span id="checkidspan"> </span>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-			</div>
-		</div>
-	</div>
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+         </div>
+         <div class="modal-body">
+            <span id="checkidspan"> </span>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+         </div>
+      </div>
+   </div>
 </div>
 
 
