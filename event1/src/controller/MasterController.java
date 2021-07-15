@@ -307,10 +307,10 @@ public class MasterController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
 			rd.forward(request, response);
 	
-/*상담신청함 ajax*/
+		/*견적신청함 ajax 황현호*/
 		}else if(str2.equals("EventMan_Master_ajax_costlist.do")) {
 			
-			System.out.println("에이젝스 실행");
+			System.out.println("견적신청 에이젝스 실행");
 
 			String order = request.getParameter("order");
 			String searchtype = request.getParameter("searchtype");
@@ -327,6 +327,32 @@ public class MasterController extends HttpServlet {
 			request.setAttribute("alist", alist);
 			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllCostList_Ajax.jsp");
 			rd.forward(request, response);
+			
+			
+		/*상담신청함 ajax 박종빈*/
+		}else if(str2.equals("EventMan_Master_ajax_boardlist.do")) {
+			
+			System.out.println("상담 신청 ajax 실행");
+
+			String order = request.getParameter("order");
+			String searchtype = request.getParameter("searchtype");
+			String text = request.getParameter("text");
+			String check = request.getParameter("check");
+
+			System.out.println("order : "+order);
+			System.out.println("serachtype : "+searchtype);
+			System.out.println("text : "+text);
+			
+			MasterServiceImpl mdao = new MasterServiceImpl();
+			ArrayList<EvBoardAskVo> alist = mdao.ajaxboardlist(order, searchtype, text,check);
+					
+			
+			System.out.println("test");
+			
+			
+			request.setAttribute("alist", alist);
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList_Ajax.jsp");
+			rd.forward(request, response);			
 			
 /* 회사 소개 변경하기 페이지 이동 */
 		} else if (str2.equals("EventMan_Company_Modify.do")) {

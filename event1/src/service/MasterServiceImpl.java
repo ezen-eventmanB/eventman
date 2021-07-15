@@ -358,6 +358,97 @@ public class MasterServiceImpl {
 		
 		return alist;
 	}
+	
+	
+	/* 상담신청 리스트 ajax*/
+	public ArrayList<EvBoardAskVo> ajaxboardlist(String order, String searchtype, String text,String check){
+		
+		System.out.println("메소드 부분입니다!!");
+		System.out.println("order : "+order);
+		System.out.println("searchtype : "+searchtype);
+		System.out.println("text : "+text);
+		System.out.println("체크박스 : "+check);
+		String order2 =order;
+		String searchtype2 = "";
+		String text2 ="";
+		
+		String sql="";
+		
+		if(check.equals("undefined")) {
+			System.out.println("언디파인드");
+			if(order.equals("ASC") && searchtype.equals("검색타입")) { 
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? and bdelyn='N' order by bidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("title")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? and bdelyn='N' order by bidx asc";
+						}else if(order.equals("ASC") && searchtype.equals("id")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mid like ? and bdelyn='N' order by bidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("name")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mname like ? and bdelyn='N' order by bidx asc";
+				
+			}else if(order.equals("DESC") && searchtype.equals("검색타입")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? and bdelyn='N' order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("title")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? and bdelyn='N' order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("id")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mid like ? and bdelyn='N' order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("name")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mname like ? and bdelyn='N' order by bidx DESC";
+			}
+			
+		}else if(check.equals("on")) {
+			System.out.println("온");
+			if(order.equals("ASC") && searchtype.equals("검색타입")) { 
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? order by bidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("title")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? order by bidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("id")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mid like ? order by bidx asc";
+			}else if(order.equals("ASC") && searchtype.equals("name")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mname like ? order by bidx asc";
+				
+			}else if(order.equals("DESC") && searchtype.equals("검색타입")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("title")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and btitle like ? order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("id")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mid like ? order by bidx DESC";
+			}else if(order.equals("DESC") && searchtype.equals("name")) {
+				sql = "select * from EVE_BOARD B , EVE_MEMBER M where B.midx = M.midx and mname like ? order by bidx DESC";
+			}
+		}
+
+		text2 = text;
+		
+		System.out.println("if문 통화구 !!!");
+		System.out.println("order2 : "+order2);
+		System.out.println("searchtype2 : "+searchtype2);
+		System.out.println("text2 : "+text2);
+
+		ArrayList<EvBoardAskVo> alist = new ArrayList<EvBoardAskVo>();
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+text2+"%");
+			System.out.println("sql = "+sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				ebvo.setBidx(rs.getInt("bidx"));
+				ebvo.setBcata(rs.getString("bcata"));
+				ebvo.setBtitle(rs.getString("btitle"));
+				ebvo.setBmid(rs.getString("mid"));
+				ebvo.setBname(rs.getString("mname"));
+				ebvo.setBwriteday(rs.getString("bwriteday"));
+				ebvo.setBcount(rs.getString("bcount"));
+				ebvo.setBdelyn(rs.getString("bdelyn"));
+				alist.add(ebvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return alist;
+	}
 
 	
 	/*상담 신청 목록*/

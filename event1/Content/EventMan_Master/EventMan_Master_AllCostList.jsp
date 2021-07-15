@@ -172,41 +172,6 @@ function finsh(){
 </div>
 
 
-<%-- 
-<!-- 행사리뷰 페이징 처리 -->
-	<div class="container mt-5 text-center">
-		<div class="row justify-content-md-center">
-			<div class="col-md-auto">	
-				<nav aria-label="Page navigation example">
-					<ul class="pagination">
-					<%if(pm.isPrev() == true) {%>
-						<li class="page-item">
-							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getStartPage()-1 %>">
-								<span aria-hidden="false">&laquo;</span>
-							</a>
-						</li>
-					<%} %>
-					<% for(int i = pm.getStartPage(); i<=pm.getEndPage(); i++) {%>
-						<li class="page-item">
-							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=i %>"><%=i %></a>
-						</li>
-					<% } %>
-				
-					<% if(pm.isNext() == true){ %>
-						<li class="page-item">
-							<a class="page-link" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do?page=<%=pm.getEndPage()+1 %>" >
-								<span aria-hidden="false">&raquo;</span>
-							</a>
-						</li>
-					<%} %>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div> --%>
-
-
-
 <!-- 삭제 모달 -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">

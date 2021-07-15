@@ -21,13 +21,17 @@ import org.imgscalr.Scalr;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import domain.PageMaker;
+import domain.SearchCriteria;
 import service.BoardServiceImpl;
 import service.CostServiceImpl;
 import service.EventAskServiceImpl;
 import service.MasterServiceImpl;
+import service.ReviewServiceImpl;
 import vo.EvBoardAskVo;
 import vo.EvCostVo;
 import vo.EvMemberVo;
+import vo.EvReviewVo;
 
 
 @WebServlet("/BoardController")
@@ -444,7 +448,7 @@ public class BoardController extends HttpServlet {
             System.out.println("실패입니다.");
          }
          
-         
+        
 /*   메인페이지 화면 구석 상담하기 버튼*/
       }else if(str2.equals("EventMan_MainAdvice.do")) {
 
@@ -476,7 +480,6 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
 
       }
-      
    }
    
 
