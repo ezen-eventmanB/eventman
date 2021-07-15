@@ -3,8 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>휴대폰 본인인증</title>
@@ -15,13 +16,17 @@
  
  IMP.init('iamport');
  
+ IMP.certification(param)
+ 
  IMP.certification({
 	    merchant_uid : 'merchant_' + new Date().getTime() //본인인증과 연관된 가맹점 내부 주문번호가 있다면 넘겨주세요
+
 	}, function(rsp) {
 	    if ( rsp.success ) {
 	    	 // 인증성공
 	        console.log(rsp.imp_uid);
 	        console.log(rsp.merchant_uid);
+	        
 	        
 	        $.ajax({
 					type : 'POST',
@@ -29,6 +34,7 @@
 					data : {imp_uid : rsp.imp_uid, merchant_uid:rsp.merchant_uid}
 			 }).done(function(rsp) {
 			 		// 이후 Business Logic 처리하시면 됩니다.
+			 		
 			 });
 	        	
 	    } else {

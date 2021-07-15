@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%
+  <%
 	String member_id = (String)session.getAttribute("S_memberId");
  
 	 int midx = 0;
+	 int gidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
-	 }	
-	
-	
+	 }else if(session.getAttribute("gidx") !=null ){
+		 gidx= (int)session.getAttribute("gidx");
+	 }
+
 	%>    
+	
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,110 +23,164 @@
 
  <!-- Bootstrap CSS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<!-- footer CSS -->
+<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+ <!-- topmenue CSS -->
+   <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 
-</script>
+function emailcheckFn(){
+	
+ 	var id = $("#id").val();
+	var email = $("#email").val();
+	var alldata = {"id":id,"email":email};
 
-	<!-- footer CSS -->
-	<link rel="stylesheet" type="text/css"   href="../css/footer.css">
+	console.log(id);
+	console.log(email);
+	console.log(alldata);
+	
+	$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw_Action.do",
+		type:"post",
+		data:alldata,
+		datatype:"html",
+		success:function(data){
+			alert(data);
+		}	
+	});
+
+	
+	
+};
+
+</script>
 	
 <style>
-
-
-
-/* 아이디 찾기 화면 */
-	#roginbox{
-		max-width:500px;
-		margin:0px auto;
-		margin-top:100px;
-		margin-bottom:200px;
-		font-style: gray;
-	}
-	
-	#inputwidth{
-		width:400px;
-	}
-	
-	#roginbtn{
-		height:100px;
-		margin-left:20px;
-		position: relative;
-		bottom: 5px;
-	}
-	
-	table{
-		width:500px;
-	}
-	.input-group{
-		margin:5px;	
-	}
-	#underline1, #underline2{
-		border-bottom: 1px solid lightgray;
-		margin-bottom: 30px;
-	}
-	#underline1{
-		margin-bottom:50px;	
-	}
-	tr{
-		height:50px;
-	}
-	#EVENTMAN{
-		text-align:center;
-	}
-	
+   .label1{
+      width:130px;
+      justify-content: space-around;
+      text-align: center;
+   }
 </style>
-
-
 
 </head>
 <body>
 
-<!-- header include -->
-<jsp:include page="/WEB-INF/header.jsp"/>
-     
-		
-		
+
+<!-- 상단 네비 부분 -->
+<div class="container">
+	<nav class="navbar navbar-expand-xxl navbar-light" id="topnav">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
+				<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>	
+
+			<div class="collapse navbar-collapse w-50" id="navbarNav">
+	
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+					<li class="nav-item px-5 mx-auto"><a class="nav-link fw-bolder text-dark fs-5" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a class="nav-link fw-bolder text-dark fs-5" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a 
+						class="nav-link fw-bolder text-dark fs-5"
+						href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a
+						class="nav-link fw-bolder text-dark  fs-5"
+						href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+					</li>
+				</ul>
+	
+	
+				<!--로그인 전 상단 화면  -->
+				<%
+				if (midx == 0 && gidx == 0) {
+				%>
+	
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+					</li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+					</li>
+				</ul>
+	
+				<!--맴버 로그인 후 상단 화면  -->
+				<%
+				} else if (midx > 0) {
+				%>
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My
+							page</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정
+							설정</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+					</li>
+				</ul>
+				
+				<!-- 마스터 로그인 후 상단 화면 -->
+				<%
+				} else if (gidx > 0) {
+				%>
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do">Master
+							page</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+					</li>
+				</ul>
+				<%
+				}
+				%>
+			</div>
+		</div>
+	</nav>
+</div>
 		
 		
 		
 <!-- 비밀번호 찾기 화면 -->		
 	<div class="container">
 		
-		<div id="roginbox">
-			<div id="underline1">
+		<div style="max-width: 500px;" class="mx-auto mt-5">
+			<div class="mt-5">
 				<p class="fs-5 text-black-50">비밀번호 찾기</p>
 			</div>
 			<div id="underline2">
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
 			</div>
-			<form>
-				
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;&nbsp;&nbsp;&nbsp;</span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-				</div>
-
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-					<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호</button>
-				</div>
-	
-				<div class="input-group mb-3">
-					<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;인증번호&nbsp;</span>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-					<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증확인</button>
-				</div>
-
 			
-				
-				
-				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="#">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do'">홈 화면</button>
+			<form name="frm">
+				<div id="findpw">
+					<div class="input-group mb-3">
+						<span class="input-group-text label1" id="inputGroup-sizing-default">아이디</span>
+						<input type="text" class="form-control" name="id" id="id" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+					</div>
+		
+					<div class="input-group mb-3">
+						<span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
+						<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+					</div>
+		
+						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="emailcheckFn()">이메일 인증</button>
+	
 				</div>
 			</form>
+			<div class="d-grid gap-2">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findpwFn()">확인</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do'">홈 화면</button>
+			</div>
 		</div>
 	</div>
 		
@@ -149,12 +207,22 @@
 
 
 
-
-<!-- footer include -->
-<jsp:include page="/WEB-INF/footer.jsp"/>
-
-
-
+<!-- 메인 푸터 -->
+<div class="footer mt-5"></div>
+<div class="container mt-5 mb-5">
+	<div class="row justify-content-md-center mt-5">
+		<div class="col-md-auto">
+			<img src="../rogo1.png" alt="" width="200"
+				class="d-inline-block align-text-center">
+		</div>
+		<div class="col-md-auto">
+			<small class="text-muted"> 전화번호 063-222-2222<br>
+				EVENTMAN | 전주시 덕진구 효자동 | 대표. 000<br> ACC. 계좌번호 (예금주 :홍길동) |
+				사업자 번호. 000-000-0000<br>
+			</small>
+		</div>
+	</div>
+</div>
 
 
 

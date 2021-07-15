@@ -156,7 +156,7 @@ public class MemberServiceImpl {
     * 
     * 아이디 찾기 버튼 클릭시 메소드 (황현호)
     */
-   public String findId(String name, String phone) {
+   public String findId(String name, String phone, String email) {
 
       System.out.println("MemberServiceImpl findId() 실행");
 
@@ -164,7 +164,7 @@ public class MemberServiceImpl {
 
       ResultSet rs = null;
       EvMemberVo mv = null;
-      String sql = "select * from EVE_MEMBER where mname=? and mphn=?";
+      String sql = "select * from EVE_MEMBER where mname=? and mphn=? and memail=? and mdelyn='N'";
 
       System.out.println("sql");
       System.out.println("conn" + conn);
@@ -172,9 +172,11 @@ public class MemberServiceImpl {
          pstmt = conn.prepareStatement(sql);
          pstmt.setString(1, name);
          pstmt.setString(2, phone);
+         pstmt.setString(3, email);
          rs = pstmt.executeQuery();
 
          /* ResultSet은 if문을 통해서 next가 존재하면 받겠다! 를 해줘야한다. */
+         
          if (rs.next()) {
             mv = new EvMemberVo();
             mv.setmId(rs.getString("mid"));
@@ -269,5 +271,39 @@ public class MemberServiceImpl {
       
       return value;
    }
+
+public EvMemberVo findpw(String id , String email) {
+	
+	EvMemberVo mvo = new EvMemberVo();
+	
+	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mdelyn='N'";
+	
+	try {
+		pstmt= conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, email);
+		ResultSet rs =  pstmt.executeQuery();
+		
+		if(rs.next()) {
+			mvo.setmPwd(rs.getString("mpwd"));
+			mvo.setmEmail(rs.getString("memail"));
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		try {
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	return mvo;
+}
 
 }
