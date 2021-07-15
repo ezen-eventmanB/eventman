@@ -230,7 +230,7 @@ function listmoveFn(){
    	<div class="cataselect">          
 			         <div class="container">
 			            <div class="fs-5 text-black-50">기업행사</div>
-						  <div class="row">
+						  <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
 						    <div class="col">
 						    	<div>
 						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" 

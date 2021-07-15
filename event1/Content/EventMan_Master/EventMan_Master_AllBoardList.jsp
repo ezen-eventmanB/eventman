@@ -2,19 +2,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "vo.EvBoardAskVo" %>
- <%
-	String member_id = (String)session.getAttribute("S_memberId");
- 
-	 int midx = 0;
-	 int gidx = 0;
+
+ 	<%
+		String member_id = (String)session.getAttribute("S_memberId");
 	 
-	 if (session.getAttribute("midx") != null) {
-	 	midx = (int)session.getAttribute("midx");
-	 }else if(session.getAttribute("gidx") !=null ){
-		 gidx= (int)session.getAttribute("gidx");
-	 }
-	
-	 ArrayList<EvBoardAskVo> boardlist = (ArrayList<EvBoardAskVo>)request.getAttribute("boardlist");
+		 int midx = 0;
+		 int gidx = 0;
+		 
+		 if (session.getAttribute("midx") != null) {
+		 	midx = (int)session.getAttribute("midx");
+		 }else if(session.getAttribute("gidx") !=null ){
+			 gidx= (int)session.getAttribute("gidx");
+		 }
+		
+		 ArrayList<EvBoardAskVo> boardlist = (ArrayList<EvBoardAskVo>)request.getAttribute("boardlist");
 	%>    
 
 <!DOCTYPE html>
@@ -37,13 +38,53 @@
 
 <script>
 	
-	function orderbyFn(){
-		alert("정렬 변경 orderby : "+ $("#tnradio").val());
-	}
+function submitFn(){
+
+	var order = $("input:radio[name=btnradio]:checked").val();
+	var searchtype=$("select[name=serchtype]").val();
+	var text = $("input[name=text]").val();
+	var check = $("input:checkbox[name=check]:checked").val();
 	
-	function searchtypeFn(){
-		alert("searchtypeFn : "+ $("#tnradio").val());
-	}
+	//ar form = {"order":oreder , "searchType":searchType , "text":text};
+	
+	$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_ajax_boardlist.do?order="+order+"&searchtype="+searchtype+"&text="+text+"&check="+check,
+		type:"post",
+		datatype:"html",
+		success:function(data){
+			$("#listajax").html(data);
+		}	
+	});
+	
+
+};
+
+var idx = 0;
+
+function costdeletFn(a,b){
+	idx = a; 
+  	$("#textbox").html(b+" 글을 삭제 하시겠습니까?");
+	$("#modal").modal("show"); 
+};
+
+function deletFn(){
+
+	location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_boarddelete.do?idx="+idx;
+
+};
+
+function replyfinshFN(a, b){
+	idx = a;
+  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.?");
+	$("#modal1").modal("show"); 
+}
+
+
+function finsh(){
+	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_replyFinsh.do?idx="+idx;
+};
+	
+	
 </script>
 
 </head>
@@ -162,7 +203,7 @@
 
 
 <!-- 견적신청 -->
-<div class="container">
+<div class="container" id="listajax">
 	<table class="table table-hover">
 		<thead>
 			<tr class="text-center">

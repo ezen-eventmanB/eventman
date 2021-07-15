@@ -171,19 +171,19 @@
 	       
 	                      <!-- 클릭시 검은색 배경으로 변경 수정  -->
 	         <li class="nav-item" >
-	           <a class="nav-link" href="#">전체</a>
+	           <a class="nav-link fw-bolder " type="button" onclick="selectAll()">전체</a>
 	         </li>
 	         <li class="nav-item" >
-	           <a class="nav-link" href="#">행사홍보</a>
+	           <a class="nav-link fw-bolder " type="button" onclick="selectHongbo()">행사홍보</a>
 	         </li>
 	         <li class="nav-item" >
-	           <a class="nav-link" href="#">행사콘텐츠</a>
+	           <a class="nav-link fw-bolder " type="button" onclick="selectGongji()">공지사항</a>
 	         </li>
 	         <li class="nav-item" >
-	           <a class="nav-link" href="#">공지사항</a>
+	           <a class="nav-link fw-bolder " type="button" onclick="selectNews()">뉴스레터</a>
 	         </li>
 	         <li class="nav-item" >
-	           <a class="nav-link" href="#">기타</a>
+	           <a class="nav-link fw-bolder" type="button" onclick="selectxEeption()">기타</a>
 	         </li>
 	       </ul>
 	       
@@ -221,7 +221,7 @@
          
 	        <tbody>
 				 	<% for(EvBoardAskVo evbo: alistboard){ %>
-				 	<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+				 	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
 		               <td><%=evbo.getBcata()%></td>
 		               <td colspan="2"><%=evbo.getBtitle()%></td>

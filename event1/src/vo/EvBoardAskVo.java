@@ -16,8 +16,29 @@ public class EvBoardAskVo {
 	private int midx;
 	private int gidx;
 	private int originbidx;
+	private String Bcondition;
+	private String Breply;
+	private String bmid;
 	 
 	
+	public String getBmid() {
+		return bmid;
+	}
+	public void setBmid(String bmid) {
+		this.bmid = bmid;
+	}
+	public String getBcondition() {
+		return Bcondition;
+	}
+	public void setBcondition(String bcondition) {
+		Bcondition = bcondition;
+	}
+	public String getBreply() {
+		return Breply;
+	}
+	public void setBreply(String breply) {
+		Breply = breply;
+	}
 	public String getgName() {
 		return gName;
 	}
