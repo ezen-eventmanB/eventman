@@ -145,7 +145,7 @@ function phonecheckFn(){
 
 
 
-/* 아이디 찾기 화면 */
+/* /* 아이디 찾기 화면 */
 	#roginbox{
 		max-width:500px;
 		margin:0px auto;
@@ -183,7 +183,7 @@ function phonecheckFn(){
 	}
 	#EVENTMAN{
 		text-align:center;
-	}
+	} */
 	
 </style>
 
@@ -213,39 +213,32 @@ function phonecheckFn(){
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
 			</div>
 			<form name="frm">
-				<table>
-					<tr>
-						<td id="inputwidth">
-							<div class="input-group mb-3">
-								<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<input type="text" name="name" id="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-<!-- 							<div class="input-group mb-3">
-								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
-								<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-								<button class="btn btn-outline-secondary" type="button" id="button-addon2"  onclick="location.href='EventMan_phonecheck.jsp'">인증번호</button>
-							</div> -->
-							<div class="input-group mb-3">
-								<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
-								<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-								<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="phonecheckFn()">인증번호</button>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="input-group mb-3">
-								<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;인증번호&nbsp;</span>
-								<input type="text" class="form-control" name="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-								<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증확인</button>
-							</div>
-						</td>
-					</tr>
-				</table>
+
+						
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<input type="text" name="name" id="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+				</div>
+
+				<!--
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
+					<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+					<button class="btn btn-outline-secondary" type="button" id="button-addon2"  onclick="location.href='EventMan_phonecheck.jsp'">인증번호</button>
+				</div>
+				 -->
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
+					<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+					<button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="phonecheckFn()">인증번호</button>
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-default">&nbsp;&nbsp;인증번호&nbsp;</span>
+					<input type="text" class="form-control" name="number" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+					<button class="btn btn-outline-secondary" type="button" id="button-addon2">인증확인</button>
+				</div>
+
 			
 			
 				

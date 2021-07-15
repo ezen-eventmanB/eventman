@@ -128,13 +128,7 @@ function deleteFn(){
 							<div class="carousel-item active">
 								<img src="../Advice_img/<%=erv.getHimg() %>" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
 							</div>
-							<div class="carousel-item">
-								<img src="../filefolder/review.png" style="max-height:384px; object-fit: cover;"  class="d-block w-100 " alt="">
-							</div>
-							<div class="carousel-item">
-								<img src="../filefolder/detailimg.jpg" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
-							</div>
-							
+
 						</div>
 						
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
