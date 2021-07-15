@@ -235,7 +235,7 @@ if(member_id == null){
       <div class="container mt-3 rounded-3 border border-1 p-4">
       
                <div class="fs-5 fw-bold mb-1" id="cataA">기업행사</div>
-               <div class="row">
+               <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
                      <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" >
                          <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
@@ -263,7 +263,7 @@ if(member_id == null){
                </div>
 
                <div class="fs-5 fw-bold mb-1 mt-3">공연</div>
-               <div class="row">
+               <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
                      <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌">
                      <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
@@ -293,7 +293,7 @@ if(member_id == null){
          
 
                <div class="fs-5 fw-bold mb-1 mt-3">대학</div>
-               <div class="row">
+               <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
                      <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제">
                      <label class="form-check-label" for="inlineCheckbox1">축제</label>
@@ -318,9 +318,9 @@ if(member_id == null){
                      <input class="form-check-input" type="checkbox" name="cCata" value="대학 기타">
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
-
+				</div>
                <div class="fs-5 fw-bold mb-1 mt-3">기타</div>
-               <div class="row">  
+               <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">  
                   <div class="col">
                      <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식">
                      <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
@@ -346,7 +346,6 @@ if(member_id == null){
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
-            </div>
          </div>
 
 
