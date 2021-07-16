@@ -201,11 +201,13 @@
 
 </script>
 <style>
+
 #fixedbutton {
 	position: fixed;
-	bottom: 5px;
+	bottom: 10px;
 	right: 5px; 
 }
+
 </style>
 </head>
 <body>
@@ -466,9 +468,6 @@
 </div>
 
 
-
-
-
 <!-- 화면구석 상담하기 버튼 -->
 <div id="fixedbutton" class="w-25" style="max-width:130px; display: block; ">
    <div class="rounded-3 border border-3 border-warning">
@@ -482,6 +481,7 @@
       </div>
    </div>
 </div>
+
 
 <!-- 로그인 확인 모달 -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
