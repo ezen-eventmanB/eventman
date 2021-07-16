@@ -479,11 +479,10 @@ public class MemberController extends HttpServlet {
 	                try {
                 	  System.out.println("try입니다.");
                 	  
-              ////////////////////////////////////
-                	  
+                	  ////////////////////////////////////
+                	  System.out.println("↓exception");
                 	  MimeMessage msg = new MimeMessage(session);
-                      System.out.println("↑exception");
-                      
+                    
                       msg.setFrom(new InternetAddress(user, "EVENTMAN"));
                       msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
                       
