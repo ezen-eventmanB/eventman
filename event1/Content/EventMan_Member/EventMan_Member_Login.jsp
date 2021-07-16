@@ -54,7 +54,15 @@ function check(){
 
    
 </script>
+<style>
 
+   .label1{
+      width:60px;
+      justify-content: space-around;
+      text-align: center;
+   }
+
+</style>
 
 
 </head>
@@ -179,11 +187,11 @@ function check(){
          <div class="row">
             <div class="col-md-8 pe-0" style="width:75%">
                <div class="input-group mb-4 w-auto">
-                  <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+                  <span class="input-group-text label1" id="inputGroup-sizing-default">ID</span>
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
                </div>
                <div class="input-group mb-3 w-auto">
-                  <span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+                  <span class="input-group-text label1" id="inputGroup-sizing-default">PW</span>
                   <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
                </div>
             </div>
