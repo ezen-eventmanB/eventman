@@ -174,7 +174,7 @@
 			<span class=" me-3"><%=bavo.getBcount() %></span>
 		</div>
 		<div>
-			<div><%=bavo.getBcontents() %></div>
+			<div style="white-space: pre-line;"><%=bavo.getBcontents() %></div>
 			<div class="text-center">
 				<%if(bavo.getBfile() != null){%>
 					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">

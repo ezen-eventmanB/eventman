@@ -210,7 +210,7 @@ function deleteFn(){
 					<div class="fs-1 fw-bold mt-5 "><%=erv.gethName() %></div>
 				</div>
 				<div>
-					<div class="fs-5 mt-5"><%=erv.getHtext() %></div>	
+					<div class="fs-5 mt-5" style="white-space: pre-line;"><%=erv.getHtext() %></div>	
 				</div>
 			</div>
 		</div>
