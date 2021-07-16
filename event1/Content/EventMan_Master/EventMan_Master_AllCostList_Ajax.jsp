@@ -59,7 +59,7 @@
 		<tbody class="align-middle">
 			<div id="ordertext">
 			<% for(EvCostVo cvo : alist){ %>
-				<tr>
+				<tr <%if(cvo.getCostDelYn().equals("Y")){ %>style="color:lightgray;" <%}; %>>
 					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" class="text-center"><%=cvo.getCidx() %></td>
 					<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostDetail.do?cidx=<%=cvo.getCidx()%>'" colspan="2"><%=cvo.getCostName()%>
 		               	<%if(cvo.getCcondition().equals("견적등록완료")){ %>

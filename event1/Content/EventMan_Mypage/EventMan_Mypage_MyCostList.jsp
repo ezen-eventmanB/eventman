@@ -176,7 +176,7 @@
 	               	
                	</td>
                <td></td>
-               <td><%=covo.getCostWritedate()%></td>
+               <td><%=covo.getSubWritedate()%></td>
                <td><%=covo.getCName()%></td>
                <td><%=covo.getCcount()%></td>
             </tr>
