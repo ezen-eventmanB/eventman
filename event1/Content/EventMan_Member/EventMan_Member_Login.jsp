@@ -19,12 +19,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>로그인</title>
  <!-- topmenue CSS -->
    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
-<!-- Bootstrap CSS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+  <!-- Bootstrap에 필요한 CSS파일 -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
@@ -54,7 +55,15 @@ function check(){
 
    
 </script>
+<style>
 
+   .label1{
+      width:60px;
+      justify-content: space-around;
+      text-align: center;
+   }
+
+</style>
 
 
 </head>
@@ -179,11 +188,11 @@ function check(){
          <div class="row">
             <div class="col-md-8 pe-0" style="width:75%">
                <div class="input-group mb-4 w-auto">
-                  <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+                  <span class="input-group-text label1" id="inputGroup-sizing-default">ID</span>
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
                </div>
                <div class="input-group mb-3 w-auto">
-                  <span class="input-group-text" id="inputGroup-sizing-default">PW</span>
+                  <span class="input-group-text label1" id="inputGroup-sizing-default">PW</span>
                   <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
                </div>
             </div>
@@ -268,7 +277,6 @@ function check(){
 	</div>
 </div>
 
+<!-- Bootstrap에 필요한 JS파일 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"></body>
-
-</body>
 </html>
