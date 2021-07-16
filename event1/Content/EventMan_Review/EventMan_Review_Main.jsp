@@ -188,7 +188,6 @@
 </head>
 <body>
 
-<div class="container ajax">
 
 <!-- 상단 네비 부분 -->
 <div class="container">
@@ -289,7 +288,7 @@
 		
 <!-- 중앙 네비 카테고리 검색창 -->
 
-<div id="detailload">
+<div class="container" id="detailload">
 
 <div class="container">
 	<%if(gidx != 0 ){ %>
@@ -416,7 +415,7 @@
 
 </section>
 
-
+</div>
 
 
 
