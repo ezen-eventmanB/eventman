@@ -21,7 +21,9 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 
- <!-- Bootstrap CSS -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap에 필요한 CSS파일 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 
@@ -206,33 +208,20 @@ function loginFn(){
 				<p class="fs-1 text-muted" id="EVENTMAN">EVENT MAN</p>
 			</div>
 			<form name="frm">
+				<div class="input-group mb-3">
+					<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">이름</span>
+					<input type="text" name="name" id="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+				</div>
 
-						
-						<div class="input-group mb-3">
-							<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">이름</span>
-							<input type="text" name="name" id="name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-						</div>
+				<div class="input-group mb-3">
+					<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">핸드폰번호</span>
+					<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)010-0000-0000">
+				</div>
 
-						<!--
-						<div class="input-group mb-3">
-							<span class="input-group-text" id="inputGroup-sizing-default">핸드폰번호</span>
-							<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
-							<button class="btn btn-outline-secondary" type="button" id="button-addon2"  onclick="location.href='EventMan_phonecheck.jsp'">인증번호</button>
-						</div>
-						 -->
-						<div class="input-group mb-3">
-							<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">핸드폰번호</span>
-							<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)010-0000-0000">
-						</div>
-
-						<div class="input-group mb-3">
-							<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">이메일</span>
-							<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)email@email.com">
-						</div>
-
-			
-			
-				
+				<div class="input-group mb-3">
+					<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">이메일</span>
+					<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)email@email.com">
+				</div>
 				
 				<div class="d-grid gap-2">
 					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findId()">확인</button>
