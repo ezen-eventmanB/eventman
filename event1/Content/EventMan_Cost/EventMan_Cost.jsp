@@ -311,14 +311,15 @@ if(member_id == null){
    <div class="container fs-4 fw-bold mt-5">행사 카테고리</div>
    
       <!-- 카테고리 -->      
-      <div class="container mt-3 rounded-3 border border-1 p-4">
-      
-               <div class="fs-5 fw-bold mb-1" id="cataA">기업행사</div>
-               <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
-                  <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" tabindex=4>
-                         <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
-                     </div>
+      <div class="container mt-3 rounded-3 border border-1">
+      			
+			<div class="container">
+				<div class="fs-5 fw-bold mb-1" id="cataA">기업행사</div>
+					<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
+						<div class="col">
+							<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" tabindex=4>
+							<label class="form-check-label" for="inlineCheckbox1">워크숍</label>
+						</div>
                   <div class="col">
                          <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" tabindex=5>
                      <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
@@ -340,7 +341,9 @@ if(member_id == null){
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
-
+			</div>
+			
+			<div class="container">
                <div class="fs-5 fw-bold mb-1 mt-3">공연</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
@@ -368,9 +371,9 @@ if(member_id == null){
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
-
+			</div>
          
-
+			<div class="container">
                <div class="fs-5 fw-bold mb-1 mt-3">대학</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
@@ -398,6 +401,10 @@ if(member_id == null){
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
 				</div>
+			</div>	
+				
+				
+			<div class="container">
                <div class="fs-5 fw-bold mb-1 mt-3">기타</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">  
                   <div class="col">
@@ -426,24 +433,26 @@ if(member_id == null){
                   </div>
                </div>
          </div>
-
+	</div>
 
       
    <!-- 행사 지역  -->
    <div class="container">
       <div class="fs-4 fw-bold mt-5">행사 지역</div>
-      <input type="text" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요." tabindex=28>
+    
+		<div class="input-group mt-3">
+			<input type="text" class="form-control" id="sample5_address"  placeholder="주소" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  tabindex=28>
+			<input class="btn btn-outline-secondary" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+		</div>		
+	</div>
+		
+<!-- 다음 지도 -->
+  
 
-		
-		
-		
-<!-- 다음지도 -->
-<input type="text" id="sample5_address" placeholder="주소" tabindex=29>
-<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" tabindex=30><br>
-<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+<div id="map" style="width:300px;height:300px;margin:10px auto;display:none"></div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
@@ -491,11 +500,6 @@ if(member_id == null){
         }).open();
     }
 </script>
-
-		
-		
-   </div>
-
 
    <!-- 행사 설명 -->   
    <div class="container">
@@ -567,7 +571,7 @@ if(member_id == null){
       <div class="form-group">
          <input class="form-control" type="file" id="formFile" name="file" tabindex=36>
       </div>
-   
+   	
       <div class="d-grid gap-2">
          <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();" tabindex=37>제출하기</button>
       </div>
