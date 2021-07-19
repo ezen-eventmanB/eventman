@@ -62,7 +62,7 @@
 		
 			<tbody class="align-middle">
 					<% for(EvBoardAskVo ebvo : alist){ %>
-						<tr>
+						<tr <%if(ebvo.getBdelyn().equals("Y")){ %>style="color:lightgray;" <%}; %>>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
 							<td></td>

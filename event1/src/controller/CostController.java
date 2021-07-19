@@ -70,8 +70,8 @@ public class CostController extends HttpServlet {
 
          System.out.println("EventMan_Cost_Submit_Action 실행");
          
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
+         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
          
          String savedPath = "Advice_img";
          

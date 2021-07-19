@@ -342,12 +342,12 @@ public class MemberController extends HttpServlet {
          //전달온 값을 매개변수로 던져주자  
          String id = msdao.findId(name, phone, email);
          
-         String id2 = id.substring(2);
+			/* String id2 = id.substring(2); */
          
          if(id=="") {
             response.getWriter().write("회원정보가 일치하지 않습니다.");
          }else {
-            response.getWriter().write("회원님의 아이디는 **"+id2+" 입니다.");
+            response.getWriter().write("회원님의 아이디는 "+id+" 입니다.");
          }
 
          

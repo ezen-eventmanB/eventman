@@ -399,56 +399,12 @@ function listmoveFn(){
 				<div class="mt-2"><%=covo.getCostPeople() %></div>	 
 			</div>
 				<hr/>
-				
-				
-		      		<%-- <select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
-					  <option selected value="catamenu">참여대상</option>
-					  <option value="전체"<%=covo.getCostTarget().equals("전체") ? " selected" : "" %>>전체</option>
-					  <option value="어린아이"<%=covo.getCostTarget().equals("어린아이") ? " selected" : "" %>>어린이</option>
-					  <option value="학생"<%=covo.getCostTarget().equals("학생") ? " selected" : "" %>>학생</option>
-					  <option value="청년"<%=covo.getCostTarget().equals("청년") ? " selected" : "" %>>청년</option>
-					  <option value="여성"<%=covo.getCostTarget().equals("여성") ? " selected" : "" %>>여성</option>
-					  <option value="직장인"<%=covo.getCostTarget().equals("직장인") ? " selected" : "" %>>직장인</option>
-					  <option value="장애인"<%=covo.getCostTarget().equals("장애인") ? " selected" : "" %>>장애인</option>
-					  <option value="노인"<%=covo.getCostTarget().equals("노인") ? " selected" : "" %>>노인</option>
-					  <option value="기업·단체"<%=covo.getCostTarget().equals("기업·단체") ? " selected" : "" %>>기업·단체</option>
-					  <option value="참여대상 기타"<%=covo.getCostTarget().equals("참여대상 기타") ? " selected" : "" %>>기타</option>
-					</select> --%>
-
-                    <%--  <select class="form-select me-5"" aria-label="Default select example" name="cMethod" class="catanon">
-					     <option selected value="catamenu">방식</option>
-					     <option value="오프라인"<%=covo.getCostMethod().equals("오프라인") ? " selected" : "" %>>오프라인</option>
-					     <option value="온라인"<%=covo.getCostMethod().equals("온라인") ? " selected" : "" %>>온라인</option>
-					     <option value="온ㆍ오프라인"<%=covo.getCostMethod().equals("온ㆍ오프라인") ? " selected" : "" %>>온ㆍ오프라인</option>
-					     <option value="방식 기타"<%=covo.getCostMethod().equals("방식 기타") ? " selected" : "" %>>기타</option>
-				     </select> --%>
-					 								
-					<%--  <select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
-					 <option selected value="catamenu">예산</option>
-			         <option value="1000만원 미만"<%=covo.getCostPrice().equals("1000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
-			         <option value="1000~5000만원 미만"<%=covo.getCostPrice().equals("1000~5000만원 미만") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
-			         <option value="5000~1억원 미만"<%=covo.getCostPrice().equals("5000~1억원 미만") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
-			         <option value="1억 이상"<%=covo.getCostPrice().equals("1억 이상") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
-			         <option value="3억 이상"<%=covo.getCostPrice().equals("3억 이상") ? " selected" : "" %>>3억 이상</option>
-			         <option value="예산 기타"<%=covo.getCostPrice().equals("예산 기타") ? " selected" : "" %>>기타</option>
-		    		 </select> --%>
-
-					<%-- <select class="form-select me-5"" aria-label="Default select example" name="cPeople" class="catanon">	
-											
-		         	 <option selected value="catamenu">참여인원</option>
-			         <option value="50명 미만" <%=covo.getCostPeople().equals("1000만원 미만") ? " selected" : "" %>>50명 미만</option>
-			         <option value="50~100명미만"<%=covo.getCostPeople().equals("50~100명미만") ? " selected" : "" %>>50명~100명 미만</option>
-			         <option value="100~500명미만"<%=covo.getCostPeople().equals("100~500명미만") ? " selected" : "" %>>100~500명 미만</option>
-			         <option value="500~1000명 미만"<%=covo.getCostPeople().equals("500~1000명 미만") ? " selected" : "" %>>500~1000명 미만</option>
-			         <option value="1000명이상"<%=covo.getCostPeople().equals("1000명이상만") ? " selected" : "" %>>1000명 이상</option>
-			         <option value="인원 기타"<%=covo.getCostPeople().equals("인원 기타") ? " selected" : "" %>>기타</option>
-		      		</select> --%>
 			
 <!-- 행사 설명 -->   
         <div class="sc-qPIWj eXGQeW">행사 설명</div>
                 <div class="form-floating">
               <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText" readonly><%=covo.getCostText() %></textarea>
-              <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
+              <label for="floatingTextarea2">행사 설명을 적어주세요.</label>
             </div>
                <hr/>
          </div>
