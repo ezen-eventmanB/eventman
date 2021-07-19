@@ -171,7 +171,7 @@ function loginFn(){
 					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
 						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
 					</li>
-				</ul>
+				</ul>	
 				
 				<!-- 마스터 로그인 후 상단 화면 -->
 				<%
