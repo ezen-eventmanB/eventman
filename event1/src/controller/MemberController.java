@@ -338,11 +338,19 @@ public class MemberController extends HttpServlet {
          System.out.println("-------넘어온 값--------");
          System.out.println("name = "+name);
          System.out.println("phone="+phone);
+         System.out.println("email = "+email);
          
          //전달온 값을 매개변수로 던져주자  
          String id = msdao.findId(name, phone, email);
-         
-			/* String id2 = id.substring(2); */
+
+		
+		String id2 = id;
+
+		if(id != null) { 
+			id2 = id.substring(2); 
+		};
+		
+		/* String id2 = id.substring(2); */
          
          if(id=="") {
             response.getWriter().write("회원정보가 일치하지 않습니다.");

@@ -197,6 +197,7 @@ public class MemberServiceImpl {
       return id;
    }
 
+   
    public EvMemberVo selectMember(int midx) {
       EvMemberVo mbvo = null;
       ResultSet rs = null;

@@ -38,7 +38,7 @@ function findId(){
     var useremail = $("#email").val();
     var alldata = { "name": username, "phone": userphone, "email": useremail};
     
-    var namepattern = /^[가-힣\s]{2,6}$/;                        //한글만사용가능
+    var namepattern = /^[가-힣\s]{2,20}$/;                        //한글만사용가능
     var emailpattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,4}$/; //이메일 적합
     var phonepattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
     
@@ -69,7 +69,6 @@ function findId(){
 		$("#textbox").html("이메일를 정확하게 입력해주세요. ex)email@email.com");
 		$("#modal1").modal("show");
 		return;
-		
 	}else{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id_Action.do",

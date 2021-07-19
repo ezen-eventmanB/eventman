@@ -133,9 +133,6 @@
 </head>
 <body>
 
-<div class="container ajax">
-
-
 <!-- 상단 네비 부분 -->
 <div class="container">
 	<nav class="navbar navbar-expand-xxl navbar-light" id="topnav">
@@ -215,31 +212,58 @@
 	</nav>
 </div>
 
-			<!-- 페이지 위치 안내 -->
-			<div class="container"  id="containermargin">	
-				<!-- 집 아이콘 -->
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-					<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-				</svg>
-				
-				<!-- 화살표 아이콘 -->
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-				</svg>
-				
-				<!-- 현제 페이지 이름 -->
-				계정 수정하기
-			</div>
+
+
+
+<!-- 페이지 위치 안내 -->
+<div class="container"  id="containermargin">	
+	<!-- 집 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+		<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+	</svg>
+
+	<!-- 화살표 아이콘 -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+
+	<!-- 현제 페이지 이름 -->
+	계정 수정하기
+</div>
 					
 					
-			<!-- 회원정보 수정 테이블 -->		
-			<div class="container">
-				<div id="roginbox">
-					<div id="underline1">
-						<p class="fs-5 text-black-50">Drop Out</p>
-					</div>
+<!-- 회원정보 수정 테이블 -->		
+<div class="container">
+	<div id="roginbox">
+		<div id="underline1">
+			<p class="fs-5 text-black-50">Drop Out</p>
+		</div>
+		<div id="underline2">
+			<p class="fs-1 text-muted" id="EVENTMAN">탈 퇴 하 기</p>
+		</div>
+		<form name="frm">
+			<input type="hidden" name="midx" value="<%=midx%>">
+					<div class="fs-6 fw-bold">계정 종류</div>
+					<input class="form-control mb-3" type="text" value="<%=mbvo.getmType() %>" aria-label="readonly input example" readonly>
+
+					<div class="fs-6 fw-bold">아이디</div>
+					<input class="form-control mb-3" type="text" value="<%=mbvo.getmId() %>" aria-label="readonly input example" readonly>
+
+					<div class="fs-6 fw-bold">이름</div>
+					<input class="form-control mb-3" type="text" value="<%=mbvo.getmName() %>" aria-label="readonly input example" readonly>
+
+					<div class="fs-6 fw-bold">비밀번호</div>
+						<input type="text" class="form-control mb-5" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="mPwd">
+			<div class="d-grid gap-2">		
+				<button type="button" class="btn btn-outline-secondary w-100" id="b1" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Modify.do?midx='+<%=midx%>">돌아가기</button>
+				<button type="button" class="btn btn-outline-danger" onclick="check()">탈퇴하기</button>
+			</div>	
+		</form>
+	</div>
+</div>
 		
+<<<<<<< HEAD
 				<div id="underline2">
 					<p class="fs-1 text-muted" id="EVENTMAN">탈 퇴 하 기</p>
 				</div>
@@ -270,31 +294,28 @@
 				
 					</form>
 				</div>
+=======
+
+<!-- 아이디 및 비밀번호 틀렸을때  -->
+<div class="modal fade" id="failModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">탈퇴 실패</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 			</div>
-		
+			<div class="modal-body">비밀번호를 입력해주세요.</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
-				<!-- 아이디 및 비밀번호 틀렸을때  -->
-					<div class="modal fade" id="failModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">탈퇴 실패</h5>
-					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					      </div>
-					      <div class="modal-body">
-					       	 비밀번호를 입력해주세요.
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>
 
 
-
-<!-- 메인 푸터 -->
+	<!-- 메인 푸터 -->
 <div class="footer mt-5"></div>
 <div class="container mt-5 mb-5">
 	<div class="row justify-content-md-center mt-5">

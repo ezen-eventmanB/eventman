@@ -19,11 +19,12 @@
 <!doctype html>
 <html>
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap에 필요한 CSS파일 -->
-   
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<meta charset="utf-8">
+
+ <!-- Bootstrap에 필요한 CSS파일 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
 <title>EVENT MAN!</title>
 
 	 <!-- topmenue CSS -->
@@ -141,7 +142,8 @@ function submitFn(){
       document.frm.submit();
 
 }
-      </script>
+</script>
+
 </head>
 <body>
 
@@ -286,7 +288,7 @@ if(member_id == null){
    <!-- 행사 명 -->
    <div class="container mt-3">
       <div class="fs-4 fw-bold mt-5">행사 명</div>
-      <input type="text" name="cName" class="form-control mt-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 명을 입력해주세요">
+      <input type="text" name="cName" class="form-control mt-3" tabindex=1 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 명을 입력해주세요">
    </div>
    
    <!-- 행사 일정 -->   
@@ -294,13 +296,13 @@ if(member_id == null){
       <div class="fs-4 fw-bold">행사 일정</div>
       <div class="row mt-3">
          <div class="col">
-            <input type="date" id="cSdate" name="cSdate" class="form-control CostDate">
+            <input type="date" id="cSdate" name="cSdate" tabindex=2 class="form-control CostDate">
          </div>
          <div class="col-sm-auto">
             ~
          </div>
          <div class="col">
-            <input type="date" id="cSdate2" name="cEdate" class="form-control CostDate">
+            <input type="date" id="cSdate2" name="cEdate" tabindex=3 class="form-control CostDate">
          </div>
       </div>
    </div>
@@ -314,27 +316,27 @@ if(member_id == null){
                <div class="fs-5 fw-bold mb-1" id="cataA">기업행사</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" >
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" tabindex=4>
                          <label class="form-check-label" for="inlineCheckbox1">워크숍</label>
                      </div>
                   <div class="col">
-                         <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="기업 판촉행사" tabindex=5>
                      <label class="form-check-label" for="inlineCheckbox2">판촉행사</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 체육대회" tabindex=6>
                      <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 오픈행사" tabindex=7>
                      <label class="form-check-label" for="inlineCheckbox4">오픈행사</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 레크레이션" tabindex=8>
                      <label class="form-check-label" for="inlineCheckbox5">레크레이션</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 기타">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기업 기타" tabindex=9>
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
@@ -342,27 +344,27 @@ if(member_id == null){
                <div class="fs-5 fw-bold mb-1 mt-3">공연</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" tabindex=10>
                      <label class="form-check-label" for="inlineCheckbox1">페스티벌</label>
                   </div>
                   <div class="col">
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 댄스" tabindex=11>
                      <label class="form-check-label" for="inlineCheckbox2">댄스</label>
                   </div>
                   <div class="col">
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연  마술">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연  마술" tabindex=12>
                      <label class="form-check-label" for="inlineCheckbox3">마술</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 클래식" tabindex=13>
                          <label class="form-check-label" for="inlineCheckbox4">클래식</label>
                       </div>
                   <div class="col">
-                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑">
+                         <input class="form-check-input" type="checkbox" name="cCata" value="공연 장기자랑" tabindex=14>
                      <label class="form-check-label" for="inlineCheckbox5">장기자랑</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="공연 기타" tabindex=15>
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
@@ -372,54 +374,54 @@ if(member_id == null){
                <div class="fs-5 fw-bold mb-1 mt-3">대학</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" tabindex=16>
                      <label class="form-check-label" for="inlineCheckbox1">축제</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 섭외" tabindex=17>
                      <label class="form-check-label" for="inlineCheckbox2">연예인 섭외</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 체육대회" tabindex=18>
                      <label class="form-check-label" for="inlineCheckbox3">체육대회</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 개강행사" tabindex=19>
                      <label class="form-check-label" for="inlineCheckbox4">개강 행사</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트">
+                     <input class="form-check-input" type="checkbox" name="cCata"  value="대학 종강이벤트" tabindex=20>
                      <label class="form-check-label" for="inlineCheckbox5">종강 이벤트</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 기타">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="대학 기타" tabindex=21>
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
 				</div>
                <div class="fs-5 fw-bold mb-1 mt-3">기타</div>
                <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">  
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" tabindex=22>
                      <label class="form-check-label" for="inlineCheckbox1">결혼식</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 약혼식" tabindex=23>
                      <label class="form-check-label" for="inlineCheckbox2">약혼식</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 돌잔치" tabindex=24>
                      <label class="form-check-label" for="inlineCheckbox3">돌잔치</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 칠순잔치" tabindex=25>
                      <label class="form-check-label" for="inlineCheckbox4">칠순잔치</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 프로포즈" tabindex=26>
                      <label class="form-check-label" for="inlineCheckbox5">프로포즈</label>
                   </div>
                   <div class="col">
-                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 기타">
+                     <input class="form-check-input" type="checkbox" name="cCata" value="기타 기타" tabindex=27>
                      <label class="form-check-label" for="inlineCheckbox6">기타</label>
                   </div>
                </div>
@@ -430,7 +432,68 @@ if(member_id == null){
    <!-- 행사 지역  -->
    <div class="container">
       <div class="fs-4 fw-bold mt-5">행사 지역</div>
-      <input type="text" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요.">
+      <input type="text" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="행사 지역을 입력해주세요." tabindex=28>
+
+		
+		
+		
+<!-- 다음지도 -->
+<input type="text" id="sample5_address" placeholder="주소" tabindex=29>
+<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" tabindex=30><br>
+<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
+    });
+
+
+    function sample5_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = data.address; // 최종 주소 변수
+
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sample5_address").value = addr;
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+
+                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+            }
+        }).open();
+    }
+</script>
+
+		
+		
    </div>
 
 
@@ -439,7 +502,7 @@ if(member_id == null){
       <div class="fs-4 fw-bold mt-5">행사 구성</div>
       <div class="row">
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon">
+            <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon" tabindex=31>
                <option selected value="catamenu" name="joinTarget" disabled>참여대상</option>
                <option value="전체">전체</option>
                <option value="어린이이">어린이</option>
@@ -455,7 +518,7 @@ if(member_id == null){
          </div>
          
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon">
+            <select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon" tabindex=32>
                <option selected value="catamenu" disabled>방식</option>
                <option value="오프라인">오프라인</option>
                <option value="온라인">온라인</option>
@@ -466,7 +529,7 @@ if(member_id == null){
       </div>
       <div class="row">
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon">
+            <select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon" tabindex=33>
                <option selected value="catamenu" disabled>예산</option>
                <option value="1000만원 미만">1,000만원 미만</option>
                <option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
@@ -477,7 +540,7 @@ if(member_id == null){
             </select>
          </div>
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon">
+            <select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon" tabindex=34>
                <option selected value="catamenu" disabled>참여인원</option>
                <option value="50명 미만">50명 미만</option>
                <option value="50~100명미만">50명~100명 미만</option>
@@ -492,7 +555,7 @@ if(member_id == null){
    <!-- 행사 설명 -->   
    <div class="fs-4 fw-bold mt-5">행사 설명</div>
       <div class="form-floating">
-         <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"></textarea>
+         <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText" tabindex=35></textarea>
          <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
       </div>
    </div>
@@ -502,11 +565,11 @@ if(member_id == null){
    <div class="container">
       <div class="fs-4 fw-bold mt-5">참고 자료</div>
       <div class="form-group">
-         <input class="form-control" type="file" id="formFile" name="file">
+         <input class="form-control" type="file" id="formFile" name="file" tabindex=36>
       </div>
    
       <div class="d-grid gap-2">
-         <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();">제출하기</button>
+         <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();" tabindex=37>제출하기</button>
       </div>
    </div>
 </form>
