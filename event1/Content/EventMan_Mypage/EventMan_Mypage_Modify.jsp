@@ -226,7 +226,7 @@
 							
 						<div class="row">
 							<div class="col-md mb-2">
-								<button type="button" class="btn btn-outline-secondary w-100" id="b1" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Main.do'">돌아가기</button>
+								<button type="button" class="btn btn-outline-secondary w-100" id="b1" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Main.do?midx='+<%=midx%>">돌아가기</button>
 							</div>													
 							<div class="col-md mb-2">
 								<button type="button" class="btn btn-outline-success w-100" id="b1" onclick ="check()">수정완료</button>

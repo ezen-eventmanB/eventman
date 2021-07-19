@@ -189,16 +189,16 @@ function check(){
             <div class="col-md-8 pe-0" style="width:75%">
                <div class="input-group mb-4 w-auto">
                   <span class="input-group-text label1" id="inputGroup-sizing-default">ID</span>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId">
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="memberId" tabindex=1>
                </div>
                <div class="input-group mb-3 w-auto">
                   <span class="input-group-text label1" id="inputGroup-sizing-default">PW</span>
-                  <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd">
+                  <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd" tabindex=2>
                </div>
             </div>
             <div class="col">
                <div class="d-grid gap-2 mb-3">
-                  <button class="btn btn-outline-secondary btn-sm" type="button" id="loginbtn" style="height: 100px;width:100%;min-width: 60px; " onclick="check()">로그인</button>
+                  <button class="btn btn-outline-secondary btn-sm" type="button" id="loginbtn" style="height: 100px;width:100%;min-width: 60px; " onclick="check()" tabindex=3>로그인</button>
                </div>
             </div>
          </div>
@@ -206,9 +206,9 @@ function check(){
             
 
          <div class="d-grid gap-2 mt-3">                                       
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do'">회원가입</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do'">아이디찾기</button>
-            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw.do'">비밀번호찾기</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do'" tabindex=4>회원가입</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Id.do'" tabindex=5>아이디찾기</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw.do'" tabindex=6>비밀번호찾기</button>
             </div>
          </form>
       </div>
