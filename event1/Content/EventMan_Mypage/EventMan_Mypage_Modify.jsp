@@ -85,6 +85,13 @@
 			  return;
 		  }
 	  } 
+	  
+		function enterkey() {
+		    if (window.event.keyCode == 13) {
+		         check();
+		    }
+		}
+
 	 </script>
 </head>
 <body>
@@ -210,16 +217,16 @@
 					<input class="form-control mb-3" type="text" value="<%=mbvo.getmId() %>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">비밀번호</div>
-					<input class="form-control mb-3" type="text" aria-label="default input example" name="mPwd" value="<%=mbvo.getmPwd()%>">
+					<input class="form-control mb-3" type="text" aria-label="default input example" name="mPwd" onkeyup="enterkey()" value="<%=mbvo.getmPwd()%>">
 
 					<div class="fs-5 fw-bold">이름</div>
 					<input class="form-control mb-3" type="text" value="<%=mbvo.getmName() %>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">연락처</div>
-					<input class="form-control mb-3" type="text" placeholder="ex)010-0000-0000" name="mPhn" aria-label="default input example" value="<%=mbvo.getmPhn()%>">
+					<input class="form-control mb-3" type="text" placeholder="ex)010-0000-0000" name="mPhn" onkeyup="enterkey()" aria-label="default input example" value="<%=mbvo.getmPhn()%>">
 
 					<div class="fs-5 fw-bold">이메일</div>
-					<input class="form-control mb-3" type="text" placeholder="ex)mail@mail.com" name="mEmail"aria-label="default input example" value="<%=mbvo.getmEmail()%>">
+					<input class="form-control mb-3" type="text" placeholder="ex)mail@mail.com" onkeyup="enterkey()" name="mEmail"aria-label="default input example" value="<%=mbvo.getmEmail()%>">
 	
 					<!-- 세션값을 받으려면 컨트롤러에서 받는게 아닌 받으려는 페이지에서 히든값으로 적어 놓을것 -->
 					<input type="hidden" name="midx" value="<%=midx%>">
@@ -229,7 +236,7 @@
 								<button type="button" class="btn btn-outline-secondary w-100" id="b1" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Main.do'">돌아가기</button>
 							</div>													
 							<div class="col-md mb-2">
-								<button type="button" class="btn btn-outline-success w-100" id="b1" onclick ="check()">수정완료</button>
+								<button type="button" class="btn btn-outline-success w-100" id="b1" onclick ="check()" >수정완료</button>
 							</div>
 						</div>
 						<div class="d-grid gap-2 mb-2">		

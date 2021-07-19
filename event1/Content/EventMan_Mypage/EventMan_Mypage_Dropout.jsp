@@ -122,6 +122,13 @@
 				return;
 		    }
 		 }
+	 
+		function enterkey() {
+		    if (window.event.keyCode == 13) {
+		         check();
+		    }
+		}
+
 	 </script>
 </head>
 <body>
@@ -254,7 +261,7 @@
 								<tr>
 									<td>비밀번호</td>
 									<td>
-									<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="mPwd"></td>
+									<input type="text" class="form-control" aria-label="Sizing example input" onkeyup="enterkey()" aria-describedby="inputGroup-sizing-default" tabindex=2 name="mPwd"></td>
 								</tr>
 							</table>
 						<div class="d-grid gap-2">		

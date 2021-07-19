@@ -55,7 +55,6 @@ function check(){
  
 	function enterkey() {
 	    if (window.event.keyCode == 13) {
-	
 	         check();
 	    }
 	}
