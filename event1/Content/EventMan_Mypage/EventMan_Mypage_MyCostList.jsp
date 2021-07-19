@@ -165,7 +165,7 @@
 				         <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청하러 가기</button>
 				      </div>
 				   </div>
-         		<%
+         		<% 
 				} else if (cidx > 0) {
 				%>
 
