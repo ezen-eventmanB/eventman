@@ -52,12 +52,15 @@ function check(){
       return;
     }
  }
- 	
-	function enterkey(){
-		if (window.event.keyCode == 13) 
+ 
+	function enterkey() {
+	    if (window.event.keyCode == 13) {
+	
+	         check();
+	    }
 	}
 
-	
+
 
    
 </script>
@@ -199,7 +202,7 @@ function check(){
                </div>
                <div class="input-group mb-3 w-auto">
                   <span class="input-group-text label1" id="inputGroup-sizing-default">PW</span>
-                  <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd" >
+                  <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 name="memberPwd"  onkeyup="enterkey()">
                </div>
             </div>
             <div class="col">
