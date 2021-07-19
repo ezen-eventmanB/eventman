@@ -10,6 +10,7 @@
  
 	 int midx = 0;
 	 int gidx = 0;
+	 int bidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
@@ -150,7 +151,24 @@
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
-      
+   
+   
+            	<%
+         		if (bidx == 0) {
+				%>
+				   <!-- 작성된 상담하기 게시그리 없다면. -->
+				   <div class="container text-center">
+				      <div class="container w-50">
+				         <br/>   
+				         <img src="../desk.png" class="lock w-50 mb-3" >
+				         <br/>
+				         <header class="fs-3">작성된 게시글이 없습니다.</header>
+				         <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do'">상담하기</button>
+				      </div>
+				   </div>
+         		<%
+				} else if (bidx > 0) {
+				%>
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
@@ -165,16 +183,19 @@
             </tr>
          </thead>
          <tbody>
-         <% for(EvBoardAskVo bavo: alistboard){ %>
-            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
-               <td><%=bavo.getBcata()%></td>
-               <td colspan="2"><%=bavo.getBtitle()%></td>
-               <td></td>
-               <td><%=bavo.getBWrieday2()%></td>
-               <td><%=bavo.getBname()%></td>
-               <td><%=bavo.getBcount() %></td>
-            </tr>
-         <%}; %>
+        			<% for(EvBoardAskVo bavo: alistboard){ %>
+			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
+			               <td><%=bavo.getBcata()%></td>
+			               <td colspan="2"><%=bavo.getBtitle()%></td>
+			               <td></td>
+			               <td><%=bavo.getBWrieday2()%></td>
+			               <td><%=bavo.getBname()%></td>
+			               <td><%=bavo.getBcount() %></td>
+			            </tr>
+        			 <%}; %>
+         		<%
+				}
+				%>
          </tbody>
       </table>
    </div>

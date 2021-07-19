@@ -122,6 +122,13 @@
 				return;
 		    }
 		 }
+	 
+		function enterkey() {
+		    if (window.event.keyCode == 13) {
+		         check();
+		    }
+		}
+
 	 </script>
 </head>
 <body>
@@ -256,6 +263,38 @@
 	</div>
 </div>
 		
+<<<<<<< HEAD
+				<div id="underline2">
+					<p class="fs-1 text-muted" id="EVENTMAN">탈 퇴 하 기</p>
+				</div>
+				<form name="frm">
+								<input type="hidden" name="midx" value="<%=midx%>">
+							<table>
+								<tr>
+									<td>계정 종류</td>
+									<td><%=mbvo.getmType() %></td>
+								</tr>
+								<tr>
+									<td>아이디</td>
+									<td><%=mbvo.getmId() %></td>
+								</tr>
+								<tr>
+									<td>이름</td>
+									<td><%=mbvo.getmName() %></td>
+								</tr>
+								<tr>
+									<td>비밀번호</td>
+									<td>
+									<input type="text" class="form-control" aria-label="Sizing example input" onkeyup="enterkey()" aria-describedby="inputGroup-sizing-default" tabindex=2 name="mPwd"></td>
+								</tr>
+							</table>
+						<div class="d-grid gap-2">		
+							<button type="button" class="btn btn-outline-danger" onclick="check()">탈퇴하기</button>
+						</div>
+				
+					</form>
+				</div>
+=======
 
 <!-- 아이디 및 비밀번호 틀렸을때  -->
 <div class="modal fade" id="failModal" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -264,6 +303,7 @@
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">탈퇴 실패</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 			</div>
 			<div class="modal-body">비밀번호를 입력해주세요.</div>
 			<div class="modal-footer">

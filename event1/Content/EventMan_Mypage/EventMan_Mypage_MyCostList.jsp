@@ -10,6 +10,7 @@
  
 	 int midx = 0;
 	 int gidx = 0;
+	 int cidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
@@ -151,6 +152,22 @@
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
+               	<%
+         		if (cidx == 0) {
+				%>
+				   <!-- 작성된 상담하기 게시그리 없다면. -->
+				   <div class="container text-center">
+				      <div class="container w-50">
+				         <br/>   
+				         <img src="../desk.png" class="lock w-50 mb-3" >
+				         <br/>
+				         <header class="fs-3">작성된 견적신청이 없습니다.</header>
+				         <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청하러 가기</button>
+				      </div>
+				   </div>
+         		<% 
+				} else if (cidx > 0) {
+				%>
 
    <!-- 게시글 리스트 -->
    <div class="container">
@@ -164,6 +181,7 @@
             <th>조회수</th>  
          </thead>
         <tbody>
+
          <% for(EvCostVo covo: alistcost){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
                <td><%=covo.getCidx()%></td>
@@ -181,6 +199,9 @@
                <td><%=covo.getCcount()%></td>
             </tr>
          <%}; %>
+                <%
+				}
+				%>
          </tbody> 
       </table>
    </div>
