@@ -200,6 +200,7 @@ $(document).ready(function(e){
 	var frm = document.frm;
 		
 	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModifyAction.do";
+	document.frm.enctype="multipart/form-data";
 	document.frm.method="post";
 	document.frm.submit();
 

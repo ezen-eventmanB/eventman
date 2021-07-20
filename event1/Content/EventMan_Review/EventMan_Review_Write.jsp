@@ -31,7 +31,7 @@
 <script>
 
 
-
+/* 
 //사진 미리보기
 $(document).ready(function(e){
 
@@ -120,7 +120,7 @@ alert("else else else else");
 		};
 	};
 });
-
+ */
 
 
 
