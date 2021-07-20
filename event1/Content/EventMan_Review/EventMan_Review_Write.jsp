@@ -31,10 +31,12 @@
 <script>
 
 
+
 //사진 미리보기
 $(document).ready(function(e){
 
 	$("input[type='file']").change(function(e){
+
 		
 		var files = e.target.files;
 		var arr =Array.prototype.slice.call(files);
@@ -52,55 +54,61 @@ $(document).ready(function(e){
 		preview(arr);
 	});//file change
 
-    
-    //실제 화면에 뿌려주는 부분
+  
+  //실제 화면에 뿌려주는 부분
 	function preview(arr){
-
-		alert("arr.length : "+arr.length);
-    	
+console.log("arr : "+arr);
+alert("arr.length : "+arr.length);
+  	
 		var str = '';
 		
 		var arrlength = arr.length;
 		
+		
 		//사진 한장 업로드
 		if(arrlength == 1){
-			alert("arr.length ===== 1");
 			var reader = new FileReader();
-			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
+			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
+console.log(e);
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				
-				alert(str);
+				console.log("한장업로드 ");
+				console.log("e.target.result = "+e.target.result);
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
 			
 		//사진 한장 이상 업로드
 		}else if(arrlength > 1){
-			alert("arr.length >>>>> 1");
+console.log("----1");
 			var reader = new FileReader();
+console.log("----2");
+console.log(e);
+			
+			var arr[] = function (e)
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-				alert(e);
+console.log("----3");
+console.log("active");
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				alert(str);
-				for(var i=1; i<arr.length; i++){
+				for(var i=1; i<arrlength; i++){
 					str += '<div class="carousel-item">';
 					str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[i].name+'" alt="">';
 					str += '</div>';
-				};
-				$('#preview').html(str);			
-			};
-			for(var i=0; i<arr.length; i++){
-				reader = new FileReader();
-				reader.readAsDataURL(arr[i]);
-			};
+				}
+				
+				$('#preview').html(str);
+				
+				reader.readAsDataURL(arr[ㅑ]);
+			};			
+			
+
 			
 		//사진 0장 업로드
 		}else{
-			alert("else else else else");
+alert("else else else else");
 			str+='<div class="carousel-item active">'
 			str+='<img src="../seletimg.jpg" class="d-block w-100" alt="">'
 			str+='<div class="carousel-caption d-none d-md-block">'
@@ -112,6 +120,8 @@ $(document).ready(function(e){
 		};
 	};
 });
+
+
 
 
 
@@ -255,8 +265,7 @@ $(document).ready(function(e){
 			<div class="container mb-2">
 				<div class="row">
 					<input type="hidden" name="gidx" value="<%=gidx%>">
-					<div class="col-md">
-						<label for="uploadFile" class="form-label"></label>
+					<div class="col-md mt-2">
 						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple>
 					</div>
 					<div class="col-md mt-2">
@@ -269,7 +278,7 @@ $(document).ready(function(e){
 							<option value="기타">기타</option>
 						</select>
 					</div>
-					<div class="col-md  mt-2">
+					<div class="col-md mt-2">
 						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소">
 					</div>
 				</div>

@@ -524,8 +524,6 @@ public class MasterServiceImpl {
 			}
 		}
 		
-		
-		
 		return value;
 	}
 
@@ -558,5 +556,83 @@ public class MasterServiceImpl {
 		System.out.println("리턴되는 벨류값 : "+value);
 		return value;
 	}
+	
+	
+	public EvMemberVo selectmember(int midx) {
+		
+		EvMemberVo mvo = new EvMemberVo();
+		
+		String sql = "select * from EVE_MEMBER where midx=? ";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, midx);
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					//rs의 실행결과가 있따면???
+					mvo.setMidx(rs.getInt("midx"));
+					mvo.setmId(rs.getString("mId"));
+					mvo.setmPwd(rs.getString("mPwd"));
+					mvo.setmName(rs.getString("mName"));
+					mvo.setmPhn(rs.getString("mPhn"));
+					mvo.setmEmail(rs.getString("mEmail"));
+					mvo.setmDelYn(rs.getString("mDelYn"));
+					mvo.setmType(rs.getString("mType"));
+					
+					System.out.println("midx 테스트입니다 "+rs.getInt("midx"));
+					System.out.println("mId 테스트입니다 "+rs.getString("mId"));
+					System.out.println("mPwd 테스트입니다 "+rs.getString("mPwd"));
+					System.out.println("mName 테스트입니다 "+rs.getString("mName"));
+					System.out.println("mPhn 테스트입니다 "+rs.getString("mPhn"));
+					System.out.println("mEmail 테스트입니다 "+rs.getString("mEmail"));
+					System.out.println("mDelYn 테스트입니다 "+rs.getString("mDelYn"));
+					System.out.println("테스트입니다 "+rs.getString("mType"));
+					
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		return mvo;
+		
+	}
+	
+	
+	
+	public int MasterModify(int midx, String mType, String mDelYn) {
+		int value = 0;
+										// 회원 종류 , 회원 상태 
+		String sql = "update Eve_member set mType=?, mDelYn=? where midx=? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mType);
+			pstmt.setString(2, mDelYn);
+			pstmt.setInt(3, midx);
+			value = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return value;
+	}
+
 
 }
