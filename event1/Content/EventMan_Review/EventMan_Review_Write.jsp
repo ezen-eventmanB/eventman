@@ -31,12 +31,13 @@
 <script>
 
 
-/* 
 //사진 미리보기
 $(document).ready(function(e){
 
 	$("input[type='file']").change(function(e){
-
+		
+		//div 내용 비워주기
+		$('#preview').empty();
 		
 		var files = e.target.files;
 		var arr =Array.prototype.slice.call(files);
@@ -48,79 +49,68 @@ $(document).ready(function(e){
 				return false;
 			};
 		};
-
-		//div 내용 비워주기
-		$('#preview').empty();
 		preview(arr);
 	});//file change
 
-  
-  //실제 화면에 뿌려주는 부분
+    
+    //실제 화면에 뿌려주는 부분
 	function preview(arr){
-console.log("arr : "+arr);
-alert("arr.length : "+arr.length);
-  	
+
+		alert("arr.length : "+arr.length);
+    	
 		var str = '';
 		
 		var arrlength = arr.length;
 		
-		
 		//사진 한장 업로드
 		if(arrlength == 1){
 			var reader = new FileReader();
-			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-console.log(e);
+			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				console.log("한장업로드 ");
-				console.log("e.target.result = "+e.target.result);
+				
+				alert(str);
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
 			
 		//사진 한장 이상 업로드
 		}else if(arrlength > 1){
-console.log("----1");
 			var reader = new FileReader();
-console.log("----2");
-console.log(e);
-			
-			var arr[] = function (e)
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-console.log("----3");
-console.log("active");
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				for(var i=1; i<arrlength; i++){
+				alert(str);
+				for(var i=1; i<arr.length; i++){
 					str += '<div class="carousel-item">';
 					str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[i].name+'" alt="">';
 					str += '</div>';
-				}
-				
-				$('#preview').html(str);
-				
-				reader.readAsDataURL(arr[ㅑ]);
-			};			
-			
-
+				};
+				$('#preview').html(str);			
+			};
+			for(var i=0; i<arr.length; i++){
+				reader = new FileReader();
+				reader.readAsDataURL(arr[i]);
+			};
 			
 		//사진 0장 업로드
 		}else{
-alert("else else else else");
+			alert("else else else else");
 			str+='<div class="carousel-item active">'
 			str+='<img src="../seletimg.jpg" class="d-block w-100" alt="">'
 			str+='<div class="carousel-caption d-none d-md-block">'
 			str+='<h5>이미지 파일을 선택해주세요.</h5>'
-			str+='<p>파일 선택시 미리보기 됩니다요.</p>'
+			str+='<p>파일 선택시 미리보기 됩니다.</p>'
 			str+='</div>'
 			str+='</div>';
 			$('#preview').html(str);
 		};
 	};
 });
- */
+
+ 
 
 
 
@@ -266,7 +256,7 @@ alert("else else else else");
 				<div class="row">
 					<input type="hidden" name="gidx" value="<%=gidx%>">
 					<div class="col-md mt-2">
-						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple>
+						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple/>
 					</div>
 					<div class="col-md mt-2">
 						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
@@ -287,11 +277,6 @@ alert("else else else else");
 				<div class="col-lg">
 					<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 	
-							<div class="carousel-indicators">
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-							</div>
 	
 							<div class="carousel-inner " id="preview">
 							
@@ -305,14 +290,6 @@ alert("else else else else");
 									
 							</div>
 							
-							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
 	
 					</div>	
 				</div>	

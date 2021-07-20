@@ -261,7 +261,7 @@ public class MasterController extends HttpServlet {
 /* 행사리뷰글 수정하기 action */
 		} else if (str2.equals("EventMan_ReviewModifyAction.do")) {
 
-			System.out.println("-----EventMan_ReviewModify.do 실행-----");
+			System.out.println("-----행사 리뷰 수정하기 실행-----");
 			
 			int value=0;
 			
@@ -327,7 +327,7 @@ public class MasterController extends HttpServlet {
 
 
 			MasterServiceImpl mdao = new MasterServiceImpl();
-			value = mdao.modifyAction(hidx, file, cata, loca, startdate, enddate, price, people, target, staff,
+			value = mdao.modifyAction(hidx, fileName, cata, loca, startdate, enddate, price, people, target, staff,
 					company, title, content);
 
 			System.out.println("행사리뷰수정하기 value : " + value);
