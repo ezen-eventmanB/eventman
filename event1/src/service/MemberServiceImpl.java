@@ -25,7 +25,7 @@ public class MemberServiceImpl {
     */
 
    /*
-    * 회원가입 정보 넘겨주기 Dao
+    * 회원가입 정보 넘겨주기 Dao, 수정완료
     */
    public int memberInsert(String mId, String mPwd, String mName, String mEmail, String mPhn, String mType) {
       int value = 0;
@@ -61,7 +61,7 @@ public class MemberServiceImpl {
 
    
    /*
-    * 로그인 확인 화면
+    * 로그인 확인 화면, 확인 완료
     */
    public String memberLoginCheck(String memberId, String memberPwd) {
 
@@ -115,7 +115,7 @@ public class MemberServiceImpl {
       return user;
    }
    /*
-    *아이디 중복 확인
+    *아이디 중복 확인 ,확인
     */
    public String idCheck(String mid) {
 
@@ -154,7 +154,7 @@ public class MemberServiceImpl {
    
    /*
     * 
-    * 아이디 찾기 버튼 클릭시 메소드 (황현호)
+    * 아이디 찾기 버튼 클릭시 메소드 (황현호),확인
     */
    public String findId(String name, String phone, String email) {
 
@@ -197,7 +197,10 @@ public class MemberServiceImpl {
       return id;
    }
 
-   
+   /*
+    * 
+    * 확인
+    * */
    public EvMemberVo selectMember(int midx) {
       EvMemberVo mbvo = null;
       ResultSet rs = null;
@@ -236,7 +239,7 @@ public class MemberServiceImpl {
       return mbvo;
    }
    
-   //종빈 멤버 정보 수정
+   //종빈 멤버 정보 수정,확인
    public int memberModify(String midx, String mPwd, String mPhn, String mEmail) {
       int value= 0;
                //비밀번호 , 연락처 , 이메일
@@ -255,7 +258,9 @@ public class MemberServiceImpl {
       
       return value;
    }      
-   //종빈 멤버 회원 탈퇴하기
+   
+   
+   //종빈 멤버 회원 탈퇴하기,확인
    public int memberDelete(int midx, String mPwd) {
       int value=0;
       String sql="update Eve_member set mdelYn='Y' where midx= ? and mPwd= ?";
@@ -273,6 +278,8 @@ public class MemberServiceImpl {
       return value;
    }
 
+   
+   //비밀번호 찾기,확인
 	public EvMemberVo findpw(String id , String email) {
 		
 		EvMemberVo mvo = new EvMemberVo();
