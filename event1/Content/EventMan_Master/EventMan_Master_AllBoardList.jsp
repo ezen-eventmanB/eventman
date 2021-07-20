@@ -17,7 +17,7 @@
 		
 		 ArrayList<EvBoardAskVo> boardlist = (ArrayList<EvBoardAskVo>)request.getAttribute("boardlist");
 	%>    
-
+  
 <!DOCTYPE html>
 <html>
 <head>
