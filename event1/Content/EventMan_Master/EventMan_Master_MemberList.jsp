@@ -11,9 +11,6 @@
     if (session.getAttribute("midx") != null) {
        midx = (int)session.getAttribute("midx");
     }
-   out.println("세션에 담긴 아이디는?");
-   out.println(member_id);
-   out.println(midx);
 
 %>  
 
@@ -166,6 +163,38 @@
    </div>
  
  
+<<<<<<< HEAD
+		<!-- 회원 관리 -->  
+		<div class="container">
+		<table class="table table-hover">
+		<thead>
+		<tr class="tr1">
+		   <th>번호</th>
+		   <th>아이디</th>
+		   <th>이름</th>
+		   <th>이메일</th>
+		   <th>핸드폰 번호</th>
+		   <th>가입일</th>
+		   <th>회원 종류</th>
+		   <th>회원 상태</th>
+		</thead>
+		
+		<%for(EvMemberVo mv : alist) { %>
+		<tr class="tr2" style='cursor:pointer;' onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
+		   <td><%=mv.getMidx()%></td>  
+		   <td><%=mv.getmId() %></td>
+		   <td><%=mv.getmName() %></td>
+		   <td><%=mv.getmEmail() %></td>
+		   <td><%=mv.getmPhn() %></td>
+		   <td><%=mv.getmDate()%></td>
+		   <td><%=mv.getmType()%></td>
+		   <td><%=mv.getmDelYn()%></td>
+		</tr>
+		<% }; %>
+		
+		   </table>
+		</div>
+=======
 <!-- 회원 관리 -->  
 <div class="container">
 <table class="table table-hover">
@@ -196,6 +225,7 @@
 
    </table>
 </div>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 
 <!-- 메인 푸터 -->
 <div class="footer">
