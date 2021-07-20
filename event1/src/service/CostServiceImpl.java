@@ -44,8 +44,8 @@
 	      int value = 0;
 	
 	      try {
-	         String sql = "insert into EVE_COST(CIDX,CNAME,CSDATE,CSDATE2,CWDAY,CCATA,CTEXT,CFILE2,CLOCA,CTARGET,CMETHOD,CPRICE,CPEOPLE,MIDX,Ccondition) "
-	                  + "values(cidx_seq.nextval,?,?,?,sysdate,?,?,?,?,?,?,?,?,?,'견적등록완료')";
+	         String sql = "insert into EVE_COST(CNAME,CSDATE,CSDATE2,CWDAY,CCATA,CTEXT,CFILE2,CLOCA,CTARGET,CMETHOD,CPRICE,CPEOPLE,MIDX,Ccondition) "
+	                  + "values(?,?,?,NOW(),?,?,?,?,?,?,?,?,?,'견적등록완료')";
 	         
 	         //시퀀스 생성 완료
 	         pstmt = conn.prepareStatement(sql);

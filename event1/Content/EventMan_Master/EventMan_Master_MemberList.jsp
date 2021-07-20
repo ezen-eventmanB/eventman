@@ -72,6 +72,7 @@
 <body>
 
 
+<div class="container ajax">
 
 <!-- 상단 네비 부분 -->
 	<div class="container">
@@ -158,12 +159,12 @@
 
 
  <div class="container">
-   <div class="row justify-content-md-center">
+   <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
    </div>
-</div>
+ 
  
 <!-- 회원 관리 -->  
 <div class="container">
