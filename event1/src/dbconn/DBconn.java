@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBconn {
+
 	
 	private Connection conn = null;
 	private String coninfo = "jdbc:mysql://jjezen.cafe24.com/ezen20210719_b";
@@ -23,5 +24,6 @@ public class DBconn {
 		}
 		return conn;
 	}
+
 
 }

@@ -22,7 +22,7 @@ public class BoardServiceImpl {
       this.conn = dbconn.getConnection();
 
    }
-
+   			
    /* 관리자가 작성한 게시판 게시글 리스트 불러오기 */
    public ArrayList<EvBoardAskVo> selectMasterboardlist() {
       
@@ -245,10 +245,7 @@ public class BoardServiceImpl {
       
       System.out.println("boardlistselectone 게시글 상세보기 메소드");
       
-      String sql = "select * "
-               +"from EVE_BOARD B , EVE_MEMBER M "
-               +"where B.midx = M.midx "
-               +"and B.bidx=?";
+      String sql = "select * "+"from EVE_BOARD B , EVE_MEMBER M "+"where B.midx = M.midx "+"and B.bidx=?";
       
       EvBoardAskVo bavo = new EvBoardAskVo();
       
@@ -270,14 +267,12 @@ public class BoardServiceImpl {
          
          
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       }finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
       }
@@ -309,14 +304,12 @@ public class BoardServiceImpl {
          }
 
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       } finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
       }
@@ -405,14 +398,12 @@ public class BoardServiceImpl {
          pstmt.setInt(1, bidx);
          value = pstmt.executeUpdate();
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       } finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
 
