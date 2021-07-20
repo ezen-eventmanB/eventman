@@ -76,8 +76,15 @@ function findId(){
 			data:alldata,
 			success:function(data){
 				var str = data.trim();
-				$("#findidspan").html(str);
-				$("#modal").modal("show");
+				
+				if(data == "회원정보가 일치하지 않습니다."){
+					$("#findidspan1").html(str);
+					$("#modal1").modal("show");
+				}else{
+					$("#findidspan").html(str);
+					$("#modal").modal("show");
+				};
+				
 			}	
 		})
 
@@ -214,18 +221,18 @@ function loginFn(){
 
 				<div class="input-group mb-3">
 					<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">핸드폰번호</span>
-					<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)010-0000-0000">
+					<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2 placeholder="ex)010-0000-0000">
 				</div>
 
 				<div class="input-group mb-3">
 					<span class="input-group-text w-25 text-center label1" id="inputGroup-sizing-default">이메일</span>
-					<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="ex)email@email.com">
+					<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=3 placeholder="ex)email@email.com" onkeypress="if( event.keyCode == 13 ){findId();}">
 				</div>
 				
 				<div class="d-grid gap-2">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findId()">확인</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw.do'">비밀번호찾기</button>
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">뒤로</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findId()" tabindex=4>확인</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw.do'" tabindex=5>비밀번호찾기</button>
+					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'" tabindex=6>뒤로</button>
 				</div>
 			</form>
 		</div>
@@ -246,6 +253,24 @@ function loginFn(){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="loginFn()">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 실패 모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="findidspan1"> </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="falseFn()">확인</button>
       </div>
     </div>
   </div>

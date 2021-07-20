@@ -43,12 +43,12 @@ function emailcheckFn(){
 	console.log(alldata);
 	
 	$.ajax({
-		url:"<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Find_Pw_Action.do",
+		url:"<%=request.getContextPath()%>/EventMan_Member/eventman_member_find_pw_action.do",
 		type:"post",
 		data:alldata,
 		datatype:"html",
 		success:function(data){
-			alert(data);
+			//alert(data);
 		}	
 	});
 

@@ -284,6 +284,7 @@ public class MasterController extends HttpServlet {
 		} else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
 			System.out.println("견적신청함페이지 연결");
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 			
 			MasterServiceImpl mdao = new MasterServiceImpl();
 			ArrayList<EvCostVo> descalist = mdao.alldescCostList();
@@ -412,11 +413,58 @@ public class MasterController extends HttpServlet {
 			}
 			
 			
-			
-			
-		}
 
-	}
+/* (진) 회원 정보 수정 화면 이동*/         
+       }else if(str2.equals("EventMan_Master_MemberModify.do")) {
+                      
+			System.out.println("테스트");
+			  
+			int midx = Integer.parseInt(request.getParameter("midx"));
+			
+			System.out.println("midx 테스트"+midx);
+			
+			MasterServiceImpl mdao = new MasterServiceImpl(); // 생성
+			
+			EvMemberVo mvo1 = mdao.selectmember(midx);
+			
+			request.setAttribute("mvo2", mvo1);
+			
+			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_MemberDetail.jsp");    
+			rd.forward(request, response);
+   
+                
+                
+/* (진) 회원 정보 수정 Action */
+       } else if (str2.equals("EventMan_Master_MemberModifyAction.do")) {
+			          
+			System.out.println("Action 테스트입니다.");
+			  
+			//1. 값을 넘겨받는다
+			int midx = Integer.parseInt(request.getParameter("midx"));
+			String mType = request.getParameter("mType");
+			String mDelYn = request.getParameter("mDelYn");
+			
+			System.out.println(midx+mType+mDelYn);
+			
+			//수정 값
+			MasterServiceImpl mdao = new MasterServiceImpl();   // 객체생성
+			int value = mdao.MasterModify(midx, mType, mDelYn);
+			System.out.println("value:"+value);
+			
+			//수정이 제대로 된다면 이동
+			if (value >0) {     
+				response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
+			//수정이 되지 않으면 이동                                                          //파라미터로 midx값을 같이 넘겨줘야한다.
+			}else {
+				response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
+			};    
+       }
+		
+		
+		
+   }
+
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
