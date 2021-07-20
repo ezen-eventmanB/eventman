@@ -273,38 +273,38 @@ public class MemberServiceImpl {
       return value;
    }
 
-public EvMemberVo findpw(String id , String email) {
-	
-	EvMemberVo mvo = new EvMemberVo();
-	
-	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mdelyn='N'";
-	
-	try {
-		pstmt= conn.prepareStatement(sql);
-		pstmt.setString(1, id);
-		pstmt.setString(2, email);
-		ResultSet rs =  pstmt.executeQuery();
+	public EvMemberVo findpw(String id , String email) {
 		
-		if(rs.next()) {
-			mvo.setmPwd(rs.getString("mpwd"));
-			mvo.setmEmail(rs.getString("memail"));
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally {
+		EvMemberVo mvo = new EvMemberVo();
+		
+		String sql = "select * from EVE_MEMBER where mid=? and memail=? and mdelyn='N'";
+		
 		try {
-			pstmt.close();
-			conn.close();
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
+			ResultSet rs =  pstmt.executeQuery();
+			
+			if(rs.next()) {
+				mvo.setmPwd(rs.getString("mpwd"));
+				mvo.setmEmail(rs.getString("memail"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
+		
+		return mvo;
 	}
-	
-	
-	return mvo;
-}
 
 }
