@@ -22,7 +22,7 @@ public class BoardServiceImpl {
       this.conn = dbconn.getConnection();
 
    }
-
+   			
    /* 관리자가 작성한 게시판 게시글 리스트 불러오기 */
    public ArrayList<EvBoardAskVo> selectMasterboardlist() {
       
@@ -245,10 +245,7 @@ public class BoardServiceImpl {
       
       System.out.println("boardlistselectone 게시글 상세보기 메소드");
       
-      String sql = "select * "
-               +"from EVE_BOARD B , EVE_MEMBER M "
-               +"where B.midx = M.midx "
-               +"and B.bidx=?";
+      String sql = "select * "+"from EVE_BOARD B , EVE_MEMBER M "+"where B.midx = M.midx "+"and B.bidx=?";
       
       EvBoardAskVo bavo = new EvBoardAskVo();
       
@@ -270,14 +267,12 @@ public class BoardServiceImpl {
          
          
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       }finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
       }
@@ -309,14 +304,12 @@ public class BoardServiceImpl {
          }
 
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       } finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
       }
@@ -405,14 +398,12 @@ public class BoardServiceImpl {
          pstmt.setInt(1, bidx);
          value = pstmt.executeUpdate();
       } catch (SQLException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       } finally {
          try {
             pstmt.close();
             conn.close();
          } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
 
@@ -523,6 +514,49 @@ public class BoardServiceImpl {
    }
    
 
+   	/*	게시판 전체 리스트 출력 ajax 버튼	*/
+	public ArrayList<EvBoardAskVo> boardSelectAll(int page){
+		
+		ArrayList<EvBoardAskVo> boardList = new ArrayList();
+		
+		String sql =  "select B.* from "
+					+ "(select rownum as rnum, A. * from "
+					+ "(select * from EVE_BOARD where bdelYn='N' ORDER BY bidx DESC) A "
+					+ "where rownum <= ?) B "
+					+ "where B.rnum >= ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, page*9);
+			pstmt.setInt(2, 1+(page-1)*9);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvBoardAskVo ebvo = new EvBoardAskVo();
+				
+	            ebvo.setBcata(rs.getString("Bcata"));
+	            ebvo.setBtitle(rs.getString("Btitle"));
+	            ebvo.setBwriteday(rs.getString("Bwriteday"));
+	            ebvo.setgName(rs.getString("gName"));
+	            ebvo.setBmenu(rs.getString("Bmenu"));
+	            ebvo.setBcount(rs.getString("Bcount"));
+	            ebvo.setBidx(rs.getInt("bidx"));
+
+				boardList.add(ebvo);
+				
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return boardList;
+	}
    
    
    
