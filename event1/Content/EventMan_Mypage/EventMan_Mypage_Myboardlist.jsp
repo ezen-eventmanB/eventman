@@ -153,22 +153,6 @@
    </dvi>
    
    
-            	<%
-         		if (bidx == 0) {
-				%>
-				   <!-- 작성된 상담하기 게시그리 없다면. -->
-				   <div class="container text-center">
-				      <div class="container w-50">
-				         <br/>   
-				         <img src="../desk.png" class="lock w-50 mb-3" >
-				         <br/>
-				         <header class="fs-3">작성된 게시글이 없습니다.</header>
-				         <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Advicewrite.do'">상담하기</button>
-				      </div>
-				   </div>
-         		<%
-				} else if (bidx > 0) {
-				%>
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
@@ -191,11 +175,10 @@
 			               <td><%=bavo.getBWrieday2()%></td>
 			               <td><%=bavo.getBname()%></td>
 			               <td><%=bavo.getBcount() %></td>
-			            </tr>
-        			 <%}; %>
-         		<%
-				}
-				%>
+					    </tr>
+		                <%
+						}
+						%>
          </tbody>
       </table>
    </div>
