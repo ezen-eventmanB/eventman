@@ -328,28 +328,28 @@ public class ReviewController extends HttpServlet {
          
          String page = request.getParameter("page");
 
-int page2=0;  
-if(page == null) { 
-   page = "1";               
-}                                       
-page2 = Integer.parseInt(page);
-                                       
-SearchCriteria scri = new SearchCriteria();
-scri.setPage(page2);   
-         
-ReviewServiceImpl reviewDao = new ReviewServiceImpl();
-
-int cnt = reviewDao.boardTotalCount("전체");
-System.out.println("cnt "+ cnt);
-
-PageMaker pm = new PageMaker();
-pm.setScri(scri);
-pm.setTotalCount(cnt);   
-
-ArrayList<EvReviewVo> reviewList = reviewDao.reviewSearch(val1,val2,val3,page2);
-
-request.setAttribute("reviewList", reviewList);
-request.setAttribute("pm", pm);
+		int page2=0;  
+		if(page == null) { 
+		   page = "1";               
+		}                                       
+		page2 = Integer.parseInt(page);
+		                                       
+		SearchCriteria scri = new SearchCriteria();
+		scri.setPage(page2);   
+		         
+		ReviewServiceImpl reviewDao = new ReviewServiceImpl();
+		
+		int cnt = reviewDao.boardTotalCount("전체");
+		System.out.println("cnt "+ cnt);
+		
+		PageMaker pm = new PageMaker();
+		pm.setScri(scri);
+		pm.setTotalCount(cnt);   
+		
+		ArrayList<EvReviewVo> reviewList = reviewDao.reviewSearch(val1,val2,val3,page2);
+		
+		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("pm", pm);
          
 
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    

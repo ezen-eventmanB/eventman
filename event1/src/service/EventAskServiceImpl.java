@@ -32,9 +32,8 @@ public class EventAskServiceImpl {
 		int value=0;
 		
 	    String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
-	               +"values(EVENTASK_SEQ.NEXTVAL , ? , '상담신청' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0)";
+	               +"values( ? , '상담신청' , ? , ? , now() , 0 , ? , ? , 0 , 0 , 0)";
 
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cata);
@@ -43,18 +42,15 @@ public class EventAskServiceImpl {
 			pstmt.setString(4, fileName);
 			pstmt.setString(5, midx);
 
-			
 			value=pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
 				pstmt.close();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	
