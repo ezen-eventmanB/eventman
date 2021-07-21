@@ -32,6 +32,7 @@
     <!-- Bootstrap에 필요한 CSS파일 -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+       <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 <title>EVENT MAN!</title>
 
    <!-- topmenue CSS -->
@@ -421,15 +422,16 @@
       <img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
    </div>
    <table class="table table-hover">
-        </tbody>
-                <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th> 
+         <thead>
+         	<tr>
+	            <th>카테고리</th>
+	            <th colspan="2">제목</th>
+	            <th></th>
+	            <th>작성일</th>
+	            <th>작성자</th>
+            </tr> 
          </thead>
-           <tbody>
+         <tbody>
            	<!-- 일반 포문 5번  -->
                 <% for(EvBoardAskVo evbo: alistboard){ %>
               	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
@@ -442,12 +444,10 @@
                   </tr>
                   <%}; %> 
             </tbody> 
-
-            </table>
          </div>
    </table>
    
-   
+
 
 
 <!-- 메인 푸터 -->

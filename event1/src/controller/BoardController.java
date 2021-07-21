@@ -67,7 +67,7 @@ public class BoardController extends HttpServlet {
       System.out.println("");
       
 
-//게시판 보기 및 게시글 뿌려주기
+         //게시판 보기 및 게시글 뿌려주기
       if(str2.equals("EventMan_Board.do")) {   
                  
          System.out.println("게시판 리스트 뿌려주기");
@@ -82,7 +82,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
       
          
-//게시판 공지사항 상세보기
+         //게시판 공지사항 상세보기
       }else if(str2.equals("EventMan_Board_Detail.do")) {
          
          System.out.println("EventMan_Board_Detail문");
@@ -104,7 +104,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);         
          
          
-/* 게시글 수정하기로 이동   */         
+         /* 게시글 수정하기로 이동   */         
       }else if(str2.equals("EventMan_Board_Modify.do")) {
          
          System.out.println("EventMan_Mypage_BoardModify.do if문");
@@ -120,7 +120,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
          
          
-/*   게시글 수정하기 액션   */         
+         /*   게시글 수정하기 액션   */         
       }else if(str2.equals("EventMan_Board_Modify_Action.do")) {
          
          System.out.println("EventMan_Board_Modify_Action.do if문");
@@ -146,7 +146,7 @@ public class BoardController extends HttpServlet {
             System.out.println("게시글 수정후 상세화면 페이지이동 실패");
          }
          
-/* 공지 삭제 액션 */
+        /* 공지 삭제 액션 */
        }else if(str2.equals("EventMan_Board_BoardDelete.do")) {
                
                int value=0;
@@ -162,13 +162,13 @@ public class BoardController extends HttpServlet {
                response.sendRedirect(request.getContextPath()+"/EventMan_Board/EventMan_Board.do?gidx="+gidx);
                
                
-//게시판 글 작성 페이지 이동
+         //게시판 글 작성 페이지 이동
       }else if(str2.equals("EventMan_BoardWrite.do")){
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp");    
          rd.forward(request, response);
          
          
-/*게시판 관리자 글 작성 ACTION*/
+         /*게시판 관리자 글 작성 ACTION*/
       }else if(str2.equals("EventMan_MasterWriteAction.do")) {
          
     	  System.out.println(" EventMan_MasterWriteAction 실행");
@@ -479,34 +479,7 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
 
-         
-      }else if(str2.equals("EventMan_Board_selectAll.do")) {
-      
-	         System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
-	         
-	      String page = request.getParameter("page");
-	      
-	      int page2=0;  
-	      if(page == null) { 
-	         page = "1";               
-	      }                                       
-	      page2 = Integer.parseInt(page);
-	                                             
-	      SearchCriteria scri = new SearchCriteria();
-	      scri.setPage(page2);   
-               
-  		BoardServiceImpl boarddao = new BoardServiceImpl();
-        //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
-		ArrayList<EvBoardAskVo> boardList = boarddao.boardSelectAll(page2);
-
-		request.setAttribute("boardList", boardList);
- 
-         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    
-         rd.forward(request, response);
-      
-      
       }
-      
    }
    
 

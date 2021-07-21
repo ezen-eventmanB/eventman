@@ -10,6 +10,7 @@
  
 	 int midx = 0;
 	 int gidx = 0;
+	 int cidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
@@ -143,48 +144,64 @@
       <!-- 현제 페이지 이름 -->
       My page
    </div>
+      
+
 <div class="container">
-   <div class="row justify-content-md-center">
+   <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
-   </div>
-   
+   </dvi>
+               	<%
+         		if (cidx == 0) {
+				%>
+				   <!-- 작성된 상담하기 게시그리 없다면. -->
+				   <div class="container text-center">
+				      <div class="container w-50">
+				         <br/>   
+				         <img src="../desk.png" class="lock w-50 mb-3" >
+				         <br/>
+				         <header class="fs-3">작성된 견적신청이 없습니다.</header>
+				         <button type="button" class="btn btn-secondary btn-lg" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청하러 가기</button>
+				      </div>
+				   </div>
+         		<% 
+				} else if (cidx > 0) {
+				%>
+
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
          <thead>
-         	<tr>
-	            <th>순번</th>
-	            <th colspan="2">제목</th>
-	            <th></th>
-	            <th>작성일</th>
-	            <th>작성자</th>
-	            <th>조회수</th>
-            </tr>  
+            <th>순번</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th>
+            <th>조회수</th>  
          </thead>
         <tbody>
-				
-		         <% for(EvCostVo covo: alistcost){ %>
-		
-		            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
-		               <td><%=covo.getCidx()%></td>
-		               <td colspan="2"><%=covo.getCostName()%>
-			               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
-			               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
-			               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
-			               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=covo.getCcondition()%></button></span> 
-			               	<%}; %>  	
-		               	</td>
-		               <td></td>
-		               <td><%=covo.getSubWritedate()%></td>
-		               <td><%=covo.getCName()%></td>
-		               <td><%=covo.getCcount()%></td>
-	            </tr>
-	                <%
-					}
-					%>
-					
+
+         <% for(EvCostVo covo: alistcost){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
+               <td><%=covo.getCidx()%></td>
+               <td colspan="2"><%=covo.getCostName()%>
+	               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
+	               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
+	               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}; %>
+	               	
+               	</td>
+               <td></td>
+               <td><%=covo.getSubWritedate()%></td>
+               <td><%=covo.getCName()%></td>
+               <td><%=covo.getCcount()%></td>
+            </tr>
+         <%}; %>
+                <%
+				}
+				%>
          </tbody> 
       </table>
    </div>

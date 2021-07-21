@@ -1,3 +1,4 @@
-/dbconn/
-/service/
 /controller/
+/service/
+/vo/
+/dbconn/

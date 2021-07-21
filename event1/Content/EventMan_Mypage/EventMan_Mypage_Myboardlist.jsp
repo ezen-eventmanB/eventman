@@ -16,12 +16,9 @@
 	 	midx = (int)session.getAttribute("midx");
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
-	 }else if(session.getAttribute("bidx") !=null ){
-		 bidx= (int)session.getAttribute("bidx");
-	 }
+	 }    
 
    ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
-   	   
    
    %>    
     
@@ -146,13 +143,16 @@
       <!-- 현제 페이지 이름 -->
       My page
    </div>
-		
+      
+
 <div class="container">
-   <div class="row justify-content-md-center">
+   <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
       </div>
-   </div>
+   </dvi>
+   
+   
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
@@ -167,24 +167,18 @@
             </tr>
          </thead>
          <tbody>
-
         			<% for(EvBoardAskVo bavo: alistboard){ %>
-        				
-
-		            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
-		               <td><%=bavo.getBcata()%></td>
-		               <td colspan="2"><%=bavo.getBtitle()%></td>
-		               <td></td>
-		               <td><%=bavo.getBWrieday2()%></td>
-		               <td><%=bavo.getBname()%></td>
-		               <td><%=bavo.getBcount() %></td>
-		            </tr>
-        			<%
-        			}
-        			%>
-        			
-
-
+			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
+			               <td><%=bavo.getBcata()%></td>
+			               <td colspan="2"><%=bavo.getBtitle()%></td>
+			               <td></td>
+			               <td><%=bavo.getBWrieday2()%></td>
+			               <td><%=bavo.getBname()%></td>
+			               <td><%=bavo.getBcount() %></td>
+					    </tr>
+		                <%
+						}
+						%>
          </tbody>
       </table>
    </div>

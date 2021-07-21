@@ -173,8 +173,8 @@ public class BoardServiceImpl {
          
          int value=0;
          
-          String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL, BDELYN)"
-                     +"values(EVENTASK_SEQ.NEXTVAL , ? , '게시판' , ? , ? , TO_CHAR(SYSDATE,'YYYY-MM-DD') , 0 , ? , ? , 0 , 0 , 0, 'K')";         
+          String sql= "insert into EVE_BOARD (BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, GIDX, ORIGINBIDX, DEPTH, LLEVEL, BDELYN)"
+                     +"values(? , '게시판' , ? , ? , DATE-FORMAT(NOW(),'%Y%m%d') , 0 , ? , ? , 0 , 0 , 0, 'K')";         
          try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, cata);

@@ -267,9 +267,6 @@
 		</div>
 	</nav>
 </div>
-
-
-
 <!-- 페이지 위치 안내 -->
 <div class="container"  id="containermargin">	
 	<!-- 집 아이콘 -->
