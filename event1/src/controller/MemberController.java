@@ -391,29 +391,29 @@ public class MemberController extends HttpServlet {
          rd.forward(request, response);
 
          
-         /* 비밀번호 찾기 ACTION */
+/* 비밀번호 찾기 ACTION */
       }else if(str2.equals("eventman_member_find_pw_action.do")) {
            
-              System.out.println("if문 비밀번호 찾기");
+System.out.println("if문 비밀번호 찾기");
            
                String id = request.getParameter("id");
-              String email = request.getParameter("email");
+               String email = request.getParameter("email");
 
-              System.out.println("id = "+id);
-              System.out.println("em = "+email);
+System.out.println("id = "+id);
+System.out.println("em = "+email);
               
              //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
               EvMemberVo m = new MemberServiceImpl().findpw(id,email);
               
               if(m==null || !m.getmEmail().equals(email)) {
-                 System.out.println("아이디나 이메일 정보가 맞이 않음");
+System.out.println("아이디나 이메일 정보가 맞이 않음");
                   /*request.setAttribute("msg", "아이디나 이메일 정보가 맞지 않습니다");
                   request.setAttribute("loc", "/member/searchPw");
                   request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);*/
                  /* return;   */
               }
               
-                 System.out.println("아이디 이메일 존재 실행");
+System.out.println("아이디 이메일 존재 실행");
                  
                       //mail server 설정
                       String host = "smtp.naver.com";
@@ -422,7 +422,7 @@ public class MemberController extends HttpServlet {
                       
                       //메일 받을 주소
                       String to_email = m.getmEmail();
-                      
+System.out.println(" m.getmEmail() : "+ m.getmEmail());
                       //SMTP 서버 정보를 설정한다.
                       Properties props = new Properties();
                       props.put("mail.smtp.host", host);
@@ -452,7 +452,7 @@ public class MemberController extends HttpServlet {
                           }
                       }
                       String AuthenticationKey = temp.toString();
-                      System.out.println(AuthenticationKey);
+System.out.println("key : "+AuthenticationKey);
                       
                       
                       Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
@@ -460,12 +460,13 @@ public class MemberController extends HttpServlet {
                               return new PasswordAuthentication(user,password);
                           }
                       });
-                      
+System.out.println("F_session : "+session);                         
                       
                       //email 전송
                       try {
-                         System.out.println("이메일전송 try");
+System.out.println("이메일전송 try");
                           MimeMessage msg = new MimeMessage(session);
+System.out.println("session : "+session);                          
                           msg.setFrom(new InternetAddress(user, "KH Books"));
                           msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
                           
@@ -475,7 +476,7 @@ public class MemberController extends HttpServlet {
                           msg.setText("인증 번호는 :"+temp);
                           
                           Transport.send(msg);
-                          System.out.println("이메일 전송");
+System.out.println("이메일 전송 하자!");
                           
                       }catch (Exception e) {
                           e.printStackTrace();

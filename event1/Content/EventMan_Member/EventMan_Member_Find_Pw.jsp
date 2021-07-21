@@ -46,9 +46,9 @@ function emailcheckFn(){
 		url:"<%=request.getContextPath()%>/EventMan_Member/eventman_member_find_pw_action.do",
 		type:"post",
 		data:alldata,
-		datatype:"html",
+		datatype:"data",
 		success:function(data){
-			//alert(data);
+			alert(data);
 		}	
 	});
 
