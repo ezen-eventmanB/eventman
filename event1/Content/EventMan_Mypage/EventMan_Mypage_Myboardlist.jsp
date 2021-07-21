@@ -170,16 +170,7 @@
 
         			<% for(EvBoardAskVo bavo: alistboard){ %>
         				
-        				
-        				<%
-						if (bidx == 0) {
-						%>
-						<tr>
-							<td>게시글이 없습니다.</td>
-						</tr>
-						<%
-						} else if (bidx > 0) {
-						%>
+
 		            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
 		               <td><%=bavo.getBcata()%></td>
 		               <td colspan="2"><%=bavo.getBtitle()%></td>
@@ -188,10 +179,6 @@
 		               <td><%=bavo.getBname()%></td>
 		               <td><%=bavo.getBcount() %></td>
 		            </tr>
-	            	<%
-					}
-					%>
-		            
         			<%
         			}
         			%>

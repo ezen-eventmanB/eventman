@@ -23,7 +23,7 @@ public class EventAskServiceImpl {
 	/*	상담글 작성하기	*/	
 	public int insertAdvice(String cata, String title, String content, String fileName , String midx) {
 
-		System.out.println("cara"+cata);
+		System.out.println("cata"+cata);
 		System.out.println("title"+title);
 		System.out.println("content"+content);
 		System.out.println("file"+fileName);
@@ -31,7 +31,7 @@ public class EventAskServiceImpl {
 	
 		int value=0;
 		
-	    String sql= "insert into EVE_BOARD (BIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
+	    String sql= "insert into EVE_BOARD (BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, MIDX, ORIGINBIDX, DEPTH, LLEVEL)"
 	               +"values( ? , '상담신청' , ? , ? , now() , 0 , ? , ? , 0 , 0 , 0)";
 
 		try {
