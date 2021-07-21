@@ -28,16 +28,12 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql =  "select B.* from "
-					+ "(select rownum as rnum, A. * from "
-					+ "(select * from EVE_REVIEW where hdelYn='N' ORDER BY hidx DESC) A "
-					+ "where rownum <= ?) B "
-					+ "where B.rnum >= ?";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' ORDER BY hidx desc LIMIT ?,? ";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
+			pstmt.setInt(1, (page-1)*9);
+			pstmt.setInt(2, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -79,15 +75,11 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql =  "select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '기업' ORDER BY hidx DESC) A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='기업' ORDER BY hidx desc LIMIT ?,? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
+			pstmt.setInt(1, (page-1)*9);
+			pstmt.setInt(2, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -130,15 +122,12 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '대학' ORDER BY hidx DESC) A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='대학' ORDER BY hidx desc LIMIT ?,? ";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
+			pstmt.setInt(1, (page-1)*9);
+			pstmt.setInt(2, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -181,15 +170,12 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '공연' or hcata like '예술' ORDER BY hidx DESC) A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='공연' or hcata='예술' ORDER BY hidx desc LIMIT ?,? ";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
+			pstmt.setInt(1, (page-1)*9);
+			pstmt.setInt(2, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -232,15 +218,11 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hdelYn='N' and hcata like '기타' ORDER BY hidx DESC) A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='기타' ORDER BY hidx desc LIMIT ?,? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
+			pstmt.setInt(1, (page-1)*9);
+			pstmt.setInt(2, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -347,17 +329,13 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> alist = new ArrayList();
 		
-		String sql = "select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N') A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql = "select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N' ORDER BY hidx desc LIMIT ?,?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+value1+"%");
 			pstmt.setString(2, "%"+value2+"%");
-			pstmt.setInt(3, page*9);
-			pstmt.setInt(4, 1+(page-1)*9);
+			pstmt.setInt(3, (page-1)*9);
+			pstmt.setInt(4, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -415,19 +393,15 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> alist = new ArrayList();
 		
-		String sql ="select B.* from "
-				+ "(select rownum as rnum, A. * from "
-				+ "(select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N' and HNAME like ? or HTEXT like ?) A "
-				+ "where rownum <= ?) B "
-				+ "where B.rnum >= ?";
+		String sql ="select * from EVE_REVIEW where hprice like ? and HPEOPLE like ? and hdelyn='N' and HNAME like ? or HTEXT like ? ORDER BY hidx desc LIMIT ?,?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+value1+"%");
 			pstmt.setString(2, "%"+value2+"%");
 			pstmt.setString(3, "%"+value3+"%");
 			pstmt.setString(4, "%"+value3+"%");
-			pstmt.setInt(5, page*9);
-			pstmt.setInt(6, 1+(page-1)*9);
+			pstmt.setInt(5, (page-1)*9);
+			pstmt.setInt(6, page*9);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

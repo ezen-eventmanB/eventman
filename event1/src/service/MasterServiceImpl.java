@@ -28,8 +28,8 @@ public class MasterServiceImpl {
    public int insertReview(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
       int value = 0;
       
-      String sql = "INSERT INTO EVE_REVIEW(HIDX, HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
-                +"VALUES(HIDX_SEQ.NEXTVAL,TO_DATE(?,'YY-MM-DD'),TO_DATE(?,'YY-MM-DD'),?,?,?,?,?,?,?,?,?,?,?)";
+      String sql = "INSERT INTO EVE_REVIEW( HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
+                +"VALUES(DATE_FORMAT(?,'%y/%m/%d'),DATE_FORMAT(?,'%y/%m/%d'),?,?,?,?,?,?,?,?,?,?,?)";
       
       try {
          pstmt = conn.prepareStatement(sql);
@@ -66,13 +66,14 @@ public class MasterServiceImpl {
       return value;
    }
    
+   
    /*   관리자 게시판 작성하기   */   
    public int insertBoard(String cata, String title, String content, String fileName , String gidx,String gName) {
       
       int value=0;
       
-      String sql= "insert into EVE_BOARD (GIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, ORIGINBIDX, DEPTH, LLEVEL,GNAME)"
-               +"values(EVENTASK_SEQ.NEXTVAL , ? , ? , ? , ? , '21-06-28' , 0 , ? ,  0 , 0 , 0,'이벤트맨')";
+      String sql= "insert into EVE_BOARD (BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, ORIGINBIDX, DEPTH, LLEVEL,GNAME)"
+               +"values(? , ? , ? , ? , 'DATE_FORMAT(now(),'%y/%m/%d')' , 0 , ? ,  0 , 0 , 0,'이벤트맨')";
       
       try {
          pstmt = conn.prepareStatement(sql);
@@ -101,6 +102,8 @@ public class MasterServiceImpl {
       }
       return value; 
    }
+   
+   
    /*회원 정보 출력 하기*/   
    public ArrayList<EvMemberVo> memberSelectAll(){
       ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
@@ -131,6 +134,7 @@ public class MasterServiceImpl {
       }   
       return alist;
    }
+   
    
    /*   행사리뷰 삭제하기   */
    public int reviewDelete(int hidx) {
@@ -491,8 +495,8 @@ public class MasterServiceImpl {
    public int writeMasterBoard(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
       int value = 0;
       
-      String sql = "INSERT INTO EVE_REVIEW(HIDX, HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
-                +"VALUES(HIDX_SEQ.NEXTVAL,TO_DATE(?,'YY-MM-DD'),TO_DATE(?,'YY-MM-DD'),?,?,?,?,?,?,?,?,?,?,?)";
+      String sql = "INSERT INTO EVE_REVIEW(HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
+                +"VALUES(DATE_FORMAT(?,'%y/%m/%d'),DATE_FORMAT(?,'%y/%m/%d'),?,?,?,?,?,?,?,?,?,?,?)";
       
       try {
          pstmt = conn.prepareStatement(sql);

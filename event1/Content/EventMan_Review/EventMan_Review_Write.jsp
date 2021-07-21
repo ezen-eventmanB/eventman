@@ -36,7 +36,9 @@
 $(document).ready(function(e){
 
 	$("input[type='file']").change(function(e){
-
+		
+		//div 내용 비워주기
+		$('#preview').empty();
 		
 		var files = e.target.files;
 		var arr =Array.prototype.slice.call(files);
@@ -48,72 +50,58 @@ $(document).ready(function(e){
 				return false;
 			};
 		};
-
-		//div 내용 비워주기
-		$('#preview').empty();
 		preview(arr);
 	});//file change
 
   
   //실제 화면에 뿌려주는 부분
 	function preview(arr){
-console.log("arr : "+arr);
-alert("arr.length : "+arr.length);
-  	
+
 		var str = '';
 		
 		var arrlength = arr.length;
 		
-		
 		//사진 한장 업로드
 		if(arrlength == 1){
 			var reader = new FileReader();
-			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-console.log(e);
+			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				console.log("한장업로드 ");
-				console.log("e.target.result = "+e.target.result);
+				
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
 			
 		//사진 한장 이상 업로드
 		}else if(arrlength > 1){
-console.log("----1");
 			var reader = new FileReader();
-console.log("----2");
-console.log(e);
-			
-			var arr[] = function (e)
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-console.log("----3");
-console.log("active");
+				alert(e);
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
-				for(var i=1; i<arrlength; i++){
+
+				for(var i=1; i<arr.length; i++){
 					str += '<div class="carousel-item">';
 					str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[i].name+'" alt="">';
 					str += '</div>';
-				}
-				
-				$('#preview').html(str);
-				
-				reader.readAsDataURL(arr[ㅑ]);
-			};			
-			
-
+				};
+				$('#preview').html(str);			
+			};
+			for(var i=0; i<arr.length; i++){
+				reader = new FileReader();
+				reader.readAsDataURL(arr[i]);
+			};
 			
 		//사진 0장 업로드
 		}else{
-alert("else else else else");
+			alert("else else else else");
 			str+='<div class="carousel-item active">'
 			str+='<img src="../seletimg.jpg" class="d-block w-100" alt="">'
 			str+='<div class="carousel-caption d-none d-md-block">'
 			str+='<h5>이미지 파일을 선택해주세요.</h5>'
-			str+='<p>파일 선택시 미리보기 됩니다요.</p>'
+			str+='<p>파일 선택시 미리보기 됩니다.</p>'
 			str+='</div>'
 			str+='</div>';
 			$('#preview').html(str);
@@ -266,10 +254,10 @@ alert("else else else else");
 				<div class="row">
 					<input type="hidden" name="gidx" value="<%=gidx%>">
 					<div class="col-md mt-2">
-						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple>
+						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" tabindex=1 multiple>
 					</div>
 					<div class="col-md mt-2">
-						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
+						<select class="form-select" aria-label="Default select example" name="cata" class="catanon" tabindex=2>
 							<option selected value="catamenu">카테고리</option>
 							<option value="기업">기업</option>
 							<option value="대학">대학</option>
@@ -279,41 +267,22 @@ alert("else else else else");
 						</select>
 					</div>
 					<div class="col-md mt-2">
-						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소">
+						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=3 placeholder="장소">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg">
 					<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-	
-							<div class="carousel-indicators">
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+						<div class="carousel-inner " id="preview">
+							<div class="carousel-item active">
+								<img src="../seletimg.jpg" class="d-block w-100" alt="">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>이미지 파일을 선택해주세요.</h5>
+									<p>파일 선택시 미리보기 됩니다.</p>
+								</div>
 							</div>
-	
-							<div class="carousel-inner " id="preview">
-							
-									<div class="carousel-item active">
-										<img src="../seletimg.jpg" class="d-block w-100" alt="">
-										<div class="carousel-caption d-none d-md-block">
-											<h5>이미지 파일을 선택해주세요.</h5>
-											<p>파일 선택시 미리보기 됩니다.</p>
-										</div>
-									</div>
-									
-							</div>
-							
-							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
-	
+						</div>
 					</div>	
 				</div>	
 		
@@ -327,13 +296,13 @@ alert("else else else else");
 										<img class="icon w-100" src="../icon/free-icon-calendar-with-squares-85000.png">
 										<div class="row mt-2">
 											<div class="col">
-												<input type="date" name="startdate" class="form-control CostDate">
+												<input type="date" name="startdate" class="form-control CostDate" tabindex=4>
 											</div>
 											<div class="col">
 											~
 											</div>
 											<div class="col">
-												<input type="date" name="enddate" class="form-control CostDate">
+												<input type="date" name="enddate" class="form-control CostDate" tabindex=5>
 											</div>
 										</div>
 									</div>
@@ -342,7 +311,7 @@ alert("else else else else");
 									<div>
 										<img class="icon w-100" src="../icon/free-icon-money-bills-72167.png">
 										<div class="mt-2">
-											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon" tabindex=6> 
 												<option selected value="catamenu">예산</option>
 												<option value="1,000만원 미만">1,000만원 미만</option>
 												<option value="1,000만원 이상 ~ 5,000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
@@ -357,7 +326,7 @@ alert("else else else else");
 									<div>
 										<img class="icon w-100" src="../icon/free-icon-people-711168.png">
 										<div class="mt-2">
-											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon">
+											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon" tabindex=7>
 												<option selected value="catamenu">참여인원</option>
 												<option value="50명 미만">50명 미만</option>
 												<option value="50명~100명 미만">50명~100명 미만</option>
@@ -372,7 +341,7 @@ alert("else else else else");
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-question-sign-on-person-head-42994.png">
 									<div class="mt-2">
-										<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon">
+										<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon" tabindex=8>
 											<option selected value="catamenu">참여대상</option>
 											<option value="전체">전체</option>
 											<option value="어린이이">어린이</option>
@@ -390,13 +359,13 @@ alert("else else else else");
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-business-cards-47976.png">
 									<div class="mt-2">
-										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="진행담당">
+										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=9 placeholder="진행담당" >
 									</div>
 								</div>
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-university-campus-68286.png">
 									<div class="mt-2">
-										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="기관,단체">
+										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=10 placeholder="기관,단체" >
 									</div>
 								</div>
 							</div>
@@ -411,20 +380,20 @@ alert("else else else else");
 					</div>		
 					<div>
 						<div class="fs-1 fw-bold mt-5 ">
-							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요.">
+							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요." tabindex=11>
 						</div>
 					</div>
 					<div>
 						<div class="fs-5 mt-5">
-							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요."></textarea>
+							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요." tabindex=12></textarea>
 						</div>	
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="text-end mt-5">
 			<button type="button" class="btn btn-outline-secondary " onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">뒤로가기</button>
-			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()">작성완료</button>
+			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()" tabindex=13>작성완료</button>
 		</div>
 	</div>
 </form>						
