@@ -161,7 +161,7 @@
       <div class="col-sm-4 mx-auto">
          <img class="iconimg" src="../member.png">
          <div class="d-grid gap-2">
-            <button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberList.do'">회원관리</button>
+            <button class="btn btn-outline-secondary heightsize" type="button" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Modify.do'">회원관리</button>
          </div>
       </div>
    </div>

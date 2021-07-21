@@ -50,68 +50,7 @@
 					
 		});
  	}
-	
-		/*   카테고리 별로 보는 ajax   */
-	   /*전체*/
-	   function selectAll(){
-	      $.ajax({
-	         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_selectAll.do",
-	         type:"post",
-	         datatype:"html",
-	         success:function(data){
-	            $("#load").html(data);
-	         }   
-	      });
-	   };
-	   
-	   /*기업*/
-	   function selectCompany(){
-	      $.ajax({
-	         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Hangsa.do",
-	         type:"post",
-	         datatype:"html",
-	         success:function(data){
-	            $("#load").html(data);
-	         }   
-	      });
-	   }
-	   
-	   /*대학*/
-	   function selectUniversity(){
-	      $.ajax({
-	         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_selectGongji.do",
-	         type:"post",
-	         datatype:"html",
-	         success:function(data){
-	            $("#load").html(data);
-	         }   
-	      });
-	   }
-	   
-	   /*공연*/
-	   function selectStage(){
-	      $.ajax({
-	         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_selectNews.do",
-	         type:"post",
-	         datatype:"html",
-	         success:function(data){
-	            $("#load").html(data);
-	         }   
-	      });
-	   }
-	   
-	   /*기타*/
-	   function selectxEeption(){
-	      $.ajax({
-	         url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_selectxEeption.do",
-	         type:"post",
-	         datatype:"html",
-	         success:function(data){
-	            $("#load").html(data);
-	         }   
-	      });
-	   }
-	   
+
 </script>
 </head>
 <body>
