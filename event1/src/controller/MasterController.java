@@ -136,8 +136,8 @@ public class MasterController extends HttpServlet {
 
 			// 업로드 파일 경로
 			// 나중에 웹서버로 공통된 경로로 올리게 된다.
-			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
 
          // 저장 폴더
@@ -243,7 +243,9 @@ public class MasterController extends HttpServlet {
 
          int hidx = Integer.parseInt(request.getParameter("hidx"));
          EvReviewVo erv = new EvReviewVo();
+         
          ReviewServiceImpl rdao = new ReviewServiceImpl();
+         
          erv = rdao.reviewSelectOne(hidx);
 
          request.setAttribute("erv", erv);
@@ -256,29 +258,74 @@ public class MasterController extends HttpServlet {
 
          System.out.println("-----EventMan_ReviewModify.do 실행-----");
 
-         int value = 0;
+         int value= 0;
+			// 업로드 파일 경로
+			// 나중에 웹서버로 공통된 경로로 올리게 된다.
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
-         int hidx = Integer.parseInt(request.getParameter("hidx"));
-         String file = request.getParameter("uploadFile");
-         String cata = request.getParameter("cata");
-         String hloca = request.getParameter("hloca");
-         String startdate = request.getParameter("startdate");
-         String enddate = request.getParameter("enddate");
-         String price = request.getParameter("price");
-         String people = request.getParameter("people");
-         String target = request.getParameter("target");
-         String staff = request.getParameter("staff");
-         String company = request.getParameter("company");
-         String title = request.getParameter("title");
-         String content = request.getParameter("content");
 
-         MasterServiceImpl mdao = new MasterServiceImpl();
-         value = mdao.modifyAction(hidx, file, cata, hloca, startdate, enddate, price, people, target, staff,
-               company, title, content);
+	      // 저장 폴더
+	      String savedPath = "Advice_img";
+	
+	      // 저장된 총 경로
+	      String saveFullPath = uploadPath + savedPath;
+	
+	      int sizeLimit = 1024 * 1024 * 15;
+	      String fileName = null;
+	      String originFileName = null;
+	      System.out.println("saveFullPath = " + saveFullPath);
+	
+	      // MultipartRequest 객체생성
+	      MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8",
+	      new DefaultFileRenamePolicy());
+	
+	      // 열거자에 파일Name속성의 이름을 담는다
+	      Enumeration files = multi.getFileNames();
+	      System.out.println("files = " + files);
+	
+	      // 담긴 파일 객체의 Name값을 담는다.
+	      String file = (String) files.nextElement();
+	      System.out.println("file = " + file);
+	
+	      // 저장되는 파일이름
+	      fileName = multi.getFilesystemName(file);
+	      System.out.println("fileName = " + fileName);
+	
+	      // 원래파일 이름
+	      originFileName = multi.getOriginalFileName(file);
+	
+	      System.out.println("originFileName = " + originFileName);
+	
+	      String ThumbnailFileName = null;
+	
+	      try {
+	         if (fileName != null)
+	            ThumbnailFileName = makeThumbnail(uploadPath, savedPath, fileName);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
 
-         System.out.println("행사리뷰수정하기 value : " + value);
-
-         response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
+	         int hidx = Integer.parseInt(multi.getParameter("hidx"));
+	         String cata = multi.getParameter("cata");
+	         String hloca = multi.getParameter("hloca");
+	         String startdate = multi.getParameter("startdate");
+	         String enddate = multi.getParameter("enddate");
+	         String price = multi.getParameter("price");
+	         String people = multi.getParameter("people");
+	         String target = multi.getParameter("target");
+	         String staff = multi.getParameter("staff");
+	         String company = multi.getParameter("company");
+	         String title = multi.getParameter("title");
+	         String content = multi.getParameter("content");
+	
+	         MasterServiceImpl mdao = new MasterServiceImpl();
+	         value = mdao.modifyAction(hidx, fileName, cata, hloca, startdate, enddate, price, people, target, staff,
+	               company, title, content);
+	
+	         System.out.println("행사리뷰수정하기 value : " + value);
+	
+	         response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
 
 
 
