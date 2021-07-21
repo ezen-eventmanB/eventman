@@ -136,8 +136,8 @@ public class MasterController extends HttpServlet {
 
 			// 업로드 파일 경로
 			// 나중에 웹서버로 공통된 경로로 올리게 된다.
-			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
 
 
          // 저장 폴더
