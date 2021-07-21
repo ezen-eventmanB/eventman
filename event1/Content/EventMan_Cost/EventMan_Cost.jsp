@@ -142,6 +142,48 @@ function submitFn(){
       document.frm.submit();
 
 }
+
+
+//사진 미리보기
+$(document).ready(function(e){
+	console.log("asdasd");
+	$("input[type='file']").change(function(e){
+		
+		//div 내용 비워주기
+		$('#preview').empty();
+		
+		var files = e.target.files;
+		var arr =Array.prototype.slice.call(files);
+		
+		//업로드 가능 파일인지 체크
+		for(var i=0;i<files.length;i++){
+			if(!/\.(gif|jpg|jpeg|png)$/i.test(files[i].name)){
+				alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + files[i].name);
+				return false;
+			};
+		};
+		preview(arr);
+	});//file change
+
+  
+  //실제 화면에 뿌려주는 부분
+	function preview(arr){
+
+		var str = '';
+		
+		var arrlength = arr.length;
+		
+		//사진 한장 업로드
+		if(arrlength == 1){
+			var reader = new FileReader();
+			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
+				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
+				$('#preview').html(str);
+			};
+			reader.readAsDataURL(arr[0]);
+		};	
+	};
+});
 </script>
 
 </head>
@@ -509,7 +551,7 @@ if(member_id == null){
             <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon" tabindex=31>
                <option selected value="catamenu" name="joinTarget" disabled>참여대상</option>
                <option value="전체">전체</option>
-               <option value="어린이이">어린이</option>
+               <option value="어린이">어린이</option>
                <option value="학생">학생</option>
                <option value="청년">청년</option>
                <option value="여성">여성</option>
@@ -569,7 +611,8 @@ if(member_id == null){
    <div class="container">
       <div class="fs-4 fw-bold mt-5">참고 자료</div>
       <div class="form-group">
-         <input class="form-control" type="file" id="formFile" name="file" tabindex=36>
+      	 <div id="preview"></div>
+         <input class="form-control mt-2" type="file" id="formFile" name="file" tabindex=36>
       </div>
    	
       <div class="d-grid gap-2">
