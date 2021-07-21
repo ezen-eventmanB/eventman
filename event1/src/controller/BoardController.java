@@ -174,8 +174,8 @@ public class BoardController extends HttpServlet {
     	  System.out.println(" EventMan_MasterWriteAction 실행");
          
          //업로드 파일 경로      
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
          //저장 폴더
          String savedPath = "Advice_img";
          
