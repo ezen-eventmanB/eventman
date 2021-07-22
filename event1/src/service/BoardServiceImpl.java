@@ -557,8 +557,56 @@ public class BoardServiceImpl {
 		}
 		return boardList;
 	}
-   
-   
+	
+	public int masterreply(int bidx, String breply) {
+		int value = 0;
+			
+			String sql = "UPDATE EVE_BOARD SET BCONDITION='상담중' , BREPLY = ? where bidx=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, breply);
+				pstmt.setInt(2, bidx);
+				value = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		System.out.println("리플 된 항목수는 : "+value);
+		return value;
+	}
+	
+	/* 상담 완료 처리하기	*/		
+	public int finshboardreply(int bidx) {
+		int value = 0;
+		
+		String sql = "UPDATE EVE_BOARD SET BCONDITION='상담완료' where bidx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return value;
+	}
    
    
    

@@ -251,8 +251,8 @@ public class BoardController extends HttpServlet {
          
          //업로드 파일 경로      
          //나중에 웹서버로 공통된 경로로 올리게 된다.
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
          //저장 폴더
          String savedPath = "Advice_img";
          
@@ -462,24 +462,43 @@ public class BoardController extends HttpServlet {
          //관리자 상담신청 상세보기
       }else if(str2.equals("EventMan_Master_BoardDetail.do")){
          
-         System.out.println("상담 상세보기");
-         
-         int bidx = Integer.parseInt(request.getParameter("bidx"));
-            
-         BoardServiceImpl boarddao = new BoardServiceImpl();
-            
-         boarddao.hitCount(bidx);
+	        System.out.println("상담 상세보기");
+	         
+	        int bidx = Integer.parseInt(request.getParameter("bidx"));
+	            
+	        BoardServiceImpl boarddao = new BoardServiceImpl();
+	            
+	        boarddao.hitCount(bidx);
             
             EvBoardAskVo bavo = new EvBoardAskVo();
             
             bavo = boarddao.boardlistselectone(bidx);
             
-            request.setAttribute("bavo", bavo);
+            request.setAttribute("bavo", bavo);                                    
             
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
-
-      }
+    
+         
+ /*	관리자 상담완료 처리하기*/			
+	}else if(str2.equals("EventMan_replyFinsh.do")) {
+ 		
+			System.out.println("게시판 상담완료처리하기");
+			
+			int bidx = Integer.parseInt(request.getParameter("bidx"));
+			
+			BoardServiceImpl bavo = new BoardServiceImpl();
+			
+			int value = bavo.finshboardreply(bidx);
+			
+			
+		if(value > 0) {
+			System.out.println("견적신청완료 처리 성공");
+			response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllBoardList.do");
+		}else {
+			System.out.println("처리 실패");
+		}
+		}
    }
    
 

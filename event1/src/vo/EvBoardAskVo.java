@@ -19,6 +19,7 @@ public class EvBoardAskVo {
 	private String Bcondition;
 	private String Breply;
 	private String bmid;
+
 	 
 	
 	public String getBmid() {
@@ -142,6 +143,6 @@ public class EvBoardAskVo {
 		this.llevel = llevel;
 	}
 	private int llevel;
-	
+
 	
 }

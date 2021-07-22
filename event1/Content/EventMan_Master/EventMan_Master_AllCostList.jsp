@@ -72,7 +72,7 @@ function deletFn(){
 
 function replyfinshFN(a, b){
 	idx = a;
-  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.?");
+  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.");
 	$("#modal1").modal("show"); 
 }
 
