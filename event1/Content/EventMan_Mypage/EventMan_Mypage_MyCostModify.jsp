@@ -516,8 +516,10 @@ $(document).ready(function(e){
    <div class="container">
    <div class="fs-5 fw-bold">참고 자료</div>
    <div id="preview">
-	   	<%if(covo.getCostFile() != null){%>
+	   	<%if(!covo.getCostFile().equals("")){%>
 	   		<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>">
+	   	<%}else if(covo.getCostFile().equals("")){ %>
+	   		첨부파일이 없습니다.
 	   	<%}; %>
    	</div>
    <div class="form-group">

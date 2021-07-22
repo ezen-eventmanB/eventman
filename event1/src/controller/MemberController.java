@@ -398,98 +398,19 @@ public class MemberController extends HttpServlet {
 			  
 			   	String id = request.getParameter("id");
 		        String email = request.getParameter("email");
-
-System.out.println("id = "+id);
-System.out.println("em = "+email);
-              
+		        String phone = request.getParameter("phone");
+		        
+		        String pwd = "";
              //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
-              EvMemberVo m = new MemberServiceImpl().findpw(id,email);
-              
-              if(m==null || !m.getmEmail().equals(email)) {
-System.out.println("아이디나 이메일 정보가 맞이 않음");
-                  /*request.setAttribute("msg", "아이디나 이메일 정보가 맞지 않습니다");
-                  request.setAttribute("loc", "/member/searchPw");
-                  request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);*/
-                 /* return;   */
-              }
-              
-System.out.println("아이디 이메일 존재 실행");
-                 
-                      //mail server 설정
-                      String host = "smtp.naver.com";
-                      String user = "maen2@naver.com"; //자신의 네이버 계정
-                      String password = "hwang9295A!";//자신의 네이버 패스워드
-                      
-                      //메일 받을 주소
-                      String to_email = m.getmEmail();
-System.out.println(" m.getmEmail() : "+ m.getmEmail());
-                      //SMTP 서버 정보를 설정한다.
-                      Properties props = new Properties();
-                      props.put("mail.smtp.host", host);
-                      props.put("mail.smtp.port", 465);
-                      props.put("mail.smtp.auth", "true");
-                      props.put("mail.smtp.ssl.enable", "true");
-                      
-                      //인증 번호 생성기
-                      StringBuffer temp =new StringBuffer();
-                      Random rnd = new Random();
-                      
-                      for(int i=0;i<10;i++) {
-                          int rIndex = rnd.nextInt(3);
-                          switch (rIndex) {
-                          case 0:
-                              // a-z
-                              temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-                              break;
-                          case 1:
-                              // A-Z
-                              temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-                              break;
-                          case 2:
-                              // 0-9
-                              temp.append((rnd.nextInt(10)));
-                              break;
-                          }
-                      }
-                      String AuthenticationKey = temp.toString();
-System.out.println("key : "+AuthenticationKey);
-                      
-                      
-                      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-                          protected PasswordAuthentication getPasswordAuthentication() {
-                              return new PasswordAuthentication(user,password);
-                          }
-                      });
-System.out.println("F_session : "+session);                         
-                      
-                      //email 전송
-                      try {
-System.out.println("이메일전송 try");
-                          MimeMessage msg = new MimeMessage(session);
-System.out.println("session : "+session);                          
-                          msg.setFrom(new InternetAddress(user, "KH Books"));
-                          msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
-                          
-                          //메일 제목
-                          msg.setSubject("안녕하세요 EVENT MAN 인증 메일입니다.");
-                          //메일 내용
-                          msg.setText("인증 번호는 :"+temp);
-                          
-                          Transport.send(msg);
-System.out.println("이메일 전송 하자!");
-                          
-                      }catch (Exception e) {
-                          e.printStackTrace();
-                          // TODO: handle exception
-                      }
-                      HttpSession saveKey = request.getSession();
-                      saveKey.setAttribute("AuthenticationKey", AuthenticationKey);
-                      
-                      System.out.println("실행완료");
-                      //패스워드 바꿀때 뭘 바꿀지 조건에 들어가는 id
-                     // request.setAttribute("id", id);
-                     // request.getRequestDispatcher("/views/login_myPage/searchPasswordEnd.jsp").forward(request, response);
-                      
+		        MemberServiceImpl mvo = new MemberServiceImpl();
+		        pwd = mvo.findpw(id,email,phone);
+		        
+		    	if (pwd == "") {
+					response.getWriter().write("회원정보가 일치하지 않습니다.");
+				} else {
+					response.getWriter().write("회원님의 비밀번호는 " + pwd + " 입니다.");
+				}
+		    	
           }
           
 

@@ -273,21 +273,21 @@ public class MemberServiceImpl {
       return value;
    }
 
-public EvMemberVo findpw(String id , String email) {
+public String findpw(String id , String email, String phone) {
 	
-	EvMemberVo mvo = new EvMemberVo();
+	String pwd="";
 	
-	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mdelyn='N'";
+	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mphn=? and mdelyn='N'";
 	
 	try {
 		pstmt= conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.setString(2, email);
+		pstmt.setString(3, phone);
 		ResultSet rs =  pstmt.executeQuery();
 		
 		if(rs.next()) {
-			mvo.setmPwd(rs.getString("mpwd"));
-			mvo.setmEmail(rs.getString("memail"));
+			pwd = rs.getString("mpwd");
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -304,7 +304,7 @@ public EvMemberVo findpw(String id , String email) {
 	}
 	
 	
-	return mvo;
+	return pwd;
 }
 
 }

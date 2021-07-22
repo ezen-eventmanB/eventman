@@ -45,29 +45,29 @@ function findId(){
     
 	if(username.trim() ==''){
     	$("#textbox").html("이름을 입력해주세요.");
-		$("#modal1").modal("show");	
+		$("#modal2").modal("show");	
     	return;
 	}else if(!namepattern.test(fm.name.value)){
 		$("#textbox").html("이름을 정확하게 입력해주세요.");
-		$("#modal1").modal("show");
+		$("#modal2").modal("show");
 		return;
 		
 	}else if(userphone.trim()==''){
     	$("#textbox").html("전화번호를 입력해주세요.");
-		$("#modal1").modal("show");	
+		$("#modal2").modal("show");	
     	return;
 	}else if(!phonepattern.test(fm.phone.value)){
 		$("#textbox").html("전화번호를 정확하게 입력해주세요. ex)010-0000-0000");
-		$("#modal1").modal("show");
+		$("#modal2").modal("show");
 		return;
 		
 	}else if(useremail.trim()==''){
     	$("#textbox").html("이메일을 입력해주세요.");
-		$("#modal1").modal("show");	
+		$("#modal2").modal("show");	
     	return;
 	}else if(!emailpattern.test(fm.email.value)){
 		$("#textbox").html("이메일를 정확하게 입력해주세요. ex)email@email.com");
-		$("#modal1").modal("show");
+		$("#modal2").modal("show");
 		return;
 	}else{
 		$.ajax({
@@ -76,7 +76,6 @@ function findId(){
 			data:alldata,
 			success:function(data){
 				var str = data.trim();
-				
 				if(data == "회원정보가 일치하지 않습니다."){
 					$("#findidspan1").html(str);
 					$("#modal1").modal("show");
@@ -278,7 +277,7 @@ function loginFn(){
 
 
 <!-- 이름 or 전화번호 입력 요구 모달 -->
-<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
