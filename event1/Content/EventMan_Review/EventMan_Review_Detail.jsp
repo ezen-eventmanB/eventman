@@ -197,6 +197,7 @@ function deleteFn(){
 	</div>
 	<div class="text-end mt-5">
 		<button type="button" class="btn btn-outline-secondary " onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">뒤로가기</button>
+		<button type="button" class="btn btn-outline-secondary " onclick="history.back();">뒤로</button>
 	</div>
 </div>
 						
