@@ -160,7 +160,7 @@ function costDeletFn() {
 <div class="container">
    <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
-         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+         <img src="../filefolder/mypagebanner.png " alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
       
