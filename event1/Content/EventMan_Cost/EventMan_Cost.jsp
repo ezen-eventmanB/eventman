@@ -146,7 +146,7 @@ function submitFn(){
 
 //사진 미리보기
 $(document).ready(function(e){
-	console.log("asdasd");
+
 	$("input[type='file']").change(function(e){
 		
 		//div 내용 비워주기
@@ -177,7 +177,7 @@ $(document).ready(function(e){
 		if(arrlength == 1){
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
-				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
+				str += '<img src="'+e.target.result+'" style="max-width:90%; object-fit: cover;" class="d-block w-100 mx-auto mt-2" title="'+arr[0].name+'" alt="">';
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
@@ -340,7 +340,7 @@ if(member_id == null){
          <div class="col">
             <input type="date" id="cSdate" name="cSdate" tabindex=2 class="form-control CostDate">
          </div>
-         <div class="col-sm-auto">
+         <div class="col-sm-auto text-center">
             ~
          </div>
          <div class="col">
@@ -611,7 +611,7 @@ if(member_id == null){
    <div class="container">
       <div class="fs-4 fw-bold mt-5">참고 자료</div>
       <div class="form-group">
-      	 <div id="preview"></div>
+      	 <div id="preview" class="text-center"></div>
          <input class="form-control mt-2" type="file" id="formFile" name="file" tabindex=36>
       </div>
    	

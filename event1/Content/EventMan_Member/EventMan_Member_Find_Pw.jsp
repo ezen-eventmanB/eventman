@@ -171,17 +171,17 @@ function emailcheckFn(){
 		
 					<div class="input-group mb-3">
 						<span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
-						<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1>
+						<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2>
 					</div>
 		
-						<button type="button" class="btn btn-outline-secondary btn-sm w-100 mb-4" onclick="emailcheckFn()">이메일 인증</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm w-100 mb-4" onclick="emailcheckFn()" tabindex=3>이메일 인증</button>
 	
 				</div>
 			</form>
 			<div class="d-grid gap-2">
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findpwFn()">확인</button>
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'">로그인</button>
-				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do'">홈 화면</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="findpwFn()" tabindex=4>확인</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do'" tabindex=5>로그인</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do'" tabindex=6>홈 화면</button>
 			</div>
 		</div>
 	</div>

@@ -27,6 +27,7 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>   
 <script language = "javascript">
 
+
  function check(){
       
       var fm = document.frm;
@@ -361,48 +362,48 @@ function idCheck(){
          <div class="input-group mt-3">
             <span class="input-group-text label1 " id="inputGroup-sizing-default">아이디</span>
                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mId" id="mId" placeholder="5~12자리 숫자,영어 입력">
-            <button type="button" class="btn btn-outline-secondary fs-6" onclick="idCheck()">중복확인</button>
+            <button type="button" class="btn btn-outline-secondary fs-6" onclick="idCheck()" tabindex=2>중복확인</button>
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmid"><small style="color:#CC3D3D;">* 아이디는 5~12자리이며, 첫글자는 영어입니다.</small></div>
          
          
          <div class="input-group mt-3">
             <span class="input-group-text label1" id="inputGroup-sizing-default">비밀번호</span>
-            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd" id="mPwd" placeholder="4~12자리 숫자,영어 필수 입력">
+            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=3 name="mPwd" id="mPwd" placeholder="4~12자리 숫자,영어 필수 입력">
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmPwd"><small style="color:#CC3D3D;">* 비밀번호는 4~12자리이고, 영문과 숫자 조합입니다.</small></div>
          
          <div class="input-group mt-3">
             <span class="input-group-text  label1" id="inputGroup-sizing-default">비밀번호 확인</span>
-            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPwd2" id="mPwd2" placeholder="password">
+            <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=4 name="mPwd2" id="mPwd2" placeholder="password">
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmPwdre"><small style="color:#CC3D3D;">* 비밀번호가 일치하지 않습니다.</small></div>
          
          
          <div class="input-group mt-3">
             <span class="input-group-text label1" id="inputGroup-sizing-default">이름</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mName" id="mName" placeholder="name">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=5 name="mName" id="mName" placeholder="name">
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmName"><small style="color:#CC3D3D;">* 이름은 2~6자리며 한글만 사용가능합니다.</small></div>
          
          
          <div class="input-group mt-3">
             <span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mEmail" id="mEmail" placeholder="email@eamail.com">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=6 name="mEmail" id="mEmail" placeholder="email@eamail.com">
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmEmail"><small style="color:#CC3D3D;">* 이메일을 바르게 입력해주세요. ex)email@email.com</small></div>
          
          
          <div class="input-group mt-3">
             <span class="input-group-text label1" id="inputGroup-sizing-default">연락처</span>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 name="mPhn" id="mPhn" placeholder="010-0000-0000">
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=7 name="mPhn" id="mPhn" placeholder="010-0000-0000">
          </div>
          <div class="ms-2" style="visibility: hidden;" id="spanmPhone"><small style="color:#CC3D3D;">*핸드폰번호를 바르게 입력해주세요. ex)010-1234-5678</small></div>
          
          
          <div class="input-group mt-3">
             <span class="input-group-text label1" id="inputGroup-sizing-default">계정 종류</span>
-            <select class="form-select" aria-label="Default select example" name="mType" id="mType">
+            <select class="form-select" aria-label="Default select example" name="mType" id="mType" tabindex=8>
                <option selected value="mType" disabled>회원 종류를 선택해주세요.</option>
                <option value="개인">개인</option>
                <option value="단체">단체</option>
@@ -411,8 +412,8 @@ function idCheck(){
          </div>
          
          <div class="d-grid gap-2 mt-5">
-            <button class="btn btn-outline-secondary" type="button"  onclick="check();">회원가입</button>
-            <button class="btn btn-outline-secondary" type="reset">초기화</button>
+            <button class="btn btn-outline-secondary" type="button"  onclick="check();" tabindex=9>회원가입</button>
+            <button class="btn btn-outline-secondary" type="reset" tabindex=10>초기화</button>
          </div>  
       </div>
    </form>
