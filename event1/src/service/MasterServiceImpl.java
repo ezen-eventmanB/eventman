@@ -28,9 +28,10 @@ public class MasterServiceImpl {
    public int insertReview(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
       int value = 0;
       
-      String sql = "INSERT INTO EVE_REVIEW(HIDX, HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
-                +"VALUES(HIDX_SEQ.NEXTVAL,TO_DATE(?,'YY-MM-DD'),TO_DATE(?,'YY-MM-DD'),?,?,?,?,?,?,?,?,?,?,?)";
-      
+      String sql = "INSERT INTO EVE_REVIEW( HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
+                +"VALUES(DATE_FORMAT(?,'%y/%m/%d'),DATE_FORMAT(?,'%y/%m/%d'),?,?,?,?,?,?,?,?,?,?,?)";
+
+
       try {
          pstmt = conn.prepareStatement(sql);
          pstmt.setString(1,startdate);
@@ -66,13 +67,15 @@ public class MasterServiceImpl {
       return value;
    }
    
+   
    /*   관리자 게시판 작성하기   */   
+   /*
    public int insertBoard(String cata, String title, String content, String fileName , String gidx,String gName) {
       
       int value=0;
       
-      String sql= "insert into EVE_BOARD (GIDX, BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, ORIGINBIDX, DEPTH, LLEVEL,GNAME)"
-               +"values(EVENTASK_SEQ.NEXTVAL , ? , ? , ? , ? , '21-06-28' , 0 , ? ,  0 , 0 , 0,'이벤트맨')";
+      String sql= "insert into EVE_BOARD (BCATA, BMENU, BTITLE, BCONTENTS, BWRITEDAY, BCOUNT, BFILE, ORIGINBIDX, DEPTH, LLEVEL,GNAME)"
+               +"values(? , ? , ? , ? , 'NOW()' , 0 , ? ,  0 , 0 , 0,'이벤트맨')";
       
       try {
          pstmt = conn.prepareStatement(sql);
@@ -101,6 +104,8 @@ public class MasterServiceImpl {
       }
       return value; 
    }
+   */
+   
    /*회원 정보 출력 하기*/   
    public ArrayList<EvMemberVo> memberSelectAll(){
       ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
@@ -132,7 +137,8 @@ public class MasterServiceImpl {
       return alist;
    }
    
-   /*   행사리뷰 삭제하기   */
+   
+/*   행사리뷰 삭제하기   */
    public int reviewDelete(int hidx) {
       
       
@@ -162,6 +168,7 @@ public class MasterServiceImpl {
       return value;
    }
 
+   
 
    /*   행사 리뷰 수정하기   */   
    public int modifyAction(int hidx, String file, String cata, String hloca, 
@@ -265,7 +272,8 @@ public class MasterServiceImpl {
       return descalist;
    }
    
-   /* 견적신청 리스트 ajax*/
+   
+/* 견적신청 리스트 ajax*/
    public ArrayList<EvCostVo> ajaxcostlist(String order, String searchtype, String text,String check){
       
       System.out.println("메소드 부분입니다!!");
@@ -487,12 +495,14 @@ public class MasterServiceImpl {
       return boardlist;
    }
 
+   
    /*   게시판 관리자 글 작성 action      */
+   /*
    public int writeMasterBoard(String title, String target, String startdate, String enddate, String price, String staff, String company, String content, String file, String cata, String loca, String people, int gidx) {
       int value = 0;
       
-      String sql = "INSERT INTO EVE_REVIEW(HIDX, HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
-                +"VALUES(HIDX_SEQ.NEXTVAL,TO_DATE(?,'YY-MM-DD'),TO_DATE(?,'YY-MM-DD'),?,?,?,?,?,?,?,?,?,?,?)";
+      String sql = "INSERT INTO EVE_REVIEW(HDATE, HENDDATE, HPRICE, HPEOPLE, HTARGET, HSTAFF, HCOMPANY, HNAME, HTEXT, HCATA, HIMG, GIDX, HLOCA)" 
+                +"VALUES(DATE_FORMAT(?,'%y/%m/%d'),DATE_FORMAT(?,'%y/%m/%d'),?,?,?,?,?,?,?,?,?,?,?)";
       
       try {
          pstmt = conn.prepareStatement(sql);
@@ -526,8 +536,9 @@ public class MasterServiceImpl {
       
       return value;
    }
+    */
 
-
+/*   회사 소개 이미지 변경      */
    public int companyimgchang(String file) {
       
       int value = 0;
@@ -559,80 +570,84 @@ public class MasterServiceImpl {
    
    
 
-   /* (진) 회원 관리 (리스트) */	
-	
-	public EvMemberVo selectmember(int midx) {
-		
-		EvMemberVo mvo = new EvMemberVo();
-		
-		String sql = "select * from EVE_MEMBER where midx=? ";
-			
-				try {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, midx);
-					ResultSet rs = pstmt.executeQuery();
-					
-					if(rs.next()) {
-						//rs의 실행결과가 있따면???
-						mvo.setMidx(rs.getInt("midx"));
-						mvo.setmId(rs.getString("mId"));
-						mvo.setmPwd(rs.getString("mPwd"));
-						mvo.setmName(rs.getString("mName"));
-						mvo.setmPhn(rs.getString("mPhn"));
-						mvo.setmEmail(rs.getString("mEmail"));
-						mvo.setmDelYn(rs.getString("mDelYn"));
-						mvo.setmType(rs.getString("mType"));
-						
-						System.out.println("midx 테스트입니다 "+rs.getInt("midx"));
-						System.out.println("mId 테스트입니다 "+rs.getString("mId"));
-						System.out.println("mPwd 테스트입니다 "+rs.getString("mPwd"));
-						System.out.println("mName 테스트입니다 "+rs.getString("mName"));
-						System.out.println("mPhn 테스트입니다 "+rs.getString("mPhn"));
-						System.out.println("mEmail 테스트입니다 "+rs.getString("mEmail"));
-						System.out.println("mDelYn 테스트입니다 "+rs.getString("mDelYn"));
-						System.out.println("테스트입니다 "+rs.getString("mType"));
-						
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}finally {
-					try {
-						pstmt.close();
-						conn.close();
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-		
-		return mvo;
-		
-	}
-	
-/* (진) 회원 정보 수정 (회원 종류, 회원 상태) */	
-	public int MasterModify(int midx, String mType, String mDelYn) {
-		int value = 0;
-										// 회원 종류 , 회원 상태 
-		String sql = "update Eve_member set mType=?, mDelYn=? where midx=? ";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mType);
-			pstmt.setString(2, mDelYn);
-			pstmt.setInt(3, midx);
-			value = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return value;
-	}
-		   }
+/* (진) 회원 관리 (리스트) */   
+   
+   public EvMemberVo selectmember(int midx) {
+      
+      EvMemberVo mvo = new EvMemberVo();
+      
+      String sql = "select * from EVE_MEMBER where midx=? ";
+         
+            try {
+               pstmt = conn.prepareStatement(sql);
+               pstmt.setInt(1, midx);
+               ResultSet rs = pstmt.executeQuery();
+               
+               if(rs.next()) {
+                  //rs의 실행결과가 있따면???
+                  mvo.setMidx(rs.getInt("midx"));
+                  mvo.setmId(rs.getString("mId"));
+                  mvo.setmPwd(rs.getString("mPwd"));
+                  mvo.setmName(rs.getString("mName"));
+                  mvo.setmPhn(rs.getString("mPhn"));
+                  mvo.setmEmail(rs.getString("mEmail"));
+                  mvo.setmDelYn(rs.getString("mDelYn"));
+                  mvo.setmType(rs.getString("mType"));
+                  
+                  System.out.println("midx 테스트입니다 "+rs.getInt("midx"));
+                  System.out.println("mId 테스트입니다 "+rs.getString("mId"));
+                  System.out.println("mPwd 테스트입니다 "+rs.getString("mPwd"));
+                  System.out.println("mName 테스트입니다 "+rs.getString("mName"));
+                  System.out.println("mPhn 테스트입니다 "+rs.getString("mPhn"));
+                  System.out.println("mEmail 테스트입니다 "+rs.getString("mEmail"));
+                  System.out.println("mDelYn 테스트입니다 "+rs.getString("mDelYn"));
+                  System.out.println("테스트입니다 "+rs.getString("mType"));
+                  
+               }
+            } catch (SQLException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }finally {
+               try {
+                  pstmt.close();
+                  conn.close();
+               } catch (SQLException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+               }
+            }
+      
+      return mvo;
+      
+   }
+   
+/* (진) 회원 정보 수정 (회원 종류, 회원 상태) */   
+   public int MasterModify(int midx, String mType, String mDelYn) {
+      int value = 0;
+                              // 회원 종류 , 회원 상태 
+      String sql = "update Eve_member set mType=?, mDelYn=? where midx=? ";
+      try {
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, mType);
+         pstmt.setString(2, mDelYn);
+         pstmt.setInt(3, midx);
+         value = pstmt.executeUpdate();
+         
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            pstmt.close();
+            conn.close();
+         } catch (SQLException e) {
+            e.printStackTrace();
+         }
+      }
+      
+      return value;
+   }
+
+
+
+
+}
