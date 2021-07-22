@@ -146,7 +146,7 @@ function submitFn(){
 
 //사진 미리보기
 $(document).ready(function(e){
-	console.log("asdasd");
+
 	$("input[type='file']").change(function(e){
 		
 		//div 내용 비워주기
@@ -340,7 +340,7 @@ if(member_id == null){
          <div class="col">
             <input type="date" id="cSdate" name="cSdate" tabindex=2 class="form-control CostDate">
          </div>
-         <div class="col-sm-auto">
+         <div class="col-sm-auto text-center">
             ~
          </div>
          <div class="col">
