@@ -283,7 +283,7 @@ public class BoardServiceImpl {
    /* 마이페이지 게시글 수정하기 페이지로 이동 . */
    public EvBoardAskVo boardModify(int bidx) {
 
-      String sql = "select * " + "from EVE_BOARD B , EVE_MASTER M " + "where B.midx = M.midx " + "and B.bidx=?";
+      String sql = "select * from EVE_BOARD B , EVE_member M where B.midx = M.midx and B.bidx=?";
 
       EvBoardAskVo bavo = new EvBoardAskVo();
 

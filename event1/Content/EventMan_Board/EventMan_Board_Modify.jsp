@@ -170,12 +170,20 @@
 				<!-- 상세보기-->
 				<div class="container" id="myboardbox">
 						카테고리
-						<div><input type="text" name="Bcata" value="<%=bavo.getBcata()%>"></div>
+						<div>
+							<select class="form-select" aria-label="Default select example" name="cata" id="cata">
+								<option selected>카테고리</option>
+								<option value="행사홍보" <%=bavo.getBcata().equals("행사홍보") ? "selected" : ""%>>행사 홍보</option>
+								<option value="공지사항" <%=bavo.getBcata().equals("공지사항") ? "selected" : ""%>>공지사항</option>
+								<option value="뉴스레터" <%=bavo.getBcata().equals("뉴스레터") ? "selected" : ""%>>뉴스레터</option>
+								<option value="기타" <%=bavo.getBcata().equals("기타") ? "selected" : ""%>>기타</option>
+							</select>
+						</div>
 						제목
 						<div class="fs-1 fw-bold mb-3"><input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="Btitle" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example"></div>
 						<div class="mb-5 pb-2 border-bottom border-3 ">
 							<span class="fw-bold me-2">등록일</span>
-							<span class=" me-3"><%=bavo.getBWrieday2()%></span>
+							<span class=" me-3"><%=bavo.getBwriteday()%></span>
 							<span class="fw-bold me-2">작성자</span>
 							<span class=" me-3"><%=bavo.getgName() %></span>
 							<span class="fw-bold me-2">조회수</span>

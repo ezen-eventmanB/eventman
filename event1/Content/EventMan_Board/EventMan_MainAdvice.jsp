@@ -290,6 +290,7 @@ function imageemptyFn(){
 			
 			<div class="d-grid gap-2">
 				<button class="btn btn-outline-secondary" type="button" onclick="ajaxsubimtFn()">제출하기</button>
+			    <button type="button" class="btn btn-outline-secondary" onclick="history.back();">뒤로 가기</button>
 			</div>
 			
 			<!-- 모달 부분 -->
