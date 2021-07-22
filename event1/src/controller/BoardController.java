@@ -125,7 +125,7 @@ public class BoardController extends HttpServlet {
          
          System.out.println("EventMan_Board_Modify_Action.do if문");
 
-         String Bcata = request.getParameter("Bcata");
+         String Bcata = request.getParameter("cata");
          String Btitle = request.getParameter("Btitle");
          String Bcontents = request.getParameter("Bcontents");
          String Bfile = request.getParameter("Bfile");

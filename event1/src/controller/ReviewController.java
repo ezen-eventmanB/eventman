@@ -268,8 +268,6 @@ public class ReviewController extends HttpServlet {
          
          int hidx = Integer.parseInt(request.getParameter("hidx"));
          
-         System.out.println(" ĸ      hidx = "+hidx);
-         
          ReviewServiceImpl rsimpl = new ReviewServiceImpl();
          EvReviewVo erv = rsimpl.reviewSelectOne(hidx);
          
