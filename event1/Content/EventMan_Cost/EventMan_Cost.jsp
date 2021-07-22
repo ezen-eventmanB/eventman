@@ -494,7 +494,7 @@ if(member_id == null){
 <div id="map" style="width:300px;height:300px;margin:10px auto;display:none"></div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d02c3f2b6d8609f3c8c082e1b68b4dd&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
