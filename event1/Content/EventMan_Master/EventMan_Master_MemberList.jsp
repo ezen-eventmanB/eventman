@@ -106,7 +106,7 @@
 				<!--로그인 전 상단 화면  -->
 				<%
 				if (midx == 0 && gidx == 0) {
-				%>
+				%>  
 	
 				<ul class="navbar-nav" id="Memberbox">
 					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
