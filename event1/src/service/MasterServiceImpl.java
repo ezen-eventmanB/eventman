@@ -109,7 +109,7 @@ public class MasterServiceImpl {
       ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
       
       String sql="select * from EVE_MEMBER order by midx desc";
-      
+
       try {
          pstmt = conn.prepareStatement(sql);
          ResultSet rs  = pstmt.executeQuery();
