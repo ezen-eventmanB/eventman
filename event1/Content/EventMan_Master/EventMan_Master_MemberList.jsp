@@ -2,16 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <%@ page import = "vo.*" %>
-<<<<<<< HEAD
+
  <%
    String member_id = (String)session.getAttribute("S_memberId");
-=======
 
-  <%
-	String member_id = (String)session.getAttribute("S_memberId");
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
- 
-<<<<<<< HEAD
     int midx = 0;
     int gidx = 0;
     
@@ -20,17 +14,7 @@
     }else if(session.getAttribute("gidx") !=null ){
        gidx= (int)session.getAttribute("gidx");
     }
-=======
-	 int midx = 0;
-	 int gidx = 0;
-	 
-	 if (session.getAttribute("midx") != null) {
-	 	midx = (int)session.getAttribute("midx");
-	 }else if(session.getAttribute("gidx") !=null ){
-		 gidx= (int)session.getAttribute("gidx");
-	 }
 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 %>  
 
 <% ArrayList<EvMemberVo> alist = (ArrayList<EvMemberVo>)request.getAttribute("alist"); %>

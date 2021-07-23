@@ -70,14 +70,11 @@ public class CostController extends HttpServlet {
 
          System.out.println("EventMan_Cost_Submit_Action 실행");
          
-<<<<<<< HEAD
+
         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
         // String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
-=======
-        String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\";
-        //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
+
          
          String savedPath = "Advice_img";
          

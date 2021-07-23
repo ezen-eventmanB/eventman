@@ -254,13 +254,10 @@ public class BoardController extends HttpServlet {
          //업로드 파일 경로      
          //나중에 웹서버로 공통된 경로로 올리게 된다.
          //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-<<<<<<< HEAD
+
          //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
          String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
-=======
-         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-         //저장 폴더
+
          String savedPath = "Advice_img";
          
          //저장된 총 경로
@@ -485,9 +482,8 @@ public class BoardController extends HttpServlet {
             
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
-<<<<<<< HEAD
 
-         
+         //관리자  게시판 전부 보기
       }else if(str2.equals("EventMan_Board_selectAll.do")) {
       
 	         System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
@@ -512,40 +508,35 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    
          rd.forward(request, response);
       
-      
-      }
-      
-=======
-    
          
- /*	관리자 상담완료 처리하기*/			
-	}else if(str2.equals("EventMan_replyFinsh.do")) {
- 		
-			System.out.println("게시판 상담완료처리하기");
-			
-			int bidx = Integer.parseInt(request.getParameter("bidx"));
-			
-			BoardServiceImpl bavo = new BoardServiceImpl();
-			
-			int value = bavo.finshboardreply(bidx);
-			
-			
-		if(value > 0) {
-			System.out.println("견적신청완료 처리 성공");
-			response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllBoardList.do");
-		}else {
-			System.out.println("처리 실패");
+	 /*	관리자 상담완료 처리하기*/			
+		}else if(str2.equals("EventMan_replyFinsh.do")) {
+	 		
+				System.out.println("게시판 상담완료처리하기");
+				
+				int bidx = Integer.parseInt(request.getParameter("bidx"));
+				
+				BoardServiceImpl bavo = new BoardServiceImpl();
+				
+				int value = bavo.finshboardreply(bidx);
+				
+				
+			if(value > 0) {
+				System.out.println("견적신청완료 처리 성공");
+				response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllBoardList.do");
+			}else {
+				System.out.println("처리 실패");
+			}
 		}
-		}
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-   }
-   
+			
+	   }
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      doGet(request, response);
-      
-      
-   }
+
+	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		      doGet(request, response);
+		      
+		      
+		   }
    
    
    private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{

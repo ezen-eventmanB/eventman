@@ -277,73 +277,36 @@ public class MemberServiceImpl {
       
       return value;
    }
-
-<<<<<<< HEAD
-   
-   //비밀번호 찾기,확인
-	public EvMemberVo findpw(String id , String email) {
-=======
-public String findpw(String id , String email, String phone) {
-	
-	String pwd="";
-	
-	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mphn=? and mdelyn='N'";
-	
-	try {
-		pstmt= conn.prepareStatement(sql);
-		pstmt.setString(1, id);
-		pstmt.setString(2, email);
-		pstmt.setString(3, phone);
-		ResultSet rs =  pstmt.executeQuery();
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-		
-<<<<<<< HEAD
-		EvMemberVo mvo = new EvMemberVo();
-		
-		String sql = "select * from EVE_MEMBER where mid=? and memail=? and mdelyn='N'";
-		
-=======
-		if(rs.next()) {
-			pwd = rs.getString("mpwd");
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}finally {
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-		try {
-			pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, email);
-			ResultSet rs =  pstmt.executeQuery();
-			
-			if(rs.next()) {
-				mvo.setmPwd(rs.getString("mpwd"));
-				mvo.setmEmail(rs.getString("memail"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-		
-		
-		return mvo;
-	}
-<<<<<<< HEAD
-=======
-	
-	
-	return pwd;
-}
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
-
+   //현호 비밀번호 찾기
+   public String findpw(String id , String email, String phone) {
+	   
+	   String pwd="";
+	   
+	   String sql = "select * from EVE_MEMBER where mid=? and memail=? and mphn=? and mdelyn='N'";
+	   
+	   try {
+	      pstmt= conn.prepareStatement(sql);
+	      pstmt.setString(1, id);
+	      pstmt.setString(2, email);
+	      pstmt.setString(3, phone);
+	      ResultSet rs =  pstmt.executeQuery();
+	      
+	      if(rs.next()) {
+	         pwd = rs.getString("mpwd");
+	      }
+	   } catch (SQLException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	   }finally {
+	      try {
+	         pstmt.close();
+	         conn.close();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      
+	   }
+	return sql;
+   }
 }
