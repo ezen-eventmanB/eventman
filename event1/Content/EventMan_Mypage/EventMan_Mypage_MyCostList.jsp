@@ -10,6 +10,7 @@
  
 	 int midx = 0;
 	 int gidx = 0;
+	 int cidx = 0;
 	 
 	 if (session.getAttribute("midx") != null) {
 	 	midx = (int)session.getAttribute("midx");
@@ -143,55 +144,27 @@
       <!-- 현제 페이지 이름 -->
       My page
    </div>
+      
+
 <div class="container">
-   <div class="row justify-content-md-center">
+   <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
          <img src="../filefolder/mypagebanner.png " alt="마이페이지이미지" class="w-100 mt-3">
       </div>
-<<<<<<< HEAD
-   </div>
-   
-=======
    </dvi>
 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
          <thead>
-         	<tr>
-	            <th>순번</th>
-	            <th colspan="2">제목</th>
-	            <th></th>
-	            <th>작성일</th>
-	            <th>작성자</th>
-	            <th>조회수</th>
-            </tr>  
+            <th>순번</th>
+            <th colspan="2">제목</th>
+            <th></th>
+            <th>작성일</th>
+            <th>작성자</th>
+            <th>조회수</th>  
          </thead>
         <tbody>
-<<<<<<< HEAD
-				
-		         <% for(EvCostVo covo: alistcost){ %>
-		
-		            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
-		               <td><%=covo.getCidx()%></td>
-		               <td colspan="2"><%=covo.getCostName()%>
-			               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
-			               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
-			               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
-			               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=covo.getCcondition()%></button></span> 
-			               	<%}; %>  	
-		               	</td>
-		               <td></td>
-		               <td><%=covo.getSubWritedate()%></td>
-		               <td><%=covo.getCName()%></td>
-		               <td><%=covo.getCcount()%></td>
-	            </tr>
-	                <%
-					}
-					%>
-					
-=======
 
          <% for(EvCostVo covo: alistcost){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
@@ -211,7 +184,6 @@
             </tr>
          <%}; %>
 
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
          </tbody> 
       </table>
    </div>

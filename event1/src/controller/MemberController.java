@@ -391,28 +391,28 @@ public class MemberController extends HttpServlet {
 			rd.forward(request, response);
 
 
-		   /* 비밀번호 찾기 ACTION */
-	    }else if(str2.equals("eventman_member_find_pw_action.do")) {
-	        
-	        System.out.println("if문 비밀번호 찾기");
-	     
-	        String id = request.getParameter("id");
-	        String email = request.getParameter("email");
-	        String phone = request.getParameter("phone");
-	        
-	        String pwd = "";
-	       //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
-	        MemberServiceImpl mvo = new MemberServiceImpl();
-	        pwd = mvo.findpw(id,email,phone);
-	        
-	       if (pwd == "") {
-	         response.getWriter().write("회원정보가 일치하지 않습니다.");
-	      } else {
-	         response.getWriter().write("회원님의 비밀번호는 " + pwd + " 입니다.");
-	      }
-	       
-	    }
-	          
+			/* 비밀번호 찾기 ACTION */
+		}else if(str2.equals("eventman_member_find_pw_action.do")) {
+			  
+			  	System.out.println("if문 비밀번호 찾기");
+			  
+			   	String id = request.getParameter("id");
+		        String email = request.getParameter("email");
+		        String phone = request.getParameter("phone");
+		        
+		        String pwd = "";
+             //먼저 아이디로 회원정보를 받아오고 가져온 데이터에서 email값을 비교하여 존재하지 않으면 인증메일 보내지 못함
+		        MemberServiceImpl mvo = new MemberServiceImpl();
+		        pwd = mvo.findpw(id,email,phone);
+		        
+		    	if (pwd == "") {
+					response.getWriter().write("회원정보가 일치하지 않습니다.");
+				} else {
+					response.getWriter().write("회원님의 비밀번호는 " + pwd + " 입니다.");
+				}
+		    	
+          }
+          
 
 
 	}

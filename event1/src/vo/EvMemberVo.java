@@ -55,12 +55,10 @@ public class EvMemberVo {
 		this.mType = mType;
 	}
 	public String getmDate() {
-		return mDate;	
+		return mDate;
 	}
-	
 	public void setmDate(String mDate) {
 		this.mDate = mDate;
-		
 	}
 	public String getmDelYn() {
 		return mDelYn;

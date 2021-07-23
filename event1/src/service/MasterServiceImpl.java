@@ -109,7 +109,7 @@ public class MasterServiceImpl {
       ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
       
       String sql="select * from EVE_MEMBER order by midx desc";
-
+      
       try {
          pstmt = conn.prepareStatement(sql);
          ResultSet rs  = pstmt.executeQuery();
@@ -584,7 +584,6 @@ public class MasterServiceImpl {
 						mvo.setmName(rs.getString("mName"));
 						mvo.setmPhn(rs.getString("mPhn"));
 						mvo.setmEmail(rs.getString("mEmail"));
-						mvo.setmDate(rs.getString("mDate"));
 						mvo.setmDelYn(rs.getString("mDelYn"));
 						mvo.setmType(rs.getString("mType"));
 						
@@ -594,7 +593,6 @@ public class MasterServiceImpl {
 						System.out.println("mName 테스트입니다 "+rs.getString("mName"));
 						System.out.println("mPhn 테스트입니다 "+rs.getString("mPhn"));
 						System.out.println("mEmail 테스트입니다 "+rs.getString("mEmail"));
-						System.out.println("mDate 테스트입니다 "+rs.getString("mDate"));
 						System.out.println("mDelYn 테스트입니다 "+rs.getString("mDelYn"));
 						System.out.println("테스트입니다 "+rs.getString("mType"));
 						

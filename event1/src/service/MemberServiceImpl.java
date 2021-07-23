@@ -25,13 +25,13 @@ public class MemberServiceImpl {
     */
 
    /*
-    * 회원가입 정보 넘겨주기 Dao, 수정완료
+    * 회원가입 정보 넘겨주기 Dao
     */
    public int memberInsert(String mId, String mPwd, String mName, String mEmail, String mPhn, String mType) {
       int value = 0;
 
       try {
-         String sql = "insert into EVE_MEMBER(MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(?,?,?,?,?,?,now())";
+         String sql = "insert into EVE_MEMBER(MIDX,MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(midx_seq.nextval,?,?,?,?,?,?,sysdate)";
          
          pstmt = conn.prepareStatement(sql);
 
@@ -61,7 +61,7 @@ public class MemberServiceImpl {
 
    
    /*
-    * 로그인 확인 화면, 확인 완료
+    * 로그인 확인 화면
     */
    public String memberLoginCheck(String memberId, String memberPwd) {
 
@@ -115,7 +115,7 @@ public class MemberServiceImpl {
       return user;
    }
    /*
-    *아이디 중복 확인 ,확인
+    *아이디 중복 확인
     */
    public String idCheck(String mid) {
 
@@ -154,7 +154,7 @@ public class MemberServiceImpl {
    
    /*
     * 
-    * 아이디 찾기 버튼 클릭시 메소드 (황현호),확인
+    * 아이디 찾기 버튼 클릭시 메소드 (황현호)
     */
    public String findId(String name, String phone, String email) {
 
@@ -197,10 +197,7 @@ public class MemberServiceImpl {
       return id;
    }
 
-   /*
-    * 
-    * 확인
-    * */
+   
    public EvMemberVo selectMember(int midx) {
       EvMemberVo mbvo = null;
       ResultSet rs = null;
@@ -239,7 +236,7 @@ public class MemberServiceImpl {
       return mbvo;
    }
    
-   //종빈 멤버 정보 수정,확인
+   //종빈 멤버 정보 수정
    public int memberModify(String midx, String mPwd, String mPhn, String mEmail) {
       int value= 0;
                //비밀번호 , 연락처 , 이메일
@@ -258,9 +255,7 @@ public class MemberServiceImpl {
       
       return value;
    }      
-   
-   
-   //종빈 멤버 회원 탈퇴하기,확인
+   //종빈 멤버 회원 탈퇴하기
    public int memberDelete(int midx, String mPwd) {
       int value=0;
       String sql="update Eve_member set mdelYn='Y' where midx= ? and mPwd= ?";
@@ -277,36 +272,39 @@ public class MemberServiceImpl {
       
       return value;
    }
-   //현호 비밀번호 찾기
-   public String findpw(String id , String email, String phone) {
-	   
-	   String pwd="";
-	   
-	   String sql = "select * from EVE_MEMBER where mid=? and memail=? and mphn=? and mdelyn='N'";
-	   
-	   try {
-	      pstmt= conn.prepareStatement(sql);
-	      pstmt.setString(1, id);
-	      pstmt.setString(2, email);
-	      pstmt.setString(3, phone);
-	      ResultSet rs =  pstmt.executeQuery();
-	      
-	      if(rs.next()) {
-	         pwd = rs.getString("mpwd");
-	      }
-	   } catch (SQLException e) {
-	      // TODO Auto-generated catch block
-	      e.printStackTrace();
-	   }finally {
-	      try {
-	         pstmt.close();
-	         conn.close();
-	      } catch (SQLException e) {
-	         // TODO Auto-generated catch block
-	         e.printStackTrace();
-	      }
-	      
-	   }
-	return sql;
-   }
+
+public String findpw(String id , String email, String phone) {
+	
+	String pwd="";
+	
+	String sql = "select * from EVE_MEMBER where mid=? and memail=? and mphn=? and mdelyn='N'";
+	
+	try {
+		pstmt= conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		pstmt.setString(2, email);
+		pstmt.setString(3, phone);
+		ResultSet rs =  pstmt.executeQuery();
+		
+		if(rs.next()) {
+			pwd = rs.getString("mpwd");
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		try {
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	return pwd;
+}
+
 }

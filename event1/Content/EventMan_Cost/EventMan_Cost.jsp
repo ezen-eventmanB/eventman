@@ -617,6 +617,7 @@ if(member_id == null){
    	
       <div class="d-grid gap-2">
          <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();" tabindex=36>제출하기</button>
+         <button type="button" class="btn btn-outline-secondary mt-1" onclick="history.back()">뒤로가기</button>
       </div>
    </div>
 </form>

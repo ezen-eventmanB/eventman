@@ -261,9 +261,8 @@ public class MasterController extends HttpServlet {
          int value= 0;
 			// 업로드 파일 경로
 			// 나중에 웹서버로 공통된 경로로 올리게 된다.
-			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
 			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
-			String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
 
 
 	      // 저장 폴더
@@ -357,7 +356,7 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
          rd.forward(request, response);
    
- /*견적신청함 ajax 황현호*/
+      /*견적신청함 ajax 황현호*/
       }else if(str2.equals("EventMan_Master_ajax_costlist.do")) {
          
          System.out.println("견적신청 에이젝스 실행");
@@ -379,7 +378,7 @@ public class MasterController extends HttpServlet {
          rd.forward(request, response);
          
          
-/*상담신청함 ajax 박종빈*/
+      /*상담신청함 ajax 박종빈*/
       }else if(str2.equals("EventMan_Master_ajax_boardlist.do")) {
          
          System.out.println("상담 신청 ajax 실행");
@@ -418,9 +417,8 @@ public class MasterController extends HttpServlet {
          
          System.out.println("회사 소개 이미지 변경하자~");
          
-         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
          //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
-         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
 
          String savedPath = "filefolder";
          

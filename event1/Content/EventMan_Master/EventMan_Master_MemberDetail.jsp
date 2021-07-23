@@ -185,7 +185,7 @@
 					<input class="form-control mb-3" type="text" value="<%=mvo3.getmId() %>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">비밀번호</div>
-					<input class="form-control mb-3" type="text" aria-label="default input example" name="mPwd" value="<%=mvo3.getmPwd()%>" aria-label="readonly input example" readonly>
+					<input class="form-control mb-3" type="password" aria-label="default input example" name="mPwd" value="<%=mvo3.getmPwd()%>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">이름</div>
 					<input class="form-control mb-3" type="text" value="<%=mvo3.getmName() %>" aria-label="readonly input example" readonly>
@@ -195,7 +195,8 @@
 
 					<div class="fs-5 fw-bold">이메일</div>
 					<input class="form-control mb-3" type="text" placeholder="ex)mail@mail.com" name="mEmail"aria-label="default input example" value="<%=mvo3.getmEmail()%>" aria-label="readonly input example" readonly>
-
+					
+					
 					
 					<div class="fs-5 fw-bold">회원 상태</div>
 					<select class="form-select" aria-label="Default select example" name="mDelYn" id="mDelYn">

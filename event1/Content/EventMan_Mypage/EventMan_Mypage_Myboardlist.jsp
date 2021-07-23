@@ -17,6 +17,7 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }    
+
    ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");   
    
    %>    
@@ -40,6 +41,7 @@
 <title>EVENT MAN!</title>
 
 <script>
+
 </script>
 
 </head>

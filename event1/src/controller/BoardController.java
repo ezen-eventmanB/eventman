@@ -67,7 +67,7 @@ public class BoardController extends HttpServlet {
       System.out.println("");
       
 
-//게시판 보기 및 게시글 뿌려주기
+         //게시판 보기 및 게시글 뿌려주기
       if(str2.equals("EventMan_Board.do")) {   
                  
          System.out.println("게시판 리스트 뿌려주기");
@@ -82,7 +82,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
       
          
-//게시판 공지사항 상세보기
+         //게시판 공지사항 상세보기
       }else if(str2.equals("EventMan_Board_Detail.do")) {
          
          System.out.println("EventMan_Board_Detail문");
@@ -104,7 +104,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);         
          
          
-/* 게시글 수정하기로 이동   */         
+         /* 게시글 수정하기로 이동   */         
       }else if(str2.equals("EventMan_Board_Modify.do")) {
          
          System.out.println("EventMan_Mypage_BoardModify.do if문");
@@ -120,7 +120,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
          
          
-/*   게시글 수정하기 액션   */         
+         /*   게시글 수정하기 액션   */         
       }else if(str2.equals("EventMan_Board_Modify_Action.do")) {
          
          System.out.println("EventMan_Board_Modify_Action.do if문");
@@ -146,7 +146,7 @@ public class BoardController extends HttpServlet {
             System.out.println("게시글 수정후 상세화면 페이지이동 실패");
          }
          
-/* 공지 삭제 액션 */
+        /* 공지 삭제 액션 */
        }else if(str2.equals("EventMan_Board_BoardDelete.do")) {
                
                int value=0;
@@ -162,22 +162,20 @@ public class BoardController extends HttpServlet {
                response.sendRedirect(request.getContextPath()+"/EventMan_Board/EventMan_Board.do?gidx="+gidx);
                
                
-//게시판 글 작성 페이지 이동
+         //게시판 글 작성 페이지 이동
       }else if(str2.equals("EventMan_BoardWrite.do")){
          RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Board/EventMan_BoardWrite.jsp");    
          rd.forward(request, response);
          
          
-/*게시판 관리자 글 작성 ACTION*/
+         /*게시판 관리자 글 작성 ACTION*/
       }else if(str2.equals("EventMan_MasterWriteAction.do")) {
          
     	  System.out.println(" EventMan_MasterWriteAction 실행");
          
          //업로드 파일 경로      
          //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
-         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
-         
+         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
          //저장 폴더
          String savedPath = "Advice_img";
          
@@ -253,11 +251,9 @@ public class BoardController extends HttpServlet {
          
          //업로드 파일 경로      
          //나중에 웹서버로 공통된 경로로 올리게 된다.
-         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-
+         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
          //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
-         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
-
+         //저장 폴더
          String savedPath = "Advice_img";
          
          //저장된 총 경로
@@ -466,77 +462,32 @@ public class BoardController extends HttpServlet {
          //관리자 상담신청 상세보기
       }else if(str2.equals("EventMan_Master_BoardDetail.do")){
          
-	        System.out.println("상담 상세보기");
-	         
-	        int bidx = Integer.parseInt(request.getParameter("bidx"));
-	            
-	        BoardServiceImpl boarddao = new BoardServiceImpl();
-	            
-	        boarddao.hitCount(bidx);
+         System.out.println("상담 상세보기");
+         
+         int bidx = Integer.parseInt(request.getParameter("bidx"));
+            
+         BoardServiceImpl boarddao = new BoardServiceImpl();
+            
+         boarddao.hitCount(bidx);
             
             EvBoardAskVo bavo = new EvBoardAskVo();
             
             bavo = boarddao.boardlistselectone(bidx);
             
-            request.setAttribute("bavo", bavo);                                    
+            request.setAttribute("bavo", bavo);
             
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
 
-         //관리자  게시판 전부 보기
-      }else if(str2.equals("EventMan_Board_selectAll.do")) {
+      }
+   }
+   
+
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      doGet(request, response);
       
-	         System.out.println("--if   => ajax EventMan_Review_selectAll.do     ");
-	         
-	      String page = request.getParameter("page");
-	      
-	      int page2=0;  
-	      if(page == null) { 
-	         page = "1";               
-	      }                                       
-	      page2 = Integer.parseInt(page);
-	                                             
-	      SearchCriteria scri = new SearchCriteria();
-	      scri.setPage(page2);   
-               
-  		BoardServiceImpl boarddao = new BoardServiceImpl();
-        //<EvReviewVo> reviewList = reviewDao.reviewSelectAll();
-		ArrayList<EvBoardAskVo> boardList = boarddao.boardSelectAll(page2);
-
-		request.setAttribute("boardList", boardList);
- 
-         RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Ajax.jsp");    
-         rd.forward(request, response);
       
-         
-	 /*	관리자 상담완료 처리하기*/			
-		}else if(str2.equals("EventMan_replyFinsh.do")) {
-	 		
-				System.out.println("게시판 상담완료처리하기");
-				
-				int bidx = Integer.parseInt(request.getParameter("bidx"));
-				
-				BoardServiceImpl bavo = new BoardServiceImpl();
-				
-				int value = bavo.finshboardreply(bidx);
-				
-				
-			if(value > 0) {
-				System.out.println("견적신청완료 처리 성공");
-				response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllBoardList.do");
-			}else {
-				System.out.println("처리 실패");
-			}
-		}
-			
-	   }
-
-
-	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		      doGet(request, response);
-		      
-		      
-		   }
+   }
    
    
    private static String makeThumbnail(String uploadPath,String path,String fileName) throws Exception{
