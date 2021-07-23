@@ -484,6 +484,7 @@ public class BoardServiceImpl {
       return value;
    }
 
+   
    public String companyload() {
       
       String img = "";
@@ -557,35 +558,36 @@ public class BoardServiceImpl {
 		}
 		return boardList;
 	}
-    /*마이페이지 갈때 상담신청 모든 부분 카운트*/
-		public int allSelectCost() {
-		
-		int allcount=0;
-		
-		String sql = "select count(*) as cnt from EVE_BOARD where bdelyn='N'";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
+
+	    /*마이페이지 갈때 상담신청 모든 부분 카운트*/
+			public int allSelectCost() {
 			
-			if(rs.next()) {
-				allcount = (rs.getInt("bnt"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
+			int allcount=0;
+			
+			String sql = "select count(*) as cnt from EVE_BOARD where bdelyn='N'";
+			
 			try {
-				pstmt.close();
-				conn.close();
+				pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					allcount = (rs.getInt("bnt"));
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
+			
+			
+			return allcount;
 		}
-		
-		
-		return allcount;
-	}
-	      
+		      
 	      /*   상담 신청 삭제하기      */   
 	      public int myPageBoardDelete(int bidx) {
 	    	  
@@ -637,8 +639,45 @@ public class BoardServiceImpl {
 		System.out.println("리플 된 항목수는 : "+value);
 		return value;
 	}
-	
-   
+/* 보드 중간 카테고리 선택 ajax*/
+	public ArrayList<EvBoardAskVo> ajaxBoardList(String cata) {
+		
+		String cataType = cata;
+		
+		if(cata.equals("전체")) {
+			cataType="";
+		}
+		
+		ArrayList<EvBoardAskVo> alistboard = new ArrayList<EvBoardAskVo>();
+
+		String sql = "select * from eve_board where bcata like ? and bdelyn='K' order by bidx desc;";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+cataType+"%");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvBoardAskVo evo = new EvBoardAskVo();
+				evo.setGidx(rs.getInt("gidx"));
+				evo.setBidx(rs.getInt("bidx"));
+				evo.setBcata(rs.getString("bcata"));
+				evo.setBtitle(rs.getString("btitle"));
+				evo.setBwriteday(rs.getString("BWRITEDAY"));
+				evo.setgName(rs.getString("gname"));
+				evo.setBcount(rs.getString("bcount"));
+				alistboard.add(evo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return alistboard;
+	}
+
 	/* 상담 완료 처리하기	*/		
 	public int finshreply(int bidx) {
 		int value = 0;

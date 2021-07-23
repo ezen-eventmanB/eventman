@@ -77,7 +77,6 @@ $(document).ready(function(e){
 		}else if(arrlength > 1){
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
-				alert(e);
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
