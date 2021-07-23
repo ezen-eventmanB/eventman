@@ -32,30 +32,58 @@
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 
-function emailcheckFn(){
+function findpwFn(){
 	
  	var id = $("#id").val();
 	var email = $("#email").val();
-	var alldata = {"id":id,"email":email};
+	var phone = $("#phone").val();
+	var alldata = {"id":id,"email":email,"phone":phone};
 
-	console.log(id);
-	console.log(email);
-	console.log(alldata);
-	
-	$.ajax({
-		url:"<%=request.getContextPath()%>/EventMan_Member/eventman_member_find_pw_action.do",
-		type:"post",
-		data:alldata,
-		datatype:"data",
-		success:function(data){
-			alert(data);
-		}	
-	});
+    var emailpattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,4}$/; //이메일 적합
+    var phonepattern = /^01([0|1|6|7|8|9]?)-([0-9]{3,4})-([0-9]{4})$/;
+    
+    if(id.trim() ==''){
+    	$("#textbox").html("아이디을 입력해주세요.");
+		$("#modal1").modal("show");	
+    	return;
+	}else if(email.trim()==''){
+    	$("#textbox").html("이메일을 입력해주세요.");
+		$("#modal1").modal("show");	
+    	return;
+	}else if(!emailpattern.test(email)){
+		$("#textbox").html("이메일를 정확하게 입력해주세요. ex)email@email.com");
+		$("#modal1").modal("show");	
+	}else if(phone.trim()==''){
+    	$("#textbox").html("전화번호를 입력해주세요.");
+		$("#modal1").modal("show");	
+    	return;
+	}else if(!phonepattern.test(phone)){
+		$("#textbox").html("전화번호를 정확하게 입력해주세요. ex)010-0000-0000");
+		$("#modal1").modal("show");
+		return;
 
-	
-	
+	}else{	
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Member/eventman_member_find_pw_action.do",
+			type:"post",
+			data:alldata,
+			success:function(data){
+				var str = data.trim();
+				if(data == "회원정보가 일치하지 않습니다."){
+					$("#findidspan2").html(str);
+					$("#modal2").modal("show");
+				}else{
+					$("#findidspan3").html(str);
+					$("#modal3").modal("show");
+				};
+			}	
+		});
+	}	
 };
 
+	function loginFn(){
+		location.href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do";
+	};
 </script>
 	
 <style>
@@ -173,8 +201,13 @@ function emailcheckFn(){
 						<span class="input-group-text label1" id="inputGroup-sizing-default">이메일</span>
 						<input type="text" class="form-control" name="email" id="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2>
 					</div>
+					
+					<div class="input-group mb-3">
+						<span class="input-group-text label1" id="inputGroup-sizing-default">핸드폰번호</span>
+						<input type="text" class="form-control" name="phone" id="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=2>
+					</div>
 		
-						<button type="button" class="btn btn-outline-secondary btn-sm w-100 mb-4" onclick="emailcheckFn()" tabindex=3>이메일 인증</button>
+						<button type="button" class="btn btn-outline-secondary btn-sm w-100 mb-4" onclick="findpwFn()" tabindex=3>비밀번호찾기</button>
 	
 				</div>
 			</form>
@@ -188,24 +221,61 @@ function emailcheckFn(){
 		
 
 
+<!-- 성공 모달 -->
+<div class="modal fade" id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="findidspan3"> </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="loginFn()">로그인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- 모달 -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">로그인 실패!</h5>
-	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	      </div>
-	      <div class="modal-body">
-	        로그인 확인문 결과 실패시 나옴
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
+<!-- 실패 모달 -->
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="findidspan2"> </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="falseFn()">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 이름 or 전화번호 입력 요구 모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+         <span id="textbox1"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

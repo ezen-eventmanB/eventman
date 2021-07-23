@@ -357,7 +357,7 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
          rd.forward(request, response);
    
-      /*견적신청함 ajax 황현호*/
+ /*견적신청함 ajax 황현호*/
       }else if(str2.equals("EventMan_Master_ajax_costlist.do")) {
          
          System.out.println("견적신청 에이젝스 실행");
@@ -379,7 +379,7 @@ public class MasterController extends HttpServlet {
          rd.forward(request, response);
          
          
-      /*상담신청함 ajax 박종빈*/
+/*상담신청함 ajax 박종빈*/
       }else if(str2.equals("EventMan_Master_ajax_boardlist.do")) {
          
          System.out.println("상담 신청 ajax 실행");

@@ -167,15 +167,26 @@
 		<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>"> --%>
 			<div><%=bavo.getBcata()%></div>
 			<div class="fs-1 fw-bold mb-3"><%=bavo.getBtitle() %></div>
-			<div class="mb-5 pb-2 border-bottom border-3 ">
-				<span class="fw-bold me-2">등록일</span>
-				<span class=" me-3"><%=bavo.getBWrieday2()%></span>
-				<span class="fw-bold me-2">작성자</span>
-				<span class=" me-3"><%=bavo.getgName() %></span>
-				<span class="fw-bold me-2">조회수</span>
-				<span class=" me-3"><%=bavo.getBcount()%></span>
+			<div class="mb-5 pb-2 border-bottom border-3 ">		
+				<div class="row">
+				    <div class="col-sm">
+				    	<span class="fw-bold me-2">등록일</span>
+						<span class=" me-3"><%=bavo.getBWrieday2()%></span>
+					</div>
+				    <div class="col-sm">
+					    <span class="fw-bold me-2">작성자</span>
+						<span class=" me-3"><%=bavo.getgName() %></span>
+					</div>
+					<div class="col-sm">
+						<span class="fw-bold me-2">조회수</span>
+						<span class=" me-3"><%=bavo.getBcount()%></span>
+					</div>
+				</div>				
 			</div>
-		<div>
+			
+				
+				
+
 		
 			<div style="white-space: pre-line;"><%=bavo.getBcontents() %></div>
 			<div class="text-center">
@@ -183,7 +194,7 @@
 					<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=bavo.getBfile() %>">
 				<%}; %>
 			</div>
-		</div>
+
 		<div class="text-end mt-5">
 		
 				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>

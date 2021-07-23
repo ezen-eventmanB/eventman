@@ -61,7 +61,7 @@ function submitFn(){
 
 var idx = 0;
 
-function costdeletFn(a,b){
+function boarddeletFn(a,b){
 	idx = a; 
   	$("#textbox").html(b+" 글을 삭제 하시겠습니까?");
 	$("#modal").modal("show"); 
@@ -69,19 +69,19 @@ function costdeletFn(a,b){
 
 function deletFn(){
 
-	location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_boarddelete.do?idx="+idx;
+	location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_boarddelete.do?idx="+idx;
 
 };
 
 function replyfinshFN(a, b){
 	idx = a;
-  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.?");
+  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.");
 	$("#modal1").modal("show"); 
 }
 
 
 function finsh(){
-	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_replyFinsh.do?idx="+idx;
+	location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_replyFinsh.do?idx="+idx;
 };
 	
 	
@@ -93,77 +93,81 @@ function finsh(){
 
 <!-- 상단 네비 부분 -->
 <div class="container">
-	<nav class="navbar navbar-expand-xxl navbar-light " id="topnav">
-	
-		<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
-	     	<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
-	    </a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      	<span class="navbar-toggler-icon"></span>
-	   	</button>
-	    <div class="collapse navbar-collapse w-50" id="navbarNav">
-	    
-      		<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
-        		<li class="nav-item px-5">
-          			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
-       		</li>
-       		<li class="nav-item px-5">
-         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
-       		</li>
-      			<li class="nav-item px-5">
-         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
-      			</li>
-      			<li class="nav-item px-5">
-         			<a class="nav-link fw-bolder text-reset" href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
-      			</li>
-      		</ul>
-      	
+	<nav class="navbar navbar-expand-xxl navbar-light" id="topnav">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<%=request.getContextPath()%>/EventMan_Main/EventMan_Main.do">
+				<img src="../rogo1.png" alt="" class="d-inline-block align-text-top" id="toprogoimg">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>	
 
-		<!--로그인 전 상단 화면  -->	
+			<div class="collapse navbar-collapse w-50" id="navbarNav">
+	
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navbar-nav">
+					<li class="nav-item px-5 mx-auto"><a class="nav-link fw-bolder text-dark fs-5" href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do">견적신청</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a class="nav-link fw-bolder text-dark fs-5" href="<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do">행사리뷰</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a 
+						class="nav-link fw-bolder text-dark fs-5"
+						href="<%=request.getContextPath()%>/EventMan_Company/EventMan_Company_Main.do">회사소개</a>
+					</li>
+					<li class="nav-item px-5 mx-auto"><a
+						class="nav-link fw-bolder text-dark  fs-5"
+						href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do">게시판</a>
+					</li>
+				</ul>
+	
+	
+				<!--로그인 전 상단 화면  -->
 				<%
-						if(midx == 0 && gidx ==0){
-						%>
-						
-		       		<ul class="navbar-nav" id="Memberbox" >	
-		       			<li class="nav-item">
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
-		       			</li>
-		       			<li class="nav-item"> 
-		          			<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
-		       			</li>																	
-		      		</ul>
-		      		
-		      	<!--로그인 후 상단 화면  -->
-						<%
-				      	}else if(midx > 0){
-						%>	
-			       	<ul class="navbar-nav" id="Memberbox" >	
-			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My page</a>
-			       		</li>
-			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정 설정</a>
-			       		</li>
-			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-			       		</li>																			
-			      	</ul>
-				   		<%
-				   		}else if(gidx > 0){
-				   		%>
-				   		<ul class="navbar-nav" id="Memberbox" >	
-			       		<li class="nav-item">
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do?midx=<%=gidx%>">Master page</a>
-			       		</li>
-			       		<li class="nav-item"> 
-			          		<a class="nav-link fw-bold" href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
-			       		</li>																			
-			      	</ul>
-				   		<%
-				   		}
-				   		%>
-	    	</div>	
-		</nav>
+				if (midx == 0 && gidx == 0) {
+				%>
+	
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Join.do">회원가입</a>
+					</li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_Login.do">로그인</a>
+					</li>
+				</ul>
+	
+				<!--맴버 로그인 후 상단 화면  -->
+				<%
+				} else if (midx > 0) {
+				%>
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Main.do?midx=<%=midx%>">My
+							page</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Mypage/EventMan_Mypage_Modify.do">계정
+							설정</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+					</li>
+				</ul>
+				
+				<!-- 마스터 로그인 후 상단 화면 -->
+				<%
+				} else if (gidx > 0) {
+				%>
+				<ul class="navbar-nav" id="Memberbox">
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Mainpage.do">Master
+							page</a></li>
+					<li class="nav-item mx-auto"><a class="nav-link fw-bold"
+						href="<%=request.getContextPath()%>/EventMan_Member/EventMan_Member_LogoutAction.do">로그아웃</a>
+					</li>
+				</ul>
+				<%
+				}
+				%>
+			</div>
+		</div>
+	</nav>
 </div>
 
 <div class="container">
@@ -222,17 +226,29 @@ function finsh(){
 					<% for(EvBoardAskVo ebvo : boardlist){ %>
 						<tr>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
+							
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
 							<td></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%>
+								<%if (ebvo.getBcondition() != null){%>
+								
+									<%if(ebvo.getBcondition().equals("상담등록완료")){ %>
+					               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+					               	<%}else if(ebvo.getBcondition().equals("상담중") || ebvo.getBcondition().equals("상담완료")){ %>
+					               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+					               	<%}; %>
+				               	
+								<%}; %>
+							</td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
 							<td class="text-center">
 								<div class="btn-group " role="group" aria-label="Basic outlined example">
-									<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="replyfinshFN(<%=ebvo.getBidx()%>, '<%=ebvo.getBtitle()%>')">완료처리</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boarddeletFn(<%=ebvo.getBidx()%>, '<%=ebvo.getBtitle()%>')">삭제</button>
 								</div>
+							</td>
 							</td>
 						</tr>
 					 <%}; %>

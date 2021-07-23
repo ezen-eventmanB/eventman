@@ -18,7 +18,7 @@
  }
    
 	EvCostVo covo = (EvCostVo)request.getAttribute("covo");
-   
+  
    %>    
     
     
@@ -44,7 +44,6 @@
 function ModalcostDeletFn(){
 	$("#textbox").html("&#34;<%=covo.getCostName()%>&#34; 글을 삭제합니다.");
 	$("#modal").modal("show");
-
 };
 
 function costDeletFn() {
@@ -410,7 +409,9 @@ function listmoveFn(){
 <!-- 참고자료  -->
 	<div class="container">
 		<div class="fs-5 fw-bold">참고 자료</div>
-	 	<%if(covo.getCostFile() != null){%>
+	 	<%if(covo.getCostFile().equals("")){%>
+			<div>첨부파일이 없습니다.</div>
+	 	<%}else if(!covo.getCostFile().equals("")){%>
 	 		<img class="mt-3 mx-auto" style="max-width:90%;" src="../Advice_img/<%=covo.getCostFile() %>">
 	 	<%}; %>
    <div class="form-group">

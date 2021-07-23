@@ -483,8 +483,8 @@ if(member_id == null){
       <div class="fs-4 fw-bold mt-5">행사 지역</div>
     
 		<div class="input-group mt-3">
-			<input type="text" class="form-control" id="sample5_address"  placeholder="주소" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  tabindex=28>
-			<input class="btn btn-outline-secondary" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+			<input type="text" class="form-control" id="sample5_address"  tabindex=28 placeholder="주소" name="cLoca" class="form-control mt-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  tabindex=28>
+			<input class="btn btn-outline-secondary" type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" tabindex=29><br>
 		</div>		
 	</div>
 		
@@ -548,7 +548,7 @@ if(member_id == null){
       <div class="fs-4 fw-bold mt-5">행사 구성</div>
       <div class="row">
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon" tabindex=31>
+            <select class="form-select mt-2" aria-label="Default select example" name="cTarget" class="catanon" tabindex=30>
                <option selected value="catamenu" name="joinTarget" disabled>참여대상</option>
                <option value="전체">전체</option>
                <option value="어린이">어린이</option>
@@ -564,7 +564,7 @@ if(member_id == null){
          </div>
          
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon" tabindex=32>
+            <select class="form-select mt-2" aria-label="Default select example" name="cMethod" class="catanon" tabindex=31>
                <option selected value="catamenu" disabled>방식</option>
                <option value="오프라인">오프라인</option>
                <option value="온라인">온라인</option>
@@ -575,7 +575,7 @@ if(member_id == null){
       </div>
       <div class="row">
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon" tabindex=33>
+            <select class="form-select mt-2" aria-label="Default select example" name="cPrice" class="catanon" tabindex=32>
                <option selected value="catamenu" disabled>예산</option>
                <option value="1000만원 미만">1,000만원 미만</option>
                <option value="1000~5000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
@@ -586,7 +586,7 @@ if(member_id == null){
             </select>
          </div>
          <div class="col">
-            <select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon" tabindex=34>
+            <select class="form-select mt-2" aria-label="Default select example" name="cPeople" class="catanon" tabindex=33>
                <option selected value="catamenu" disabled>참여인원</option>
                <option value="50명 미만">50명 미만</option>
                <option value="50~100명미만">50명~100명 미만</option>
@@ -601,7 +601,7 @@ if(member_id == null){
    <!-- 행사 설명 -->   
    <div class="fs-4 fw-bold mt-5">행사 설명</div>
       <div class="form-floating">
-         <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText" tabindex=35></textarea>
+         <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText" tabindex=34></textarea>
          <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
       </div>
    </div>
@@ -612,11 +612,11 @@ if(member_id == null){
       <div class="fs-4 fw-bold mt-5">참고 자료</div>
       <div class="form-group">
       	 <div id="preview" class="text-center"></div>
-         <input class="form-control mt-2" type="file" id="formFile" name="file" tabindex=36>
+         <input class="form-control mt-2" type="file" id="formFile" name="file" tabindex=35>
       </div>
    	
       <div class="d-grid gap-2">
-         <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();" tabindex=37>제출하기</button>
+         <button type="button" class="btn btn-outline-secondary mt-4"  onclick="check();" tabindex=36>제출하기</button>
       </div>
    </div>
 </form>

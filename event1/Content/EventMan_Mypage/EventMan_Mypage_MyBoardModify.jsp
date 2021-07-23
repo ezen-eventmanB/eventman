@@ -245,7 +245,7 @@
 		<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example">
 		<div class="mb-5 pb-2 border-bottom border-3 ">
 			<span class="fw-bold me-2">등록일</span>
-			<span class=" me-3"><%=bavo.getBWrieday2() %></span>
+			<span class=" me-3"><%=bavo.getBwriteday() %></span>
 			<span class="fw-bold me-2">작성자</span>
 			<span class=" me-3"><%=bavo.getBname() %></span>
 			<span class="fw-bold me-2">조회수</span>
