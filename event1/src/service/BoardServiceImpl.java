@@ -203,8 +203,10 @@ public class BoardServiceImpl {
 
       ArrayList<EvBoardAskVo> alistboard = new ArrayList();
 
-      String sql = "select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, M.mname " + "from "
-            + "EVE_BOARD B, EVE_MEMBER M " + "where B.midx = M.midx and B.midx=? and bdelyn='N' order by bidx desc";
+      String sql = "select B.bidx, B.midx, B.bcata, B.btitle, B.bwriteday, B.bcount, M.mname, B.bcondition " 
+    		+ "from "
+            + "EVE_BOARD B, EVE_MEMBER M " 
+    		+ "where B.midx = M.midx and B.midx=? and bdelyn='N' order by bidx desc";
       try {
          pstmt = conn.prepareStatement(sql);
          pstmt.setString(1, midx);
@@ -219,6 +221,7 @@ public class BoardServiceImpl {
             bv.setBwriteday(rs.getString("bwriteday"));
             bv.setBname(rs.getString("mname"));
             bv.setBcount(rs.getString("bcount"));
+            bv.setBcondition(rs.getString("bcondition"));
 
             alistboard.add(bv);
 

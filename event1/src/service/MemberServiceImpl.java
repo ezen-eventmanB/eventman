@@ -137,7 +137,7 @@ public class MemberServiceImpl {
          if (rs.next()) {
 
             id = rs.getString("mid");
-            System.out.println("*******rs.getString(mid)" + rs.getString("mid"));
+            System.out.println("rs.getString(mid)" + rs.getString("mid"));
          }
       } catch (SQLException e) {
          e.printStackTrace();

@@ -170,7 +170,14 @@
         			<% for(EvBoardAskVo bavo: alistboard){ %>
 			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
 			               <td><%=bavo.getBcata()%></td>
-			               <td colspan="2"><%=bavo.getBtitle()%></td>
+			               <td colspan="2"><%=bavo.getBtitle()%>
+				               	<%if(bavo.getBcondition().equals("상담등록완료")){ %>
+				               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=bavo.getBcondition()%></button></span> 
+				               	<%}else if(bavo.getBcondition().equals("상담중") || bavo.getBcondition().equals("상담완료")){ %>
+				               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=bavo.getBcondition()%></button></span> 
+				               	<%}; %>
+					               
+			               </td>
 			               <td></td>
 			               <td><%=bavo.getBWrieday2()%></td>
 			               <td><%=bavo.getBname()%></td>
