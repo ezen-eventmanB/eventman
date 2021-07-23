@@ -227,7 +227,7 @@ function selectcata(a){
 		<table class="table table-hover">	   
 			<thead>
 				<th class="text-center">카테고리</th>
-				<th colspan="2">제목</th>
+				<th class="text-center" colspan="2">제목</th>
 				<th></th>
 				<th class="text-center">작성일</th>
 				<th class="text-center">작성자</th>

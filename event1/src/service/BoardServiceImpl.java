@@ -516,7 +516,7 @@ public class BoardServiceImpl {
    
 
    	/*	게시판 전체 리스트 출력 ajax 버튼	*/
-	public ArrayList<EvBoardAskVo> boardSelectAll(int page){
+   /*public ArrayList<EvBoardAskVo> boardSelectAll(int page){
 		
 		ArrayList<EvBoardAskVo> boardList = new ArrayList();
 		
@@ -557,7 +557,7 @@ public class BoardServiceImpl {
 			}
 		}
 		return boardList;
-	}
+	}*/
 
 	    /*마이페이지 갈때 상담신청 모든 부분 카운트*/
 			public int allSelectCost() {

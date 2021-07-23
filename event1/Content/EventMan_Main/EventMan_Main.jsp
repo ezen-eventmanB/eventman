@@ -428,36 +428,43 @@
 </section>
 
       
-   <!-- 메인 공지사항 4개 출력 -->
-   <div class="container">
-      <img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
-   </div>
-   <table class="table table-hover">
-        </tbody>
-                <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th> 
-         </thead>
-           <tbody>
-           	<!-- 일반 포문 5번  -->
-                <% for(EvBoardAskVo evbo: alistboard){ %>
-              	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
-                   <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
-                     <td><%=evbo.getBcata()%></td>
-                     <td colspan="2"><%=evbo.getBtitle()%></td>
-                     <td></td>
-                     <td><%=evbo.getBWrieday2()%></td>
-                     <td><%=evbo.getgName()%></td>
-                  </tr>
-                  <%}; %> 
-            </tbody> 
-
-            </table>
-         </div>
-   </table>
+<!-- 메인 공지사항 4개 출력 -->
+<div class="container">
+	<img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
+</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>카테고리</th>
+				<th colspan="2">제목</th>
+				<th></th>
+				<th>작성일</th>
+				<th>작성자</th> 
+			</tr>
+		</thead>
+	<tbody>
+	<!-- 향상 for문  -->
+	<% 
+	int num = 0;
+	for(EvBoardAskVo evbo: alistboard){
+	 num +=1;
+	%>
+		<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+		<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
+			<td><%=evbo.getBcata()%></td>
+			<td style="text-align: left;" colspan="2"><%=evbo.getBtitle()%></td>
+			<td></td>
+			<td><%=evbo.getBWrieday2()%></td>
+		<td><%=evbo.getgName()%></td>
+		</tr>
+	<%
+		if(num==5){
+			break;
+		};
+	}; 
+	 %> 
+	</table>
+</div>
    
    
 
