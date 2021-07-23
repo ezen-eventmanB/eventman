@@ -31,7 +31,7 @@ public class MemberServiceImpl {
       int value = 0;
 
       try {
-         String sql = "insert into EVE_MEMBER(MIDX,MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(midx_seq.nextval,?,?,?,?,?,?,sysdate)";
+         String sql = "insert into EVE_MEMBER(MID,MPWD,MNAME,MEMAIL,MPHN,MTYPE,MDATE) values(?,?,?,?,?,?,NOW())";
          
          pstmt = conn.prepareStatement(sql);
 
@@ -137,7 +137,7 @@ public class MemberServiceImpl {
          if (rs.next()) {
 
             id = rs.getString("mid");
-            System.out.println("*******rs.getString(mid)" + rs.getString("mid"));
+            System.out.println("rs.getString(mid)" + rs.getString("mid"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
