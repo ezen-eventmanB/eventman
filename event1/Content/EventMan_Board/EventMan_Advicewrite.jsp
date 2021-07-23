@@ -70,7 +70,6 @@
 /////////////////////////////////////
 	 	var file = f.files;
 		
-		alert(f.files);
 		
 		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
 			alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
@@ -257,11 +256,11 @@ function imageemptyFn(){
 			<!-- 카테고리 -->
 			<select class="form-select" aria-label="Default select example" name="cata" id="cata">
 				<option selected>카테고리</option>
-				<option value="1">서비스 문의</option>
-				<option value="2">입정 문의</option>
-				<option value="3">제휴 문의</option>
-				<option value="4">오류 문의</option>
-				<option value="5">기타 문의</option>
+				<option value="서비스 문의">서비스 문의</option>
+				<option value="입점 문의">입점 문의</option>
+				<option value="제휴 문의">제휴 문의</option>
+				<option value="오류 문의">오류 문의</option>
+				<option value="기타 문의">기타 문의</option>
 			</select>
 			
 			<!-- 제목 부분 -->

@@ -122,12 +122,6 @@
 				return;
 		    }
 		 }
-	 
-		function enterkey() {
-		    if (window.event.keyCode == 13) {
-		         check();
-		    }
-		}
 
 	 </script>
 </head>

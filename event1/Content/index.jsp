@@ -11,11 +11,7 @@
     </script>
 </head>  
 <body>
-	index page
+	index page 
 </body>
 </html>
-
-
-
-
 

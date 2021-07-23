@@ -29,6 +29,7 @@ public class ReviewServiceImpl {
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
 		String sql =  "SELECT * FROM eve_review where hdelyn='N' ORDER BY hidx desc LIMIT ?,? ";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (page-1)*9);
@@ -121,7 +122,8 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "SELECT * FROM eve_review where hdelyn='N' and hcata='대학' ORDER BY hidx desc LIMIT ?,? ";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='대학' ORDER BY hidx desc LIMIT ?,? ";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (page-1)*9);
@@ -168,7 +170,8 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "SELECT * FROM eve_review where hdelyn='N' and hcata='공연' ORDER BY hidx desc LIMIT ?,? ";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='공연' or hcata='예술' ORDER BY hidx desc LIMIT ?,? ";
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (page-1)*9);
@@ -215,7 +218,7 @@ public class ReviewServiceImpl {
 		
 		ArrayList<EvReviewVo> reviewList = new ArrayList();
 		
-		String sql = "SELECT * FROM eve_review where hdelyn='N' and hcata='기타' ORDER BY hidx desc LIMIT ?,? ";
+		String sql =  "SELECT * FROM eve_review where hdelyn='N' and hcata='기타' ORDER BY hidx desc LIMIT ?,? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (page-1)*9);

@@ -32,6 +32,7 @@
     <!-- Bootstrap에 필요한 CSS파일 -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+       <script src="http://cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 <title>EVENT MAN!</title>
 
    <!-- topmenue CSS -->
@@ -208,6 +209,21 @@
 	right: 5px; 
 }
 
+	.box{
+	   overflow: hidden;   
+	    }
+	    
+	.box img{
+	   object-fit:cover;     
+	   transform:scale(1.0);        
+	   transition: transform .5s; 
+	}
+	
+	.box img:hover{ 
+	   transform:scale(1.3);
+	   transition: transform .5s;
+	}
+
 </style>
 </head>
 <body>
@@ -325,10 +341,8 @@
 
 <!-- 중앙 네비 카테고리 검색창 -->
 
-<div class="container "id="detailload">
-
 <div class="container">
-   <nav style="max-width: 1300px; margin:0px auto; margin-top: 50px;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
+   <nav class="navbar navbar-expand-lg navbar-light mt-4" aria-label="Eleventh navbar example">
       <div class="container-fluid">
          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -357,7 +371,7 @@
                         <option selected >예산</option>
                         <option value="1,000만원 미만">1,000만원 미만</option>
                         <option value="1,000만원 이상 ~ 5,000만원 미만">1,000만원 이상~5,000만원 미만</option>
-                        <option value="5,000만원 ~ 1억 미만"">5,000만원 ~ 1억 미만</option>
+                        <option value="5,000만원 ~ 1억 미만">5,000만원 ~ 1억 미만</option>
                         <option value="1억 이상 ~ 3억 미만">1억 이상 ~ 3억 미만</option>
                         <option value="3억 이상">3억 이상</option>
                         <option value="예산">전체</option>
@@ -392,10 +406,10 @@
             
                <% for(EvReviewVo erv : reviewList){ %>
                <div class="col">
-                  <div class="card shadow-sm">
-                     <a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
+                  <div class="card shadow-sm"  onclick="detailFn('<%=erv.getHidx()%>')" style='cursor:pointer;'>
+                     <div class="box">
                         <img class="bd-placeholder-img card-img-top stretched-link imgbox" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
-                     </a>
+                     </div>
                      <title><%=erv.gethName() %></title>
                      <div class="card-body">
                         <div class="justify-content-between align-items-center">
@@ -421,15 +435,16 @@
       <img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
    </div>
    <table class="table table-hover">
-        </tbody>
-                <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th> 
+         <thead>
+         	<tr>
+	            <th>카테고리</th>
+	            <th colspan="2">제목</th>
+	            <th></th>
+	            <th>작성일</th>
+	            <th>작성자</th>
+            </tr> 
          </thead>
-           <tbody>
+         <tbody>
            	<!-- 일반 포문 5번  -->
                 <% for(EvBoardAskVo evbo: alistboard){ %>
               	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
@@ -442,12 +457,9 @@
                   </tr>
                   <%}; %> 
             </tbody> 
-
-            </table>
-         </div>
    </table>
    
-   
+
 
 
 <!-- 메인 푸터 -->

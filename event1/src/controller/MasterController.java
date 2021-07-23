@@ -66,7 +66,6 @@ public class MasterController extends HttpServlet {
       System.out.println("str1 = " + str1[1]);
       System.out.println("str2 = " + str1[2]);
 
-      
 /* 회사 소개 */
       if (str2.equals("EventMan_Company_Main.do")) {
 
@@ -80,7 +79,6 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Company/EventMan_Company_Main.jsp");
          rd.forward(request, response);
 
-         
 /* master main 페이지로 이동 */
       } else if (str2.equals("EventMan_Master_Mainpage.do")) {
 
@@ -99,7 +97,6 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_Mainpage.jsp");
          rd.forward(request, response);
 
-         
 /* 행사 리뷰 작성 페이지로 이동 */
       } else if (str2.equals("EventMan_Review_Write.do")) {
 
@@ -111,7 +108,6 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Write.jsp");
          rd.forward(request, response);
 
-         
 /* 게시판 관리자 게시글 작성 페이지 이동 */
       } else if (str2.equals("EventMan_Master_Write.do")) {
 
@@ -119,7 +115,6 @@ public class MasterController extends HttpServlet {
 
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Master_Write.jsp");
          rd.forward(request, response);
-         
          
 /* 관리자 회원 관리 페이지 이동 */
       } else if (str2.equals("EventMan_Master_Modify.do")) {
@@ -133,17 +128,17 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_MemberList.jsp");
          rd.forward(request, response);
 
-         
 /* 행사 리뷰 작성 ACTION */
       } else if (str2.equals("EventMan_Review_Write_Action.do")) {
 
          System.out.println("-----EventMan_Review_Write_Action.do 실행-----");
 
-         // 업로드 파일 경로
-         // 나중에 웹서버로 공통된 경로로 올리게 된다.
-         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
-         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼
+
+			// 업로드 파일 경로
+			// 나중에 웹서버로 공통된 경로로 올리게 된다.
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+
 
          // 저장 폴더
          String savedPath = "Advice_img";
@@ -212,7 +207,6 @@ public class MasterController extends HttpServlet {
             rd.forward(request, response);
          }
 
-         
 /* 행사 리뷰 삭제 action */
       } else if (str2.equals("EventMan_ReviewDelete.do")) {
 
@@ -242,7 +236,6 @@ public class MasterController extends HttpServlet {
             rd.forward(request, response);
          }
 
-         
 /* 행사리뷰 수정 화면이동 */
       } else if (str2.equals("EventMan_ReviewModify.do")) {
 
@@ -250,7 +243,9 @@ public class MasterController extends HttpServlet {
 
          int hidx = Integer.parseInt(request.getParameter("hidx"));
          EvReviewVo erv = new EvReviewVo();
+         
          ReviewServiceImpl rdao = new ReviewServiceImpl();
+         
          erv = rdao.reviewSelectOne(hidx);
 
          request.setAttribute("erv", erv);
@@ -258,89 +253,87 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Review/EventMan_Review_Modify.jsp");
          rd.forward(request, response);
 
-         
 /* 행사리뷰글 수정하기 action */
       } else if (str2.equals("EventMan_ReviewModifyAction.do")) {
 
-         System.out.println("-----행사 리뷰 수정하기 실행-----");
-         
-         int value=0;
-         
-         // 업로드 파일 경로
-         // 나중에 웹서버로 공통된 경로로 올리게 된다.
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
-         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+         System.out.println("-----EventMan_ReviewModify.do 실행-----");
 
-         // 저장 폴더
-         String savedPath = "Advice_img";
-
-         // 저장된 총 경로
-         String saveFullPath = uploadPath + savedPath;
-
-         int sizeLimit = 1024 * 1024 * 15;
-         String fileName = null;
-         String originFileName = null;
-         System.out.println("saveFullPath = " + saveFullPath);
-
-         // MultipartRequest 객체생성
-         MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8",
-         new DefaultFileRenamePolicy());
-
-         // 열거자에 파일Name속성의 이름을 담는다
-         Enumeration files = multi.getFileNames();
-         System.out.println("files = " + files);
-
-         // 담긴 파일 객체의 Name값을 담는다.
-         String file = (String) files.nextElement();
-         System.out.println("file = " + file);
-
-         // 저장되는 파일이름
-         fileName = multi.getFilesystemName(file);
-         System.out.println("fileName = " + fileName);
-
-         // 원래파일 이름
-         originFileName = multi.getOriginalFileName(file);
-
-         System.out.println("originFileName = " + originFileName);
-
-         String ThumbnailFileName = null;
-
-         try {
-            if (fileName != null)
-               ThumbnailFileName = makeThumbnail(uploadPath, savedPath, fileName);
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-         
-         int hidx = Integer.parseInt(multi.getParameter("hidx"));
-         String title = multi.getParameter("title");
-         String target = multi.getParameter("target");
-         String startdate = multi.getParameter("startdate");
-         String enddate = multi.getParameter("enddate");
-         String price = multi.getParameter("price");
-         String staff = multi.getParameter("staff");
-         String company = multi.getParameter("company");
-         String content = multi.getParameter("content");
-         String cata = multi.getParameter("cata");
-         String loca = multi.getParameter("hloca");
-         String people = multi.getParameter("people");
-         int gidx = Integer.parseInt(multi.getParameter("gidx"));
+         int value= 0;
+			// 업로드 파일 경로
+			// 나중에 웹서버로 공통된 경로로 올리게 된다.
+			//String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+			//String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+			String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
 
 
-         MasterServiceImpl mdao = new MasterServiceImpl();
-         value = mdao.modifyAction(hidx, fileName, cata, loca, startdate, enddate, price, people, target, staff,
-               company, title, content);
+	      // 저장 폴더
+	      String savedPath = "Advice_img";
+	
+	      // 저장된 총 경로
+	      String saveFullPath = uploadPath + savedPath;
+	
+	      int sizeLimit = 1024 * 1024 * 15;
+	      String fileName = null;
+	      String originFileName = null;
+	      System.out.println("saveFullPath = " + saveFullPath);
+	
+	      // MultipartRequest 객체생성
+	      MultipartRequest multi = new MultipartRequest(request, saveFullPath, sizeLimit, "utf-8",
+	      new DefaultFileRenamePolicy());
+	
+	      // 열거자에 파일Name속성의 이름을 담는다
+	      Enumeration files = multi.getFileNames();
+	      System.out.println("files = " + files);
+	
+	      // 담긴 파일 객체의 Name값을 담는다.
+	      String file = (String) files.nextElement();
+	      System.out.println("file = " + file);
+	
+	      // 저장되는 파일이름
+	      fileName = multi.getFilesystemName(file);
+	      System.out.println("fileName = " + fileName);
+	
+	      // 원래파일 이름
+	      originFileName = multi.getOriginalFileName(file);
+	
+	      System.out.println("originFileName = " + originFileName);
+	
+	      String ThumbnailFileName = null;
+	
+	      try {
+	         if (fileName != null)
+	            ThumbnailFileName = makeThumbnail(uploadPath, savedPath, fileName);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
 
-         System.out.println("행사리뷰수정하기 value : " + value);
+	         int hidx = Integer.parseInt(multi.getParameter("hidx"));
+	         String cata = multi.getParameter("cata");
+	         String hloca = multi.getParameter("hloca");
+	         String startdate = multi.getParameter("startdate");
+	         String enddate = multi.getParameter("enddate");
+	         String price = multi.getParameter("price");
+	         String people = multi.getParameter("people");
+	         String target = multi.getParameter("target");
+	         String staff = multi.getParameter("staff");
+	         String company = multi.getParameter("company");
+	         String title = multi.getParameter("title");
+	         String content = multi.getParameter("content");
+	
+	         MasterServiceImpl mdao = new MasterServiceImpl();
+	         value = mdao.modifyAction(hidx, fileName, cata, hloca, startdate, enddate, price, people, target, staff,
+	               company, title, content);
+	
+	         System.out.println("행사리뷰수정하기 value : " + value);
+	
+	         response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
 
-         response.sendRedirect(request.getContextPath() + "/EventMan_Review/EventMan_Review_Main.do");
 
 
 /* 견적신청함 리스트 페이지 연결 */
       } else if (str2.equals("EventMan_Master_AllCostList.do")) {
 
          System.out.println("견적신청함페이지 연결");
-         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
          
          MasterServiceImpl mdao = new MasterServiceImpl();
          ArrayList<EvCostVo> descalist = mdao.alldescCostList();
@@ -364,8 +357,7 @@ public class MasterController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Master/EventMan_Master_AllBoardList.jsp");
          rd.forward(request, response);
    
-         
-/*견적신청함 ajax 황현호*/
+      /*견적신청함 ajax 황현호*/
       }else if(str2.equals("EventMan_Master_ajax_costlist.do")) {
          
          System.out.println("견적신청 에이젝스 실행");
@@ -387,7 +379,7 @@ public class MasterController extends HttpServlet {
          rd.forward(request, response);
          
          
-/*상담신청함 ajax 박종빈*/
+      /*상담신청함 ajax 박종빈*/
       }else if(str2.equals("EventMan_Master_ajax_boardlist.do")) {
          
          System.out.println("상담 신청 ajax 실행");
@@ -426,8 +418,9 @@ public class MasterController extends HttpServlet {
          
          System.out.println("회사 소개 이미지 변경하자~");
          
-         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
+         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\";
          //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; // 박종빈 경로
+         String uploadPath = "C:\\Users\\740\\git\\eventman\\event1\\Content\\"; //윤진님꺼 
 
          String savedPath = "filefolder";
          
@@ -470,56 +463,63 @@ public class MasterController extends HttpServlet {
          }
          
          
-
-/* (진) 회원 정보 수정 화면 이동*/         
-       }else if(str2.equals("EventMan_Master_MemberModify.do")) {
-                      
-         System.out.println("테스트");
-           
-         int midx = Integer.parseInt(request.getParameter("midx"));
          
-         System.out.println("midx 테스트"+midx);
          
-         MasterServiceImpl mdao = new MasterServiceImpl(); // 생성
          
-         EvMemberVo mvo1 = mdao.selectmember(midx);
          
-         request.setAttribute("mvo2", mvo1);
-         
-         RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_MemberDetail.jsp");    
-         rd.forward(request, response);
-   
-                
-                
+/* (진) 회원 정보 수정 화면 이동*/			
+		 }else if(str2.equals("EventMan_Master_MemberModify.do")) {
+		 					
+			 		System.out.println("테스트");
+			 
+					int midx = Integer.parseInt(request.getParameter("midx"));
+			 		
+		 			System.out.println("midx 테스트"+midx);
+		 			
+		 			MasterServiceImpl mdao = new MasterServiceImpl(); // 생성
+		 			
+		 			EvMemberVo mvo1 = mdao.selectmember(midx);
+		 			
+		 			
+		 			request.setAttribute("mvo2", mvo1);
+		 			RequestDispatcher rd =request.getRequestDispatcher("/EventMan_Master/EventMan_Master_MemberDetail.jsp"); 	
+		 			rd.forward(request, response);
+		 
+		 			
+		 			
+		 			
+		 			
 /* (진) 회원 정보 수정 Action */
-       } else if (str2.equals("EventMan_Master_MemberModifyAction.do")) {
-                   
-         System.out.println("Action 테스트입니다.");
-           
-         //1. 값을 넘겨받는다
-         int midx = Integer.parseInt(request.getParameter("midx"));
-         String mType = request.getParameter("mType");
-         String mDelYn = request.getParameter("mDelYn");
-         
-         System.out.println(midx+mType+mDelYn);
-         
-         //수정 값
-         MasterServiceImpl mdao = new MasterServiceImpl();   // 객체생성
-         int value = mdao.MasterModify(midx, mType, mDelYn);
-         System.out.println("value:"+value);
-         
-         //수정이 제대로 된다면 이동
-         if (value >0) {     
-            response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
-         //수정이 되지 않으면 이동                                                          //파라미터로 midx값을 같이 넘겨줘야한다.
-         }else {
-            response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
-         };    
-       }
-      
-      
-      
-   }
+		 } else if (str2.equals("EventMan_Master_MemberModifyAction.do")) {
+			 
+			 System.out.println("Action 테스트입니다.");
+			 
+			 //1. 값을 넘겨받는다
+			 int midx = Integer.parseInt(request.getParameter("midx"));
+	         String mType = request.getParameter("mType");
+	         String mDelYn = request.getParameter("mDelYn");
+	         
+	         System.out.println(midx+mType+mDelYn);
+	         
+	         //수정 값
+	         MasterServiceImpl mdao = new MasterServiceImpl();   // 객체생성
+	         int value = mdao.MasterModify(midx, mType, mDelYn);
+	         System.out.println("value:"+value);
+	         
+	         //수정이 제대로 된다면 이동
+	         if (value >0)      
+	            response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
+	         //수정이 되지 않으면 이동                                                          //파라미터로 midx값을 같이 넘겨줘야한다.
+	         else {
+	            response.sendRedirect(request.getContextPath()+"/EventMan_Master/EventMan_Master_Modify.do");  
+	         }
+		 			
+		 			
+		 }
+	
+	}      
+
+
 
 
 

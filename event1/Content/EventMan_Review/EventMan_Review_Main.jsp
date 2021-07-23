@@ -184,6 +184,22 @@
 	
 	
 </script>
+<style>
+	.box{
+	   overflow: hidden;   
+	    }
+	    
+	.box img{
+	   object-fit:cover;     
+	   transform:scale(1.0);        
+	   transition: transform .5s; 
+	}
+	
+	.box img:hover{ 
+	   transform:scale(1.3);
+	   transition: transform .5s;
+	}
+</style>
 
 </head>
 <body>
@@ -363,10 +379,10 @@
 				
 					<% for(EvReviewVo erv : reviewList){ %>
 					<div class="col">
-						<div class="card shadow-sm">
-							<a href="javascript:void(0);" onclick="detailFn('<%=erv.getHidx()%>')">
+						<div class="card shadow-sm" onclick="detailFn('<%=erv.getHidx()%>')" style='cursor:pointer;'>
+							<div class="box">
 								<img class="bd-placeholder-img card-img-top stretched-link imgbox" width="100%" height="225" src="../Advice_img/<%=erv.getHimg()%>"></img>
-							</a>
+							</div>
 							<title class="fw-bold"><%=erv.gethName() %></title>
 							<div class="card-body">
 								<div class="justify-content-between align-items-center">

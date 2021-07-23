@@ -56,8 +56,11 @@ $(document).ready(function(e){
     //실제 화면에 뿌려주는 부분
 	function preview(arr){
 
+<<<<<<< HEAD
 		alert("arr.length : "+arr.length);
     	
+=======
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 		var str = '';
 		
 		var arrlength = arr.length;
@@ -70,7 +73,10 @@ $(document).ready(function(e){
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
 				
+<<<<<<< HEAD
 				alert(str);
+=======
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
@@ -79,10 +85,18 @@ $(document).ready(function(e){
 		}else if(arrlength > 1){
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	 
+<<<<<<< HEAD
+=======
+				alert(e);
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
+<<<<<<< HEAD
 				alert(str);
+=======
+
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 				for(var i=1; i<arr.length; i++){
 					str += '<div class="carousel-item">';
 					str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[i].name+'" alt="">';
@@ -256,10 +270,14 @@ $(document).ready(function(e){
 				<div class="row">
 					<input type="hidden" name="gidx" value="<%=gidx%>">
 					<div class="col-md mt-2">
+<<<<<<< HEAD
 						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" multiple/>
+=======
+						<input class="form-control" name="file" type="file" id="formFile" onchange="setImageFn(this)" tabindex=1 multiple>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 					</div>
 					<div class="col-md mt-2">
-						<select class="form-select" aria-label="Default select example" name="cata" class="catanon">
+						<select class="form-select" aria-label="Default select example" name="cata" class="catanon" tabindex=2>
 							<option selected value="catamenu">카테고리</option>
 							<option value="기업">기업</option>
 							<option value="대학">대학</option>
@@ -269,13 +287,14 @@ $(document).ready(function(e){
 						</select>
 					</div>
 					<div class="col-md mt-2">
-						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="장소">
+						<input type="text" name="hloca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=3 placeholder="장소">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg">
 					<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<<<<<<< HEAD
 	
 	
 							<div class="carousel-inner " id="preview">
@@ -291,6 +310,17 @@ $(document).ready(function(e){
 							</div>
 							
 	
+=======
+						<div class="carousel-inner " id="preview">
+							<div class="carousel-item active">
+								<img src="../seletimg.jpg" class="d-block w-100" alt="">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>이미지 파일을 선택해주세요.</h5>
+									<p>파일 선택시 미리보기 됩니다.</p>
+								</div>
+							</div>
+						</div>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 					</div>	
 				</div>	
 		
@@ -304,13 +334,13 @@ $(document).ready(function(e){
 										<img class="icon w-100" src="../icon/free-icon-calendar-with-squares-85000.png">
 										<div class="row mt-2">
 											<div class="col">
-												<input type="date" name="startdate" class="form-control CostDate">
+												<input type="date" name="startdate" class="form-control CostDate" tabindex=4>
 											</div>
 											<div class="col">
 											~
 											</div>
 											<div class="col">
-												<input type="date" name="enddate" class="form-control CostDate">
+												<input type="date" name="enddate" class="form-control CostDate" tabindex=5>
 											</div>
 										</div>
 									</div>
@@ -319,7 +349,7 @@ $(document).ready(function(e){
 									<div>
 										<img class="icon w-100" src="../icon/free-icon-money-bills-72167.png">
 										<div class="mt-2">
-											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
+											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon" tabindex=6> 
 												<option selected value="catamenu">예산</option>
 												<option value="1,000만원 미만">1,000만원 미만</option>
 												<option value="1,000만원 이상 ~ 5,000만원 미만">1,000만원 이상 ~ 5,000만원 미만</option>
@@ -334,7 +364,7 @@ $(document).ready(function(e){
 									<div>
 										<img class="icon w-100" src="../icon/free-icon-people-711168.png">
 										<div class="mt-2">
-											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon">
+											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon" tabindex=7>
 												<option selected value="catamenu">참여인원</option>
 												<option value="50명 미만">50명 미만</option>
 												<option value="50명~100명 미만">50명~100명 미만</option>
@@ -349,7 +379,7 @@ $(document).ready(function(e){
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-question-sign-on-person-head-42994.png">
 									<div class="mt-2">
-										<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon">
+										<select class="form-select me-5" aria-label="Default select example" name="target" class="catanon" tabindex=8>
 											<option selected value="catamenu">참여대상</option>
 											<option value="전체">전체</option>
 											<option value="어린이이">어린이</option>
@@ -367,13 +397,13 @@ $(document).ready(function(e){
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-business-cards-47976.png">
 									<div class="mt-2">
-										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="진행담당">
+										<input type="text" name="staff" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=9 placeholder="진행담당" >
 									</div>
 								</div>
 								<div class="col-sm align-self-center">
 									<img class="icon w-100" src="../icon/free-icon-university-campus-68286.png">
 									<div class="mt-2">
-										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1 placeholder="기관,단체">
+										<input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=10 placeholder="기관,단체" >
 									</div>
 								</div>
 							</div>
@@ -388,20 +418,20 @@ $(document).ready(function(e){
 					</div>		
 					<div>
 						<div class="fs-1 fw-bold mt-5 ">
-							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요.">
+							<input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="title" aria-label=".form-control-lg example" placeholder="제목을 입력해주세요." tabindex=11>
 						</div>
 					</div>
 					<div>
 						<div class="fs-5 mt-5">
-							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요."></textarea>
+							<textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="content" placeholder="내용을 입력해주세요." tabindex=12></textarea>
 						</div>	
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<div class="text-end mt-5">
 			<button type="button" class="btn btn-outline-secondary " onclick="location.href='<%=request.getContextPath()%>/EventMan_Review/EventMan_Review_Main.do'">뒤로가기</button>
-			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()">작성완료</button>
+			<button type="button" class="btn btn-outline-secondary " onclick="submitmodalFn()" tabindex=13>작성완료</button>
 		</div>
 	</div>
 </form>						

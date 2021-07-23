@@ -185,7 +185,7 @@
 					<input class="form-control mb-3" type="text" value="<%=mvo3.getmId() %>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">비밀번호</div>
-					<input class="form-control mb-3" type="password" aria-label="default input example" name="mPwd" value="<%=mvo3.getmPwd()%>" aria-label="readonly input example" readonly>
+					<input class="form-control mb-3" type="text" aria-label="default input example" name="mPwd" value="<%=mvo3.getmPwd()%>" aria-label="readonly input example" readonly>
 
 					<div class="fs-5 fw-bold">이름</div>
 					<input class="form-control mb-3" type="text" value="<%=mvo3.getmName() %>" aria-label="readonly input example" readonly>

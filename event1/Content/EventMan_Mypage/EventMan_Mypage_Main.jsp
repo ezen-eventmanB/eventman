@@ -168,7 +168,7 @@ function closeFn(){
 <div class="container">
    <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
-         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+         <img src="../filefolder/mypagebanner.png " alt="마이페이지이미지" class="w-100 mt-4">
       </div>
    </dvi>
    
@@ -176,7 +176,7 @@ function closeFn(){
       <div class="row justify-content-md-center">
          <div class="col-md-auto text-center px-3">
             <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">
-               <img src="../budget.png" alt="견적신청이미지" class="images w-100">
+               <img src="../filefolder/cost.png" alt="견적신청이미지" class="images w-100 p-3">
                <div class="text-center fw-bold texts">
                  <span>견적신청<br><span><%=count2%></span>건</span>
                </div>
@@ -186,7 +186,7 @@ function closeFn(){
          
          <div class="col-md-auto text-center px-3">
             <a class="nav-link fw-bold" href="javascript:void(0);" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_Myboardlist.do?midx=<%=midx%>'">
-               <img src="../presentation.png" alt="게시판이미지" class="images w-100">
+               <img src="../filefolder/board.png" alt="게시판이미지" class="images w-100 p-3">
                <div class="text-center fw-bold texts">
                   <span>게시판<br><span><%=count%></span>건</span>
                </div>

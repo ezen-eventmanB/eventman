@@ -107,43 +107,25 @@ function deleteFn(){
 	<!-- 상단 제목 -->
 	<div class="mt-5 ">
 		<p class="fs-1 fw-bold"><%=erv.gethName() %></p><br>
-		<p class="fs-6"><%=erv.getHloca() %></p>
+		<p class="fs-6 fw-bold"><%=erv.getHloca() %></p>
 	</div>
 	
 	
 	<!-- 이미지 -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg">
+			<div class="col-lg mt-2">
 				<div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel">
-
-						<div class="carousel-indicators">
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					<div class="carousel-inner ">
+						<div class="carousel-item active">
+							<img src="../Advice_img/<%=erv.getHimg() %>" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
 						</div>
-						
-						<div class="carousel-inner ">
-						
-							<div class="carousel-item active">
-								<img src="../Advice_img/<%=erv.getHimg() %>" style="max-height:384px; object-fit: cover;" class="d-block w-100 " alt="">
-							</div>
-
-						</div>
-						
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
+					</div>
 				</div>	
 			</div>	
 	
 	<!-- 카테고리박스 -->				
-			<div class="col-lg">	
+			<div class="col-lg mt-2">	
 				<div id="cbox">
 						<div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 text-center align-middle h-100">
 						
@@ -183,10 +165,10 @@ function deleteFn(){
 				<%if(gidx == 0){ %>
 				<div class="row mt-2">
 					<div class="col-md">
-						<button type="button" class="btn btn-outline-secondary w-100" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청</button>
+						<button type="button" class="btn btn-outline-secondary w-100 mt-2" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Cost.do'">견적신청</button>
 					</div>	
 					<div class="col-md">
-						<button type="button" class="btn btn-outline-secondary w-100" onclick="AdviceFn()">상담하기</button>
+						<button type="button" class="btn btn-outline-secondary w-100 mt-2" onclick="AdviceFn()">상담하기</button>
 					</div>
 				</div>
 				<%} %>
@@ -203,15 +185,13 @@ function deleteFn(){
 			</div>	
 		</div>	
 		<div class="row mt-5">
-			<div class="mt-5">
-				<div class="mt-5">			
-				</div>			
-				<div>
-					<div class="fs-1 fw-bold mt-5 "><%=erv.gethName() %></div>
-				</div>
-				<div>
-					<div class="fs-5 mt-5" style="white-space: pre-line;"><%=erv.getHtext() %></div>	
-				</div>
+			<div class="mt-5">			
+			</div>			
+			<div>
+				<div class="fs-1 fw-bold mt-5 "><%=erv.gethName() %></div>
+			</div>
+			<div>
+				<div class="fs-5 mt-5" style="white-space: pre-line;"><%=erv.getHtext() %></div>	
 			</div>
 		</div>
 	</div>

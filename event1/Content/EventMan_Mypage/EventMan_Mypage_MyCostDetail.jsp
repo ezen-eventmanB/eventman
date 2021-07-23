@@ -31,7 +31,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 	
-	 <!-- topmenue CSS -->
+   <!-- topmenue CSS -->
    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
    <!-- subnav CSS -->
    <link rel="stylesheet" type="text/css" href="../css/subnav.css">
@@ -184,7 +184,7 @@ function listmoveFn(){
 <div class="container">
    <dvi class="row justify-content-md-center">
       <div class="col-md-auto">
-         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+         <img src="../filefolder/mypagebanner.png" alt="마이페이지이미지" class="w-100">
       </div>
    </dvi>
       
@@ -193,44 +193,40 @@ function listmoveFn(){
 	
 	<!-- 상세보기-->
 	<div class="shadow p-3 mb-5 bg-body rounded mt-5 mb-5" >
-		   <div class="container">
-      <div class="sc-qPIWj eXGQeW">행사 견적신청</div>
-      <hr/>   
-   </div>
-   
+	   <div class="container text-center">
+    			 <div class="fs-5 fw-bold mt-3 mb-3">행사 견적신청</div>
+    		 <hr/>   
+		</div>
+
    <form name="frm">
    
    <input type="hidden" name="midx" value="<%=session.getAttribute("midx")%>">
 <!-- 행사 명 -->
 	     <div class="container">
-	     	<div class="sc-qPIWj eXGQeW">행사 명</div>
-	      		<div class="sc-qPIWj eXGQeW"><%=covo.getCostName() %></div>
+	     	<div class="fs-5 fw-bold">행사 명</div>
+	      		<div class="mt-2"><%=covo.getCostName() %></div>
 	   <hr/>
 	    </div>
    
 <!-- 행사 일정 -->   
 	   <div class="container">
-	        <div class="sc-qPIWj eXGQeW">행사 일정</div>
+	        <div class="fs-5 fw-bold">행사 일정</div>
 	        	<div class="container">
-
-								<div class="text-center align-middle ">
-									<div class="mt-2"><%=covo.getCostStartDate2()%><br>~<br><%=covo.getCostEndDate2()%></div>
-								</div>
-							</div>	
-	      	<div class="icon">
+					<div class="text-center align-middle ">
+						<div class="mt-2"><%=covo.getCostStartDate2()%><br>~<br><%=covo.getCostEndDate2()%></div>
+					</div>
+				</div>	
 	      <hr/>
-	 	  </div>
 
-<!-- 행사 카테고리 선택 -->
   <!-- 행사 카테고리 선택 -->
-   <div class="sc-qPIWj eXGQeW">행사 카테고리</div>
+   <div class="fs-5 fw-bold mb-3">행사 카테고리</div>
    
    
          <!-- 기업 행사 -->
    	<div class="cataselect">          
 			         <div class="container">
-			            <div class="fs-5 text-black-50">기업행사</div>
-						  <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
+			            <div class="fs-5 text-black-50 fw-bolder" >기업행사</div>
+						  <div class="row row-cols-2  row-cols-sm-3 row-cols-lg-6">
 						    <div class="col">
 						    		<input class="form-check-input" type="checkbox" name="cCata" value="기업 워크숍" 
 						    		<%if(covo.getCostCatagory().indexOf("기업 워크숍")>=0) { out.println("checked"); } %>   disabled="disabled">
@@ -265,7 +261,7 @@ function listmoveFn(){
 						  </div>
 
 						  
-						   <div class="fs-5 text-black-50">공연</div>
+						   <div class="fs-5 text-black-50 fw-bolder mt-2">공연</div>
 						  <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
 						    <div class="col">
 						    		<input class="form-check-input" type="checkbox" name="cCata" value="공연 지역 페스티벌" 
@@ -300,7 +296,7 @@ function listmoveFn(){
 						  </div>
 						  <p>
 						  
-						  <div class="fs-5 text-black-50">대학</div>
+						  <div class="fs-5 text-black-50 fw-bolder  mt-2">대학</div>
 						  <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
 						    <div class="col">
 						    		    <input class="form-check-input" type="checkbox" name="cCata" value="대학 축제" 
@@ -335,7 +331,7 @@ function listmoveFn(){
 						  </div>
 						  <p>
 						  
-						  <div class="fs-5 text-black-50">기타</div>
+						  <div class="fs-5 text-black-50 fw-bolder mt-2">기타</div>
 						  <div class="row row-cols-2 row-cols-sm-3 row-cols-lg-6">
 						    <div class="col">
 						    		    <input class="form-check-input" type="checkbox" name="cCata" value="기타 결혼식" 
@@ -374,63 +370,66 @@ function listmoveFn(){
       <hr/>
       
 <!-- 행사 지역  -->
-      	<div class="sc-qPIWj eXGQeW">행사 지역</div>
-	     <div class="sc-qPIWj eXGQeW"><%=covo.getCostLocation() %></div>
+      	<div class="fs-5 fw-bold">행사 지역</div>
+	     <div class="mt-2"><%=covo.getCostLocation() %></div>
 	   <hr/>
 
    
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 구성</div>
-			
-			<div class="container">
-				<div class="fs-5 text-black-50">참여대상</div>
-				<div class="mt-2"><%=covo.getCostTarget()%></div>
-				<p>
-				
-				<div class="fs-5 text-black-50">행사 방식</div>
-				<div class="mt-2"><%=covo.getCostMethod()%></div>
-				<p>
-				
-				<div class="fs-5 text-black-50">행사 예산</div>
-				<div class="mt-2"><%=covo.getCostPrice()%></div>
-				<p>
-				
-				<div class="fs-5 text-black-50">행사 인원</div>
-				<div class="mt-2"><%=covo.getCostPeople() %></div>	 
+        <div class="fs-5 fw-bold">행사 구성</div>
+		<div class="container text-center mx-auto">	
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
+			    <div class="col">
+					<div class="fs-5 text-black-50 fw-bolder mt-3">참여대상</div>
+					<div class=""><%=covo.getCostTarget()%></div>
+				</div>
+				<div class="col">
+					<div class="fs-5 text-black-50 fw-bolder mt-3">행사 방식</div>
+					<div class=""><%=covo.getCostMethod()%></div>
+				</div>
+				<div class="col">
+					<div class="fs-5 text-black-50 fw-bolder mt-3">행사 예산</div>
+					<div class=""><%=covo.getCostPrice()%></div>
+				</div>
+				<div class="col">
+					<div class="fs-5 text-black-50 fw-bolder mt-3">행사 인원</div>
+					<div class=""><%=covo.getCostPeople() %></div>	 
+				</div>
 			</div>
 				<hr/>
-			
+		</div>	
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 설명</div>
+        <div class="fs-5 fw-bold">행사 설명</div>
                 <div class="form-floating">
-              <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText" readonly><%=covo.getCostText() %></textarea>
-              <label for="floatingTextarea2">행사 설명을 적어주세요.</label>
+              <textarea class="form-control mt-2" id="floatingTextarea2" style="height: 400px" name="cText" readonly><%=covo.getCostText() %></textarea>
             </div>
                <hr/>
          </div>
    
 
 <!-- 참고자료  -->
-   <div class="container">
-   <div class="sc-qPIWj eXGQeW">참고 자료<%if(covo.getCostFile() != null){%><img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>"><%}; %></div>
+	<div class="container">
+		<div class="fs-5 fw-bold">참고 자료</div>
+	 	<%if(covo.getCostFile() != null){%>
+	 		<img class="mt-3 mx-auto" style="max-width:90%;" src="../Advice_img/<%=covo.getCostFile() %>">
+	 	<%}; %>
    <div class="form-group">
-      <input class="form-control" type="file" id="formFile" name="file">
     <hr/>
     
     
 <!-- 관리자의 답변이 들어가는 부분 -->
-    <div id="replybox">
-		<%if(covo.getCcondition().equals("견적등록완료")){%>
-			<div>
-				<img class="bd-placeholder-img card-img-top stretched-link imgbox mt-4" src="../filefolder/costimg.jpg"/>
-			</div>
-		<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료") ){ %>
-			<div class="card-body mt-5 fs-5 fw-bold">관리자 답변</div>
-			<div class="card">
-				<div class="card-body fs-6"><%=covo.getCreply() %></div>
-			</div>
-			<%}; %>
-	</div>
+	    <div id="replybox">
+			<%if(covo.getCcondition().equals("견적등록완료")){%>
+				<div>
+					<img class="bd-placeholder-img card-img-top stretched-link imgbox mt-4" src="../filefolder/costimg.jpg"/>
+				</div>
+			<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료") ){ %>
+				<div class="card-body mt-5 fs-5 fw-bold">관리자 답변</div>
+				<div class="card">
+					<div class="card-body fs-6"><%=covo.getCreply() %></div>
+				</div>
+				<%}; %>
+		</div>
     
     </div>
 		<%if(midx>0){ %>
@@ -451,7 +450,7 @@ function listmoveFn(){
 		<%}; %>
     	</div>
 	</form>
-
+</div>
 	
 <!--   모달   -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

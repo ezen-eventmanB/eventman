@@ -18,6 +18,7 @@
 
 	
 	EvReviewVo erv = (EvReviewVo)request.getAttribute("erv");
+	
 
 	%>    
 	
@@ -59,22 +60,18 @@ $(document).ready(function(e){
     //실제 화면에 뿌려주는 부분
 	function preview(arr){
 
-		alert("arr.length : "+arr.length);
-    	
 		var str = '';
 		
 		var arrlength = arr.length;
 		
 		//사진 한장 업로드
 		if(arrlength == 1){
-			alert("arr.length ===== 1");
 			var reader = new FileReader();
 			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
 				str += '<div class="carousel-item active">';
 				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
 				str += '</div>';
 				
-				alert(str);
 				$('#preview').html(str);
 			};
 			reader.readAsDataURL(arr[0]);
@@ -196,7 +193,7 @@ $(document).ready(function(e){
 
 
 //게시글 modify 버튼
-	function ModifyactionFn(){
+function ModifyactionFn(){
 	var frm = document.frm;
 		
 	document.frm.action="<%=request.getContextPath()%>/EventMan_Master/EventMan_ReviewModifyAction.do";
@@ -206,6 +203,10 @@ $(document).ready(function(e){
 
 };
 
+
+$(document).ready(function(){
+	console.log(<%=hidx%>);
+});
 </script>
 
 <style>
@@ -251,7 +252,7 @@ $(document).ready(function(e){
 			<p class="fs-6"></p>
 		</div>
 		<input type="hidden" name="gidx" value="<%=gidx%>">
-		<input type="hidden" name="hidx" value="<%=hidx %>">
+		<input type="hidden" name="hidx" value="<%=hidx%>">
 		
 		<!-- 이미지 -->
 	
@@ -281,6 +282,7 @@ $(document).ready(function(e){
 			<div class="row">
 				<div class="col-lg">
 					<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+<<<<<<< HEAD
 
 	
 							<div class="carousel-inner " id="preview">
@@ -296,6 +298,17 @@ $(document).ready(function(e){
 							</div>
 			
 	
+=======
+						<div class="carousel-inner " id="preview">
+							<div class="carousel-item active">
+								<img src="../seletimg.jpg" class="d-block w-100" alt="">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>이미지 파일을 선택해주세요.</h5>
+									<p>파일 선택시 미리보기 됩니다.</p>
+								</div>
+							</div>
+						</div>
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 					</div>	
 				</div>	
 		
@@ -336,10 +349,10 @@ $(document).ready(function(e){
 											<select class="form-select me-5"" aria-label="Default select example" name="people" class="catanon">
 												<option selected value="catamenu">참여인원</option>
 												<option value="50명 미만" <%=erv.getHpeople().equals("50명 미만") ? " selected" : "" %>>50명 미만</option>
-												<option value="50~100명미만" <%=erv.getHpeople().equals("50~100명미만") ? " selected" : "" %>>50명~100명 미만</option>
-												<option value="100~500명미만" <%=erv.getHpeople().equals("100~500명미만") ? " selected" : "" %>>100~500명 미만</option>
+												<option value="50~100명미만" <%=erv.getHpeople().equals("50~100명 미만") ? " selected" : "" %>>50명~100명 미만</option>
+												<option value="100~500명미만" <%=erv.getHpeople().equals("100~500명 미만") ? " selected" : "" %>>100~500명 미만</option>
 												<option value="500~1000명 미만" <%=erv.getHpeople().equals("500~1000명 미만") ? " selected" : "" %>>500~1000명 미만</option>
-												<option value="1000명이상" <%=erv.getHpeople().equals("1000명이상") ? " selected" : "" %>>1000명 이상</option>
+												<option value="1000명이상" <%=erv.getHpeople().equals("1000명 이상") ? " selected" : "" %>>1000명 이상</option>
 											</select>
 										</div>
 									</div>

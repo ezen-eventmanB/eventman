@@ -38,19 +38,61 @@
    <link rel="stylesheet" type="text/css" href="../css/mypage.css">
 
 <title>EVENT MAN!</title>
-		<script>
+<script>
+
+function modifyFn(){
+	
+	var frm = document.form;
+	
+	document.frm.action="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify_Action.do";
+	document.frm.method="post";
+	document.frm.submit();
+	
+	};
+	
+
+//사진 미리보기
+$(document).ready(function(e){
+	console.log("asdasd");
+	$("input[type='file']").change(function(e){
 		
-		function modifyFn(){
-			
-			var frm = document.form;
-			
-			document.frm.action="<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_CostModify_Action.do";
-			document.frm.method="post";
-			document.frm.submit();
-			
+		//div 내용 비워주기
+		$('#preview').empty();
+		
+		var files = e.target.files;
+		var arr =Array.prototype.slice.call(files);
+		
+		//업로드 가능 파일인지 체크
+		for(var i=0;i<files.length;i++){
+			if(!/\.(gif|jpg|jpeg|png)$/i.test(files[i].name)){
+				alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + files[i].name);
+				return false;
 			};
-			
-		</script>
+		};
+		preview(arr);
+	});//file change
+
+    
+    //실제 화면에 뿌려주는 부분
+	function preview(arr){
+
+		var str = '';
+		
+		var arrlength = arr.length;
+		
+		//사진 한장 업로드
+		if(arrlength == 1){
+			var reader = new FileReader();
+			reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러	  
+				str += '<img src="'+e.target.result+'" style="max-height:384px; object-fit: cover;" class="d-block w-100" title="'+arr[0].name+'" alt="">';
+				$('#preview').html(str);
+			};
+			reader.readAsDataURL(arr[0]);
+		};	
+	};
+});
+	
+</script>
 
 </head>
 <body>
@@ -156,7 +198,7 @@
 		<div class="container">
 		   <dvi class="row justify-content-md-center">
 		      <div class="col-md-auto">
-		         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+		         <img src="../filefolder/mypagebanner.png " alt="마이페이지이미지" class="w-100">
 		      </div>
 		   </dvi>
 		      
@@ -166,7 +208,7 @@
 			<!-- 상세보기-->
 			<div class="shadow p-3 mb-5 bg-body rounded mt-5 mb-5" >
 				   <div class="container">
-		      <div class="sc-qPIWj eXGQeW">행사 견적신청</div>
+		      <div class="fs-5 fw-bold mt-3 mb-3">행사 견적신청</div>
 		      <hr/>   
 		   </div>
 		   
@@ -177,14 +219,14 @@
 		   
 		<!-- 행사 명 -->
 			    <div class="container">
-				   <div class="sc-qPIWj eXGQeW">행사 명</div>
+				   <div class="fs-5 fw-bold">행사 명</div>
 				   	<input type="text" name="cName" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  value="<%=covo.getCostName() %>">
 				   <hr/>
 				</div>
 		   
 		<!-- 행사 일정 -->   
 			   <div class="container">
-			        <div class="sc-qPIWj eXGQeW">행사 일정</div>
+			        <div class="fs-5 fw-bold">행사 일정</div>
 			        	<div class="container">
 											<div class="col-sm align-self-center">
 											
@@ -202,13 +244,13 @@
 
 <!-- 행사 카테고리 선택 -->
   <!-- 행사 카테고리 선택 -->
-   <div class="sc-qPIWj eXGQeW">행사 카테고리</div>
+   <div class="fs-5 fw-bold mb-3">행사 카테고리</div>
    
    
          <!-- 기업 행사 -->
    	<div class="cataselect">          
 			         <div class="container">
-			            <div class="fs-5 text-black-50">기업행사</div>
+			            <div class="fs-5 text-black-50 fw-bolder">기업행사</div>
 						  <div class="row">
 						    <div class="col">
 						    	<div>
@@ -256,7 +298,7 @@
 						  <p>
 						  
 						  
-						   <div class="fs-5 text-black-50">공연</div>
+						   <div class="fs-5 text-black-50 fw-bolder mt-2">공연</div>
 						  <div class="row">
 						    <div class="col">
 						    	<div>
@@ -303,7 +345,7 @@
 						  </div>
 						  <p>
 						  
-						  <div class="fs-5 text-black-50">대학</div>
+						  <div class="fs-5 text-black-50 fw-bolder mt-2">대학</div>
 						  <div class="row">
 						    <div class="col">
 						    	<div>
@@ -350,7 +392,7 @@
 						  </div>
 						  <p>
 						  
-						  <div class="fs-5 text-black-50">기타</div>
+						  <div class="fs-5 text-black-50 fw-bolder mt-2">기타</div>
 						  <div class="row">
 						    <div class="col">
 						    	<div>
@@ -401,17 +443,17 @@
       <hr/>
       
 <!-- 행사 지역  -->
-				   <div class="sc-qPIWj eXGQeW">행사 지역</div>
+				   <div class="fs-5 fw-bold">행사 지역</div>
 				   	<input type="text" name="cLoca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  value="<%=covo.getCostLocation() %>">
 				   <hr/>
 
    
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 구성</div>
+        <div class="fs-5 fw-bold">행사 구성</div>
         
 				<!-- 14:12다시 -->
 			<div class="container">
-				<div class="fs-5 text-black-50">참여대상</div>
+				<div class="fs-5 text-black-50 fw-bolder mt-3">참여대상</div>
 											<select class="form-select me-5" aria-label="Default select example" name="cTarget" class="catanon">
 												<option selected value="catamenu">참여대상</option>
 												<option value="전체"<%=covo.getCostTarget().equals("전체") ? "selected" : ""%>>전체</option>
@@ -426,7 +468,7 @@
 												<option value="참여대상 기타"<%=covo.getCostTarget().equals("참여대상 기타") ? "selected" : ""%>>기타</option>
 											</select><p>
 				
-				<div class="fs-5 text-black-50">행사 방식</div>
+				<div class="fs-5 text-black-50 fw-bolder mt-3">행사 방식</div>
 										<div class="mt-2">
 											<select class="form-select me-5" aria-label="Default select example" name="cMethod" class="catanon">
 												 <option selected value="catamenu" <%=covo.getCostMethod()%>>방식</option>
@@ -436,7 +478,7 @@
 										         <option value="방식 기타"<%=covo.getCostMethod().equals("방식 기타") ? "selected" : ""%>>기타</option>
 										    </select><p>
 										    
-				<div class="fs-5 text-black-50">행사 예산</div>
+				<div class="fs-5 text-black-50 fw-bolder mt-3">행사 예산</div>
 											<select class="form-select me-5" aria-label="Default select example" name="cPrice" class="catanon">
 												<option selected value="catamenu">예산</option>
 												<option value="1000만원 미만"<%=covo.getCostPrice().equals("1000만원 미만") ? "selected" : ""%>>1,000만원 미만</option>
@@ -447,7 +489,7 @@
 										        <option value="예산 기타"<%=covo.getCostPrice().equals("예산 기타") ? "selected" : ""%>>기타</option>
 											</select><p>
 				
-				<div class="fs-5 text-black-50">행사 인원</div>
+				<div class="fs-5 text-black-50 fw-bolder mt-3">행사 인원</div>
 											<select class="form-select me-5" aria-label="Default select example" name="cPeople" class="catanon">
 												<option selected value="catamenu">참여인원</option>
 										        <option value="50명 미만" <%=covo.getCostPeople().equals("50명 미만") ? " selected" : ""%>>50명 미만</option>
@@ -461,7 +503,7 @@
 				<hr/>
 			
 <!-- 행사 설명 -->   
-        <div class="sc-qPIWj eXGQeW">행사 설명</div>
+        <div class="fs-5 fw-bold">행사 설명</div>
                 <div class="form-floating">
               <textarea class="form-control" id="floatingTextarea2" style="height: 400px" name="cText"><%=covo.getCostText() %></textarea>
               <label for="floatingTextarea2">진행하고자 하는 행사에 대해 적어주세요.</label>
@@ -472,16 +514,20 @@
 
 <!-- 참고자료  -->
    <div class="container">
-   <div class="sc-qPIWj eXGQeW">참고 자료<%if(covo.getCostFile() != null){%><img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>"><%}; %></div>
+   <div class="fs-5 fw-bold">참고 자료</div>
+   <div id="preview">
+	   	<%if(covo.getCostFile() != null){%>
+	   		<img class="mt-3" style="max-width:90%; margin:5px auto;" src="../Advice_img/<%=covo.getCostFile() %>">
+	   	<%}; %>
+   	</div>
    <div class="form-group">
-      <input class="form-control" type="file" id="formFile" name="cFile2">
+      <input class="form-control mt-2" type="file" id="formFile" name="cFile2">
     <hr/>
     </div>
-
-					<div class="text-end mt-5">
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
-						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
-					</div>	
+		<div class="text-end mt-5">
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
+				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostlist.do?midx=<%=midx%>'">목록</button>
+			</div>	
     	</div>
 	</form>
 

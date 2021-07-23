@@ -146,10 +146,15 @@
 <div class="container">
    <div class="row justify-content-md-center">
       <div class="col-md-auto">
-         <img src="../mypagemain.png " alt="마이페이지이미지" class="w-100">
+         <img src="../filefolder/mypagebanner.png " alt="마이페이지이미지" class="w-100 mt-3">
       </div>
+<<<<<<< HEAD
    </div>
    
+=======
+   </dvi>
+
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
    <!-- 게시글 리스트 -->
    <div class="container">
       <table class="table table-hover">
@@ -164,6 +169,7 @@
             </tr>  
          </thead>
         <tbody>
+<<<<<<< HEAD
 				
 		         <% for(EvCostVo covo: alistcost){ %>
 		
@@ -185,6 +191,27 @@
 					}
 					%>
 					
+=======
+
+         <% for(EvCostVo covo: alistcost){ %>
+            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
+               <td><%=covo.getCidx()%></td>
+               <td colspan="2"><%=covo.getCostName()%>
+	               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
+	               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
+	               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=covo.getCcondition()%></button></span> 
+	               	<%}; %>
+	               	
+               	</td>
+               <td></td>
+               <td><%=covo.getSubWritedate()%></td>
+               <td><%=covo.getCName()%></td>
+               <td><%=covo.getCcount()%></td>
+            </tr>
+         <%}; %>
+
+>>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
          </tbody> 
       </table>
    </div>
