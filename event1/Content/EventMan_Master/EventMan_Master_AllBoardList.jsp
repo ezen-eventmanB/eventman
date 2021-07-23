@@ -34,7 +34,7 @@
 	<!-- footer CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	
-<title>견적신청리스트</title>
+<title>상담신청리스트</title>
 
 <script>
 	
@@ -61,7 +61,7 @@ function submitFn(){
 
 var idx = 0;
 
-function costdeletFn(a,b){
+function boarddeletFn(a,b){
 	idx = a; 
   	$("#textbox").html(b+" 글을 삭제 하시겠습니까?");
 	$("#modal").modal("show"); 
@@ -69,19 +69,19 @@ function costdeletFn(a,b){
 
 function deletFn(){
 
-	location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_boarddelete.do?idx="+idx;
+	location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_board_delete.do?idx="+idx;
 
 };
 
 function replyfinshFN(a, b){
 	idx = a;
-  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.?");
+  	$("#textbox1").html(b+" 글을 상담완료처리 합니다.");
 	$("#modal1").modal("show"); 
 }
 
 
 function finsh(){
-	location.href="<%=request.getContextPath()%>/EventMan_Cost/EventMan_replyFinsh.do?idx="+idx;
+	location.href="<%=request.getContextPath()%>/EventMan_Board/EventMan_replyFinsh.do?idx="+idx;
 };
 	
 	
@@ -228,14 +228,20 @@ function finsh(){
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
 							<td></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%>
+										<%if(ebvo.getBcondition().equals("상담등록완료")){ %>
+						               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+						               	<%}else if(ebvo.getBcondition().equals("상담중") || ebvo.getBcondition().equals("상담완료")){ %>
+						               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+						               	<%}; %></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
 							<td class="text-center">
 								<div class="btn-group " role="group" aria-label="Basic outlined example">
-									<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
-									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="replyfinshFN(<%=ebvo.getBidx()%>,'<%=ebvo.getBtitle()%>')">답변처리</button>
+									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="boarddeletFn(<%=ebvo.getBidx()%>,'<%=ebvo.getBtitle()%>')">삭제</button>
+	
 								</div>
 							</td>
 						</tr>
@@ -245,7 +251,43 @@ function finsh(){
 </div>
 
 
+<!-- 삭제 모달 -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="deletFn()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
+<!-- 상담완료모달 -->
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()"></button>
+			</div>
+			<div class="modal-body">
+				<span id="textbox1"></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >취소</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="finsh()">확인</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 

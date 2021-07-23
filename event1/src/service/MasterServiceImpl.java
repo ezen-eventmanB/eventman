@@ -475,6 +475,7 @@ public class MasterServiceImpl {
             ebvo.setBname(rs.getString("mid"));
             ebvo.setBwriteday(rs.getString("Bwriteday"));
             ebvo.setBcount(rs.getString("Bcount"));
+            ebvo.setBcondition(rs.getString("Bcondition"));
             boardlist.add(ebvo);
          }
       } catch (SQLException e) {

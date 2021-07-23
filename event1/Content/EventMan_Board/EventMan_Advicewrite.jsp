@@ -258,6 +258,7 @@ function imageemptyFn(){
 				<option selected>카테고리</option>
 				<option value="서비스 문의">서비스 문의</option>
 				<option value="입점 문의">입점 문의</option>
+				<option value="견적 문의">견적 문의</option>
 				<option value="제휴 문의">제휴 문의</option>
 				<option value="오류 문의">오류 문의</option>
 				<option value="기타 문의">기타 문의</option>

@@ -557,8 +557,113 @@ public class BoardServiceImpl {
 		}
 		return boardList;
 	}
+    /*마이페이지 갈때 상담신청 모든 부분 카운트*/
+		public int allSelectCost() {
+		
+		int allcount=0;
+		
+		String sql = "select count(*) as cnt from EVE_BOARD where bdelyn='N'";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				allcount = (rs.getInt("bnt"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return allcount;
+	}
+	      
+	      /*   상담 신청 삭제하기      */   
+	      public int myPageBoardDelete(int bidx) {
+	    	  
+	  		int value = 0;
+	  		
+	  		String sql = "UPDATE EVE_BOARD SET BDELYN='Y' where bidx=?";
+	  		
+	  		try {
+	  			pstmt=conn.prepareStatement(sql);
+	  			pstmt.setInt(1, bidx);
+	  			value = pstmt.executeUpdate();
+	  			
+	  		} catch (SQLException e) {
+	  			e.printStackTrace();
+	  		}finally {
+	  			try {
+	  				pstmt.close();
+	  				conn.close();
+	  			} catch (SQLException e) {
+	  				e.printStackTrace();
+	  			}
+	  		}
+	  		return value;
+	  	}
+	      
+	      
+	public int masterreply(int bidx, String breply) {
+		int value = 0;
+			
+			String sql = "UPDATE EVE_BOARD SET BCONDITION='상담중' , BREPLY = ? where bidx=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, breply);
+				pstmt.setInt(2, bidx);
+				value = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		System.out.println("리플 된 항목수는 : "+value);
+		return value;
+	}
+	
    
-   
+	/* 상담 완료 처리하기	*/		
+	public int finshreply(int bidx) {
+		int value = 0;
+		
+		String sql = "UPDATE EVE_BOARD SET BCONDITION='상담완료' where bidx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bidx);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+		
+		return value;
+	}
    
    
    
