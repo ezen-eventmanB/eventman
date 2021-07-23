@@ -108,7 +108,7 @@ public class MasterServiceImpl {
    public ArrayList<EvMemberVo> memberSelectAll(){
       ArrayList<EvMemberVo> alist = new ArrayList<EvMemberVo>();
       
-      String sql="select * from EVE_MEMBER order by midx";
+      String sql="select * from EVE_MEMBER order by midx desc";
       
       try {
          pstmt = conn.prepareStatement(sql);
