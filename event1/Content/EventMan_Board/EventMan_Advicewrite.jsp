@@ -39,35 +39,7 @@
 <script>
 /*	이미지 미리보이 스크립트*/
   function setImageFn(f){
-	/*alert(f.files);
-	var files[] = f.files;
-	
-	$(document).ready(function(){
-		$("#formFile").on("change",handleImgFileSelect);
-	});
-	
-	function handleImgFileSelect(e){
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		
-		filesArr.forEach(function(f){
-			if(!f.type.match("image.*")){
-				alert("이미지 파이일만 업로드 가능합니다.");
-				return;
-			}
-			sel_file.push(f);
-			
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var img_html = "<img style='max-width:90%; margin:5px auto;' src=" + e.target.result + ">";
-				$("#preview").append(img_html)
-			}
-			reader.readAsDataURL(f);
-		});
-	}
-}	
-	 */
-/////////////////////////////////////
+
 	 	var file = f.files;
 		
 		

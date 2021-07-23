@@ -36,20 +36,35 @@
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	 <!-- topmenue CSS -->
    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 
-	function boardwWriteFn(){
-			
- 		$.ajax({
-			url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx="+<%=gidx%>,
-			type:"get",			
-			datatype:"html",
-			success:function(data){
-				$("#detailload").html(data);
-			}
-					
-		});
- 	}
+function boardwWriteFn(){
+		$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx="+<%=gidx%>,
+		type:"get",			
+		datatype:"html",
+		success:function(data){
+			$("#detailload").html(data);
+		}	
+	});
+}
+
+//중간 카테고리 선택
+function selectcata(a){
+	var cata="";
+	cata = a;
+
+	$.ajax({
+		url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_board_ajax.do?cata="+cata,
+		type:"get",
+		datatype:"html",
+		success:function(data){
+			$("#boardtable").html(data);
+		}
+	});
+}
+	
 
 </script>
 </head>
@@ -159,80 +174,96 @@
 
 
 <!-- 중앙 네비 카테고리 검색창 -->
-<nav style="max-width: 1300px; margin:0px auto;" class="navbar navbar-expand-lg navbar-light rounded" aria-label="Eleventh navbar example">
-	<div class="container-fluid">
-	     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-	       <span class="navbar-toggler-icon"></span>
-	     </button>
-	   
-	     <div class="navbar-collapse collapse" id="navbarsExample09" >
-	       <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold" id="midnav">
-	       
-	                      <!-- 클릭시 검은색 배경으로 변경 수정  -->
-	         <li class="nav-item" >
-	           <a class="nav-link fw-bolder " type="button" onclick="selectAll()">전체</a>
-	         </li>
-	         <li class="nav-item" >
-	           <a class="nav-link fw-bolder " type="button" onclick="selectHongbo()">행사홍보</a>
-	         </li>
-	         <li class="nav-item" >
-	           <a class="nav-link fw-bolder " type="button" onclick="selectGongji()">공지사항</a>
-	         </li>
-	         <li class="nav-item" >
-	           <a class="nav-link fw-bolder " type="button" onclick="selectNews()">뉴스레터</a>
-	         </li>
-	         <li class="nav-item" >
-	           <a class="nav-link fw-bolder" type="button" onclick="selectxEeption()">기타</a>
-	         </li>
-	       </ul>
-	       
-	       <form>
-	        			<%
-						if(gidx ==0){
-						%>
+<div class="container">
+	<nav style="max-width: 1300px; margin: 0px auto;"
+		class="navbar navbar-expand-lg navbar-light rounded"
+		aria-label="Eleventh navbar example">
+		<div class="container-fluid">
+			<button class="navbar-toggler collapsed" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarsExample09"
+				aria-controls="navbarsExample09" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-	     			    <%
-				   		}else if(gidx > 0){
-				   		%>
-				<div style="display:inline-block;">   
-		                <a href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx='+<%=gidx%>'">관리자 게시물 등록하기</a>
-		         </div>
-				   		<%
-				   		}
-				   		%>
-	     </div>
-	</div>
-</nav>
+			<div class="navbar-collapse collapse" id="navbarsExample09">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold" id="midnav">
+
+					<!-- 클릭시 검은색 배경으로 변경 수정  -->
+					<li class="nav-item"><a class="nav-link fw-bolder "
+						type="button" onclick="selectcata('전체')">전체</a></li>
+					<li class="nav-item"><a class="nav-link fw-bolder "
+						type="button" onclick="selectcata('행사홍보')">행사홍보</a></li>
+					<li class="nav-item"><a class="nav-link fw-bolder "
+						type="button" onclick="selectcata('공지사항')">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link fw-bolder "
+						type="button" onclick="selectcata('뉴스레터')">뉴스레터</a></li>
+					<li class="nav-item"><a class="nav-link fw-bolder"
+						type="button" onclick="selectcata('기타')">기타</a></li>
+				</ul>
+					<%
+					if (gidx == 0) {
+					%>
+
+					<%
+					} else if (gidx > 0) {
+					%>
+					<div style="display: inline-block;">
+						<a
+							href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx='+<%=gidx%>'">관리자
+							게시물 등록하기</a>
+					</div>
+					<%
+					}
+					%>
+			</div>
+		</div>
+	</nav>
+</div>
 
 
-<!-- 게시글 리스트 -->
-   <div class="container">
-  	 
-      <table class="table table-hover">	   
-         <thead>
-            <th>카테고리</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th>
-            <th>조회수</th>  
-         </thead>
-         
-	        <tbody>
-				 	<% for(EvBoardAskVo evbo: alistboard){ %>
-				 	 <input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
-		             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
-		               <td><%=evbo.getBcata()%></td>
-		               <td colspan="2"><%=evbo.getBtitle()%></td>
-		               <td></td>
-		               <td><%=evbo.getBWrieday2()%></td>
-		               <td><%=evbo.getgName()%></td>
-		               <td><%=evbo.getBcount()%></td>
-		            </tr>
-	       		  <%}; %> 
-	         </tbody> 
-	         
-				</table>
+	<!-- 게시글 리스트 -->
+   <div class="container" id="boardtable">
+		<table class="table table-hover">	   
+			<thead>
+				<th class="text-center">카테고리</th>
+				<th colspan="2">제목</th>
+				<th></th>
+				<th class="text-center">작성일</th>
+				<th class="text-center">작성자</th>
+				<th class="text-center">조회수</th>  
+			</thead>
+			<tbody>
+				<% for(EvBoardAskVo evbo: alistboard){ %>
+					<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+					<%if(evbo.getBcata().equals("공지사항")){ %>
+					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
+						<td class="text-center"><%=evbo.getBcata()%></td>
+						<td class="fw-bolder" colspan="2"><%=evbo.getBtitle()%></td>
+						<td></td>
+						<td class="text-center"><%=evbo.getBWrieday2()%></td>
+						<td class="text-center"><%=evbo.getgName()%></td>
+						<td class="text-center"><%=evbo.getBcount()%></td>
+					</tr>
+					<%}; %>
+
+				<%}; %> 
+				<% for(EvBoardAskVo evbo: alistboard){ %>
+					<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
+					<%if(!evbo.getBcata().equals("공지사항")){ %>
+					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
+						<td class="text-center"><%=evbo.getBcata()%></td>
+						<td colspan="2"><%=evbo.getBtitle()%></td>
+						<td></td>
+						<td class="text-center"><%=evbo.getBWrieday2()%></td>
+						<td class="text-center"><%=evbo.getgName()%></td>
+						<td class="text-center"><%=evbo.getBcount()%></td>
+					</tr>
+					<%}; %>
+
+				<%}; %> 
+			</tbody> 
+		</table>
    </div>
 
 

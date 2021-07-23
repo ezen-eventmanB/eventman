@@ -174,8 +174,8 @@ public class BoardController extends HttpServlet {
     	  System.out.println(" EventMan_MasterWriteAction 실행");
          
          //업로드 파일 경로      
-         //String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
-         String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
+         String uploadPath = "C:\\Users\\745\\git\\eventman\\event1\\Content\\"; //현호님꺼
+         //String uploadPath = "C:\\Users\\759\\git\\eventman\\event1\\Content\\"; //박종빈 경로
          //저장 폴더
          String savedPath = "Advice_img";
          
@@ -459,7 +459,8 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_MainAdvice.jsp");
          rd.forward(request, response);
          
-         //관리자 상담신청 상세보기
+         
+//관리자 상담신청 상세보기
       }else if(str2.equals("EventMan_Master_BoardDetail.do")){
          
          System.out.println("상담 상세보기");
@@ -479,10 +480,26 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
 
+         
+/*보드 카테고리 선택 ajax*/
+      }else if(str2.equals("EventMan_board_ajax.do")) {
+    	  	System.out.println("보드 에이젝스 실행");
+			
+    	  	String cata = request.getParameter("cata");
+    	  	
+    	  	BoardServiceImpl bdao = new BoardServiceImpl();
+    	  	ArrayList<EvBoardAskVo> alistboard = bdao.ajaxBoardList(cata);
+    	  	
+    	  	request.setAttribute("alistboard1", alistboard);
+    	  	
+			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_ajax.jsp");
+			rd.forward(request, response);
       }
    }
    
 
+   
+   
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       doGet(request, response);
       

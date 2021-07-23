@@ -44,9 +44,7 @@
   function setImageFn(f){
 
 	 	var file = f.files;
-		
-		alert(f.files);
-		
+
 		if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
 			alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
 			f.outerHTML = f.outerHTML;

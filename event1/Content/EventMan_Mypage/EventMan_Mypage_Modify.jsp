@@ -78,7 +78,6 @@
 			  document.frm.mPwd.focus();
 			  return;
 		  }else{
-			  alert("전송합니다");
 			  document.frm.action ="<%=request.getContextPath()%>/EventMan_Member/EventMan_Mypage_Modify_Action.do";
 			  document.frm.method = "post";
 			  document.frm.submit(); 

@@ -409,11 +409,13 @@ function listmoveFn(){
 <!-- 참고자료  -->
 	<div class="container">
 		<div class="fs-5 fw-bold">참고 자료</div>
-	 	<%if(covo.getCostFile().equals("")){%>
-			<div>첨부파일이 없습니다.</div>
-	 	<%}else if(!covo.getCostFile().equals("")){%>
-	 		<img class="mt-3 mx-auto" style="max-width:90%;" src="../Advice_img/<%=covo.getCostFile() %>">
-	 	<%}; %>
+		<%if(covo.getCostFile() != null){ %>
+		 	<%if(covo.getCostFile().equals("")){%>
+				<div>첨부파일이 없습니다.</div>
+		 	<%}else if(!covo.getCostFile().equals("")){%>
+		 		<img class="mt-3 mx-auto" style="max-width:90%;" src="../Advice_img/<%=covo.getCostFile() %>">
+		 	<%}; %>
+		<%}; %>
    <div class="form-group">
     <hr/>
     

@@ -484,6 +484,7 @@ public class BoardServiceImpl {
       return value;
    }
 
+   
    public String companyload() {
       
       String img = "";
@@ -556,6 +557,46 @@ public class BoardServiceImpl {
 			}
 		}
 		return boardList;
+	}
+
+	
+/* 보드 중간 카테고리 선택 ajax*/
+	public ArrayList<EvBoardAskVo> ajaxBoardList(String cata) {
+		
+		String cataType = cata;
+		
+		if(cata.equals("전체")) {
+			cataType="";
+		}
+		
+		ArrayList<EvBoardAskVo> alistboard = new ArrayList<EvBoardAskVo>();
+
+		String sql = "select * from eve_board where bcata like ? and bdelyn='K' order by bidx desc;";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+cataType+"%");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				EvBoardAskVo evo = new EvBoardAskVo();
+				evo.setGidx(rs.getInt("gidx"));
+				evo.setBidx(rs.getInt("bidx"));
+				evo.setBcata(rs.getString("bcata"));
+				evo.setBtitle(rs.getString("btitle"));
+				evo.setBwriteday(rs.getString("BWRITEDAY"));
+				evo.setgName(rs.getString("gname"));
+				evo.setBcount(rs.getString("bcount"));
+				alistboard.add(evo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return alistboard;
 	}
    
    
