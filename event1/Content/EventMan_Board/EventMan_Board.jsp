@@ -14,9 +14,6 @@
 	 }else if(session.getAttribute("gidx") !=null ){
 		 gidx= (int)session.getAttribute("gidx");
 	 }
-
-	
-	 
 	
 	ArrayList<EvBoardAskVo> alistboard = (ArrayList<EvBoardAskVo>)request.getAttribute("alistboard");  
 	%>    
@@ -187,7 +184,7 @@ function selectcata(a){
 			</button>
 
 			<div class="navbar-collapse collapse" id="navbarsExample09">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold" id="midnav">
+				<ul class="navbar-nav me-auto mb-2 mt-4 mb-lg-0 fw-bold" id="midnav">
 
 					<!-- 클릭시 검은색 배경으로 변경 수정  -->
 					<li class="nav-item"><a class="nav-link fw-bolder "
@@ -209,9 +206,7 @@ function selectcata(a){
 					} else if (gidx > 0) {
 					%>
 					<div style="display: inline-block;">
-						<a
-							href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx='+<%=gidx%>'">관리자
-							게시물 등록하기</a>
+						<a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_Write.do?gidx='+<%=gidx%>'">게시물 등록하기</a>
 					</div>
 					<%
 					}

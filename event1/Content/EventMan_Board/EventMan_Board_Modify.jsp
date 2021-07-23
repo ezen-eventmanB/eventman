@@ -158,20 +158,20 @@
       </svg>
       
       <!-- 현제 페이지 이름 -->
-      Board Detail
+      게시판
    </div>
       
 
 <div class="container">
+ <div class="shadow p-3 mt-2 mb-2 bg-body rounded">
 	<form name="frm">
 		<input type="hidden" name="bidx" value="<%=bavo.getBidx()%>">
 			<div class="mypageajax">
-				<div class="fs-4 fw-bold mb-5">게시판</div>
 				<!-- 상세보기-->
 				<div class="container" id="myboardbox">
-						카테고리
+						<div class="fs-5 fw-bold">카테고리</div>
 						<div>
-							<select class="form-select" aria-label="Default select example" name="cata" id="cata">
+							<select class="form-select mb-2" aria-label="Default select example" name="cata" id="cata">
 								<option selected>카테고리</option>
 								<option value="행사홍보" <%=bavo.getBcata().equals("행사홍보") ? "selected" : ""%>>행사 홍보</option>
 								<option value="공지사항" <%=bavo.getBcata().equals("공지사항") ? "selected" : ""%>>공지사항</option>
@@ -179,11 +179,11 @@
 								<option value="기타" <%=bavo.getBcata().equals("기타") ? "selected" : ""%>>기타</option>
 							</select>
 						</div>
-						제목
+						<div class="fs-5 fw-bold">제목</div>
 						<div class="fs-1 fw-bold mb-3"><input class="form-control form-control-lg fs-1 fw-bold mb-3" type="text" name="Btitle" value="<%=bavo.getBtitle() %>" aria-label=".form-control-lg example"></div>
 						<div class="mb-5 pb-2 border-bottom border-3 ">
 							<span class="fw-bold me-2">등록일</span>
-							<span class=" me-3"><%=bavo.getBwriteday()%></span>
+							<span class="me-3"><%=bavo.getBwriteday()%></span>
 							<span class="fw-bold me-2">작성자</span>
 							<span class=" me-3"><%=bavo.getgName() %></span>
 							<span class="fw-bold me-2">조회수</span>
@@ -207,18 +207,16 @@
 					</div>
 					<div class="text-end mt-5">
 					
-							<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
-			
-					<div class="text-end mt-5">
+						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="modifyFn()">수정 완료</button>
 						<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalBoardDeletFn()">삭제</button>
-					</div>
+
 			
 					</div>
 				</div>
 			</form>
 		</div>
-	
+</div>	
 	
 	<!--   모달   -->
 	<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

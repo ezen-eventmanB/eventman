@@ -152,15 +152,14 @@
       </svg>
       
       <!-- 현제 페이지 이름 -->
-      Board Detail
+      게시판
    </div>
       
 
 <div class="container">
             
 <div class="mypageajax">
-	<div class="fs-4 fw-bold mb-5">게시판</div>
-	
+	   <div class="shadow p-3 mt-2 mb-2 bg-body rounded">
 	<!-- 상세보기-->
 	<div class="container" id="myboardbox">
 <%-- 		<input type="hidden" name="bidx" value="<%=session.getAttribute("bidx")%>">
@@ -198,23 +197,22 @@
 		<div class="text-end mt-5">
 		
 				<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board.do?midx=<%=midx%>'">목록</button>
-						<%
-						if(midx == 0 && gidx ==0){
-						%>
-			
-						<%
-				   		}else if(gidx > 0){
-				   		%>
-		<div class="text-end mt-5">
+			<%
+			if(midx == 0 && gidx ==0){
+			%>
+
+			<%
+	   		}else if(gidx > 0){
+	   		%>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Modify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="ModalBoardDeletFn()">삭제</button>
-		</div>
-						<%
-				   		}
-				   		%>
+			<%
+	   		}
+	   		%>
 		</div>
 	</div>
 	
+</div>
 </div>
 
 <!--   모달   -->

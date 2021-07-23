@@ -429,9 +429,11 @@
 
       
 <!-- 메인 공지사항 4개 출력 -->
+<div class="shadow p-3 mb-5 bg-body rounded">
 <div class="container">
 	<img class="bd-placeholder-img card-img-top stretched-link imgbox" alt="" src="../sm-banner.jpg">
 </div>
+
 	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -464,6 +466,7 @@
 	}; 
 	 %> 
 	</table>
+</div>
 </div>
    
    
