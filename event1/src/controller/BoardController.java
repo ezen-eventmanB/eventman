@@ -535,21 +535,22 @@ public class BoardController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/EventMan_Master/EventMan_Master_AllBoardList.do");
 			}else {
 				System.out.println("처리 실패");
+		
 			}    
-/*보드 카테고리 선택 ajax*/
-      }else if(str2.equals("EventMan_board_ajax.do")) {
-    	  	System.out.println("보드 에이젝스 실행");
-			
-    	  	String cata = request.getParameter("cata");
-    	  	
-    	  	BoardServiceImpl bdao = new BoardServiceImpl();
-    	  	ArrayList<EvBoardAskVo> alistboard = bdao.ajaxBoardList(cata);
-    	  	
-    	  	request.setAttribute("alistboard1", alistboard);
-    	  	
-			RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_ajax.jsp");
-			rd.forward(request, response);
-      }
+		/*보드 카테고리 선택 ajax*/
+	      }else if(str2.equals("EventMan_board_ajax.do")) {
+	    	  	System.out.println("보드 에이젝스 실행");
+				
+	    	  	String cata = request.getParameter("cata");
+	    	  	
+	    	  	BoardServiceImpl bdao = new BoardServiceImpl();
+	    	  	ArrayList<EvBoardAskVo> alistboard = bdao.ajaxBoardList(cata);
+	    	  	
+	    	  	request.setAttribute("alistboard1", alistboard);
+	    	  	
+				RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Board/EventMan_Board_ajax.jsp");
+				rd.forward(request, response);
+	      }
 
    }
    
