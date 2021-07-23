@@ -427,10 +427,15 @@ function listmoveFn(){
 					<img class="bd-placeholder-img card-img-top stretched-link imgbox mt-4" src="../filefolder/costimg.jpg"/>
 				</div>
 			<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료") ){ %>
-				<div class="card-body mt-5 fs-5 fw-bold">관리자 답변</div>
-				<div class="card">
-					<div class="card-body fs-6"><%=covo.getCreply() %></div>
-				</div>
+				
+				<%if(covo.getCreply()!=null){ %>
+					<div class="card">
+						<div class="card-body mt-5 fs-5 fw-bold">관리자 답변</div>
+						<div class="card-body fs-6"><%=covo.getCreply() %></div>
+					</div>
+							<%}else if(covo.getCreply()==null){ %>
+								<img class="bd-placeholder-img card-img-top stretched-link imgbox mt-4" src="../filefolder/costimg.jpg"/>
+							<%} %>
 				<%}; %>
 		</div>
     
