@@ -196,18 +196,37 @@
 	<th>회원 상태</th>
 </thead>
 
-<%for(EvMemberVo mv : alist) { %>
-<tr class="tr2" style='cursor:pointer;' onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
-	<td><%=mv.getMidx()%></td>  
-	<td><%=mv.getmId() %></td>
-	<td><%=mv.getmName() %></td>
-	<td><%=mv.getmEmail() %></td>
-	<td><%=mv.getmPhn() %></td>
-	<td><%=mv.getmDate()%></td>
-	<td><%=mv.getmType()%></td>
-	<td><%=mv.getmDelYn()%></td>
-</tr>
-<% }; %>
+			<%for(EvMemberVo mv : alist) { %>
+				<%if(mv.getmDelYn().equals("N")){ %>
+					<tr class="tr2" style='cursor:pointer;' onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
+						<td><%=mv.getMidx()%></td>  
+						<td><%=mv.getmId() %></td>
+						<td><%=mv.getmName() %></td>
+						<td><%=mv.getmEmail() %></td>
+						<td><%=mv.getmPhn() %></td>
+						<td><%=mv.getmDate()%></td>
+						<td><%=mv.getmType()%></td>
+						<td><%=mv.getmDelYn()%></td>
+					</tr>
+				<%}; %>
+			<% }; %>
+			
+			
+			<%for(EvMemberVo mv : alist) { %>
+				<%if(mv.getmDelYn().equals("Y")){ %>
+					<tr class="tr2" style='color:#C3C3C3;'	class="btn btn-light btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
+						<td><%=mv.getMidx()%></td>  
+						<td><%=mv.getmId() %></td>
+						<td><%=mv.getmName() %></td>
+						<td><%=mv.getmEmail() %></td>
+						<td><%=mv.getmPhn() %></td>
+						<td><%=mv.getmDate()%></td>
+						<td><%=mv.getmType()%></td>
+						<td><%=mv.getmDelYn()%></td>
+					</tr>
+				<%}; %>
+			<% }; %>
+
 
 	</table>
 </div>
