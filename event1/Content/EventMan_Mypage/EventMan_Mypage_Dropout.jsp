@@ -264,7 +264,6 @@
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">탈퇴 실패</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
->>>>>>> branch 'master' of https://github.com/ezen-eventmanB/eventman.git
 			</div>
 			<div class="modal-body">비밀번호를 입력해주세요.</div>
 			<div class="modal-footer">

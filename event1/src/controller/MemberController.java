@@ -175,9 +175,17 @@ public class MemberController extends HttpServlet {
 			// 3.이동한다
 
 			if (value > 0) {
-				response.sendRedirect(request.getContextPath() + "/EventMan_Member/EventMan_Member_LogoutAction.do");
+				//response.sendRedirect(request.getContextPath() + "/EventMan_Member/EventMan_Member_LogoutAction.do");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('회원탈퇴 되었습니다..')</script>");
+				out.println("<script>document.location.href='" + request.getContextPath()
+						+ "/EventMan_Member/EventMan_Member_LogoutAction.do'</script>");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/EventMan_Mypage/EventMan_Mypage_Dropout.do");
+				//response.sendRedirect(request.getContextPath() + "/EventMan_Mypage/EventMan_Mypage_Dropout.do");	
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('비밀번호를 확인해주세요.')</script>");
+				out.println("<script>document.location.href='" + request.getContextPath()
+						+ "/EventMan_Mypage/EventMan_Mypage_Dropout.do'</script>");
 			}
 
 			/* 회원정보 수정 화면 이동 */
