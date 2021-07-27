@@ -517,51 +517,6 @@ public class BoardServiceImpl {
       return img;
    }
    
-
-   	/*	게시판 전체 리스트 출력 ajax 버튼	*/
-   /*public ArrayList<EvBoardAskVo> boardSelectAll(int page){
-		
-		ArrayList<EvBoardAskVo> boardList = new ArrayList();
-		
-		String sql =  "select B.* from "
-					+ "(select rownum as rnum, A. * from "
-					+ "(select * from EVE_BOARD where bdelYn='N' ORDER BY bidx DESC) A "
-					+ "where rownum <= ?) B "
-					+ "where B.rnum >= ?";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, page*9);
-			pstmt.setInt(2, 1+(page-1)*9);
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				EvBoardAskVo ebvo = new EvBoardAskVo();
-				
-	            ebvo.setBcata(rs.getString("Bcata"));
-	            ebvo.setBtitle(rs.getString("Btitle"));
-	            ebvo.setBwriteday(rs.getString("Bwriteday"));
-	            ebvo.setgName(rs.getString("gName"));
-	            ebvo.setBmenu(rs.getString("Bmenu"));
-	            ebvo.setBcount(rs.getString("Bcount"));
-	            ebvo.setBidx(rs.getInt("bidx"));
-
-				boardList.add(ebvo);
-				
-			}			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				conn.close();
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return boardList;
-	}*/
-
 	    /*마이페이지 갈때 상담신청 모든 부분 카운트*/
 			public int allSelectCost() {
 			
