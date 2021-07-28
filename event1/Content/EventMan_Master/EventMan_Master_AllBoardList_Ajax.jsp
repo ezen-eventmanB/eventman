@@ -49,28 +49,26 @@
 	<table class="table table-hover">
 		<thead>
 			<tr class="text-center">
-				<th>글번호</th>
-				<th colspan="2">카테고리</th>
-				<th></th>
-				<th>제목</th>
-				<th>작성아이디</th>
-				<th>작성일</th>
-				<th>조회수</th>
-				<th></th>
+				<th class="d-none d-lg-table-cell">글번호</th>
+				<th class="d-none d-lg-table-cell">카테고리</th>
+				<th class="d-table-cell">제목</th>
+				<th class="d-none d-md-table-cell">작성아이디</th>
+				<th class="d-none d-md-table-cell">작성일</th>
+				<th class="d-none d-lg-table-cell">조회수</th>
+				<th clas="d-table-cell"></th>
 			</tr>
 		</thead>
 		
 			<tbody class="align-middle">
 					<% for(EvBoardAskVo ebvo : alist){ %>
 						<tr <%if(ebvo.getBdelyn().equals("Y")){ %>style="color:lightgray;" <%}; %>>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBidx() %></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" colspan="2"><%=ebvo.getBcata()%></td>
-							<td></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBtitle()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBname()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBWrieday2()%></td>
-							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center"><%=ebvo.getBcount() %></td>
-							<td class="text-center">
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-lg-table-cell"><%=ebvo.getBidx() %></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="d-none d-lg-table-cell"><%=ebvo.getBcata()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-table-cell"><%=ebvo.getBtitle()%>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-md-table-cell"><%=ebvo.getBname()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-md-table-cell"><%=ebvo.getBWrieday2()%></td>
+							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-lg-table-cell"><%=ebvo.getBcount() %></td>
+							<td class="text-center d-table-cell">
 								<div class="btn-group " role="group" aria-label="Basic outlined example">
 									<button type="button" class="btn btn-outline-secondary btn-sm">답변</button>
 									<button type="button" class="btn btn-outline-secondary btn-sm" onclick="costdeletFn()">삭제</button>

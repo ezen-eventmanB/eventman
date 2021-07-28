@@ -437,11 +437,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>카테고리</th>
+				<th class="d-none d-lg-table-cell">카테고리</th>
 				<th colspan="2">제목</th>
-				<th></th>
-				<th>작성일</th>
-				<th>작성자</th> 
+				<th class="d-none d-md-table-cell">작성일</th>
+				<th class="d-none d-lg-table-cell">작성자</th> 
 			</tr>
 		</thead>
 	<tbody>
@@ -453,11 +452,10 @@
 	%>
 		<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 		<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
-			<td><%=evbo.getBcata()%></td>
+			<td class="d-none d-lg-table-cell"><%=evbo.getBcata()%></td>
 			<td style="text-align: left;" colspan="2"><%=evbo.getBtitle()%></td>
-			<td></td>
-			<td><%=evbo.getBWrieday2()%></td>
-		<td><%=evbo.getgName()%></td>
+			<td class="d-none d-md-table-cell"><%=evbo.getBWrieday2()%></td>
+			<td class="d-none d-lg-table-cell"><%=evbo.getgName()%></td>
 		</tr>
 	<%
 		if(num==5){

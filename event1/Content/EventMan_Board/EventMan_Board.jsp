@@ -33,6 +33,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/subnav.css">
 	 <!-- topmenue CSS -->
    <link rel="stylesheet" type="text/css" href="../css/topnav.css">
+   
+
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
 <script>
 
@@ -64,6 +66,7 @@ function selectcata(a){
 	
 
 </script>
+
 </head>
 <body>
 
@@ -219,28 +222,26 @@ function selectcata(a){
 
 	<!-- 게시글 리스트 -->
    <div class="container" id="boardtable">
-		<table class="table table-hover">	   
+		<table class="table table-hover btable" >	 
 			<thead>
 				<tr>
-					<th class="text-center">카테고리</th>
-					<th colspan="2">제목</th>
-					<th></th>
-					<th class="text-center">작성일</th>
-					<th class="text-center">작성자</th>
-					<th class="text-center">조회수</th>
-				</tr>  
+					<th class="text-center d-none d-lg-table-cell">카테고리</th>
+					<th class="text-center d-table-cell">제목</th>
+					<th class="text-center d-none d-md-table-cell">작성일</th>
+					<th class="text-center d-none d-lg-table-cell">작성자</th>
+					<th class="text-center d-none d-lg-table-cell">조회수</th>  
+				</tr>
 			</thead>
 			<tbody>
 				<% for(EvBoardAskVo evbo: alistboard){ %>
 					<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 					<%if(evbo.getBcata().equals("공지사항")){ %>
 					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
-						<td class="text-center"><%=evbo.getBcata()%></td>
-						<td class="fw-bolder" colspan="2"><%=evbo.getBtitle()%></td>
-						<td></td>
-						<td class="text-center"><%=evbo.getBWrieday2()%></td>
-						<td class="text-center"><%=evbo.getgName()%></td>
-						<td class="text-center"><%=evbo.getBcount()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getBcata()%></td>
+						<td class="fw-bolder d-table-cell btitle"><%=evbo.getBtitle()%></td>
+						<td class="text-center d-none d-md-table-cell"><%=evbo.getBWrieday2()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getgName()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getBcount()%></td>
 					</tr>
 					<%}; %>
 
@@ -249,12 +250,11 @@ function selectcata(a){
 					<input type="hidden" name="gidx" value="<%=evbo.getGidx()%>"> 
 					<%if(!evbo.getBcata().equals("공지사항")){ %>
 					<tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Board_Detail.do?bidx='+<%=evbo.getBidx()%>">
-						<td class="text-center"><%=evbo.getBcata()%></td>
-						<td colspan="2"><%=evbo.getBtitle()%></td>
-						<td></td>
-						<td class="text-center"><%=evbo.getBWrieday2()%></td>
-						<td class="text-center"><%=evbo.getgName()%></td>
-						<td class="text-center"><%=evbo.getBcount()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getBcata()%></td>
+						<td class="d-table-cell btitle"><%=evbo.getBtitle()%></td>
+						<td class="text-center d-none d-md-table-cell"><%=evbo.getBWrieday2()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getgName()%></td>
+						<td class="text-center d-none d-lg-table-cell"><%=evbo.getBcount()%></td>
 					</tr>
 					<%}; %>
 
@@ -262,6 +262,7 @@ function selectcata(a){
 			</tbody> 
 		</table>
    </div>
+
 
 
 <!-- 메인 푸터 -->
