@@ -15,8 +15,8 @@
     }else if(session.getAttribute("gidx") !=null ){
        gidx= (int)session.getAttribute("gidx");
     }
+	
 
-   
    %>
    <%
    ArrayList<EvReviewVo> reviewList = (ArrayList<EvReviewVo>)request.getAttribute("reviewList");
@@ -333,8 +333,18 @@
    </div>
 </div>         
 
-
-
+				<%
+				if (midx == 0 && gidx == 0) {
+				%>
+	
+					<div class="container">
+					사용자 계정 : test / 1111
+					<br>
+					관리자 계정 : master / 1111 
+					</div>
+				<%
+				}
+				%>
 
 <!-- 중앙 네비 카테고리 검색창 -->
 
