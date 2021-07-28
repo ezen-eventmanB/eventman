@@ -65,6 +65,11 @@
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-lg-table-cell"><%=ebvo.getBidx() %></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="d-none d-lg-table-cell"><%=ebvo.getBcata()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-table-cell"><%=ebvo.getBtitle()%>
+										<%if(ebvo.getBcondition().equals("상담등록완료")){ %>
+						               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+						               	<%}else if(ebvo.getBcondition().equals("상담중") || ebvo.getBcondition().equals("상담완료")){ %>
+						               		<span><button type="button" class="btn btn-secondary btn-sm" disabled><%=ebvo.getBcondition()%></button></span> 
+						               	<%}; %></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-md-table-cell"><%=ebvo.getBname()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-md-table-cell"><%=ebvo.getBWrieday2()%></td>
 							<td onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_BoardDetail.do?bidx=<%=ebvo.getBidx()%>'" class="text-center d-none d-lg-table-cell"><%=ebvo.getBcount() %></td>

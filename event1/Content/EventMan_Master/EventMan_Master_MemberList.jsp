@@ -45,34 +45,8 @@
 	  
 	  
 	  
-<style>
-	table {
-    margin:auto;
-	}
-
-	table, td, th {
-    border-collapse : collapse;
-    border : 1px solid black;
-	}
-	
-	.tr1 {
-		font-weight: 500;
-		background-color:#D5D5D5;
-		text-align: center;
-	
-	}
-	
-	.tr2 {
-		background-color:#F6F6F6;
-		text-align: center;
-		
-	}
-</style>
 </head>
 <body>
-
-
-<div class="container ajax">
 
 <!-- 상단 네비 부분 -->
 <div class="container">
@@ -183,30 +157,31 @@
  
 <!-- 회원 관리 -->  
 <div class="container">
-<table class="table table-hover">
-<thead>
-<tr class="tr1">
-	<th>번호</th>
-	<th>아이디</th>
-	<th>이름</th>
-	<th>이메일</th>
-	<th>핸드폰 번호</th>
-	<th>가입일</th>
-	<th>회원 종류</th>
-	<th>회원 상태</th>
-</thead>
+	<table class="table table-hover">
+		<thead>
+			<tr class="text-center">
+				<th class="d-none d-lg-table-cell">번호</th>
+				<th class="d-table-celll">아이디</th>
+				<th class="d-table-celll">이름</th>
+				<th class="d-none d-lg-table-cell">이메일</th>
+				<th class="d-table-cell">핸드폰 번호</th>
+				<th class="d-none d-lg-table-cell">가입일</th>
+				<th class="d-none d-md-table-cell">회원 종류</th>
+				<th class="d-none d-lg-table-cell">회원 상태</th>
+			</tr>
+		</thead>
 
 			<%for(EvMemberVo mv : alist) { %>
 				<%if(mv.getmDelYn().equals("N")){ %>
-					<tr class="tr2" style='cursor:pointer;' onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
-						<td><%=mv.getMidx()%></td>  
-						<td><%=mv.getmId() %></td>
-						<td><%=mv.getmName() %></td>
-						<td><%=mv.getmEmail() %></td>
-						<td><%=mv.getmPhn() %></td>
-						<td><%=mv.getmDate()%></td>
-						<td><%=mv.getmType()%></td>
-						<td><%=mv.getmDelYn()%></td>
+					<tr class="text-center" style='cursor:pointer;' onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
+						<td class="d-none d-lg-table-cell"><%=mv.getMidx()%></td>  
+						<td class="d-table-cell"><%=mv.getmId() %></td>
+						<td class="d-table-cell"><%=mv.getmName() %></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmEmail() %></td>
+						<td class="d-table-cell"><%=mv.getmPhn() %></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmDate()%></td>
+						<td class="d-none d-md-table-cell"><%=mv.getmType()%></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmDelYn()%></td>
 					</tr>
 				<%}; %>
 			<% }; %>
@@ -214,15 +189,15 @@
 			
 			<%for(EvMemberVo mv : alist) { %>
 				<%if(mv.getmDelYn().equals("Y")){ %>
-					<tr class="tr2" style='color:#C3C3C3;'	class="btn btn-light btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
-						<td><%=mv.getMidx()%></td>  
-						<td><%=mv.getmId() %></td>
-						<td><%=mv.getmName() %></td>
-						<td><%=mv.getmEmail() %></td>
-						<td><%=mv.getmPhn() %></td>
-						<td><%=mv.getmDate()%></td>
-						<td><%=mv.getmType()%></td>
-						<td><%=mv.getmDelYn()%></td>
+					<tr class="text-center" style='color:#C3C3C3;'	class="btn btn-light btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_MemberModify.do?midx=<%=mv.getMidx()%>'">
+						<td class="d-none d-lg-table-cell"><%=mv.getMidx()%></td>  
+						<td class="d-table-cell"><%=mv.getmId() %></td>
+						<td class="d-table-cell"><%=mv.getmName() %></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmEmail() %></td>
+						<td class="d-table-cell"><%=mv.getmPhn() %></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmDate()%></td>
+						<td class="d-none d-md-table-cell"><%=mv.getmType()%></td>
+						<td class="d-none d-lg-table-cell"><%=mv.getmDelYn()%></td>
 					</tr>
 				<%}; %>
 			<% }; %>

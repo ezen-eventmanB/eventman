@@ -157,19 +157,18 @@
    <div class="container">
       <table class="table table-hover">
          <thead>
-            <th>순번</th>
-            <th colspan="2">제목</th>
-            <th></th>
-            <th>작성일</th>
-            <th>작성자</th>
-            <th>조회수</th>  
+            <th class="text-center d-none d-lg-table-cell">순번</th>
+            <th	class="text-center d-table-cell">제목</th>
+            <th class="text-center d-table-cell">작성일</th>
+            <th class="text-center d-none d-md-table-cell">작성자</th>
+            <th class="text-center d-none d-md-table-cell">조회수</th>  
          </thead>
         <tbody>
 
          <% for(EvCostVo covo: alistcost){ %>
             <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Cost/EventMan_Mypage_MyCostDetail.do?cidx=<%=covo.getCidx()%>'">
-               <td><%=covo.getCidx()%></td>
-               <td colspan="2"><%=covo.getCostName()%>
+               <td class="text-center d-none d-lg-table-cell"><%=covo.getCidx()%></td>
+               <td class="d-table-cell"><%=covo.getCostName()%>
 	               	<%if(covo.getCcondition().equals("견적등록완료")){ %>
 	               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=covo.getCcondition()%></button></span> 
 	               	<%}else if(covo.getCcondition().equals("상담중") || covo.getCcondition().equals("상담완료")){ %>
@@ -177,10 +176,9 @@
 	               	<%}; %>
 	               	
                	</td>
-               <td></td>
-               <td><%=covo.getSubWritedate()%></td>
-               <td><%=covo.getCName()%></td>
-               <td><%=covo.getCcount()%></td>
+               <td class="text-center d-table-cell"><%=covo.getSubWritedate()%></td>
+               <td class="text-center d-none d-md-table-cell"><%=covo.getCName()%></td>
+               <td class="text-center d-none d-md-table-cell"><%=covo.getCcount()%></td>
             </tr>
          <%}; %>
 

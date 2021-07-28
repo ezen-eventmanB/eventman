@@ -480,6 +480,7 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
          
+         
          /* 관리자가 상담 신청 삭제하기	*/            
       }else if(str2.equals("EventMan_Master_board_delete.do")) {
      	 
@@ -536,7 +537,8 @@ public class BoardController extends HttpServlet {
 			}else {
 				System.out.println("처리 실패");
 		
-			}    
+			}  
+			
 		/*보드 카테고리 선택 ajax*/
 	      }else if(str2.equals("EventMan_board_ajax.do")) {
 	    	  	System.out.println("보드 에이젝스 실행");

@@ -446,6 +446,7 @@ public class MasterServiceImpl {
             ebvo.setBwriteday(rs.getString("bwriteday"));
             ebvo.setBcount(rs.getString("bcount"));
             ebvo.setBdelyn(rs.getString("bdelyn"));
+            ebvo.setBcondition(rs.getString("Bcondition"));
             alist.add(ebvo);
          }
       } catch (SQLException e) {

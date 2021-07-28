@@ -158,19 +158,18 @@
       <table class="table table-hover">
          <thead>
          	<tr>
-	            <th>카테고리</th>
-	            <th colspan="2">제목</th>
-	            <th></th>
-	            <th>작성일</th>
-	            <th>작성자</th>
-	            <th>조회수</th>
+	            <th class="text-center d-none d-lg-table-cell">카테고리</th>
+	            <th class="text-center d-table-cell">제목</th>
+	            <th class="text-center d-table-cell">작성일</th>
+	            <th class="text-center d-none d-md-table-cell">작성자</th>
+	            <th class="text-center d-none d-md-table-cell">조회수</th>
             </tr>
          </thead>
          <tbody>
         			<% for(EvBoardAskVo bavo: alistboard){ %>
 			            <tr onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardlistDetail.do?bidx=<%=bavo.getBidx()%>'">
-			               <td><%=bavo.getBcata()%></td>
-			               <td colspan="2"><%=bavo.getBtitle()%>
+			               <td class="text-center d-none d-lg-table-cell"><%=bavo.getBcata()%></td>
+			               <td class="d-table-cell"><%=bavo.getBtitle()%>
 				               	<%if(bavo.getBcondition().equals("상담등록완료")){ %>
 				               		<span><button type="button" class="btn btn-light btn-sm" disabled><%=bavo.getBcondition()%></button></span> 
 				               	<%}else if(bavo.getBcondition().equals("상담중") || bavo.getBcondition().equals("상담완료")){ %>
@@ -178,10 +177,9 @@
 				               	<%}; %>
 					               
 			               </td>
-			               <td></td>
-			               <td><%=bavo.getBWrieday2()%></td>
-			               <td><%=bavo.getBname()%></td>
-			               <td><%=bavo.getBcount() %></td>
+			               <td class="text-center d-table-cell"><%=bavo.getBWrieday2()%></td>
+			               <td class="text-center d-none d-md-table-cell"><%=bavo.getBname()%></td>
+			               <td class="text-center d-none d-md-table-cell"><%=bavo.getBcount() %></td>
 					    </tr>
 		                <%
 						}
