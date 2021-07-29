@@ -290,7 +290,6 @@ public class CostController extends HttpServlet {
         		 System.out.println("@@답변등록실패했씁니다~");
         	 }
         	 
-        	 
   /*	관리자가 견적 상세보기	*/      	 
          }else if(str2.equals("EventMan_Mypage_CostDetail.do")){
  			

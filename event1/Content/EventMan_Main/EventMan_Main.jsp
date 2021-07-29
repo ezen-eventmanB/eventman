@@ -338,7 +338,7 @@
 				%>
 	
 					<div class="container">
-					사용자 계정 : test / 1111
+					사용자 계정 : tuszy123 / 1111a
 					<br>
 					관리자 계정 : master / 1111 
 					</div>
