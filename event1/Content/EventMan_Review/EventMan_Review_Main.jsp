@@ -372,7 +372,6 @@
 	<div class="album">
 		<div class="container">
 			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-				
 					<% for(EvReviewVo erv : reviewList){ %>
 					<div class="col">
 						<div class="card shadow-sm" onclick="detailFn('<%=erv.getHidx()%>')" style='cursor:pointer;'>
@@ -388,7 +387,6 @@
 							</div>
 						</div>
 					</div>
-				
 				<%}; %>
 			</div>
 		</div> 

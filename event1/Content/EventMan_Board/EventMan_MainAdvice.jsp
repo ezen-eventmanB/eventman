@@ -218,7 +218,7 @@ function imageemptyFn(){
 <div class="boardwritearea">
 	<div class="container">
 		<header>
-			<div class="writeheader">상담 신청하기</div>
+			<div class="fs-1 fw-bold text-center mb-2">상담 신청하기</div>
 		</header>	
 		
 		<!-- 폼 -->

@@ -205,7 +205,7 @@
 					</div>
 		
 				<div id="underline2">
-					<p class="fs-1 text-muted" id="EVENTMAN">회 원 정 보</p>
+					<p class="fs-1 fw-bold text-muted" id="EVENTMAN">회 원 정 보</p>
 				</div>
 				<form name="frm">
 						

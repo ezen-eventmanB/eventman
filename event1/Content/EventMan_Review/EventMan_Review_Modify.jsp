@@ -312,7 +312,7 @@ $(document).ready(function(){
 										<div class="mt-2">
 											<select class="form-select me-5" aria-label="Default select example" name="price" class="catanon">
 												<option selected value="catamenu">예산</option>
-												<option value="1000만원 미만" <%=erv.getHprice().equals("1000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
+												<option value="1,000만원 미만" <%=erv.getHprice().equals("1,000만원 미만") ? " selected" : "" %>>1,000만원 미만</option>
 												<option value="1,000만원 이상 ~ 5,000만원 미만" <%=erv.getHprice().equals("1,000만원 이상 ~ 5,000만원 미만") ? " selected" : "" %>>1,000만원 이상 ~ 5,000만원 미만</option>
 												<option value="5,000만원 ~ 1억 미만" <%=erv.getHprice().equals("5,000만원 ~ 1억 미만") ? " selected" : "" %>>5,000만원 ~ 1억 미만</option>
 												<option value="1억 이상 ~ 3억 미만" <%=erv.getHprice().equals("1억 이상 ~ 3억 미만") ? " selected" : "" %>>1억 이상 ~ 3억 미만</option>
