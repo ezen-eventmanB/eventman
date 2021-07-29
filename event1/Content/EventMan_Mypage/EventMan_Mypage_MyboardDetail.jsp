@@ -52,7 +52,36 @@
 		location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_MyboardDelet.do?bidx=<%=bavo.getBidx()%>&midx=<%=midx%>'
 	};
 	
+
+	function masterreplyFn(){
+		
+		$("#replybox").empty();
+		$("#replybox").html('<div class="mb-3"><label for="exampleFormControlTextarea1" class="form-label">답변글 작성하기</label><textarea class="form-control" name="reply" id="exampleFormControlTextarea1" rows="3"></textarea></div>');
+		$("#replybtn").empty();
+		$("#replybtn").html('<button type="button" class="btn btn-outline-secondary btn-sm me-1" onclick="replyActionFn()">답변작성완료</button>'+'<button type="button" class="btn btn-outline-secondary btn-sm" onclick="listmoveFn()">목록</button>');
+		
+	};
 	
+	function replyActionFn(){
+		
+		var reple = $("#exampleFormControlTextarea1").val();
+		var alldata = {"bidx" : <%=bavo.getBidx()%>, "Breply" : reple};
+		
+		$.ajax({
+			url:"<%=request.getContextPath()%>/EventMan_Board/EventMan_Master_Reply.do?",
+			type:"post",
+			data:alldata,
+			success:function(data){
+				location.href="<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllBoardList.do";
+			}	
+		});
+
+		
+	};
+	
+	function listmoveFn(){
+		location.href='<%=request.getContextPath()%>/EventMan_Master/EventMan_Master_AllBoardList.do';
+	};				
 </script>
 
 </head>
@@ -188,6 +217,14 @@
 				<%}; %>
 			</div>
 		</div>
+		
+		<hr/>
+			<div id="replybox">
+
+			</div>
+    
+		
+		
 		<div class="text-end mt-5">
 		<%if(midx>0){ %>		
 			<button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href='<%=request.getContextPath()%>/EventMan_Board/EventMan_Mypage_BoardModify.do?bidx=<%=bavo.getBidx()%>'">수정</button>
@@ -205,6 +242,7 @@
 		</div>
 	</div>
 	
+	</div>
 </div>
 
 <!--   모달   -->

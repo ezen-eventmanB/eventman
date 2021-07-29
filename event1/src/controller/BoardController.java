@@ -460,7 +460,7 @@ public class BoardController extends HttpServlet {
          rd.forward(request, response);
          
          
-//관리자 상담신청 상세보기
+         //관리자 상담신청 상세보기
       }else if(str2.equals("EventMan_Master_BoardDetail.do")){
          
          System.out.println("상담 상세보기");
@@ -480,6 +480,25 @@ public class BoardController extends HttpServlet {
          RequestDispatcher rd = request.getRequestDispatcher("/EventMan_Mypage/EventMan_Mypage_MyboardDetail.jsp");
          rd.forward(request, response);
          
+    	 /*	관리자가 상담 답변을 다는 기능	*/      	 
+     }else if(str2.equals("EventMan_Master_Reply.do")) {
+    	 System.out.println("관리자가 답변 컨트롤러");
+    	 
+    	 int bidx = Integer.parseInt(request.getParameter("bidx"));
+    	 String breply = request.getParameter("breply");
+
+    	 System.out.println(bidx);
+    	 System.out.println(breply);
+    	 
+    	 BoardServiceImpl bdao = new BoardServiceImpl();
+    	 int value = bdao.masterreply(bidx, breply);
+    	 
+    	 if(value == 1) {
+        	 response.sendRedirect(request.getContextPath() + "/EventMan_Board/EventMan_Mypage_MyboardDetail.do?cidx="+bidx);
+    	 }else {
+    		 System.out.println("답변등록실패했씁니다~");
+    	 }
+    	        	 
          
          /* 관리자가 상담 신청 삭제하기	*/            
       }else if(str2.equals("EventMan_Master_board_delete.do")) {
