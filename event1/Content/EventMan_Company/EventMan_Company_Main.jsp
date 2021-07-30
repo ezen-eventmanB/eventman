@@ -170,7 +170,7 @@
 				<button type="button" class="btn btn-outline-secondary mt-5" onclick="panTo()">회사 위치 보기</button>
 		</div>
 	</div>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d02c3f2b6d8609f3c8c082e1b68b4dd"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d13687712724db7a58c691808cbdaa56"></script>
 	<script src="../js/kakaoView.js"></script>
 	
 </article>

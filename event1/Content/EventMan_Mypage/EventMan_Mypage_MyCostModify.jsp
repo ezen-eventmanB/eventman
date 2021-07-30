@@ -446,7 +446,6 @@ $(document).ready(function(e){
 				   <div class="fs-5 fw-bold">행사 지역</div>
 				   	<input type="text" name="cLoca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" tabindex=1  value="<%=covo.getCostLocation() %>">
 				   <hr/>
-
    
 <!-- 행사 설명 -->   
         <div class="fs-5 fw-bold">행사 구성</div>
